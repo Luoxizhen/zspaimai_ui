@@ -1,0 +1,30 @@
+2021-06-18 16:49:39,507 8666308096     INFO test_runner.py(156) - 预计并发线程数：1
+2021-06-18 16:49:39,509 13068484608     INFO result.py(69) - 开始测试： test_search_000 (test.test_firstp.TestFirstp006)
+2021-06-18 16:49:39,509 13068484608     INFO result.py(142) - 跳过测试： test_search_000 (test.test_firstp.TestFirstp006)
+搜索功能代码暂未完成
+2021-06-18 16:49:39,509 13068484608     INFO result.py(90) - 测试结束： test_search_000 (test.test_firstp.TestFirstp006)
+2021-06-18 16:49:39,509 13068484608     INFO result.py(91) - 耗时： 0.00017309188842773438
+2021-06-18 16:49:39,516 13068484608     INFO result.py(69) - 开始测试： test_search_001 (test.test_firstp.TestFirstp006)
+2021-06-18 16:49:39,516 13068484608     INFO result.py(142) - 跳过测试： test_search_001 (test.test_firstp.TestFirstp006)
+搜索功能代码暂未完成
+2021-06-18 16:49:39,516 13068484608     INFO result.py(90) - 测试结束： test_search_001 (test.test_firstp.TestFirstp006)
+2021-06-18 16:49:39,522 13068484608     INFO result.py(91) - 耗时： 0.00012683868408203125
+2021-06-18 16:49:39,529 13068484608     INFO result.py(69) - 开始测试： test_search_002 (test.test_firstp.TestFirstp006)
+2021-06-18 16:49:39,529 13068484608     INFO result.py(142) - 跳过测试： test_search_002 (test.test_firstp.TestFirstp006)
+搜索功能代码暂未完成
+2021-06-18 16:49:39,529 13068484608     INFO result.py(90) - 测试结束： test_search_002 (test.test_firstp.TestFirstp006)
+2021-06-18 16:49:39,529 13068484608     INFO result.py(91) - 耗时： 0.0001277923583984375
+2021-06-18 16:49:39,529 8666308096    ERROR test_runner.py(195) - 
+Skip	test_search_000 (test.test_firstp.TestFirstp006)	验证点击历史框中到 删除按钮，删除历史数据
+Skip	test_search_001 (test.test_firstp.TestFirstp006)	验证搜索功能
+Skip	test_search_002 (test.test_firstp.TestFirstp006)	验证搜索结束后，关键字保存到搜索历史中
+
+2021-06-18 16:49:39,530 8666308096     INFO test_runner.py(213) - 
+测试结束！
+运行时间: 0:00:00.192474
+共计执行用例数量：3
+执行成功用例数量：0
+执行失败用例数量：0
+跳过执行用例数量：3
+产生异常用例数量：0
+

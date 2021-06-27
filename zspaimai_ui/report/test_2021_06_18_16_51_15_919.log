@@ -1,0 +1,47 @@
+2021-06-18 16:51:16,120 8629169664     INFO test_runner.py(156) - 预计并发线程数：1
+2021-06-18 16:51:16,121 12996034560     INFO result.py(69) - 开始测试： test_click_aboutUs (test.test_firstp.TestFirstp005)
+2021-06-18 16:51:29,202 12996034560     INFO result.py(156) - 测试执行通过： test_click_aboutUs (test.test_firstp.TestFirstp005)
+2021-06-18 16:51:29,208 12996034560     INFO result.py(90) - 测试结束： test_click_aboutUs (test.test_firstp.TestFirstp005)
+2021-06-18 16:51:29,215 12996034560     INFO result.py(91) - 耗时： 13.086658000946045
+2021-06-18 16:51:29,215 12996034560     INFO result.py(69) - 开始测试： test_click_biddingInfo (test.test_firstp.TestFirstp005)
+2021-06-18 16:51:44,213 12996034560     INFO result.py(156) - 测试执行通过： test_click_biddingInfo (test.test_firstp.TestFirstp005)
+2021-06-18 16:51:44,219 12996034560     INFO result.py(90) - 测试结束： test_click_biddingInfo (test.test_firstp.TestFirstp005)
+2021-06-18 16:51:44,225 12996034560     INFO result.py(91) - 耗时： 15.003397941589355
+2021-06-18 16:51:44,225 12996034560     INFO result.py(69) - 开始测试： test_click_collectionGuarantee (test.test_firstp.TestFirstp005)
+2021-06-18 16:51:56,529 12996034560     INFO result.py(156) - 测试执行通过： test_click_collectionGuarantee (test.test_firstp.TestFirstp005)
+2021-06-18 16:51:56,536 12996034560     INFO result.py(90) - 测试结束： test_click_collectionGuarantee (test.test_firstp.TestFirstp005)
+2021-06-18 16:51:56,536 12996034560     INFO result.py(91) - 耗时： 12.31045389175415
+2021-06-18 16:51:56,543 12996034560     INFO result.py(69) - 开始测试： test_click_contactUs (test.test_firstp.TestFirstp005)
+2021-06-18 16:52:12,259 12996034560     INFO result.py(156) - 测试执行通过： test_click_contactUs (test.test_firstp.TestFirstp005)
+2021-06-18 16:52:12,266 12996034560     INFO result.py(90) - 测试结束： test_click_contactUs (test.test_firstp.TestFirstp005)
+2021-06-18 16:52:12,266 12996034560     INFO result.py(91) - 耗时： 15.72305679321289
+2021-06-18 16:52:12,283 12996034560     INFO result.py(69) - 开始测试： test_click_guide (test.test_firstp.TestFirstp005)
+2021-06-18 16:52:28,964 12996034560     INFO result.py(156) - 测试执行通过： test_click_guide (test.test_firstp.TestFirstp005)
+2021-06-18 16:52:28,971 12996034560     INFO result.py(90) - 测试结束： test_click_guide (test.test_firstp.TestFirstp005)
+2021-06-18 16:52:28,978 12996034560     INFO result.py(91) - 耗时： 16.68751811981201
+2021-06-18 16:52:28,978 12996034560     INFO result.py(69) - 开始测试： test_click_ipL (test.test_firstp.TestFirstp005)
+2021-06-18 16:52:48,773 12996034560     INFO result.py(156) - 测试执行通过： test_click_ipL (test.test_firstp.TestFirstp005)
+2021-06-18 16:52:48,779 12996034560     INFO result.py(90) - 测试结束： test_click_ipL (test.test_firstp.TestFirstp005)
+2021-06-18 16:52:48,780 12996034560     INFO result.py(91) - 耗时： 19.801329851150513
+2021-06-18 16:52:48,780 12996034560     INFO result.py(69) - 开始测试： test_click_serviceA (test.test_firstp.TestFirstp005)
+2021-06-18 16:53:06,073 12996034560     INFO result.py(156) - 测试执行通过： test_click_serviceA (test.test_firstp.TestFirstp005)
+2021-06-18 16:53:06,073 12996034560     INFO result.py(90) - 测试结束： test_click_serviceA (test.test_firstp.TestFirstp005)
+2021-06-18 16:53:06,073 12996034560     INFO result.py(91) - 耗时： 17.292959213256836
+2021-06-18 16:53:06,073 8629169664     INFO test_runner.py(193) - 
+Pass	test_click_aboutUs (test.test_firstp.TestFirstp005)	验证点击页面底部 关于我们 ，页面正确跳转
+Pass	test_click_biddingInfo (test.test_firstp.TestFirstp005)	验证点击页面底部 竞买须知 ，页面正确跳转
+Pass	test_click_collectionGuarantee (test.test_firstp.TestFirstp005)	验证点击页面底部 藏品保障 ，页面正确跳转
+Pass	test_click_contactUs (test.test_firstp.TestFirstp005)	验证点击页面底部 联系我们 ，页面正确跳转
+Pass	test_click_guide (test.test_firstp.TestFirstp005)	验证点击页面底部 新手指南 ，页面正确跳转
+Pass	test_click_ipL (test.test_firstp.TestFirstp005)	验证点击页面底部的 粤ICP备2021041206号 链接，正确打开页面
+Pass	test_click_serviceA (test.test_firstp.TestFirstp005)	验证点击页面底部 服务协议 ，页面正确跳转
+
+2021-06-18 16:53:06,074 8629169664     INFO test_runner.py(213) - 
+测试结束！
+运行时间: 0:01:50.121077
+共计执行用例数量：7
+执行成功用例数量：7
+执行失败用例数量：0
+跳过执行用例数量：0
+产生异常用例数量：0
+

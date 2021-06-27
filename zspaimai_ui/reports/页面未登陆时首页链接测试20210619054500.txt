@@ -1,0 +1,54 @@
+test_click_apply (test.test_firstp.TestFirstp003)
+验证未登录情况下，点击页面中间导航栏 委托 ，页面弹出登录框 ... ok
+test_click_login (test.test_firstp.TestFirstp003)
+验证点击页面顶部 未登录 ，页面弹出登录窗口 ... ERROR
+ERROR
+test_click_myApplyB (test.test_firstp.TestFirstp003)
+验证未登录情况下， 点击页面中间 我要申请委托 半隐藏按钮，页面弹出登录框 ... ok
+test_click_myBid (test.test_firstp.TestFirstp003)
+验证未登录情况下，点击页面顶部 我的竞买 按钮，弹出登录框 ... ok
+test_click_myMsg (test.test_firstp.TestFirstp003)
+验证未登录情况下，点击页面顶部 消息 按钮，弹出登录框 ... ok
+
+======================================================================
+ERROR: test_click_login (test.test_firstp.TestFirstp003)
+验证点击页面顶部 未登录 ，页面弹出登录窗口
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py", line 73, in test_click_login
+    self.click_loginB()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/page/firstp.py", line 82, in click_loginB
+    self.driver.find_element(*self.loginB).click()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//div[text()="未登陆"]"}
+  (Session info: chrome=91.0.4472.114)
+
+
+======================================================================
+ERROR: test_click_login (test.test_firstp.TestFirstp003)
+验证点击页面顶部 未登录 ，页面弹出登录窗口
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/init.py", line 61, in tearDown
+    self.driver.find_element_by_xpath('//img[@class="login-title-close"]').click()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//img[@class="login-title-close"]"}
+  (Session info: chrome=91.0.4472.114)
+
+
+----------------------------------------------------------------------
+Ran 5 tests in 116.748s
+
+FAILED (errors=2)

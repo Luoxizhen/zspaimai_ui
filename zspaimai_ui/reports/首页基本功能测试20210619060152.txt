@@ -1,0 +1,15 @@
+test_click_apply (test.test_firstp.TestFirstp003)
+验证未登录情况下，点击页面中间导航栏 委托 ，页面弹出登录框 ... ok
+test_click_login (test.test_firstp.TestFirstp003)
+验证点击页面顶部 未登录 ，页面弹出登录窗口 ... ok
+test_click_myApplyB (test.test_firstp.TestFirstp003)
+验证未登录情况下， 点击页面中间 我要申请委托 半隐藏按钮，页面弹出登录框 ... skipped '异常用例'
+test_click_myBid (test.test_firstp.TestFirstp003)
+验证未登录情况下，点击页面顶部 我的竞买 按钮，弹出登录框 ... ok
+test_click_myMsg (test.test_firstp.TestFirstp003)
+验证未登录情况下，点击页面顶部 消息 按钮，弹出登录框 ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 27.440s
+
+OK (skipped=1)

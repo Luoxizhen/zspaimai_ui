@@ -1,0 +1,17 @@
+test_click_searchBox001 (test.test_firstp.TestFirstp001)
+验证点击搜索框，显示搜索历史框 ... ok
+test_click_searchBox002 (test.test_firstp.TestFirstp001)
+验证点击搜索框，历史框包含搜索历史文本 ... ok
+test_click_searchBox003 (test.test_firstp.TestFirstp001)
+验证点击搜索框，历史框包含删除按钮 ... ok
+test_qrcode (test.test_firstp.TestFirstp001)
+验证页面底部显示 中晟在线 二维码 ... ok
+test_searchBoxInfo (test.test_firstp.TestFirstp001)
+验证搜索框的提示文本信息为： 藏品名称 ... ok
+test_title (test.test_firstp.TestFirstp001)
+验证首页标题 ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 29.387s
+
+OK

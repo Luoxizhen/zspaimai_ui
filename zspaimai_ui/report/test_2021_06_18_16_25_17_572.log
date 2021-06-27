@@ -1,0 +1,182 @@
+2021-06-18 16:25:17,224 8640663040     INFO test_runner.py(156) - 预计并发线程数：1
+2021-06-18 16:25:30,975 13017718784     INFO result.py(69) - 开始测试： test_click_aboutUs (test.test_firstp.TestFirstp005)
+2021-06-18 16:25:32,197 13017718784    ERROR result.py(175) - 测试产生错误： test_click_aboutUs (test.test_firstp.TestFirstp005)
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py", line 171, in test_click_aboutUs
+    self.click_aboutUs()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/page/firstp.py", line 122, in click_aboutUs
+    self.driver.find_element(*self.aboutUs).click()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py", line 80, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py", line 633, in _execute
+    return self._parent.execute(command, params)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <div class="m-l-66 cursor" data-v-9a96d894="">...</div> is not clickable at point (442, 679). Other element would receive the click: <div class="airCommand-content" data-v-9a96d894="">...</div>
+  (Session info: chrome=91.0.4472.114)
+
+
+2021-06-18 16:25:32,203 13017718784     INFO result.py(90) - 测试结束： test_click_aboutUs (test.test_firstp.TestFirstp005)
+2021-06-18 16:25:32,203 13017718784     INFO result.py(91) - 耗时： 1.2277557849884033
+2021-06-18 16:25:32,209 13017718784     INFO result.py(69) - 开始测试： test_click_biddingInfo (test.test_firstp.TestFirstp005)
+2021-06-18 16:25:33,318 13017718784    ERROR result.py(175) - 测试产生错误： test_click_biddingInfo (test.test_firstp.TestFirstp005)
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py", line 166, in test_click_biddingInfo
+    self.click_biddingInfo()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/page/firstp.py", line 120, in click_biddingInfo
+    self.driver.find_element(*self.biddingInfo).click()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py", line 80, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py", line 633, in _execute
+    return self._parent.execute(command, params)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <div class="m-l-66 cursor" data-v-9a96d894="">...</div> is not clickable at point (312, 679). Other element would receive the click: <img class="pic-1" src="/assets/img/pic-1.bfae8cb6.png" alt="" data-v-9a96d894="">
+  (Session info: chrome=91.0.4472.114)
+
+
+2021-06-18 16:25:33,324 13017718784     INFO result.py(90) - 测试结束： test_click_biddingInfo (test.test_firstp.TestFirstp005)
+2021-06-18 16:25:33,324 13017718784     INFO result.py(91) - 耗时： 1.1144447326660156
+2021-06-18 16:25:33,324 13017718784     INFO result.py(69) - 开始测试： test_click_collectionGuarantee (test.test_firstp.TestFirstp005)
+2021-06-18 16:25:34,444 13017718784    ERROR result.py(175) - 测试产生错误： test_click_collectionGuarantee (test.test_firstp.TestFirstp005)
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py", line 179, in test_click_collectionGuarantee
+    self.click_collectionGuarantee()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/page/firstp.py", line 126, in click_collectionGuarantee
+    self.driver.find_element(*self.collectionGuarantee).click()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py", line 80, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py", line 633, in _execute
+    return self._parent.execute(command, params)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <div class="m-l-66 cursor" data-v-9a96d894="">...</div> is not clickable at point (702, 679). Other element would receive the click: <div class="cursor airCommand-content-center-btn" data-v-9a96d894="">...</div>
+  (Session info: chrome=91.0.4472.114)
+
+
+2021-06-18 16:25:34,444 13017718784     INFO result.py(90) - 测试结束： test_click_collectionGuarantee (test.test_firstp.TestFirstp005)
+2021-06-18 16:25:34,444 13017718784     INFO result.py(91) - 耗时： 1.1196141242980957
+2021-06-18 16:25:34,444 13017718784     INFO result.py(69) - 开始测试： test_click_contactUs (test.test_firstp.TestFirstp005)
+2021-06-18 16:25:38,184 13017718784     INFO result.py(156) - 测试执行通过： test_click_contactUs (test.test_firstp.TestFirstp005)
+2021-06-18 16:25:38,191 13017718784     INFO result.py(90) - 测试结束： test_click_contactUs (test.test_firstp.TestFirstp005)
+2021-06-18 16:25:38,197 13017718784     INFO result.py(91) - 耗时： 3.746375799179077
+2021-06-18 16:25:38,210 13017718784     INFO result.py(69) - 开始测试： test_click_guide (test.test_firstp.TestFirstp005)
+2021-06-18 16:25:38,657 13017718784  WARNING connectionpool.py(304) - Connection pool is full, discarding connection: 127.0.0.1
+2021-06-18 16:25:38,658 13017718784    ERROR result.py(175) - 测试产生错误： test_click_guide (test.test_firstp.TestFirstp005)
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py", line 161, in test_click_guide
+    self.click_guildL()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/page/firstp.py", line 118, in click_guildL
+    self.driver.find_element(*self.guideL).click()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py", line 80, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py", line 633, in _execute
+    return self._parent.execute(command, params)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.InvalidSessionIdException: Message: invalid session id
+
+
+2021-06-18 16:25:38,658 13017718784     INFO result.py(90) - 测试结束： test_click_guide (test.test_firstp.TestFirstp005)
+2021-06-18 16:25:38,658 13017718784     INFO result.py(91) - 耗时： 0.44789910316467285
+2021-06-18 16:25:38,659 13017718784     INFO result.py(69) - 开始测试： test_click_serviceA (test.test_firstp.TestFirstp005)
+2021-06-18 16:25:38,660 13017718784  WARNING connectionpool.py(780) - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10d041dc0>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/6366fbf83b96feeda414037a16d83e56/element
+2021-06-18 16:25:38,661 13017718784  WARNING connectionpool.py(780) - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10d0415e0>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/6366fbf83b96feeda414037a16d83e56/element
+2021-06-18 16:25:38,661 13017718784  WARNING connectionpool.py(780) - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10d24d3d0>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/6366fbf83b96feeda414037a16d83e56/element
+2021-06-18 16:25:38,666 13017718784    ERROR result.py(175) - 测试产生错误： test_click_serviceA (test.test_firstp.TestFirstp005)
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connection.py", line 169, in _new_conn
+    conn = connection.create_connection(
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/util/connection.py", line 96, in create_connection
+    raise err
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/util/connection.py", line 86, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 699, in urlopen
+    httplib_response = self._make_request(
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 394, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connection.py", line 234, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 1253, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 1299, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 1248, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 1008, in _send_output
+    self.send(msg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 948, in send
+    self.connect()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connection.py", line 200, in connect
+    conn = self._new_conn()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connection.py", line 181, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x10d24d1f0>: Failed to establish a new connection: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py", line 175, in test_click_serviceA
+    self.click_serviceA()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/page/firstp.py", line 124, in click_serviceA
+    self.driver.find_element(*self.serviceA).click()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 319, in execute
+    response = self.command_executor.execute(driver_command, params)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/remote_connection.py", line 374, in execute
+    return self._request(command_info[0], url, body=data)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/remote_connection.py", line 397, in _request
+    resp = self._conn.request(method, url, body=body, headers=headers)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/request.py", line 78, in request
+    return self.request_encode_body(
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/request.py", line 170, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/poolmanager.py", line 375, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 783, in urlopen
+    return self.urlopen(
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 783, in urlopen
+    return self.urlopen(
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 783, in urlopen
+    return self.urlopen(
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 755, in urlopen
+    retries = retries.increment(
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/util/retry.py", line 574, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=62146): Max retries exceeded with url: /session/6366fbf83b96feeda414037a16d83e56/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10d24d1f0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+
+2021-06-18 16:25:38,666 13017718784     INFO result.py(90) - 测试结束： test_click_serviceA (test.test_firstp.TestFirstp005)
+2021-06-18 16:25:38,666 13017718784     INFO result.py(91) - 耗时： 0.00632786750793457
+2021-06-18 16:25:38,666 8640663040     INFO test_runner.py(193) - 
+Pass	test_click_contactUs (test.test_firstp.TestFirstp005)	验证点击页面底部 联系我们 ，页面正确跳转
+
+2021-06-18 16:25:38,666 8640663040    ERROR test_runner.py(195) - 
+Error	test_click_aboutUs (test.test_firstp.TestFirstp005)	验证点击页面底部 关于我们 ，页面正确跳转
+Error	test_click_biddingInfo (test.test_firstp.TestFirstp005)	验证点击页面底部 竞买须知 ，页面正确跳转
+Error	test_click_collectionGuarantee (test.test_firstp.TestFirstp005)	验证点击页面底部 藏品保障 ，页面正确跳转
+Error	test_click_guide (test.test_firstp.TestFirstp005)	验证点击页面底部 新手指南 ，页面正确跳转
+Error	test_click_serviceA (test.test_firstp.TestFirstp005)	验证点击页面底部 服务协议 ，页面正确跳转
+
+2021-06-18 16:25:38,667 8640663040     INFO test_runner.py(213) - 
+测试结束！
+运行时间: 0:00:21.609966
+共计执行用例数量：6
+执行成功用例数量：1
+执行失败用例数量：0
+跳过执行用例数量：0
+产生异常用例数量：5
+

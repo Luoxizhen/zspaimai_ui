@@ -1,0 +1,35 @@
+
+Running tests... 
+----------------------------------------------------------------------
+ test_login_error_0_1 (__main__.TestLogin_003) ... ERROR (0.001384)s
+ test_login_error_1_215622145010 (__main__.TestLogin_003) ... FAIL (8.227491)s
+
+======================================================================
+ERROR [0.001384s]: __main__.TestLogin_003.test_login_error_0_1
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/parameterized/parameterized.py", line 533, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+TypeError: test_login_error() takes 4 positional arguments but 5 were given
+
+======================================================================
+FAIL [8.227491s]: __main__.TestLogin_003.test_login_error_1_215622145010
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/parameterized/parameterized.py", line 533, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test2.py", line 40, in test_login_error
+    self.assertEqual(msg, self.get_loginMsg())
+AssertionError: '请输入您的6位数验证码' != '请输入有效的手机号'
+- 请输入您的6位数验证码
++ 请输入有效的手机号
+
+
+----------------------------------------------------------------------
+Ran 2 tests in 0:00:27
+
+FAILED
+ (Failures=1, Errors=1)
+
+Generating HTML reports... 
+reports/TestResults___main__.TestLogin_003_2021-06-14_18-16-34.html

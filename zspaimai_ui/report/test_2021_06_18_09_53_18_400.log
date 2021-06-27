@@ -1,0 +1,249 @@
+2021-06-18 09:53:19,265 8601456128     INFO test_runner.py(156) - 预计并发线程数：1
+2021-06-18 09:53:22,367 12939489280     INFO result.py(69) - 开始测试： test_click_aboutUs (test_firstp.TestFirstp)
+2021-06-18 09:53:34,947 12939489280    ERROR result.py(175) - 测试产生错误： test_click_aboutUs (test_firstp.TestFirstp)
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py", line 47, in test_click_aboutUs
+    self.click_aboutUs()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/page/firstp.py", line 120, in click_aboutUs
+    self.driver.find_element(*self.aboutUs).click()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py", line 80, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py", line 633, in _execute
+    return self._parent.execute(command, params)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <div class="m-l-66 cursor" data-v-9a96d894="">...</div> is not clickable at point (442, 679). Other element would receive the click: <div class="airCommand-content" data-v-9a96d894="">...</div>
+  (Session info: chrome=91.0.4472.114)
+
+
+2021-06-18 09:53:34,954 12939489280     INFO result.py(90) - 测试结束： test_click_aboutUs (test_firstp.TestFirstp)
+2021-06-18 09:53:34,960 12939489280     INFO result.py(91) - 耗时： 12.578346967697144
+2021-06-18 09:53:34,966 12939489280     INFO result.py(69) - 开始测试： test_click_apply (test_firstp.TestFirstp)
+2021-06-18 09:53:35,652 12939489280     INFO result.py(156) - 测试执行通过： test_click_apply (test_firstp.TestFirstp)
+2021-06-18 09:53:35,658 12939489280     INFO result.py(90) - 测试结束： test_click_apply (test_firstp.TestFirstp)
+2021-06-18 09:53:35,658 12939489280     INFO result.py(91) - 耗时： 0.691849946975708
+2021-06-18 09:53:35,658 12939489280     INFO result.py(69) - 开始测试： test_click_bid (test_firstp.TestFirstp)
+2021-06-18 09:53:37,266 12939489280     INFO result.py(156) - 测试执行通过： test_click_bid (test_firstp.TestFirstp)
+2021-06-18 09:53:37,272 12939489280     INFO result.py(90) - 测试结束： test_click_bid (test_firstp.TestFirstp)
+2021-06-18 09:53:37,279 12939489280     INFO result.py(91) - 耗时： 1.613759994506836
+2021-06-18 09:53:37,285 12939489280     INFO result.py(69) - 开始测试： test_click_biddingInfo (test_firstp.TestFirstp)
+2021-06-18 09:53:37,600 12939489280  WARNING result.py(190) - 测试未通过： test_click_biddingInfo (test_firstp.TestFirstp)
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py", line 44, in test_click_biddingInfo
+    self.assertEqual('竞买须知', self.driver.title)
+AssertionError: '竞买须知' != '中晟在线'
+- 竞买须知
++ 中晟在线
+
+
+2021-06-18 09:53:37,606 12939489280     INFO result.py(90) - 测试结束： test_click_biddingInfo (test_firstp.TestFirstp)
+2021-06-18 09:53:37,606 12939489280     INFO result.py(91) - 耗时： 0.31454014778137207
+2021-06-18 09:53:37,606 12939489280     INFO result.py(69) - 开始测试： test_click_collectionGuarantee (test_firstp.TestFirstp)
+2021-06-18 09:53:37,805 12939489280     INFO result.py(156) - 测试执行通过： test_click_collectionGuarantee (test_firstp.TestFirstp)
+2021-06-18 09:53:37,812 12939489280     INFO result.py(90) - 测试结束： test_click_collectionGuarantee (test_firstp.TestFirstp)
+2021-06-18 09:53:37,818 12939489280     INFO result.py(91) - 耗时： 0.20561909675598145
+2021-06-18 09:53:37,831 12939489280     INFO result.py(69) - 开始测试： test_click_contact (test_firstp.TestFirstp)
+2021-06-18 09:53:38,027 12939489280     INFO result.py(156) - 测试执行通过： test_click_contact (test_firstp.TestFirstp)
+2021-06-18 09:53:38,033 12939489280     INFO result.py(90) - 测试结束： test_click_contact (test_firstp.TestFirstp)
+2021-06-18 09:53:38,039 12939489280     INFO result.py(91) - 耗时： 0.1953740119934082
+2021-06-18 09:53:38,046 12939489280     INFO result.py(69) - 开始测试： test_click_contactUs (test_firstp.TestFirstp)
+2021-06-18 09:53:38,220 12939489280     INFO result.py(156) - 测试执行通过： test_click_contactUs (test_firstp.TestFirstp)
+2021-06-18 09:53:38,226 12939489280     INFO result.py(90) - 测试结束： test_click_contactUs (test_firstp.TestFirstp)
+2021-06-18 09:53:38,233 12939489280     INFO result.py(91) - 耗时： 0.1743018627166748
+2021-06-18 09:53:38,239 12939489280     INFO result.py(69) - 开始测试： test_click_firstPage (test_firstp.TestFirstp)
+2021-06-18 09:53:38,564 12939489280  WARNING result.py(190) - 测试未通过： test_click_firstPage (test_firstp.TestFirstp)
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py", line 24, in test_click_firstPage
+    self.assertEqual("中晟在线", self.driver.title)
+AssertionError: '中晟在线' != '中晟在线-竞买'
+- 中晟在线
++ 中晟在线-竞买
+?     +++
+
+
+2021-06-18 09:53:38,570 12939489280     INFO result.py(90) - 测试结束： test_click_firstPage (test_firstp.TestFirstp)
+2021-06-18 09:53:38,577 12939489280     INFO result.py(91) - 耗时： 0.32437801361083984
+2021-06-18 09:53:38,577 12939489280     INFO result.py(69) - 开始测试： test_click_guide (test_firstp.TestFirstp)
+2021-06-18 09:53:38,913 12939489280     INFO result.py(156) - 测试执行通过： test_click_guide (test_firstp.TestFirstp)
+2021-06-18 09:53:38,925 12939489280     INFO result.py(90) - 测试结束： test_click_guide (test_firstp.TestFirstp)
+2021-06-18 09:53:38,938 12939489280     INFO result.py(91) - 耗时： 0.34246397018432617
+2021-06-18 09:53:38,948 12939489280     INFO result.py(69) - 开始测试： test_click_help (test_firstp.TestFirstp)
+2021-06-18 09:53:39,144 12939489280     INFO result.py(156) - 测试执行通过： test_click_help (test_firstp.TestFirstp)
+2021-06-18 09:53:39,151 12939489280     INFO result.py(90) - 测试结束： test_click_help (test_firstp.TestFirstp)
+2021-06-18 09:53:39,151 12939489280     INFO result.py(91) - 耗时： 0.19609808921813965
+2021-06-18 09:53:39,157 12939489280     INFO result.py(69) - 开始测试： test_click_ipL (test_firstp.TestFirstp)
+2021-06-18 09:53:41,416 12939489280     INFO result.py(156) - 测试执行通过： test_click_ipL (test_firstp.TestFirstp)
+2021-06-18 09:53:41,422 12939489280     INFO result.py(90) - 测试结束： test_click_ipL (test_firstp.TestFirstp)
+2021-06-18 09:53:41,429 12939489280     INFO result.py(91) - 耗时： 2.2590110301971436
+2021-06-18 09:53:41,435 12939489280     INFO result.py(69) - 开始测试： test_click_login (test_firstp.TestFirstp)
+2021-06-18 09:53:43,017 12939489280     INFO result.py(156) - 测试执行通过： test_click_login (test_firstp.TestFirstp)
+2021-06-18 09:53:43,023 12939489280     INFO result.py(90) - 测试结束： test_click_login (test_firstp.TestFirstp)
+2021-06-18 09:53:43,023 12939489280     INFO result.py(91) - 耗时： 1.5819218158721924
+2021-06-18 09:53:43,030 12939489280     INFO result.py(69) - 开始测试： test_click_moreCollection (test_firstp.TestFirstp)
+2021-06-18 09:53:44,290 12939489280     INFO result.py(156) - 测试执行通过： test_click_moreCollection (test_firstp.TestFirstp)
+2021-06-18 09:53:44,297 12939489280     INFO result.py(90) - 测试结束： test_click_moreCollection (test_firstp.TestFirstp)
+2021-06-18 09:53:44,297 12939489280     INFO result.py(91) - 耗时： 1.2668840885162354
+2021-06-18 09:53:44,303 12939489280     INFO result.py(69) - 开始测试： test_click_moreCollectionID (test_firstp.TestFirstp)
+2021-06-18 09:53:44,799 12939489280     INFO result.py(156) - 测试执行通过： test_click_moreCollectionID (test_firstp.TestFirstp)
+2021-06-18 09:53:44,799 12939489280     INFO result.py(90) - 测试结束： test_click_moreCollectionID (test_firstp.TestFirstp)
+2021-06-18 09:53:44,805 12939489280     INFO result.py(91) - 耗时： 0.4900538921356201
+2021-06-18 09:53:44,812 12939489280     INFO result.py(69) - 开始测试： test_click_myApplyB (test_firstp.TestFirstp)
+2021-06-18 09:54:15,229 12939489280    ERROR result.py(175) - 测试产生错误： test_click_myApplyB (test_firstp.TestFirstp)
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py", line 73, in test_click_myApplyB
+    self.assertIsNotNone(self.driver.find_element(*self.loginBox))
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//div[@class="login-box"]"}
+  (Session info: chrome=91.0.4472.114)
+
+
+2021-06-18 09:54:15,236 12939489280     INFO result.py(90) - 测试结束： test_click_myApplyB (test_firstp.TestFirstp)
+2021-06-18 09:54:15,242 12939489280     INFO result.py(91) - 耗时： 30.417804956436157
+2021-06-18 09:54:15,243 12939489280     INFO result.py(69) - 开始测试： test_click_myBid (test_firstp.TestFirstp)
+2021-06-18 09:54:15,584 12939489280     INFO result.py(156) - 测试执行通过： test_click_myBid (test_firstp.TestFirstp)
+2021-06-18 09:54:15,589 12939489280     INFO result.py(90) - 测试结束： test_click_myBid (test_firstp.TestFirstp)
+2021-06-18 09:54:15,589 12939489280     INFO result.py(91) - 耗时： 0.34113407135009766
+2021-06-18 09:54:15,596 12939489280     INFO result.py(69) - 开始测试： test_click_myMsg (test_firstp.TestFirstp)
+2021-06-18 09:54:15,944 12939489280     INFO result.py(156) - 测试执行通过： test_click_myMsg (test_firstp.TestFirstp)
+2021-06-18 09:54:15,944 12939489280     INFO result.py(90) - 测试结束： test_click_myMsg (test_firstp.TestFirstp)
+2021-06-18 09:54:15,950 12939489280     INFO result.py(91) - 耗时： 0.3420867919921875
+2021-06-18 09:54:15,957 12939489280     INFO result.py(69) - 开始测试： test_click_searchBox1 (test_firstp.TestFirstp)
+2021-06-18 09:54:21,522 12939489280     INFO result.py(156) - 测试执行通过： test_click_searchBox1 (test_firstp.TestFirstp)
+2021-06-18 09:54:21,528 12939489280     INFO result.py(90) - 测试结束： test_click_searchBox1 (test_firstp.TestFirstp)
+2021-06-18 09:54:21,534 12939489280     INFO result.py(91) - 耗时： 5.571038007736206
+2021-06-18 09:54:21,535 12939489280     INFO result.py(69) - 开始测试： test_click_searchBox2 (test_firstp.TestFirstp)
+2021-06-18 09:54:26,842 12939489280     INFO result.py(156) - 测试执行通过： test_click_searchBox2 (test_firstp.TestFirstp)
+2021-06-18 09:54:26,848 12939489280     INFO result.py(90) - 测试结束： test_click_searchBox2 (test_firstp.TestFirstp)
+2021-06-18 09:54:26,848 12939489280     INFO result.py(91) - 耗时： 5.30777907371521
+2021-06-18 09:54:26,854 12939489280     INFO result.py(69) - 开始测试： test_click_searchBox3 (test_firstp.TestFirstp)
+2021-06-18 09:54:32,142 12939489280     INFO result.py(156) - 测试执行通过： test_click_searchBox3 (test_firstp.TestFirstp)
+2021-06-18 09:54:32,147 12939489280     INFO result.py(90) - 测试结束： test_click_searchBox3 (test_firstp.TestFirstp)
+2021-06-18 09:54:32,154 12939489280     INFO result.py(91) - 耗时： 5.287322044372559
+2021-06-18 09:54:32,160 12939489280     INFO result.py(69) - 开始测试： test_click_serviceA (test_firstp.TestFirstp)
+2021-06-18 09:54:32,447 12939489280     INFO result.py(156) - 测试执行通过： test_click_serviceA (test_firstp.TestFirstp)
+2021-06-18 09:54:32,447 12939489280     INFO result.py(90) - 测试结束： test_click_serviceA (test_firstp.TestFirstp)
+2021-06-18 09:54:32,447 12939489280     INFO result.py(91) - 耗时： 0.28683018684387207
+2021-06-18 09:54:32,453 12939489280     INFO result.py(69) - 开始测试： test_click_specialP (test_firstp.TestFirstp)
+2021-06-18 09:54:32,676 12939489280     INFO result.py(156) - 测试执行通过： test_click_specialP (test_firstp.TestFirstp)
+2021-06-18 09:54:32,676 12939489280     INFO result.py(90) - 测试结束： test_click_specialP (test_firstp.TestFirstp)
+2021-06-18 09:54:32,676 12939489280     INFO result.py(91) - 耗时： 0.22327518463134766
+2021-06-18 09:54:32,676 12939489280     INFO result.py(69) - 开始测试： test_qrcode (test_firstp.TestFirstp)
+2021-06-18 09:54:32,804 12939489280  WARNING result.py(190) - 测试未通过： test_qrcode (test_firstp.TestFirstp)
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py", line 129, in test_qrcode
+    self.assertEqual("/assets/img/qrcode1.d4572d6c.jpg", self.get_qrcodeP())
+AssertionError: '/assets/img/qrcode1.d4572d6c.jpg' != 'http://home.online.zspaimai.cn/assets/img/qrcode1.d4572d6c.jpg'
+- /assets/img/qrcode1.d4572d6c.jpg
++ http://home.online.zspaimai.cn/assets/img/qrcode1.d4572d6c.jpg
+
+
+2021-06-18 09:54:32,811 12939489280     INFO result.py(90) - 测试结束： test_qrcode (test_firstp.TestFirstp)
+2021-06-18 09:54:32,817 12939489280     INFO result.py(91) - 耗时： 0.13458895683288574
+2021-06-18 09:54:32,818 12939489280     INFO result.py(69) - 开始测试： test_searchBoxInfo (test_firstp.TestFirstp)
+2021-06-18 09:54:33,082 12939489280  WARNING result.py(190) - 测试未通过： test_searchBoxInfo (test_firstp.TestFirstp)
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py", line 100, in test_searchBoxInfo
+    self.assertEqual('藏品名称', self.get_infoOfSearchBox())
+AssertionError: '藏品名称' != ''
+- 藏品名称
++ 
+
+
+2021-06-18 09:54:33,088 12939489280     INFO result.py(90) - 测试结束： test_searchBoxInfo (test_firstp.TestFirstp)
+2021-06-18 09:54:33,094 12939489280     INFO result.py(91) - 耗时： 0.2708899974822998
+2021-06-18 09:54:33,100 12939489280     INFO result.py(69) - 开始测试： test_search_000 (test_firstp.TestFirstp)
+2021-06-18 09:54:33,224 12939489280     INFO result.py(156) - 测试执行通过： test_search_000 (test_firstp.TestFirstp)
+2021-06-18 09:54:33,230 12939489280     INFO result.py(90) - 测试结束： test_search_000 (test_firstp.TestFirstp)
+2021-06-18 09:54:33,237 12939489280     INFO result.py(91) - 耗时： 0.12449979782104492
+2021-06-18 09:54:33,243 12939489280     INFO result.py(69) - 开始测试： test_search_001 (test_firstp.TestFirstp)
+2021-06-18 09:54:34,045 12939489280     INFO result.py(156) - 测试执行通过： test_search_001 (test_firstp.TestFirstp)
+2021-06-18 09:54:34,046 12939489280     INFO result.py(90) - 测试结束： test_search_001 (test_firstp.TestFirstp)
+2021-06-18 09:54:34,051 12939489280     INFO result.py(91) - 耗时： 0.8026330471038818
+2021-06-18 09:54:34,051 12939489280     INFO result.py(69) - 开始测试： test_search_002 (test_firstp.TestFirstp)
+2021-06-18 09:54:34,381 12939489280  WARNING result.py(190) - 测试未通过： test_search_002 (test_firstp.TestFirstp)
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py", line 124, in test_search_002
+    self.assertEqual('一张图片', self.get_lastReco())
+AssertionError: '一张图片' != '进行中-857'
+- 一张图片
++ 进行中-857
+
+
+2021-06-18 09:54:34,387 12939489280     INFO result.py(90) - 测试结束： test_search_002 (test_firstp.TestFirstp)
+2021-06-18 09:54:34,387 12939489280     INFO result.py(91) - 耗时： 0.33571386337280273
+2021-06-18 09:54:34,387 12939489280     INFO result.py(69) - 开始测试： test_titleOfFirstPage (test_firstp.TestFirstp)
+2021-06-18 09:54:34,548 12939489280     INFO result.py(156) - 测试执行通过： test_titleOfFirstPage (test_firstp.TestFirstp)
+2021-06-18 09:54:34,548 12939489280     INFO result.py(90) - 测试结束： test_titleOfFirstPage (test_firstp.TestFirstp)
+2021-06-18 09:54:34,548 12939489280     INFO result.py(91) - 耗时： 0.15459203720092773
+2021-06-18 09:54:34,548 12939489280     INFO result.py(69) - 开始测试： test_urlOfFirstPage (test_firstp.TestFirstp)
+2021-06-18 09:54:34,736 12939489280     INFO result.py(156) - 测试执行通过： test_urlOfFirstPage (test_firstp.TestFirstp)
+2021-06-18 09:54:34,736 12939489280     INFO result.py(90) - 测试结束： test_urlOfFirstPage (test_firstp.TestFirstp)
+2021-06-18 09:54:34,736 12939489280     INFO result.py(91) - 耗时： 0.18111729621887207
+2021-06-18 09:54:34,881 12939489280  WARNING connectionpool.py(780) - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10ab273d0>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/aec2b55ce7f20600a8f09cc629894539
+2021-06-18 09:54:34,882 12939489280  WARNING connectionpool.py(780) - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10ab27df0>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/aec2b55ce7f20600a8f09cc629894539
+2021-06-18 09:54:34,882 12939489280  WARNING connectionpool.py(780) - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10ab27ee0>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/aec2b55ce7f20600a8f09cc629894539
+2021-06-18 09:54:34,883 12939489280     INFO result.py(69) - 开始测试： test_login (unittest.loader._FailedTest)
+2021-06-18 09:54:34,883 12939489280    ERROR result.py(175) - 测试产生错误： test_login (unittest.loader._FailedTest)
+ImportError: Failed to import test module: test_login
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/loader.py", line 436, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/loader.py", line 377, in _get_module_from_name
+    __import__(name)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_login.py", line 16, in <module>
+    from .init import TestLoginInit, Init, Init2
+ImportError: attempted relative import with no known parent package
+
+
+2021-06-18 09:54:34,883 12939489280     INFO result.py(90) - 测试结束： test_login (unittest.loader._FailedTest)
+2021-06-18 09:54:34,883 12939489280     INFO result.py(91) - 耗时： 0.00017595291137695312
+2021-06-18 09:54:34,883 8601456128     INFO test_runner.py(193) - 
+Pass	test_click_apply (test_firstp.TestFirstp)	验证未登录情况下，点击页面中间导航栏 委托 ，页面弹出登录框
+Pass	test_click_bid (test_firstp.TestFirstp)	验证点击页面中间导航栏 竞买 ，页面正确跳转
+Pass	test_click_collectionGuarantee (test_firstp.TestFirstp)	验证点击页面底部 藏品保障 ，页面正确跳转
+Pass	test_click_contact (test_firstp.TestFirstp)	验证点击页面顶部 联系我们 ，页面正确跳转
+Pass	test_click_contactUs (test_firstp.TestFirstp)	验证点击页面底部 联系我们 ，页面正确跳转
+Pass	test_click_guide (test_firstp.TestFirstp)	验证点击页面底部 新手指南 ，页面正确跳转
+Pass	test_click_help (test_firstp.TestFirstp)	验证点击页面顶部 帮助中心 ，页面正确跳转
+Pass	test_click_ipL (test_firstp.TestFirstp)	验证点击页面底部的 粤ICP备2021041206号 链接，正确打开页面
+Pass	test_click_login (test_firstp.TestFirstp)	验证点击页面顶部 未登录 ，页面弹出登录窗口
+Pass	test_click_moreCollection (test_firstp.TestFirstp)	验证点击热卖拍品底部 更多拍品 ，页面正确跳转
+Pass	test_click_moreCollectionID (test_firstp.TestFirstp)	验证点击热卖拍品底部 更多拍品后的标识 ，页面正确跳转
+Pass	test_click_myBid (test_firstp.TestFirstp)	验证未登录情况下，点击页面顶部 我的竞买 按钮，弹出登录框
+Pass	test_click_myMsg (test_firstp.TestFirstp)	验证未登录情况下，点击页面顶部 消息 按钮，弹出登录框
+Pass	test_click_searchBox1 (test_firstp.TestFirstp)	验证点击搜索框，显示搜索历史框
+Pass	test_click_searchBox2 (test_firstp.TestFirstp)	验证点击搜索框，历史框包含搜索历史文本
+Pass	test_click_searchBox3 (test_firstp.TestFirstp)	验证点击搜索框，历史框包含删除按钮
+Pass	test_click_serviceA (test_firstp.TestFirstp)	验证点击页面底部 服务协议 ，页面正确跳转
+Pass	test_click_specialP (test_firstp.TestFirstp)	验证点击页面中间导航栏 专场 ，页面正确跳转
+Pass	test_search_000 (test_firstp.TestFirstp)	验证点击历史框中到 删除按钮，删除历史数据
+Pass	test_search_001 (test_firstp.TestFirstp)	验证搜索功能
+Pass	test_titleOfFirstPage (test_firstp.TestFirstp)	验证首页标题
+Pass	test_urlOfFirstPage (test_firstp.TestFirstp)	验证首页网址
+
+2021-06-18 09:54:34,883 8601456128    ERROR test_runner.py(195) - 
+Error	test_click_aboutUs (test_firstp.TestFirstp)	验证点击页面底部 关于我们 ，页面正确跳转
+Fail	test_click_biddingInfo (test_firstp.TestFirstp)	验证点击页面底部 竞买须知 ，页面正确跳转
+Fail	test_click_firstPage (test_firstp.TestFirstp)	验证点击页面中间导航栏 首页 ，页面正确跳转
+Error	test_click_myApplyB (test_firstp.TestFirstp)	验证未登录情况下， 点击页面中间 我要申请委托 半隐藏按钮，页面弹出登录框
+Fail	test_qrcode (test_firstp.TestFirstp)	验证页面底部显示 中晟在线 二维码
+Fail	test_searchBoxInfo (test_firstp.TestFirstp)	验证搜索框的提示文本信息为： 藏品名称
+Fail	test_search_002 (test_firstp.TestFirstp)	验证搜索结束后，关键字保存到搜索历史中
+Error	test_login (unittest.loader._FailedTest)
+
+2021-06-18 09:54:34,886 8601456128     INFO test_runner.py(213) - 
+测试结束！
+运行时间: 0:01:15.902359
+共计执行用例数量：30
+执行成功用例数量：22
+执行失败用例数量：5
+跳过执行用例数量：0
+产生异常用例数量：3
+

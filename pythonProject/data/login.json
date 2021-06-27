@@ -1,0 +1,31 @@
+{
+  "item": [
+    {
+      "request": {
+        "url":"http://www.baidu.com/",
+        "body": {}
+      },
+      "response": [
+        {
+          "message": {
+            "username": "用户名不能为空"
+          }
+        }
+      ]
+    },
+    {
+      "request": {
+        "url":"http://www.baidu.com/",
+        "body": {}
+      },
+      "response": [
+        {
+          "message": {
+            "username": "用户名不能为空"
+          }
+        }
+      ]
+    }
+  ]
+
+}

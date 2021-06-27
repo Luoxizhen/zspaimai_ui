@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unittest Results</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="text-capitalize">Unittest Results</h2>
+                <p class='attribute'><strong>Start Time: </strong>2021-06-18 09:22:36</p>
+                <p class='attribute'><strong>Duration: </strong>70.94 s</p>
+                <p class='attribute'><strong>Summary: </strong>Total: 29, Pass: 22, Fail: 5, Error: 2</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-10">
+                <table class='table table-hover table-responsive'>
+                    <thead>
+                        <tr>
+                            <th>test_firstp.TestFirstp</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class='warning'>
+                            <td class="col-xs-10">test_click_aboutUs</td>
+                            <td class="col-xs-1">
+                                <span class="label label-warning" style="display:block;width:40px;">Error</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p style="color:maroon;">ElementClickInterceptedException: Message: element click intercepted: Element <div class="m-l-66 cursor" data-v-9a96d894="">...</div> is not clickable at point (442, 679). Other element would receive the click: <div class="airCommand-content" data-v-9a96d894="">...</div>
+  (Session info: chrome=91.0.4472.114)
+</p><p style="color:maroon;">Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py", line 47, in test_click_aboutUs
+    self.click_aboutUs()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/page/firstp.py", line 120, in click_aboutUs
+    self.driver.find_element(*self.aboutUs).click()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py", line 80, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py", line 633, in _execute
+    return self._parent.execute(command, params)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <div class="m-l-66 cursor" data-v-9a96d894="">...</div> is not clickable at point (442, 679). Other element would receive the click: <div class="airCommand-content" data-v-9a96d894="">...</div>
+  (Session info: chrome=91.0.4472.114)
+
+</p>
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_click_apply</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_click_bid</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='danger'>
+                            <td class="col-xs-10">test_click_biddingInfo</td>
+                            <td class="col-xs-1">
+                                <span class="label label-danger" style="display:block;width:40px;">Fail</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p style="color:maroon;">AssertionError: '竞买须知' != '中晟在线'
+- 竞买须知
++ 中晟在线
+</p><p style="color:maroon;">Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py", line 44, in test_click_biddingInfo
+    self.assertEqual('竞买须知', self.driver.title)
+AssertionError: '竞买须知' != '中晟在线'
+- 竞买须知
++ 中晟在线
+
+</p>
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_click_collectionGuarantee</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_click_contact</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_click_contactUs</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='danger'>
+                            <td class="col-xs-10">test_click_firstPage</td>
+                            <td class="col-xs-1">
+                                <span class="label label-danger" style="display:block;width:40px;">Fail</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p style="color:maroon;">AssertionError: '中晟在线' != '中晟在线-竞买'
+- 中晟在线
++ 中晟在线-竞买
+?     +++
+</p><p style="color:maroon;">Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py", line 24, in test_click_firstPage
+    self.assertEqual("中晟在线", self.driver.title)
+AssertionError: '中晟在线' != '中晟在线-竞买'
+- 中晟在线
++ 中晟在线-竞买
+?     +++
+
+</p>
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_click_guide</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_click_help</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_click_ipL</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_click_login</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_click_moreCollection</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_click_moreCollectionID</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='warning'>
+                            <td class="col-xs-10">test_click_myApplyB</td>
+                            <td class="col-xs-1">
+                                <span class="label label-warning" style="display:block;width:40px;">Error</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p style="color:maroon;">NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//div[@class="login-box"]"}
+  (Session info: chrome=91.0.4472.114)
+</p><p style="color:maroon;">Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py", line 73, in test_click_myApplyB
+    self.assertIsNotNone(self.driver.find_element(*self.loginBox))
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//div[@class="login-box"]"}
+  (Session info: chrome=91.0.4472.114)
+
+</p>
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_click_myBid</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_click_myMsg</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_click_searchBox1</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_click_searchBox2</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_click_searchBox3</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_click_serviceA</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_click_specialP</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='danger'>
+                            <td class="col-xs-10">test_qrcode</td>
+                            <td class="col-xs-1">
+                                <span class="label label-danger" style="display:block;width:40px;">Fail</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p style="color:maroon;">AssertionError: '/assets/img/qrcode1.d4572d6c.jpg' != 'http://home.online.zspaimai.cn/assets/img/qrcode1.d4572d6c.jpg'
+- /assets/img/qrcode1.d4572d6c.jpg
++ http://home.online.zspaimai.cn/assets/img/qrcode1.d4572d6c.jpg
+</p><p style="color:maroon;">Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py", line 129, in test_qrcode
+    self.assertEqual("/assets/img/qrcode1.d4572d6c.jpg", self.get_qrcodeP())
+AssertionError: '/assets/img/qrcode1.d4572d6c.jpg' != 'http://home.online.zspaimai.cn/assets/img/qrcode1.d4572d6c.jpg'
+- /assets/img/qrcode1.d4572d6c.jpg
++ http://home.online.zspaimai.cn/assets/img/qrcode1.d4572d6c.jpg
+
+</p>
+                            </td>
+                        </tr>
+                        <tr class='danger'>
+                            <td class="col-xs-10">test_searchBoxInfo</td>
+                            <td class="col-xs-1">
+                                <span class="label label-danger" style="display:block;width:40px;">Fail</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p style="color:maroon;">AssertionError: '藏品名称' != ''
+- 藏品名称
++ 
+</p><p style="color:maroon;">Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py", line 100, in test_searchBoxInfo
+    self.assertEqual('藏品名称', self.get_infoOfSearchBox())
+AssertionError: '藏品名称' != ''
+- 藏品名称
++ 
+
+</p>
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_search_000</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_search_001</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='danger'>
+                            <td class="col-xs-10">test_search_002</td>
+                            <td class="col-xs-1">
+                                <span class="label label-danger" style="display:block;width:40px;">Fail</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p style="color:maroon;">AssertionError: '一张图片' != '进行中-857'
+- 一张图片
++ 进行中-857
+</p><p style="color:maroon;">Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py", line 124, in test_search_002
+    self.assertEqual('一张图片', self.get_lastReco())
+AssertionError: '一张图片' != '进行中-857'
+- 一张图片
++ 进行中-857
+
+</p>
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_titleOfFirstPage</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_urlOfFirstPage</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                Total: 29, Pass: 22, Fail: 5, Error: 2 -- Duration: 70.94 s
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('td').on('click', '.btn', function(e){
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                var $this = $(this);
+                var $nextRow = $this.closest('tr').next('tr');
+                $nextRow.slideToggle("fast");
+                $this.text(function(i, text){
+                    if (text === 'View') {
+                        return 'Hide';
+                    } else {
+                        return 'View';
+                    };
+                });
+            });
+        });
+    </script>
+</body>
+</html

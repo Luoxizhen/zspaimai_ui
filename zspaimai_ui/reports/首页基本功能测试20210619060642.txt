@@ -1,0 +1,87 @@
+test_click_searchBox001 (test_firstp.TestFirstp001)
+验证点击搜索框，显示搜索历史框 ... ok
+test_click_searchBox002 (test_firstp.TestFirstp001)
+验证点击搜索框，历史框包含搜索历史文本 ... ok
+test_click_searchBox003 (test_firstp.TestFirstp001)
+验证点击搜索框，历史框包含删除按钮 ... ok
+test_qrcode (test_firstp.TestFirstp001)
+验证页面底部显示 中晟在线 二维码 ... ok
+test_searchBoxInfo (test_firstp.TestFirstp001)
+验证搜索框的提示文本信息为： 藏品名称 ... ok
+test_title (test_firstp.TestFirstp001)
+验证首页标题 ... ok
+test_click_bid (test_firstp.TestFirstp002)
+验证点击页面中间导航栏 竞买 ，页面正确跳转 ... ok
+test_click_contact (test_firstp.TestFirstp002)
+验证点击页面顶部 联系我们 ，页面正确跳转 ... ok
+test_click_firstPage (test_firstp.TestFirstp002)
+验证点击页面中间导航栏 首页 ，页面正确跳转 ... skipped '点击首页功能未实现'
+test_click_help (test_firstp.TestFirstp002)
+验证点击页面顶部 帮助中心 ，页面正确跳转 ... ok
+test_click_moreCollection (test_firstp.TestFirstp002)
+验证点击热卖拍品底部 更多拍品 ，页面正确跳转 ... ok
+test_click_moreCollectionID (test_firstp.TestFirstp002)
+验证点击热卖拍品底部 更多拍品后的标识 ，页面正确跳转 ... ok
+test_click_specialP (test_firstp.TestFirstp002)
+验证点击页面中间导航栏 专场 ，页面正确跳转 ... ok
+test_click_apply (test_firstp.TestFirstp003)
+验证未登录情况下，点击页面中间导航栏 委托 ，页面弹出登录框 ... ok
+test_click_login (test_firstp.TestFirstp003)
+验证点击页面顶部 未登录 ，页面弹出登录窗口 ... ok
+test_click_myApplyB (test_firstp.TestFirstp003)
+验证未登录情况下， 点击页面中间 我要申请委托 半隐藏按钮，页面弹出登录框 ... skipped '异常用例'
+test_click_myBid (test_firstp.TestFirstp003)
+验证未登录情况下，点击页面顶部 我的竞买 按钮，弹出登录框 ... ok
+test_click_myMsg (test_firstp.TestFirstp003)
+验证未登录情况下，点击页面顶部 消息 按钮，弹出登录框 ... ok
+test_click_apply (test_firstp.TestFirstp004)
+验证未登录情况下，点击页面中间导航栏 委托 ，页面弹出登录框 ... skipped '用户未登陆'
+test_click_bid (test_firstp.TestFirstp004)
+验证点击页面中间导航栏 竞买 ，页面正确跳转 ... skipped '用户未登陆'
+test_click_contact (test_firstp.TestFirstp004)
+验证点击页面顶部 联系我们 ，页面正确跳转 ... skipped '用户未登陆'
+test_click_firstPage (test_firstp.TestFirstp004)
+验证点击页面中间导航栏 首页 ，页面正确跳转 ... skipped '用户未登陆'
+test_click_help (test_firstp.TestFirstp004)
+验证点击页面顶部 帮助中心 ，页面正确跳转 ... skipped '用户未登陆'
+test_click_login (test_firstp.TestFirstp004)
+验证点击页面顶部 未登录 ，页面弹出登录窗口 ... skipped '用户未登陆'
+test_click_moreCollection (test_firstp.TestFirstp004)
+验证点击热卖拍品底部 更多拍品 ，页面正确跳转 ... skipped '用户未登陆'
+test_click_moreCollectionID (test_firstp.TestFirstp004)
+验证点击热卖拍品底部 更多拍品后的标识 ，页面正确跳转 ... skipped '用户未登陆'
+test_click_myApplyB (test_firstp.TestFirstp004)
+验证未登录情况下， 点击页面中间 我要申请委托 半隐藏按钮，页面弹出登录框 ... skipped '用户未登陆'
+test_click_myBid (test_firstp.TestFirstp004)
+验证未登录情况下，点击页面顶部 我的竞买 按钮，弹出登录框 ... skipped '用户未登陆'
+test_click_myMsg (test_firstp.TestFirstp004)
+验证未登录情况下，点击页面顶部 消息 按钮，弹出登录框 ... skipped '用户未登陆'
+test_click_specialP (test_firstp.TestFirstp004)
+验证点击页面中间导航栏 专场 ，页面正确跳转 ... skipped '用户未登陆'
+test_click_aboutUs (test_firstp.TestFirstp005)
+验证点击页面底部 关于我们 ，页面正确跳转 ... ok
+test_click_biddingInfo (test_firstp.TestFirstp005)
+验证点击页面底部 竞买须知 ，页面正确跳转 ... ok
+test_click_collectionGuarantee (test_firstp.TestFirstp005)
+验证点击页面底部 藏品保障 ，页面正确跳转 ... ok
+test_click_contactUs (test_firstp.TestFirstp005)
+验证点击页面底部 联系我们 ，页面正确跳转 ... ok
+test_click_guide (test_firstp.TestFirstp005)
+验证点击页面底部 新手指南 ，页面正确跳转 ... ok
+test_click_ipL (test_firstp.TestFirstp005)
+验证点击页面底部的 粤ICP备2021041206号 链接，正确打开页面 ... ok
+test_click_serviceA (test_firstp.TestFirstp005)
+验证点击页面底部 服务协议 ，页面正确跳转 ... ok
+test_search_000 (test_firstp.TestFirstp006)
+验证点击历史框中到 删除按钮，删除历史数据 ... skipped '搜索功能代码暂未完成'
+test_search_001 (test_firstp.TestFirstp006)
+验证搜索功能 ... skipped '搜索功能代码暂未完成'
+test_search_002 (test_firstp.TestFirstp006)
+验证搜索结束后，关键字保存到搜索历史中 ... skipped '搜索功能代码暂未完成'
+test_click_ipL (test_firstp.TestFirstp007)
+验证点击页面底部的 粤ICP备2021041206号 链接，正确打开页面 ... ok
+
+----------------------------------------------------------------------
+Ran 41 tests in 199.324s
+
+OK (skipped=17)

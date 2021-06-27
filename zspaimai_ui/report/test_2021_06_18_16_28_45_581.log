@@ -1,0 +1,103 @@
+2021-06-18 16:28:45,503 8659402240     INFO test_runner.py(156) - 预计并发线程数：1
+2021-06-18 16:28:45,505 13055713280     INFO result.py(69) - 开始测试： test_click_aboutUs (test.test_firstp.TestFirstp005)
+2021-06-18 16:29:00,335 13055713280    ERROR result.py(175) - 测试产生错误： test_click_aboutUs (test.test_firstp.TestFirstp005)
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py", line 171, in test_click_aboutUs
+    self.click_aboutUs()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/page/firstp.py", line 122, in click_aboutUs
+    self.driver.find_element(*self.aboutUs).click()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py", line 80, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py", line 633, in _execute
+    return self._parent.execute(command, params)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <div class="m-l-66 cursor" data-v-9a96d894="">...</div> is not clickable at point (442, 679). Other element would receive the click: <div class="airCommand-content" data-v-9a96d894="">...</div>
+  (Session info: chrome=91.0.4472.114)
+
+
+2021-06-18 16:29:00,342 13055713280     INFO result.py(90) - 测试结束： test_click_aboutUs (test.test_firstp.TestFirstp005)
+2021-06-18 16:29:00,349 13055713280     INFO result.py(91) - 耗时： 14.837406158447266
+2021-06-18 16:29:00,355 13055713280     INFO result.py(69) - 开始测试： test_click_biddingInfo (test.test_firstp.TestFirstp005)
+2021-06-18 16:29:18,959 13055713280    ERROR result.py(175) - 测试产生错误： test_click_biddingInfo (test.test_firstp.TestFirstp005)
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py", line 166, in test_click_biddingInfo
+    self.click_biddingInfo()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/page/firstp.py", line 120, in click_biddingInfo
+    self.driver.find_element(*self.biddingInfo).click()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py", line 80, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py", line 633, in _execute
+    return self._parent.execute(command, params)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <div class="m-l-66 cursor" data-v-9a96d894="">...</div> is not clickable at point (312, 679). Other element would receive the click: <img class="pic-1" src="/assets/img/pic-1.bfae8cb6.png" alt="" data-v-9a96d894="">
+  (Session info: chrome=91.0.4472.114)
+
+
+2021-06-18 16:29:18,959 13055713280     INFO result.py(90) - 测试结束： test_click_biddingInfo (test.test_firstp.TestFirstp005)
+2021-06-18 16:29:18,959 13055713280     INFO result.py(91) - 耗时： 18.603408098220825
+2021-06-18 16:29:18,959 13055713280     INFO result.py(69) - 开始测试： test_click_collectionGuarantee (test.test_firstp.TestFirstp005)
+2021-06-18 16:29:28,177 13055713280    ERROR result.py(175) - 测试产生错误： test_click_collectionGuarantee (test.test_firstp.TestFirstp005)
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 699, in urlopen
+    httplib_response = self._make_request(
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 445, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 440, in _make_request
+    httplib_response = conn.getresponse()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 1345, in getresponse
+    response.begin()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 307, in begin
+    version, status, reason = self._read_status()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 276, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/init.py", line 13, in setUp
+    self.driver.get(url)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 333, in get
+    self.execute(Command.GET, {'url': url})
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 319, in execute
+    response = self.command_executor.execute(driver_command, params)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/remote_connection.py", line 374, in execute
+    return self._request(command_info[0], url, body=data)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/remote_connection.py", line 397, in _request
+    resp = self._conn.request(method, url, body=body, headers=headers)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/request.py", line 78, in request
+    return self.request_encode_body(
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/request.py", line 170, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/poolmanager.py", line 375, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 755, in urlopen
+    retries = retries.increment(
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/util/retry.py", line 532, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/packages/six.py", line 769, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 699, in urlopen
+    httplib_response = self._make_request(
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 445, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 440, in _make_request
+    httplib_response = conn.getresponse()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 1345, in getresponse
+    response.begin()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 307, in begin
+    version, status, reason = self._read_status()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 276, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+2021-06-18 16:29:28,177 13055713280     INFO result.py(90) - 测试结束： test_click_collectionGuarantee (test.test_firstp.TestFirstp005)
+2021-06-18 16:29:28,177 13055713280     INFO result.py(91) - 耗时： 9.218004941940308

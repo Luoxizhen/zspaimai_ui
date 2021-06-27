@@ -1,0 +1,17 @@
+2021-06-18 16:50:09,364 8643689984     INFO test_runner.py(156) - 预计并发线程数：1
+2021-06-18 16:50:09,365 13021630464     INFO result.py(69) - 开始测试： test_click_ipL (test.test_firstp.TestFirstp007)
+2021-06-18 16:50:27,564 13021630464     INFO result.py(156) - 测试执行通过： test_click_ipL (test.test_firstp.TestFirstp007)
+2021-06-18 16:50:27,564 13021630464     INFO result.py(90) - 测试结束： test_click_ipL (test.test_firstp.TestFirstp007)
+2021-06-18 16:50:27,564 13021630464     INFO result.py(91) - 耗时： 18.198543071746826
+2021-06-18 16:50:27,564 8643689984     INFO test_runner.py(193) - 
+Pass	test_click_ipL (test.test_firstp.TestFirstp007)	验证点击页面底部的 粤ICP备2021041206号 链接，正确打开页面
+
+2021-06-18 16:50:27,566 8643689984     INFO test_runner.py(213) - 
+测试结束！
+运行时间: 0:00:18.377294
+共计执行用例数量：1
+执行成功用例数量：1
+执行失败用例数量：0
+跳过执行用例数量：0
+产生异常用例数量：0
+

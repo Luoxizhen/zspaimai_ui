@@ -1,0 +1,271 @@
+2021-06-18 16:32:59,913 8640163328     INFO test_runner.py(156) - 预计并发线程数：1
+2021-06-18 16:33:11,903 13014790144     INFO result.py(69) - 开始测试： test_click_aboutUs (test.test_firstp.TestFirstp005)
+2021-06-18 16:33:22,742 13014790144     INFO result.py(156) - 测试执行通过： test_click_aboutUs (test.test_firstp.TestFirstp005)
+2021-06-18 16:33:22,748 13014790144     INFO result.py(90) - 测试结束： test_click_aboutUs (test.test_firstp.TestFirstp005)
+2021-06-18 16:33:22,761 13014790144     INFO result.py(91) - 耗时： 10.844349145889282
+2021-06-18 16:33:22,768 13014790144     INFO result.py(69) - 开始测试： test_click_biddingInfo (test.test_firstp.TestFirstp005)
+2021-06-18 16:33:33,125 13014790144     INFO result.py(156) - 测试执行通过： test_click_biddingInfo (test.test_firstp.TestFirstp005)
+2021-06-18 16:33:33,132 13014790144     INFO result.py(90) - 测试结束： test_click_biddingInfo (test.test_firstp.TestFirstp005)
+2021-06-18 16:33:33,132 13014790144     INFO result.py(91) - 耗时： 10.363607168197632
+2021-06-18 16:33:33,138 13014790144     INFO result.py(69) - 开始测试： test_click_collectionGuarantee (test.test_firstp.TestFirstp005)
+2021-06-18 16:33:43,280 13014790144     INFO result.py(156) - 测试执行通过： test_click_collectionGuarantee (test.test_firstp.TestFirstp005)
+2021-06-18 16:33:43,286 13014790144     INFO result.py(90) - 测试结束： test_click_collectionGuarantee (test.test_firstp.TestFirstp005)
+2021-06-18 16:33:43,292 13014790144     INFO result.py(91) - 耗时： 10.147829055786133
+2021-06-18 16:33:43,293 13014790144     INFO result.py(69) - 开始测试： test_click_contactUs (test.test_firstp.TestFirstp005)
+2021-06-18 16:33:57,826 13014790144     INFO result.py(156) - 测试执行通过： test_click_contactUs (test.test_firstp.TestFirstp005)
+2021-06-18 16:33:57,832 13014790144     INFO result.py(90) - 测试结束： test_click_contactUs (test.test_firstp.TestFirstp005)
+2021-06-18 16:33:57,838 13014790144     INFO result.py(91) - 耗时： 14.539615154266357
+2021-06-18 16:33:57,845 13014790144     INFO result.py(69) - 开始测试： test_click_guide (test.test_firstp.TestFirstp005)
+2021-06-18 16:33:57,918 13014790144  WARNING connectionpool.py(304) - Connection pool is full, discarding connection: 127.0.0.1
+2021-06-18 16:34:07,949 13014790144  WARNING connectionpool.py(780) - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10cdf0d30>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/9c432de22dd432eef2db0e36872fca5a/back
+2021-06-18 16:34:07,968 13014790144  WARNING connectionpool.py(780) - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10cdf0a60>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/9c432de22dd432eef2db0e36872fca5a/back
+2021-06-18 16:34:07,981 13014790144  WARNING connectionpool.py(780) - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10cf57130>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/9c432de22dd432eef2db0e36872fca5a/back
+2021-06-18 16:34:08,182 13014790144    ERROR result.py(175) - 测试产生错误： test_click_guide (test.test_firstp.TestFirstp005)
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py", line 161, in test_click_guide
+    self.click_guildL()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/page/firstp.py", line 118, in click_guildL
+    self.driver.find_element(*self.guideL).click()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py", line 80, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py", line 633, in _execute
+    return self._parent.execute(command, params)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.InvalidSessionIdException: Message: invalid session id
+
+
+2021-06-18 16:34:08,506 13014790144    ERROR result.py(175) - 测试产生错误： test_click_guide (test.test_firstp.TestFirstp005)
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connection.py", line 169, in _new_conn
+    conn = connection.create_connection(
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/util/connection.py", line 96, in create_connection
+    raise err
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/util/connection.py", line 86, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 699, in urlopen
+    httplib_response = self._make_request(
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 394, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connection.py", line 234, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 1253, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 1299, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 1248, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 1008, in _send_output
+    self.send(msg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 948, in send
+    self.connect()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connection.py", line 200, in connect
+    conn = self._new_conn()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connection.py", line 181, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x10cf57280>: Failed to establish a new connection: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/init.py", line 41, in tearDown
+    self.driver.back()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 813, in back
+    self.execute(Command.GO_BACK)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 319, in execute
+    response = self.command_executor.execute(driver_command, params)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/remote_connection.py", line 374, in execute
+    return self._request(command_info[0], url, body=data)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/remote_connection.py", line 397, in _request
+    resp = self._conn.request(method, url, body=body, headers=headers)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/request.py", line 78, in request
+    return self.request_encode_body(
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/request.py", line 170, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/poolmanager.py", line 375, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 783, in urlopen
+    return self.urlopen(
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 783, in urlopen
+    return self.urlopen(
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 783, in urlopen
+    return self.urlopen(
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 755, in urlopen
+    retries = retries.increment(
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/util/retry.py", line 574, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=62682): Max retries exceeded with url: /session/9c432de22dd432eef2db0e36872fca5a/back (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10cf57280>: Failed to establish a new connection: [Errno 61] Connection refused'))
+
+2021-06-18 16:34:08,506 13014790144     INFO result.py(90) - 测试结束： test_click_guide (test.test_firstp.TestFirstp005)
+2021-06-18 16:34:08,506 13014790144     INFO result.py(91) - 耗时： 10.66104006767273
+2021-06-18 16:34:08,506 13014790144     INFO result.py(69) - 开始测试： test_click_serviceA (test.test_firstp.TestFirstp005)
+2021-06-18 16:34:08,507 13014790144  WARNING connectionpool.py(780) - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10cf578e0>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/9c432de22dd432eef2db0e36872fca5a/element
+2021-06-18 16:34:08,507 13014790144  WARNING connectionpool.py(780) - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10cf57850>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/9c432de22dd432eef2db0e36872fca5a/element
+2021-06-18 16:34:08,507 13014790144  WARNING connectionpool.py(780) - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10cf57a90>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/9c432de22dd432eef2db0e36872fca5a/element
+2021-06-18 16:34:18,511 13014790144  WARNING connectionpool.py(780) - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10cf57dc0>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/9c432de22dd432eef2db0e36872fca5a/back
+2021-06-18 16:34:18,512 13014790144  WARNING connectionpool.py(780) - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10cdf0700>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/9c432de22dd432eef2db0e36872fca5a/back
+2021-06-18 16:34:18,512 13014790144  WARNING connectionpool.py(780) - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10cdf0d60>: Failed to establish a new connection: [Errno 61] Connection refused')': /session/9c432de22dd432eef2db0e36872fca5a/back
+2021-06-18 16:34:18,513 13014790144    ERROR result.py(175) - 测试产生错误： test_click_serviceA (test.test_firstp.TestFirstp005)
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connection.py", line 169, in _new_conn
+    conn = connection.create_connection(
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/util/connection.py", line 96, in create_connection
+    raise err
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/util/connection.py", line 86, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 699, in urlopen
+    httplib_response = self._make_request(
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 394, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connection.py", line 234, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 1253, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 1299, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 1248, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 1008, in _send_output
+    self.send(msg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 948, in send
+    self.connect()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connection.py", line 200, in connect
+    conn = self._new_conn()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connection.py", line 181, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x10cf57be0>: Failed to establish a new connection: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py", line 175, in test_click_serviceA
+    self.click_serviceA()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/page/firstp.py", line 124, in click_serviceA
+    self.driver.find_element(*self.serviceA).click()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 319, in execute
+    response = self.command_executor.execute(driver_command, params)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/remote_connection.py", line 374, in execute
+    return self._request(command_info[0], url, body=data)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/remote_connection.py", line 397, in _request
+    resp = self._conn.request(method, url, body=body, headers=headers)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/request.py", line 78, in request
+    return self.request_encode_body(
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/request.py", line 170, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/poolmanager.py", line 375, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 783, in urlopen
+    return self.urlopen(
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 783, in urlopen
+    return self.urlopen(
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 783, in urlopen
+    return self.urlopen(
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 755, in urlopen
+    retries = retries.increment(
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/util/retry.py", line 574, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=62682): Max retries exceeded with url: /session/9c432de22dd432eef2db0e36872fca5a/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10cf57be0>: Failed to establish a new connection: [Errno 61] Connection refused'))
+
+2021-06-18 16:34:18,514 13014790144    ERROR result.py(175) - 测试产生错误： test_click_serviceA (test.test_firstp.TestFirstp005)
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connection.py", line 169, in _new_conn
+    conn = connection.create_connection(
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/util/connection.py", line 96, in create_connection
+    raise err
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/util/connection.py", line 86, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 699, in urlopen
+    httplib_response = self._make_request(
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 394, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connection.py", line 234, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 1253, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 1299, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 1248, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 1008, in _send_output
+    self.send(msg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", line 948, in send
+    self.connect()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connection.py", line 200, in connect
+    conn = self._new_conn()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connection.py", line 181, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x10cdf0b80>: Failed to establish a new connection: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/init.py", line 41, in tearDown
+    self.driver.back()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 813, in back
+    self.execute(Command.GO_BACK)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 319, in execute
+    response = self.command_executor.execute(driver_command, params)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/remote_connection.py", line 374, in execute
+    return self._request(command_info[0], url, body=data)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/remote_connection.py", line 397, in _request
+    resp = self._conn.request(method, url, body=body, headers=headers)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/request.py", line 78, in request
+    return self.request_encode_body(
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/request.py", line 170, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/poolmanager.py", line 375, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 783, in urlopen
+    return self.urlopen(
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 783, in urlopen
+    return self.urlopen(
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 783, in urlopen
+    return self.urlopen(
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/connectionpool.py", line 755, in urlopen
+    retries = retries.increment(
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/urllib3/util/retry.py", line 574, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=62682): Max retries exceeded with url: /session/9c432de22dd432eef2db0e36872fca5a/back (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10cdf0b80>: Failed to establish a new connection: [Errno 61] Connection refused'))
+
+2021-06-18 16:34:18,514 13014790144     INFO result.py(90) - 测试结束： test_click_serviceA (test.test_firstp.TestFirstp005)
+2021-06-18 16:34:18,514 13014790144     INFO result.py(91) - 耗时： 10.007582187652588
+2021-06-18 16:34:18,514 8640163328     INFO test_runner.py(193) - 
+Pass	test_click_aboutUs (test.test_firstp.TestFirstp005)	验证点击页面底部 关于我们 ，页面正确跳转
+Pass	test_click_biddingInfo (test.test_firstp.TestFirstp005)	验证点击页面底部 竞买须知 ，页面正确跳转
+Pass	test_click_collectionGuarantee (test.test_firstp.TestFirstp005)	验证点击页面底部 藏品保障 ，页面正确跳转
+Pass	test_click_contactUs (test.test_firstp.TestFirstp005)	验证点击页面底部 联系我们 ，页面正确跳转
+
+2021-06-18 16:34:18,514 8640163328    ERROR test_runner.py(195) - 
+Error	test_click_guide (test.test_firstp.TestFirstp005)	验证点击页面底部 新手指南 ，页面正确跳转
+Error	test_click_guide (test.test_firstp.TestFirstp005)	验证点击页面底部 新手指南 ，页面正确跳转
+Error	test_click_serviceA (test.test_firstp.TestFirstp005)	验证点击页面底部 服务协议 ，页面正确跳转
+Error	test_click_serviceA (test.test_firstp.TestFirstp005)	验证点击页面底部 服务协议 ，页面正确跳转
+
+2021-06-18 16:34:18,515 8640163328     INFO test_runner.py(213) - 
+测试结束！
+运行时间: 0:01:18.786085
+共计执行用例数量：6
+执行成功用例数量：4
+执行失败用例数量：0
+跳过执行用例数量：0
+产生异常用例数量：2
+

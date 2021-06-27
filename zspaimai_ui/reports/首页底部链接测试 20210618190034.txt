@@ -1,0 +1,19 @@
+test_click_aboutUs (test.test_firstp.TestFirstp005)
+验证点击页面底部 关于我们 ，页面正确跳转 ... ok
+test_click_biddingInfo (test.test_firstp.TestFirstp005)
+验证点击页面底部 竞买须知 ，页面正确跳转 ... ok
+test_click_collectionGuarantee (test.test_firstp.TestFirstp005)
+验证点击页面底部 藏品保障 ，页面正确跳转 ... ok
+test_click_contactUs (test.test_firstp.TestFirstp005)
+验证点击页面底部 联系我们 ，页面正确跳转 ... ok
+test_click_guide (test.test_firstp.TestFirstp005)
+验证点击页面底部 新手指南 ，页面正确跳转 ... ok
+test_click_ipL (test.test_firstp.TestFirstp005)
+验证点击页面底部的 粤ICP备2021041206号 链接，正确打开页面 ... ok
+test_click_serviceA (test.test_firstp.TestFirstp005)
+验证点击页面底部 服务协议 ，页面正确跳转 ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 70.833s
+
+OK

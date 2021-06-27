@@ -1,0 +1,1873 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>测试报告</title>
+    <meta name="generator" content="HTMLReport 刘士 2.2.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css" media="screen">
+    body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+}
+
+pre {
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: auto;
+    white-space: pre-wrap
+}
+
+h1 {
+    font-size: 16pt;
+    color: gray
+}
+
+.heading {
+    margin-top: 0;
+    margin-bottom: 1ex
+}
+
+.heading .attribute {
+    margin-top: 1ex;
+    margin-bottom: 0
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex
+}
+
+a.popup_link:hover {
+    color: red
+}
+
+.popup_window {
+    display: block;
+    position: relative;
+    left: 0;
+    top: 0;
+    padding: 10px;
+    background-color: #E6E6D6;
+    text-align: left;
+    font-size: 13px
+}
+
+.popup_retry_window {
+    padding-left: 50px;
+}
+
+#show_detail_line {
+    margin-top: 3ex;
+    margin-bottom: 1ex
+}
+
+#result_table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #777
+}
+
+#header_row {
+    color: #fff;
+    background-color: #777
+}
+
+#result_table td {
+    border: 1px solid #777;
+    padding: 2px;
+}
+
+#result_table td:nth-child(n+2) {
+    min-width: 70px;
+    width: 100%
+}
+
+#result_table td:nth-child(n+3) {
+    text-align: center;
+}
+
+#result_table td:first-of-type {
+    text-align: center;
+    min-width: 60px;
+}
+
+#total_row {
+    font-weight: bold
+}
+
+.passClass,
+.failClass,
+.errorClass,
+.skipClass {
+    font-weight: bold
+}
+
+.passCase {
+  background-color: #d0e9c6
+}
+
+.failCase {
+  background-color: #ebcccc
+}
+
+.errorCase {
+  background-color: #faf2cc
+}
+
+.skipCase {
+  background-color: #c4e3f3
+}
+
+.hiddenRow {
+    display: none
+}
+
+.testcase {
+    margin-left: 2em
+}
+
+#popup {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: none
+}
+
+#popup .bg {
+    background-color: rgba(0, 0, 0, .5);
+    width: 100%;
+    height: 100%
+}
+
+#popup img {
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+img.pic {
+    cursor: pointer;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#wrapper {
+    margin: 0 auto;
+    border-top: solid 2px #666;
+}
+
+#wrapper .lang-en {
+    display: none;
+}
+
+#wrapper.lang-cn p.lang-cn {
+    display: block;
+}
+
+#wrapper.lang-cn span.lang-cn {
+    display: inline;
+}
+
+#wrapper.lang-cn .lang-en {
+    display: none;
+}
+
+#wrapper.lang-en .lang-cn {
+    display: none;
+}
+
+#wrapper.lang-en p.lang-en {
+    display: block;
+}
+
+#wrapper.lang-en span.lang-en {
+    display: inline;
+}
+
+#lang ul {
+    float: right;
+    margin: 0;
+    padding: 2px 10px 4px 10px;
+    background: #666;
+    border-radius: 0 0 4px 4px;
+    list-style: none;
+}
+
+#lang li {
+    margin: 0;
+    float: left;
+    padding: 0 5px;
+}
+
+#lang li a {
+    display: block;
+    width: 24px;
+    height: 24px;
+    text-indent: -4em;
+    overflow: hidden;
+    background: transparent url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAHiSURBVHja1Ja/jtNAEMZ/Y2/icBdxXAMSEu/A1dBR0NJQ8CS8AQ0tb4CQgEegPgQFOh7ixJUX4vgSx96ZoUgOO3+KRDgFX7Or0Wg+f7PzeVfcnUMi4cA4OIEAARgAvY5r10AZgOGvl69Gkm4Xk9w3fJTg9f4MDz9+OA3AsSTC4OmThaQE3Bp9w+eRmy+hie2I8us3gOMABFNFkjlW5PTPIvOLAO7YVMjfC/Sd4YuK4nOGuyMiABv7v6pP7mKmACEAeK1YPuPoWU52FgkPUiaf+ngFDjCD+Q/Fproo1vrSbUPuvR4eF7kBwDRi4ynlzxkyUMrvKTZabbrPFb9Jd2qPh7BK4DGiRYFeTJmdC8nAsVKaUes72eOK6Xm2G0GaYhpXCTzPsXEBgOZN8unrktHbAddvAKrdCESwqmoItI74eILlkw0bjt4Zltdg+5hL8NhSYLGmurrCxuPN7Mv951+LAh1kLQWxBlUw68bDGtEqaStQiB0SRMWlbh1yXWPu+MIc/wzTiC0dslBQR0TArfWPwJdr21KyttLKaeJijvmaD0gTMF/z57pPt8W37E1xaylwU0iE5OhON2fgjreMVmuMXC/ntus7QYAT4BFwr+Piv4HL2xstu21Xh4jAXP77V8WfAQAixA0rudAk0AAAAABJRU5ErkJggg==") no-repeat 50% 50%;
+}
+
+#lang li a#lang-en {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAIWSURBVHja1JY/SBthGIefu1xqS6K20KFDy0kopUiHmphIByUZotRAIZOTWZzFpYtbB0uh6KJTIdQhi9pBSwmmCOpgoUSKFItTh4AU6tCr16Rn5P58XZocDrlYuAz9wfHAcbzv9/2+932/k4QQdFIyHVbHE0iAAlwFgj7HNoG6AoRzudc/A4F/28yL2l7bb269yd9QgJAsS8zMjFIufyWRuHspXqtbnsHrH8oAIQlQJyfzlaGhCNFohJ2dI1Kp/iZ3d49IJvsvvJckmJ197JlACIEsy30KgGUJBgcjFIufSacfsLnpza2tL/x4+qx15fR0Uz84hL8HjG1blEqHJJP9bGx8IpMZ8CSAMIzWq1cUhO24CSzLYWTkPisrH8lm46yuenN9fZ+br156WmRZFgQLjR3YrK2VyWSiFAp7TEw88iTAyZNca4t6e6h/P3EbzTRtxscfks9vk83G27JaPcOuVls/v6o4pltlajo9L1KpebG8vC9isbm2jMXmRDsZhiEAVWn4NTU1ysJCkenpMRYXS55cWnrPcSThUUVhzrquNEeFOjz8vOI4CrXa+aU7+d3p29YJusMYwQD3Drb7AFRd14Xf0nXdtehbfAxdkhG13/5M0HCImiTcPhC2BVIAHMefOWrbCNxYqqZpvlukaVrTIrNye4CK1JH7xpSAXuAOcN3n4KfAceNG62qch4+ygHPpv/+r+DMAXV79BpyNnBoAAAAASUVORK5CYII=");
+}
+
+.figure_ul {
+    text-align: center;
+    padding: 0;
+}
+
+.figure_li {
+    width: 30em;
+    list-style: none;
+    display: inline-block;
+    vertical-align: baseline;
+}
+
+tr {
+    height: 2em;
+}
+</style>
+    <script language="javascript" type="text/javascript">
+var chartData_cn = [[22, '#1c965b', '通过'], [5, '#ff5722', '失败'], [3, '#ff9800', '错误']];
+var chartData_en = [[22, '#1c965b', 'Passed'], [5, '#ff5722', 'Failed'], [3, '#ff9800', 'Error']];
+
+function addClass(e, c) {
+  if (!isClass(e, c)) {
+    if (e.className) {
+      e.className = e.className + " " + c;
+    } else {
+      e.className = c;
+    }
+  }
+}
+
+function delClass(e, c) {
+  if (isClass(e, c)) {
+    // r = '/(?:^|\s)' + c + '(?!\S)/g';
+    let r = new RegExp('(?:^|\s)' + c + '(?!\S)', 'g');
+    e.className = e.className.replace(r, '');
+  }
+}
+
+function isClass(e, c) {
+  let r = new RegExp('(?:^|\s)' + c + '(?!\S)');
+  return e.className.match(r);
+}
+
+function showCase(level) {
+  let trs = document.getElementsByTagName("tr");
+  for (let i = 0; i < trs.length; i++) {
+    let tr = trs[i];
+    let id = tr.id;
+    if (id.substr(0, 2) === "st") {
+      if (level === 4 || level === 3) {
+        delClass(tr, 'hiddenRow');
+      } else {
+        addClass(tr, 'hiddenRow');
+      }
+    }
+    if (id.substr(0, 2) === "ft") {
+      if (level === 4 || level === 2) {
+        delClass(tr, 'hiddenRow');
+      } else {
+        addClass(tr, 'hiddenRow');
+      }
+    }
+    if (id.substr(0, 2) === "pt") {
+      if (level === 4 || level === 1) {
+        delClass(tr, 'hiddenRow');
+      } else {
+        addClass(tr, 'hiddenRow');
+      }
+    }
+    if (id.substr(0, 2) === "et") {
+      if (level === 4 || level === 5 || level === 2) {
+        delClass(tr, 'hiddenRow');
+      } else {
+        addClass(tr, 'hiddenRow');
+      }
+    }
+    if (id.substr(0, 4) === "div_") {
+      addClass(tr, 'hiddenRow');
+    }
+  }
+}
+
+function showClassDetail(cid, count) {
+  let id_list = Array(count);
+  let toHide = 1;
+  for (let i = 0; i < count; i++) {
+    let tid0 = "t" + cid.substr(1) + "." + (i + 1);
+    let tid = "f" + tid0;
+    let tr = document.getElementById(tid);
+    if (!tr) {
+      tid = "p" + tid0;
+      tr = document.getElementById(tid);
+      if (!tr) {
+        tid = "e" + tid0;
+        tr = document.getElementById(tid);
+        if (tr === null) {
+          tid = "s" + tid0;
+          tr = document.getElementById(tid);
+        }
+      }
+    }
+    id_list[i] = tid;
+    if (tr.className) {
+      toHide = 0;
+    }
+  }
+  for (let i = 0; i < count; i++) {
+    let tid = id_list[i];
+    if (toHide && tid.indexOf("p") !== -1) {
+      addClass(document.getElementById(tid), 'hiddenRow');
+    } else {
+      delClass(document.getElementById(tid), 'hiddenRow');
+    }
+  }
+  let trs = document.getElementsByTagName("tr");
+  for (let i = 0; i < trs.length; i++) {
+    let tr = trs[i];
+    let id = tr.id;
+    if (id.substr(0, 4) === "div_") {
+      addClass(tr, 'hiddenRow');
+    }
+  }
+}
+
+function showTestDetail(div_id, count, b) {
+  let details_div_s = document.getElementsByName(div_id);
+  for (let j = 0; j < details_div_s.length; j++) {
+    let details_div = details_div_s[j];
+    if (isClass(details_div, 'hiddenRow')) {
+      delClass(details_div, 'hiddenRow');
+    } else {
+      addClass(details_div, "hiddenRow");
+    }
+  }
+  for (let i = 1; i <= count; i++) {
+    let details_div_s = document.getElementsByName(div_id + '.' + i);
+    for (let j = 0; j < details_div_s.length; j++) {
+      let details_div = details_div_s[j];
+      if (details_div !== undefined) {
+        if (b && isClass(details_div, 'hiddenRow')) {
+          delClass(details_div, 'hiddenRow');
+        } else {
+          addClass(details_div, "hiddenRow");
+        }
+      }
+    }
+  }
+}
+
+function html_escape(s) {
+  s = s.replace(/&/g, "&amp;");
+  s = s.replace(/</g, "&lt;");
+  s = s.replace(/>/g, "&gt;");
+  return s;
+}
+
+function goChart(dataArr) {
+
+  // 声明所需变量
+  var canvas, ctx;
+  // 图表属性
+  var cWidth, cHeight, cMargin, cSpace;
+  // 饼状图属性
+  var radius, ox, oy;//半径 圆心
+  var tWidth, tHeight;//图例宽高
+  var posX, posY, textX, textY;
+  var startAngle, endAngle;
+  var totleNb;
+  // 运动相关变量
+  var ctr, numctr, speed;
+  //鼠标移动
+  var mousePosition = {};
+
+  //线条和文字
+  var lineStartAngle, line, textPadding, textMoveDis;
+
+  // 获得canvas上下文
+  canvas = document.getElementById("chart");
+  if (canvas && canvas.getContext) {
+    ctx = canvas.getContext("2d");
+  }
+  initChart();
+
+  // 图表初始化
+  function initChart() {
+    // 图表信息
+    cMargin = 20;
+    cSpace = 40;
+
+    canvas.width = canvas.parentNode.getAttribute("width") * 2;
+    canvas.height = canvas.parentNode.getAttribute("height") * 2;
+    canvas.style.height = canvas.height / 2 + "px";
+    canvas.style.width = canvas.width / 2 + "px";
+    cHeight = canvas.height - cMargin * 2;
+    cWidth = canvas.width - cMargin * 2;
+
+    //饼状图信息
+    radius = cHeight * 2 / 6;  //半径  高度的2/6
+    ox = canvas.width / 2 + cSpace;  //圆心
+    oy = canvas.height / 2;
+    tWidth = 60; //图例宽和高
+    tHeight = 20;
+    posX = cMargin;
+    posY = cMargin;   //
+    textX = posX + tWidth + 15
+    textY = posY + 18;
+    startAngle = endAngle = 90 * Math.PI / 180; //起始弧度 结束弧度
+    rotateAngle = 0; //整体旋转的弧度
+
+    //将传入的数据转化百分比
+    totleNb = 0;
+    new_data_arr = [];
+    for (var i = 0; i < dataArr.length; i++) {
+      totleNb += dataArr[i][0];
+    }
+    for (var i = 0; i < dataArr.length; i++) {
+      new_data_arr.push(dataArr[i][0] / totleNb);
+    }
+    totalYNomber = 10;
+    // 运动相关
+    ctr = 1;//初始步骤
+    numctr = 50;//步骤
+    speed = 1.2; //毫秒 timer速度
+
+    //指示线 和 文字
+    lineStartAngle = -startAngle;
+    line = 40;         //画线的时候超出半径的一段线长
+    textPadding = 10;  //文字与线之间的间距
+    textMoveDis = 200; //文字运动开始的间距
+  }
+
+  drawMarkers();
+  //绘制比例图及文字
+  function drawMarkers() {
+    ctx.textAlign = "left";
+    for (var i = 0; i < dataArr.length; i++) {
+      //绘制比例图及文字
+      ctx.fillStyle = dataArr[i][1];
+      ctx.fillRect(posX, posY + 40 * i, tWidth, tHeight);
+      ctx.moveTo(parseInt(posX)+0.5, parseInt(posY + 40 * i)+0.5);
+      ctx.font = 'normal 24px 微软雅黑';    //斜体 30像素 微软雅黑字体
+      ctx.fillStyle = dataArr[i][1]; //"#000000";
+      var percent = dataArr[i][2] + "：" + parseInt(100 * new_data_arr[i]) + "%";
+      ctx.fillText(percent, parseInt(textX)+0.5, parseInt(textY + 40 * i)+0.5);
+    }
+  };
+
+  //绘制动画
+  pieDraw();
+  function pieDraw(mouseMove) {
+
+    for (var n = 0; n < dataArr.length; n++) {
+      ctx.fillStyle = ctx.strokeStyle = dataArr[n][1];
+      ctx.lineWidth = 1;
+      var step = new_data_arr[n] * Math.PI * 2; //旋转弧度
+      var lineAngle = lineStartAngle + step / 2;   //计算线的角度
+      lineStartAngle += step;//结束弧度
+
+      ctx.beginPath();
+      var x0 = ox + radius * Math.cos(lineAngle),//圆弧上线与圆相交点的x坐标
+        y0 = oy + radius * Math.sin(lineAngle),//圆弧上线与圆相交点的y坐标
+        x1 = ox + (radius + line) * Math.cos(lineAngle),//圆弧上线与圆相交点的x坐标
+        y1 = oy + (radius + line) * Math.sin(lineAngle),//圆弧上线与圆相交点的y坐标
+        x2 = x1,//转折点的x坐标
+        y2 = y1,
+        linePadding = ctx.measureText(dataArr[n][2]).width + 10; //获取文本长度来确定折线的长度
+
+      ctx.moveTo(parseInt(x0)+0.5, parseInt(y0)+0.5);
+      //对x1/y1进行处理，来实现折线的运动
+      yMove = y0 + (y1 - y0) * ctr / numctr;
+      ctx.lineTo(parseInt(x1)+0.5, parseInt(yMove)+0.5);
+      if (x1 <= x0) {
+        x2 -= line;
+        ctx.textAlign = "right";
+        ctx.lineTo(parseInt(x2 - linePadding)+0.5, parseInt(yMove)+0.5);
+        ctx.fillText(dataArr[n][2], x2 - textPadding - textMoveDis * (numctr - ctr) / numctr, y2 - textPadding);
+      } else {
+        x2 += line;
+        ctx.textAlign = "left";
+        ctx.lineTo(parseInt(x2 + linePadding)+0.5, parseInt(yMove)+0.5);
+        ctx.fillText(dataArr[n][2], x2 + textPadding + textMoveDis * (numctr - ctr) / numctr, y2 - textPadding);
+      }
+
+      ctx.stroke();
+
+    }
+
+    //设置旋转
+    ctx.save();
+    ctx.translate(ox, oy);
+    ctx.rotate((Math.PI * 2 / numctr) * ctr / 2);
+
+    //绘制一个圆圈
+    ctx.strokeStyle = "rgba(0,0,0," + 0.5 * ctr / numctr + ")"
+    ctx.beginPath();
+    ctx.arc(0, 0, (radius + 20) * ctr / numctr, 0, Math.PI * 2, false);
+    ctx.stroke();
+
+    for (var j = 0; j < dataArr.length; j++) {
+
+      //绘制饼图
+      endAngle = endAngle + new_data_arr[j] * ctr / numctr * Math.PI * 2; //结束弧度
+
+      ctx.beginPath();
+      ctx.moveTo(0, 0); //移动到到圆心
+      ctx.arc(0, 0, radius * ctr / numctr, startAngle, endAngle, false); //绘制圆弧
+
+      ctx.fillStyle = dataArr[j][1];
+      if (mouseMove && ctx.isPointInPath(mousePosition.x * 2, mousePosition.y * 2)) {
+        ctx.globalAlpha = 0.8;
+      }
+
+      ctx.closePath();
+      ctx.fill();
+      ctx.globalAlpha = 1;
+
+      startAngle = endAngle; //设置起始弧度
+      if (j == dataArr.length - 1) {
+        startAngle = endAngle = 90 * Math.PI / 180; //起始弧度 结束弧度
+      }
+    }
+
+    ctx.restore();
+
+    if (ctr < numctr) {
+      ctr++;
+      setTimeout(function () {
+        //ctx.clearRect(-canvas.width,-canvas.width,canvas.width*2, canvas.height*2);
+        ctx.clearRect(-canvas.width, -canvas.height, canvas.width * 2, canvas.height * 2);
+        drawMarkers();
+        pieDraw();
+      }, speed *= 1.085);
+    }
+  }
+
+  //监听鼠标移动
+  var mouseTimer = null;
+  canvas.addEventListener("mousemove", function (e) {
+    e = e || window.event;
+    if (e.offsetX || e.offsetX == 0) {
+      mousePosition.x = e.offsetX;
+      mousePosition.y = e.offsetY;
+    } else if (e.layerX || e.layerX == 0) {
+      mousePosition.x = e.layerX;
+      mousePosition.y = e.layerY;
+    }
+
+    clearTimeout(mouseTimer);
+    mouseTimer = setTimeout(function () {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawMarkers();
+      pieDraw(true);
+    }, 10);
+  });
+
+}
+
+function load() {
+  let el_wrapper = document.getElementById('wrapper');
+  document.getElementById('lang-cn').onclick = function () {
+    el_wrapper.className = 'lang-cn';
+    goChart(chartData_cn);
+  };
+  document.getElementById('lang-en').onclick = function () {
+    el_wrapper.className = 'lang-en';
+    goChart(chartData_en);
+  };
+
+  let nav_lang = (location.hash || '').replace(/#/, '');
+  if (nav_lang === 'cn' || nav_lang === 'en') {
+    el_wrapper.className = 'lang-' + nav_lang;
+  }
+
+  let images = document.getElementsByClassName("pic");
+  let lens = images.length;
+  let popup = document.getElementById("popup");
+
+  function show(event) {
+    event = event || window.event;
+    let target = document.elementFromPoint(event.clientX, event.clientY);
+    showBig(target.src, target.title, target.alt);
+  }
+
+  for (let i = 0; i < lens; i++) {
+    images[i].onclick = show;
+  }
+  popup.onclick = function () {
+    popup.getElementsByTagName("img")[0].src = "";
+    popup.getElementsByTagName("img")[0].title = "";
+    popup.getElementsByTagName("img")[0].alt = "";
+    popup.style.display = "none";
+    popup.style.zIndex = "-1";
+  };
+
+  function showBig(src, title, alt) {
+    popup.getElementsByTagName("img")[0].src = src;
+    popup.getElementsByTagName("img")[0].title = title;
+    popup.getElementsByTagName("img")[0].alt = alt;
+    popup.style.display = "block";
+    popup.style.zIndex = "999999";
+  }
+
+  draw()
+}
+function draw() {
+goChart(chartData_cn);
+}</script>
+</head>
+
+<body onload="load()">
+<div id="wrapper" class="lang-cn">
+    <div id="lang">
+        <ul>
+            <li>
+                <a href="#cn" id="lang-cn" title="简体中文">cn</a>
+            </li>
+            <li>
+                <a href="#en" id="lang-en" title="English">en</a>
+            </li>
+        </ul>
+    </div>
+    <div class='heading'>
+<h1>测试报告</h1>
+<table>
+<tr><td style="width: 100%; vertical-align: top;">
+  <p class='attribute'>
+    <strong>
+      <span class="lang-cn">启动时间：</span>
+      <span class="lang-en">Start Time:</span>
+    </strong> 2021-06-18 09:53:18
+  </p>
+  <p class='attribute'>
+    <strong>
+      <span class="lang-cn">结束时间：</span>
+      <span class="lang-en">End Time:</span>
+    </strong> 2021-06-18 09:54:34
+  </p>
+  <p class='attribute'>
+    <strong>
+      <span class="lang-cn">运行时长：</span>
+      <span class="lang-en">Duration:</span>
+    </strong> 0:01:15.902359
+  </p>
+  <p class='attribute'>
+    <strong>
+      <span class="lang-cn">结果：</span>
+      <span class="lang-en">Status:</span>
+    </strong>
+    <span class="lang-cn">合计：</span>
+    <span class="lang-en">Total:</span>30&nbsp;&nbsp;&nbsp;&nbsp;
+    <span class="lang-cn">通过：</span>
+    <span class="lang-en">Passed:</span>22&nbsp;&nbsp;&nbsp;&nbsp;
+    <span class="lang-cn">失败：</span>
+    <span class="lang-en">Failed:</span>5&nbsp;&nbsp;&nbsp;&nbsp;
+    <span class="lang-cn">错误：</span>
+    <span class="lang-en">Error:</span>3&nbsp;&nbsp;&nbsp;&nbsp;
+    <span class="lang-cn">跳过：</span>
+    <span class="lang-en">Skipped:</span>0&nbsp;&nbsp;&nbsp;&nbsp;
+  </p>
+  <p class='description'>测试描述</p>
+  </td>
+  <td>
+    <div height="400" width="600">
+      <canvas id="chart" style="border: 1px solid #A4E2F9;"> 你的浏览器不支持HTML5 canvas </canvas>
+    </div>
+  </td>
+</tr>
+</table>
+</div> <a href='test_2021_06_18_09_53_18_400.log'>
+    <span class="lang-cn">下载日志文件</span>
+    <span class="lang-en">Download log file</span>
+</a>
+ <p id='show_detail_line'>筛选
+    <a href='javascript:showCase(0)'>
+        <span class="lang-cn">摘要</span>
+        <span class="lang-en">Summary</span>
+    </a>
+    <a href='javascript:showCase(1)'>
+        <span class="lang-cn">通过</span>
+        <span class="lang-en">Pass</span>
+    </a>
+    <a href='javascript:showCase(2)'>
+        <span class="lang-cn">失败</span>
+        <span class="lang-en">Fail</span>
+    </a>
+    <a href='javascript:showCase(5)'>
+        <span class="lang-cn">异常</span>
+        <span class="lang-en">Error</span>
+    </a>
+    <a href='javascript:showCase(3)'>
+        <span class="lang-cn">跳过</span>
+        <span class="lang-en">Skip</span>
+    </a>
+    <a href='javascript:showCase(4)'>
+        <span class="lang-cn">全部</span>
+        <span class="lang-en">All</span>
+    </a>
+</p>
+<table id='result_table'>
+    <tr id='header_row'>
+        <th>
+            <span class="lang-cn">序号</span>
+            <span class="lang-en">NO</span>
+        </th>
+        <th>
+            <span class="lang-cn">测试组/测试用例</span>
+            <span class="lang-en">Test Group/Test case</span>
+        </th>
+        <th>
+            <span class="lang-cn">计数</span>
+            <span class="lang-en">Count</span>
+        </th>
+        <th>
+            <span class="lang-cn">通过</span>
+            <span class="lang-en">Passed</span>
+        </th>
+        <th>
+            <span class="lang-cn">失败</span>
+            <span class="lang-en">Failed</span>
+        </th>
+        <th>
+            <span class="lang-cn">错误</span>
+            <span class="lang-en">Erroneous</span>
+        </th>
+        <th>
+            <span class="lang-cn">跳过</span>
+            <span class="lang-en">Skipped</span>
+        </th>
+        <th>
+            <span class="lang-cn">统计</span>
+            <span class="lang-en">Statistics</span>
+        </th>
+        <th>
+            <span class="lang-cn">重试</span>
+            <span class="lang-en">Tries</span>
+        </th>
+        <th>
+            <span class="lang-cn">查看</span>
+            <span class="lang-en">View</span>
+        </th>
+    </tr>
+    <tr class='errorClass'>
+    <td>c1</td>
+    <td>test_firstp.TestFirstp</td>
+    <td>29</td>
+    <td class="passCase">22</td>
+    <td class="failCase">5</td>
+    <td class="errorCase">2</td>
+    <td class="skipCase">0</td>
+    <td style="text-align:right;">75.86%</td>
+    <td>0</td>
+    <td>
+        <a href="javascript:showClassDetail('c1',29)">
+            <span class="lang-cn">细节</span>
+            <span class="lang-en">Detail</span>
+        </a>
+    </td>
+</tr>
+<tr id='et1.1'>
+<td>et1.1</td>
+    <td class='errorCase' colspan='7'>
+        <div class='testcase'>test_click_aboutUs: 验证点击页面底部 关于我们 ，页面正确跳转</div>
+    </td>
+    <td class='errorCase'>
+        <div class='testcase' style="margin-left: auto;">0</div>
+    </td>
+    <td class='errorCase' align='center'>
+        <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_et1.1.1',1, false)">
+            <span class="lang-cn">错误</span>
+            <span class="lang-en">error</span>
+        </a>
+    </td>
+</tr>
+<tr id='div_S_et1.1.1' name='div_et1.1.1' class="hiddenRow">
+    <td colspan='10'>
+        <div class="popup_window">
+            <div style='text-align: right; color:red;cursor:pointer'
+                 onclick="document.getElementById('div_S_et1.1.1').className = 'hiddenRow'">
+                <a onfocus='this.blur();'>[x]</a>
+            </div>
+            <pre>et1.1.1:
+2021-06-18 09:53:22,367 12939489280     INFO result.py(69) - 开始测试： test_click_aboutUs (test_firstp.TestFirstp)
+2021-06-18 09:53:34,947 12939489280    ERROR result.py(175) - 测试产生错误： test_click_aboutUs (test_firstp.TestFirstp)
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py", line 47, in test_click_aboutUs
+    self.click_aboutUs()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/page/firstp.py", line 120, in click_aboutUs
+    self.driver.find_element(*self.aboutUs).click()
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py", line 80, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py", line 633, in _execute
+    return self._parent.execute(command, params)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element &lt;div class="m-l-66 cursor" data-v-9a96d894=""&gt;...&lt;/div&gt; is not clickable at point (442, 679). Other element would receive the click: &lt;div class="airCommand-content" data-v-9a96d894=""&gt;...&lt;/div&gt;
+  (Session info: chrome=91.0.4472.114)
+
+
+2021-06-18 09:53:34,954 12939489280     INFO result.py(90) - 测试结束： test_click_aboutUs (test_firstp.TestFirstp)
+2021-06-18 09:53:34,960 12939489280     INFO result.py(91) - 耗时： 12.578346967697144
+
+</pre>
+            <div><ul class='figure_ul'><ul></div>
+        </div>
+    </td>
+</tr><tr id='pt1.2'>
+<td>pt1.2</td>
+    <td class='passCase' colspan='7'>
+        <div class='testcase'>test_click_apply: 验证未登录情况下，点击页面中间导航栏 委托 ，页面弹出登录框</div>
+    </td>
+    <td class='passCase'>
+        <div class='testcase' style="margin-left: auto;">0</div>
+    </td>
+    <td class='passCase' align='center'>
+        <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.2.1',1, false)">
+            <span class="lang-cn">通过</span>
+            <span class="lang-en">pass</span>
+        </a>
+    </td>
+</tr>
+<tr id='div_S_pt1.2.1' name='div_pt1.2.1' class="hiddenRow">
+    <td colspan='10'>
+        <div class="popup_window">
+            <div style='text-align: right; color:red;cursor:pointer'
+                 onclick="document.getElementById('div_S_pt1.2.1').className = 'hiddenRow'">
+                <a onfocus='this.blur();'>[x]</a>
+            </div>
+            <pre>pt1.2.1:
+2021-06-18 09:53:34,966 12939489280     INFO result.py(69) - 开始测试： test_click_apply (test_firstp.TestFirstp)
+2021-06-18 09:53:35,652 12939489280     INFO result.py(156) - 测试执行通过： test_click_apply (test_firstp.TestFirstp)
+2021-06-18 09:53:35,658 12939489280     INFO result.py(90) - 测试结束： test_click_apply (test_firstp.TestFirstp)
+2021-06-18 09:53:35,658 12939489280     INFO result.py(91) - 耗时： 0.691849946975708
+
+</pre>
+            <div><ul class='figure_ul'><ul></div>
+        </div>
+    </td>
+</tr><tr id='pt1.3'>
+<td>pt1.3</td>
+    <td class='passCase' colspan='7'>
+        <div class='testcase'>test_click_bid: 验证点击页面中间导航栏 竞买 ，页面正确跳转</div>
+    </td>
+    <td class='passCase'>
+        <div class='testcase' style="margin-left: auto;">0</div>
+    </td>
+    <td class='passCase' align='center'>
+        <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.3.1',1, false)">
+            <span class="lang-cn">通过</span>
+            <span class="lang-en">pass</span>
+        </a>
+    </td>
+</tr>
+<tr id='div_S_pt1.3.1' name='div_pt1.3.1' class="hiddenRow">
+    <td colspan='10'>
+        <div class="popup_window">
+            <div style='text-align: right; color:red;cursor:pointer'
+                 onclick="document.getElementById('div_S_pt1.3.1').className = 'hiddenRow'">
+                <a onfocus='this.blur();'>[x]</a>
+            </div>
+            <pre>pt1.3.1:
+2021-06-18 09:53:35,658 12939489280     INFO result.py(69) - 开始测试： test_click_bid (test_firstp.TestFirstp)
+2021-06-18 09:53:37,266 12939489280     INFO result.py(156) - 测试执行通过： test_click_bid (test_firstp.TestFirstp)
+2021-06-18 09:53:37,272 12939489280     INFO result.py(90) - 测试结束： test_click_bid (test_firstp.TestFirstp)
+2021-06-18 09:53:37,279 12939489280     INFO result.py(91) - 耗时： 1.613759994506836
+
+</pre>
+            <div><ul class='figure_ul'><ul></div>
+        </div>
+    </td>
+</tr><tr id='ft1.4'>
+<td>ft1.4</td>
+    <td class='failCase' colspan='7'>
+        <div class='testcase'>test_click_biddingInfo: 验证点击页面底部 竞买须知 ，页面正确跳转</div>
+    </td>
+    <td class='failCase'>
+        <div class='testcase' style="margin-left: auto;">0</div>
+    </td>
+    <td class='failCase' align='center'>
+        <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.4.1',1, false)">
+            <span class="lang-cn">失败</span>
+            <span class="lang-en">fail</span>
+        </a>
+    </td>
+</tr>
+<tr id='div_S_ft1.4.1' name='div_ft1.4.1' class="hiddenRow">
+    <td colspan='10'>
+        <div class="popup_window">
+            <div style='text-align: right; color:red;cursor:pointer'
+                 onclick="document.getElementById('div_S_ft1.4.1').className = 'hiddenRow'">
+                <a onfocus='this.blur();'>[x]</a>
+            </div>
+            <pre>ft1.4.1:
+2021-06-18 09:53:37,285 12939489280     INFO result.py(69) - 开始测试： test_click_biddingInfo (test_firstp.TestFirstp)
+2021-06-18 09:53:37,600 12939489280  WARNING result.py(190) - 测试未通过： test_click_biddingInfo (test_firstp.TestFirstp)
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py", line 44, in test_click_biddingInfo
+    self.assertEqual('竞买须知', self.driver.title)
+AssertionError: '竞买须知' != '中晟在线'
+- 竞买须知
++ 中晟在线
+
+
+2021-06-18 09:53:37,606 12939489280     INFO result.py(90) - 测试结束： test_click_biddingInfo (test_firstp.TestFirstp)
+2021-06-18 09:53:37,606 12939489280     INFO result.py(91) - 耗时： 0.31454014778137207
+
+</pre>
+            <div><ul class='figure_ul'><ul></div>
+        </div>
+    </td>
+</tr><tr id='pt1.5'>
+<td>pt1.5</td>
+    <td class='passCase' colspan='7'>
+        <div class='testcase'>test_click_collectionGuarantee: 验证点击页面底部 藏品保障 ，页面正确跳转</div>
+    </td>
+    <td class='passCase'>
+        <div class='testcase' style="margin-left: auto;">0</div>
+    </td>
+    <td class='passCase' align='center'>
+        <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.5.1',1, false)">
+            <span class="lang-cn">通过</span>
+            <span class="lang-en">pass</span>
+        </a>
+    </td>
+</tr>
+<tr id='div_S_pt1.5.1' name='div_pt1.5.1' class="hiddenRow">
+    <td colspan='10'>
+        <div class="popup_window">
+            <div style='text-align: right; color:red;cursor:pointer'
+                 onclick="document.getElementById('div_S_pt1.5.1').className = 'hiddenRow'">
+                <a onfocus='this.blur();'>[x]</a>
+            </div>
+            <pre>pt1.5.1:
+2021-06-18 09:53:37,606 12939489280     INFO result.py(69) - 开始测试： test_click_collectionGuarantee (test_firstp.TestFirstp)
+2021-06-18 09:53:37,805 12939489280     INFO result.py(156) - 测试执行通过： test_click_collectionGuarantee (test_firstp.TestFirstp)
+2021-06-18 09:53:37,812 12939489280     INFO result.py(90) - 测试结束： test_click_collectionGuarantee (test_firstp.TestFirstp)
+2021-06-18 09:53:37,818 12939489280     INFO result.py(91) - 耗时： 0.20561909675598145
+
+</pre>
+            <div><ul class='figure_ul'><ul></div>
+        </div>
+    </td>
+</tr><tr id='pt1.6'>
+<td>pt1.6</td>
+    <td class='passCase' colspan='7'>
+        <div class='testcase'>test_click_contact: 验证点击页面顶部 联系我们 ，页面正确跳转</div>
+    </td>
+    <td class='passCase'>
+        <div class='testcase' style="margin-left: auto;">0</div>
+    </td>
+    <td class='passCase' align='center'>
+        <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.6.1',1, false)">
+            <span class="lang-cn">通过</span>
+            <span class="lang-en">pass</span>
+        </a>
+    </td>
+</tr>
+<tr id='div_S_pt1.6.1' name='div_pt1.6.1' class="hiddenRow">
+    <td colspan='10'>
+        <div class="popup_window">
+            <div style='text-align: right; color:red;cursor:pointer'
+                 onclick="document.getElementById('div_S_pt1.6.1').className = 'hiddenRow'">
+                <a onfocus='this.blur();'>[x]</a>
+            </div>
+            <pre>pt1.6.1:
+2021-06-18 09:53:37,831 12939489280     INFO result.py(69) - 开始测试： test_click_contact (test_firstp.TestFirstp)
+2021-06-18 09:53:38,027 12939489280     INFO result.py(156) - 测试执行通过： test_click_contact (test_firstp.TestFirstp)
+2021-06-18 09:53:38,033 12939489280     INFO result.py(90) - 测试结束： test_click_contact (test_firstp.TestFirstp)
+2021-06-18 09:53:38,039 12939489280     INFO result.py(91) - 耗时： 0.1953740119934082
+
+</pre>
+            <div><ul class='figure_ul'><ul></div>
+        </div>
+    </td>
+</tr><tr id='pt1.7'>
+<td>pt1.7</td>
+    <td class='passCase' colspan='7'>
+        <div class='testcase'>test_click_contactUs: 验证点击页面底部 联系我们 ，页面正确跳转</div>
+    </td>
+    <td class='passCase'>
+        <div class='testcase' style="margin-left: auto;">0</div>
+    </td>
+    <td class='passCase' align='center'>
+        <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.7.1',1, false)">
+            <span class="lang-cn">通过</span>
+            <span class="lang-en">pass</span>
+        </a>
+    </td>
+</tr>
+<tr id='div_S_pt1.7.1' name='div_pt1.7.1' class="hiddenRow">
+    <td colspan='10'>
+        <div class="popup_window">
+            <div style='text-align: right; color:red;cursor:pointer'
+                 onclick="document.getElementById('div_S_pt1.7.1').className = 'hiddenRow'">
+                <a onfocus='this.blur();'>[x]</a>
+            </div>
+            <pre>pt1.7.1:
+2021-06-18 09:53:38,046 12939489280     INFO result.py(69) - 开始测试： test_click_contactUs (test_firstp.TestFirstp)
+2021-06-18 09:53:38,220 12939489280     INFO result.py(156) - 测试执行通过： test_click_contactUs (test_firstp.TestFirstp)
+2021-06-18 09:53:38,226 12939489280     INFO result.py(90) - 测试结束： test_click_contactUs (test_firstp.TestFirstp)
+2021-06-18 09:53:38,233 12939489280     INFO result.py(91) - 耗时： 0.1743018627166748
+
+</pre>
+            <div><ul class='figure_ul'><ul></div>
+        </div>
+    </td>
+</tr><tr id='ft1.8'>
+<td>ft1.8</td>
+    <td class='failCase' colspan='7'>
+        <div class='testcase'>test_click_firstPage: 验证点击页面中间导航栏 首页 ，页面正确跳转</div>
+    </td>
+    <td class='failCase'>
+        <div class='testcase' style="margin-left: auto;">0</div>
+    </td>
+    <td class='failCase' align='center'>
+        <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.8.1',1, false)">
+            <span class="lang-cn">失败</span>
+            <span class="lang-en">fail</span>
+        </a>
+    </td>
+</tr>
+<tr id='div_S_ft1.8.1' name='div_ft1.8.1' class="hiddenRow">
+    <td colspan='10'>
+        <div class="popup_window">
+            <div style='text-align: right; color:red;cursor:pointer'
+                 onclick="document.getElementById('div_S_ft1.8.1').className = 'hiddenRow'">
+                <a onfocus='this.blur();'>[x]</a>
+            </div>
+            <pre>ft1.8.1:
+2021-06-18 09:53:38,239 12939489280     INFO result.py(69) - 开始测试： test_click_firstPage (test_firstp.TestFirstp)
+2021-06-18 09:53:38,564 12939489280  WARNING result.py(190) - 测试未通过： test_click_firstPage (test_firstp.TestFirstp)
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py", line 24, in test_click_firstPage
+    self.assertEqual("中晟在线", self.driver.title)
+AssertionError: '中晟在线' != '中晟在线-竞买'
+- 中晟在线
++ 中晟在线-竞买
+?     +++
+
+
+2021-06-18 09:53:38,570 12939489280     INFO result.py(90) - 测试结束： test_click_firstPage (test_firstp.TestFirstp)
+2021-06-18 09:53:38,577 12939489280     INFO result.py(91) - 耗时： 0.32437801361083984
+
+</pre>
+            <div><ul class='figure_ul'><ul></div>
+        </div>
+    </td>
+</tr><tr id='pt1.9'>
+<td>pt1.9</td>
+    <td class='passCase' colspan='7'>
+        <div class='testcase'>test_click_guide: 验证点击页面底部 新手指南 ，页面正确跳转</div>
+    </td>
+    <td class='passCase'>
+        <div class='testcase' style="margin-left: auto;">0</div>
+    </td>
+    <td class='passCase' align='center'>
+        <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.9.1',1, false)">
+            <span class="lang-cn">通过</span>
+            <span class="lang-en">pass</span>
+        </a>
+    </td>
+</tr>
+<tr id='div_S_pt1.9.1' name='div_pt1.9.1' class="hiddenRow">
+    <td colspan='10'>
+        <div class="popup_window">
+            <div style='text-align: right; color:red;cursor:pointer'
+                 onclick="document.getElementById('div_S_pt1.9.1').className = 'hiddenRow'">
+                <a onfocus='this.blur();'>[x]</a>
+            </div>
+            <pre>pt1.9.1:
+2021-06-18 09:53:38,577 12939489280     INFO result.py(69) - 开始测试： test_click_guide (test_firstp.TestFirstp)
+2021-06-18 09:53:38,913 12939489280     INFO result.py(156) - 测试执行通过： test_click_guide (test_firstp.TestFirstp)
+2021-06-18 09:53:38,925 12939489280     INFO result.py(90) - 测试结束： test_click_guide (test_firstp.TestFirstp)
+2021-06-18 09:53:38,938 12939489280     INFO result.py(91) - 耗时： 0.34246397018432617
+
+</pre>
+            <div><ul class='figure_ul'><ul></div>
+        </div>
+    </td>
+</tr><tr id='pt1.10'>
+<td>pt1.10</td>
+    <td class='passCase' colspan='7'>
+        <div class='testcase'>test_click_help: 验证点击页面顶部 帮助中心 ，页面正确跳转</div>
+    </td>
+    <td class='passCase'>
+        <div class='testcase' style="margin-left: auto;">0</div>
+    </td>
+    <td class='passCase' align='center'>
+        <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.10.1',1, false)">
+            <span class="lang-cn">通过</span>
+            <span class="lang-en">pass</span>
+        </a>
+    </td>
+</tr>
+<tr id='div_S_pt1.10.1' name='div_pt1.10.1' class="hiddenRow">
+    <td colspan='10'>
+        <div class="popup_window">
+            <div style='text-align: right; color:red;cursor:pointer'
+                 onclick="document.getElementById('div_S_pt1.10.1').className = 'hiddenRow'">
+                <a onfocus='this.blur();'>[x]</a>
+            </div>
+            <pre>pt1.10.1:
+2021-06-18 09:53:38,948 12939489280     INFO result.py(69) - 开始测试： test_click_help (test_firstp.TestFirstp)
+2021-06-18 09:53:39,144 12939489280     INFO result.py(156) - 测试执行通过： test_click_help (test_firstp.TestFirstp)
+2021-06-18 09:53:39,151 12939489280     INFO result.py(90) - 测试结束： test_click_help (test_firstp.TestFirstp)
+2021-06-18 09:53:39,151 12939489280     INFO result.py(91) - 耗时： 0.19609808921813965
+
+</pre>
+            <div><ul class='figure_ul'><ul></div>
+        </div>
+    </td>
+</tr><tr id='pt1.11'>
+<td>pt1.11</td>
+    <td class='passCase' colspan='7'>
+        <div class='testcase'>test_click_ipL: 验证点击页面底部的 粤ICP备2021041206号 链接，正确打开页面</div>
+    </td>
+    <td class='passCase'>
+        <div class='testcase' style="margin-left: auto;">0</div>
+    </td>
+    <td class='passCase' align='center'>
+        <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.11.1',1, false)">
+            <span class="lang-cn">通过</span>
+            <span class="lang-en">pass</span>
+        </a>
+    </td>
+</tr>
+<tr id='div_S_pt1.11.1' name='div_pt1.11.1' class="hiddenRow">
+    <td colspan='10'>
+        <div class="popup_window">
+            <div style='text-align: right; color:red;cursor:pointer'
+                 onclick="document.getElementById('div_S_pt1.11.1').className = 'hiddenRow'">
+                <a onfocus='this.blur();'>[x]</a>
+            </div>
+            <pre>pt1.11.1:
+2021-06-18 09:53:39,157 12939489280     INFO result.py(69) - 开始测试： test_click_ipL (test_firstp.TestFirstp)
+2021-06-18 09:53:41,416 12939489280     INFO result.py(156) - 测试执行通过： test_click_ipL (test_firstp.TestFirstp)
+2021-06-18 09:53:41,422 12939489280     INFO result.py(90) - 测试结束： test_click_ipL (test_firstp.TestFirstp)
+2021-06-18 09:53:41,429 12939489280     INFO result.py(91) - 耗时： 2.2590110301971436
+
+</pre>
+            <div><ul class='figure_ul'><ul></div>
+        </div>
+    </td>
+</tr><tr id='pt1.12'>
+<td>pt1.12</td>
+    <td class='passCase' colspan='7'>
+        <div class='testcase'>test_click_login: 验证点击页面顶部 未登录 ，页面弹出登录窗口</div>
+    </td>
+    <td class='passCase'>
+        <div class='testcase' style="margin-left: auto;">0</div>
+    </td>
+    <td class='passCase' align='center'>
+        <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.12.1',1, false)">
+            <span class="lang-cn">通过</span>
+            <span class="lang-en">pass</span>
+        </a>
+    </td>
+</tr>
+<tr id='div_S_pt1.12.1' name='div_pt1.12.1' class="hiddenRow">
+    <td colspan='10'>
+        <div class="popup_window">
+            <div style='text-align: right; color:red;cursor:pointer'
+                 onclick="document.getElementById('div_S_pt1.12.1').className = 'hiddenRow'">
+                <a onfocus='this.blur();'>[x]</a>
+            </div>
+            <pre>pt1.12.1:
+2021-06-18 09:53:41,435 12939489280     INFO result.py(69) - 开始测试： test_click_login (test_firstp.TestFirstp)
+2021-06-18 09:53:43,017 12939489280     INFO result.py(156) - 测试执行通过： test_click_login (test_firstp.TestFirstp)
+2021-06-18 09:53:43,023 12939489280     INFO result.py(90) - 测试结束： test_click_login (test_firstp.TestFirstp)
+2021-06-18 09:53:43,023 12939489280     INFO result.py(91) - 耗时： 1.5819218158721924
+
+</pre>
+            <div><ul class='figure_ul'><ul></div>
+        </div>
+    </td>
+</tr><tr id='pt1.13'>
+<td>pt1.13</td>
+    <td class='passCase' colspan='7'>
+        <div class='testcase'>test_click_moreCollection: 验证点击热卖拍品底部 更多拍品 ，页面正确跳转</div>
+    </td>
+    <td class='passCase'>
+        <div class='testcase' style="margin-left: auto;">0</div>
+    </td>
+    <td class='passCase' align='center'>
+        <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.13.1',1, false)">
+            <span class="lang-cn">通过</span>
+            <span class="lang-en">pass</span>
+        </a>
+    </td>
+</tr>
+<tr id='div_S_pt1.13.1' name='div_pt1.13.1' class="hiddenRow">
+    <td colspan='10'>
+        <div class="popup_window">
+            <div style='text-align: right; color:red;cursor:pointer'
+                 onclick="document.getElementById('div_S_pt1.13.1').className = 'hiddenRow'">
+                <a onfocus='this.blur();'>[x]</a>
+            </div>
+            <pre>pt1.13.1:
+2021-06-18 09:53:43,030 12939489280     INFO result.py(69) - 开始测试： test_click_moreCollection (test_firstp.TestFirstp)
+2021-06-18 09:53:44,290 12939489280     INFO result.py(156) - 测试执行通过： test_click_moreCollection (test_firstp.TestFirstp)
+2021-06-18 09:53:44,297 12939489280     INFO result.py(90) - 测试结束： test_click_moreCollection (test_firstp.TestFirstp)
+2021-06-18 09:53:44,297 12939489280     INFO result.py(91) - 耗时： 1.2668840885162354
+
+</pre>
+            <div><ul class='figure_ul'><ul></div>
+        </div>
+    </td>
+</tr><tr id='pt1.14'>
+<td>pt1.14</td>
+    <td class='passCase' colspan='7'>
+        <div class='testcase'>test_click_moreCollectionID: 验证点击热卖拍品底部 更多拍品后的标识 ，页面正确跳转</div>
+    </td>
+    <td class='passCase'>
+        <div class='testcase' style="margin-left: auto;">0</div>
+    </td>
+    <td class='passCase' align='center'>
+        <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.14.1',1, false)">
+            <span class="lang-cn">通过</span>
+            <span class="lang-en">pass</span>
+        </a>
+    </td>
+</tr>
+<tr id='div_S_pt1.14.1' name='div_pt1.14.1' class="hiddenRow">
+    <td colspan='10'>
+        <div class="popup_window">
+            <div style='text-align: right; color:red;cursor:pointer'
+                 onclick="document.getElementById('div_S_pt1.14.1').className = 'hiddenRow'">
+                <a onfocus='this.blur();'>[x]</a>
+            </div>
+            <pre>pt1.14.1:
+2021-06-18 09:53:44,303 12939489280     INFO result.py(69) - 开始测试： test_click_moreCollectionID (test_firstp.TestFirstp)
+2021-06-18 09:53:44,799 12939489280     INFO result.py(156) - 测试执行通过： test_click_moreCollectionID (test_firstp.TestFirstp)
+2021-06-18 09:53:44,799 12939489280     INFO result.py(90) - 测试结束： test_click_moreCollectionID (test_firstp.TestFirstp)
+2021-06-18 09:53:44,805 12939489280     INFO result.py(91) - 耗时： 0.4900538921356201
+
+</pre>
+            <div><ul class='figure_ul'><ul></div>
+        </div>
+    </td>
+</tr><tr id='et1.15'>
+<td>et1.15</td>
+    <td class='errorCase' colspan='7'>
+        <div class='testcase'>test_click_myApplyB: 验证未登录情况下， 点击页面中间 我要申请委托 半隐藏按钮，页面弹出登录框</div>
+    </td>
+    <td class='errorCase'>
+        <div class='testcase' style="margin-left: auto;">0</div>
+    </td>
+    <td class='errorCase' align='center'>
+        <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_et1.15.1',1, false)">
+            <span class="lang-cn">错误</span>
+            <span class="lang-en">error</span>
+        </a>
+    </td>
+</tr>
+<tr id='div_S_et1.15.1' name='div_et1.15.1' class="hiddenRow">
+    <td colspan='10'>
+        <div class="popup_window">
+            <div style='text-align: right; color:red;cursor:pointer'
+                 onclick="document.getElementById('div_S_et1.15.1').className = 'hiddenRow'">
+                <a onfocus='this.blur();'>[x]</a>
+            </div>
+            <pre>et1.15.1:
+2021-06-18 09:53:44,812 12939489280     INFO result.py(69) - 开始测试： test_click_myApplyB (test_firstp.TestFirstp)
+2021-06-18 09:54:15,229 12939489280    ERROR result.py(175) - 测试产生错误： test_click_myApplyB (test_firstp.TestFirstp)
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py", line 73, in test_click_myApplyB
+    self.assertIsNotNone(self.driver.find_element(*self.loginBox))
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//div[@class="login-box"]"}
+  (Session info: chrome=91.0.4472.114)
+
+
+2021-06-18 09:54:15,236 12939489280     INFO result.py(90) - 测试结束： test_click_myApplyB (test_firstp.TestFirstp)
+2021-06-18 09:54:15,242 12939489280     INFO result.py(91) - 耗时： 30.417804956436157
+
+</pre>
+            <div><ul class='figure_ul'><ul></div>
+        </div>
+    </td>
+</tr><tr id='pt1.16'>
+<td>pt1.16</td>
+    <td class='passCase' colspan='7'>
+        <div class='testcase'>test_click_myBid: 验证未登录情况下，点击页面顶部 我的竞买 按钮，弹出登录框</div>
+    </td>
+    <td class='passCase'>
+        <div class='testcase' style="margin-left: auto;">0</div>
+    </td>
+    <td class='passCase' align='center'>
+        <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.16.1',1, false)">
+            <span class="lang-cn">通过</span>
+            <span class="lang-en">pass</span>
+        </a>
+    </td>
+</tr>
+<tr id='div_S_pt1.16.1' name='div_pt1.16.1' class="hiddenRow">
+    <td colspan='10'>
+        <div class="popup_window">
+            <div style='text-align: right; color:red;cursor:pointer'
+                 onclick="document.getElementById('div_S_pt1.16.1').className = 'hiddenRow'">
+                <a onfocus='this.blur();'>[x]</a>
+            </div>
+            <pre>pt1.16.1:
+2021-06-18 09:54:15,243 12939489280     INFO result.py(69) - 开始测试： test_click_myBid (test_firstp.TestFirstp)
+2021-06-18 09:54:15,584 12939489280     INFO result.py(156) - 测试执行通过： test_click_myBid (test_firstp.TestFirstp)
+2021-06-18 09:54:15,589 12939489280     INFO result.py(90) - 测试结束： test_click_myBid (test_firstp.TestFirstp)
+2021-06-18 09:54:15,589 12939489280     INFO result.py(91) - 耗时： 0.34113407135009766
+
+</pre>
+            <div><ul class='figure_ul'><ul></div>
+        </div>
+    </td>
+</tr><tr id='pt1.17'>
+<td>pt1.17</td>
+    <td class='passCase' colspan='7'>
+        <div class='testcase'>test_click_myMsg: 验证未登录情况下，点击页面顶部 消息 按钮，弹出登录框</div>
+    </td>
+    <td class='passCase'>
+        <div class='testcase' style="margin-left: auto;">0</div>
+    </td>
+    <td class='passCase' align='center'>
+        <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.17.1',1, false)">
+            <span class="lang-cn">通过</span>
+            <span class="lang-en">pass</span>
+        </a>
+    </td>
+</tr>
+<tr id='div_S_pt1.17.1' name='div_pt1.17.1' class="hiddenRow">
+    <td colspan='10'>
+        <div class="popup_window">
+            <div style='text-align: right; color:red;cursor:pointer'
+                 onclick="document.getElementById('div_S_pt1.17.1').className = 'hiddenRow'">
+                <a onfocus='this.blur();'>[x]</a>
+            </div>
+            <pre>pt1.17.1:
+2021-06-18 09:54:15,596 12939489280     INFO result.py(69) - 开始测试： test_click_myMsg (test_firstp.TestFirstp)
+2021-06-18 09:54:15,944 12939489280     INFO result.py(156) - 测试执行通过： test_click_myMsg (test_firstp.TestFirstp)
+2021-06-18 09:54:15,944 12939489280     INFO result.py(90) - 测试结束： test_click_myMsg (test_firstp.TestFirstp)
+2021-06-18 09:54:15,950 12939489280     INFO result.py(91) - 耗时： 0.3420867919921875
+
+</pre>
+            <div><ul class='figure_ul'><ul></div>
+        </div>
+    </td>
+</tr><tr id='pt1.18'>
+<td>pt1.18</td>
+    <td class='passCase' colspan='7'>
+        <div class='testcase'>test_click_searchBox1: 验证点击搜索框，显示搜索历史框</div>
+    </td>
+    <td class='passCase'>
+        <div class='testcase' style="margin-left: auto;">0</div>
+    </td>
+    <td class='passCase' align='center'>
+        <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.18.1',1, false)">
+            <span class="lang-cn">通过</span>
+            <span class="lang-en">pass</span>
+        </a>
+    </td>
+</tr>
+<tr id='div_S_pt1.18.1' name='div_pt1.18.1' class="hiddenRow">
+    <td colspan='10'>
+        <div class="popup_window">
+            <div style='text-align: right; color:red;cursor:pointer'
+                 onclick="document.getElementById('div_S_pt1.18.1').className = 'hiddenRow'">
+                <a onfocus='this.blur();'>[x]</a>
+            </div>
+            <pre>pt1.18.1:
+2021-06-18 09:54:15,957 12939489280     INFO result.py(69) - 开始测试： test_click_searchBox1 (test_firstp.TestFirstp)
+2021-06-18 09:54:21,522 12939489280     INFO result.py(156) - 测试执行通过： test_click_searchBox1 (test_firstp.TestFirstp)
+2021-06-18 09:54:21,528 12939489280     INFO result.py(90) - 测试结束： test_click_searchBox1 (test_firstp.TestFirstp)
+2021-06-18 09:54:21,534 12939489280     INFO result.py(91) - 耗时： 5.571038007736206
+
+</pre>
+            <div><ul class='figure_ul'><ul></div>
+        </div>
+    </td>
+</tr><tr id='pt1.19'>
+<td>pt1.19</td>
+    <td class='passCase' colspan='7'>
+        <div class='testcase'>test_click_searchBox2: 验证点击搜索框，历史框包含搜索历史文本</div>
+    </td>
+    <td class='passCase'>
+        <div class='testcase' style="margin-left: auto;">0</div>
+    </td>
+    <td class='passCase' align='center'>
+        <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.19.1',1, false)">
+            <span class="lang-cn">通过</span>
+            <span class="lang-en">pass</span>
+        </a>
+    </td>
+</tr>
+<tr id='div_S_pt1.19.1' name='div_pt1.19.1' class="hiddenRow">
+    <td colspan='10'>
+        <div class="popup_window">
+            <div style='text-align: right; color:red;cursor:pointer'
+                 onclick="document.getElementById('div_S_pt1.19.1').className = 'hiddenRow'">
+                <a onfocus='this.blur();'>[x]</a>
+            </div>
+            <pre>pt1.19.1:
+2021-06-18 09:54:21,535 12939489280     INFO result.py(69) - 开始测试： test_click_searchBox2 (test_firstp.TestFirstp)
+2021-06-18 09:54:26,842 12939489280     INFO result.py(156) - 测试执行通过： test_click_searchBox2 (test_firstp.TestFirstp)
+2021-06-18 09:54:26,848 12939489280     INFO result.py(90) - 测试结束： test_click_searchBox2 (test_firstp.TestFirstp)
+2021-06-18 09:54:26,848 12939489280     INFO result.py(91) - 耗时： 5.30777907371521
+
+</pre>
+            <div><ul class='figure_ul'><ul></div>
+        </div>
+    </td>
+</tr><tr id='pt1.20'>
+<td>pt1.20</td>
+    <td class='passCase' colspan='7'>
+        <div class='testcase'>test_click_searchBox3: 验证点击搜索框，历史框包含删除按钮</div>
+    </td>
+    <td class='passCase'>
+        <div class='testcase' style="margin-left: auto;">0</div>
+    </td>
+    <td class='passCase' align='center'>
+        <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.20.1',1, false)">
+            <span class="lang-cn">通过</span>
+            <span class="lang-en">pass</span>
+        </a>
+    </td>
+</tr>
+<tr id='div_S_pt1.20.1' name='div_pt1.20.1' class="hiddenRow">
+    <td colspan='10'>
+        <div class="popup_window">
+            <div style='text-align: right; color:red;cursor:pointer'
+                 onclick="document.getElementById('div_S_pt1.20.1').className = 'hiddenRow'">
+                <a onfocus='this.blur();'>[x]</a>
+            </div>
+            <pre>pt1.20.1:
+2021-06-18 09:54:26,854 12939489280     INFO result.py(69) - 开始测试： test_click_searchBox3 (test_firstp.TestFirstp)
+2021-06-18 09:54:32,142 12939489280     INFO result.py(156) - 测试执行通过： test_click_searchBox3 (test_firstp.TestFirstp)
+2021-06-18 09:54:32,147 12939489280     INFO result.py(90) - 测试结束： test_click_searchBox3 (test_firstp.TestFirstp)
+2021-06-18 09:54:32,154 12939489280     INFO result.py(91) - 耗时： 5.287322044372559
+
+</pre>
+            <div><ul class='figure_ul'><ul></div>
+        </div>
+    </td>
+</tr><tr id='pt1.21'>
+<td>pt1.21</td>
+    <td class='passCase' colspan='7'>
+        <div class='testcase'>test_click_serviceA: 验证点击页面底部 服务协议 ，页面正确跳转</div>
+    </td>
+    <td class='passCase'>
+        <div class='testcase' style="margin-left: auto;">0</div>
+    </td>
+    <td class='passCase' align='center'>
+        <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.21.1',1, false)">
+            <span class="lang-cn">通过</span>
+            <span class="lang-en">pass</span>
+        </a>
+    </td>
+</tr>
+<tr id='div_S_pt1.21.1' name='div_pt1.21.1' class="hiddenRow">
+    <td colspan='10'>
+        <div class="popup_window">
+            <div style='text-align: right; color:red;cursor:pointer'
+                 onclick="document.getElementById('div_S_pt1.21.1').className = 'hiddenRow'">
+                <a onfocus='this.blur();'>[x]</a>
+            </div>
+            <pre>pt1.21.1:
+2021-06-18 09:54:32,160 12939489280     INFO result.py(69) - 开始测试： test_click_serviceA (test_firstp.TestFirstp)
+2021-06-18 09:54:32,447 12939489280     INFO result.py(156) - 测试执行通过： test_click_serviceA (test_firstp.TestFirstp)
+2021-06-18 09:54:32,447 12939489280     INFO result.py(90) - 测试结束： test_click_serviceA (test_firstp.TestFirstp)
+2021-06-18 09:54:32,447 12939489280     INFO result.py(91) - 耗时： 0.28683018684387207
+
+</pre>
+            <div><ul class='figure_ul'><ul></div>
+        </div>
+    </td>
+</tr><tr id='pt1.22'>
+<td>pt1.22</td>
+    <td class='passCase' colspan='7'>
+        <div class='testcase'>test_click_specialP: 验证点击页面中间导航栏 专场 ，页面正确跳转</div>
+    </td>
+    <td class='passCase'>
+        <div class='testcase' style="margin-left: auto;">0</div>
+    </td>
+    <td class='passCase' align='center'>
+        <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.22.1',1, false)">
+            <span class="lang-cn">通过</span>
+            <span class="lang-en">pass</span>
+        </a>
+    </td>
+</tr>
+<tr id='div_S_pt1.22.1' name='div_pt1.22.1' class="hiddenRow">
+    <td colspan='10'>
+        <div class="popup_window">
+            <div style='text-align: right; color:red;cursor:pointer'
+                 onclick="document.getElementById('div_S_pt1.22.1').className = 'hiddenRow'">
+                <a onfocus='this.blur();'>[x]</a>
+            </div>
+            <pre>pt1.22.1:
+2021-06-18 09:54:32,453 12939489280     INFO result.py(69) - 开始测试： test_click_specialP (test_firstp.TestFirstp)
+2021-06-18 09:54:32,676 12939489280     INFO result.py(156) - 测试执行通过： test_click_specialP (test_firstp.TestFirstp)
+2021-06-18 09:54:32,676 12939489280     INFO result.py(90) - 测试结束： test_click_specialP (test_firstp.TestFirstp)
+2021-06-18 09:54:32,676 12939489280     INFO result.py(91) - 耗时： 0.22327518463134766
+
+</pre>
+            <div><ul class='figure_ul'><ul></div>
+        </div>
+    </td>
+</tr><tr id='ft1.23'>
+<td>ft1.23</td>
+    <td class='failCase' colspan='7'>
+        <div class='testcase'>test_qrcode: 验证页面底部显示 中晟在线 二维码</div>
+    </td>
+    <td class='failCase'>
+        <div class='testcase' style="margin-left: auto;">0</div>
+    </td>
+    <td class='failCase' align='center'>
+        <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.23.1',1, false)">
+            <span class="lang-cn">失败</span>
+            <span class="lang-en">fail</span>
+        </a>
+    </td>
+</tr>
+<tr id='div_S_ft1.23.1' name='div_ft1.23.1' class="hiddenRow">
+    <td colspan='10'>
+        <div class="popup_window">
+            <div style='text-align: right; color:red;cursor:pointer'
+                 onclick="document.getElementById('div_S_ft1.23.1').className = 'hiddenRow'">
+                <a onfocus='this.blur();'>[x]</a>
+            </div>
+            <pre>ft1.23.1:
+2021-06-18 09:54:32,676 12939489280     INFO result.py(69) - 开始测试： test_qrcode (test_firstp.TestFirstp)
+2021-06-18 09:54:32,804 12939489280  WARNING result.py(190) - 测试未通过： test_qrcode (test_firstp.TestFirstp)
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py", line 129, in test_qrcode
+    self.assertEqual("/assets/img/qrcode1.d4572d6c.jpg", self.get_qrcodeP())
+AssertionError: '/assets/img/qrcode1.d4572d6c.jpg' != 'http://home.online.zspaimai.cn/assets/img/qrcode1.d4572d6c.jpg'
+- /assets/img/qrcode1.d4572d6c.jpg
++ http://home.online.zspaimai.cn/assets/img/qrcode1.d4572d6c.jpg
+
+
+2021-06-18 09:54:32,811 12939489280     INFO result.py(90) - 测试结束： test_qrcode (test_firstp.TestFirstp)
+2021-06-18 09:54:32,817 12939489280     INFO result.py(91) - 耗时： 0.13458895683288574
+
+</pre>
+            <div><ul class='figure_ul'><ul></div>
+        </div>
+    </td>
+</tr><tr id='ft1.24'>
+<td>ft1.24</td>
+    <td class='failCase' colspan='7'>
+        <div class='testcase'>test_searchBoxInfo: 验证搜索框的提示文本信息为： 藏品名称</div>
+    </td>
+    <td class='failCase'>
+        <div class='testcase' style="margin-left: auto;">0</div>
+    </td>
+    <td class='failCase' align='center'>
+        <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.24.1',1, false)">
+            <span class="lang-cn">失败</span>
+            <span class="lang-en">fail</span>
+        </a>
+    </td>
+</tr>
+<tr id='div_S_ft1.24.1' name='div_ft1.24.1' class="hiddenRow">
+    <td colspan='10'>
+        <div class="popup_window">
+            <div style='text-align: right; color:red;cursor:pointer'
+                 onclick="document.getElementById('div_S_ft1.24.1').className = 'hiddenRow'">
+                <a onfocus='this.blur();'>[x]</a>
+            </div>
+            <pre>ft1.24.1:
+2021-06-18 09:54:32,818 12939489280     INFO result.py(69) - 开始测试： test_searchBoxInfo (test_firstp.TestFirstp)
+2021-06-18 09:54:33,082 12939489280  WARNING result.py(190) - 测试未通过： test_searchBoxInfo (test_firstp.TestFirstp)
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py", line 100, in test_searchBoxInfo
+    self.assertEqual('藏品名称', self.get_infoOfSearchBox())
+AssertionError: '藏品名称' != ''
+- 藏品名称
++ 
+
+
+2021-06-18 09:54:33,088 12939489280     INFO result.py(90) - 测试结束： test_searchBoxInfo (test_firstp.TestFirstp)
+2021-06-18 09:54:33,094 12939489280     INFO result.py(91) - 耗时： 0.2708899974822998
+
+</pre>
+            <div><ul class='figure_ul'><ul></div>
+        </div>
+    </td>
+</tr><tr id='pt1.25'>
+<td>pt1.25</td>
+    <td class='passCase' colspan='7'>
+        <div class='testcase'>test_search_000: 验证点击历史框中到 删除按钮，删除历史数据</div>
+    </td>
+    <td class='passCase'>
+        <div class='testcase' style="margin-left: auto;">0</div>
+    </td>
+    <td class='passCase' align='center'>
+        <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.25.1',1, false)">
+            <span class="lang-cn">通过</span>
+            <span class="lang-en">pass</span>
+        </a>
+    </td>
+</tr>
+<tr id='div_S_pt1.25.1' name='div_pt1.25.1' class="hiddenRow">
+    <td colspan='10'>
+        <div class="popup_window">
+            <div style='text-align: right; color:red;cursor:pointer'
+                 onclick="document.getElementById('div_S_pt1.25.1').className = 'hiddenRow'">
+                <a onfocus='this.blur();'>[x]</a>
+            </div>
+            <pre>pt1.25.1:
+2021-06-18 09:54:33,100 12939489280     INFO result.py(69) - 开始测试： test_search_000 (test_firstp.TestFirstp)
+2021-06-18 09:54:33,224 12939489280     INFO result.py(156) - 测试执行通过： test_search_000 (test_firstp.TestFirstp)
+2021-06-18 09:54:33,230 12939489280     INFO result.py(90) - 测试结束： test_search_000 (test_firstp.TestFirstp)
+2021-06-18 09:54:33,237 12939489280     INFO result.py(91) - 耗时： 0.12449979782104492
+
+</pre>
+            <div><ul class='figure_ul'><ul></div>
+        </div>
+    </td>
+</tr><tr id='pt1.26'>
+<td>pt1.26</td>
+    <td class='passCase' colspan='7'>
+        <div class='testcase'>test_search_001: 验证搜索功能</div>
+    </td>
+    <td class='passCase'>
+        <div class='testcase' style="margin-left: auto;">0</div>
+    </td>
+    <td class='passCase' align='center'>
+        <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.26.1',1, false)">
+            <span class="lang-cn">通过</span>
+            <span class="lang-en">pass</span>
+        </a>
+    </td>
+</tr>
+<tr id='div_S_pt1.26.1' name='div_pt1.26.1' class="hiddenRow">
+    <td colspan='10'>
+        <div class="popup_window">
+            <div style='text-align: right; color:red;cursor:pointer'
+                 onclick="document.getElementById('div_S_pt1.26.1').className = 'hiddenRow'">
+                <a onfocus='this.blur();'>[x]</a>
+            </div>
+            <pre>pt1.26.1:
+2021-06-18 09:54:33,243 12939489280     INFO result.py(69) - 开始测试： test_search_001 (test_firstp.TestFirstp)
+2021-06-18 09:54:34,045 12939489280     INFO result.py(156) - 测试执行通过： test_search_001 (test_firstp.TestFirstp)
+2021-06-18 09:54:34,046 12939489280     INFO result.py(90) - 测试结束： test_search_001 (test_firstp.TestFirstp)
+2021-06-18 09:54:34,051 12939489280     INFO result.py(91) - 耗时： 0.8026330471038818
+
+</pre>
+            <div><ul class='figure_ul'><ul></div>
+        </div>
+    </td>
+</tr><tr id='ft1.27'>
+<td>ft1.27</td>
+    <td class='failCase' colspan='7'>
+        <div class='testcase'>test_search_002: 验证搜索结束后，关键字保存到搜索历史中</div>
+    </td>
+    <td class='failCase'>
+        <div class='testcase' style="margin-left: auto;">0</div>
+    </td>
+    <td class='failCase' align='center'>
+        <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.27.1',1, false)">
+            <span class="lang-cn">失败</span>
+            <span class="lang-en">fail</span>
+        </a>
+    </td>
+</tr>
+<tr id='div_S_ft1.27.1' name='div_ft1.27.1' class="hiddenRow">
+    <td colspan='10'>
+        <div class="popup_window">
+            <div style='text-align: right; color:red;cursor:pointer'
+                 onclick="document.getElementById('div_S_ft1.27.1').className = 'hiddenRow'">
+                <a onfocus='this.blur();'>[x]</a>
+            </div>
+            <pre>ft1.27.1:
+2021-06-18 09:54:34,051 12939489280     INFO result.py(69) - 开始测试： test_search_002 (test_firstp.TestFirstp)
+2021-06-18 09:54:34,381 12939489280  WARNING result.py(190) - 测试未通过： test_search_002 (test_firstp.TestFirstp)
+Traceback (most recent call last):
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py", line 124, in test_search_002
+    self.assertEqual('一张图片', self.get_lastReco())
+AssertionError: '一张图片' != '进行中-857'
+- 一张图片
++ 进行中-857
+
+
+2021-06-18 09:54:34,387 12939489280     INFO result.py(90) - 测试结束： test_search_002 (test_firstp.TestFirstp)
+2021-06-18 09:54:34,387 12939489280     INFO result.py(91) - 耗时： 0.33571386337280273
+
+</pre>
+            <div><ul class='figure_ul'><ul></div>
+        </div>
+    </td>
+</tr><tr id='pt1.28'>
+<td>pt1.28</td>
+    <td class='passCase' colspan='7'>
+        <div class='testcase'>test_titleOfFirstPage: 验证首页标题</div>
+    </td>
+    <td class='passCase'>
+        <div class='testcase' style="margin-left: auto;">0</div>
+    </td>
+    <td class='passCase' align='center'>
+        <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.28.1',1, false)">
+            <span class="lang-cn">通过</span>
+            <span class="lang-en">pass</span>
+        </a>
+    </td>
+</tr>
+<tr id='div_S_pt1.28.1' name='div_pt1.28.1' class="hiddenRow">
+    <td colspan='10'>
+        <div class="popup_window">
+            <div style='text-align: right; color:red;cursor:pointer'
+                 onclick="document.getElementById('div_S_pt1.28.1').className = 'hiddenRow'">
+                <a onfocus='this.blur();'>[x]</a>
+            </div>
+            <pre>pt1.28.1:
+2021-06-18 09:54:34,387 12939489280     INFO result.py(69) - 开始测试： test_titleOfFirstPage (test_firstp.TestFirstp)
+2021-06-18 09:54:34,548 12939489280     INFO result.py(156) - 测试执行通过： test_titleOfFirstPage (test_firstp.TestFirstp)
+2021-06-18 09:54:34,548 12939489280     INFO result.py(90) - 测试结束： test_titleOfFirstPage (test_firstp.TestFirstp)
+2021-06-18 09:54:34,548 12939489280     INFO result.py(91) - 耗时： 0.15459203720092773
+
+</pre>
+            <div><ul class='figure_ul'><ul></div>
+        </div>
+    </td>
+</tr><tr id='pt1.29'>
+<td>pt1.29</td>
+    <td class='passCase' colspan='7'>
+        <div class='testcase'>test_urlOfFirstPage: 验证首页网址</div>
+    </td>
+    <td class='passCase'>
+        <div class='testcase' style="margin-left: auto;">0</div>
+    </td>
+    <td class='passCase' align='center'>
+        <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.29.1',1, false)">
+            <span class="lang-cn">通过</span>
+            <span class="lang-en">pass</span>
+        </a>
+    </td>
+</tr>
+<tr id='div_S_pt1.29.1' name='div_pt1.29.1' class="hiddenRow">
+    <td colspan='10'>
+        <div class="popup_window">
+            <div style='text-align: right; color:red;cursor:pointer'
+                 onclick="document.getElementById('div_S_pt1.29.1').className = 'hiddenRow'">
+                <a onfocus='this.blur();'>[x]</a>
+            </div>
+            <pre>pt1.29.1:
+2021-06-18 09:54:34,548 12939489280     INFO result.py(69) - 开始测试： test_urlOfFirstPage (test_firstp.TestFirstp)
+2021-06-18 09:54:34,736 12939489280     INFO result.py(156) - 测试执行通过： test_urlOfFirstPage (test_firstp.TestFirstp)
+2021-06-18 09:54:34,736 12939489280     INFO result.py(90) - 测试结束： test_urlOfFirstPage (test_firstp.TestFirstp)
+2021-06-18 09:54:34,736 12939489280     INFO result.py(91) - 耗时： 0.18111729621887207
+
+</pre>
+            <div><ul class='figure_ul'><ul></div>
+        </div>
+    </td>
+</tr><tr class='errorClass'>
+    <td>c2</td>
+    <td>unittest.loader._FailedTest</td>
+    <td>1</td>
+    <td class="passCase">0</td>
+    <td class="failCase">0</td>
+    <td class="errorCase">1</td>
+    <td class="skipCase">0</td>
+    <td style="text-align:right;">0.00%</td>
+    <td>0</td>
+    <td>
+        <a href="javascript:showClassDetail('c2',1)">
+            <span class="lang-cn">细节</span>
+            <span class="lang-en">Detail</span>
+        </a>
+    </td>
+</tr>
+<tr id='et2.1'>
+<td>et2.1</td>
+    <td class='errorCase' colspan='7'>
+        <div class='testcase'>test_login</div>
+    </td>
+    <td class='errorCase'>
+        <div class='testcase' style="margin-left: auto;">0</div>
+    </td>
+    <td class='errorCase' align='center'>
+        <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_et2.1.1',1, false)">
+            <span class="lang-cn">错误</span>
+            <span class="lang-en">error</span>
+        </a>
+    </td>
+</tr>
+<tr id='div_S_et2.1.1' name='div_et2.1.1' class="hiddenRow">
+    <td colspan='10'>
+        <div class="popup_window">
+            <div style='text-align: right; color:red;cursor:pointer'
+                 onclick="document.getElementById('div_S_et2.1.1').className = 'hiddenRow'">
+                <a onfocus='this.blur();'>[x]</a>
+            </div>
+            <pre>et2.1.1:
+2021-06-18 09:54:34,881 12939489280  WARNING connectionpool.py(780) - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10ab273d0&gt;: Failed to establish a new connection: [Errno 61] Connection refused')': /session/aec2b55ce7f20600a8f09cc629894539
+2021-06-18 09:54:34,882 12939489280  WARNING connectionpool.py(780) - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10ab27df0&gt;: Failed to establish a new connection: [Errno 61] Connection refused')': /session/aec2b55ce7f20600a8f09cc629894539
+2021-06-18 09:54:34,882 12939489280  WARNING connectionpool.py(780) - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x10ab27ee0&gt;: Failed to establish a new connection: [Errno 61] Connection refused')': /session/aec2b55ce7f20600a8f09cc629894539
+2021-06-18 09:54:34,883 12939489280     INFO result.py(69) - 开始测试： test_login (unittest.loader._FailedTest)
+2021-06-18 09:54:34,883 12939489280    ERROR result.py(175) - 测试产生错误： test_login (unittest.loader._FailedTest)
+ImportError: Failed to import test module: test_login
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/loader.py", line 436, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/loader.py", line 377, in _get_module_from_name
+    __import__(name)
+  File "/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_login.py", line 16, in &lt;module&gt;
+    from .init import TestLoginInit, Init, Init2
+ImportError: attempted relative import with no known parent package
+
+
+2021-06-18 09:54:34,883 12939489280     INFO result.py(90) - 测试结束： test_login (unittest.loader._FailedTest)
+2021-06-18 09:54:34,883 12939489280     INFO result.py(91) - 耗时： 0.00017595291137695312
+
+</pre>
+            <div><ul class='figure_ul'><ul></div>
+        </div>
+    </td>
+</tr>
+    <tr id='total_row'>
+        <td>&nbsp;</td>
+        <td>
+            <span class="lang-cn">合计</span>
+            <span class="lang-en">Total</span>
+        </td>
+        <td>30</td>
+        <td class="passCase">22</td>
+        <td class="failCase">5</td>
+        <td class="errorCase">3</td>
+        <td class="skipCase">0</td>
+        <td style="text-align:right;">73.33%</td>
+        <td>0</td>
+        <td>&nbsp;</td>
+    </tr>
+</table>
+ <div id='ending'>&nbsp;</div>
+    <div id="popup">
+        <div class="bg">
+            <img src="" alt=""/>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

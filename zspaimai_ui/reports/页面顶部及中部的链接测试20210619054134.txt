@@ -1,0 +1,19 @@
+test_click_bid (test.test_firstp.TestFirstp002)
+验证点击页面中间导航栏 竞买 ，页面正确跳转 ... ok
+test_click_contact (test.test_firstp.TestFirstp002)
+验证点击页面顶部 联系我们 ，页面正确跳转 ... ok
+test_click_firstPage (test.test_firstp.TestFirstp002)
+验证点击页面中间导航栏 首页 ，页面正确跳转 ... skipped '点击首页功能未实现'
+test_click_help (test.test_firstp.TestFirstp002)
+验证点击页面顶部 帮助中心 ，页面正确跳转 ... ok
+test_click_moreCollection (test.test_firstp.TestFirstp002)
+验证点击热卖拍品底部 更多拍品 ，页面正确跳转 ... ok
+test_click_moreCollectionID (test.test_firstp.TestFirstp002)
+验证点击热卖拍品底部 更多拍品后的标识 ，页面正确跳转 ... ok
+test_click_specialP (test.test_firstp.TestFirstp002)
+验证点击页面中间导航栏 专场 ，页面正确跳转 ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 52.934s
+
+OK (skipped=1)
