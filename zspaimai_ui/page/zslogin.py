@@ -3,6 +3,7 @@ from typing import Tuple
 from base.base import Web
 
 from selenium import webdriver
+import time
 from selenium.webdriver.common.by import By
 class Login(Web):
     loginL = (By.XPATH, '//div[text()="未登录"]')
@@ -47,6 +48,17 @@ class Login(Web):
     weChatTip2 = (By.XPATH, '//div[text()="微信登陆"]/../div[2]/div[2]/div/p[2]')
     '''其他登陆方式'''
     otherL = (By.XPATH, '//div[text()="其他登陆方式"]')
+
+    '''注册框的元素定位: 注册标签'''
+    registerTab = (By.ID, 'tab-register')
+    '''手机号输入框'''
+    registerInput = (By.TAG_NAME, 'input')
+    '''注册按钮'''
+    registerButton = (By.TAG_NAME, 'Button')
+    '''我同意并遵守选择框'''
+    agreeCheck = (By.XPATH, '//div[@id="login_container"]/../div[5]/div[2]/div/div/img')
+
+
     
 
 
@@ -236,6 +248,17 @@ class Login(Web):
         self.driver.find_element(*self.otherL).click()
     def getLoginButton(self):
         return self.lbE().is_display()
+    def login_num(self, num, pw):
+        self.click_loginTypeNo()
+        time.sleep(3)
+        self.send_no(num)
+        self.send_pw(pw)
+        time.sleep(2)
+        self.click_lb()
+        time.sleep(3)
+
+
+
 
 
 

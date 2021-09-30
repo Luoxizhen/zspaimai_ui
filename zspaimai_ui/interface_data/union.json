@@ -1,0 +1,15 @@
+ {
+        "name": "悦享收藏5",
+        "h5_url": "http://home.online.zspaimai.cn/",
+        "copywriter": "中晟在线--慧眼识宝，悦享收藏！",
+        "appid": "wx50c05e976769b587",
+        "mini_url": "pages/switchPages/index",
+        "enable": 1,
+        "rebates_rate": "10",
+        "rebates_quota": "2000",
+        "start_time": begin_time,
+        "end_time": end_time,
+        "images": "[\"picture/2HKbk2JxdSAZnTQ2fmPKD8zAKjWxSi.JPG\"]",
+        "poster": "[\"thumbnail/yBA5rkeEpijN7MaRQ8ZK4iWxcabYfC.JPG\"]",
+        "topic": topic
+ }

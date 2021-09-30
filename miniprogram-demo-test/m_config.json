@@ -1,0 +1,112 @@
+[{
+    "debug_mode": "debug",
+    "enable_app_log": true,
+    "project_path": "/Users/sherlock/github/miniprogram-demo",
+    "dev_tool_path": "/Applications/wechatwebdevtools.app/Contents/MacOS/cli",
+    "platform": "ide",
+    "app": "wx",
+    "close_ide": false,
+    "test_port": 9421,
+    "assert_capture": true,
+    "use_push": true,
+    "auto_relaunch": true,
+    "remote_connect_timeout": 10,
+    "account_info": {
+        "wx_nick_name": "locker",
+        "open_id": "o6zAJs_pwryCxcZkDdGGaROZDjiw"
+    },
+    "device_desire": {
+        "wda_project_path": "/Users/sherlock/.npm-global/lib/node_modules/appium/node_modules/appium-webdriveragent",
+        "os_type": "ios",
+        "device_info": {
+            "udid": "aee531018e668ff1aadee0889f5ebe21a22924e8",
+            "model": "iPhone XR",
+            "version": "12.2.5",
+            "name": "sherlock's iPhone"
+        }
+    }
+},
+{
+    "debug_mode": "debug",
+    "enable_app_log": true,
+    "project_path": "/Users/sherlock/github/miniprogram-demo",
+    "dev_tool_path": "/Applications/wechatwebdevtools.app/Contents/MacOS/cli",
+    "platform": "ide",
+    "app": "wx",
+    "close_ide": false,
+    "test_port": 9422,
+    "assert_capture": true,
+    "use_push": true,
+    "auto_relaunch": true,
+    "remote_connect_timeout": 10,
+    "account_info": {
+        "wx_nick_name": "恒瑜_Sherlock",
+        "open_id": "o6zAJsx7zt4rmzzHnnWiTz7Kx10A"
+    },
+    "device_desire": {
+        "wda_project_path": "/Users/sherlock/.npm-global/lib/node_modules/appium/node_modules/appium-webdriveragent",
+        "os_type": "ios",
+        "device_info": {
+            "udid": "aee531018e668ff1aadee0889f5ebe21a22924e8",
+            "model": "iPhone XR",
+            "version": "12.2.5",
+            "name": "sherlock's iPhone"
+        }
+    }
+},
+{
+    "debug_mode": "debug",
+    "enable_app_log": true,
+    "project_path": "/Users/sherlock/github/miniprogram-demo",
+    "dev_tool_path": "/Applications/wechatwebdevtools.app/Contents/MacOS/cli",
+    "platform": "ide",
+    "app": "wx",
+    "close_ide": false,
+    "test_port": 9423,
+    "assert_capture": true,
+    "use_push": true,
+    "auto_relaunch": true,
+    "remote_connect_timeout": 10,
+    "account_info": {
+        "wx_nick_name": "lockertest2",
+        "open_id": "o6zAJs1BQXrvfplP2nfO75Au3rnw"
+    },
+    "device_desire": {
+        "wda_project_path": "/Users/sherlock/.npm-global/lib/node_modules/appium/node_modules/appium-webdriveragent",
+        "os_type": "ios",
+        "device_info": {
+            "udid": "aee531018e668ff1aadee0889f5ebe21a22924e8",
+            "model": "iPhone XR",
+            "version": "12.2.5",
+            "name": "sherlock's iPhone"
+        }
+    }
+},
+{
+    "debug_mode": "debug",
+    "enable_app_log": true,
+    "project_path": "/Users/sherlock/github/miniprogram-demo",
+    "dev_tool_path": "/Applications/wechatwebdevtools.app/Contents/MacOS/cli",
+    "platform": "ide",
+    "app": "wx",
+    "close_ide": false,
+    "test_port": 9424,
+    "assert_capture": true,
+    "use_push": true,
+    "auto_relaunch": true,
+    "remote_connect_timeout": 10,
+    "account_info": {
+        "wx_nick_name": "lockertest3",
+        "open_id": "o6zAJs8oBt_3qePSy4u5x-vNJPQE"
+    },
+    "device_desire": {
+        "wda_project_path": "/Users/sherlock/.npm-global/lib/node_modules/appium/node_modules/appium-webdriveragent",
+        "os_type": "ios",
+        "device_info": {
+            "udid": "aee531018e668ff1aadee0889f5ebe21a22924e8",
+            "model": "iPhone XR",
+            "version": "12.2.5",
+            "name": "sherlock's iPhone"
+        }
+    }
+}]

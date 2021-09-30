@@ -1,0 +1,6 @@
+ddt
+pyyaml
+websocket_client
+requests
+facebook-wda
+future

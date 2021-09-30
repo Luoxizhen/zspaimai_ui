@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a23e3334-f72a-43f3-a405-a3824ada1ee1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/miniprogram-demo-test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apptest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/componenttest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/errortest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/firsttest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interfacetest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/m_config.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/PKG-INFO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/framework/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/framework/assertbase.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/framework/case_dump.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/framework/case_inspect.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/framework/dist/css/app.71e0cc67.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/framework/dist/css/chunk-vendors.728eb7d9.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/framework/dist/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/framework/dist/fonts/element-icons.535877f5.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/framework/dist/fonts/element-icons.732389de.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/framework/dist/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/framework/dist/js/app.e0f3c7c8.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/framework/dist/js/app.e0f3c7c8.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/framework/dist/js/chunk-vendors.b90b8c2a.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/framework/dist/js/chunk-vendors.b90b8c2a.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/framework/errorReport.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/framework/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/framework/libs/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/framework/libs/tgit/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/framework/libs/tgit/auth.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/framework/libs/tgit/client.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/framework/libs/unittest/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/framework/libs/unittest/case.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/framework/libs/unittest/suite.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/framework/loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/framework/log_color.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/framework/miniconfig.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/framework/miniddt.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/framework/minilimit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/framework/miniresult.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/framework/miniretry.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/framework/minisuite.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/framework/minitest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/framework/report.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/framework/session.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/framework/tools/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/framework/tools/report_issue.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/miniprogram/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/miniprogram/base_driver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/miniprogram/base_driver/app.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/miniprogram/base_driver/connection.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/miniprogram/base_driver/element.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/miniprogram/base_driver/minium.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/miniprogram/base_driver/minium_log.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/miniprogram/base_driver/minium_object.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/miniprogram/base_driver/page.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/miniprogram/base_driver/prefixer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/miniprogram/base_driver/version.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/miniprogram/base_driver/waiter.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/miniprogram/qq_minium.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/miniprogram/wx_minium.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/apkapi.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/atproxy.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/bin/AtServer.apk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/bin/AtServerTest.apk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/bin/AtStub.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/command_line.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/core/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/core/accesshelper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/core/adbwrap.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/core/basedriver.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/core/config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/core/element.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/core/exceptions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/core/javadriver.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/core/resguard.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/core/stf/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/core/stf/mincap.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/core/stf/minitouch.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/core/uidevice.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/core/uixml.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/eventmonitor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/hook.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/jlogcat.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/keycode.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/perfcollector.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/server/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/server/app.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/server/handlers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/server/wshandler.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/tests/AtEvent.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/tests/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/tests/atdevicetest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/tests/attestbase.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/tests/elementtest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/tests/front.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/tests/images/1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/tests/images/2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/tests/images/image.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/tests/javadrivertest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/tests/minicap_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/tests/minitouch_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/tests/vs_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/util.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/utils/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/utils/apkinfo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/utils/axmlparser.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/utils/axmlparser3.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/utils/commonhelper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/utils/decorator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/utils/magic.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/utils/nbsp.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/utils/threadhelper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/vision/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/vision/template_match.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/webdriver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/webdriver/driver.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/webdriver/error.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/webdriver/jsapi.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/webdriver/stub.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/webdriver/tabdescription.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/webdriver/tabwebsocket.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/webdriver/wspools.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/at/wsimp.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/wx_wda/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/wx_wda/wdaUI.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/lib/wx_wda/webDriverTool.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/qq_native/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/qq_native/qandroidnative.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/qq_native/qbasenative.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/qq_native/qiosnative.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/wx_native/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/wx_native/androidnative.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/wx_native/basenative.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/wx_native/idenative.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/build/lib/minium/native/wx_native/iosnative.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/dist/minium-1.0.8-py3.9.egg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium.egg-info/PKG-INFO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium.egg-info/SOURCES.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium.egg-info/dependency_links.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium.egg-info/entry_points.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium.egg-info/requires.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium.egg-info/top_level.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/framework/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/framework/assertbase.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/framework/case_dump.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/framework/case_inspect.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/framework/dist/css/app.71e0cc67.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/framework/dist/css/chunk-vendors.728eb7d9.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/framework/dist/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/framework/dist/fonts/element-icons.535877f5.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/framework/dist/fonts/element-icons.732389de.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/framework/dist/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/framework/dist/js/app.e0f3c7c8.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/framework/dist/js/app.e0f3c7c8.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/framework/dist/js/chunk-vendors.b90b8c2a.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/framework/dist/js/chunk-vendors.b90b8c2a.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/framework/errorReport.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/framework/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/framework/libs/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/framework/libs/tgit/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/framework/libs/tgit/auth.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/framework/libs/tgit/client.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/framework/libs/unittest/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/framework/libs/unittest/case.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/framework/libs/unittest/suite.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/framework/loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/framework/log_color.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/framework/miniconfig.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/framework/miniddt.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/framework/minilimit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/framework/miniresult.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/framework/miniretry.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/framework/minisuite.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/framework/minitest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/framework/report.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/framework/session.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/framework/tools/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/framework/tools/report_issue.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/miniprogram/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/miniprogram/base_driver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/miniprogram/base_driver/app.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/miniprogram/base_driver/connection.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/miniprogram/base_driver/element.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/miniprogram/base_driver/minium.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/miniprogram/base_driver/minium_log.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/miniprogram/base_driver/minium_object.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/miniprogram/base_driver/page.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/miniprogram/base_driver/prefixer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/miniprogram/base_driver/version.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/miniprogram/base_driver/waiter.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/miniprogram/qq_minium.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/miniprogram/wx_minium.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/apkapi.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/atproxy.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/bin/AtServer.apk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/bin/AtServerTest.apk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/bin/AtStub.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/command_line.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/core/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/core/accesshelper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/core/adbwrap.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/core/basedriver.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/core/config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/core/element.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/core/exceptions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/core/javadriver.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/core/resguard.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/core/stf/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/core/stf/mincap.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/core/stf/minitouch.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/core/uidevice.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/core/uixml.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/eventmonitor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/hook.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/jlogcat.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/keycode.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/perfcollector.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/server/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/server/app.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/server/handlers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/server/wshandler.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/tests/AtEvent.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/tests/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/tests/atdevicetest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/tests/attestbase.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/tests/elementtest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/tests/front.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/tests/images/1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/tests/images/2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/tests/images/image.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/tests/javadrivertest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/tests/minicap_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/tests/minitouch_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/tests/vs_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/util.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/utils/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/utils/apkinfo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/utils/axmlparser.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/utils/axmlparser3.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/utils/commonhelper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/utils/decorator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/utils/magic.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/utils/nbsp.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/utils/threadhelper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/vision/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/vision/template_match.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/webdriver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/webdriver/driver.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/webdriver/error.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/webdriver/jsapi.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/webdriver/stub.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/webdriver/tabdescription.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/webdriver/tabwebsocket.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/webdriver/wspools.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/at/wsimp.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/wx_wda/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/wx_wda/wdaUI.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/lib/wx_wda/webDriverTool.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/qq_native/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/qq_native/qandroidnative.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/qq_native/qbasenative.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/qq_native/qiosnative.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/wx_native/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/wx_native/androidnative.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/wx_native/basenative.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/wx_native/idenative.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/minium/native/wx_native/iosnative.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/setup.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/minium-1.0.8/setup.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mocktest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nativetest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/outputs/test_custom_method_binding/20190917161205/test_custom_method_binding.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/outputs/test_custom_method_binding/20190917161205/test_custom_method_binding.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/outputs/test_custom_method_binding/20190917161205/weapp.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/outputs/test_custom_method_binding/20190917162214/test_custom_method_binding.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/outputs/test_custom_method_binding/20190917162214/test_custom_method_binding.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/outputs/test_custom_method_binding/20190917162214/weapp.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/outputs/test_custom_method_binding/20190917162306/test_custom_method_binding.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/outputs/test_custom_method_binding/20190917162306/test_custom_method_binding.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/outputs/test_custom_method_binding/20190917162306/weapp.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/suite.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../zspaimai/config.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../zspaimai/test/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../zspaimai/test/first_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../zspaimai_ui/base/browser_driver.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../zspaimai_ui/data/data.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../zspaimai_ui/main2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../zspaimai_ui/page/applyp.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../zspaimai_ui/page/myApplyP.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../zspaimai_ui/test/base.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../zspaimai_ui/test/test_apply.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../zspaimai_ui/test/test_apply_001.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../zspaimai_ui/test/test_myApply.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../zspaimai/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../zspaimai/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../zspaimai/venv/bin/mininative" beforeDir="false" afterPath="$PROJECT_DIR$/../zspaimai/venv/bin/mininative" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../zspaimai/venv/bin/minireport" beforeDir="false" afterPath="$PROJECT_DIR$/../zspaimai/venv/bin/minireport" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../zspaimai/venv/bin/miniruntest" beforeDir="false" afterPath="$PROJECT_DIR$/../zspaimai/venv/bin/miniruntest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../zspaimai/venv/bin/minitest" beforeDir="false" afterPath="$PROJECT_DIR$/../zspaimai/venv/bin/minitest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../zspaimai/venv/lib/python3.9/site-packages/easy-install.pth" beforeDir="false" afterPath="$PROJECT_DIR$/../zspaimai/venv/lib/python3.9/site-packages/easy-install.pth" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../zspaimai/venv/lib/python3.9/site-packages/minium-0.0.2-py3.9.egg/minium/wechatdriver/minium.py" beforeDir="false" afterPath="$PROJECT_DIR$/../zspaimai/venv/lib/python3.9/site-packages/minium-0.0.2-py3.9.egg/minium/wechatdriver/minium.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../zspaimai_ui/base/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/../zspaimai_ui/base/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../zspaimai_ui/page/firstp.py" beforeDir="false" afterPath="$PROJECT_DIR$/../zspaimai_ui/page/firstp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../zspaimai_ui/page/zslogin.py" beforeDir="false" afterPath="$PROJECT_DIR$/../zspaimai_ui/page/zslogin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../zspaimai_ui/reports/中晟拍卖微信登陆 测试报告.html" beforeDir="false" afterPath="$PROJECT_DIR$/../zspaimai_ui/reports/中晟拍卖微信登陆 测试报告.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../zspaimai_ui/test/init.py" beforeDir="false" afterPath="$PROJECT_DIR$/../zspaimai_ui/test/init.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1vQcrklVlKftLmt5jBnkR8nEaJr" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a23e3334-f72a-43f3-a405-a3824ada1ee1" name="Default Changelist" comment="" />
+      <created>1626497954813</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1626497954813</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>

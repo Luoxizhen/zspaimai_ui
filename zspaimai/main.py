@@ -1,16 +1,23 @@
-# This is a sample Python script.
+import minium
+mini = minium.Minium({
+    "project_path": "/Users/yuanyuanhe/WeChatProjects/miniprogram-1", # 小程序项目目录地址
+    "dev_tool_path": "/Applications/wechatwebdevtools.app/Contents/MacOS/cli"
+    #"dev_tool_path": "path/to/cli"      # 开发者工具cli地址，如果没有修改过默认安装路径可不填此项
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+})
+print(mini.get_system_info())
+#
+# uri="ws://localhost"
+# dev_tool_path=""
+# project_path=None
+# test_port=None
+# show_log=False
+# TEST_PORT=9420
+# if not test_port:
+#     test_port = TEST_PORT
+# test_port = str(test_port)
+#
+#
+# # self.uri=uri.join(":").join(test_port
+# uri = uri + ':' + test_port
+# print(uri)

@@ -1,0 +1,28 @@
+{
+    "debug_mode": "debug",
+    "enable_app_log": true,
+    "dev_tool_path": "/Applications/wechatwebdevtools.app/Contents/MacOS/cli",
+    "platform": "ide",
+    "app": "wx",
+    "close_ide": false,
+    "full_reset": false,
+    "test_port": 9420,
+    "assert_capture": true,
+    "use_push": true,
+    "auto_relaunch": true,
+    "remote_connect_timeout": 10,
+    "account_info": {
+        "wx_nick_name": "locker",
+        "open_id": "o6zAJs_pwryCxcZkDdGxxxxxxxxDjiw"
+    },
+    "device_desire": {
+        "wda_project_path": "/Users/sherlock/.npm-global/lib/node_modules/appium/node_modules/appium-webdriveragent",
+        "os_type": "ios",
+        "device_info": {
+            "udid": "aee531018e668ff1aadee0889f5ebexxxxxx924e8",
+            "model": "iPhone XR",
+            "version": "12.2.5",
+            "name": "sherlock's iPhone"
+        }
+    }
+}

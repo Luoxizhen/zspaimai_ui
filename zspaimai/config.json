@@ -1,0 +1,14 @@
+{
+
+
+    "project_path": "/Users/yuanyuanhe/WeChatProjects/miniprogram-demo-master",
+    "dev_tool_path": "/Applications/wechatwebdevtools.app/Contents/MacOS/cli",
+    "platform": "ide",
+    "app": "wx",
+    "close_ide": false,
+    "test_port": 9424,
+    "assert_capture": true,
+    "use_push": true,
+    "auto_relaunch": true,
+    "remote_connect_timeout": 10
+}

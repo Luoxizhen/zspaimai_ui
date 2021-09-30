@@ -7159,62 +7159,44 @@ body.skin-3 {
 
 
     var resultData = {
-    "testPass": 0,
+    "testPass": 4,
     "testResult": [
         {
             "className": "TestLogin_005",
-            "methodName": "test_login_error_phone_0__",
+            "methodName": "test_login_error_phone_0_15622145010",
             "description": null,
-            "spendTime": "11.0 s",
-            "status": "错误",
+            "spendTime": "10.1 s",
+            "status": "成功",
             "log": [
-                "",
-                "Traceback (most recent call last):\n",
-                "  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/case.py\", line 59, in testPartExecutor\n    yield\n",
-                "  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/case.py\", line 593, in run\n    self._callTestMethod(testMethod)\n",
-                "  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/case.py\", line 550, in _callTestMethod\n    method()\n",
-                "  File \"/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/parameterized/parameterized.py\", line 533, in standalone_func\n    return func(*(a + p.args), **p.kwargs)\n",
-                "TypeError: test_login_error_phone() takes 4 positional arguments but 5 were given\n"
+                ""
             ]
         },
         {
             "className": "TestLogin_005",
-            "methodName": "test_login_error_phone_1__",
+            "methodName": "test_login_error_phone_1_15622145010",
             "description": null,
-            "spendTime": "5.28 s",
-            "status": "错误",
+            "spendTime": "6.6 s",
+            "status": "成功",
             "log": [
-                "",
-                "Traceback (most recent call last):\n",
-                "  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/case.py\", line 59, in testPartExecutor\n    yield\n",
-                "  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/case.py\", line 593, in run\n    self._callTestMethod(testMethod)\n",
-                "  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/case.py\", line 550, in _callTestMethod\n    method()\n",
-                "  File \"/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/parameterized/parameterized.py\", line 533, in standalone_func\n    return func(*(a + p.args), **p.kwargs)\n",
-                "TypeError: test_login_error_phone() takes 4 positional arguments but 5 were given\n"
+                ""
             ]
         },
         {
             "className": "TestLogin_005",
-            "methodName": "test_login_error_phone_2__",
+            "methodName": "test_login_error_phone_2_15622145010",
             "description": null,
-            "spendTime": "5.42 s",
-            "status": "错误",
+            "spendTime": "6.75 s",
+            "status": "成功",
             "log": [
-                "",
-                "Traceback (most recent call last):\n",
-                "  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/case.py\", line 59, in testPartExecutor\n    yield\n",
-                "  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/case.py\", line 593, in run\n    self._callTestMethod(testMethod)\n",
-                "  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/case.py\", line 550, in _callTestMethod\n    method()\n",
-                "  File \"/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/parameterized/parameterized.py\", line 533, in standalone_func\n    return func(*(a + p.args), **p.kwargs)\n",
-                "TypeError: test_login_error_phone() takes 4 positional arguments but 5 were given\n"
+                ""
             ]
         },
         {
             "className": "TestLogin_005",
-            "methodName": "test_login_error_phone_3__",
+            "methodName": "test_login_error_phone_3_",
             "description": null,
-            "spendTime": "5.35 s",
-            "status": "错误",
+            "spendTime": "6.75 s",
+            "status": "失败",
             "log": [
                 "",
                 "Traceback (most recent call last):\n",
@@ -7222,31 +7204,29 @@ body.skin-3 {
                 "  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/case.py\", line 593, in run\n    self._callTestMethod(testMethod)\n",
                 "  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/case.py\", line 550, in _callTestMethod\n    method()\n",
                 "  File \"/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/parameterized/parameterized.py\", line 533, in standalone_func\n    return func(*(a + p.args), **p.kwargs)\n",
-                "TypeError: test_login_error_phone() takes 4 positional arguments but 5 were given\n"
+                "  File \"/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_login.py\", line 272, in test_login_error_phone\n    self.assertEqual(msg, self.get_tipMsg())\n",
+                "  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/case.py\", line 831, in assertEqual\n    assertion_func(first, second, msg=msg)\n",
+                "  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/case.py\", line 1211, in assertMultiLineEqual\n    self.fail(self._formatMessage(msg, standardMsg))\n",
+                "  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/case.py\", line 670, in fail\n    raise self.failureException(msg)\n",
+                "AssertionError: '请输入有效的手机号' != '请输入您的手机号'\n- 请输入有效的手机号\n?    ^^\n+ 请输入您的手机号\n?    ^\n\n"
             ]
         },
         {
             "className": "TestLogin_005",
-            "methodName": "test_login_error_phone_4__",
+            "methodName": "test_login_error_phone_4_",
             "description": null,
-            "spendTime": "5.42 s",
-            "status": "错误",
+            "spendTime": "6.63 s",
+            "status": "成功",
             "log": [
-                "",
-                "Traceback (most recent call last):\n",
-                "  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/case.py\", line 59, in testPartExecutor\n    yield\n",
-                "  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/case.py\", line 593, in run\n    self._callTestMethod(testMethod)\n",
-                "  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/case.py\", line 550, in _callTestMethod\n    method()\n",
-                "  File \"/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/venv/lib/python3.9/site-packages/parameterized/parameterized.py\", line 533, in standalone_func\n    return func(*(a + p.args), **p.kwargs)\n",
-                "TypeError: test_login_error_phone() takes 4 positional arguments but 5 were given\n"
+                ""
             ]
         }
     ],
     "testName": "中晟拍卖微信登陆测试报告",
     "testAll": 5,
-    "testFail": 5,
-    "beginTime": "2021-06-26 11:06:11",
-    "totalTime": "46s",
+    "testFail": 1,
+    "beginTime": "2021-06-29 10:19:29",
+    "totalTime": "60s",
     "testSkip": 0,
     "testError": 0
 };

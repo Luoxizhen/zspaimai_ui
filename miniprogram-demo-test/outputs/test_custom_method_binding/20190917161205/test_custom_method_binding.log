@@ -1,0 +1,37 @@
+INFO  2019-09-17 16:12:05,829 assertbase.py _setup_log      107 {'platform': 'ide', 'debug_mode': 'debug', 'close_ide': False, 'no_assert_capture': False, 'auto_relaunch': False, 'device_desire': {'wda_project_path': '/Users/sherlock/github/appium/WebDriverAgent', 'os_type': 'ios', 'device_info': {'udid': 'aee531018e668ff1aadee0889f5ebe21a22924e8', 'model': 'iPhone XR', 'version': '12.2.5', 'name': "sherlock's iPhone"}}, 'report_usage': True, 'remote_connect_timeout': 180, 'use_push': True, 'is_default_config': False, 'enable_app_log': True, 'test_port': 9420, 'outputs': '/Users/sherlock/WeChatProjects/miniprogram-demo-test/outputs'}
+DEBUG 2019-09-17 16:12:05,830 connection.py send            73  [35m[35m[35mSEND > {"id":"c3c673a9-c6d8-47bf-9c3d-69fb7c23e0eb","method":"App.addBinding","params":{"name":"feedback"}}[0m[0m[0m
+DEBUG 2019-09-17 16:12:05,831 connection.py _on_message     109 [35m[35m[35mRECV < {"id":"c3c673a9-c6d8-47bf-9c3d-69fb7c23e0eb","result":{}}[0m[0m[0m
+INFO  2019-09-17 16:12:05,831 app.py     navigate_to     108 [32m[32m[32mNavigateTo: /page/API/pages/request/request[0m[0m[0m
+DEBUG 2019-09-17 16:12:05,832 connection.py send            73  [35m[35m[35mSEND > {"id":"29c067f2-6eac-451c-a620-8607774343ea","method":"App.callWxMethod","params":{"method":"navigateTo","args":[{"url":"/page/API/pages/request/request"}]}}[0m[0m[0m
+DEBUG 2019-09-17 16:12:05,901 connection.py _on_message     109 [35m[35m[35mRECV < {"method":"App.logAdded","params":{"type":"warn","args":[" 根据 sitemap 的规则[0]，当前页面 [page/API/pages/request/request] 将被索引"]}}[0m[0m[0m
+DEBUG 2019-09-17 16:12:05,902 connection.py _on_message     109 [35m[35m[35mRECV < {"method":"App.logAdded","params":{"type":"warn","args":[" 根据 sitemap 的规则[0]，当前页面 [page/API/pages/request/request] 将被索引"]}}[0m[0m[0m
+DEBUG 2019-09-17 16:12:05,902 connection.py _on_message     109 [35m[35m[35mRECV < {"method":"App.logAdded","params":{"type":"warn","args":[" 根据 sitemap 的规则[0]，当前页面 [page/API/pages/request/request] 将被索引"]}}[0m[0m[0m
+DEBUG 2019-09-17 16:12:05,903 connection.py _on_message     109 [35m[35m[35mRECV < {"method":"App.logAdded","params":{"type":"warn","args":[" 根据 sitemap 的规则[0]，当前页面 [page/API/pages/request/request] 将被索引"]}}[0m[0m[0m
+DEBUG 2019-09-17 16:12:05,903 connection.py _on_message     109 [35m[35m[35mRECV < {"id":"29c067f2-6eac-451c-a620-8607774343ea","result":{"result":{"errMsg":"navigateTo:ok","eventChannel":{"listener":{}}}}}[0m[0m[0m
+DEBUG 2019-09-17 16:12:10,908 connection.py send            73  [35m[35m[35mSEND > {"id":"cfb68cd5-f945-455f-a4d5-89629018de95","method":"App.getCurrentPage","params":{}}[0m[0m[0m
+DEBUG 2019-09-17 16:12:10,910 connection.py _on_message     109 [35m[35m[35mRECV < {"id":"cfb68cd5-f945-455f-a4d5-89629018de95","result":{"pageId":79,"path":"page/API/pages/request/request","query":{}}}[0m[0m[0m
+DEBUG 2019-09-17 16:12:10,910 connection.py send_async      82  [35m[35m[35mSEND > {"id": "5bac0265-66ce-4037-a2ff-0ed5129607d7", "method": "App.callFunction", "params": {"functionDeclaration": "function (){\n        self = this.getCurrentPages().slice(-1)[0]\n        oldMakeRequest = self.makeRequest\n        self.makeRequest = function(event){\n            oldMakeRequest(event)\n            feedback(event)\n        }\n        }", "args": []}}[0m[0m[0m
+DEBUG 2019-09-17 16:12:10,911 connection.py send            73  [35m[35m[35mSEND > {"id":"fc4d6a1d-538e-40fb-b0d2-d551b696811d","method":"App.getCurrentPage","params":{}}[0m[0m[0m
+DEBUG 2019-09-17 16:12:10,912 connection.py _on_message     109 [35m[35m[35mRECV < {"id":"5bac0265-66ce-4037-a2ff-0ed5129607d7","result":{}}[0m[0m[0m
+WARNI 2019-09-17 16:12:10,912 connection.py _on_message     120 [33m[33m[33mreceived async msg: 5bac0265-66ce-4037-a2ff-0ed5129607d7[0m[0m[0m
+DEBUG 2019-09-17 16:12:10,913 connection.py _on_message     109 [35m[35m[35mRECV < {"id":"fc4d6a1d-538e-40fb-b0d2-d551b696811d","result":{"pageId":79,"path":"page/API/pages/request/request","query":{}}}[0m[0m[0m
+INFO  2019-09-17 16:12:10,913 page.py    _get_elements   108 [32m[32m[32mtry to find elements: button[0m[0m[0m
+DEBUG 2019-09-17 16:12:10,913 connection.py send            73  [35m[35m[35mSEND > {"id":"f68025dc-5338-407f-8214-cf875def7401","method":"Page.getElements","params":{"selector":"button","pageId":79}}[0m[0m[0m
+DEBUG 2019-09-17 16:12:10,918 connection.py _on_message     109 [35m[35m[35mRECV < {"id":"f68025dc-5338-407f-8214-cf875def7401","result":{"elements":[{"elementId":"28b84cca-be20-48df-a780-1363aeafdc88","tagName":"button"}]}}[0m[0m[0m
+INFO  2019-09-17 16:12:10,918 page.py    _get_elements   110 [32m[32m[32mfind elements success: [<minium.wechatdriver.element.BaseElement object at 0x1183ea518>][0m[0m[0m
+WARNI 2019-09-17 16:12:11,923 minitest.py capture         101 [33m[33m[33m/Users/sherlock/WeChatProjects/miniprogram-demo-test/outputs/test_custom_method_binding/20190917161205/images/161211.922.jpg not exists[0m[0m[0m
+DEBUG 2019-09-17 16:12:11,923 connection.py send            73  [35m[35m[35mSEND > {"id":"71bc4b26-34bd-4af4-85ac-2cb19d61e033","method":"App.getCurrentPage","params":{}}[0m[0m[0m
+DEBUG 2019-09-17 16:12:11,924 connection.py _on_message     109 [35m[35m[35mRECV < {"id":"71bc4b26-34bd-4af4-85ac-2cb19d61e033","result":{"pageId":79,"path":"page/API/pages/request/request","query":{}}}[0m[0m[0m
+DEBUG 2019-09-17 16:12:11,924 connection.py send            73  [35m[35m[35mSEND > {"id":"c543053a-7169-4016-9135-085be664e567","method":"Page.getData","params":{"pageId":79}}[0m[0m[0m
+DEBUG 2019-09-17 16:12:11,925 connection.py _on_message     109 [35m[35m[35mRECV < {"id":"c543053a-7169-4016-9135-085be664e567","result":{"data":{}}}[0m[0m[0m
+ERROR 2019-09-17 16:12:11,937 assertbase.py _teardown_collect 117 [31m[31m[31massert failed[0m[0m[0m
+Traceback (most recent call last):
+  File "/usr/local/Cellar/python/3.7.3/Frameworks/Python.framework/Versions/3.7/lib/python3.7/unittest/case.py", line 59, in testPartExecutor
+    yield
+  File "/usr/local/Cellar/python/3.7.3/Frameworks/Python.framework/Versions/3.7/lib/python3.7/unittest/case.py", line 615, in run
+    testMethod()
+  File "/Users/sherlock/WeChatProjects/miniprogram-demo-test/interfacetest.py", line 93, in test_custom_method_binding
+    self.page.get_element("button").trigger("bindtap")
+  File "/usr/local/lib/python3.7/site-packages/minium/wechatdriver/minium_log.py", line 58, in wrapper
+    result=func(*args,**kwargs)
+TypeError: trigger() missing 1 required positional argument: 'detail'
