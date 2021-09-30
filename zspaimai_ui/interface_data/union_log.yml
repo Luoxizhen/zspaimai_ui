@@ -1,176 +1,1186 @@
-"\u65B0\u589E\u4E13\u573Aid ": '25'
-'new_union_id': '26'
-userno: '193076'
-user_info:
-  data:
-    current_page: 1
-    data:
-    - bank_username: ''
-      create_time: '2021-08-21 16:36:52'
-      id: 276
-      inv: ad09b790693fde66f391e050a6ca995d
-      is_mobile: 1
-      is_real: 0
-      is_robot: 0
-      phone: '18023038634'
-      status: 0
-      userno: '193076'
-      wechat_name: "\u5927\u7F57\U0001F483\U0001F483\U0001F467"
-    last_page: 1
-    per_page: 10
-    total: 1
-  userno: '193076'
-
-user_info:
-  data:
-    current_page: 1
-    data:
-    - bank_username: ''
-      create_time: '2021-08-21 16:36:52'
-      id: 276
-      inv: ad09b790693fde66f391e050a6ca995d
-      is_mobile: 1
-      is_real: 0
-      is_robot: 0
-      phone: '18023038634'
-      status: 0
-      userno: '193076'
-      wechat_name: "\u5927\u7F57\U0001F483\U0001F483\U0001F467"
-    last_page: 1
-    per_page: 10
-    total: 1
-  userno: '193076'
+union_info:
+  new_union_id: '42'
+union_info:
+  new_union_id: '43'
 data:
-  current_page: 1
-  data:
-  - commission: 12.8
-    order_money: '40142.00'
-    out_commi: '1.50'
-    quota: '6000.00'
-    role: 10
-    role_rate: 0
-    user_id: 276
-    userno: 193076
-  last_page: 1
-  newbie: '8'
-  order_num: '159'
-  per_page: 10
-  total: 1
-msg: "\u64CD\u4F5C\u6210\u529F"
-shop_switch: '0'
-status: 200
+  appid: wx50c05e976769b587
+  copywriter: "\u4E2D\u665F\u5728\u7EBF--\u6167\u773C\u8BC6\u5B9D\uFF0C\u60A6\u4EAB\
+    \u6536\u85CF\uFF01"
+  create_time: '2021-09-30 17:24:37'
+  delete_time: 0
+  enable: 1
+  end_time: 1633353877
+  h5_url: http://home.online.zspaimai.cn/
+  id: 43
+  images: '["picture/2HKbk2JxdSAZnTQ2fmPKD8zAKjWxSi.JPG"]'
+  mini_url: pages/switchPages/index
+  name: "\u60A6\u4EAB\u6536\u85CF7"
+  poster: '["thumbnail/yBA5rkeEpijN7MaRQ8ZK4iWxcabYfC.JPG"]'
+  rebates_quota: 2000
+  rebates_rate: 10
+  start_time: 1632993877
+  topic:
+  - 84
+  update_time: '2021-09-30 17:24:37'
+total: 27
+"\u6700\u65B0\u63A8\u5E7F\u8BA1\u5212": 1632993878.020833
 data:
-  current_page: 1
-  data:
-  - commission: 12.8
-    order_money: '40142.00'
-    out_commi: '1.50'
-    quota: '6000.00'
-    role: 10
-    role_rate: 0
-    user_id: 276
-    userno: 193076
-  last_page: 1
-  newbie: '8'
-  order_num: '159'
-  per_page: 10
-  total: 1
-msg: "\u64CD\u4F5C\u6210\u529F"
-shop_switch: '0'
-status: 200
-data:
-  current_page: 1
-  data:
-  - commission: 12.8
-    order_money: '40142.00'
-    out_commi: '1.50'
-    quota: '6000.00'
-    role: 20
-    role_rate: 4
-    user_id: 276
-    userno: 193076
-  last_page: 1
-  newbie: '8'
-  order_num: '159'
-  per_page: 10
-  total: 1
-msg: "\u64CD\u4F5C\u6210\u529F"
-shop_switch: '0'
-status: 200
-data:
-  current_page: 1
-  data:
-  - commission: 12.8
-    order_money: '40142.00'
-    out_commi: '1.50'
-    quota: '6000.00'
-    role: 20
-    role_rate: 4
-    user_id: 276
-    userno: 193076
-  last_page: 1
-  newbie: '8'
-  order_num: '159'
-  per_page: 10
-  total: 1
-msg: "\u64CD\u4F5C\u6210\u529F"
-shop_switch: '0'
-status: 200
-data:
-  current_page: 1
-  data:
-  - commission: 12.8
-    order_money: '40142.00'
-    out_commi: '1.50'
-    quota: '6000.00'
-    role: 10
-    role_rate: 0
-    user_id: 276
-    userno: 193076
-  last_page: 1
-  newbie: '8'
-  order_num: '159'
-  per_page: 10
-  total: 1
-msg: "\u64CD\u4F5C\u6210\u529F"
-shop_switch: '0'
-status: 200
-data:
-  current_page: 1
-  data:
-  - commission: 12.8
-    order_money: '40142.00'
-    out_commi: '1.50'
-    quota: '6000.00'
-    role: 10
-    role_rate: 0
-    user_id: 276
-    userno: 193076
-  last_page: 1
-  newbie: '8'
-  order_num: '159'
-  per_page: 10
-  total: 1
-msg: "\u64CD\u4F5C\u6210\u529F"
-shop_switch: '0'
-status: 200
-data:
-  current_page: 1
-  data:
-  - commission: 12.8
-    order_money: '40142.00'
-    out_commi: '1.50'
-    quota: '6000.00'
-    role: 10
-    role_rate: 0
-    user_id: 276
-    userno: 193076
-  last_page: 1
-  newbie: '8'
-  order_num: '159'
-  per_page: 10
-  total: 1
-msg: "\u64CD\u4F5C\u6210\u529F"
-shop_switch: '0'
-status: 200
-v
+  appid: wx50c05e976769b587
+  copywriter: "\u4E2D\u665F\u5728\u7EBF--\u6167\u773C\u8BC6\u5B9D\uFF0C\u60A6\u4EAB\
+    \u6536\u85CF\uFF01"
+  create_time: '2021-09-30 16:25:23'
+  delete_time: 0
+  enable: 1
+  end_time: 1633350323
+  h5_url: http://home.online.zspaimai.cn/
+  id: 38
+  images: '["picture/2HKbk2JxdSAZnTQ2fmPKD8zAKjWxSi.JPG"]'
+  mini_url: pages/switchPages/index
+  name: "\u60A6\u4EAB\u6536\u85CF6"
+  poster: '["thumbnail/yBA5rkeEpijN7MaRQ8ZK4iWxcabYfC.JPG"]'
+  rebates_quota: 2000
+  rebates_rate: 10
+  start_time: 1632990323
+  topic:
+  - 90
+  update_time: '2021-09-30 16:25:23'
+total: 26
+"\u6700\u65B0\u63A8\u5E7F\u8BA1\u5212": 1632993878.5165
+union_info:
+  new_union_id: '44'
+!!python/object:requests.models.Response
+_content: !!binary |
+  eyJzdGF0dXMiOjIwMCwibXNnIjoi5pON5L2c5oiQ5YqfIiwiZGF0YSI6eyJ0b3RhbCI6MTMsInBl
+  cl9wYWdlIjoxMCwiY3VycmVudF9wYWdlIjoxLCJsYXN0X3BhZ2UiOjIsImRhdGEiOlt7ImlkIjoy
+  NSwiaDVfdXJsIjoiaHR0cDpcL1wvaG9tZS5vbmxpbmUuenNwYWltYWkuY25cLz9pbnY9ZDNkSWVU
+  Y3pkaXRSYXpGQ2NFRnBXRVozTkVOb01XOXpSVVowZEcxWWFFRk1heko0VEdwU00wNHdORDA9Iiwi
+  bmFtZSI6IuaCpuS6q+aUtuiXjzQiLCJhcHBpZCI6Ind4NTBjMDVlOTc2NzY5YjU4NyIsIm1pbmlf
+  dXJsIjoicGFnZXNcL3N3aXRjaFBhZ2VzXC9pbmRleD9pbnY9ZDNkSWVUY3pkaXRSYXpGQ2NFRnBX
+  RVozTkVOb01XOXpSVVowZEcxWWFFRk1heko0VEdwU00wNHdORDA9IiwiY29weXdyaXRlciI6IuS4
+  reaZn+WcqOe6vy0t5oWn55y86K+G5a6d77yM5oKm5Lqr5pS26JeP77yBIiwiaW1hZ2VzIjoiW1wi
+  cGljdHVyZVwvWHpEcEc1WXBFQmhuaXBrRGpFdEJjWEFDbXBZcE1LLnBuZ1wiLFwicGljdHVyZVwv
+  YUp0REpTY3lLTWV6ZVB5enNrd0dueXRaZHhCMm0zLnBuZ1wiLFwicGljdHVyZVwvM2V6M3NUNlBX
+  dFozQ0pkQzRhdDRpek5NbkZzN3c4LnBuZ1wiLFwicGljdHVyZVwvTkUyMlBaclA3RzdrYW5Rd2ll
+  aVBQVHdmUFc3bTNjLmpwZ1wiXSIsInBvc3RlciI6IltcInRodW1ibmFpbFwveUJBNXJrZUVwaWpO
+  N01hUlE4Wks0aVd4Y2FiWWZDLkpQR1wiLFwidGh1bWJuYWlsXC9UNzdzcHBSaTNrZFlwUEFNdFRC
+  VzdFN3JTRnlrSnoucG5nXCIsXCJ0aHVtYm5haWxcL2l3QUdLaFM0UU1rR0dwbXhGUU5QNmpLQ3BY
+  YkJDYy5wbmdcIixcInRodW1ibmFpbFwvS0poakVRZmZqNmhCRERXek1kUVBoRWE4V2g1cnB5Lmpw
+  Z1wiXSJ9LHsiaWQiOjI2LCJoNV91cmwiOiJodHRwOlwvXC9ob21lLm9ubGluZS56c3BhaW1haS5j
+  blwvP2ludj1TbWg2TkhFMldIRkRRMHBoV1RBNFRXeGtjU3REVDJodVlXSktXbkE1VUdGbmQyOW5S
+  VmxDYldkbVRUMD0iLCJuYW1lIjoi5oKm5Lqr5pS26JePNSIsImFwcGlkIjoid3g1MGMwNWU5NzY3
+  NjliNTg3IiwibWluaV91cmwiOiJwYWdlc1wvc3dpdGNoUGFnZXNcL2luZGV4P2ludj1TbWg2TkhF
+  MldIRkRRMHBoV1RBNFRXeGtjU3REVDJodVlXSktXbkE1VUdGbmQyOW5SVmxDYldkbVRUMD0iLCJj
+  b3B5d3JpdGVyIjoi5Lit5pmf5Zyo57q/LS3mhafnnLzor4blrp3vvIzmgqbkuqvmlLbol4/vvIEi
+  LCJpbWFnZXMiOiJbXCJwaWN0dXJlXC9kV1R0V3NKeW1uOFRXWHJ0em5pU2Vmd2VYWmluM1IucG5n
+  XCJdIiwicG9zdGVyIjoiW1widGh1bWJuYWlsXC95QkE1cmtlRXBpak43TWFSUThaSzRpV3hjYWJZ
+  ZkMuSlBHXCJdIn0seyJpZCI6MjcsImg1X3VybCI6Imh0dHA6XC9cL2hvbWUub25saW5lLnpzcGFp
+  bWFpLmNuXC8/aW52PVRtSTNaV2hCZVZkV1duaFphM05NWmxFeVJsbHhPRE5uY0hSUldqSjBSbTB3
+  ZEhWNGRuVm1aamR6VVQwPSIsIm5hbWUiOiLmgqbkuqvmlLbol481IiwiYXBwaWQiOiJ3eDUwYzA1
+  ZTk3Njc2OWI1ODciLCJtaW5pX3VybCI6InBhZ2VzXC9zd2l0Y2hQYWdlc1wvaW5kZXg/aW52PVRt
+  STNaV2hCZVZkV1duaFphM05NWmxFeVJsbHhPRE5uY0hSUldqSjBSbTB3ZEhWNGRuVm1aamR6VVQw
+  PSIsImNvcHl3cml0ZXIiOiLkuK3mmZ/lnKjnur8tLeaFp+ecvOivhuWune+8jOaCpuS6q+aUtuiX
+  j++8gSIsImltYWdlcyI6IltcInBpY3R1cmVcLzJIS2JrMkp4ZFNBWm5UUTJmbVBLRDh6QUtqV3hT
+  aS5KUEdcIl0iLCJwb3N0ZXIiOiJbXCJ0aHVtYm5haWxcL3lCQTVya2VFcGlqTjdNYVJROFpLNGlX
+  eGNhYllmQy5KUEdcIl0ifSx7ImlkIjoyOCwiaDVfdXJsIjoiaHR0cDpcL1wvaG9tZS5vbmxpbmUu
+  enNwYWltYWkuY25cLz9pbnY9ZDFGbVNYSm5iVmw2YnpSRVNUUnRNbTFsUTJReVozZGhORXAyY0N0
+  S1pVUm1RVmRZZW1FMlFUZHlORDA9IiwibmFtZSI6IuaCpuS6q+aUtuiXjzYiLCJhcHBpZCI6Ind4
+  NTBjMDVlOTc2NzY5YjU4NyIsIm1pbmlfdXJsIjoicGFnZXNcL3N3aXRjaFBhZ2VzXC9pbmRleD9p
+  bnY9ZDFGbVNYSm5iVmw2YnpSRVNUUnRNbTFsUTJReVozZGhORXAyY0N0S1pVUm1RVmRZZW1FMlFU
+  ZHlORDA9IiwiY29weXdyaXRlciI6IuS4reaZn+WcqOe6vy0t5oWn55y86K+G5a6d77yM5oKm5Lqr
+  5pS26JeP77yBIiwiaW1hZ2VzIjoiW1wicGljdHVyZVwvMkhLYmsySnhkU0FablRRMmZtUEtEOHpB
+  S2pXeFNpLkpQR1wiXSIsInBvc3RlciI6IltcInRodW1ibmFpbFwveUJBNXJrZUVwaWpON01hUlE4
+  Wks0aVd4Y2FiWWZDLkpQR1wiXSJ9LHsiaWQiOjI5LCJoNV91cmwiOiJodHRwOlwvXC9ob21lLm9u
+  bGluZS56c3BhaW1haS5jblwvP2ludj1iMkZ1ZFdoT1JWQTRWMWR0UldFME0zcFJjRE5vWlVjeGVq
+  SlhPVXd6Y1N0V1JsbDVVemhQUkROVGF6MD0iLCJuYW1lIjoi5oKm5Lqr5pS26JePNiIsImFwcGlk
+  Ijoid3g1MGMwNWU5NzY3NjliNTg3IiwibWluaV91cmwiOiJwYWdlc1wvc3dpdGNoUGFnZXNcL2lu
+  ZGV4P2ludj1iMkZ1ZFdoT1JWQTRWMWR0UldFME0zcFJjRE5vWlVjeGVqSlhPVXd6Y1N0V1JsbDVV
+  emhQUkROVGF6MD0iLCJjb3B5d3JpdGVyIjoi5Lit5pmf5Zyo57q/LS3mhafnnLzor4blrp3vvIzm
+  gqbkuqvmlLbol4/vvIEiLCJpbWFnZXMiOiJbXCJwaWN0dXJlXC8ySEtiazJKeGRTQVpuVFEyZm1Q
+  S0Q4ekFLald4U2kuSlBHXCJdIiwicG9zdGVyIjoiW1widGh1bWJuYWlsXC95QkE1cmtlRXBpak43
+  TWFSUThaSzRpV3hjYWJZZkMuSlBHXCJdIn0seyJpZCI6MzAsImg1X3VybCI6Imh0dHA6XC9cL2hv
+  bWUub25saW5lLnpzcGFpbWFpLmNuXC8/aW52PVppOHlabWhNTHpoV1MxTjBlVEIxTlV0S2EwSXlR
+  bFU0U1VrMVNtRlVLMFZ6TjJVNFlsSjJSeXROVVQwPSIsIm5hbWUiOiLmgqbkuqvmlLbol482Iiwi
+  YXBwaWQiOiJ3eDUwYzA1ZTk3Njc2OWI1ODciLCJtaW5pX3VybCI6InBhZ2VzXC9zd2l0Y2hQYWdl
+  c1wvaW5kZXg/aW52PVppOHlabWhNTHpoV1MxTjBlVEIxTlV0S2EwSXlRbFU0U1VrMVNtRlVLMFZ6
+  TjJVNFlsSjJSeXROVVQwPSIsImNvcHl3cml0ZXIiOiLkuK3mmZ/lnKjnur8tLeaFp+ecvOivhuWu
+  ne+8jOaCpuS6q+aUtuiXj++8gSIsImltYWdlcyI6IltcInBpY3R1cmVcLzJIS2JrMkp4ZFNBWm5U
+  UTJmbVBLRDh6QUtqV3hTaS5KUEdcIl0iLCJwb3N0ZXIiOiJbXCJ0aHVtYm5haWxcL3lCQTVya2VF
+  cGlqTjdNYVJROFpLNGlXeGNhYllmQy5KUEdcIl0ifSx7ImlkIjozMSwiaDVfdXJsIjoiaHR0cDpc
+  L1wvaG9tZS5vbmxpbmUuenNwYWltYWkuY25cLz9pbnY9UVRWYWIyVXpVR05aVWt4V05VeDBVMUJh
+  ZDJ4WVJuZzBlVFp0TjNwM00wMTFiMDVyU2l0VmRIZERRVDA9IiwibmFtZSI6IuaCpuS6q+aUtuiX
+  jzYiLCJhcHBpZCI6Ind4NTBjMDVlOTc2NzY5YjU4NyIsIm1pbmlfdXJsIjoicGFnZXNcL3N3aXRj
+  aFBhZ2VzXC9pbmRleD9pbnY9UVRWYWIyVXpVR05aVWt4V05VeDBVMUJhZDJ4WVJuZzBlVFp0TjNw
+  M00wMTFiMDVyU2l0VmRIZERRVDA9IiwiY29weXdyaXRlciI6IuS4reaZn+WcqOe6vy0t5oWn55y8
+  6K+G5a6d77yM5oKm5Lqr5pS26JeP77yBIiwiaW1hZ2VzIjoiW1wicGljdHVyZVwvMkhLYmsySnhk
+  U0FablRRMmZtUEtEOHpBS2pXeFNpLkpQR1wiXSIsInBvc3RlciI6IltcInRodW1ibmFpbFwveUJB
+  NXJrZUVwaWpON01hUlE4Wks0aVd4Y2FiWWZDLkpQR1wiXSJ9LHsiaWQiOjMyLCJoNV91cmwiOiJo
+  dHRwOlwvXC9ob21lLm9ubGluZS56c3BhaW1haS5jblwvP2ludj1laTlUYVRWellrWjRNSE5FU0ZF
+  d2NuZzFhbk4wZVdwWVkzQkpSbVZ5YkdaS1lXWTVTbTB5Y0hSb09EMD0iLCJuYW1lIjoi5oKm5Lqr
+  5pS26JePNiIsImFwcGlkIjoid3g1MGMwNWU5NzY3NjliNTg3IiwibWluaV91cmwiOiJwYWdlc1wv
+  c3dpdGNoUGFnZXNcL2luZGV4P2ludj1laTlUYVRWellrWjRNSE5FU0ZFd2NuZzFhbk4wZVdwWVkz
+  QkpSbVZ5YkdaS1lXWTVTbTB5Y0hSb09EMD0iLCJjb3B5d3JpdGVyIjoi5Lit5pmf5Zyo57q/LS3m
+  hafnnLzor4blrp3vvIzmgqbkuqvmlLbol4/vvIEiLCJpbWFnZXMiOiJbXCJwaWN0dXJlXC8ySEti
+  azJKeGRTQVpuVFEyZm1QS0Q4ekFLald4U2kuSlBHXCJdIiwicG9zdGVyIjoiW1widGh1bWJuYWls
+  XC95QkE1cmtlRXBpak43TWFSUThaSzRpV3hjYWJZZkMuSlBHXCJdIn0seyJpZCI6MzMsImg1X3Vy
+  bCI6Imh0dHA6XC9cL2hvbWUub25saW5lLnpzcGFpbWFpLmNuXC8/aW52PVUzaElNRlJIVkc5cE1V
+  UTRhbTR6UXpOWk5YcEpSMnhaU0VoM1NUVTVhMGRQYURkM1ptbE1iR3hLT0QwPSIsIm5hbWUiOiLm
+  gqbkuqvmlLbol482IiwiYXBwaWQiOiJ3eDUwYzA1ZTk3Njc2OWI1ODciLCJtaW5pX3VybCI6InBh
+  Z2VzXC9zd2l0Y2hQYWdlc1wvaW5kZXg/aW52PVUzaElNRlJIVkc5cE1VUTRhbTR6UXpOWk5YcEpS
+  MnhaU0VoM1NUVTVhMGRQYURkM1ptbE1iR3hLT0QwPSIsImNvcHl3cml0ZXIiOiLkuK3mmZ/lnKjn
+  ur8tLeaFp+ecvOivhuWune+8jOaCpuS6q+aUtuiXj++8gSIsImltYWdlcyI6IltcInBpY3R1cmVc
+  LzJIS2JrMkp4ZFNBWm5UUTJmbVBLRDh6QUtqV3hTaS5KUEdcIl0iLCJwb3N0ZXIiOiJbXCJ0aHVt
+  Ym5haWxcL3lCQTVya2VFcGlqTjdNYVJROFpLNGlXeGNhYllmQy5KUEdcIl0ifSx7ImlkIjozNCwi
+  aDVfdXJsIjoiaHR0cDpcL1wvaG9tZS5vbmxpbmUuenNwYWltYWkuY25cLz9pbnY9VkdoM1NXWkpi
+  MGRtTWt4WmNtcGFOVGR6YzB4U1MxcDVSRWRrZW1sdVZpdHhhVGgyV2swMmNHSkpXVDA9IiwibmFt
+  ZSI6IuaCpuS6q+aUtuiXjzYiLCJhcHBpZCI6Ind4NTBjMDVlOTc2NzY5YjU4NyIsIm1pbmlfdXJs
+  IjoicGFnZXNcL3N3aXRjaFBhZ2VzXC9pbmRleD9pbnY9VkdoM1NXWkpiMGRtTWt4WmNtcGFOVGR6
+  YzB4U1MxcDVSRWRrZW1sdVZpdHhhVGgyV2swMmNHSkpXVDA9IiwiY29weXdyaXRlciI6IuS4reaZ
+  n+WcqOe6vy0t5oWn55y86K+G5a6d77yM5oKm5Lqr5pS26JeP77yBIiwiaW1hZ2VzIjoiW1wicGlj
+  dHVyZVwvMkhLYmsySnhkU0FablRRMmZtUEtEOHpBS2pXeFNpLkpQR1wiXSIsInBvc3RlciI6Iltc
+  InRodW1ibmFpbFwveUJBNXJrZUVwaWpON01hUlE4Wks0aVd4Y2FiWWZDLkpQR1wiXSJ9XX0sInNo
+  b3Bfc3dpdGNoIjoiMCJ9
+cookies: !!python/object:requests.cookies.RequestsCookieJar
+  _cookies: {}
+  _now: 1632993939
+  _policy: !!python/object:http.cookiejar.DefaultCookiePolicy
+    _allowed_domains: null
+    _blocked_domains: !!python/tuple []
+    _now: 1632993939
+    hide_cookie2: false
+    netscape: true
+    rfc2109_as_netscape: null
+    rfc2965: false
+    secure_protocols: &id001 !!python/tuple
+    - https
+    - wss
+    strict_domain: false
+    strict_ns_domain: 0
+    strict_ns_set_initial_dollar: false
+    strict_ns_set_path: false
+    strict_ns_unverifiable: false
+    strict_rfc2965_unverifiable: true
+elapsed: !!python/object/apply:datetime.timedelta
+- 0
+- 0
+- 88977
+encoding: utf-8
+headers: !!python/object:requests.structures.CaseInsensitiveDict
+  _store: !!python/object/apply:collections.OrderedDict
+  - - - server
+      - !!python/tuple
+        - Server
+        - nginx/1.15.5
+    - - date
+      - !!python/tuple
+        - Date
+        - Thu, 30 Sep 2021 09:25:39 GMT
+    - - content-type
+      - !!python/tuple
+        - Content-Type
+        - application/json; charset=utf-8
+    - - transfer-encoding
+      - !!python/tuple
+        - Transfer-Encoding
+        - chunked
+    - - connection
+      - !!python/tuple
+        - Connection
+        - keep-alive
+    - - access-control-allow-credentials
+      - !!python/tuple
+        - Access-Control-Allow-Credentials
+        - 'true'
+    - - access-control-max-age
+      - !!python/tuple
+        - Access-Control-Max-Age
+        - '1800'
+    - - access-control-allow-methods
+      - !!python/tuple
+        - Access-Control-Allow-Methods
+        - GET, POST, PATCH, PUT, DELETE, OPTIONS
+    - - access-control-allow-headers
+      - !!python/tuple
+        - Access-Control-Allow-Headers
+        - content-type,token,AppFrom
+    - - access-control-allow-origin
+      - !!python/tuple
+        - Access-Control-Allow-Origin
+        - http://home.online.zspaimai.cn
+history: []
+reason: OK
+request: !!python/object:requests.models.PreparedRequest
+  _body_position: null
+  _cookies: !!python/object:requests.cookies.RequestsCookieJar
+    _cookies: {}
+    _now: 1632993939
+    _policy: !!python/object:http.cookiejar.DefaultCookiePolicy
+      _allowed_domains: null
+      _blocked_domains: !!python/tuple []
+      _now: 1632993939
+      hide_cookie2: false
+      netscape: true
+      rfc2109_as_netscape: null
+      rfc2965: false
+      secure_protocols: *id001
+      strict_domain: false
+      strict_ns_domain: 0
+      strict_ns_set_initial_dollar: false
+      strict_ns_set_path: false
+      strict_ns_unverifiable: false
+      strict_rfc2965_unverifiable: true
+  body: null
+  headers: !!python/object:requests.structures.CaseInsensitiveDict
+    _store: !!python/object/apply:collections.OrderedDict
+    - - - user-agent
+        - !!python/tuple
+          - User-Agent
+          - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like
+            Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063
+      - - accept-encoding
+        - !!python/tuple
+          - Accept-Encoding
+          - gzip, deflate
+      - - accept
+        - !!python/tuple
+          - Accept
+          - '*/*'
+      - - connection
+        - !!python/tuple
+          - Connection
+          - keep-alive
+      - - content-type
+        - !!python/tuple
+          - Content-Type
+          - application/json; charset=utf-8
+      - - host
+        - !!python/tuple
+          - host
+          - api.online.zspaimai.cn
+      - - origin
+        - !!python/tuple
+          - Origin
+          - http://home.online.zspaimai.cn
+      - - referer
+        - !!python/tuple
+          - Referer
+          - http://home.online.zspaimai.cn/
+      - - token
+        - !!python/tuple
+          - token
+          - 80f116cc76448d97e746f69428e5d1c0
+  hooks:
+    response: []
+  method: GET
+  url: http://api.online.zspaimai.cn/user/union/union_list?page=1&from=pc
+status_code: 200
+url: http://api.online.zspaimai.cn/user/union/union_list?page=1&from=pc
+!!python/object:requests.models.Response
+_content: !!binary |
+  eyJzdGF0dXMiOjIwMCwibXNnIjoi5pON5L2c5oiQ5YqfIiwiZGF0YSI6eyJ0b3RhbCI6MTIsInBl
+  cl9wYWdlIjoxMCwiY3VycmVudF9wYWdlIjoxLCJsYXN0X3BhZ2UiOjIsImRhdGEiOlt7ImlkIjoy
+  NSwiaDVfdXJsIjoiaHR0cDpcL1wvaG9tZS5vbmxpbmUuenNwYWltYWkuY25cLz9pbnY9ZDNkSWVU
+  Y3pkaXRSYXpGQ2NFRnBXRVozTkVOb01XOXpSVVowZEcxWWFFRk1heko0VEdwU00wNHdORDA9Iiwi
+  bmFtZSI6IuaCpuS6q+aUtuiXjzQiLCJhcHBpZCI6Ind4NTBjMDVlOTc2NzY5YjU4NyIsIm1pbmlf
+  dXJsIjoicGFnZXNcL3N3aXRjaFBhZ2VzXC9pbmRleD9pbnY9ZDNkSWVUY3pkaXRSYXpGQ2NFRnBX
+  RVozTkVOb01XOXpSVVowZEcxWWFFRk1heko0VEdwU00wNHdORDA9IiwiY29weXdyaXRlciI6IuS4
+  reaZn+WcqOe6vy0t5oWn55y86K+G5a6d77yM5oKm5Lqr5pS26JeP77yBIiwiaW1hZ2VzIjoiW1wi
+  cGljdHVyZVwvWHpEcEc1WXBFQmhuaXBrRGpFdEJjWEFDbXBZcE1LLnBuZ1wiLFwicGljdHVyZVwv
+  YUp0REpTY3lLTWV6ZVB5enNrd0dueXRaZHhCMm0zLnBuZ1wiLFwicGljdHVyZVwvM2V6M3NUNlBX
+  dFozQ0pkQzRhdDRpek5NbkZzN3c4LnBuZ1wiLFwicGljdHVyZVwvTkUyMlBaclA3RzdrYW5Rd2ll
+  aVBQVHdmUFc3bTNjLmpwZ1wiXSIsInBvc3RlciI6IltcInRodW1ibmFpbFwveUJBNXJrZUVwaWpO
+  N01hUlE4Wks0aVd4Y2FiWWZDLkpQR1wiLFwidGh1bWJuYWlsXC9UNzdzcHBSaTNrZFlwUEFNdFRC
+  VzdFN3JTRnlrSnoucG5nXCIsXCJ0aHVtYm5haWxcL2l3QUdLaFM0UU1rR0dwbXhGUU5QNmpLQ3BY
+  YkJDYy5wbmdcIixcInRodW1ibmFpbFwvS0poakVRZmZqNmhCRERXek1kUVBoRWE4V2g1cnB5Lmpw
+  Z1wiXSJ9LHsiaWQiOjI2LCJoNV91cmwiOiJodHRwOlwvXC9ob21lLm9ubGluZS56c3BhaW1haS5j
+  blwvP2ludj1TbWg2TkhFMldIRkRRMHBoV1RBNFRXeGtjU3REVDJodVlXSktXbkE1VUdGbmQyOW5S
+  VmxDYldkbVRUMD0iLCJuYW1lIjoi5oKm5Lqr5pS26JePNSIsImFwcGlkIjoid3g1MGMwNWU5NzY3
+  NjliNTg3IiwibWluaV91cmwiOiJwYWdlc1wvc3dpdGNoUGFnZXNcL2luZGV4P2ludj1TbWg2TkhF
+  MldIRkRRMHBoV1RBNFRXeGtjU3REVDJodVlXSktXbkE1VUdGbmQyOW5SVmxDYldkbVRUMD0iLCJj
+  b3B5d3JpdGVyIjoi5Lit5pmf5Zyo57q/LS3mhafnnLzor4blrp3vvIzmgqbkuqvmlLbol4/vvIEi
+  LCJpbWFnZXMiOiJbXCJwaWN0dXJlXC9kV1R0V3NKeW1uOFRXWHJ0em5pU2Vmd2VYWmluM1IucG5n
+  XCJdIiwicG9zdGVyIjoiW1widGh1bWJuYWlsXC95QkE1cmtlRXBpak43TWFSUThaSzRpV3hjYWJZ
+  ZkMuSlBHXCJdIn0seyJpZCI6MjcsImg1X3VybCI6Imh0dHA6XC9cL2hvbWUub25saW5lLnpzcGFp
+  bWFpLmNuXC8/aW52PVRtSTNaV2hCZVZkV1duaFphM05NWmxFeVJsbHhPRE5uY0hSUldqSjBSbTB3
+  ZEhWNGRuVm1aamR6VVQwPSIsIm5hbWUiOiLmgqbkuqvmlLbol481IiwiYXBwaWQiOiJ3eDUwYzA1
+  ZTk3Njc2OWI1ODciLCJtaW5pX3VybCI6InBhZ2VzXC9zd2l0Y2hQYWdlc1wvaW5kZXg/aW52PVRt
+  STNaV2hCZVZkV1duaFphM05NWmxFeVJsbHhPRE5uY0hSUldqSjBSbTB3ZEhWNGRuVm1aamR6VVQw
+  PSIsImNvcHl3cml0ZXIiOiLkuK3mmZ/lnKjnur8tLeaFp+ecvOivhuWune+8jOaCpuS6q+aUtuiX
+  j++8gSIsImltYWdlcyI6IltcInBpY3R1cmVcLzJIS2JrMkp4ZFNBWm5UUTJmbVBLRDh6QUtqV3hT
+  aS5KUEdcIl0iLCJwb3N0ZXIiOiJbXCJ0aHVtYm5haWxcL3lCQTVya2VFcGlqTjdNYVJROFpLNGlX
+  eGNhYllmQy5KUEdcIl0ifSx7ImlkIjoyOCwiaDVfdXJsIjoiaHR0cDpcL1wvaG9tZS5vbmxpbmUu
+  enNwYWltYWkuY25cLz9pbnY9ZDFGbVNYSm5iVmw2YnpSRVNUUnRNbTFsUTJReVozZGhORXAyY0N0
+  S1pVUm1RVmRZZW1FMlFUZHlORDA9IiwibmFtZSI6IuaCpuS6q+aUtuiXjzYiLCJhcHBpZCI6Ind4
+  NTBjMDVlOTc2NzY5YjU4NyIsIm1pbmlfdXJsIjoicGFnZXNcL3N3aXRjaFBhZ2VzXC9pbmRleD9p
+  bnY9ZDFGbVNYSm5iVmw2YnpSRVNUUnRNbTFsUTJReVozZGhORXAyY0N0S1pVUm1RVmRZZW1FMlFU
+  ZHlORDA9IiwiY29weXdyaXRlciI6IuS4reaZn+WcqOe6vy0t5oWn55y86K+G5a6d77yM5oKm5Lqr
+  5pS26JeP77yBIiwiaW1hZ2VzIjoiW1wicGljdHVyZVwvMkhLYmsySnhkU0FablRRMmZtUEtEOHpB
+  S2pXeFNpLkpQR1wiXSIsInBvc3RlciI6IltcInRodW1ibmFpbFwveUJBNXJrZUVwaWpON01hUlE4
+  Wks0aVd4Y2FiWWZDLkpQR1wiXSJ9LHsiaWQiOjI5LCJoNV91cmwiOiJodHRwOlwvXC9ob21lLm9u
+  bGluZS56c3BhaW1haS5jblwvP2ludj1iMkZ1ZFdoT1JWQTRWMWR0UldFME0zcFJjRE5vWlVjeGVq
+  SlhPVXd6Y1N0V1JsbDVVemhQUkROVGF6MD0iLCJuYW1lIjoi5oKm5Lqr5pS26JePNiIsImFwcGlk
+  Ijoid3g1MGMwNWU5NzY3NjliNTg3IiwibWluaV91cmwiOiJwYWdlc1wvc3dpdGNoUGFnZXNcL2lu
+  ZGV4P2ludj1iMkZ1ZFdoT1JWQTRWMWR0UldFME0zcFJjRE5vWlVjeGVqSlhPVXd6Y1N0V1JsbDVV
+  emhQUkROVGF6MD0iLCJjb3B5d3JpdGVyIjoi5Lit5pmf5Zyo57q/LS3mhafnnLzor4blrp3vvIzm
+  gqbkuqvmlLbol4/vvIEiLCJpbWFnZXMiOiJbXCJwaWN0dXJlXC8ySEtiazJKeGRTQVpuVFEyZm1Q
+  S0Q4ekFLald4U2kuSlBHXCJdIiwicG9zdGVyIjoiW1widGh1bWJuYWlsXC95QkE1cmtlRXBpak43
+  TWFSUThaSzRpV3hjYWJZZkMuSlBHXCJdIn0seyJpZCI6MzAsImg1X3VybCI6Imh0dHA6XC9cL2hv
+  bWUub25saW5lLnpzcGFpbWFpLmNuXC8/aW52PVppOHlabWhNTHpoV1MxTjBlVEIxTlV0S2EwSXlR
+  bFU0U1VrMVNtRlVLMFZ6TjJVNFlsSjJSeXROVVQwPSIsIm5hbWUiOiLmgqbkuqvmlLbol482Iiwi
+  YXBwaWQiOiJ3eDUwYzA1ZTk3Njc2OWI1ODciLCJtaW5pX3VybCI6InBhZ2VzXC9zd2l0Y2hQYWdl
+  c1wvaW5kZXg/aW52PVppOHlabWhNTHpoV1MxTjBlVEIxTlV0S2EwSXlRbFU0U1VrMVNtRlVLMFZ6
+  TjJVNFlsSjJSeXROVVQwPSIsImNvcHl3cml0ZXIiOiLkuK3mmZ/lnKjnur8tLeaFp+ecvOivhuWu
+  ne+8jOaCpuS6q+aUtuiXj++8gSIsImltYWdlcyI6IltcInBpY3R1cmVcLzJIS2JrMkp4ZFNBWm5U
+  UTJmbVBLRDh6QUtqV3hTaS5KUEdcIl0iLCJwb3N0ZXIiOiJbXCJ0aHVtYm5haWxcL3lCQTVya2VF
+  cGlqTjdNYVJROFpLNGlXeGNhYllmQy5KUEdcIl0ifSx7ImlkIjozMSwiaDVfdXJsIjoiaHR0cDpc
+  L1wvaG9tZS5vbmxpbmUuenNwYWltYWkuY25cLz9pbnY9UVRWYWIyVXpVR05aVWt4V05VeDBVMUJh
+  ZDJ4WVJuZzBlVFp0TjNwM00wMTFiMDVyU2l0VmRIZERRVDA9IiwibmFtZSI6IuaCpuS6q+aUtuiX
+  jzYiLCJhcHBpZCI6Ind4NTBjMDVlOTc2NzY5YjU4NyIsIm1pbmlfdXJsIjoicGFnZXNcL3N3aXRj
+  aFBhZ2VzXC9pbmRleD9pbnY9UVRWYWIyVXpVR05aVWt4V05VeDBVMUJhZDJ4WVJuZzBlVFp0TjNw
+  M00wMTFiMDVyU2l0VmRIZERRVDA9IiwiY29weXdyaXRlciI6IuS4reaZn+WcqOe6vy0t5oWn55y8
+  6K+G5a6d77yM5oKm5Lqr5pS26JeP77yBIiwiaW1hZ2VzIjoiW1wicGljdHVyZVwvMkhLYmsySnhk
+  U0FablRRMmZtUEtEOHpBS2pXeFNpLkpQR1wiXSIsInBvc3RlciI6IltcInRodW1ibmFpbFwveUJB
+  NXJrZUVwaWpON01hUlE4Wks0aVd4Y2FiWWZDLkpQR1wiXSJ9LHsiaWQiOjMyLCJoNV91cmwiOiJo
+  dHRwOlwvXC9ob21lLm9ubGluZS56c3BhaW1haS5jblwvP2ludj1laTlUYVRWellrWjRNSE5FU0ZF
+  d2NuZzFhbk4wZVdwWVkzQkpSbVZ5YkdaS1lXWTVTbTB5Y0hSb09EMD0iLCJuYW1lIjoi5oKm5Lqr
+  5pS26JePNiIsImFwcGlkIjoid3g1MGMwNWU5NzY3NjliNTg3IiwibWluaV91cmwiOiJwYWdlc1wv
+  c3dpdGNoUGFnZXNcL2luZGV4P2ludj1laTlUYVRWellrWjRNSE5FU0ZFd2NuZzFhbk4wZVdwWVkz
+  QkpSbVZ5YkdaS1lXWTVTbTB5Y0hSb09EMD0iLCJjb3B5d3JpdGVyIjoi5Lit5pmf5Zyo57q/LS3m
+  hafnnLzor4blrp3vvIzmgqbkuqvmlLbol4/vvIEiLCJpbWFnZXMiOiJbXCJwaWN0dXJlXC8ySEti
+  azJKeGRTQVpuVFEyZm1QS0Q4ekFLald4U2kuSlBHXCJdIiwicG9zdGVyIjoiW1widGh1bWJuYWls
+  XC95QkE1cmtlRXBpak43TWFSUThaSzRpV3hjYWJZZkMuSlBHXCJdIn0seyJpZCI6MzMsImg1X3Vy
+  bCI6Imh0dHA6XC9cL2hvbWUub25saW5lLnpzcGFpbWFpLmNuXC8/aW52PVUzaElNRlJIVkc5cE1V
+  UTRhbTR6UXpOWk5YcEpSMnhaU0VoM1NUVTVhMGRQYURkM1ptbE1iR3hLT0QwPSIsIm5hbWUiOiLm
+  gqbkuqvmlLbol482IiwiYXBwaWQiOiJ3eDUwYzA1ZTk3Njc2OWI1ODciLCJtaW5pX3VybCI6InBh
+  Z2VzXC9zd2l0Y2hQYWdlc1wvaW5kZXg/aW52PVUzaElNRlJIVkc5cE1VUTRhbTR6UXpOWk5YcEpS
+  MnhaU0VoM1NUVTVhMGRQYURkM1ptbE1iR3hLT0QwPSIsImNvcHl3cml0ZXIiOiLkuK3mmZ/lnKjn
+  ur8tLeaFp+ecvOivhuWune+8jOaCpuS6q+aUtuiXj++8gSIsImltYWdlcyI6IltcInBpY3R1cmVc
+  LzJIS2JrMkp4ZFNBWm5UUTJmbVBLRDh6QUtqV3hTaS5KUEdcIl0iLCJwb3N0ZXIiOiJbXCJ0aHVt
+  Ym5haWxcL3lCQTVya2VFcGlqTjdNYVJROFpLNGlXeGNhYllmQy5KUEdcIl0ifSx7ImlkIjozNCwi
+  aDVfdXJsIjoiaHR0cDpcL1wvaG9tZS5vbmxpbmUuenNwYWltYWkuY25cLz9pbnY9VkdoM1NXWkpi
+  MGRtTWt4WmNtcGFOVGR6YzB4U1MxcDVSRWRrZW1sdVZpdHhhVGgyV2swMmNHSkpXVDA9IiwibmFt
+  ZSI6IuaCpuS6q+aUtuiXjzYiLCJhcHBpZCI6Ind4NTBjMDVlOTc2NzY5YjU4NyIsIm1pbmlfdXJs
+  IjoicGFnZXNcL3N3aXRjaFBhZ2VzXC9pbmRleD9pbnY9VkdoM1NXWkpiMGRtTWt4WmNtcGFOVGR6
+  YzB4U1MxcDVSRWRrZW1sdVZpdHhhVGgyV2swMmNHSkpXVDA9IiwiY29weXdyaXRlciI6IuS4reaZ
+  n+WcqOe6vy0t5oWn55y86K+G5a6d77yM5oKm5Lqr5pS26JeP77yBIiwiaW1hZ2VzIjoiW1wicGlj
+  dHVyZVwvMkhLYmsySnhkU0FablRRMmZtUEtEOHpBS2pXeFNpLkpQR1wiXSIsInBvc3RlciI6Iltc
+  InRodW1ibmFpbFwveUJBNXJrZUVwaWpON01hUlE4Wks0aVd4Y2FiWWZDLkpQR1wiXSJ9XX0sInNo
+  b3Bfc3dpdGNoIjoiMCJ9
+cookies: !!python/object:requests.cookies.RequestsCookieJar
+  _cookies: {}
+  _now: 1632993939
+  _policy: !!python/object:http.cookiejar.DefaultCookiePolicy
+    _allowed_domains: null
+    _blocked_domains: !!python/tuple []
+    _now: 1632993939
+    hide_cookie2: false
+    netscape: true
+    rfc2109_as_netscape: null
+    rfc2965: false
+    secure_protocols: &id001 !!python/tuple
+    - https
+    - wss
+    strict_domain: false
+    strict_ns_domain: 0
+    strict_ns_set_initial_dollar: false
+    strict_ns_set_path: false
+    strict_ns_unverifiable: false
+    strict_rfc2965_unverifiable: true
+elapsed: !!python/object/apply:datetime.timedelta
+- 0
+- 0
+- 91799
+encoding: utf-8
+headers: !!python/object:requests.structures.CaseInsensitiveDict
+  _store: !!python/object/apply:collections.OrderedDict
+  - - - server
+      - !!python/tuple
+        - Server
+        - nginx/1.15.5
+    - - date
+      - !!python/tuple
+        - Date
+        - Thu, 30 Sep 2021 09:25:39 GMT
+    - - content-type
+      - !!python/tuple
+        - Content-Type
+        - application/json; charset=utf-8
+    - - transfer-encoding
+      - !!python/tuple
+        - Transfer-Encoding
+        - chunked
+    - - connection
+      - !!python/tuple
+        - Connection
+        - keep-alive
+    - - access-control-allow-credentials
+      - !!python/tuple
+        - Access-Control-Allow-Credentials
+        - 'true'
+    - - access-control-max-age
+      - !!python/tuple
+        - Access-Control-Max-Age
+        - '1800'
+    - - access-control-allow-methods
+      - !!python/tuple
+        - Access-Control-Allow-Methods
+        - GET, POST, PATCH, PUT, DELETE, OPTIONS
+    - - access-control-allow-headers
+      - !!python/tuple
+        - Access-Control-Allow-Headers
+        - content-type,token,AppFrom
+    - - access-control-allow-origin
+      - !!python/tuple
+        - Access-Control-Allow-Origin
+        - http://home.online.zspaimai.cn
+history: []
+reason: OK
+request: !!python/object:requests.models.PreparedRequest
+  _body_position: null
+  _cookies: !!python/object:requests.cookies.RequestsCookieJar
+    _cookies: {}
+    _now: 1632993939
+    _policy: !!python/object:http.cookiejar.DefaultCookiePolicy
+      _allowed_domains: null
+      _blocked_domains: !!python/tuple []
+      _now: 1632993939
+      hide_cookie2: false
+      netscape: true
+      rfc2109_as_netscape: null
+      rfc2965: false
+      secure_protocols: *id001
+      strict_domain: false
+      strict_ns_domain: 0
+      strict_ns_set_initial_dollar: false
+      strict_ns_set_path: false
+      strict_ns_unverifiable: false
+      strict_rfc2965_unverifiable: true
+  body: null
+  headers: !!python/object:requests.structures.CaseInsensitiveDict
+    _store: !!python/object/apply:collections.OrderedDict
+    - - - user-agent
+        - !!python/tuple
+          - User-Agent
+          - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like
+            Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063
+      - - accept-encoding
+        - !!python/tuple
+          - Accept-Encoding
+          - gzip, deflate
+      - - accept
+        - !!python/tuple
+          - Accept
+          - '*/*'
+      - - connection
+        - !!python/tuple
+          - Connection
+          - keep-alive
+      - - content-type
+        - !!python/tuple
+          - Content-Type
+          - application/json; charset=utf-8
+      - - host
+        - !!python/tuple
+          - host
+          - api.online.zspaimai.cn
+      - - origin
+        - !!python/tuple
+          - Origin
+          - http://home.online.zspaimai.cn
+      - - referer
+        - !!python/tuple
+          - Referer
+          - http://home.online.zspaimai.cn/
+      - - token
+        - !!python/tuple
+          - token
+          - 80f116cc76448d97e746f69428e5d1c0
+  hooks:
+    response: []
+  method: GET
+  url: http://api.online.zspaimai.cn/user/union/union_list?page=1&from=pc
+status_code: 200
+url: http://api.online.zspaimai.cn/user/union/union_list?page=1&from=pc
+union_info:
+  new_union_id: '45'
+union_info:
+  new_union_id: '46'
+!!python/object:requests.models.Response
+_content: !!binary |
+  eyJzdGF0dXMiOjIwMCwibXNnIjoi5pON5L2c5oiQ5YqfIiwiZGF0YSI6eyJ0b3RhbCI6MTMsInBl
+  cl9wYWdlIjoxMCwiY3VycmVudF9wYWdlIjoxLCJsYXN0X3BhZ2UiOjIsImRhdGEiOlt7ImlkIjoy
+  NSwiaDVfdXJsIjoiaHR0cDpcL1wvaG9tZS5vbmxpbmUuenNwYWltYWkuY25cLz9pbnY9ZDNkSWVU
+  Y3pkaXRSYXpGQ2NFRnBXRVozTkVOb01XOXpSVVowZEcxWWFFRk1heko0VEdwU00wNHdORDA9Iiwi
+  bmFtZSI6IuaCpuS6q+aUtuiXjzQiLCJhcHBpZCI6Ind4NTBjMDVlOTc2NzY5YjU4NyIsIm1pbmlf
+  dXJsIjoicGFnZXNcL3N3aXRjaFBhZ2VzXC9pbmRleD9pbnY9ZDNkSWVUY3pkaXRSYXpGQ2NFRnBX
+  RVozTkVOb01XOXpSVVowZEcxWWFFRk1heko0VEdwU00wNHdORDA9IiwiY29weXdyaXRlciI6IuS4
+  reaZn+WcqOe6vy0t5oWn55y86K+G5a6d77yM5oKm5Lqr5pS26JeP77yBIiwiaW1hZ2VzIjoiW1wi
+  cGljdHVyZVwvWHpEcEc1WXBFQmhuaXBrRGpFdEJjWEFDbXBZcE1LLnBuZ1wiLFwicGljdHVyZVwv
+  YUp0REpTY3lLTWV6ZVB5enNrd0dueXRaZHhCMm0zLnBuZ1wiLFwicGljdHVyZVwvM2V6M3NUNlBX
+  dFozQ0pkQzRhdDRpek5NbkZzN3c4LnBuZ1wiLFwicGljdHVyZVwvTkUyMlBaclA3RzdrYW5Rd2ll
+  aVBQVHdmUFc3bTNjLmpwZ1wiXSIsInBvc3RlciI6IltcInRodW1ibmFpbFwveUJBNXJrZUVwaWpO
+  N01hUlE4Wks0aVd4Y2FiWWZDLkpQR1wiLFwidGh1bWJuYWlsXC9UNzdzcHBSaTNrZFlwUEFNdFRC
+  VzdFN3JTRnlrSnoucG5nXCIsXCJ0aHVtYm5haWxcL2l3QUdLaFM0UU1rR0dwbXhGUU5QNmpLQ3BY
+  YkJDYy5wbmdcIixcInRodW1ibmFpbFwvS0poakVRZmZqNmhCRERXek1kUVBoRWE4V2g1cnB5Lmpw
+  Z1wiXSJ9LHsiaWQiOjI2LCJoNV91cmwiOiJodHRwOlwvXC9ob21lLm9ubGluZS56c3BhaW1haS5j
+  blwvP2ludj1TbWg2TkhFMldIRkRRMHBoV1RBNFRXeGtjU3REVDJodVlXSktXbkE1VUdGbmQyOW5S
+  VmxDYldkbVRUMD0iLCJuYW1lIjoi5oKm5Lqr5pS26JePNSIsImFwcGlkIjoid3g1MGMwNWU5NzY3
+  NjliNTg3IiwibWluaV91cmwiOiJwYWdlc1wvc3dpdGNoUGFnZXNcL2luZGV4P2ludj1TbWg2TkhF
+  MldIRkRRMHBoV1RBNFRXeGtjU3REVDJodVlXSktXbkE1VUdGbmQyOW5SVmxDYldkbVRUMD0iLCJj
+  b3B5d3JpdGVyIjoi5Lit5pmf5Zyo57q/LS3mhafnnLzor4blrp3vvIzmgqbkuqvmlLbol4/vvIEi
+  LCJpbWFnZXMiOiJbXCJwaWN0dXJlXC9kV1R0V3NKeW1uOFRXWHJ0em5pU2Vmd2VYWmluM1IucG5n
+  XCJdIiwicG9zdGVyIjoiW1widGh1bWJuYWlsXC95QkE1cmtlRXBpak43TWFSUThaSzRpV3hjYWJZ
+  ZkMuSlBHXCJdIn0seyJpZCI6MjcsImg1X3VybCI6Imh0dHA6XC9cL2hvbWUub25saW5lLnpzcGFp
+  bWFpLmNuXC8/aW52PVRtSTNaV2hCZVZkV1duaFphM05NWmxFeVJsbHhPRE5uY0hSUldqSjBSbTB3
+  ZEhWNGRuVm1aamR6VVQwPSIsIm5hbWUiOiLmgqbkuqvmlLbol481IiwiYXBwaWQiOiJ3eDUwYzA1
+  ZTk3Njc2OWI1ODciLCJtaW5pX3VybCI6InBhZ2VzXC9zd2l0Y2hQYWdlc1wvaW5kZXg/aW52PVRt
+  STNaV2hCZVZkV1duaFphM05NWmxFeVJsbHhPRE5uY0hSUldqSjBSbTB3ZEhWNGRuVm1aamR6VVQw
+  PSIsImNvcHl3cml0ZXIiOiLkuK3mmZ/lnKjnur8tLeaFp+ecvOivhuWune+8jOaCpuS6q+aUtuiX
+  j++8gSIsImltYWdlcyI6IltcInBpY3R1cmVcLzJIS2JrMkp4ZFNBWm5UUTJmbVBLRDh6QUtqV3hT
+  aS5KUEdcIl0iLCJwb3N0ZXIiOiJbXCJ0aHVtYm5haWxcL3lCQTVya2VFcGlqTjdNYVJROFpLNGlX
+  eGNhYllmQy5KUEdcIl0ifSx7ImlkIjoyOCwiaDVfdXJsIjoiaHR0cDpcL1wvaG9tZS5vbmxpbmUu
+  enNwYWltYWkuY25cLz9pbnY9ZDFGbVNYSm5iVmw2YnpSRVNUUnRNbTFsUTJReVozZGhORXAyY0N0
+  S1pVUm1RVmRZZW1FMlFUZHlORDA9IiwibmFtZSI6IuaCpuS6q+aUtuiXjzYiLCJhcHBpZCI6Ind4
+  NTBjMDVlOTc2NzY5YjU4NyIsIm1pbmlfdXJsIjoicGFnZXNcL3N3aXRjaFBhZ2VzXC9pbmRleD9p
+  bnY9ZDFGbVNYSm5iVmw2YnpSRVNUUnRNbTFsUTJReVozZGhORXAyY0N0S1pVUm1RVmRZZW1FMlFU
+  ZHlORDA9IiwiY29weXdyaXRlciI6IuS4reaZn+WcqOe6vy0t5oWn55y86K+G5a6d77yM5oKm5Lqr
+  5pS26JeP77yBIiwiaW1hZ2VzIjoiW1wicGljdHVyZVwvMkhLYmsySnhkU0FablRRMmZtUEtEOHpB
+  S2pXeFNpLkpQR1wiXSIsInBvc3RlciI6IltcInRodW1ibmFpbFwveUJBNXJrZUVwaWpON01hUlE4
+  Wks0aVd4Y2FiWWZDLkpQR1wiXSJ9LHsiaWQiOjI5LCJoNV91cmwiOiJodHRwOlwvXC9ob21lLm9u
+  bGluZS56c3BhaW1haS5jblwvP2ludj1iMkZ1ZFdoT1JWQTRWMWR0UldFME0zcFJjRE5vWlVjeGVq
+  SlhPVXd6Y1N0V1JsbDVVemhQUkROVGF6MD0iLCJuYW1lIjoi5oKm5Lqr5pS26JePNiIsImFwcGlk
+  Ijoid3g1MGMwNWU5NzY3NjliNTg3IiwibWluaV91cmwiOiJwYWdlc1wvc3dpdGNoUGFnZXNcL2lu
+  ZGV4P2ludj1iMkZ1ZFdoT1JWQTRWMWR0UldFME0zcFJjRE5vWlVjeGVqSlhPVXd6Y1N0V1JsbDVV
+  emhQUkROVGF6MD0iLCJjb3B5d3JpdGVyIjoi5Lit5pmf5Zyo57q/LS3mhafnnLzor4blrp3vvIzm
+  gqbkuqvmlLbol4/vvIEiLCJpbWFnZXMiOiJbXCJwaWN0dXJlXC8ySEtiazJKeGRTQVpuVFEyZm1Q
+  S0Q4ekFLald4U2kuSlBHXCJdIiwicG9zdGVyIjoiW1widGh1bWJuYWlsXC95QkE1cmtlRXBpak43
+  TWFSUThaSzRpV3hjYWJZZkMuSlBHXCJdIn0seyJpZCI6MzAsImg1X3VybCI6Imh0dHA6XC9cL2hv
+  bWUub25saW5lLnpzcGFpbWFpLmNuXC8/aW52PVppOHlabWhNTHpoV1MxTjBlVEIxTlV0S2EwSXlR
+  bFU0U1VrMVNtRlVLMFZ6TjJVNFlsSjJSeXROVVQwPSIsIm5hbWUiOiLmgqbkuqvmlLbol482Iiwi
+  YXBwaWQiOiJ3eDUwYzA1ZTk3Njc2OWI1ODciLCJtaW5pX3VybCI6InBhZ2VzXC9zd2l0Y2hQYWdl
+  c1wvaW5kZXg/aW52PVppOHlabWhNTHpoV1MxTjBlVEIxTlV0S2EwSXlRbFU0U1VrMVNtRlVLMFZ6
+  TjJVNFlsSjJSeXROVVQwPSIsImNvcHl3cml0ZXIiOiLkuK3mmZ/lnKjnur8tLeaFp+ecvOivhuWu
+  ne+8jOaCpuS6q+aUtuiXj++8gSIsImltYWdlcyI6IltcInBpY3R1cmVcLzJIS2JrMkp4ZFNBWm5U
+  UTJmbVBLRDh6QUtqV3hTaS5KUEdcIl0iLCJwb3N0ZXIiOiJbXCJ0aHVtYm5haWxcL3lCQTVya2VF
+  cGlqTjdNYVJROFpLNGlXeGNhYllmQy5KUEdcIl0ifSx7ImlkIjozMSwiaDVfdXJsIjoiaHR0cDpc
+  L1wvaG9tZS5vbmxpbmUuenNwYWltYWkuY25cLz9pbnY9UVRWYWIyVXpVR05aVWt4V05VeDBVMUJh
+  ZDJ4WVJuZzBlVFp0TjNwM00wMTFiMDVyU2l0VmRIZERRVDA9IiwibmFtZSI6IuaCpuS6q+aUtuiX
+  jzYiLCJhcHBpZCI6Ind4NTBjMDVlOTc2NzY5YjU4NyIsIm1pbmlfdXJsIjoicGFnZXNcL3N3aXRj
+  aFBhZ2VzXC9pbmRleD9pbnY9UVRWYWIyVXpVR05aVWt4V05VeDBVMUJhZDJ4WVJuZzBlVFp0TjNw
+  M00wMTFiMDVyU2l0VmRIZERRVDA9IiwiY29weXdyaXRlciI6IuS4reaZn+WcqOe6vy0t5oWn55y8
+  6K+G5a6d77yM5oKm5Lqr5pS26JeP77yBIiwiaW1hZ2VzIjoiW1wicGljdHVyZVwvMkhLYmsySnhk
+  U0FablRRMmZtUEtEOHpBS2pXeFNpLkpQR1wiXSIsInBvc3RlciI6IltcInRodW1ibmFpbFwveUJB
+  NXJrZUVwaWpON01hUlE4Wks0aVd4Y2FiWWZDLkpQR1wiXSJ9LHsiaWQiOjMyLCJoNV91cmwiOiJo
+  dHRwOlwvXC9ob21lLm9ubGluZS56c3BhaW1haS5jblwvP2ludj1laTlUYVRWellrWjRNSE5FU0ZF
+  d2NuZzFhbk4wZVdwWVkzQkpSbVZ5YkdaS1lXWTVTbTB5Y0hSb09EMD0iLCJuYW1lIjoi5oKm5Lqr
+  5pS26JePNiIsImFwcGlkIjoid3g1MGMwNWU5NzY3NjliNTg3IiwibWluaV91cmwiOiJwYWdlc1wv
+  c3dpdGNoUGFnZXNcL2luZGV4P2ludj1laTlUYVRWellrWjRNSE5FU0ZFd2NuZzFhbk4wZVdwWVkz
+  QkpSbVZ5YkdaS1lXWTVTbTB5Y0hSb09EMD0iLCJjb3B5d3JpdGVyIjoi5Lit5pmf5Zyo57q/LS3m
+  hafnnLzor4blrp3vvIzmgqbkuqvmlLbol4/vvIEiLCJpbWFnZXMiOiJbXCJwaWN0dXJlXC8ySEti
+  azJKeGRTQVpuVFEyZm1QS0Q4ekFLald4U2kuSlBHXCJdIiwicG9zdGVyIjoiW1widGh1bWJuYWls
+  XC95QkE1cmtlRXBpak43TWFSUThaSzRpV3hjYWJZZkMuSlBHXCJdIn0seyJpZCI6MzMsImg1X3Vy
+  bCI6Imh0dHA6XC9cL2hvbWUub25saW5lLnpzcGFpbWFpLmNuXC8/aW52PVUzaElNRlJIVkc5cE1V
+  UTRhbTR6UXpOWk5YcEpSMnhaU0VoM1NUVTVhMGRQYURkM1ptbE1iR3hLT0QwPSIsIm5hbWUiOiLm
+  gqbkuqvmlLbol482IiwiYXBwaWQiOiJ3eDUwYzA1ZTk3Njc2OWI1ODciLCJtaW5pX3VybCI6InBh
+  Z2VzXC9zd2l0Y2hQYWdlc1wvaW5kZXg/aW52PVUzaElNRlJIVkc5cE1VUTRhbTR6UXpOWk5YcEpS
+  MnhaU0VoM1NUVTVhMGRQYURkM1ptbE1iR3hLT0QwPSIsImNvcHl3cml0ZXIiOiLkuK3mmZ/lnKjn
+  ur8tLeaFp+ecvOivhuWune+8jOaCpuS6q+aUtuiXj++8gSIsImltYWdlcyI6IltcInBpY3R1cmVc
+  LzJIS2JrMkp4ZFNBWm5UUTJmbVBLRDh6QUtqV3hTaS5KUEdcIl0iLCJwb3N0ZXIiOiJbXCJ0aHVt
+  Ym5haWxcL3lCQTVya2VFcGlqTjdNYVJROFpLNGlXeGNhYllmQy5KUEdcIl0ifSx7ImlkIjozNCwi
+  aDVfdXJsIjoiaHR0cDpcL1wvaG9tZS5vbmxpbmUuenNwYWltYWkuY25cLz9pbnY9VkdoM1NXWkpi
+  MGRtTWt4WmNtcGFOVGR6YzB4U1MxcDVSRWRrZW1sdVZpdHhhVGgyV2swMmNHSkpXVDA9IiwibmFt
+  ZSI6IuaCpuS6q+aUtuiXjzYiLCJhcHBpZCI6Ind4NTBjMDVlOTc2NzY5YjU4NyIsIm1pbmlfdXJs
+  IjoicGFnZXNcL3N3aXRjaFBhZ2VzXC9pbmRleD9pbnY9VkdoM1NXWkpiMGRtTWt4WmNtcGFOVGR6
+  YzB4U1MxcDVSRWRrZW1sdVZpdHhhVGgyV2swMmNHSkpXVDA9IiwiY29weXdyaXRlciI6IuS4reaZ
+  n+WcqOe6vy0t5oWn55y86K+G5a6d77yM5oKm5Lqr5pS26JeP77yBIiwiaW1hZ2VzIjoiW1wicGlj
+  dHVyZVwvMkhLYmsySnhkU0FablRRMmZtUEtEOHpBS2pXeFNpLkpQR1wiXSIsInBvc3RlciI6Iltc
+  InRodW1ibmFpbFwveUJBNXJrZUVwaWpON01hUlE4Wks0aVd4Y2FiWWZDLkpQR1wiXSJ9XX0sInNo
+  b3Bfc3dpdGNoIjoiMCJ9
+cookies: !!python/object:requests.cookies.RequestsCookieJar
+  _cookies: {}
+  _now: 1632994906
+  _policy: !!python/object:http.cookiejar.DefaultCookiePolicy
+    _allowed_domains: null
+    _blocked_domains: !!python/tuple []
+    _now: 1632994906
+    hide_cookie2: false
+    netscape: true
+    rfc2109_as_netscape: null
+    rfc2965: false
+    secure_protocols: &id001 !!python/tuple
+    - https
+    - wss
+    strict_domain: false
+    strict_ns_domain: 0
+    strict_ns_set_initial_dollar: false
+    strict_ns_set_path: false
+    strict_ns_unverifiable: false
+    strict_rfc2965_unverifiable: true
+elapsed: !!python/object/apply:datetime.timedelta
+- 0
+- 0
+- 90572
+encoding: utf-8
+headers: !!python/object:requests.structures.CaseInsensitiveDict
+  _store: !!python/object/apply:collections.OrderedDict
+  - - - server
+      - !!python/tuple
+        - Server
+        - nginx/1.15.5
+    - - date
+      - !!python/tuple
+        - Date
+        - Thu, 30 Sep 2021 09:41:46 GMT
+    - - content-type
+      - !!python/tuple
+        - Content-Type
+        - application/json; charset=utf-8
+    - - transfer-encoding
+      - !!python/tuple
+        - Transfer-Encoding
+        - chunked
+    - - connection
+      - !!python/tuple
+        - Connection
+        - keep-alive
+    - - access-control-allow-credentials
+      - !!python/tuple
+        - Access-Control-Allow-Credentials
+        - 'true'
+    - - access-control-max-age
+      - !!python/tuple
+        - Access-Control-Max-Age
+        - '1800'
+    - - access-control-allow-methods
+      - !!python/tuple
+        - Access-Control-Allow-Methods
+        - GET, POST, PATCH, PUT, DELETE, OPTIONS
+    - - access-control-allow-headers
+      - !!python/tuple
+        - Access-Control-Allow-Headers
+        - content-type,token,AppFrom
+    - - access-control-allow-origin
+      - !!python/tuple
+        - Access-Control-Allow-Origin
+        - http://home.online.zspaimai.cn
+history: []
+reason: OK
+request: !!python/object:requests.models.PreparedRequest
+  _body_position: null
+  _cookies: !!python/object:requests.cookies.RequestsCookieJar
+    _cookies: {}
+    _now: 1632994906
+    _policy: !!python/object:http.cookiejar.DefaultCookiePolicy
+      _allowed_domains: null
+      _blocked_domains: !!python/tuple []
+      _now: 1632994906
+      hide_cookie2: false
+      netscape: true
+      rfc2109_as_netscape: null
+      rfc2965: false
+      secure_protocols: *id001
+      strict_domain: false
+      strict_ns_domain: 0
+      strict_ns_set_initial_dollar: false
+      strict_ns_set_path: false
+      strict_ns_unverifiable: false
+      strict_rfc2965_unverifiable: true
+  body: null
+  headers: !!python/object:requests.structures.CaseInsensitiveDict
+    _store: !!python/object/apply:collections.OrderedDict
+    - - - user-agent
+        - !!python/tuple
+          - User-Agent
+          - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like
+            Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063
+      - - accept-encoding
+        - !!python/tuple
+          - Accept-Encoding
+          - gzip, deflate
+      - - accept
+        - !!python/tuple
+          - Accept
+          - '*/*'
+      - - connection
+        - !!python/tuple
+          - Connection
+          - keep-alive
+      - - content-type
+        - !!python/tuple
+          - Content-Type
+          - application/json; charset=utf-8
+      - - host
+        - !!python/tuple
+          - host
+          - api.online.zspaimai.cn
+      - - origin
+        - !!python/tuple
+          - Origin
+          - http://home.online.zspaimai.cn
+      - - referer
+        - !!python/tuple
+          - Referer
+          - http://home.online.zspaimai.cn/
+      - - token
+        - !!python/tuple
+          - token
+          - 80f116cc76448d97e746f69428e5d1c0
+  hooks:
+    response: []
+  method: GET
+  url: http://api.online.zspaimai.cn/user/union/union_list?page=1&from=pc
+status_code: 200
+url: http://api.online.zspaimai.cn/user/union/union_list?page=1&from=pc
+union_info:
+  new_union_id: '47'
+!!python/object:requests.models.Response
+_content: !!binary |
+  eyJzdGF0dXMiOjIwMCwibXNnIjoi5pON5L2c5oiQ5YqfIiwiZGF0YSI6eyJ0b3RhbCI6MTQsInBl
+  cl9wYWdlIjoxMCwiY3VycmVudF9wYWdlIjoxLCJsYXN0X3BhZ2UiOjIsImRhdGEiOlt7ImlkIjoy
+  NSwiaDVfdXJsIjoiaHR0cDpcL1wvaG9tZS5vbmxpbmUuenNwYWltYWkuY25cLz9pbnY9ZDNkSWVU
+  Y3pkaXRSYXpGQ2NFRnBXRVozTkVOb01XOXpSVVowZEcxWWFFRk1heko0VEdwU00wNHdORDA9Iiwi
+  bmFtZSI6IuaCpuS6q+aUtuiXjzQiLCJhcHBpZCI6Ind4NTBjMDVlOTc2NzY5YjU4NyIsIm1pbmlf
+  dXJsIjoicGFnZXNcL3N3aXRjaFBhZ2VzXC9pbmRleD9pbnY9ZDNkSWVUY3pkaXRSYXpGQ2NFRnBX
+  RVozTkVOb01XOXpSVVowZEcxWWFFRk1heko0VEdwU00wNHdORDA9IiwiY29weXdyaXRlciI6IuS4
+  reaZn+WcqOe6vy0t5oWn55y86K+G5a6d77yM5oKm5Lqr5pS26JeP77yBIiwiaW1hZ2VzIjoiW1wi
+  cGljdHVyZVwvWHpEcEc1WXBFQmhuaXBrRGpFdEJjWEFDbXBZcE1LLnBuZ1wiLFwicGljdHVyZVwv
+  YUp0REpTY3lLTWV6ZVB5enNrd0dueXRaZHhCMm0zLnBuZ1wiLFwicGljdHVyZVwvM2V6M3NUNlBX
+  dFozQ0pkQzRhdDRpek5NbkZzN3c4LnBuZ1wiLFwicGljdHVyZVwvTkUyMlBaclA3RzdrYW5Rd2ll
+  aVBQVHdmUFc3bTNjLmpwZ1wiXSIsInBvc3RlciI6IltcInRodW1ibmFpbFwveUJBNXJrZUVwaWpO
+  N01hUlE4Wks0aVd4Y2FiWWZDLkpQR1wiLFwidGh1bWJuYWlsXC9UNzdzcHBSaTNrZFlwUEFNdFRC
+  VzdFN3JTRnlrSnoucG5nXCIsXCJ0aHVtYm5haWxcL2l3QUdLaFM0UU1rR0dwbXhGUU5QNmpLQ3BY
+  YkJDYy5wbmdcIixcInRodW1ibmFpbFwvS0poakVRZmZqNmhCRERXek1kUVBoRWE4V2g1cnB5Lmpw
+  Z1wiXSJ9LHsiaWQiOjI2LCJoNV91cmwiOiJodHRwOlwvXC9ob21lLm9ubGluZS56c3BhaW1haS5j
+  blwvP2ludj1TbWg2TkhFMldIRkRRMHBoV1RBNFRXeGtjU3REVDJodVlXSktXbkE1VUdGbmQyOW5S
+  VmxDYldkbVRUMD0iLCJuYW1lIjoi5oKm5Lqr5pS26JePNSIsImFwcGlkIjoid3g1MGMwNWU5NzY3
+  NjliNTg3IiwibWluaV91cmwiOiJwYWdlc1wvc3dpdGNoUGFnZXNcL2luZGV4P2ludj1TbWg2TkhF
+  MldIRkRRMHBoV1RBNFRXeGtjU3REVDJodVlXSktXbkE1VUdGbmQyOW5SVmxDYldkbVRUMD0iLCJj
+  b3B5d3JpdGVyIjoi5Lit5pmf5Zyo57q/LS3mhafnnLzor4blrp3vvIzmgqbkuqvmlLbol4/vvIEi
+  LCJpbWFnZXMiOiJbXCJwaWN0dXJlXC9kV1R0V3NKeW1uOFRXWHJ0em5pU2Vmd2VYWmluM1IucG5n
+  XCJdIiwicG9zdGVyIjoiW1widGh1bWJuYWlsXC95QkE1cmtlRXBpak43TWFSUThaSzRpV3hjYWJZ
+  ZkMuSlBHXCJdIn0seyJpZCI6MjcsImg1X3VybCI6Imh0dHA6XC9cL2hvbWUub25saW5lLnpzcGFp
+  bWFpLmNuXC8/aW52PVRtSTNaV2hCZVZkV1duaFphM05NWmxFeVJsbHhPRE5uY0hSUldqSjBSbTB3
+  ZEhWNGRuVm1aamR6VVQwPSIsIm5hbWUiOiLmgqbkuqvmlLbol481IiwiYXBwaWQiOiJ3eDUwYzA1
+  ZTk3Njc2OWI1ODciLCJtaW5pX3VybCI6InBhZ2VzXC9zd2l0Y2hQYWdlc1wvaW5kZXg/aW52PVRt
+  STNaV2hCZVZkV1duaFphM05NWmxFeVJsbHhPRE5uY0hSUldqSjBSbTB3ZEhWNGRuVm1aamR6VVQw
+  PSIsImNvcHl3cml0ZXIiOiLkuK3mmZ/lnKjnur8tLeaFp+ecvOivhuWune+8jOaCpuS6q+aUtuiX
+  j++8gSIsImltYWdlcyI6IltcInBpY3R1cmVcLzJIS2JrMkp4ZFNBWm5UUTJmbVBLRDh6QUtqV3hT
+  aS5KUEdcIl0iLCJwb3N0ZXIiOiJbXCJ0aHVtYm5haWxcL3lCQTVya2VFcGlqTjdNYVJROFpLNGlX
+  eGNhYllmQy5KUEdcIl0ifSx7ImlkIjoyOCwiaDVfdXJsIjoiaHR0cDpcL1wvaG9tZS5vbmxpbmUu
+  enNwYWltYWkuY25cLz9pbnY9ZDFGbVNYSm5iVmw2YnpSRVNUUnRNbTFsUTJReVozZGhORXAyY0N0
+  S1pVUm1RVmRZZW1FMlFUZHlORDA9IiwibmFtZSI6IuaCpuS6q+aUtuiXjzYiLCJhcHBpZCI6Ind4
+  NTBjMDVlOTc2NzY5YjU4NyIsIm1pbmlfdXJsIjoicGFnZXNcL3N3aXRjaFBhZ2VzXC9pbmRleD9p
+  bnY9ZDFGbVNYSm5iVmw2YnpSRVNUUnRNbTFsUTJReVozZGhORXAyY0N0S1pVUm1RVmRZZW1FMlFU
+  ZHlORDA9IiwiY29weXdyaXRlciI6IuS4reaZn+WcqOe6vy0t5oWn55y86K+G5a6d77yM5oKm5Lqr
+  5pS26JeP77yBIiwiaW1hZ2VzIjoiW1wicGljdHVyZVwvMkhLYmsySnhkU0FablRRMmZtUEtEOHpB
+  S2pXeFNpLkpQR1wiXSIsInBvc3RlciI6IltcInRodW1ibmFpbFwveUJBNXJrZUVwaWpON01hUlE4
+  Wks0aVd4Y2FiWWZDLkpQR1wiXSJ9LHsiaWQiOjI5LCJoNV91cmwiOiJodHRwOlwvXC9ob21lLm9u
+  bGluZS56c3BhaW1haS5jblwvP2ludj1iMkZ1ZFdoT1JWQTRWMWR0UldFME0zcFJjRE5vWlVjeGVq
+  SlhPVXd6Y1N0V1JsbDVVemhQUkROVGF6MD0iLCJuYW1lIjoi5oKm5Lqr5pS26JePNiIsImFwcGlk
+  Ijoid3g1MGMwNWU5NzY3NjliNTg3IiwibWluaV91cmwiOiJwYWdlc1wvc3dpdGNoUGFnZXNcL2lu
+  ZGV4P2ludj1iMkZ1ZFdoT1JWQTRWMWR0UldFME0zcFJjRE5vWlVjeGVqSlhPVXd6Y1N0V1JsbDVV
+  emhQUkROVGF6MD0iLCJjb3B5d3JpdGVyIjoi5Lit5pmf5Zyo57q/LS3mhafnnLzor4blrp3vvIzm
+  gqbkuqvmlLbol4/vvIEiLCJpbWFnZXMiOiJbXCJwaWN0dXJlXC8ySEtiazJKeGRTQVpuVFEyZm1Q
+  S0Q4ekFLald4U2kuSlBHXCJdIiwicG9zdGVyIjoiW1widGh1bWJuYWlsXC95QkE1cmtlRXBpak43
+  TWFSUThaSzRpV3hjYWJZZkMuSlBHXCJdIn0seyJpZCI6MzAsImg1X3VybCI6Imh0dHA6XC9cL2hv
+  bWUub25saW5lLnpzcGFpbWFpLmNuXC8/aW52PVppOHlabWhNTHpoV1MxTjBlVEIxTlV0S2EwSXlR
+  bFU0U1VrMVNtRlVLMFZ6TjJVNFlsSjJSeXROVVQwPSIsIm5hbWUiOiLmgqbkuqvmlLbol482Iiwi
+  YXBwaWQiOiJ3eDUwYzA1ZTk3Njc2OWI1ODciLCJtaW5pX3VybCI6InBhZ2VzXC9zd2l0Y2hQYWdl
+  c1wvaW5kZXg/aW52PVppOHlabWhNTHpoV1MxTjBlVEIxTlV0S2EwSXlRbFU0U1VrMVNtRlVLMFZ6
+  TjJVNFlsSjJSeXROVVQwPSIsImNvcHl3cml0ZXIiOiLkuK3mmZ/lnKjnur8tLeaFp+ecvOivhuWu
+  ne+8jOaCpuS6q+aUtuiXj++8gSIsImltYWdlcyI6IltcInBpY3R1cmVcLzJIS2JrMkp4ZFNBWm5U
+  UTJmbVBLRDh6QUtqV3hTaS5KUEdcIl0iLCJwb3N0ZXIiOiJbXCJ0aHVtYm5haWxcL3lCQTVya2VF
+  cGlqTjdNYVJROFpLNGlXeGNhYllmQy5KUEdcIl0ifSx7ImlkIjozMSwiaDVfdXJsIjoiaHR0cDpc
+  L1wvaG9tZS5vbmxpbmUuenNwYWltYWkuY25cLz9pbnY9UVRWYWIyVXpVR05aVWt4V05VeDBVMUJh
+  ZDJ4WVJuZzBlVFp0TjNwM00wMTFiMDVyU2l0VmRIZERRVDA9IiwibmFtZSI6IuaCpuS6q+aUtuiX
+  jzYiLCJhcHBpZCI6Ind4NTBjMDVlOTc2NzY5YjU4NyIsIm1pbmlfdXJsIjoicGFnZXNcL3N3aXRj
+  aFBhZ2VzXC9pbmRleD9pbnY9UVRWYWIyVXpVR05aVWt4V05VeDBVMUJhZDJ4WVJuZzBlVFp0TjNw
+  M00wMTFiMDVyU2l0VmRIZERRVDA9IiwiY29weXdyaXRlciI6IuS4reaZn+WcqOe6vy0t5oWn55y8
+  6K+G5a6d77yM5oKm5Lqr5pS26JeP77yBIiwiaW1hZ2VzIjoiW1wicGljdHVyZVwvMkhLYmsySnhk
+  U0FablRRMmZtUEtEOHpBS2pXeFNpLkpQR1wiXSIsInBvc3RlciI6IltcInRodW1ibmFpbFwveUJB
+  NXJrZUVwaWpON01hUlE4Wks0aVd4Y2FiWWZDLkpQR1wiXSJ9LHsiaWQiOjMyLCJoNV91cmwiOiJo
+  dHRwOlwvXC9ob21lLm9ubGluZS56c3BhaW1haS5jblwvP2ludj1laTlUYVRWellrWjRNSE5FU0ZF
+  d2NuZzFhbk4wZVdwWVkzQkpSbVZ5YkdaS1lXWTVTbTB5Y0hSb09EMD0iLCJuYW1lIjoi5oKm5Lqr
+  5pS26JePNiIsImFwcGlkIjoid3g1MGMwNWU5NzY3NjliNTg3IiwibWluaV91cmwiOiJwYWdlc1wv
+  c3dpdGNoUGFnZXNcL2luZGV4P2ludj1laTlUYVRWellrWjRNSE5FU0ZFd2NuZzFhbk4wZVdwWVkz
+  QkpSbVZ5YkdaS1lXWTVTbTB5Y0hSb09EMD0iLCJjb3B5d3JpdGVyIjoi5Lit5pmf5Zyo57q/LS3m
+  hafnnLzor4blrp3vvIzmgqbkuqvmlLbol4/vvIEiLCJpbWFnZXMiOiJbXCJwaWN0dXJlXC8ySEti
+  azJKeGRTQVpuVFEyZm1QS0Q4ekFLald4U2kuSlBHXCJdIiwicG9zdGVyIjoiW1widGh1bWJuYWls
+  XC95QkE1cmtlRXBpak43TWFSUThaSzRpV3hjYWJZZkMuSlBHXCJdIn0seyJpZCI6MzMsImg1X3Vy
+  bCI6Imh0dHA6XC9cL2hvbWUub25saW5lLnpzcGFpbWFpLmNuXC8/aW52PVUzaElNRlJIVkc5cE1V
+  UTRhbTR6UXpOWk5YcEpSMnhaU0VoM1NUVTVhMGRQYURkM1ptbE1iR3hLT0QwPSIsIm5hbWUiOiLm
+  gqbkuqvmlLbol482IiwiYXBwaWQiOiJ3eDUwYzA1ZTk3Njc2OWI1ODciLCJtaW5pX3VybCI6InBh
+  Z2VzXC9zd2l0Y2hQYWdlc1wvaW5kZXg/aW52PVUzaElNRlJIVkc5cE1VUTRhbTR6UXpOWk5YcEpS
+  MnhaU0VoM1NUVTVhMGRQYURkM1ptbE1iR3hLT0QwPSIsImNvcHl3cml0ZXIiOiLkuK3mmZ/lnKjn
+  ur8tLeaFp+ecvOivhuWune+8jOaCpuS6q+aUtuiXj++8gSIsImltYWdlcyI6IltcInBpY3R1cmVc
+  LzJIS2JrMkp4ZFNBWm5UUTJmbVBLRDh6QUtqV3hTaS5KUEdcIl0iLCJwb3N0ZXIiOiJbXCJ0aHVt
+  Ym5haWxcL3lCQTVya2VFcGlqTjdNYVJROFpLNGlXeGNhYllmQy5KUEdcIl0ifSx7ImlkIjozNCwi
+  aDVfdXJsIjoiaHR0cDpcL1wvaG9tZS5vbmxpbmUuenNwYWltYWkuY25cLz9pbnY9VkdoM1NXWkpi
+  MGRtTWt4WmNtcGFOVGR6YzB4U1MxcDVSRWRrZW1sdVZpdHhhVGgyV2swMmNHSkpXVDA9IiwibmFt
+  ZSI6IuaCpuS6q+aUtuiXjzYiLCJhcHBpZCI6Ind4NTBjMDVlOTc2NzY5YjU4NyIsIm1pbmlfdXJs
+  IjoicGFnZXNcL3N3aXRjaFBhZ2VzXC9pbmRleD9pbnY9VkdoM1NXWkpiMGRtTWt4WmNtcGFOVGR6
+  YzB4U1MxcDVSRWRrZW1sdVZpdHhhVGgyV2swMmNHSkpXVDA9IiwiY29weXdyaXRlciI6IuS4reaZ
+  n+WcqOe6vy0t5oWn55y86K+G5a6d77yM5oKm5Lqr5pS26JeP77yBIiwiaW1hZ2VzIjoiW1wicGlj
+  dHVyZVwvMkhLYmsySnhkU0FablRRMmZtUEtEOHpBS2pXeFNpLkpQR1wiXSIsInBvc3RlciI6Iltc
+  InRodW1ibmFpbFwveUJBNXJrZUVwaWpON01hUlE4Wks0aVd4Y2FiWWZDLkpQR1wiXSJ9XX0sInNo
+  b3Bfc3dpdGNoIjoiMCJ9
+cookies: !!python/object:requests.cookies.RequestsCookieJar
+  _cookies: {}
+  _now: 1632994934
+  _policy: !!python/object:http.cookiejar.DefaultCookiePolicy
+    _allowed_domains: null
+    _blocked_domains: !!python/tuple []
+    _now: 1632994934
+    hide_cookie2: false
+    netscape: true
+    rfc2109_as_netscape: null
+    rfc2965: false
+    secure_protocols: &id001 !!python/tuple
+    - https
+    - wss
+    strict_domain: false
+    strict_ns_domain: 0
+    strict_ns_set_initial_dollar: false
+    strict_ns_set_path: false
+    strict_ns_unverifiable: false
+    strict_rfc2965_unverifiable: true
+elapsed: !!python/object/apply:datetime.timedelta
+- 0
+- 0
+- 84118
+encoding: utf-8
+headers: !!python/object:requests.structures.CaseInsensitiveDict
+  _store: !!python/object/apply:collections.OrderedDict
+  - - - server
+      - !!python/tuple
+        - Server
+        - nginx/1.15.5
+    - - date
+      - !!python/tuple
+        - Date
+        - Thu, 30 Sep 2021 09:42:14 GMT
+    - - content-type
+      - !!python/tuple
+        - Content-Type
+        - application/json; charset=utf-8
+    - - transfer-encoding
+      - !!python/tuple
+        - Transfer-Encoding
+        - chunked
+    - - connection
+      - !!python/tuple
+        - Connection
+        - keep-alive
+    - - access-control-allow-credentials
+      - !!python/tuple
+        - Access-Control-Allow-Credentials
+        - 'true'
+    - - access-control-max-age
+      - !!python/tuple
+        - Access-Control-Max-Age
+        - '1800'
+    - - access-control-allow-methods
+      - !!python/tuple
+        - Access-Control-Allow-Methods
+        - GET, POST, PATCH, PUT, DELETE, OPTIONS
+    - - access-control-allow-headers
+      - !!python/tuple
+        - Access-Control-Allow-Headers
+        - content-type,token,AppFrom
+    - - access-control-allow-origin
+      - !!python/tuple
+        - Access-Control-Allow-Origin
+        - http://home.online.zspaimai.cn
+history: []
+reason: OK
+request: !!python/object:requests.models.PreparedRequest
+  _body_position: null
+  _cookies: !!python/object:requests.cookies.RequestsCookieJar
+    _cookies: {}
+    _now: 1632994934
+    _policy: !!python/object:http.cookiejar.DefaultCookiePolicy
+      _allowed_domains: null
+      _blocked_domains: !!python/tuple []
+      _now: 1632994934
+      hide_cookie2: false
+      netscape: true
+      rfc2109_as_netscape: null
+      rfc2965: false
+      secure_protocols: *id001
+      strict_domain: false
+      strict_ns_domain: 0
+      strict_ns_set_initial_dollar: false
+      strict_ns_set_path: false
+      strict_ns_unverifiable: false
+      strict_rfc2965_unverifiable: true
+  body: null
+  headers: !!python/object:requests.structures.CaseInsensitiveDict
+    _store: !!python/object/apply:collections.OrderedDict
+    - - - user-agent
+        - !!python/tuple
+          - User-Agent
+          - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like
+            Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063
+      - - accept-encoding
+        - !!python/tuple
+          - Accept-Encoding
+          - gzip, deflate
+      - - accept
+        - !!python/tuple
+          - Accept
+          - '*/*'
+      - - connection
+        - !!python/tuple
+          - Connection
+          - keep-alive
+      - - content-type
+        - !!python/tuple
+          - Content-Type
+          - application/json; charset=utf-8
+      - - host
+        - !!python/tuple
+          - host
+          - api.online.zspaimai.cn
+      - - origin
+        - !!python/tuple
+          - Origin
+          - http://home.online.zspaimai.cn
+      - - referer
+        - !!python/tuple
+          - Referer
+          - http://home.online.zspaimai.cn/
+      - - token
+        - !!python/tuple
+          - token
+          - 80f116cc76448d97e746f69428e5d1c0
+  hooks:
+    response: []
+  method: GET
+  url: http://api.online.zspaimai.cn/user/union/union_list?page=1&from=pc
+status_code: 200
+url: http://api.online.zspaimai.cn/user/union/union_list?page=1&from=pc
+!!python/object:requests.models.Response
+_content: !!binary |
+  eyJzdGF0dXMiOjIwMCwibXNnIjoi5pON5L2c5oiQ5YqfIiwiZGF0YSI6eyJ0b3RhbCI6MTMsInBl
+  cl9wYWdlIjoxMCwiY3VycmVudF9wYWdlIjoxLCJsYXN0X3BhZ2UiOjIsImRhdGEiOlt7ImlkIjoy
+  NSwiaDVfdXJsIjoiaHR0cDpcL1wvaG9tZS5vbmxpbmUuenNwYWltYWkuY25cLz9pbnY9ZDNkSWVU
+  Y3pkaXRSYXpGQ2NFRnBXRVozTkVOb01XOXpSVVowZEcxWWFFRk1heko0VEdwU00wNHdORDA9Iiwi
+  bmFtZSI6IuaCpuS6q+aUtuiXjzQiLCJhcHBpZCI6Ind4NTBjMDVlOTc2NzY5YjU4NyIsIm1pbmlf
+  dXJsIjoicGFnZXNcL3N3aXRjaFBhZ2VzXC9pbmRleD9pbnY9ZDNkSWVUY3pkaXRSYXpGQ2NFRnBX
+  RVozTkVOb01XOXpSVVowZEcxWWFFRk1heko0VEdwU00wNHdORDA9IiwiY29weXdyaXRlciI6IuS4
+  reaZn+WcqOe6vy0t5oWn55y86K+G5a6d77yM5oKm5Lqr5pS26JeP77yBIiwiaW1hZ2VzIjoiW1wi
+  cGljdHVyZVwvWHpEcEc1WXBFQmhuaXBrRGpFdEJjWEFDbXBZcE1LLnBuZ1wiLFwicGljdHVyZVwv
+  YUp0REpTY3lLTWV6ZVB5enNrd0dueXRaZHhCMm0zLnBuZ1wiLFwicGljdHVyZVwvM2V6M3NUNlBX
+  dFozQ0pkQzRhdDRpek5NbkZzN3c4LnBuZ1wiLFwicGljdHVyZVwvTkUyMlBaclA3RzdrYW5Rd2ll
+  aVBQVHdmUFc3bTNjLmpwZ1wiXSIsInBvc3RlciI6IltcInRodW1ibmFpbFwveUJBNXJrZUVwaWpO
+  N01hUlE4Wks0aVd4Y2FiWWZDLkpQR1wiLFwidGh1bWJuYWlsXC9UNzdzcHBSaTNrZFlwUEFNdFRC
+  VzdFN3JTRnlrSnoucG5nXCIsXCJ0aHVtYm5haWxcL2l3QUdLaFM0UU1rR0dwbXhGUU5QNmpLQ3BY
+  YkJDYy5wbmdcIixcInRodW1ibmFpbFwvS0poakVRZmZqNmhCRERXek1kUVBoRWE4V2g1cnB5Lmpw
+  Z1wiXSJ9LHsiaWQiOjI2LCJoNV91cmwiOiJodHRwOlwvXC9ob21lLm9ubGluZS56c3BhaW1haS5j
+  blwvP2ludj1TbWg2TkhFMldIRkRRMHBoV1RBNFRXeGtjU3REVDJodVlXSktXbkE1VUdGbmQyOW5S
+  VmxDYldkbVRUMD0iLCJuYW1lIjoi5oKm5Lqr5pS26JePNSIsImFwcGlkIjoid3g1MGMwNWU5NzY3
+  NjliNTg3IiwibWluaV91cmwiOiJwYWdlc1wvc3dpdGNoUGFnZXNcL2luZGV4P2ludj1TbWg2TkhF
+  MldIRkRRMHBoV1RBNFRXeGtjU3REVDJodVlXSktXbkE1VUdGbmQyOW5SVmxDYldkbVRUMD0iLCJj
+  b3B5d3JpdGVyIjoi5Lit5pmf5Zyo57q/LS3mhafnnLzor4blrp3vvIzmgqbkuqvmlLbol4/vvIEi
+  LCJpbWFnZXMiOiJbXCJwaWN0dXJlXC9kV1R0V3NKeW1uOFRXWHJ0em5pU2Vmd2VYWmluM1IucG5n
+  XCJdIiwicG9zdGVyIjoiW1widGh1bWJuYWlsXC95QkE1cmtlRXBpak43TWFSUThaSzRpV3hjYWJZ
+  ZkMuSlBHXCJdIn0seyJpZCI6MjcsImg1X3VybCI6Imh0dHA6XC9cL2hvbWUub25saW5lLnpzcGFp
+  bWFpLmNuXC8/aW52PVRtSTNaV2hCZVZkV1duaFphM05NWmxFeVJsbHhPRE5uY0hSUldqSjBSbTB3
+  ZEhWNGRuVm1aamR6VVQwPSIsIm5hbWUiOiLmgqbkuqvmlLbol481IiwiYXBwaWQiOiJ3eDUwYzA1
+  ZTk3Njc2OWI1ODciLCJtaW5pX3VybCI6InBhZ2VzXC9zd2l0Y2hQYWdlc1wvaW5kZXg/aW52PVRt
+  STNaV2hCZVZkV1duaFphM05NWmxFeVJsbHhPRE5uY0hSUldqSjBSbTB3ZEhWNGRuVm1aamR6VVQw
+  PSIsImNvcHl3cml0ZXIiOiLkuK3mmZ/lnKjnur8tLeaFp+ecvOivhuWune+8jOaCpuS6q+aUtuiX
+  j++8gSIsImltYWdlcyI6IltcInBpY3R1cmVcLzJIS2JrMkp4ZFNBWm5UUTJmbVBLRDh6QUtqV3hT
+  aS5KUEdcIl0iLCJwb3N0ZXIiOiJbXCJ0aHVtYm5haWxcL3lCQTVya2VFcGlqTjdNYVJROFpLNGlX
+  eGNhYllmQy5KUEdcIl0ifSx7ImlkIjoyOCwiaDVfdXJsIjoiaHR0cDpcL1wvaG9tZS5vbmxpbmUu
+  enNwYWltYWkuY25cLz9pbnY9ZDFGbVNYSm5iVmw2YnpSRVNUUnRNbTFsUTJReVozZGhORXAyY0N0
+  S1pVUm1RVmRZZW1FMlFUZHlORDA9IiwibmFtZSI6IuaCpuS6q+aUtuiXjzYiLCJhcHBpZCI6Ind4
+  NTBjMDVlOTc2NzY5YjU4NyIsIm1pbmlfdXJsIjoicGFnZXNcL3N3aXRjaFBhZ2VzXC9pbmRleD9p
+  bnY9ZDFGbVNYSm5iVmw2YnpSRVNUUnRNbTFsUTJReVozZGhORXAyY0N0S1pVUm1RVmRZZW1FMlFU
+  ZHlORDA9IiwiY29weXdyaXRlciI6IuS4reaZn+WcqOe6vy0t5oWn55y86K+G5a6d77yM5oKm5Lqr
+  5pS26JeP77yBIiwiaW1hZ2VzIjoiW1wicGljdHVyZVwvMkhLYmsySnhkU0FablRRMmZtUEtEOHpB
+  S2pXeFNpLkpQR1wiXSIsInBvc3RlciI6IltcInRodW1ibmFpbFwveUJBNXJrZUVwaWpON01hUlE4
+  Wks0aVd4Y2FiWWZDLkpQR1wiXSJ9LHsiaWQiOjI5LCJoNV91cmwiOiJodHRwOlwvXC9ob21lLm9u
+  bGluZS56c3BhaW1haS5jblwvP2ludj1iMkZ1ZFdoT1JWQTRWMWR0UldFME0zcFJjRE5vWlVjeGVq
+  SlhPVXd6Y1N0V1JsbDVVemhQUkROVGF6MD0iLCJuYW1lIjoi5oKm5Lqr5pS26JePNiIsImFwcGlk
+  Ijoid3g1MGMwNWU5NzY3NjliNTg3IiwibWluaV91cmwiOiJwYWdlc1wvc3dpdGNoUGFnZXNcL2lu
+  ZGV4P2ludj1iMkZ1ZFdoT1JWQTRWMWR0UldFME0zcFJjRE5vWlVjeGVqSlhPVXd6Y1N0V1JsbDVV
+  emhQUkROVGF6MD0iLCJjb3B5d3JpdGVyIjoi5Lit5pmf5Zyo57q/LS3mhafnnLzor4blrp3vvIzm
+  gqbkuqvmlLbol4/vvIEiLCJpbWFnZXMiOiJbXCJwaWN0dXJlXC8ySEtiazJKeGRTQVpuVFEyZm1Q
+  S0Q4ekFLald4U2kuSlBHXCJdIiwicG9zdGVyIjoiW1widGh1bWJuYWlsXC95QkE1cmtlRXBpak43
+  TWFSUThaSzRpV3hjYWJZZkMuSlBHXCJdIn0seyJpZCI6MzAsImg1X3VybCI6Imh0dHA6XC9cL2hv
+  bWUub25saW5lLnpzcGFpbWFpLmNuXC8/aW52PVppOHlabWhNTHpoV1MxTjBlVEIxTlV0S2EwSXlR
+  bFU0U1VrMVNtRlVLMFZ6TjJVNFlsSjJSeXROVVQwPSIsIm5hbWUiOiLmgqbkuqvmlLbol482Iiwi
+  YXBwaWQiOiJ3eDUwYzA1ZTk3Njc2OWI1ODciLCJtaW5pX3VybCI6InBhZ2VzXC9zd2l0Y2hQYWdl
+  c1wvaW5kZXg/aW52PVppOHlabWhNTHpoV1MxTjBlVEIxTlV0S2EwSXlRbFU0U1VrMVNtRlVLMFZ6
+  TjJVNFlsSjJSeXROVVQwPSIsImNvcHl3cml0ZXIiOiLkuK3mmZ/lnKjnur8tLeaFp+ecvOivhuWu
+  ne+8jOaCpuS6q+aUtuiXj++8gSIsImltYWdlcyI6IltcInBpY3R1cmVcLzJIS2JrMkp4ZFNBWm5U
+  UTJmbVBLRDh6QUtqV3hTaS5KUEdcIl0iLCJwb3N0ZXIiOiJbXCJ0aHVtYm5haWxcL3lCQTVya2VF
+  cGlqTjdNYVJROFpLNGlXeGNhYllmQy5KUEdcIl0ifSx7ImlkIjozMSwiaDVfdXJsIjoiaHR0cDpc
+  L1wvaG9tZS5vbmxpbmUuenNwYWltYWkuY25cLz9pbnY9UVRWYWIyVXpVR05aVWt4V05VeDBVMUJh
+  ZDJ4WVJuZzBlVFp0TjNwM00wMTFiMDVyU2l0VmRIZERRVDA9IiwibmFtZSI6IuaCpuS6q+aUtuiX
+  jzYiLCJhcHBpZCI6Ind4NTBjMDVlOTc2NzY5YjU4NyIsIm1pbmlfdXJsIjoicGFnZXNcL3N3aXRj
+  aFBhZ2VzXC9pbmRleD9pbnY9UVRWYWIyVXpVR05aVWt4V05VeDBVMUJhZDJ4WVJuZzBlVFp0TjNw
+  M00wMTFiMDVyU2l0VmRIZERRVDA9IiwiY29weXdyaXRlciI6IuS4reaZn+WcqOe6vy0t5oWn55y8
+  6K+G5a6d77yM5oKm5Lqr5pS26JeP77yBIiwiaW1hZ2VzIjoiW1wicGljdHVyZVwvMkhLYmsySnhk
+  U0FablRRMmZtUEtEOHpBS2pXeFNpLkpQR1wiXSIsInBvc3RlciI6IltcInRodW1ibmFpbFwveUJB
+  NXJrZUVwaWpON01hUlE4Wks0aVd4Y2FiWWZDLkpQR1wiXSJ9LHsiaWQiOjMyLCJoNV91cmwiOiJo
+  dHRwOlwvXC9ob21lLm9ubGluZS56c3BhaW1haS5jblwvP2ludj1laTlUYVRWellrWjRNSE5FU0ZF
+  d2NuZzFhbk4wZVdwWVkzQkpSbVZ5YkdaS1lXWTVTbTB5Y0hSb09EMD0iLCJuYW1lIjoi5oKm5Lqr
+  5pS26JePNiIsImFwcGlkIjoid3g1MGMwNWU5NzY3NjliNTg3IiwibWluaV91cmwiOiJwYWdlc1wv
+  c3dpdGNoUGFnZXNcL2luZGV4P2ludj1laTlUYVRWellrWjRNSE5FU0ZFd2NuZzFhbk4wZVdwWVkz
+  QkpSbVZ5YkdaS1lXWTVTbTB5Y0hSb09EMD0iLCJjb3B5d3JpdGVyIjoi5Lit5pmf5Zyo57q/LS3m
+  hafnnLzor4blrp3vvIzmgqbkuqvmlLbol4/vvIEiLCJpbWFnZXMiOiJbXCJwaWN0dXJlXC8ySEti
+  azJKeGRTQVpuVFEyZm1QS0Q4ekFLald4U2kuSlBHXCJdIiwicG9zdGVyIjoiW1widGh1bWJuYWls
+  XC95QkE1cmtlRXBpak43TWFSUThaSzRpV3hjYWJZZkMuSlBHXCJdIn0seyJpZCI6MzMsImg1X3Vy
+  bCI6Imh0dHA6XC9cL2hvbWUub25saW5lLnpzcGFpbWFpLmNuXC8/aW52PVUzaElNRlJIVkc5cE1V
+  UTRhbTR6UXpOWk5YcEpSMnhaU0VoM1NUVTVhMGRQYURkM1ptbE1iR3hLT0QwPSIsIm5hbWUiOiLm
+  gqbkuqvmlLbol482IiwiYXBwaWQiOiJ3eDUwYzA1ZTk3Njc2OWI1ODciLCJtaW5pX3VybCI6InBh
+  Z2VzXC9zd2l0Y2hQYWdlc1wvaW5kZXg/aW52PVUzaElNRlJIVkc5cE1VUTRhbTR6UXpOWk5YcEpS
+  MnhaU0VoM1NUVTVhMGRQYURkM1ptbE1iR3hLT0QwPSIsImNvcHl3cml0ZXIiOiLkuK3mmZ/lnKjn
+  ur8tLeaFp+ecvOivhuWune+8jOaCpuS6q+aUtuiXj++8gSIsImltYWdlcyI6IltcInBpY3R1cmVc
+  LzJIS2JrMkp4ZFNBWm5UUTJmbVBLRDh6QUtqV3hTaS5KUEdcIl0iLCJwb3N0ZXIiOiJbXCJ0aHVt
+  Ym5haWxcL3lCQTVya2VFcGlqTjdNYVJROFpLNGlXeGNhYllmQy5KUEdcIl0ifSx7ImlkIjozNCwi
+  aDVfdXJsIjoiaHR0cDpcL1wvaG9tZS5vbmxpbmUuenNwYWltYWkuY25cLz9pbnY9VkdoM1NXWkpi
+  MGRtTWt4WmNtcGFOVGR6YzB4U1MxcDVSRWRrZW1sdVZpdHhhVGgyV2swMmNHSkpXVDA9IiwibmFt
+  ZSI6IuaCpuS6q+aUtuiXjzYiLCJhcHBpZCI6Ind4NTBjMDVlOTc2NzY5YjU4NyIsIm1pbmlfdXJs
+  IjoicGFnZXNcL3N3aXRjaFBhZ2VzXC9pbmRleD9pbnY9VkdoM1NXWkpiMGRtTWt4WmNtcGFOVGR6
+  YzB4U1MxcDVSRWRrZW1sdVZpdHhhVGgyV2swMmNHSkpXVDA9IiwiY29weXdyaXRlciI6IuS4reaZ
+  n+WcqOe6vy0t5oWn55y86K+G5a6d77yM5oKm5Lqr5pS26JeP77yBIiwiaW1hZ2VzIjoiW1wicGlj
+  dHVyZVwvMkhLYmsySnhkU0FablRRMmZtUEtEOHpBS2pXeFNpLkpQR1wiXSIsInBvc3RlciI6Iltc
+  InRodW1ibmFpbFwveUJBNXJrZUVwaWpON01hUlE4Wks0aVd4Y2FiWWZDLkpQR1wiXSJ9XX0sInNo
+  b3Bfc3dpdGNoIjoiMCJ9
+cookies: !!python/object:requests.cookies.RequestsCookieJar
+  _cookies: {}
+  _now: 1632994934
+  _policy: !!python/object:http.cookiejar.DefaultCookiePolicy
+    _allowed_domains: null
+    _blocked_domains: !!python/tuple []
+    _now: 1632994934
+    hide_cookie2: false
+    netscape: true
+    rfc2109_as_netscape: null
+    rfc2965: false
+    secure_protocols: &id001 !!python/tuple
+    - https
+    - wss
+    strict_domain: false
+    strict_ns_domain: 0
+    strict_ns_set_initial_dollar: false
+    strict_ns_set_path: false
+    strict_ns_unverifiable: false
+    strict_rfc2965_unverifiable: true
+elapsed: !!python/object/apply:datetime.timedelta
+- 0
+- 0
+- 87098
+encoding: utf-8
+headers: !!python/object:requests.structures.CaseInsensitiveDict
+  _store: !!python/object/apply:collections.OrderedDict
+  - - - server
+      - !!python/tuple
+        - Server
+        - nginx/1.15.5
+    - - date
+      - !!python/tuple
+        - Date
+        - Thu, 30 Sep 2021 09:42:14 GMT
+    - - content-type
+      - !!python/tuple
+        - Content-Type
+        - application/json; charset=utf-8
+    - - transfer-encoding
+      - !!python/tuple
+        - Transfer-Encoding
+        - chunked
+    - - connection
+      - !!python/tuple
+        - Connection
+        - keep-alive
+    - - access-control-allow-credentials
+      - !!python/tuple
+        - Access-Control-Allow-Credentials
+        - 'true'
+    - - access-control-max-age
+      - !!python/tuple
+        - Access-Control-Max-Age
+        - '1800'
+    - - access-control-allow-methods
+      - !!python/tuple
+        - Access-Control-Allow-Methods
+        - GET, POST, PATCH, PUT, DELETE, OPTIONS
+    - - access-control-allow-headers
+      - !!python/tuple
+        - Access-Control-Allow-Headers
+        - content-type,token,AppFrom
+    - - access-control-allow-origin
+      - !!python/tuple
+        - Access-Control-Allow-Origin
+        - http://home.online.zspaimai.cn
+history: []
+reason: OK
+request: !!python/object:requests.models.PreparedRequest
+  _body_position: null
+  _cookies: !!python/object:requests.cookies.RequestsCookieJar
+    _cookies: {}
+    _now: 1632994934
+    _policy: !!python/object:http.cookiejar.DefaultCookiePolicy
+      _allowed_domains: null
+      _blocked_domains: !!python/tuple []
+      _now: 1632994934
+      hide_cookie2: false
+      netscape: true
+      rfc2109_as_netscape: null
+      rfc2965: false
+      secure_protocols: *id001
+      strict_domain: false
+      strict_ns_domain: 0
+      strict_ns_set_initial_dollar: false
+      strict_ns_set_path: false
+      strict_ns_unverifiable: false
+      strict_rfc2965_unverifiable: true
+  body: null
+  headers: !!python/object:requests.structures.CaseInsensitiveDict
+    _store: !!python/object/apply:collections.OrderedDict
+    - - - user-agent
+        - !!python/tuple
+          - User-Agent
+          - Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like
+            Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063
+      - - accept-encoding
+        - !!python/tuple
+          - Accept-Encoding
+          - gzip, deflate
+      - - accept
+        - !!python/tuple
+          - Accept
+          - '*/*'
+      - - connection
+        - !!python/tuple
+          - Connection
+          - keep-alive
+      - - content-type
+        - !!python/tuple
+          - Content-Type
+          - application/json; charset=utf-8
+      - - host
+        - !!python/tuple
+          - host
+          - api.online.zspaimai.cn
+      - - origin
+        - !!python/tuple
+          - Origin
+          - http://home.online.zspaimai.cn
+      - - referer
+        - !!python/tuple
+          - Referer
+          - http://home.online.zspaimai.cn/
+      - - token
+        - !!python/tuple
+          - token
+          - 80f116cc76448d97e746f69428e5d1c0
+  hooks:
+    response: []
+  method: GET
+  url: http://api.online.zspaimai.cn/user/union/union_list?page=1&from=pc
+status_code: 200
+url: http://api.online.zspaimai.cn/user/union/union_list?page=1&from=pc

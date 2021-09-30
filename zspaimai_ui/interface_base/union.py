@@ -32,7 +32,7 @@ def union_add():
     '''rebates_rate: 推广值返点， rebates_quota：返回额度 '''
     union_name = rwyaml.get_yaml_data('interface_data', 'union.yml')['union_name']
     data = {
-        "name": "悦享收藏5",
+        "name": union_name,
         "h5_url": "http://home.online.zspaimai.cn/",
         "copywriter": "中晟在线--慧眼识宝，悦享收藏！",
         "appid": "wx50c05e976769b587",
@@ -49,11 +49,11 @@ def union_add():
     print(data)
     r = requests.request('post', url=url, json=data, headers=headers)
     union_id = r.json()['data']
-    union_info = {"new_union_id": union_id}
+    union_info = {"union_info": {"new_union_id": union_id}}
 
-    rwyaml.generate_yaml_doc('interface_data', 'union.yml', union_info)
+    rwyaml.generate_yaml_doc('interface_data', 'union_log.yml', union_info)
 
-    return r.json()['status']
+    return r
 def union_list():
     '''推广活动列表'''
     url = base_url + '/admin/union/union_list'
@@ -65,11 +65,11 @@ def union_list():
                        'data': r.json()['data']['data'][0]}
     rwyaml.generate_yaml_doc('interface_data', 'union_log.yml', union_list_info)
     return r
-def union_del():
+def union_del(id):
     '''推广活动列表'''
     url = base_url + '/admin/union/union_del'
     headers = admin_headers
-    id = 14
+
     data = {'id': id}
     r = requests.request('post', url=url, json=data, headers=headers)
     return r
@@ -82,16 +82,16 @@ def union_act_edit(union_id, act_value):
             "id": union_id,
             "act": "enable",
             "value": 1
-        }# 下架
+        }# 素材上架
     else:
         data = {
             "id": union_id,
             "act": "enable",
             "value": 2
-        }# 上架
+        }# 素材下架
 
     r = requests.request('post', url=url, json=data, headers=headers)
-    return r.json()['status']
+    return r
 
 def union_index():
     '''从推广用户列表搜索用户'''
@@ -200,15 +200,18 @@ def union_commi_1():
     headers = user_headers
     data = {"from": "pc", "page": 1}
     r = requests.request('get', url=url, params=data, headers=headers)
+    rwyaml.generate_yaml_doc('interface_data', 'union_log.yml', r)
     return r
 
 def union_list_1():
     '''获取推广素材'''
     url = base_url + '/user/union/union_list'
     headers = user_headers
-    data = {"from": "pc", "page": 1}
+    data = 'page=1&from=pc'
     r = requests.request('get', url=url, params=data, headers=headers)
+    rwyaml.generate_yaml_doc('interface_data', 'union_log.yml', r)
     return r
+
 
 def union_user_info_3():
     '''查看用户关联信息'''

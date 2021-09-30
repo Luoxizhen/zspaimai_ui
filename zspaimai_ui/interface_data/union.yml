@@ -1,6 +1,15 @@
 user1:
-  phone: '18023038634'
+  phone: '13622288419'
   userno: '193076'
+  token:
   id: 276
-union_name: 悦享收藏6
+user2:
+  phone: '13622288420'
+user3:
+  phone: '13622288421'
+user4:
+  phone: '13622288422'
+user5:
+  phone: '13622288423'
+union_name: 悦享收藏7
 

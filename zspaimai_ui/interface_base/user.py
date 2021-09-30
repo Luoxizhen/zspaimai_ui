@@ -47,3 +47,4 @@ def quick_login(phone):
     data = {"phone": phone, "vcode": "123456"}
     r = requests.request('post', url=url, json=data, headers=headers)
     token = r.json()['data']['token']
+    return token
