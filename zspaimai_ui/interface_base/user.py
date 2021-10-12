@@ -21,6 +21,7 @@ def get_token():
                'Origin': 'http://home.online.zspaimai.cn',
                'Referer': 'http: // home.online.zspaimai.cn /',
                'token': 'xu16kny28l12lhnmitevanfpb - yzul_v',
+               'from': 'pc',
                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063',
                }
     json = {"phone": "15622145010",
@@ -32,19 +33,36 @@ def get_token():
 def update_token(token):
 
     dict = rwjson.RwJson().readjson('interface_data', 'user_headers.json')
+
     dict["token"] = token
     rwjson.RwJson().writejson('interface_data', 'user_headers.json', dict)
+
+
 
 
 def get_msg(phone):
     url = base_url + '/user/user/msg'
     headers = user_headers
-    data = {"phone": phone, "from": "pc"}
+    data = {"phone": phone}
     r = requests.request('post', url=url,  json=data, headers=headers)
 def quick_login(phone):
     url = base_url + '/user/user/quick_login'
     headers = user_headers
     data = {"phone": phone, "vcode": "123456"}
     r = requests.request('post', url=url, json=data, headers=headers)
-    token = r.json()['data']['token']
-    return token
+    #token = r.json()['data']['token']
+    #userno = r.json()['data']['userno']
+    return r
+def get_msg_union(inv, phone):
+    url = base_url + '/user/user/msg'
+    headers = user_headers
+    data = {"phone": phone, "from": "pc", "inv": inv}
+    r = requests.request('post', url=url,  json=data, headers=headers)
+def quick_login_union(inv, phone):
+    url = base_url + '/user/user/quick_login'
+    headers = user_headers
+    data = {"phone": phone, "vcode": "123456", "inv": inv}
+    r = requests.request('post', url=url, json=data, headers=headers)
+    #token = r.json()['data']['token']
+    #userno = r.json()['data']['userno']
+    return r

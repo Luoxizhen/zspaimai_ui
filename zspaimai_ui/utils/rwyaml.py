@@ -18,3 +18,34 @@ def generate_yaml_doc(parname,filename,data):
     file = open(yaml_file, 'a', encoding='UTF-8')
     yaml.dump(data, file)
     file.close()
+def set_data(parname,filename,user,token,userno):
+    # fp = yaml_file_path(parname,filename)
+    # f = open(fp, encoding='UTF-8')
+    # file_data = f.read()
+    # f.close()
+    # data = yaml.safe_load(file_data)
+    # data[user]['token'] = token
+    # f = open(fp, 'w', encoding='UTF-8')
+    # yaml.dump(f, data)
+    # f.close()
+    fp = yaml_file_path(parname, filename)
+    with open(fp) as f:
+        doc = yaml.load(f)
+        doc[user]['token'] = token
+        doc[user]['userno'] = userno
+
+    with open(fp, 'w') as f:
+        yaml.dump(doc, f)
+
+
+
+def set_keyvalue(parname, filename,user,key,keyvalue):
+    fp = yaml_file_path(parname, filename)
+    with open(fp) as f:
+        doc = yaml.load(f)
+        doc[user][key] = keyvalue
+
+
+    with open(fp, 'w') as f:
+        yaml.dump(doc, f)
+

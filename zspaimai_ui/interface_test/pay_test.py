@@ -10,7 +10,8 @@ from interface_base import finance
 #@pytest.fixture(scope='module')
 def test_001():
     '''用户登陆'''
-    user.update_token()
+    token =
+    user.update_token(token)
 def save_finance():
     '''验证获取用户的资金信息，并保存到finance.json 文件中，包含钱包余额，冻结金额，提现金额，额度，冻结额度'''
     financeinfo = finance.get_finance_info()

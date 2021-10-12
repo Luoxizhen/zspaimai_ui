@@ -1,15 +1,26 @@
+union_name: "\u63A8\u5E7F\u7D20\u67501"
 user1:
+  inv: VEVVL1FyODVDVlZYWGVTazg2S0JCZHVpMk9KZmhkeCtycHN1Z0FjWmdiZz0=
   phone: '13622288419'
-  userno: '193076'
-  token:
-  id: 276
+  token: 26c626e8e0992395ac8e6859b158d5fc
+  userno: '193113'
 user2:
+  inv: RHM4Tkk4K0dBRXV2QnNZQVJyMjBEOGhtY1duSEpnM3NFUGYrSExvdnNoND0=
   phone: '13622288420'
+  token: 0b8d7653bbcc84e8dc3e289a786ed508
+  userno: '193114'
 user3:
+  inv: U0FTdW9lYkJnaVFMeTNPcm5JM2ZYWFdmUS9SVDE2ZE4zeG5sc1c2VUdNMD0=
   phone: '13622288421'
+  token: e11692d62c1e9ba804a5b7b2dc29146f
+  userno: '193115'
 user4:
+  inv: null
   phone: '13622288422'
+  token: 5eb555a1e8bca89f5d44e18224ed9eb6
+  userno: '193117'
 user5:
+  inv: null
   phone: '13622288423'
-union_name: 悦享收藏7
-
+  token: d70a0aba40c690064b55becbf4b57c7b
+  userno: '193117'
