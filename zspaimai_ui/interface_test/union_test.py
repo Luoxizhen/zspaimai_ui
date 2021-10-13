@@ -1,3 +1,5 @@
+import time
+
 from interface_base import union, user
 
 from utils import rwyaml
@@ -392,12 +394,23 @@ def test_union_join_user3_002():
 def test_union_join_user3_003():
     '''验证用户3 完成订单后，用户1、用户2 各有一笔关联订单'''
     pass
-def union_join(user1,user2):
+def union_join(user1, user2):
     '''该函数提供用户关联的基本操作'''
-    user1_no = rwyaml.get_yaml_data('interface_data', 'union.yml')[user1]['userno']# 获取用户1的userno
+    user1_phone = rwyaml.get_yaml_data('interface_data', 'union.yml')[user1]['phone']
+    user.get_msg(user1_phone)
+    token = user.quick_login(user1_phone).json()['data']['token']
+    user.update_token(token)
+    time.sleep(3)
+    rwyaml.set_keyvalue('interface_data', 'union.yml', user1, 'token', token)
+    time.sleep(1)
+
+
     user1_token = rwyaml.get_yaml_data('interface_data', 'union.yml')[user1]['token'] #获取用户1的token
     union.union_join(user1_token)#用户1 加入推广计划，增加用户是否已加入推广计划，未加入时，执行加入操作
+    print(user1_token)
+
     r = union.union_list_1(user1_token)# 获取用户1的推广链接
+    print(r)
     h5_url = r.json()['data']['data'][0]['h5_url']
     '''从h5_url 中提取 inv 信息:http://home.online.zspaimai.cn/?inv=VEVVL1FyODVDVlZYWGVTazg2S0JCZHVpMk9KZmhkeCtycHN1Z0FjWmdiZz0='''
     inv = h5_url.replace('http://home.online.zspaimai.cn/?inv=', '')
@@ -412,9 +425,13 @@ def union_join(user1,user2):
     rwyaml.set_data('interface_data', 'union.yml', user2, user2_token, user2_userno)
     '''后台查看用户1 的关联用户，有用户2'''
 def test_union_join_010():
-    user4 = rwyaml.get_yaml_data('interface_data', 'union.yml')['user4']['userno']
-    user5 = rwyaml.get_yaml_data('interface_data', 'union.yml')['user5']['userno']
-    user4_token = rwyaml.get_yaml_data('interface_data', 'union.yml')['user4']['token']
+
+    user = rwyaml.get_yaml_data('interface_data', 'union.yml')['user14']['userno']
+
+    total_pre = union.union_user(user).json()['data']['total']
+    union_join('user14', 'user15')
+    total = union.union_user(user).json()['data']['total']
+    assert total == total_pre+1
 
 
 

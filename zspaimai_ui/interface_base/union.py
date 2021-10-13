@@ -8,7 +8,7 @@ from utils import rwyaml, rwjson
 # user_headers = itf.get_user_headers()
 # admin_headers = itf.get_admin_headers()
 base_url = cfg.ReadCfg().get_base_url()
-user_headers = rwjson.RwJson().readjson('interface_data', 'user_headers.json')
+# user_headers = rwjson.RwJson().readjson('interface_data', 'user_headers.json')
 admin_headers = rwjson.RwJson().readjson('interface_data', 'admin_headers.json')
 user_headers_app = rwjson.RwJson().readjson('interface_data', 'user_headers_app.json')
 def get_union_topic():
@@ -203,10 +203,12 @@ def union_commi(userno):
     return r
 def union_join(token):
     '''用户加入推广计划'''
+
     url = base_url + '/user/union/union_join'
-    # token = rwyaml.get_yaml_data('interface_data', 'union.yml')['user1']['token']
+
     user.update_token(token)
-    headers = user_headers
+    time.sleep(10)
+    headers = rwjson.RwJson().readjson('interface_data', 'user_headers.json')
     data = {"from": "pc"}
     r = requests.request('post', url=url, json=data, headers=headers)
     print(r)
@@ -215,7 +217,7 @@ def union_user_1(token):
     '''查看用户的关联用户列表'''
     user.update_token(token)
     url = base_url + '/user/union/union_user_list'
-    headers = user_headers
+    headers = rwjson.RwJson().readjson('interface_data', 'user_headers.json')
     data = {"from": "pc", "page": 1}
     r = requests.request('get', url=url, json=data, headers=headers)
     return r
@@ -224,7 +226,7 @@ def union_order_1(token):
     '''查看用户的推广订单列表'''
     user.update_token(token)
     url = base_url + '/user/union/union_order_list'
-    headers = user_headers
+    headers = rwjson.RwJson().readjson('interface_data', 'user_headers.json')
     data = {"from": "pc", "page": 1}
     r = requests.request('get', url=url, json=data, headers=headers)
     return r
@@ -232,7 +234,7 @@ def union_commi_1(token):
     '''查看用户的推广订单列表'''
     user.update_token(token)
     url = base_url + '/user/union/union_commi_list'
-    headers = user_headers
+    headers = rwjson.RwJson().readjson('interface_data', 'user_headers.json')
     data = {"from": "pc", "page": 1}
     r = requests.request('get', url=url, params=data, headers=headers)
     rwyaml.generate_yaml_doc('interface_data', 'union_log.yml', r)
@@ -240,10 +242,11 @@ def union_commi_1(token):
 
 def union_list_1(token):
     '''获取推广素材'''
-    url = base_url + '/user/union/union_list'
+
     # token = rwyaml.get_yaml_data('interface_data', 'union.yml')['user1']['token']
     user.update_token(token)
-    headers = user_headers
+    url = base_url + '/user/union/union_list'
+    headers = rwjson.RwJson().readjson('interface_data', 'user_headers.json')
     data = 'page=1&from=pc'
     r = requests.request('get', url=url, params=data, headers=headers)
     #rwyaml.generate_yaml_doc('interface_data', 'union_log.yml', r)
