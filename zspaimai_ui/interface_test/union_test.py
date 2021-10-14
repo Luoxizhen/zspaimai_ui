@@ -228,6 +228,8 @@ class TestUnionUser():
         user_login('user1')
         token = get_userinfo('user1','token')
         union.union_join(token)
+        userno = get_userinfo('user1', 'userno')
+        union.union_set_role(userno, 20)
     # def test_user_join(self):
     #     token = get_userinfo('user1', 'token')
     #     r = union.union_join(token)
@@ -263,7 +265,7 @@ class TestUnionUser():
     # @pytest.mark.xfail(reason='')
     def test_union_join_user4_001(self):
         '''验证用户4 通过用户2的推广链接加入推广计划， 用户4 成为业务员： 用户1 的推广成员'''
-        user1_no = get_userinfo('user2', 'userno')
+        user1_no = get_userinfo('user1', 'userno')
         total_pre = union.union_user(user1_no).json()['data']['total']
         union_join('user2', 'user4')
         total = union.union_user(user1_no).json()['data']['total']
@@ -281,9 +283,9 @@ class TestUnionUser():
         '''验证用户6 通过用户4的推广链接加入推广计划， 用户6 不会成为用户1 的推广成员'''
         user1_no = get_userinfo('user1', 'userno')
         total_pre = union.union_user(user1_no).json()['data']['total']
-        union_join('user4', 'user6')
+        union_join('user3', 'user6')
         total = union.union_user(user1_no).json()['data']['total']
-        assert total == total_pre
+        assert total == total_pre + 1
 
 @pytest.mark.skip(reason='')
 def test_union_join():

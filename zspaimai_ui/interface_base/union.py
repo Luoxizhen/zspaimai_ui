@@ -128,12 +128,12 @@ def union_manual_operation(user_id, relation_ids):
         "relation_ids": relation_ids
     }
     r = requests.request('post', url=url, params=data, headers=headers)
-def union_set_role(role):
+def union_set_role(userno, role):
     '''设置用户角色-业务员,role = 20, 设置用户角色-普通用户， role = 10'''
     url = base_url + '/admin/union/set_union_role'
     headers = admin_headers
 
-    userno = rwyaml.get_yaml_data('interface_data', 'union.yml')['user1']['userno']
+    # userno = rwyaml.get_yaml_data('interface_data', 'union.yml')['user1']['userno']
     userid = int(userno) - 192800
     if(role==20):
         data = {
