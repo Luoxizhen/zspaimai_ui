@@ -10,7 +10,8 @@ from interface_base import finance
 #@pytest.fixture(scope='module')
 def test_001():
     '''用户登陆'''
-    token =
+    user.get_msg('15622145010')
+    token = user.quick_login('15622145010').json()['data']['token']
     user.update_token(token)
 def save_finance():
     '''验证获取用户的资金信息，并保存到finance.json 文件中，包含钱包余额，冻结金额，提现金额，额度，冻结额度'''
@@ -144,8 +145,6 @@ def test_cashout_user_001():
             finance.recharge()
     cashout_result = finance.cashout_user2()
     status = cashout_result['status']
-
-
     assert status == 200
 def test_cashout_user_002():
     '''验证用户申请提现后，用户的可用额度-申请提现额度'''

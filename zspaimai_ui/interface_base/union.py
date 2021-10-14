@@ -5,33 +5,29 @@ import time
 from interface_base import user
 
 from utils import rwyaml, rwjson
-# user_headers = itf.get_user_headers()
-# admin_headers = itf.get_admin_headers()
 base_url = cfg.ReadCfg().get_base_url()
-# user_headers = rwjson.RwJson().readjson('interface_data', 'user_headers.json')
+# user_headers = rwjson.RwJson().readjson('interface_data', 'user_headers.json') 前台的接口，每次重新获取header 信息，实时更新
 admin_headers = rwjson.RwJson().readjson('interface_data', 'admin_headers.json')
-user_headers_app = rwjson.RwJson().readjson('interface_data', 'user_headers_app.json')
+# user_headers_app = rwjson.RwJson().readjson('interface_data', 'user_headers_app.json')
 def get_union_topic():
     '''获取进行中的专场，用于设定推广素材所关联的专场'''
     url = base_url + '/admin/union/union_topic'
     headers = admin_headers
-    data = {"union_id": "0"}
+    data = {"where": "[{\"key\":\"title\",\"value\":\"\"},{\"key\":\"status\",\"value\":\"20\"},{\"key\":\"is_shelves\",\"value\":\"\"},{\"key\":\"top\",\"value\":\"\"},{\"key\":\"is_recommended\",\"value\":\"\"}]",
+            "page": 0}
     r = requests.request('post', url=url, json=data, headers=headers)
     topic_list = r.json()['data'][0]['id']
-    print(r)
     return topic_list
-def union_add():
+def union_add(union_name):
     '''新增推广素材'''
     url = base_url + '/admin/union/union_add'
     headers = admin_headers
-
     begin_time = time.time() # 推广计划开始时间
     end_time = begin_time + 36000 #推广计划结束时间，10小时
-    topic_id = get_union_topic()
-    #topic = [topic_id]
-    topic = '[' + str(topic_id) +']'
+    #topic_id = get_union_topic()
+    #topic = '[' + str(topic_id) +']' #格式 topic = [topic_id]
     '''rebates_rate: 推广值返点， rebates_quota：返回额度 '''
-    union_name = rwyaml.get_yaml_data('interface_data', 'union.yml')['union_name']
+    # union_name = rwyaml.get_yaml_data('interface_data', 'union.yml')['union_name']
     data = {
         "name": union_name,
         "h5_url": "http://home.online.zspaimai.cn/",
@@ -43,17 +39,14 @@ def union_add():
         "rebates_quota": "2000",
         "start_time": begin_time,
         "end_time": end_time,
-        "images": "[\"picture/2HKbk2JxdSAZnTQ2fmPKD8zAKjWxSi.JPG\"]",
+        "images": "[\"picture/aAsYfx2sAKYjE4TADzxdKfzG68JX5T.JPG\"]",
         "poster": "[\"thumbnail/yBA5rkeEpijN7MaRQ8ZK4iWxcabYfC.JPG\"]",
-        "topic": topic
+        "topic": "[105]"
     }
-    print(data)
     r = requests.request('post', url=url, json=data, headers=headers)
     union_id = r.json()['data']
     union_info = {"union_info": {"new_union_id": union_id}}
-
     rwyaml.generate_yaml_doc('interface_data', 'union_log.yml', union_info)
-
     return r
 def union_list():
     '''推广活动列表'''
@@ -70,7 +63,6 @@ def union_del(id):
     '''推广活动列表'''
     url = base_url + '/admin/union/union_del'
     headers = admin_headers
-
     data = {'id': id}
     r = requests.request('post', url=url, json=data, headers=headers)
     return r
@@ -106,18 +98,7 @@ def union_index(userno):
     print(r)
     # rwyaml.generate_yaml_doc('interface_data', 'union.yml', r.json())
     return r
-# def union_index_001(userno):
-#     '''从推广用户列表中搜索推广用户'''
-#     url = base_url + '/admin/union/index'
-#     headers = admin_headers
-#
-#     data = 'role=&userno=' + userno + '&page=1'
-#     print(data)
-#     r = requests.request('get', url=url, params=data, headers=headers)
-#     print(r.url)
-#     print(r)
-#     # rwyaml.generate_yaml_doc('interface_data', 'union.yml', r.json())
-#     return r
+
 def union_user_info(userno):
     '''获取推广用户信息
     :rtype: object
@@ -209,8 +190,8 @@ def union_join(token):
     user.update_token(token)
     time.sleep(10)
     headers = rwjson.RwJson().readjson('interface_data', 'user_headers.json')
-    data = {"from": "pc"}
-    r = requests.request('post', url=url, json=data, headers=headers)
+    data = {}
+    r = requests.request('post', url=url, params=data, headers=headers)
     print(r)
     return r
 def union_user_1(token):
@@ -218,7 +199,7 @@ def union_user_1(token):
     user.update_token(token)
     url = base_url + '/user/union/union_user_list'
     headers = rwjson.RwJson().readjson('interface_data', 'user_headers.json')
-    data = {"from": "pc", "page": 1}
+    data = {"page": 1}
     r = requests.request('get', url=url, json=data, headers=headers)
     return r
 
@@ -227,7 +208,7 @@ def union_order_1(token):
     user.update_token(token)
     url = base_url + '/user/union/union_order_list'
     headers = rwjson.RwJson().readjson('interface_data', 'user_headers.json')
-    data = {"from": "pc", "page": 1}
+    data = { "page": 1}
     r = requests.request('get', url=url, json=data, headers=headers)
     return r
 def union_commi_1(token):
@@ -235,7 +216,7 @@ def union_commi_1(token):
     user.update_token(token)
     url = base_url + '/user/union/union_commi_list'
     headers = rwjson.RwJson().readjson('interface_data', 'user_headers.json')
-    data = {"from": "pc", "page": 1}
+    data = {"page": 1}
     r = requests.request('get', url=url, params=data, headers=headers)
     rwyaml.generate_yaml_doc('interface_data', 'union_log.yml', r)
     return r
@@ -247,7 +228,7 @@ def union_list_1(token):
     user.update_token(token)
     url = base_url + '/user/union/union_list'
     headers = rwjson.RwJson().readjson('interface_data', 'user_headers.json')
-    data = 'page=1&from=pc'
+    data = 'page=1'
     r = requests.request('get', url=url, params=data, headers=headers)
     #rwyaml.generate_yaml_doc('interface_data', 'union_log.yml', r)
     return r

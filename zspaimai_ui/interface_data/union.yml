@@ -1,76 +1,31 @@
 union_name: "\u63A8\u5E7F\u7D20\u67501"
 user1:
-  inv: VEVVL1FyODVDVlZYWGVTazg2S0JCZHVpMk9KZmhkeCtycHN1Z0FjWmdiZz0=
-  phone: '13622288419'
-  token: 97b60d1e2c9a89fd2a991eb5a10168ec
-  userno: 193113
-user10:
-  inv: WVNFNjNDa2NtOGJHT2FtNHpTM3dmcjlQd2VXWGNqb3RlYVlnb08rTUUyND0=
-  phone: 13622288428
-  token: 6eb7d3e752e3a042ac793640f1a25e7e
-  userno: '193125'
-user11:
-  inv: c0FBVkRHM05zUTJEcTkzR0FGM3FkNXN6R09wN3RwdDNMNzg0eFlDdk42MD0=
-  phone: 13622288429
-  token: e118c908cbea8a340e7b4b725054a6ca
-  userno: '193126'
-user12:
-  inv: Y0pUZ3hQMUpVc1RDQ1IwMXRFTHRDeDJuKzlTd0VJT2pzSTFWekxEYWJsMD0=
-  phone: 13622288430
-  token: 0b8c463b174df129bd241ed4c4a541db
-  userno: '193127'
-user13:
-  inv: d2QwZnkrNVFidm5pZVZEVC9jdnhGdFlkUy8xS1BnRzFGY0tScEVxb242WT0=
-  phone: 13622288431
-  token: fd3983b57c1e5a3f9b7ae0d1e4c4d601
-  userno: '193128'
-user14:
-  inv: ZUcwR2p1Sm1adVkzY0JkMmpqV0ZVbEtORWpPcnVYbnFlVmxId0NreVRZbz0=
-  phone: 13622288432
-  token: fd143b2d14720153862175d7ae82443c
-  userno: '193129'
-user15:
-  inv: null
-  phone: 13622288433
-  token: 071deed3992a921c671f88f1af03483d
-  userno: '193130'
+  inv: VGF4SzMrSCtvdzU3cWN2bkZNdGMyaWRsUy8wcHgwNkxadC9HTk5HaC9RYz0=
+  phone: '13622288493'
+  token: dfe74912b1a1cdf15bf1db9387410210
+  userno: '193187'
 user2:
-  inv: RHM4Tkk4K0dBRXV2QnNZQVJyMjBEOGhtY1duSEpnM3NFUGYrSExvdnNoND0=
-  phone: '13622288420'
-  token: 689be14fec3ee20f9df4f40fcfc3671f
-  userno: 193114
+  inv: SFAxdjhwdGtjNkQ3SDFiMFhQb2lLTTZLQ1puL25lTDFrUGtYVTcxaWUvTT0=
+  phone: '13622288494'
+  token: ea1897f65914e0bc0904bc6540f0bbd2
+  userno: '193188'
 user3:
-  inv: U0FTdW9lYkJnaVFMeTNPcm5JM2ZYWFdmUS9SVDE2ZE4zeG5sc1c2VUdNMD0=
-  phone: '13622288421'
-  token: c89ea133d06690ebf486e715563749d1
-  userno: 193115
+  inv: VG1WL2RBM1B6dFo0SkZJdC8zNzJoMHlPeEFWRzdRZ2Y5RWh0YnBKWHcvTT0=
+  phone: '13622288495'
+  token: e64a93925d4dc9aebd6100cbb5a180ab
+  userno: '193189'
 user4:
-  inv: U0FTdW9lYkJnaVFMeTNPcm5JM2ZYWFdmUS9SVDE2ZE4zeG5sc1c2VUdNMD0=
-  phone: '13622288422'
-  token: 2159e68362a83c041e4d7921a8f22c4e
-  userno: 193116
+  inv: UTc4L0l1MUZJay9EVTJ2OW5KTk9UdEJGY2NFc0pMTUJUcjJQbFNKWDc1cz0=
+  phone: '13622288496'
+  token: 7d16e2ba4db4d1d2700a48b5827a06a0
+  userno: '193190'
 user5:
-  inv: U0FTdW9lYkJnaVFMeTNPcm5JM2ZYWFdmUS9SVDE2ZE4zeG5sc1c2VUdNMD0=
-  phone: '13622288423'
-  token: 07d9a87d21fe4c726ab43a973d272006
-  userno: '193117'
+  inv: null
+  phone: '13622288497'
+  token: e4315a658d39ca3b7ccdb84839b6ba97
+  userno: '193191'
 user6:
-  inv: d1FaL2lDSERTajdwaE52TGxrYVl3UVE2dXppZmJDRUYzc1RkSWtvTVhsST0=
-  phone: 13622288424
-  token: 03182ee61c4738404bef3c1fc8731fc4
-  userno: '193121'
-user7:
-  inv: R25zVERRT2k5Vmo4aWY1WVI0VDhoU0pyYUFmVW5GSmhQektJZGc5L1hZUT0=
-  phone: 13622288425
-  token: a674d5a5b379b294857ccc9cb4f27a50
-  userno: '193122'
-user8:
-  inv: Ry85elpXeGQvcTJsbVhkZUdmZ1Voam1mKzhxS0lxUlIrVmtCUXhHd2Zwbz0=
-  phone: 13622288426
-  token: 3b7c1a025a217bd4f3b591c1c5d7fac9
-  userno: '193123'
-user9:
-  inv: a1RLaTZCVlM3am0ySVp6VlAxaWhjK3d2NU1qODVrU1JobGVnU2xldGlvYz0=
-  phone: 13622288427
-  token: 76fad3e6ed0abd6bc187ad2d3e9c11be
-  userno: '193124'
+  inv: null
+  phone: '13622288498'
+  token: 465e430d64eca7fe106d4e6cfc3d4e4d
+  userno: '193192'
