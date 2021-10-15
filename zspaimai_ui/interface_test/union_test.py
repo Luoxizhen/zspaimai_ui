@@ -23,6 +23,9 @@ def user_login1():
 def get_userinfo(user,key):
     userinfo = rwyaml.get_yaml_data('interface_data', 'union.yml')[user][key]
     return userinfo
+def set_userinfo(user, key, keyvalue):
+    rwyaml.set_keyvalue('interface_data', 'union.yml', user, key, keyvalue)
+
 def union_join(user1, user2):
     '''该函数提供用户关联的基本操作'''
     token = get_userinfo(user1, 'token')
@@ -221,15 +224,16 @@ class test_union_edit():
         assert status == 200
 
 
-# @pytest.mark.usefixtures('union_user_login')
-class TestUnionUser():
+@pytest.mark.usefixtures('add_user')
+class TestUnionUser(object):
     # @pytest.mark.skip(reason="已经执行过")
     def test_union_join_user1(self):
         user_login('user1')
-        token = get_userinfo('user1','token')
-        union.union_join(token)
+        token = get_userinfo('user1', 'token')
+        r = union.union_join(token)
         userno = get_userinfo('user1', 'userno')
         union.union_set_role(userno, 20)
+        assert r.json()["status"] == 200
     # def test_user_join(self):
     #     token = get_userinfo('user1', 'token')
     #     r = union.union_join(token)
@@ -420,4 +424,24 @@ def test_union_join_user3():
     total = r.json()['data']['total']
 
     assert total == total_pre
+@pytest.fixture(scope='class',name= 'add_user')
+def add_user():
+    print("调用固件")
+    user_phone = get_userinfo('user', 'phone')#13622288516
+    ph1 = user_phone[0:8]
+    ph2 = user_phone[8:]
+    for i in range(1, 7):
+        user_str = 'user' + str(i)
+        if (i!=1):
+            ph2 = str(int(ph2) + 1)
+        phone = ph1 + ph2
+        set_userinfo(user_str, 'phone', phone)
+        set_userinfo(user_str, 'inv', '')
+        set_userinfo(user_str, 'userno', '')
+        set_userinfo(user_str, 'token', '')
+    ph2 = str(int(ph2)+1)
+    last_phone = ph1 + ph2
+    set_userinfo('user', 'phone', last_phone)
+
+
 
