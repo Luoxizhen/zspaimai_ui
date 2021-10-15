@@ -33,7 +33,18 @@ def union_join(user1, user2):
 
     r = union.union_list_1(token)# 获取用户1的推广链接
     print(r.json())
-    h5_url = r.json()['data']['data'][0]['h5_url']
+    '''获取最新的推广素材链接'''
+    i = r.json()['data']['total']
+    h5_url = ''
+    if (i<11):
+        j = i-1
+        h5_url = r.json()['data']['data'][j]['h5_url']
+    else:
+        k = i/10 + 1
+        r = union.union_lise_2(token, k)
+        j = i - 10(k-1) -1
+        h5_url = r.json()['data']['data'][j]['h5_url']
+
 
     '''从h5_url 中提取 inv 信息:http://home.online.zspaimai.cn/?inv=VEVVL1FyODVDVlZYWGVTazg2S0JCZHVpMk9KZmhkeCtycHN1Z0FjWmdiZz0='''
     inv = h5_url.replace('http://home.online.zspaimai.cn/?inv=', '')
@@ -226,7 +237,8 @@ class test_union_edit():
 
 @pytest.mark.usefixtures('add_user')
 class TestUnionUser(object):
-    # @pytest.mark.skip(reason="已经执行过")
+    '''验证正常情况下，业务员所关联的下级用户的所有下级用户都是该业务员的下级用户'''
+    # @pytest.mark.skip(reason = '')
     def test_union_join_user1(self):
         user_login('user1')
         token = get_userinfo('user1', 'token')
@@ -234,28 +246,32 @@ class TestUnionUser(object):
         userno = get_userinfo('user1', 'userno')
         union.union_set_role(userno, 20)
         assert r.json()["status"] == 200
-    # def test_user_join(self):
-    #     token = get_userinfo('user1', 'token')
-    #     r = union.union_join(token)
-    #     print(r.json())
-    #     assert r.json()['status'] == 200
 
     def test_union_join_user2_001(self):
         '''验证用户2通过用户1的推广链接加入推广计划'''
-        '''先创建一个推广计划： 推广计划_自动化测试，勿删除'''
-        union.union_add('中晟推广计划')
-        '''检查用户1是否已经加入推广计划，如果未加入推广计划，先加入'''
+        '''先创建一个推广计划： '''
+        union_name = get_userinfo('union', 'newname')
+        print(union_name)
+        set_userinfo('union', 'name', union_name)
+        union.union_add(union_name).json()
+        union_name_1 = union_name[0:7]
+
+        union_name_2 = union_name[7:11]
+        union_newname = union_name_1 + str(int(union_name_2) + 1)
+        set_userinfo('union', 'newname', union_newname)
+
+        '''重新保存推广计划'''
+
         user1_no = get_userinfo('user1', 'userno')
         print(user1_no)
         total_pre = union.union_user(user1_no).json()['data']['total']
         print('用户2加入前用户数')
         print(total_pre)
-
         union_join('user1', 'user2')
         total = union.union_user(user1_no).json()['data']['total']
         assert total == total_pre + 1
 
-    # @pytest.mark.xfail(reason='')
+
     def test_union_join_user3_001(self):
         '''验证用户3 加入推广计划以后，用户3 通过用户2的 inv 加入推广计划，用户3 会成为用户2 的推广用户'''
 
@@ -266,7 +282,6 @@ class TestUnionUser(object):
         total = union.union_user(user2_no).json()['data']['total']
         assert total == total_pre + 1
 
-    # @pytest.mark.xfail(reason='')
     def test_union_join_user4_001(self):
         '''验证用户4 通过用户2的推广链接加入推广计划， 用户4 成为业务员： 用户1 的推广成员'''
         user1_no = get_userinfo('user1', 'userno')
@@ -291,6 +306,10 @@ class TestUnionUser(object):
         total = union.union_user(user1_no).json()['data']['total']
         assert total == total_pre + 1
 
+class TestUnionOrder(object):
+    '''验证在TestUnionUser 推广用户关联成功后，推广订单的关联'''
+class TestUnionCommi(object):
+    '''验证在TestUnionUser 推广用户关联成功后，推广订单的关联'''
 @pytest.mark.skip(reason='')
 def test_union_join():
     user_token = get_userinfo('user1', 'token')
@@ -426,7 +445,6 @@ def test_union_join_user3():
     assert total == total_pre
 @pytest.fixture(scope='class',name= 'add_user')
 def add_user():
-    print("调用固件")
     user_phone = get_userinfo('user', 'phone')#13622288516
     ph1 = user_phone[0:8]
     ph2 = user_phone[8:]

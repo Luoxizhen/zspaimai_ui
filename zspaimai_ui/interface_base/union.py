@@ -232,6 +232,17 @@ def union_list_1(token):
     r = requests.request('get', url=url, params=data, headers=headers)
     #rwyaml.generate_yaml_doc('interface_data', 'union_log.yml', r)
     return r
+def union_list_2(token, pageno):
+    '''获取推广素材'''
+
+    # token = rwyaml.get_yaml_data('interface_data', 'union.yml')['user1']['token']
+    user.update_token(token)
+    url = base_url + '/user/union/union_list'
+    headers = rwjson.RwJson().readjson('interface_data', 'user_headers.json')
+    data = 'page='+str(pageno)
+    r = requests.request('get', url=url, params=data, headers=headers)
+    #rwyaml.generate_yaml_doc('interface_data', 'union_log.yml', r)
+    return r
 # def union_list_2(token):
 #     '''获取推广素材'''
 #     url = base_url + '/user/union/union_list'

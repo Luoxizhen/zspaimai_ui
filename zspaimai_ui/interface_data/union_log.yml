@@ -13546,3 +13546,10 @@ union_info:
   new_union_id: '295'
 union_info:
   new_union_id: '296'
+union_info:
+  new_union_id:
+    error_code: 9999
+    error_data: null
+    msg: "name\u4E0D\u80FD\u4E3A\u7A7A"
+union_info:
+  new_union_id: '297'

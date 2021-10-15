@@ -1,36 +1,42 @@
+union:
+  id: null
+  name: zstgsc-1002
+  newname: zstgsc-1003
+  rebates_quota: null
+  rebates_rate: null
 union_name: "\u63A8\u5E7F\u7D20\u67501"
 user:
   inv: null
-  phone: '13622288552'
+  phone: '13111111141'
   token: null
   userno: null
 user1:
-  inv: NklqcE9EdVB6bXRFN00yMXZkNTJEUWlqclVScE5qdnQxNlZjVGVIZU5SVT0=
-  phone: '13622288546'
-  token: fe7d9b6cd188d48a9ba3deb60f4b43ca
-  userno: '193224'
+  inv: ZXMrODhqU0pySFBLZ3dMNks5SkJ4eWtYWkZmYlVGSUc1NkJEQU55aUVFND0=
+  phone: '13111111135'
+  token: a88772d1a3c5d0a509782770cc98831a
+  userno: '193240'
 user2:
-  inv: SDQ4QWw4Y29RRUVVdkZoUGpvVDMwNFd2N1NoRjNRV29rTWZqOHdBTXpYOD0=
-  phone: '13622288547'
-  token: fb20e5974e6eedda0a776c78da476f97
-  userno: '193225'
+  inv: Wnc2bGlUN3cyK1FieFY1MkMxNUxlaWl5UzdaT1B3Z0l1MkUrbEswRVJoaz0=
+  phone: '13111111136'
+  token: c2e687c81773c7730c8e5583f3c3bcb6
+  userno: '193241'
 user3:
-  inv: dU5OT2FkYjBpRTBnbkorenMzRWcwVTlnTkNtaXMwWkZmdUdiTzVmSzB5RT0=
-  phone: '13622288548'
-  token: 248ffec45ce7a8f72014575768fb43fe
-  userno: '193226'
+  inv: VUxqRW8weUxNaGZTZFljSXNna09vV1RnSDc4QjNiamN4VU9iZ3RsM2ZCND0=
+  phone: '13111111137'
+  token: 49067681da95c6bafc48f7e132daaa1f
+  userno: '193242'
 user4:
   inv: ''
-  phone: '13622288549'
-  token: 1f8fc06f895f24d86ab4f335f2f6dc4c
-  userno: '193227'
+  phone: '13111111138'
+  token: 3f4599b526e20db10f7c0812a3c163b9
+  userno: '193243'
 user5:
   inv: ''
-  phone: '13622288550'
-  token: ada2eaec163253b8700bbe206a412252
-  userno: '193228'
+  phone: '13111111139'
+  token: eba17bfce1a8dd3be816e3188243debb
+  userno: '193244'
 user6:
   inv: ''
-  phone: '13622288551'
-  token: 1eb091a0884628989e4cf01b337ac67b
-  userno: '193229'
+  phone: '13111111140'
+  token: 782dd5f8de1b521340c29b737ea9b7bc
+  userno: '193245'
