@@ -240,6 +240,7 @@ def union_list_2(token, pageno):
     url = base_url + '/user/union/union_list'
     headers = rwjson.RwJson().readjson('interface_data', 'user_headers.json')
     data = 'page='+str(pageno)
+    print(data)
     r = requests.request('get', url=url, params=data, headers=headers)
     #rwyaml.generate_yaml_doc('interface_data', 'union_log.yml', r)
     return r

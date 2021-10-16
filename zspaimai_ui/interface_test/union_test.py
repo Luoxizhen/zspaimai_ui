@@ -30,19 +30,24 @@ def union_join(user1, user2):
     '''该函数提供用户关联的基本操作'''
     token = get_userinfo(user1, 'token')
     union.union_join(token)#用户1 加入推广计划，增加用户是否已加入推广计划，未加入时，执行加入操作
-
     r = union.union_list_1(token)# 获取用户1的推广链接
-    print(r.json())
+
     '''获取最新的推广素材链接'''
     i = r.json()['data']['total']
+    print("推广素材总数： {}".format(i))
     h5_url = ''
-    if (i<11):
+    if i < 11:
         j = i-1
         h5_url = r.json()['data']['data'][j]['h5_url']
+
     else:
-        k = i/10 + 1
-        r = union.union_lise_2(token, k)
-        j = i - 10(k-1) -1
+        k = int(i/10) + 1
+
+        r = union.union_list_2(token, k)
+        print("最后一页推广素材内容如下：")
+        print(r.json())
+        j = int(i - 10 * (k-1)-1)
+        print(j)
         h5_url = r.json()['data']['data'][j]['h5_url']
 
 
@@ -62,7 +67,10 @@ def union_join(user1, user2):
 
 def test_add_union():
     '''验证后台添加推广计划成功'''
-    r = union.union_add('推广素材')
+    # for i in range (1,10):
+    #     name = "推广素材-" + str(i)
+    #     r = union.union_add(name)
+    r = union.union_add("add_union_test")
     status = r.json()['status']
     union_id = r.json()['data']
     union.union_del(union_id)
