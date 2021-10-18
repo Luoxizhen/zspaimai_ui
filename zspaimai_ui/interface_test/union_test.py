@@ -1,6 +1,6 @@
 import time
 
-from interface_base import union, user
+from interface_base import union, user, finance
 
 from utils import rwyaml
 import pytest
@@ -95,7 +95,7 @@ def test_user_join():
 
 '''后台基本功能验证'''
 @pytest.mark.skip(reason="no way of currently testing this")
-class test_union_edit():
+class TestUnionEdit():
     def test_add_union_001(self):
         '''验证后台添加推广计划后，推广计划列表增加一条数据'''
         union_total_pre = union.union_list().json()['data']['total']
@@ -253,6 +253,19 @@ class TestUnionUser(object):
         r = union.union_join(token)
         userno = get_userinfo('user1', 'userno')
         union.union_set_role(userno, 20)
+        # 保存用户的可用额度、额度列表数量、累计获得额度
+        #累计获得额度
+        quota = union.union_user(userno).json()['data']['quota']
+        #总额度
+        normal_quota = finance.get_finance_info()['normal_quota']
+        #额度列表记录总数
+        quota_total = finance.get_quota_bill()['total']
+        quota_info = {'quota': quota,
+                      'nomal_quota': normal_quota,
+                      'quota_total': quota_total}
+
+
+
         assert r.json()["status"] == 200
 
     def test_union_join_user2_001(self):
@@ -278,6 +291,37 @@ class TestUnionUser(object):
         union_join('user1', 'user2')
         total = union.union_user(user1_no).json()['data']['total']
         assert total == total_pre + 1
+    @pytest.mark.sikpif()# 用户2 加入用户1 的推广计划成功后，才进行该用例验证
+    def test_union_join_user2_002(self):
+        '''验证用户2加入业务员-用户1的推广计划后，用户1 的 推广额度+ 2000'''
+        userno = get_userinfo('user1', 'userno')
+        r = union.union_user(userno)
+
+    @pytest.mark.sikpif()  # 用户2 加入用户1 的推广计划成功后，才进行该用例验证
+    def test_union_join_user2_003(self):
+        '''验证业务员-用户1 的总额度增加+2000'''
+        userno = get_userinfo('user1', 'userno')
+        r = union.union_user(userno)
+
+    @pytest.mark.sikpif()  # 用户2 加入用户1 的推广计划成功后，才进行该用例验证
+    def test_union_join_user2_004(self):
+        '''验证用户的额度列表增加一条记录： 额度= 2000'''
+        userno = get_userinfo('user1', 'userno')
+        r = union.union_user(userno)
+
+    @pytest.mark.sikpif()  # 用户2 加入用户1 的推广计划成功后，才进行该用例验证
+    def test_union_join_user2_005(self):
+        '''验证业务员的直接下级完成订单支付后，业务员获得在途推广值'''
+
+    @pytest.mark.sikpif()  # 用户2 加入用户1 的推广计划成功后，才进行该用例验证
+    def test_union_join_user2_006(self):
+        '''验证业务员的直接下级完成订单支付后，业务员的推广订单增加2条记录'''
+    @pytest.mark.sikpif()  # 用户2 加入用户1 的推广计划成功后，才进行该用例验证
+    def test_union_join_user2_007(self):
+        '''验证业务员的直接下级完成订单支付后，业务员的推广值增加一条记录'''
+
+    def test_union_join_user2_008(self):
+        '''验证业务员的直接下级完成订单支付后，业务员的推广值增加一条记录'''
 
 
     def test_union_join_user3_001(self):
@@ -289,6 +333,20 @@ class TestUnionUser(object):
         union_join('user2', 'user3')
         total = union.union_user(user2_no).json()['data']['total']
         assert total == total_pre + 1
+    @pytest.mark.skipif()# 上一个用例执行成功才验证
+    def test_union_join_user3_002(self):
+        '''验证用户3加入 普通用户-用户2 的推广计划后，用户2 可获得推广额度 = 2000 '''
+
+    @pytest.mark.skipif()  # 上一个用例执行成功才验证
+    def test_union_join_user3_003(self):
+        '''验证用户3加入 普通用户 -用户2 的推广计划后，用户2 的总额度+2000'''
+
+    @pytest.mark.skipif()  # 上一个用例执行成功才验证
+    def test_union_join_user3_004(self):
+        '''验证用户3加入 普通用户 -用户2 的推广计划后，用户2 的额度列表中增加一条记录'''
+
+
+
 
     def test_union_join_user4_001(self):
         '''验证用户4 通过用户2的推广链接加入推广计划， 用户4 成为业务员： 用户1 的推广成员'''
@@ -469,5 +527,6 @@ def add_user():
     last_phone = ph1 + ph2
     set_userinfo('user', 'phone', last_phone)
 
-
+def test_set_user1_info():
+    set_userinfo('user_user', 'kk', 'ww')
 

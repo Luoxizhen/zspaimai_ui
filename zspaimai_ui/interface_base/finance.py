@@ -72,6 +72,7 @@ def get_quota_bill():
     quota_bill_info = {'total': total,
                         'status': status,
                         'first_record': first_record}
+    
     return quota_bill_info
 
 def recharge():
