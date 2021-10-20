@@ -29,7 +29,6 @@ class RwJson():
 
     def readjson(self, parname, filename):
         jsonpath = os.path.join(self.parpath, parname, filename)
-        print(jsonpath)
         with open(jsonpath, 'r') as load_f:
             load_dict = json.load(load_f)
             return load_dict

@@ -21,7 +21,7 @@ def get_token():
                'Origin': 'http://home.online.zspaimai.cn',
                'Referer': 'http: // home.online.zspaimai.cn /',
                'token': 'xu16kny28l12lhnmitevanfpb - yzul_v',
-               'from': 'pc',
+               'Appfrom': 'pc',
                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063',
                }
     json = {"phone": "15622145010",

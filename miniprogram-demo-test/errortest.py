@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # Created by xiazeng on 2019-06-26
-import miniulm
+import minium
 
 
 class ErrorTest(minium.MiniTest):

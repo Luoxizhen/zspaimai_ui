@@ -1,56 +1,77 @@
 import requests
-def add_goods():
+import time
+from utils import rwjson
+from config import readCfg
+admin_headers = rwjson.RwJson().readjson('interface_data', 'admin_headers.json')
+base_url = readCfg.ReadCfg().get_base_url()
+def updata_token(token):
+    '''更新 user_headers'''
+    user_headers = rwjson.RwJson().readjson('interface_data', 'user_headers.json')
+    user_headers["token"] = token
+    rwjson.RwJson().writejson('interface_data', 'user_headers.json', user_headers)
+
+def get_user_headers():
+    return rwjson.RwJson().readjson('interface_data', 'user_headers.json')
+
+def goods_add(begin_time, end_time, name):
     '''后台添加拍品'''
-    url = 'http://api.online.zspaimai.cn/admin/goods/goods_add'
-    headers = {"Content-Type": "application/json; charset=utf-8",
-               'Connection': 'keep-alive',
-               'host': 'api.online.zspaimai.cn',
-               'Origin': 'http://home.online.zspaimai.cn',
-               'Referer': 'http://home.online.zspaimai.cn/',
-               'AdminToken': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ5eWxBZG1pbiIsImlhdCI6MTYyNzAwNDc0OCwibmJmIjoxNjI3MDA0NzQ4LCJleHAiOjE2MjcwNDc5NDgsImRhdGEiOnsiYWRtaW5fdXNlcl9pZCI6MiwibG9naW5fdGltZSI6IjIwMjEtMDctMjMgMDk6NDU6NDgiLCJsb2dpbl9pcCI6IjE3Mi4xOS4wLjQifX0.KQfyTIx3MSRafMvKthxG-9yoQaMRaDLMA1gAYxtEOGo',
-               'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063',
-               }
+    url = base_url + '/admin/goods/goods_add'
+    headers = admin_headers
+    # begin_time = round(time.time())
+    # end_time = begin_time + 3600 #3600 为一小时
     json = {"category_id": 35,
             "platform": "1",
-            "begin_time": {{begin_time}},
-            "end_time": {{end_time}},
+            "begin_time": begin_time,
+            "end_time": end_time,
             "top_price": "",
-            "name": "中标测试-{{$randomInt}}",
+            "name": name,
             "delay_time": 60,
             "shape": "98",
-            "price": "10",
+            "price": "10",# 起拍价
             "retain_price": "",
             "seller_name": "大罗",
-            "agreement_no": "123",
+            "agreement_no": "a0000152",
             "create_user": "",
             "create_date": "",
-            "content": "<p>我的竞买流程测试</p>",
-            "original_image": "[\"picture/YTfwFGWFEhDZrHf4GBX3fKdE27kJzn.png\"]",
-            "images": "[\"thumbnail/54pNBGaXPzYcwNpW8pk56JGSyC63k4.png\"]",
+            "content": "<p>1960年第三版人民币壹圆拖拉机狮子号一枚</p>",
+            "original_image": "[\"picture/wxTj7wm3XN2JkhFZXQCSpiRKRhZx5C.jpeg\"]",
+            "images": "[\"thumbnail/fjZac4eFCsxk2Py2z4BiQ4N4fbbC6x.png\"]",
             "freight_id": 51,
             "is_freight": 0,
             "goods_weight": "",
             "buyer_service_rate": "8",
-            "meta": "{\"min_price\":\"\",\"max_price\":\"\",\"seller_insure_deal\":\"0\",\"seller_insure_no_deal\":\"0\",\"service_fee_deal\":\"0\",\"service_fee_no_deal\":\"0\",\"production_fee_deal\":\"0\",\"production_fee_no_deal\":\"0\",\"safekeeping_fee_deal\":\"0\",\"safekeeping_fee_no_deal\":\"0\",\"seller_taxes\":\"\",\"identify_fee\":\"\",\"packing_fee\":\"\",\"texture\":\"\",\"spec\":\"\",\"opinion\":\"\"}"
+            "meta": "{\"min_price\":\"\",\"max_price\":\"\",\"seller_insure_deal\":\"1\",\"seller_insure_no_deal\":\"1\",\"service_fee_deal\":\"2\",\"service_fee_no_deal\":\"1\",\"production_fee_deal\":\"15\",\"production_fee_no_deal\":\"15\",\"safekeeping_fee_deal\":\"0\",\"safekeeping_fee_no_deal\":\"0\",\"seller_taxes\":\"\",\"identify_fee\":\"\",\"packing_fee\":\"\",\"texture\":\"\",\"spec\":\"\",\"opinion\":\"\"}",
+            "type": 1,
+            "topic_id": "[15]"
         }
     r = requests.request('post', url=url, json=json, headers=headers)
-    goog_id = r.json()['data']
-    # {
-    #     "status": 200,
-    #     "msg": "操作成功",
-    #     "data": "1160"
-    # }
     return r.json()
-def bidding():
-    url = 'http://api.online.zspaimai.cn/user/user/bid'
-    json ={"goods_id": {{good_id}},
-             "price": {{price}} }
-    headers = {"Content-Type": "application/json; charset=utf-8",
-               'Connection': 'keep-alive',
-               'host': 'api.online.zspaimai.cn',
-               'Origin': 'http://home.online.zspaimai.cn',
-               'Referer': 'http://home.online.zspaimai.cn/',
-               'token': token,
-               'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063',
-               }
+def goods_list():
+    '''后台拍品列表'''
+    url = base_url + '/admin/goods/goods_list'
+    headers = admin_headers
+    json = {"where":"[{\"key\":\"name\",\"value\":\"\"},{\"key\":\"category_id\",\"value\":\"\"},{\"key\":\"status\",\"value\":\"\"},{\"key\":\"is_shelves\",\"value\":\"\"},{\"key\":\"top\",\"value\":\"\"},{\"key\":\"is_recommended\",\"value\":\"\"},{\"key\":\"type\",\"value\":1}]","page":1,"admin_name":"","topic_id":""}
     r = requests.request('post', url=url, json=json, headers=headers)
+    return r.json()
+def bidding(good_id, price, token):
+    url = base_url + '/user/user/bid'
+    json ={"goods_id": good_id,
+             "price": price
+           }
+    print (json)
+    updata_token(token)
+
+    headers = get_user_headers()
+    print(headers)
+
+    r = requests.request('post', url=url, json=json, headers=headers)
+    return r.json()
+def user_bid(token):
+    '''获取用户的中标记录'''
+    url = base_url + '/user/goods/user_bid'
+    updata_token(token)
+    headers = get_user_headers()
+    json = {"page":1,"act":"finish"}
+    r = requests.request('post', url=url, json=json, headers=headers)
+    return r.json()
+
