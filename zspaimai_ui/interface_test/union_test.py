@@ -263,9 +263,6 @@ class TestUnionUser(object):
         quota_info = {'quota': quota,
                       'nomal_quota': normal_quota,
                       'quota_total': quota_total}
-
-
-
         assert r.json()["status"] == 200
 
     def test_union_join_user2_001(self):
@@ -291,6 +288,46 @@ class TestUnionUser(object):
         union_join('user1', 'user2')
         total = union.union_user(user1_no).json()['data']['total']
         assert total == total_pre + 1
+
+    def test_union_join_user3_001(self):
+        '''验证用户3 加入推广计划以后，用户3 通过用户2的 inv 加入推广计划，用户3 会成为用户2 的推广用户'''
+
+        '''用户3 为加入用户2 的推广计划前，用户2的推广用户数量：'''
+        user2_no = get_userinfo('user2', 'userno')
+        total_pre = union.union_user(user2_no).json()['data']['total']
+        union_join('user2', 'user3')
+        total = union.union_user(user2_no).json()['data']['total']
+        assert total == total_pre + 1
+
+
+
+
+
+    def test_union_join_user4_001(self):
+        '''验证用户4 通过用户2的推广链接加入推广计划， 用户4 成为业务员： 用户1 的推广成员'''
+        user1_no = get_userinfo('user1', 'userno')
+        total_pre = union.union_user(user1_no).json()['data']['total']
+        union_join('user2', 'user4')
+        total = union.union_user(user1_no).json()['data']['total']
+        assert total == total_pre + 1
+
+    def test_union_join_user5_001(self):
+        '''验证用户5 通过用户3的推广链接加入推广计划， 用户5成为用户3 的推广成员'''
+        user3_no = get_userinfo('user3', 'userno')
+        total_pre = union.union_user(user3_no).json()['data']['total']
+        union_join('user3', 'user5')
+        total = union.union_user(user3_no).json()['data']['total']
+        assert total == total_pre + 1
+
+    def test_union_join_user6_001(self):
+        '''验证用户6 通过用户4的推广链接加入推广计划， 用户6 不会成为用户1 的推广成员'''
+        user1_no = get_userinfo('user1', 'userno')
+        total_pre = union.union_user(user1_no).json()['data']['total']
+        union_join('user3', 'user6')
+        total = union.union_user(user1_no).json()['data']['total']
+        assert total == total_pre + 1
+class TestUnionUser_order(object):
+
     @pytest.mark.sikpif()# 用户2 加入用户1 的推广计划成功后，才进行该用例验证
     def test_union_join_user2_002(self):
         '''验证用户2加入业务员-用户1的推广计划后，用户1 的 推广额度+ 2000'''
@@ -323,17 +360,7 @@ class TestUnionUser(object):
     def test_union_join_user2_008(self):
         '''验证业务员的直接下级完成订单支付后，业务员的推广值增加一条记录'''
 
-
-    def test_union_join_user3_001(self):
-        '''验证用户3 加入推广计划以后，用户3 通过用户2的 inv 加入推广计划，用户3 会成为用户2 的推广用户'''
-
-        '''用户3 为加入用户2 的推广计划前，用户2的推广用户数量：'''
-        user2_no = get_userinfo('user2', 'userno')
-        total_pre = union.union_user(user2_no).json()['data']['total']
-        union_join('user2', 'user3')
-        total = union.union_user(user2_no).json()['data']['total']
-        assert total == total_pre + 1
-    @pytest.mark.skipif()# 上一个用例执行成功才验证
+    @pytest.mark.skipif()  # 上一个用例执行成功才验证
     def test_union_join_user3_002(self):
         '''验证用户3加入 普通用户-用户2 的推广计划后，用户2 可获得推广额度 = 2000 '''
 
@@ -344,33 +371,6 @@ class TestUnionUser(object):
     @pytest.mark.skipif()  # 上一个用例执行成功才验证
     def test_union_join_user3_004(self):
         '''验证用户3加入 普通用户 -用户2 的推广计划后，用户2 的额度列表中增加一条记录'''
-
-
-
-
-    def test_union_join_user4_001(self):
-        '''验证用户4 通过用户2的推广链接加入推广计划， 用户4 成为业务员： 用户1 的推广成员'''
-        user1_no = get_userinfo('user1', 'userno')
-        total_pre = union.union_user(user1_no).json()['data']['total']
-        union_join('user2', 'user4')
-        total = union.union_user(user1_no).json()['data']['total']
-        assert total == total_pre + 1
-
-    def test_union_join_user5_001(self):
-        '''验证用户5 通过用户3的推广链接加入推广计划， 用户5成为用户3 的推广成员'''
-        user3_no = get_userinfo('user3', 'userno')
-        total_pre = union.union_user(user3_no).json()['data']['total']
-        union_join('user3', 'user5')
-        total = union.union_user(user3_no).json()['data']['total']
-        assert total == total_pre + 1
-
-    def test_union_join_user6_001(self):
-        '''验证用户6 通过用户4的推广链接加入推广计划， 用户6 不会成为用户1 的推广成员'''
-        user1_no = get_userinfo('user1', 'userno')
-        total_pre = union.union_user(user1_no).json()['data']['total']
-        union_join('user3', 'user6')
-        total = union.union_user(user1_no).json()['data']['total']
-        assert total == total_pre + 1
 
 class TestUnionOrder(object):
     '''验证在TestUnionUser 推广用户关联成功后，推广订单的关联'''

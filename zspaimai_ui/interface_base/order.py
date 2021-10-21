@@ -126,9 +126,10 @@ def add_order(token,goods_id,addr_id,):
     #goods_ids = "[\"2185\"]"
     #goods_ids = "["+str(goods_id)+"]"
     print(goods_id)
+
     json = {"goods_ids":goods_id,
             "addr_id":addr_id,
-            "express":1,
+            "express":2,
             "express_chd":0,
             "payment_id":1,
             "pay_pwd":"246810",
@@ -144,7 +145,48 @@ def add_order(token,goods_id,addr_id,):
     r = requests.request('post', url=url, json=json, headers=headers)
     return r
 
+def add_order1(token,goods_id):
+    '''用户提交订单-上门自提'''
+    #"coupon":"[]", 优惠劵
+    url = base_url + '/user/order/add_order'
+    #updata_token(token)
+    headers = get_user_headers()
+    #goods_ids = "[\"2185\"]"
+    #goods_ids = "["+str(goods_id)+"]"
+    print(goods_id)
 
+    json = {"goods_ids":goods_id,
+            "addr_id":0,
+            "express":3,
+            "express_chd":0,
+            "payment_id":1,
+            "pay_pwd":"246810",
+            "express_fee":0,
+            "insure_price":0,
+            "insure_fee":0,
+            "appointment":'2021-10-21',
+            "total":40,
+            "order_model":10,
+            "coupon":"[]",
+            "AppFrom": "pc"}
+    print(json)
+    r = requests.request('post', url=url, json=json, headers=headers)
+    # {
+    #     "status": 200,
+    #     "msg": "操作成功",
+    #     "data": {
+    #         "verify_code": "",
+    #         "reId": "1455",
+    #         "orderNo": "2021102115580233428",
+    #         "money": 40,
+    #         "qrcode": "",
+    #         "name": "余额",
+    #         "pay_logo": "icon\/wallet.png",
+    #         "pay_status": 1
+    #     },
+    #     "shop_switch": "0"
+    # }
+    return r
 def refund_goods():
     '''查找订单包含的拍品，商品'''
     '''{"status":200,"msg":"操作成功","data":[{"goods_id":2334,"name":"退化退款测试-13"},{"goods_id":2335,"name":"退化退款测试-14"}],"shop_switch":"0"}'''

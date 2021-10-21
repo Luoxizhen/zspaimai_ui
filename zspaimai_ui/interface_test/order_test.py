@@ -44,13 +44,13 @@ def test_bidding():
 def test_add_order():
     begin_time = round(time.time())
     end_time = begin_time +30
-    goods_name1 = "退款退货测试-30"
-    goods_name2 = "退款退货测试-31"
+    goods_name1 = "退款退货测试-32"
+    goods_name2 = "退款退货测试-33"
     goods_id1 = goods.goods_add(begin_time, end_time, goods_name1)['data']
     goods_id2 = goods.goods_add(begin_time, end_time, goods_name2)['data']
     # token = user.get_token()
     # goods.updata_token(token)
-    token = 'c42a217ca29950d478aec78c84f95f99'
+    token = '8544071edc51e1ca67b5178a2f9568bd'
     time.sleep(2)
     goods.bidding(goods_id1, 10, token)
     goods.bidding(goods_id2, 10, token)
@@ -62,10 +62,10 @@ def test_add_order():
     r1 = order.recharge_list(token) #获取各种支付方式的手续费说明
     print("获取各种支付方式的手续费说明")
     print(r1)
-    r1 = order.addr_list(token) #获取用户的地址
-    print("获取用户的地址")
-    print(r1.json())
-    addr_id = r1.json()['data'][0]['id']
+    # r1 = order.addr_list(token) #获取用户的地址
+    # print("获取用户的地址")
+    # print(r1.json())
+    # addr_id = r1.json()['data'][0]['id']
 
     r1 = order.express(token) #获取支付方式
     print("获取支付方式")
@@ -77,11 +77,29 @@ def test_add_order():
     print(r.json())
     assert r.json()['status'] == 200
 def test_add_order1():
-    '''下单'''
-    pass
+    begin_time = round(time.time())
+    end_time = begin_time +20
+    goods_name1 = "退款退货测试-46"
+    goods_name2 = "退款退货测试-47"
+    goods_id1 = goods.goods_add(begin_time, end_time, goods_name1)['data']
+    goods_id2 = goods.goods_add(begin_time, end_time, goods_name2)['data']
+    # token = user.get_token()
+    # goods.updata_token(token)
+    token = 'ef820b324190ae83a144908dbc045814'
+    time.sleep(2)
+    goods.bidding(goods_id1, 10, token)
+    goods.bidding(goods_id2, 10, token)
+    time.sleep(20)
+    # user.verify()
+    # user.add_pwd()
+    goods_id = "["+str(goods_id1)+","+str(goods_id2)+"]"
+    r = order.add_order1(token,goods_id)
+    print(r.json())
+    assert r.json()['status'] == 200
+
 
 def test_take_delivery():
-    order_id = 1452
+    order_id = 1461
     r = order.take_delivery(order_id)
     print(r)
     assert r['status'] == 200
