@@ -25,7 +25,7 @@ def goods_add(begin_time, end_time, name):
             "end_time": end_time,
             "top_price": "",
             "name": name,
-            "delay_time": 60,
+            "delay_time": '',
             "shape": "98",
             "price": "10",# 起拍价
             "retain_price": "",

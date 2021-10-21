@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a23e3334-f72a-43f3-a405-a3824ada1ee1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/a_config.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config_android.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/info.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zspaimai_ui/interface_test/goods_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../zspaimai_ui/interface_test/order_test.py" afterDir="false" />
+    <list default="true" id="a23e3334-f72a-43f3-a405-a3824ada1ee1" name="Default Changelist" comment="添加 config_android.json 配置android 手机测试">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/errortest.py" beforeDir="false" afterPath="$PROJECT_DIR$/errortest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../zspaimai_ui/interface_base/goods.py" beforeDir="false" afterPath="$PROJECT_DIR$/../zspaimai_ui/interface_base/goods.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../zspaimai_ui/interface_base/order.py" beforeDir="false" afterPath="$PROJECT_DIR$/../zspaimai_ui/interface_base/order.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../zspaimai_ui/interface_base/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/../zspaimai_ui/interface_base/user.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../zspaimai_ui/interface_data/user_headers.json" beforeDir="false" afterPath="$PROJECT_DIR$/../zspaimai_ui/interface_data/user_headers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../zspaimai_ui/utils/rwjson.py" beforeDir="false" afterPath="$PROJECT_DIR$/../zspaimai_ui/utils/rwjson.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config_android.json" beforeDir="false" afterPath="$PROJECT_DIR$/config_android.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +32,9 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -106,6 +98,14 @@
       <option name="presentableId" value="Default" />
       <updated>1626497954813</updated>
     </task>
+    <task id="LOCAL-00001" summary="添加 config_android.json 配置android 手机测试">
+      <created>1634693056999</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1634693056999</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -119,5 +119,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="添加 config_android.json 配置android 手机测试" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加 config_android.json 配置android 手机测试" />
   </component>
 </project>

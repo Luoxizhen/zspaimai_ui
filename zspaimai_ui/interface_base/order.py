@@ -15,60 +15,34 @@ def get_user_headers():
     return rwjson.RwJson().readjson('interface_data', 'user_headers.json')
 def confirm_order():
     '''后台确认订单'''
-    url = 'http://api.online.zspaimai.cn/admin/order/confirm_order'
-    headers = {"Content-Type": "application/json; charset=utf-8",
-               'Connection': 'keep-alive',
-               'host': 'api.online.zspaimai.cn',
-               'Origin': 'http://home.online.zspaimai.cn',
-               'Referer': 'http://home.online.zspaimai.cn/',
-               'AdminToken': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ5eWxBZG1pbiIsImlhdCI6MTYyNzAwNDc0OCwibmJmIjoxNjI3MDA0NzQ4LCJleHAiOjE2MjcwNDc5NDgsImRhdGEiOnsiYWRtaW5fdXNlcl9pZCI6MiwibG9naW5fdGltZSI6IjIwMjEtMDctMjMgMDk6NDU6NDgiLCJsb2dpbl9pcCI6IjE3Mi4xOS4wLjQifX0.KQfyTIx3MSRafMvKthxG-9yoQaMRaDLMA1gAYxtEOGo',
-               'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063',
-               }
-    json = {'id': 3}
+    url =  base_url + '/admin/order/confirm_order'
+    headers = admin_headers
+    json = {'id': 1451}
     r = requests.request('post', url=url, json=json, headers=headers)
-    '''充值状态'''
-    status = r.json()['status']
-    return status
-def take_delivery():
+    return r
+def take_delivery(order_id):
     '''后台确认提货'''
     url = 'http://api.online.zspaimai.cn/admin/order/take_delivery'
-    headers = {"Content-Type": "application/json; charset=utf-8",
-               'Connection': 'keep-alive',
-               'host': 'api.online.zspaimai.cn',
-               'Origin': 'http://home.online.zspaimai.cn',
-               'Referer': 'http://home.online.zspaimai.cn/',
-               'AdminToken': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ5eWxBZG1pbiIsImlhdCI6MTYyNzAwNDc0OCwibmJmIjoxNjI3MDA0NzQ4LCJleHAiOjE2MjcwNDc5NDgsImRhdGEiOnsiYWRtaW5fdXNlcl9pZCI6MiwibG9naW5fdGltZSI6IjIwMjEtMDctMjMgMDk6NDU6NDgiLCJsb2dpbl9pcCI6IjE3Mi4xOS4wLjQifX0.KQfyTIx3MSRafMvKthxG-9yoQaMRaDLMA1gAYxtEOGo',
-               'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063',
-               }
-    json = {"order_id": 713,
+    headers = admin_headers
+    extract_time = round(time.time())
+    json = {"order_id": order_id,
             "name": "大罗",
             "self": 1,
             "id_card": "4444444444444444444",
             "phone": "15622145010",
-            "extract_time": 1626969600,
+            "extract_time": extract_time,
             "remarks": ""}
     r = requests.request('post', url=url, json=json, headers=headers)
-    '''充值状态'''
-    status = r.json()['status']
-    return status
-def delivery():
+    return r.json()
+def deliver(order_id):
     '''后台发货'''
-    url = 'http://api.online.zspaimai.cn/admin/order/delivery'
-    headers = {"Content-Type": "application/json; charset=utf-8",
-               'Connection': 'keep-alive',
-               'host': 'api.online.zspaimai.cn',
-               'Origin': 'http://home.online.zspaimai.cn',
-               'Referer': 'http://home.online.zspaimai.cn/',
-               'AdminToken': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ5eWxBZG1pbiIsImlhdCI6MTYyNzAwNDc0OCwibmJmIjoxNjI3MDA0NzQ4LCJleHAiOjE2MjcwNDc5NDgsImRhdGEiOnsiYWRtaW5fdXNlcl9pZCI6MiwibG9naW5fdGltZSI6IjIwMjEtMDctMjMgMDk6NDU6NDgiLCJsb2dpbl9pcCI6IjE3Mi4xOS4wLjQifX0.KQfyTIx3MSRafMvKthxG-9yoQaMRaDLMA1gAYxtEOGo',
-               'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063',
-               }
-    json = {id: 714,
-            express_id: 4,
-            express_number: "SF1408640481240"}
+    url = base_url +'/admin/order/deliver'
+    headers = admin_headers
+    json = {'id': order_id,
+            'express_id': 4,
+            'express_number': "SF6090856325401"}
     r = requests.request('post', url=url, json=json, headers=headers)
-    '''充值状态'''
-    status = r.json()['status']
-    return status
+    return r
 def recharge_list(token):
     '''获取支付方式'''
     url = base_url + '/user/wallet/recharge_list'
@@ -103,18 +77,22 @@ def get_bid_info(goods_id,token):
     return r.json()
 def addr_list(token):
     '''获取用户的地址信息'''
+    '''{'status': 200, 'msg': '操作成功', 'data': [{'id': 177, 'name': '张生', 'phone': '18023038634', 'address': '我家', 'zipcode': '', 'province': 19, 'city': 289, 'county': 3036, 'is_default': 1, 'area': '广东省,广州市,萝岗区', 'province_ny_name': '广州市', 'county_name': '萝岗区'}, {'id': 164, 'name': '大罗', 'phone': '15622145010', 'address': '黄沙', 'zipcode': '', 'province': 19, 'city': 289, 'county': 3045, 'is_default': 0, 'area': '广东省,广州市,荔湾区', 'province__name': '广州市', 'county_name': '荔湾区'}, {'id': 165, 'name': '大罗', 'phone': '15622145010', 'address': '如意坊', 'zipcode': '', 'province': 19, 'city': 289, 'county': 3045, 'is_default': 0, 'area': '广东省,广州市,荔湾区', 'province_name': '广州市', 'county_name': '荔湾区'}], 'shop_switch': '0'}
+'''
     url = base_url + '/user/addr/list'
     updata_token(token)
     headers = get_user_headers()
     r = requests.request('get', url=url,headers=headers)
-    return r.json()
+    return r
 def express(token):
     '''获取快递方式'''
+    '''{'status': 200, 'msg': '操作成功', 'data': [{'id': 1, 'show': 1, 'icon': '', 'name': '快递到付'}, {'id': 3, 'show': 2, 'icon': '', 'name': '上门自提'}], 'shop_switch': '0'}
+'''
     url = base_url + '/user/order/express'
     updata_token(token)
     headers = get_user_headers()
     r = requests.request('get', url=url, headers=headers)
-    return r.json()
+    return r
 
 def order_coupon(token, goods_id):
     '''进行订单支付'''
@@ -124,7 +102,7 @@ def order_coupon(token, goods_id):
     #goods = "[{\"goods_id\":2306,\"num\":1}]" goods 格式
     goods = "[{\"goods_id\":"+goods_id+",\"num\":1}]"
     print(goods)
-    json = {"goods_total": 10000,
+    json = {"goods_total": 10,
             "goods": goods,
             "order_model": 10}#余额支付
     r = requests.request('post', url=url, headers=headers, json=json)
@@ -139,25 +117,61 @@ def calculate_freight(token):
     r = requests.request('post', url=url, headers=headers, json=json)
     return r.json()
 
-def add_order(token):
+def add_order(token,goods_id,addr_id,):
     '''用户提交订单'''
+    #"coupon":"[]", 优惠劵
     url = base_url + '/user/order/add_order'
-    updata_token()
+    #updata_token(token)
     headers = get_user_headers()
-    json = {"goods_ids":"[\"2185\"]",
-            "addr_id":177,
+    #goods_ids = "[\"2185\"]"
+    #goods_ids = "["+str(goods_id)+"]"
+    print(goods_id)
+    json = {"goods_ids":goods_id,
+            "addr_id":addr_id,
             "express":1,
             "express_chd":0,
             "payment_id":1,
             "pay_pwd":"246810",
-            "express_fee":12,
+            "express_fee":14,
             "insure_price":0,
             "insure_fee":0,
-            "appointment":null,
-            "total":21,
+            "appointment":'',
+            "total":40,
             "order_model":10,
-            "coupon":"[]"}
+            "coupon":"[]",
+            "AppFrom": "pc"}
+    print(json)
     r = requests.request('post', url=url, json=json, headers=headers)
-    return r.json()
+    return r
 
 
+def refund_goods():
+    '''查找订单包含的拍品，商品'''
+    '''{"status":200,"msg":"操作成功","data":[{"goods_id":2334,"name":"退化退款测试-13"},{"goods_id":2335,"name":"退化退款测试-14"}],"shop_switch":"0"}'''
+    url = base_url + '/admin/order/refund_goods'
+    headers = admin_headers
+    json = {"order_id":1449}
+    r = requests.request('post', url=url, json=json, headers=headers)
+    return r
+def refund():
+    '''售后-仅退款'''
+    '''{"status":200,"msg":"操作成功","data":null,"shop_switch":"0"}'''
+    url = base_url +'/admin/order/refund'
+    headers = admin_headers
+    json = {"order_id":1450,
+            "type":1,
+            "refund_desc":"退化退款测试-8 退款",
+            "refund_money":"20",
+            "goods_id":"[2328]"}
+    r = requests.request('post', url=url, json=json, headers=headers)
+    return r
+
+def remittance_finish(id):
+    '''后台确认转账汇款告知'''
+    '''{"status":200,"msg":"操作成功","data":[],"shop_switch":"0"}'''
+    url = base_url + ''
+    headers = admin_headers
+    json = {"id":id,
+            "remarks":""}
+    r = requests.request('post', url=url, json=json, headers=headers)
+    return r

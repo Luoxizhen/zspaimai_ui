@@ -3,7 +3,7 @@
     "enable_app_log": true,
     "dev_tool_path": "/Applications/wechatwebdevtools.app/Contents/MacOS/cli",
     "project_path": "/Users/yuanyuanhe/WeChatProjects/miniprogram-demo-master",
-    "platform": "ide",
+    "platform": "Android",
     "app": "wx",
     "close_ide": false,
     "full_reset": false,
@@ -14,13 +14,8 @@
     "remote_connect_timeout": 10,
 
     "device_desire": {
-        "wda_project_path": "/Users/sherlock/.npm-global/lib/node_modules/appium/node_modules/appium-webdriveragent",
-        "os_type": "ios",
-        "device_info": {
-            "udid": "678695bfebbc2cd66f5faea3d0691c01e71194fe",
-            "model": "iPhone 6s Plus",
-            "version": "12.0.1",
-            "name": "Jan’s iPhone"
-        }
+        "serial": "f8c3cc2d",
+        "uiautomator_version": 1
+
     }
 }

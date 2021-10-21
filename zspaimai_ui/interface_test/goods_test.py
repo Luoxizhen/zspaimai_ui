@@ -3,8 +3,9 @@ import pytest
 import time
 def test_goods_add():
     begin_time = round(time.time())
-    end_time = begin_time + 3600
-    name = '1960年第三版人民币壹圆拖拉机狮子号一枚'
+    end_time = begin_time + 60
+    #name = '1960年第三版人民币壹圆拖拉机狮子号一枚-退货退款-3'
+    name = '退货退款-5'
     r = goods.goods_add(begin_time, end_time, name)
     print(r)
     status = r['status']
