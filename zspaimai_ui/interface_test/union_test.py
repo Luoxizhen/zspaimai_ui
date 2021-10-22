@@ -365,10 +365,10 @@ class TestUnionOrder(object):
         time.sleep(20)
         user2_phone = get_userinfo('user2', 'phone')
         add_pwd(user2_phone) #设置支付密码
-        order_info = {"goods_ids": "["+str(goood_id)+"]", "total":1100}
+        order_info = {"goods_ids": "["+str(good_id)+"]", "total":1100, "appointment":"2021-10-22"}
+        r = order.add_order(**order_info)
+        assert r.json()['status'] == 200
 
-
-        order.add_order()
 
 
 
