@@ -100,7 +100,7 @@ def express(token=None):
     r = requests.request('get', url=url, headers=headers)
     return r
 
-def order_coupon(token=None, goods_id):
+def order_coupon(goods_id,token=None):
     '''进行订单支付'''
     url = base_url + '/user/coupon/order_coupon'
     if not token:
@@ -125,7 +125,7 @@ def calculate_freight(token=None):
     r = requests.request('post', url=url, headers=headers, json=json)
     return r.json()
 
-def add_order(token=None,goods_id,addr_id):
+def add_order1(goods_id,addr_id,token=None):
     '''用户提交订单'''
     if not token:
         updata_token(token)
@@ -155,7 +155,7 @@ def add_order(token=None,goods_id,addr_id):
     r = requests.request('post', url=url, json=json, headers=headers)
     return r
 
-def add_order1(token=None, **info):
+def add_order(token=None, **info):
     '''用户提交订单，各参数：
     express: 订单配送方式， 3-上门自提，2-快递到付
     addr_id: 收货地址，0-上门自提的地址，即公司地址，express 选择快递到付时，应填入用户地址列表中的地址编号

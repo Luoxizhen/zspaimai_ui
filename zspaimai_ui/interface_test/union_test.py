@@ -1,6 +1,6 @@
 import time
 
-from interface_base import union, user, finance, goods
+from interface_base import union, user, finance, goods, order
 
 from utils import rwyaml
 from user_test import add_pwd
@@ -364,7 +364,11 @@ class TestUnionOrder(object):
         goods.bidding(good_id, 1000, token)#用户竞买拍品
         time.sleep(20)
         user2_phone = get_userinfo('user2', 'phone')
-        add_pwd(user2_phone)# 设置支付密码
+        add_pwd(user2_phone) #设置支付密码
+        order_info = {"goods_ids": "["+str(goood_id)+"]", "total":1100}
+
+
+        order.add_order()
 
 
 

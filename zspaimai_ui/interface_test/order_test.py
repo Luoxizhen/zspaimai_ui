@@ -42,39 +42,43 @@ def test_bidding():
 
 
 def test_add_order():
-    begin_time = round(time.time())
-    end_time = begin_time +30
-    goods_name1 = "退款退货测试-32"
-    goods_name2 = "退款退货测试-33"
-    goods_id1 = goods.goods_add(begin_time, end_time, goods_name1)['data']
-    goods_id2 = goods.goods_add(begin_time, end_time, goods_name2)['data']
-    # token = user.get_token()
-    # goods.updata_token(token)
-    token = '8544071edc51e1ca67b5178a2f9568bd'
-    time.sleep(2)
-    goods.bidding(goods_id1, 10, token)
-    goods.bidding(goods_id2, 10, token)
-    time.sleep(30)
-    r1 = order.get_bid_info(goods_id1, token) #获取拍品的竞标信息
-    r1 = order.get_bid_info(goods_id2, token)
-    print("获取拍品的竞标信息")
-    print(r1)
-    r1 = order.recharge_list(token) #获取各种支付方式的手续费说明
-    print("获取各种支付方式的手续费说明")
-    print(r1)
-    # r1 = order.addr_list(token) #获取用户的地址
-    # print("获取用户的地址")
+    # begin_time = round(time.time())
+    # end_time = begin_time +30
+    # goods_name1 = "退款退货测试-32"
+    # goods_name2 = "退款退货测试-33"
+    # goods_id1 = goods.goods_add(begin_time, end_time, goods_name1)['data']
+    # goods_id2 = goods.goods_add(begin_time, end_time, goods_name2)['data']
+    # # token = user.get_token()
+    # # goods.updata_token(token)
+    # token = '8544071edc51e1ca67b5178a2f9568bd'
+    # time.sleep(2)
+    # goods.bidding(goods_id1, 10, token)
+    # goods.bidding(goods_id2, 10, token)
+    # time.sleep(30)
+    # r1 = order.get_bid_info(goods_id1, token) #获取拍品的竞标信息
+    # r1 = order.get_bid_info(goods_id2, token)
+    # print("获取拍品的竞标信息")
+    # print(r1)
+    # r1 = order.recharge_list(token) #获取各种支付方式的手续费说明
+    # print("获取各种支付方式的手续费说明")
+    # print(r1)
+    # # r1 = order.addr_list(token) #获取用户的地址
+    # # print("获取用户的地址")
+    # # print(r1.json())
+    # # addr_id = r1.json()['data'][0]['id']
+    #
+    # r1 = order.express(token) #获取支付方式
+    # print("获取支付方式")
     # print(r1.json())
-    # addr_id = r1.json()['data'][0]['id']
-
-    r1 = order.express(token) #获取支付方式
-    print("获取支付方式")
-    print(r1.json())
-    express_id = r1.json()['data'][0]['id']
-
-    goods_id = "["+str(goods_id1)+","+str(goods_id2)+"]"
-    r = order.add_order(token,str(goods_id))
-    print(r.json())
+    # express_id = r1.json()['data'][0]['id']
+    #
+    # goods_id = "["+str(goods_id1)+","+str(goods_id2)+"]"
+    # r = order.add_order(token,str(goods_id))
+    # print(r.json())
+    # assert r.json()['status'] == 200
+    token = '28e9699b6ebaed72131bca9a95649238'
+    info = {"goods_ids": "[\"2395\"]", "total": 30, "appointment": "2021-10-22"}
+    r = order.add_order1(token, **info)
     assert r.json()['status'] == 200
 def test_add_order1():
     begin_time = round(time.time())
@@ -117,6 +121,12 @@ def test_confirm_order():
     r = order.confirm_order()
     assert r.json()['status'] == 200
 def test_add_order_003():
+    token = '28e9699b6ebaed72131bca9a95649238'
+    info = {"goods_ids": "[\"2395\"]", "total": 30, "appointment": "2021-10-22"}
+    r = order.add_order1(token, info)
+    assert r.json()['status']==200
+
+def test_add_order_004():
     token = '28e9699b6ebaed72131bca9a95649238'
     info = {"goods_ids": "[\"2395\"]", "total": 30, "appointment": "2021-10-22"}
     r = order.add_order1(token, info)
