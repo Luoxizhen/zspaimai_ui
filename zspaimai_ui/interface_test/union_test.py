@@ -1,6 +1,6 @@
 import time
 
-from interface_base import union, user, finance
+from interface_base import union, user, finance, goods
 
 from utils import rwyaml
 import pytest
@@ -326,51 +326,49 @@ class TestUnionUser(object):
         union_join('user3', 'user6')
         total = union.union_user(user1_no).json()['data']['total']
         assert total == total_pre + 1
-class TestUnionUser_order(object):
-
-    @pytest.mark.sikpif()# 用户2 加入用户1 的推广计划成功后，才进行该用例验证
-    def test_union_join_user2_002(self):
-        '''验证用户2加入业务员-用户1的推广计划后，用户1 的 推广额度+ 2000'''
+class TestUnionIndex(object):
+    '''在用户关联成功以后，检查各个上级用户的额度
+        新用户加入用户的推广计划后，该用户可获得额度奖励 2000'''
+    def test_union_index_001(self):
+        '''验证业务员：用户1 的额度奖励 - 推荐一个新用户： 用户2 '''
         userno = get_userinfo('user1', 'userno')
-        r = union.union_user(userno)
+        quota = union.union_index(userno).json()['data']['data'][0]['quota']
+        assert quota == '2000.00'
+    def test_union_index_002(self):
+        '''验证用户2 的额度奖励 - 推荐2新用户： 用户3、 用户4'''
+        userno = get_userinfo('user2', 'userno')
+        quota = union.union_index(userno).json()['data']['data'][0]['quota']
+        assert quota == '4000.00'
+    def test_union_index_003(self):
+        '''验证用户3 的额度奖励 - 推荐2新用户： 用户5、 用户6'''
+        userno = get_userinfo('user3', 'userno')
+        quota = union.union_index(userno).json()['data']['data'][0]['quota']
+        assert quota == '4000.00'
+class TestUnionOrder(object):
+    '''在用户关联成功以后， 各用户下的推广用户完成订单支付以后，用户的推广订单列表中显示下级用户的成交订单
+    业务员的下级用户成交的订单，在业务员的推广订单列表中，显示两条记录，
+    其中一条记录计算业务提成：订单的拍品成交价总额 * 业务员佣金比例，
+    一条记录计算推广值：订单的拍品成交总额 * 推广素材的推广值返点'''
 
-    @pytest.mark.sikpif()  # 用户2 加入用户1 的推广计划成功后，才进行该用例验证
-    def test_union_join_user2_003(self):
-        '''验证业务员-用户1 的总额度增加+2000'''
-        userno = get_userinfo('user1', 'userno')
-        r = union.union_user(userno)
+    # 1、在途佣金计算方式更改为，用户收货7天，不允许退货退款后，开始计算
+    # 2、佣金计算方式更改为，支付时间30天后，在途佣金才确认到账，允许提现到余额
+    def test_union_order_001(self):
+        '''验证用户2完成一笔订单支付'''
+        begin_time = round(time.time())
+        end_time = begin_time + 20
+        good_name = '关联订单1'
+        price = 1000
+        good_id = goods.goods_add(begin_time, end_time, good_name, price).json()['data'] #添加拍品
+        time.sleep(2)
+        goods.bidding(good_id, 10, token )
 
-    @pytest.mark.sikpif()  # 用户2 加入用户1 的推广计划成功后，才进行该用例验证
-    def test_union_join_user2_004(self):
-        '''验证用户的额度列表增加一条记录： 额度= 2000'''
-        userno = get_userinfo('user1', 'userno')
-        r = union.union_user(userno)
 
-    @pytest.mark.sikpif()  # 用户2 加入用户1 的推广计划成功后，才进行该用例验证
-    def test_union_join_user2_005(self):
-        '''验证业务员的直接下级完成订单支付后，业务员获得在途推广值'''
 
-    @pytest.mark.sikpif()  # 用户2 加入用户1 的推广计划成功后，才进行该用例验证
-    def test_union_join_user2_006(self):
-        '''验证业务员的直接下级完成订单支付后，业务员的推广订单增加2条记录'''
-    @pytest.mark.sikpif()  # 用户2 加入用户1 的推广计划成功后，才进行该用例验证
-    def test_union_join_user2_007(self):
-        '''验证业务员的直接下级完成订单支付后，业务员的推广值增加一条记录'''
 
-    def test_union_join_user2_008(self):
-        '''验证业务员的直接下级完成订单支付后，业务员的推广值增加一条记录'''
 
-    @pytest.mark.skipif()  # 上一个用例执行成功才验证
-    def test_union_join_user3_002(self):
-        '''验证用户3加入 普通用户-用户2 的推广计划后，用户2 可获得推广额度 = 2000 '''
 
-    @pytest.mark.skipif()  # 上一个用例执行成功才验证
-    def test_union_join_user3_003(self):
-        '''验证用户3加入 普通用户 -用户2 的推广计划后，用户2 的总额度+2000'''
 
-    @pytest.mark.skipif()  # 上一个用例执行成功才验证
-    def test_union_join_user3_004(self):
-        '''验证用户3加入 普通用户 -用户2 的推广计划后，用户2 的额度列表中增加一条记录'''
+
 
 class TestUnionOrder(object):
     '''验证在TestUnionUser 推广用户关联成功后，推广订单的关联'''

@@ -87,7 +87,10 @@ def union_act_edit(union_id, act_value):
     return r
 
 def union_index(userno):
-    '''从推广用户列表搜索用户'''
+    '''从后台推广用户列表搜索用户'''
+    # {"status": 200, "msg": "操作成功", "data": {"total": 1, "per_page": 10, "current_page": 1, "last_page": 1, "data": [
+    #     {"user_id": 497, "role": 20, "order_money": "0.00", "commission": 0, "quota": "2000.00", "role_rate": 4,
+    #      "out_commi": "0.00", "userno": 193297}], "order_num": "193", "newbie": "138"}, "shop_switch": "0"}
     url = base_url + '/admin/union/index'
     headers = admin_headers
     # userno = rwyaml.get_yaml_data('interface_data', 'union.yml')['user1']['userno']

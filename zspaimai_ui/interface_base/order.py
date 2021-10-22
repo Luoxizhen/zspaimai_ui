@@ -43,61 +43,68 @@ def deliver(order_id):
             'express_number': "SF6090856325401"}
     r = requests.request('post', url=url, json=json, headers=headers)
     return r
-def recharge_list(token):
+def recharge_list(token=None):
     '''获取支付方式'''
     url = base_url + '/user/wallet/recharge_list'
-    updata_token(token)
+    if not token:
+        updata_token(token)
     headers = get_user_headers()
     json = {"is_charge":0}
     r = requests.request('post', url=url, json=json, headers=headers)
     return r.json()
-def addr_region(token):
+def addr_region(token=None):
     '''获取中国省市'''
     url = base_url + '/user/addr/region'
     data = 'pid = 0 & inv ='
-    updata_token(token)
+    if not token:
+        updata_token(token)
     headers = get_user_headers()
     r = requests.request('get', url=url, params=data, headers=headers)
     return r.json()
-def article(token):
+def article(token=None):
     '''获取文章信息'''
     url = base_url + '/user/post/article'
     data = 'keywords=insurance_fee'
-    updata_token(token)
+    if not token:
+        updata_token(token)
     headers = get_user_headers()
     r = requests.request('get', url=url, params=data, headers=headers)
     return r.json()
-def get_bid_info(goods_id,token):
+def get_bid_info(goods_id,token=None):
     '''获取拍品的竞标信息'''
     url = base_url + '/user/goods/get_bid_info'
     json = {"goods_id": goods_id}
-    updata_token(token)
+    if not token:
+        updata_token(token)
     headers = get_user_headers()
     r = requests.request('post', url=url, json=json, headers=headers)
     return r.json()
-def addr_list(token):
+def addr_list(token=None):
     '''获取用户的地址信息'''
     '''{'status': 200, 'msg': '操作成功', 'data': [{'id': 177, 'name': '张生', 'phone': '18023038634', 'address': '我家', 'zipcode': '', 'province': 19, 'city': 289, 'county': 3036, 'is_default': 1, 'area': '广东省,广州市,萝岗区', 'province_ny_name': '广州市', 'county_name': '萝岗区'}, {'id': 164, 'name': '大罗', 'phone': '15622145010', 'address': '黄沙', 'zipcode': '', 'province': 19, 'city': 289, 'county': 3045, 'is_default': 0, 'area': '广东省,广州市,荔湾区', 'province__name': '广州市', 'county_name': '荔湾区'}, {'id': 165, 'name': '大罗', 'phone': '15622145010', 'address': '如意坊', 'zipcode': '', 'province': 19, 'city': 289, 'county': 3045, 'is_default': 0, 'area': '广东省,广州市,荔湾区', 'province_name': '广州市', 'county_name': '荔湾区'}], 'shop_switch': '0'}
 '''
     url = base_url + '/user/addr/list'
-    updata_token(token)
+    if not token:
+        updata_token(token)
     headers = get_user_headers()
     r = requests.request('get', url=url,headers=headers)
     return r
-def express(token):
+def express(token=None):
     '''获取快递方式'''
     '''{'status': 200, 'msg': '操作成功', 'data': [{'id': 1, 'show': 1, 'icon': '', 'name': '快递到付'}, {'id': 3, 'show': 2, 'icon': '', 'name': '上门自提'}], 'shop_switch': '0'}
 '''
     url = base_url + '/user/order/express'
-    updata_token(token)
+    if not token:
+        updata_token(token)
     headers = get_user_headers()
     r = requests.request('get', url=url, headers=headers)
     return r
 
-def order_coupon(token, goods_id):
+def order_coupon(token=None, goods_id):
     '''进行订单支付'''
     url = base_url + '/user/coupon/order_coupon'
-    updata_token(token)
+    if not token:
+        updata_token(token)
     headers = get_user_headers()
     #goods = "[{\"goods_id\":2306,\"num\":1}]" goods 格式
     goods = "[{\"goods_id\":"+goods_id+",\"num\":1}]"
@@ -107,18 +114,21 @@ def order_coupon(token, goods_id):
             "order_model": 10}#余额支付
     r = requests.request('post', url=url, headers=headers, json=json)
     return r.json()
-def calculate_freight(token):
+def calculate_freight(token=None):
     '''进行拍品的运费计算'''
     url = base_url + '/user/delivery/calculate_freight'
-    updata_token(token)
+    if not token:
+        updata_token(token)
     headers = get_user_headers()
     json = {"user_addr_id":177,
             "goods":"[{\"goods_id\":2185,\"buy_number\":1}]"}
     r = requests.request('post', url=url, headers=headers, json=json)
     return r.json()
 
-def add_order(token,goods_id,addr_id,):
+def add_order(token=None,goods_id,addr_id):
     '''用户提交订单'''
+    if not token:
+        updata_token(token)
     #"coupon":"[]", 优惠劵
     url = base_url + '/user/order/add_order'
     #updata_token(token)
@@ -145,8 +155,10 @@ def add_order(token,goods_id,addr_id,):
     r = requests.request('post', url=url, json=json, headers=headers)
     return r
 
-def add_order1(token,goods_id):
+def add_order1(token=None,goods_id):
     '''用户提交订单-上门自提'''
+    if not token:
+        updata_token(token)
     #"coupon":"[]", 优惠劵
     url = base_url + '/user/order/add_order'
     #updata_token(token)

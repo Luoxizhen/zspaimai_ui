@@ -81,8 +81,8 @@ def test_add_order1():
     end_time = begin_time +20
     goods_name1 = "退款退货测试-46"
     goods_name2 = "退款退货测试-47"
-    goods_id1 = goods.goods_add(begin_time, end_time, goods_name1)['data']
-    goods_id2 = goods.goods_add(begin_time, end_time, goods_name2)['data']
+    goods_id1 = goods.goods_add(begin_time, end_time, goods_name1).json()['data']
+    goods_id2 = goods.goods_add(begin_time, end_time, goods_name2).json()['data']
     # token = user.get_token()
     # goods.updata_token(token)
     token = 'ef820b324190ae83a144908dbc045814'
