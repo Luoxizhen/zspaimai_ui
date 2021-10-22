@@ -29,12 +29,9 @@ def bidding(good_id, price, token=None):
     json ={"goods_id": good_id,
              "price": price
            }
-    print (json)
     updata_token(token)
 
     headers = get_user_headers()
-    print(headers)
-
     r = requests.request('post', url=url, json=json, headers=headers)
     return r.json()
 def user_bid(token):

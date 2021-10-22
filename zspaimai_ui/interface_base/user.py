@@ -87,12 +87,15 @@ def verify(phone):
     #     },
     #     "shop_switch": "0"
     # }
-def add_pwd(user_code):
+def add_pwd(user_code, new_pwd=None):
     url = base_url + '/user/user/add_pwd'
     headers = get_user_headers()
+
+    new_pwd = "246810"if new_pwd is None else new_pwd
+
     json = {
         "user_code": user_code,
-        "new_pwd": "246810"
+        "new_pwd": new_pwd
     }
     r = requests.request('post', url=url, json=json, headers=headers)
     return r

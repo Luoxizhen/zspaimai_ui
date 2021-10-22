@@ -1,0 +1,15 @@
+{
+  "goods_ids": "[\"2185\"]",
+  "addr_id":0,
+  "express":3,
+  "express_chd":0,
+  "payment_id":1,
+  "pay_pwd":"246810",
+  "express_fee":0,
+  "insure_price":0,
+  "insure_fee":0,
+  "appointment":"2021-10-21",
+  "total":40,
+  "order_model":10,
+  "coupon":"[]",
+  "AppFrom": "pc"}

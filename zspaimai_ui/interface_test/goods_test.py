@@ -18,8 +18,8 @@ def test_goods_list():
 
 def test_goods_add_001():
     begin_time = round(time.time())
-    end_time = begin_time + 36000
-    good_infos = {"begin_time": begin_time, "end_time": end_time, "name": "随意拍", "price": 20}
+    end_time = begin_time + 30
+    good_infos = {"begin_time": begin_time, "end_time": end_time, "name": "13111111111", "price": 20}
     print(good_infos)
-    r = goods.goods_add_001(**good_infos)
-    assert r.json()['status']==400
+    r = goods.goods_add(**good_infos)
+    assert r.json()['status']==200

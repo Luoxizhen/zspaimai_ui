@@ -3,6 +3,7 @@ import time
 from interface_base import union, user, finance, goods
 
 from utils import rwyaml
+from user_test import add_pwd
 import pytest
 # @pytest.fixture(scope="module")
 def user_login1():
@@ -356,11 +357,17 @@ class TestUnionOrder(object):
         '''验证用户2完成一笔订单支付'''
         begin_time = round(time.time())
         end_time = begin_time + 20
-        good_name = '关联订单1'
-        price = 1000
-        good_id = goods.goods_add(begin_time, end_time, good_name, price).json()['data'] #添加拍品
+        good_info = {"begin_time": begin_time, "end_time": end_time, "good_name": "关联订单1", "price": 1000}
+        good_id = goods.goods_add(good_info).json()['data'] #添加拍品，获取新添加拍品的id
         time.sleep(2)
-        goods.bidding(good_id, 10, token )
+        token = get_userinfo('user2', 'token')
+        goods.bidding(good_id, 1000, token)#用户竞买拍品
+        time.sleep(20)
+        user2_phone = get_userinfo('user2', 'phone')
+        add_pwd(user2_phone)# 设置支付密码
+
+
+
 
 
 

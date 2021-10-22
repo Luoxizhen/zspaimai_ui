@@ -155,34 +155,41 @@ def add_order(token=None,goods_id,addr_id):
     r = requests.request('post', url=url, json=json, headers=headers)
     return r
 
-def add_order1(token=None,goods_id):
-    '''用户提交订单-上门自提'''
+def add_order1(token=None, **info):
+    '''用户提交订单，各参数：
+    express: 订单配送方式， 3-上门自提，2-快递到付
+    addr_id: 收货地址，0-上门自提的地址，即公司地址，express 选择快递到付时，应填入用户地址列表中的地址编号
+    order_model: 支付方式， 10-余额，20-微信，30-银行转账
+    total：支付总金额
+    '''
+
     if not token:
         updata_token(token)
-    #"coupon":"[]", 优惠劵
     url = base_url + '/user/order/add_order'
-    #updata_token(token)
     headers = get_user_headers()
-    #goods_ids = "[\"2185\"]"
-    #goods_ids = "["+str(goods_id)+"]"
-    print(goods_id)
-
-    json = {"goods_ids":goods_id,
-            "addr_id":0,
-            "express":3,
-            "express_chd":0,
-            "payment_id":1,
-            "pay_pwd":"246810",
-            "express_fee":0,
-            "insure_price":0,
-            "insure_fee":0,
-            "appointment":'2021-10-21',
-            "total":40,
-            "order_model":10,
-            "coupon":"[]",
-            "AppFrom": "pc"}
-    print(json)
-    r = requests.request('post', url=url, json=json, headers=headers)
+    order_info_list = ["goods_ids","addr_id","pay_pwd","appointment","total","order_model"]
+    order_info = rwjson.RwJson().readjson('interface_data', 'order.json')
+    for key in info:
+        if key in order_info_list:
+            order_info[key] = info[key]
+    if order_info['addr_id'] != 0: #如果收货地址不是上门自提地址，公司地址，则将配送方式改为快递到付
+        order_info['express'] = 2
+    # json = {"goods_ids":goods_id,
+    #         "addr_id":0,
+    #         "express":3,
+    #         "express_chd":0,
+    #         "payment_id":1,
+    #         "pay_pwd":"246810",
+    #         "express_fee":0,
+    #         "insure_price":0,
+    #         "insure_fee":0,
+    #         "appointment":'2021-10-21',
+    #         "total":40,
+    #         "order_model":10,
+    #         "coupon":"[]",
+    #         "AppFrom": "pc"}
+    # print(json)
+    r = requests.request('post', url=url, json=order_info, headers=headers)
     # {
     #     "status": 200,
     #     "msg": "操作成功",

@@ -73,7 +73,7 @@ def test_add_order():
     express_id = r1.json()['data'][0]['id']
 
     goods_id = "["+str(goods_id1)+","+str(goods_id2)+"]"
-    r = order.add_order(token,str(goods_id),addr_id)
+    r = order.add_order(token,str(goods_id))
     print(r.json())
     assert r.json()['status'] == 200
 def test_add_order1():
@@ -116,3 +116,8 @@ def test_refund():
 def test_confirm_order():
     r = order.confirm_order()
     assert r.json()['status'] == 200
+def test_add_order_003():
+    token = '28e9699b6ebaed72131bca9a95649238'
+    info = {"goods_ids": "[\"2395\"]", "total": 30, "appointment": "2021-10-22"}
+    r = order.add_order1(token, info)
+    assert r.json()['status']==200
