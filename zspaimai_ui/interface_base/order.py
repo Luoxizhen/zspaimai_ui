@@ -1,18 +1,10 @@
 import requests
 import time
-from utils import rwjson
-from config import readCfg
+from utils import rwjson, rwcfg
+from user import update_token, get_user_headers,base_url,admin_headers
 
-admin_headers = rwjson.RwJson().readjson('interface_data', 'admin_headers.json')
-base_url = readCfg.ReadCfg().get_base_url()
-def updata_token(token):
-    '''更新 user_headers'''
-    user_headers = rwjson.RwJson().readjson('interface_data', 'user_headers.json')
-    user_headers["token"] = token
-    rwjson.RwJson().writejson('interface_data', 'user_headers.json', user_headers)
 
-def get_user_headers():
-    return rwjson.RwJson().readjson('interface_data', 'user_headers.json')
+
 def confirm_order(id):
     '''后台确认订单'''
     url =  base_url + '/admin/order/confirm_order'
@@ -20,7 +12,7 @@ def confirm_order(id):
     json = {'id': id}
     r = requests.request('post', url=url, json=json, headers=headers)
     return r
-def take_delivery(order_id):
+def take_delivery(order_id,**userinfo):
     '''后台确认提货'''
     url = 'http://api.online.zspaimai.cn/admin/order/take_delivery'
     headers = admin_headers
@@ -32,22 +24,28 @@ def take_delivery(order_id):
             "phone": "15622145010",
             "extract_time": extract_time,
             "remarks": ""}
+    for key in userinfo:
+        if key in json.keys():
+            json['key'] = userinfo[key]
     r = requests.request('post', url=url, json=json, headers=headers)
     return r.json()
-def deliver(order_id):
+def deliver(order_id, **deliverinfo):
     '''后台发货'''
     url = base_url +'/admin/order/deliver'
     headers = admin_headers
     json = {'id': order_id,
             'express_id': 4,
             'express_number': "SF6090856325401"}
+    for key in deliverinfo:
+        if key in json.keys():
+            json[key] = json[key]
     r = requests.request('post', url=url, json=json, headers=headers)
     return r
 def recharge_list(token=None):
     '''获取支付方式'''
     url = base_url + '/user/wallet/recharge_list'
     if token:
-        updata_token(token)
+        update_token(token)
     headers = get_user_headers()
     json = {"is_charge":0}
     r = requests.request('post', url=url, json=json, headers=headers)
@@ -57,7 +55,7 @@ def addr_region(token=None):
     url = base_url + '/user/addr/region'
     data = 'pid = 0 & inv ='
     if token:
-        updata_token(token)
+        update_token(token)
     headers = get_user_headers()
     r = requests.request('get', url=url, params=data, headers=headers)
     return r.json()
@@ -66,7 +64,7 @@ def article(token=None):
     url = base_url + '/user/post/article'
     data = 'keywords=insurance_fee'
     if token:
-        updata_token(token)
+        update_token(token)
     headers = get_user_headers()
     r = requests.request('get', url=url, params=data, headers=headers)
     return r.json()
@@ -75,7 +73,7 @@ def get_bid_info(goods_id,token=None):
     url = base_url + '/user/goods/get_bid_info'
     json = {"goods_id": goods_id}
     if token:
-        updata_token(token)
+        update_token(token)
     headers = get_user_headers()
     r = requests.request('post', url=url, json=json, headers=headers)
     return r.json()
@@ -85,7 +83,7 @@ def addr_list(token=None):
 '''
     url = base_url + '/user/addr/list'
     if token:
-        updata_token(token)
+        update_token(token)
     headers = get_user_headers()
     r = requests.request('get', url=url,headers=headers)
     return r
@@ -95,16 +93,16 @@ def express(token=None):
 '''
     url = base_url + '/user/order/express'
     if token:
-        updata_token(token)
+        update_token(token)
     headers = get_user_headers()
     r = requests.request('get', url=url, headers=headers)
     return r
 
 def order_coupon(goods_id,token=None):
-    '''进行订单支付'''
+    '''订单支付时获取可以使用的优惠劵'''
     url = base_url + '/user/coupon/order_coupon'
     if token:
-        updata_token(token)
+        update_token(token)
     headers = get_user_headers()
     #goods = "[{\"goods_id\":2306,\"num\":1}]" goods 格式
     goods = "[{\"goods_id\":"+goods_id+",\"num\":1}]"
@@ -114,46 +112,37 @@ def order_coupon(goods_id,token=None):
             "order_model": 10}#余额支付
     r = requests.request('post', url=url, headers=headers, json=json)
     return r.json()
-def calculate_freight(token=None):
-    '''进行拍品的运费计算'''
-    url = base_url + '/user/delivery/calculate_freight'
-    if token:
-        updata_token(token)
-    headers = get_user_headers()
-    json = {"user_addr_id":177,
-            "goods":"[{\"goods_id\":2185,\"buy_number\":1}]"}
-    r = requests.request('post', url=url, headers=headers, json=json)
-    return r.json()
 
-def add_order1(goods_id,addr_id,token=None):
-    '''用户提交订单'''
-    if token:
-        updata_token(token)
-    #"coupon":"[]", 优惠劵
-    url = base_url + '/user/order/add_order'
-    #updata_token(token)
-    headers = get_user_headers()
-    #goods_ids = "[\"2185\"]"
-    #goods_ids = "["+str(goods_id)+"]"
-    print(goods_id)
 
-    json = {"goods_ids":goods_id,
-            "addr_id":addr_id,
-            "express":2,
-            "express_chd":0,
-            "payment_id":1,
-            "pay_pwd":"246810",
-            "express_fee":14,
-            "insure_price":0,
-            "insure_fee":0,
-            "appointment":'',
-            "total":40,
-            "order_model":10,
-            "coupon":"[]",
-            "AppFrom": "pc"}
-    print(json)
-    r = requests.request('post', url=url, json=json, headers=headers)
-    return r
+# def add_order1(goods_id,addr_id,token=None):
+#     '''用户提交订单'''
+#     if token:
+#         update_token(token)
+#     #"coupon":"[]", 优惠劵
+#     url = base_url + '/user/order/add_order'
+#     #updata_token(token)
+#     headers = get_user_headers()
+#     #goods_ids = "[\"2185\"]"
+#     #goods_ids = "["+str(goods_id)+"]"
+#     print(goods_id)
+#
+#     json = {"goods_ids":goods_id,
+#             "addr_id":addr_id,
+#             "express":2,
+#             "express_chd":0,
+#             "payment_id":1,
+#             "pay_pwd":"246810",
+#             "express_fee":14,
+#             "insure_price":0,
+#             "insure_fee":0,
+#             "appointment":'',
+#             "total":40,
+#             "order_model":10,
+#             "coupon":"[]",
+#             "AppFrom": "pc"}
+#     print(json)
+#     r = requests.request('post', url=url, json=json, headers=headers)
+#     return r
 
 def add_order(token=None, **info):
     '''用户提交订单，各参数：
@@ -165,7 +154,7 @@ def add_order(token=None, **info):
     print(token)
 
     if token:
-        updata_token(token)
+        update_token(token)
     url = base_url + '/user/order/add_order'
     headers = get_user_headers()
 
@@ -193,7 +182,7 @@ def add_order(token=None, **info):
     #         "coupon":"[]",
     #         "AppFrom": "pc"}
     # print(json)
-    print(order_info)
+
     r = requests.request('post', url=url, json=order_info, headers=headers)
     # {
     #     "status": 200,
@@ -250,7 +239,7 @@ def calculate_freight(token=None,**info):
     '''计算运费'''
     url = base_url + '/user/delivery/calculate_freight'
     if token:
-        updata_token(token)
+        update_token(token)
     headers = get_user_headers()
     delivery_info = {
         "user_addr_id": 193,
@@ -261,3 +250,4 @@ def calculate_freight(token=None,**info):
             delivery_info[key] = info[key]
     r = requests.request('post', url=url, json=delivery_info, headers=headers)
     return r
+

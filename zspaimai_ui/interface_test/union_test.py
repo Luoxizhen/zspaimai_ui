@@ -18,7 +18,6 @@ def user_login1():
         token = userinfo['data']['token']
         userno = userinfo['data']['user']['userno']
         rwyaml.set_data('interface_data', 'union.yml', testuser, token, userno)
-
     user1_token = rwyaml.get_yaml_data('interface_data', 'union.yml')['user1']['token']
     user1_no = rwyaml.get_yaml_data('interface_data', 'union.yml')['user1']['userno']
     rwyaml.set_data('interface_data', 'union.yml', 'user1', user1_token, user1_no)

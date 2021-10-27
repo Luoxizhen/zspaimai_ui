@@ -1,32 +1,18 @@
 import requests
-from utils import rwjson
-import os
+from utils import rwjson, rwcfg
 import logging
-import interface_base.interface_base as if_base
-base_url = "http://api.online.zspaimai.cn"
-def create_filename():
-    curpath = os.path.dirname(os.path.realpath(__file__))
-    parpath = os.path.dirname(curpath)
+from user import update_token,get_user_headers,base_url,admin_headers
 
-    filename = os.path.join(parpath, 'log', 'my.log')
-    return filename
 
-filename = create_filename()
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s  %(filename)s  %(levelname)s  %(message)s', datefmt='%a%d%b%Y  %H:%M:%S', filename=filename, filemode='a')
 
-#
-# def get_user_headers():
-#     return rwjson.RwJson().readjson('interface_data', 'user_headers.json')
-# def get_admin_headers():
-#     return rwjson.RwJson().readjson('interface_data', 'admin_headers.json')
-user_headers = if_base.get_user_headers()
-admin_headers = if_base.get_admin_headers()
-def get_finance_info():
+
+def get_finance_info(token=None):
     '''获取用户的可用金额，冻结金额，可用额度，冻结额度'''
     url = base_url + '/user/user/index?from=pc'
-    headers = user_headers
+    if token:
+        update_token()
+    headers = get_user_headers()
     r = requests.request('get', url=url, headers=headers)
-    print(r.json())
     normal_money = r.json()['data']['info']['wallet']['normal_money']
     frozen_money = r.json()['data']['info']['wallet']['frozen_money']
     normal_quota = r.json()['data']['info']['quota']['normal_quota']
@@ -39,13 +25,19 @@ def get_finance_info():
                        'frozen_quota': frozen_quota}
 
     return user_finance_info
-def get_wallet_bill():
+def get_wallet_bill(token=None,**billinfo):
     '''获取钱包明细，总条数，及最新的一条记录'''
     url = base_url +'/user/wallet/bill'
-    headers = user_headers
+    if token:
+        update_token()
+    headers = get_user_headers()
+
     data = {'page': '1',
             'type': '0',
-            'from': 'pc'}
+            }
+    for key in billinfo:
+        if key in data.keys():
+            data[key] = billinfo[key]
 
     r = requests.request('get', url=url, params=data, headers=headers)
     total = r.json()['data']['total']
@@ -57,13 +49,18 @@ def get_wallet_bill():
     return wallet_bill_info
 
 
-def get_quota_bill():
+def get_quota_bill(token=None,**billinfo):
     '''获取额度明细，总条数，及最新的一条记录'''
     url = base_url +'/user/wallet/quota'
-    headers = user_headers
+    if token:
+        update_token()
+    headers = get_user_headers()
     data = {'page': '1',
             'type': '0',
             'from': 'pc'}
+    for key in billinfo:
+        if key in data.keys():
+            data[key] = billinfo[key]
     r = requests.request('get', url=url, params=data, headers=headers)
     total = r.json()['data']['total']
     status = r.json()['status']
@@ -78,9 +75,7 @@ def get_quota_bill():
 def recharge(**rechargeinfo):
     '''后台给用户充值'''
     url = base_url + '/admin/wallet/recharge'
-    print(url)
     headers = admin_headers
-
     recharge_real = {'money': '100', 'user_id': 102}
     for key in rechargeinfo:
         if key in recharge_real.keys():
@@ -102,10 +97,12 @@ def change_quota():
     '''充值状态'''
     return r.json()['status']
 
-def remittance():
+def remittance(token=None):
     ''' pc 端用户充值 '''
     url = base_url + '/user/bank/remittance'
-    headers = user_headers
+    if token:
+        update_token()
+    headers = get_user_headers()
     data = {'from': 'pc'}
     data1 = {'from': 'mini'}
     data2 = {'from': 'android'}
@@ -158,22 +155,28 @@ def cashout():
     r = requests.request('post', url=url, json=json, headers=headers)
     status = r.json()['status']
     return status
-def cashout_user1():
+def cashout_user1(token=None):
     '''用户提现前获取绑定的银行卡信息'''
     url = base_url + "/user/wallet/bank_info?from=pc"
+    if token:
+        update_token()
+    headers = get_user_headers()
     json = {"is_charge": 1,
             "from": "pc"}
-    r = requests.request('post', url=url, json=json, headers=user_headers)
+    r = requests.request('post', url=url, json=json, headers=headers)
     print(r.json())
     return r.json()['data']['id']
-def cashout_user2():
+def cashout_user2(token=None):
     '''用户申请提现'''
     url = base_url + "/user/wallet/cashout"
+    if token:
+        update_token()
+    headers = get_user_headers()
     bank_id = cashout_user1()
     json = {"pay_rwd": "246810",
             "bank_id": bank_id,
             "money": "100"}
-    r = requests.request('post', url=url, json=json, headers=user_headers)
+    r = requests.request('post', url=url, json=json, headers=headers)
     return r.json()
 
 

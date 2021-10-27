@@ -1,81 +1,73 @@
 import requests
-from utils import rwjson
-import logging
-import interface_base.interface_base as itf
-import config.readCfg as cfg
-from utils import rwjson
-from config import readCfg
-# base_url = "http://api.online.zspaimai.cn"
-# def get_user_headers():
-#     return rwjson.RwJson().readjson('interface_data', 'user_headers.json')
-# def get_admin_headers():
-#     return rwjson.RwJson().readjson('interface_data', 'admin_headers.json')
-user_headers = itf.get_user_headers()
-admin_headers = itf.get_admin_headers()
-base_url = cfg.ReadCfg().get_base_url()
+from utils import rwjson, rwcfg
+
+admin_headers = rwjson.RwJson().readjson('interface_data', 'admin_headers.json')
+base_url = rwcfg.ReadCfg().get_base_url()
+
 def get_user_headers():
     return rwjson.RwJson().readjson('interface_data', 'user_headers.json')
-def get_token():
+def get_user_headers_unlogin():
+    return rwjson.RwJson().readjson('interface_data', 'user_headers_unlogin.json')
+def get_token(**userinfo):
     '''获取用户的token '''
     url = base_url+"/user/user/login?from=pc"
-    headers = {"Content-Type": "application/json; charset=utf-8",
-               'Connection': 'keep-alive',
-               'host': 'api.online.zspaimai.cn',
-               'Origin': 'http://home.online.zspaimai.cn',
-               'Referer': 'http: // home.online.zspaimai.cn /',
-               'token': 'xu16kny28l12lhnmitevanfpb - yzul_v',
-               'Appfrom': 'pc',
-               'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063',
-               }
+    headers = get_user_headers_unlogin()
     json = {"phone": "15622145010",
             "pwd": "123456"}
+    for key in userinfo:
+        if key in json.keys():
+            json[key] = userinfo[key]
+
     r = requests.request('post', url=url, json=json, headers=headers)
-    if r.json()['status']==200:
-        return r.json()['data']['token']
+    # if r.json()['status']==200:
+    #     return r.json()['data']['token']
+    return r
 
 def update_token(token):
-
     dict = rwjson.RwJson().readjson('interface_data', 'user_headers.json')
-
     dict["token"] = token
     rwjson.RwJson().writejson('interface_data', 'user_headers.json', dict)
 
-def get_token_quick(phone):
+def get_token(phone):
+    # 快捷登陆获取token
     get_msg(phone)
     r = quick_login(phone)
     return r.json()['data']['token']
 
-
-
-def get_msg(phone):
+def get_msg(phone = '15622145010'):
+    # 发送短信验证码
     url = base_url + '/user/user/msg'
-    headers = user_headers
+    headers = get_user_headers_unlogin()
     data = {"phone": phone}
     r = requests.request('post', url=url,  json=data, headers=headers)
 def quick_login(phone):
+    # 快捷登陆，该接口调用前先调用get_msg 接口发送验证码
     url = base_url + '/user/user/quick_login'
-    headers = user_headers
+    headers = get_user_headers_unlogin()
     data = {"phone": phone, "vcode": "123456"}
     r = requests.request('post', url=url, json=data, headers=headers)
     #token = r.json()['data']['token']
     #userno = r.json()['data']['userno']
     return r
-def get_msg_union(inv, phone):
-    url = base_url + '/user/user/msg'
-    headers = user_headers
-    data = {"phone": phone, "from": "pc", "inv": inv}
-    r = requests.request('post', url=url,  json=data, headers=headers)
+# def get_msg_union(inv, phone):
+#     url = base_url + '/user/user/msg'
+#     headers = get_user_headers()
+#     data = {"phone": phone, "from": "pc", "inv": inv}
+#     r = requests.request('post', url=url,  json=data, headers=headers)
 def quick_login_union(inv, phone):
     url = base_url + '/user/user/quick_login'
-    headers = user_headers
+    headers = get_user_headers_unlogin()
     data = {"phone": phone, "vcode": "123456", "inv": inv}
     r = requests.request('post', url=url, json=data, headers=headers)
     return r
 
 
 
-def verify(phone):
+def verify(phone, token=None):
+    '''修改短信的时候，发送短信校验码'''
     url = base_url + '/user/user/verify'
+    if token:
+        update_token(token)
     headers = get_user_headers()
     json = {
         "phone": phone,
@@ -92,6 +84,7 @@ def verify(phone):
     #     "shop_switch": "0"
     # }
 def add_pwd(user_code, new_pwd=None):
+    '''用户设置密码'''
     url = base_url + '/user/user/add_pwd'
     headers = get_user_headers()
 

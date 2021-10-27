@@ -1,5 +1,4 @@
-import interface_base.interface_base as itf
-import config.readCfg as cfg
+
 import requests
 import time
 from interface_base import user
