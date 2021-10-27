@@ -109,7 +109,7 @@ def test_take_delivery():
     assert r['status'] == 200
 
 def test_deliver():
-    order_id = 1451
+    order_id = 1434
     r = order.deliver(order_id)
     print(r)
     assert r.json()['status'] == 200

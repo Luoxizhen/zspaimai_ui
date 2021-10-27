@@ -1,9 +1,10 @@
 import time
+import json
 
 from interface_base import union, user, finance, goods, order
 
 from utils import rwyaml
-from user_test import add_pwd
+from interface_test.user_test import add_pwd
 import pytest
 # @pytest.fixture(scope="module")
 def user_login1():
@@ -249,22 +250,22 @@ class TestUnionUser(object):
     '''验证正常情况下，业务员所关联的下级用户的所有下级用户都是该业务员的下级用户'''
     # @pytest.mark.skip(reason = '')
     def test_union_join_user1(self):
-        user_login('user1')
-        token = get_userinfo('user1', 'token')
-        r = union.union_join(token)
+        user_login('user1')#用户登陆
+        token = get_userinfo('user1', 'token')#获取用户的token
+        r = union.union_join(token)#用户加入推广计划
         userno = get_userinfo('user1', 'userno')
-        union.union_set_role(userno, 20)
+        union.union_set_role(userno, 20)# 设置用户为业务员
         # 保存用户的可用额度、额度列表数量、累计获得额度
         #累计获得额度
-        quota = union.union_user(userno).json()['data']['quota']
-        #总额度
-        normal_quota = finance.get_finance_info()['normal_quota']
-        #额度列表记录总数
-        quota_total = finance.get_quota_bill()['total']
-        quota_info = {'quota': quota,
-                      'nomal_quota': normal_quota,
-                      'quota_total': quota_total}
-        assert r.json()["status"] == 200
+        # quota = union.union_user(userno).json()['data']['quota']
+        # #总额度
+        # normal_quota = finance.get_finance_info()['normal_quota']
+        # #额度列表记录总数
+        # quota_total = finance.get_quota_bill()['total']
+        # quota_info = {'quota': quota,
+        #               'nomal_quota': normal_quota,
+        #               'quota_total': quota_total}
+        # assert r.json()["status"] == 200
 
     def test_union_join_user2_001(self):
         '''验证用户2通过用户1的推广链接加入推广计划'''
@@ -353,23 +354,119 @@ class TestUnionOrder(object):
 
     # 1、在途佣金计算方式更改为，用户收货7天，不允许退货退款后，开始计算
     # 2、佣金计算方式更改为，支付时间30天后，在途佣金才确认到账，允许提现到余额
+    def test_set_pwd(self):
+        '''用户完成订单支付前先设置支付密码'''
+        for i in ('4',):
+            user_info ='user'+ i
+            user_phone = get_userinfo(user_info, 'phone')
+            add_pwd(user_phone) #设置支付密码
     def test_union_order_001(self):
         '''验证用户2完成一笔订单支付'''
-        begin_time = round(time.time())
-        end_time = begin_time + 20
-        good_info = {"begin_time": begin_time, "end_time": end_time, "good_name": "关联订单1", "price": 1000}
-        good_id = goods.goods_add(good_info).json()['data'] #添加拍品，获取新添加拍品的id
-        time.sleep(2)
-        token = get_userinfo('user2', 'token')
-        goods.bidding(good_id, 1000, token)#用户竞买拍品
-        time.sleep(20)
-        user2_phone = get_userinfo('user2', 'phone')
-        add_pwd(user2_phone) #设置支付密码
-        order_info = {"goods_ids": "["+str(good_id)+"]", "total":1100, "appointment":"2021-10-22"}
-        r = order.add_order(**order_info)
+        order_info = {'good_name': '关联拍品1', "user": "user2"}
+        r = add_union_order_1(**order_info)
+        assert r.json()['status'] == 200
+    def test_union_order_002(self):
+        '''验证用户6完成一笔订单支付'''
+        order_info = {'good_name': ['关联拍品2', '关联拍品3'], "user": "user2"}
+        r = add_union_order_2(**order_info)
+        assert r.json()['status'] == 200
+
+    def test_union_order_003(self):
+        '''验证用户2完成一笔订单支付：2个拍品'''
+        order_info = {'good_name': ['关联拍品4', '关联拍品5'], "user": "user2"}
+        r = add_union_order_2(**order_info)
+        assert r.json()['status'] == 200
+    def test_union_order_004(self):
+        '''验证用户6完成订单支付：1个拍品'''
+        order_info = {'good_name': '关联拍品6', "user": "user6"}
+        r = add_union_order_1(**order_info)
+        assert r.json()['status'] == 200
+    def test_union_order_005(self):
+        '''验证用户6完成订单支付：1个拍品'''
+        order_info = {'good_name': ['关联拍品7', '关联拍品8'], "user": "user6"}
+        r = add_union_order_2(**order_info)
+        assert r.json()['status'] == 200
+    def test_union_order_006(self):
+        '''验证用户6完成订单支付：1个拍品'''
+        order_info = {'good_name': ['关联拍品9', '关联拍品10'], "user": "user6"}
+        r = add_union_order_2(**order_info)
+        assert r.json()['status'] == 200
+    def test_union_order_007(self):
+        '''验证用户6的第二个订单部分退款'''
+        #order.confirm_order() #后台确认订单
+        good_id = order.refund_goods(1477).json()['data'][0]['goods_id']
+        goods_id = '['+str(good_id)+']'
+        refund_info = {"order_id":1477,
+            "refund_money":"1100",
+            "goods_id":goods_id}
+        r = order.refund(**refund_info)
+        assert r.json()['status'] == 200
+    def test_union_order_008(self):
+        '''验证用户6的第二个订单部分退款'''
+        #order.confirm_order(1478) #后台确认订单
+        good_id = order.refund_goods(1478).json()['data'][0]['goods_id']
+        goods_id = '['+str(good_id)+']'
+        refund_info = {"order_id":1478,
+            "refund_money":"1100",
+            "goods_id":goods_id}
+        order.refund(**refund_info)
+    def test_union_order_009(self):
+        '''验证用户六提货'''
+        for order_ids in (1476,1477,1478):
+            order.take_delivery(order_ids)
+
+
+    def test_union_order_010(self):
+        '''验证用户4 增加收货地址'''
+        user_phone = get_userinfo('user4', 'phone')
+        token = user.get_token_quick(user_phone)
+        set_userinfo('user4','token',token)
+        r = user.add_addr(token)
         assert r.json()['status'] == 200
 
 
+    def test_union_order_011(self):
+        '''验证用户4 完成订单'''
+        order_info = {'good_names': ['关联拍品20','关联拍品21','关联拍品22'], "user": "user4"}
+        r = add_union_order_3(**order_info)
+        print (r.json())
+        assert r.json()['status'] == 200
+
+
+    def test_union_order_012(self):
+        '''验证用户4 完成订单'''
+        # user_phone = get_userinfo('user4', 'phone')
+        # token = user.get_token_quick(user_phone)
+        # set_userinfo('user4', 'token', token)
+        delivery_info = {
+            "user_addr_id": 193,
+            "goods": "[{\"goods_id\":2452,\"buy_number\":1}]"
+        }
+
+        express_fee = order.calculate_freight(**delivery_info).json()['data']['freight']
+        express_fee = round(float(express_fee))
+        order_info = {'goods_ids': '["2452"]', 'total': 1100, 'addr_id': 193, 'express_fee': express_fee}
+
+        r = order.add_order(**order_info)
+
+        print (r.json())
+        assert r.json()['status'] == 200
+
+
+    def test_update_token_013(self):
+        user_phone = get_userinfo('user4', 'phone')
+        token = user.get_token_quick(user_phone)
+        set_userinfo('user4', 'token', token)
+        user.update_token(token)
+
+
+
+
+
+
+
+
+        
 
 
 
@@ -381,8 +478,11 @@ class TestUnionOrder(object):
 
 
 
-class TestUnionOrder(object):
-    '''验证在TestUnionUser 推广用户关联成功后，推广订单的关联'''
+
+
+
+
+
 class TestUnionCommi(object):
     '''验证在TestUnionUser 推广用户关联成功后，推广订单的关联'''
 @pytest.mark.skip(reason='')
@@ -484,9 +584,6 @@ def test_union_join_user3():
 
     '''获取用户2 的推广链接'''
     r = union.union_list_1(token)
-
-
-
     h5_url = r.json()['data']['data'][0]['h5_url']
 
 
@@ -538,4 +635,118 @@ def add_user():
 
 def test_set_user1_info():
     set_userinfo('user_user', 'kk', 'ww')
+
+def get_user_id(user):
+    user_no = get_userinfo(user, 'userno')
+    user_id = int(user_no) - 192800
+    return user_id
+
+def add_union_order_1(**order_info):
+    '''验证用户完成订单支付'''
+    order_info_list = ['good_name', 'user']
+    order_info_real = {'good_name': "关联订单", "user": "user2"}
+    for key in order_info:
+        if key in order_info_list:
+            order_info_real[key] = order_info[key]
+    begin_time = round(time.time())
+    end_time = begin_time + 20
+    good_info = {"begin_time": begin_time, "end_time": end_time, "name": order_info_real['good_name'], "price": 1000}
+    print(good_info)
+    good_id = goods.goods_add(**good_info).json()['data'] #添加拍品，获取新添加拍品的id
+    print(good_id)
+    time.sleep(2)
+    token = get_userinfo(order_info_real['user'], 'token')
+    user_id = get_user_id(order_info_real['user'])
+    recharge_info = {'money': '10000', 'user_id': user_id}
+    finance.recharge(**recharge_info)  #后台给用户充值
+    goods.bidding(good_id, 1000, token) #用户竞买拍品
+    time.sleep(20)
+    #user_phone = get_userinfo(order_info_real['user'], 'phone')
+    #add_pwd(user_phone) #设置支付密码
+    order_info = {"goods_ids": "["+str(good_id)+"]", "total":1100, "appointment":"2021-10-26"}#用户支付订单
+    r = order.add_order(token,**order_info)
+    print (r.json())
+    return r
+
+
+def add_union_order_2(**order_info):
+    '''验证用户完成订单支付'''
+    order_info_list = ['good_name', 'user']
+    order_info_real = {'good_name': ['关联拍品1', '关联拍品2'], "user": "user2"}
+    good_ids = [1,2]
+    for key in order_info:
+        if key in order_info_list:
+            order_info_real[key] = order_info[key]
+    for i in (0,1):
+        begin_time = round(time.time())
+        end_time = begin_time + 10
+        good_info = {"begin_time": begin_time, "end_time": end_time, "name": order_info_real['good_name'][i], "price": 1000}
+        good_ids[i] = goods.goods_add(**good_info).json()['data'] #添加拍品，获取新添加拍品的id
+        time.sleep(2)
+        token = get_userinfo(order_info_real['user'], 'token')
+
+        user_id = get_user_id(order_info_real['user'])
+        recharge_info = {'money': '10000', 'userid': user_id}
+        finance.recharge(**recharge_info)  # 后台给用户充值
+        goods.bidding(good_ids[i], 1000, token) #用户竞买拍品
+        time.sleep(10)
+        user_phone = get_userinfo(order_info_real['user'], 'phone')
+    #add_pwd(user_phone) #设置支付密码
+    token = get_userinfo(order_info_real['user'], 'token')
+    order_info = {"goods_ids": "["+str(good_ids[0])+','+str(good_ids[1])+"]", "total": 2200, "appointment":"2021-10-26"}#用户支付订单
+    r = order.add_order(token,**order_info)
+    return r
+def add_union_order_3(**order_info):
+    '''验证用户完成订单支付'''
+    order_info_list = ['good_names', 'user']
+    order_info_real = {'good_names': ['关联拍品1', '关联拍品2'], "user": "user2"}
+    good_ids = []
+    goods_infos = []
+    for key in order_info:
+        if key in order_info_list:
+            order_info_real[key] = order_info[key]
+    token = get_userinfo(order_info_real['user'], 'token')
+    for goodname in order_info_real['good_names']:
+        begin_time = round(time.time())
+        end_time = begin_time + 10
+        good_info = {"begin_time": begin_time, "end_time": end_time, "name": goodname, "price": 1000}
+        good_id = goods.goods_add(**good_info).json()['data'] #添加拍品，获取新添加拍品的id
+        good_ids.append(good_id)
+        goods_infos.append({"goods_id": int(good_id), "buy_number": 1})
+        time.sleep(2)
+        user_id = get_user_id(order_info_real['user'])
+        recharge_info = {'money': '10000', 'user_id': user_id}
+        print(recharge_info)
+        finance.recharge(**recharge_info)  # 后台给用户充值
+        r = goods.bidding(good_id, 1000, token) #用户竞买拍品
+        print(r)
+        time.sleep(10)
+    # "["+str(good_ids[0])+','+str(good_ids[1])+"]"
+
+    id = "["
+    goods_info = "["
+    for i in range(len(good_ids)):
+        if i < len(good_ids)-1:
+            id = id + good_ids[i] + ","
+            goods_info = goods_info + json.dumps(goods_infos[i]) + ","
+        else:
+            id = id + good_ids[i] + "]"
+            goods_info = goods_info + json.dumps(goods_infos[i]) + "]"
+    total = 1100 * len(good_ids)
+    addr_id = user.addr_list(token).json()['data'][0]['id']
+    print(goods)
+
+
+    delivery_info = {
+        "user_addr_id": addr_id,
+        "goods": goods_info
+    }
+    r = order.calculate_freight(**delivery_info).json()
+    express_fee = round(float(r['data']['freight']))
+
+    order_info = {"goods_ids": id, "total": total, "addr_id":addr_id, 'express_fee': express_fee}#用户支付订单
+    print(order_info)
+    r = order.add_order(**order_info)
+    print(r)
+    return r
 

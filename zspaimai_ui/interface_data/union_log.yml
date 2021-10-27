@@ -2,3 +2,5 @@ user1:
   quota_info_old:
 union_info:
   new_union_id: '330'
+union_info:
+  new_union_id: '331'

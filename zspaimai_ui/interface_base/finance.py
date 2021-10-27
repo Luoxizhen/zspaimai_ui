@@ -75,14 +75,17 @@ def get_quota_bill():
     
     return quota_bill_info
 
-def recharge():
+def recharge(**rechargeinfo):
     '''后台给用户充值'''
     url = base_url + '/admin/wallet/recharge'
     print(url)
     headers = admin_headers
-    json = {'money': '100',
-            'user_id': 102}
-    r = requests.request('post', url=url, json=json, headers=headers)
+
+    recharge_real = {'money': '100', 'user_id': 102}
+    for key in rechargeinfo:
+        if key in recharge_real.keys():
+            recharge_real[key] = rechargeinfo[key]
+    r = requests.request('post', url=url, json=recharge_real, headers=headers)
     '''返回充值状态'''
     print(r.json())
     logging.info("后台充值")

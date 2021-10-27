@@ -23,7 +23,7 @@ def goods_list():
     r = requests.request('post', url=url, json=json, headers=headers)
     return r.json()
 def bidding(good_id, price, token=None):
-    if not token:
+    if token:
         updata_token(token)
     url = base_url + '/user/user/bid'
     json ={"goods_id": good_id,
@@ -58,4 +58,5 @@ def goods_add(**good_infos):
                 goods_info_real[key] = good_infos[key]
 
     r = requests.request('post', url=url, json=goods_info_real, headers=headers)
+    print (r.json())
     return r

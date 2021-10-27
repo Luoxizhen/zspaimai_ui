@@ -40,6 +40,10 @@ def update_token(token):
     dict["token"] = token
     rwjson.RwJson().writejson('interface_data', 'user_headers.json', dict)
 
+def get_token_quick(phone):
+    get_msg(phone)
+    r = quick_login(phone)
+    return r.json()['data']['token']
 
 
 
@@ -105,3 +109,24 @@ def add_pwd(user_code, new_pwd=None):
     #     "data": [],
     #     "shop_switch": "0"
     # }
+
+def add_addr(token=None, **addr):
+    url = base_url + '/user/addr/add'
+    if token:
+        update_token(token)
+    headers = get_user_headers()
+    addr_info = {"id":"","name":"大罗","phone":"15622145020","address":"珠江嘉苑","zipcode":"","province":19,"city":289,"county":3040,"is_default":1}
+    for key in addr:
+        if key in addr_info.keys():
+            addr_info[key] = addr[key]
+    r = requests.request('post', url=url, json=addr_info, headers=headers)
+    return r
+
+def addr_list(token=None):
+    url = base_url + '/user/addr/list'
+    if token:
+        update_token(token)
+    headers = get_user_headers()
+    r = requests.request('get', url=url, headers=headers)
+    #{"status":200,"msg":"操作成功","data":[{"id":192,"name":"大罗","phone":"15622145020","address":"珠江嘉苑","zipcode":"","province":19,"city":289,"county":3040,"is_default":1,"area":"广东省,广州市,天河区","province_name":"广东省","city_name":"广州市","county_name":"天河区"}],"shop_switch":"0"}
+    return r
