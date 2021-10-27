@@ -34,10 +34,14 @@ def get_token(phone):
     r = quick_login(phone)
     return r.json()['data']['token']
 
-def get_msg(phone = '15622145010'):
+def get_msg(token=None, phone = '15622145010'):
     # 发送短信验证码
     url = base_url + '/user/user/msg'
-    headers = get_user_headers_unlogin()
+    if token:
+        update_token(token)
+        headers = get_user_headers()
+    else:
+        headers = get_user_headers_unlogin()
     data = {"phone": phone}
     r = requests.request('post', url=url,  json=data, headers=headers)
 def quick_login(phone):

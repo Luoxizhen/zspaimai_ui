@@ -338,19 +338,29 @@ class TestUnionOrder(object):
     业务员的下级用户成交的订单，在业务员的推广订单列表中，显示两条记录，
     其中一条记录计算业务提成：订单的拍品成交价总额 * 业务员佣金比例，
     一条记录计算推广值：订单的拍品成交总额 * 推广素材的推广值返点'''
-
     # 1、在途佣金计算方式更改为，用户收货7天，不允许退货退款后，开始计算
     # 2、佣金计算方式更改为，支付时间30天后，在途佣金才确认到账，允许提现到余额
-    def test_set_pwd(self):
+    def test_set_pwd_addr(self):
         '''用户完成订单支付前先设置支付密码'''
-        for i in ('4',):
-            user_info ='user'+ i
-            user_phone = get_userinfo(user_info, 'phone')
-            add_pwd(user_phone) #设置支付密码
+        for i in range(2,7):
+        #for i in (5,):
+            user_info ='user'+ str(i)
+            phone = get_userinfo(user_info, 'phone')
+            token = get_userinfo(user_info, 'token')
+            r1 = add_pwd(token, phone) #设置支付密码
+            r2 = user.add_addr()
+
+    # def test_union_order_000(self):
+    #     '''验证用户4 增加收货地址'''
+    #     for i in (2, 6):
+    #         user_info = 'user' + st r(i)
+    #         token = get_userinfo(user_info, 'token')
+    #         user.add_addr(token)
+
     def test_union_order_001(self):
         '''验证用户2完成一笔订单支付'''
-        order_info = {'good_name': '关联拍品1', "user": "user2"}
-        r = add_union_order_1(**order_info)
+        order_info = {'good_names': ['关联拍品1'], "user": "user2"}
+        r = add_union_order(**order_info)
         assert r.json()['status'] == 200
     def test_union_order_002(self):
         '''验证用户6完成一笔订单支付'''
@@ -403,13 +413,7 @@ class TestUnionOrder(object):
             order.take_delivery(order_ids)
 
 
-    def test_union_order_010(self):
-        '''验证用户4 增加收货地址'''
-        user_phone = get_userinfo('user4', 'phone')
-        token = user.get_token_quick(user_phone)
-        set_userinfo('user4','token',token)
-        r = user.add_addr(token)
-        assert r.json()['status'] == 200
+
 
 
     def test_union_order_011(self):
@@ -634,8 +638,6 @@ def add_union_order_1(**order_info):
     r = order.add_order(token,**order_info)
     print (r.json())
     return r
-
-
 def add_union_order_2(**order_info):
     '''验证用户完成订单支付'''
     order_info_list = ['good_name', 'user']
@@ -663,10 +665,10 @@ def add_union_order_2(**order_info):
     order_info = {"goods_ids": "["+str(good_ids[0])+','+str(good_ids[1])+"]", "total": 2200, "appointment":"2021-10-26"}#用户支付订单
     r = order.add_order(token,**order_info)
     return r
-def add_union_order_3(**order_info):
+def add_union_order(**order_info):
     '''验证用户完成订单支付'''
-    order_info_list = ['good_names', 'user']
-    order_info_real = {'good_names': ['关联拍品1', '关联拍品2'], "user": "user2"}
+    order_info_list = ['good_names', 'user','express']
+    order_info_real = {'good_names': ['关联拍品1', '关联拍品2'], "user": "user2", 'express':0}
     good_ids = []
     goods_infos = []
     for key in order_info:
@@ -683,10 +685,9 @@ def add_union_order_3(**order_info):
         time.sleep(2)
         user_id = get_user_id(order_info_real['user'])
         recharge_info = {'money': '10000', 'user_id': user_id}
-        print(recharge_info)
         finance.recharge(**recharge_info)  # 后台给用户充值
-        r = goods.bidding(good_id, 1000, token) #用户竞买拍品
-        print(r)
+        bid_info = {"goods_id": good_id, "price": 1000 }
+        r = goods.bidding(token,**bid_info) #用户竞买拍品
         time.sleep(10)
     # "["+str(good_ids[0])+','+str(good_ids[1])+"]"
 
@@ -710,10 +711,18 @@ def add_union_order_3(**order_info):
     }
     r = order.calculate_freight(**delivery_info).json()
     express_fee = round(float(r['data']['freight']))
+    date = time.strftime('%Y-%m-%d', time.localtime())#"appointment": "2021-10-26"
+    if order_info_real['express'] == 0:
+        order_info = {"goods_ids": id, "total": total, "appointment": date}  # 用户支付订单
+    else:
+        order_info = {"goods_ids": id, "total": total, "addr_id": addr_id, 'express_fee': express_fee}#用户支付订单
 
-    order_info = {"goods_ids": id, "total": total, "addr_id":addr_id, 'express_fee': express_fee}#用户支付订单
-    print(order_info)
     r = order.add_order(**order_info)
-    print(r)
+    order_id = r.json()['data']['reId']
+    order.confirm_order(order_id)
     return r
 
+def test_dd():
+    date = time.strftime('%Y-%m-%d', time.localtime())
+    print(date)
+    assert 1==2

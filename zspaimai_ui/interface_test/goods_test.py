@@ -3,9 +3,9 @@ import pytest
 import time
 def test_goods_add():
     begin_time = round(time.time())
-    end_time = begin_time + 60
+    end_time = begin_time + 30
     #name = '1960年第三版人民币壹圆拖拉机狮子号一枚-退货退款-3'
-    name = '退货退款-5'
+    name = '支付'
     r = goods.goods_add(begin_time, end_time, name)
     print(r)
     status = r['status']
@@ -18,8 +18,7 @@ def test_goods_list():
 
 def test_goods_add_001():
     begin_time = round(time.time())
-    end_time = begin_time + 30
-    good_infos = {"begin_time": begin_time, "end_time": end_time, "name": "13111111111", "price": 20}
-    print(good_infos)
+    end_time = begin_time + 60
+    good_infos = {"begin_time": begin_time, "end_time": end_time, "name": "测试支付3", "price": 100}
     r = goods.goods_add(**good_infos)
     assert r.json()['status']==200
