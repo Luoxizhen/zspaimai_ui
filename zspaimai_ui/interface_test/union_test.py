@@ -1,38 +1,29 @@
 import time
 import json
-
 from interface_base import union, user, finance, goods, order
-
 from utils import rwyaml
 from interface_test.user_test import add_pwd
 import pytest
-# @pytest.fixture(scope="module")
-def user_login1():
+
+def updata_user_token(info):
     '''所有用户登陆，获取token'''
-    for i in range(1, 6):
-        testuser = "user" + str(i)
-        print(testuser)
-        phone = rwyaml.get_yaml_data('interface_data', 'union.yml')[testuser]['phone']
-        user.get_msg(phone)
-        userinfo = user.quick_login(phone).json()
-        token = userinfo['data']['token']
-        userno = userinfo['data']['user']['userno']
-        rwyaml.set_data('interface_data', 'union.yml', testuser, token, userno)
-    user1_token = rwyaml.get_yaml_data('interface_data', 'union.yml')['user1']['token']
-    user1_no = rwyaml.get_yaml_data('interface_data', 'union.yml')['user1']['userno']
-    rwyaml.set_data('interface_data', 'union.yml', 'user1', user1_token, user1_no)
+    phone = get_userinfo(info, 'phone')
+    token = user.get_token(phone)
+    set_userinfo(info, 'token', token)
 def get_userinfo(user,key):
     userinfo = rwyaml.get_yaml_data('interface_data', 'union.yml')[user][key]
     return userinfo
 def set_userinfo(user, key, keyvalue):
     rwyaml.set_keyvalue('interface_data', 'union.yml', user, key, keyvalue)
-
+def get_user_id(user):
+    user_no = get_userinfo(user, 'userno')
+    user_id = int(user_no) - 192800
+    return user_id
 def union_join(user1, user2):
     '''该函数提供用户关联的基本操作'''
     token = get_userinfo(user1, 'token')
     union.union_join(token)#用户1 加入推广计划，增加用户是否已加入推广计划，未加入时，执行加入操作
-    r = union.union_list_1(token)# 获取用户1的推广链接
-
+    r = union.union_list_user(1)# 获取用户1的推广链接
     '''获取最新的推广素材链接'''
     i = r.json()['data']['total']
     print("推广素材总数： {}".format(i))
@@ -43,27 +34,48 @@ def union_join(user1, user2):
 
     else:
         k = int(i/10) + 1
-
-        r = union.union_list_2(token, k)
-        print("最后一页推广素材内容如下：")
-        print(r.json())
+        r = union.union_list_user(k)
         j = int(i - 10 * (k-1)-1)
-        print(j)
         h5_url = r.json()['data']['data'][j]['h5_url']
-
-
     '''从h5_url 中提取 inv 信息:http://home.online.zspaimai.cn/?inv=VEVVL1FyODVDVlZYWGVTazg2S0JCZHVpMk9KZmhkeCtycHN1Z0FjWmdiZz0='''
     inv = h5_url.replace('http://home.online.zspaimai.cn/?inv=', '')
-    rwyaml.set_keyvalue('interface_data', 'union.yml', user1, 'inv', inv)#保存用户1的inv 信息
-
-    phone2 = rwyaml.get_yaml_data('interface_data', 'union.yml')[user2]['phone']# 获取用户2 的手机号码
+    set_userinfo(user1, 'inv', inv)
+    phone2 = get_userinfo(user2, 'phone')# 获取用户2 的手机号码
     user.get_msg(phone2) # 获取验证码
     userinfo = user.quick_login_union(inv, phone2) #用户2快捷登陆，成为用户1的成员
     user2_token = userinfo.json()['data']['token']
     user2_userno = userinfo.json()['data']['user']['userno']
     '''保存用户2 的基本信息'''
-    rwyaml.set_keyvalue('interface_data', 'union.yml', user2, 'userno', user2_userno)
-    rwyaml.set_keyvalue('interface_data', 'union.yml', user2, 'token', user2_token)
+    set_userinfo(user2, 'userno', user2_userno)
+    set_userinfo(user2, 'token', user2_token)
+@pytest.fixture(scope='class',name= 'add_user')
+def add_user():
+    '''给关联用户测试提供准备工作，更新interface_data.union.yml 中的用户手机号码，使用全新手机号码进行关联'''
+    user_phone = get_userinfo('user', 'phone')#13622288516
+    ph1 = user_phone[0:8]
+    ph2 = user_phone[8:]
+    for i in range(1, 7):
+        user_str = 'user' + str(i)
+        if (i!=1):
+            ph2 = str(int(ph2) + 1)
+        phone = ph1 + ph2
+        set_userinfo(user_str, 'phone', phone)
+        set_userinfo(user_str, 'inv', '')
+        set_userinfo(user_str, 'userno', '')
+        set_userinfo(user_str, 'token', '')
+    ph2 = str(int(ph2)+1)
+    last_phone = ph1 + ph2
+    set_userinfo('user', 'phone', last_phone)
+def add_union():
+    '''根据 union.yml 中的 newname 创建一个推广计划，在newname +1 后保存推广计划名称 '''
+    union_name = get_userinfo('union', 'newname')
+    set_userinfo('union', 'name', union_name)
+    union_info = {'name': union_name}
+    union.union_add(**union_info).json()
+    union_name_1 = union_name[0:7]
+    union_name_2 = union_name[7:11]
+    union_newname = union_name_1 + str(int(union_name_2) + 1)
+    set_userinfo('union', 'newname', union_newname) # 保存推广计划新名称
 
 
 def test_add_union():
@@ -247,50 +259,30 @@ class TestUnionEdit():
 @pytest.mark.usefixtures('add_user')
 class TestUnionUser(object):
     '''验证正常情况下，业务员所关联的下级用户的所有下级用户都是该业务员的下级用户'''
-    # @pytest.mark.skip(reason = '')
+    #@pytest.mark.skip(reason='')
     def test_union_join_user1(self):
-        user_login('user1')#用户登陆
-        token = get_userinfo('user1', 'token')#获取用户的token
-        r = union.union_join(token)#用户加入推广计划
-        userno = get_userinfo('user1', 'userno')
-        union.union_set_role(userno, 20)# 设置用户为业务员
-        # 保存用户的可用额度、额度列表数量、累计获得额度
-        #累计获得额度
-        # quota = union.union_user(userno).json()['data']['quota']
-        # #总额度
-        # normal_quota = finance.get_finance_info()['normal_quota']
-        # #额度列表记录总数
-        # quota_total = finance.get_quota_bill()['total']
-        # quota_info = {'quota': quota,
-        #               'nomal_quota': normal_quota,
-        #               'quota_total': quota_total}
-        # assert r.json()["status"] == 200
+        phone = get_userinfo('user1', 'phone')
+        user.get_msg(phone)
+        r = user.quick_login(phone)
+        token = r.json()['data']['token']
+        userno = r.json()['data']['user']['userno']
+        set_userinfo('user1', 'token', token)
+        set_userinfo('user1', 'userno', userno)#用户登陆并保存信息
+        user.update_token(token)
+        r = union.union_join()#用户加入推广计划
+        union.set_union_role(userno, 20)# 设置用户为业务员
+        assert r.json()['status'] == 200
 
-    def test_union_join_user2_001(self):
+    def test_union_join_user2(self):
         '''验证用户2通过用户1的推广链接加入推广计划'''
-        '''先创建一个推广计划： '''
-        union_name = get_userinfo('union', 'newname')
-        print(union_name)
-        set_userinfo('union', 'name', union_name)
-        union.union_add(union_name).json()
-        union_name_1 = union_name[0:7]
-
-        union_name_2 = union_name[7:11]
-        union_newname = union_name_1 + str(int(union_name_2) + 1)
-        set_userinfo('union', 'newname', union_newname)
-
-        '''重新保存推广计划'''
-
+        add_union()
         user1_no = get_userinfo('user1', 'userno')
-        print(user1_no)
         total_pre = union.union_user(user1_no).json()['data']['total']
-        print('用户2加入前用户数')
-        print(total_pre)
         union_join('user1', 'user2')
         total = union.union_user(user1_no).json()['data']['total']
         assert total == total_pre + 1
 
-    def test_union_join_user3_001(self):
+    def test_union_join_user3(self):
         '''验证用户3 加入推广计划以后，用户3 通过用户2的 inv 加入推广计划，用户3 会成为用户2 的推广用户'''
 
         '''用户3 为加入用户2 的推广计划前，用户2的推广用户数量：'''
@@ -300,11 +292,7 @@ class TestUnionUser(object):
         total = union.union_user(user2_no).json()['data']['total']
         assert total == total_pre + 1
 
-
-
-
-
-    def test_union_join_user4_001(self):
+    def test_union_join_user4(self):
         '''验证用户4 通过用户2的推广链接加入推广计划， 用户4 成为业务员： 用户1 的推广成员'''
         user1_no = get_userinfo('user1', 'userno')
         total_pre = union.union_user(user1_no).json()['data']['total']
@@ -312,7 +300,7 @@ class TestUnionUser(object):
         total = union.union_user(user1_no).json()['data']['total']
         assert total == total_pre + 1
 
-    def test_union_join_user5_001(self):
+    def test_union_join_user5(self):
         '''验证用户5 通过用户3的推广链接加入推广计划， 用户5成为用户3 的推广成员'''
         user3_no = get_userinfo('user3', 'userno')
         total_pre = union.union_user(user3_no).json()['data']['total']
@@ -320,7 +308,7 @@ class TestUnionUser(object):
         total = union.union_user(user3_no).json()['data']['total']
         assert total == total_pre + 1
 
-    def test_union_join_user6_001(self):
+    def test_union_join_user6(self):
         '''验证用户6 通过用户4的推广链接加入推广计划， 用户6 不会成为用户1 的推广成员'''
         user1_no = get_userinfo('user1', 'userno')
         total_pre = union.union_user(user1_no).json()['data']['total']
@@ -614,31 +602,11 @@ def test_union_join_user3():
     total = r.json()['data']['total']
 
     assert total == total_pre
-@pytest.fixture(scope='class',name= 'add_user')
-def add_user():
-    user_phone = get_userinfo('user', 'phone')#13622288516
-    ph1 = user_phone[0:8]
-    ph2 = user_phone[8:]
-    for i in range(1, 7):
-        user_str = 'user' + str(i)
-        if (i!=1):
-            ph2 = str(int(ph2) + 1)
-        phone = ph1 + ph2
-        set_userinfo(user_str, 'phone', phone)
-        set_userinfo(user_str, 'inv', '')
-        set_userinfo(user_str, 'userno', '')
-        set_userinfo(user_str, 'token', '')
-    ph2 = str(int(ph2)+1)
-    last_phone = ph1 + ph2
-    set_userinfo('user', 'phone', last_phone)
 
 def test_set_user1_info():
     set_userinfo('user_user', 'kk', 'ww')
 
-def get_user_id(user):
-    user_no = get_userinfo(user, 'userno')
-    user_id = int(user_no) - 192800
-    return user_id
+
 
 def add_union_order_1(**order_info):
     '''验证用户完成订单支付'''

@@ -1,7 +1,7 @@
 import requests
 from utils import rwjson, rwcfg
 import logging
-from user import update_token,get_user_headers,base_url,admin_headers
+from interface_base.user import update_token,get_user_headers,base_url,admin_headers
 
 
 

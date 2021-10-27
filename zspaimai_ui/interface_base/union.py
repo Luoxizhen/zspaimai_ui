@@ -1,4 +1,4 @@
-from user import base_url,admin_headers,update_token,get_user_headers
+from interface_base.user import base_url,admin_headers,update_token,get_user_headers
 import requests
 import time
 from utils import rwyaml, rwjson
@@ -8,8 +8,7 @@ def union_topic():
     '''获取进行中的专场，用于设定推广素材所关联的专场'''
     url = base_url + '/admin/union/union_topic'
     headers = admin_headers
-    data = {"where": "[{\"key\":\"title\",\"value\":\"\"},{\"key\":\"status\",\"value\":\"20\"},{\"key\":\"is_shelves\",\"value\":\"\"},{\"key\":\"top\",\"value\":\"\"},{\"key\":\"is_recommended\",\"value\":\"\"}]",
-            "page": 0}
+    data ={"union_id":0}
     r = requests.request('post', url=url, json=data, headers=headers)
     # topic_list = r.json()['data'][0]['id']
     return r
@@ -181,7 +180,7 @@ def union_join(token=None,fr='pc'):
     '''用户加入推广计划'''
     url = base_url + '/user/union/union_join'
     if token:
-        update_token()
+        update_token(token)
     time.sleep(2)
     headers = get_user_headers()
     data = {}
