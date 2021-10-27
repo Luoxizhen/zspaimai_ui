@@ -251,3 +251,26 @@ def calculate_freight(token=None,**info):
     r = requests.request('post', url=url, json=delivery_info, headers=headers)
     return r
 
+def confirm_send(order_id, token=None):
+    '''用户确认收货'''
+    url = base_url + '/user/delivery/calculate_freight'
+    if token:
+        update_token(token)
+    headers = get_user_headers()
+    #json = {"order_id":1502}
+    json = {"order_id": order_id}
+    r = requests.request('post', url=url, json=json, headers=headers)
+    return r
+
+
+def express_info(order_id, token=None):
+    '''用户查看物流信息'''
+    #{"order_id":"1502"}
+    url = base_url + '/user/delivery/calculate_freight'
+    if token:
+        update_token(token)
+    headers = get_user_headers()
+    # json = {"order_id":1502}
+    json = {"order_id": order_id}
+    r = requests.request('post', url=url, json=json, headers=headers)
+    return r

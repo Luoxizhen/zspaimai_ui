@@ -364,7 +364,7 @@ class TestUnionOrder(object):
         assert r.json()['status'] == 200
     def test_union_order_002(self):
         '''验证用户6完成一笔订单支付'''
-        order_info = {'good_names': ['关联拍品2', '关联拍品3'], "user": "user2"}
+        order_info = {'good_names': ['关联拍品2', '关联拍品3'], "user": "user2", "express":2}
         r = add_union_order(**order_info)
         assert r.json()['status'] == 200
 
