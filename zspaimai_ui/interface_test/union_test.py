@@ -364,29 +364,29 @@ class TestUnionOrder(object):
         assert r.json()['status'] == 200
     def test_union_order_002(self):
         '''验证用户6完成一笔订单支付'''
-        order_info = {'good_name': ['关联拍品2', '关联拍品3'], "user": "user2"}
-        r = add_union_order_2(**order_info)
+        order_info = {'good_names': ['关联拍品2', '关联拍品3'], "user": "user2"}
+        r = add_union_order(**order_info)
         assert r.json()['status'] == 200
 
     def test_union_order_003(self):
         '''验证用户2完成一笔订单支付：2个拍品'''
-        order_info = {'good_name': ['关联拍品4', '关联拍品5'], "user": "user2"}
-        r = add_union_order_2(**order_info)
+        order_info = {'good_names': ['关联拍品4', '关联拍品5'], "user": "user2"}
+        r = add_union_order(**order_info)
         assert r.json()['status'] == 200
     def test_union_order_004(self):
         '''验证用户6完成订单支付：1个拍品'''
-        order_info = {'good_name': '关联拍品6', "user": "user6"}
-        r = add_union_order_1(**order_info)
+        order_info = {'good_names': ['关联拍品6'], "user": "user6"}
+        r = add_union_order(**order_info)
         assert r.json()['status'] == 200
     def test_union_order_005(self):
-        '''验证用户6完成订单支付：1个拍品'''
-        order_info = {'good_name': ['关联拍品7', '关联拍品8'], "user": "user6"}
-        r = add_union_order_2(**order_info)
+        '''验证用户6完成订单支付：2个拍品'''
+        order_info = {'good_names': ['关联拍品7', '关联拍品8'], "user": "user6"}
+        r = add_union_order(**order_info)
         assert r.json()['status'] == 200
     def test_union_order_006(self):
         '''验证用户6完成订单支付：1个拍品'''
-        order_info = {'good_name': ['关联拍品9', '关联拍品10'], "user": "user6"}
-        r = add_union_order_2(**order_info)
+        order_info = {'good_names': ['关联拍品9', '关联拍品10'], "user": "user6"}
+        r = add_union_order(**order_info)
         assert r.json()['status'] == 200
     def test_union_order_007(self):
         '''验证用户6的第二个订单部分退款'''
@@ -418,8 +418,8 @@ class TestUnionOrder(object):
 
     def test_union_order_011(self):
         '''验证用户4 完成订单'''
-        order_info = {'good_names': ['关联拍品20','关联拍品21','关联拍品22'], "user": "user4"}
-        r = add_union_order_3(**order_info)
+        order_info = {'good_names': ['关联拍品20','关联拍品21','关联拍品22'], "user": "user4", "express":2}
+        r = add_union_order(**order_info)
         print (r.json())
         assert r.json()['status'] == 200
 
