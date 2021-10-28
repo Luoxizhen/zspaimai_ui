@@ -131,3 +131,19 @@ def test_add_order_004():
     info = {"goods_ids": "[\"2395\"]", "total": 30, "appointment": "2021-10-22"}
     r = order.add_order1(token, info)
     assert r.json()['status']==200
+def test_logistics_list_1():
+    info = {"userno": "193317","status":2,"express_id":3}
+    r = order.logistics_list(**info)
+    print(r.json())
+    for i in range(r.json()['data']['total']):
+        order_id = r.json()['data']['data'][i]['id']
+        order.take_delivery(order_id)
+    assert 1==2
+def test_logistics_list():
+    info = {"userno": "193317","status":2,"express_id":1}
+    r = order.logistics_list(**info)
+    print(r.json())
+    for i in range(r.json()['data']['total']):
+        order_id = r.json()['data']['data'][i]['id']
+        order.deliver(order_id)
+    assert 1==2
