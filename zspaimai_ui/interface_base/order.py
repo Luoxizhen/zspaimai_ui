@@ -1,6 +1,6 @@
 import requests
 import time, json
-from utils import rwjson, rwcfg
+from utils import rwjson, utils
 from interface_base.user import update_token, get_user_headers,base_url,admin_headers
 
 
@@ -294,16 +294,35 @@ def logistics_list(page=1,**orderinfo):
             print(url)
             if key in search_info.keys():
                 search_info[key] = orderinfo[key]
-        for key in search_info:
-            js = {"key": key, "value": search_info[key]}
-            info_s.append(js)
-        for i in range(len(info_s)):
-            if i != len(info_s)-1:
-                info_r = info_r + json.dumps(info_s[i]) + ","
-            else:
-                info_r = info_r + json.dumps(info_s[i]) + "]"
-        order_info["where"] = info_r
+        search_str = utils.kwargs_to_str(**search_info)
+        order_info["where"] = search_str
     if page !=1:
         order_info["page"] = page
     r = requests.request('post', url=url, json=order_info, headers=headers)
     return r
+def list(page=1, **orderinfo):
+    '''用户查看订单列表'''
+    url = base_url + '/admin/order/list'
+    headers = admin_headers
+    order_info = {"page":1,
+                  "type":1,
+                  "where":"[{\"key\":\"order_no\",\"value\":\"\"},{\"key\":\"goods_name\",\"value\":\"\"},{\"key\":\"status\",\"value\":\"\"},{\"key\":\"userno\",\"value\":\"192820\"},{\"key\":\"payment_id\",\"value\":\"\"},{\"key\":\"express_id\",\"value\":\"\"},{\"key\":\"id\",\"value\":\"\"},{\"key\":\"start_time\",\"value\":\"\"},{\"key\":\"end_time\",\"value\":\"\"}]"}
+    search_info = {"order_no": "", "goods_name": "", "userno": "", "status": "", "payment_id": "", "express_id": "","start_time":"","end_time":"","id":""}
+
+    if orderinfo != {}:
+        for key in orderinfo:
+            print(key)
+            print(url)
+            if key in search_info.keys():
+                search_info[key] = orderinfo[key]
+        search_str = utils.kwargs_to_str(**search_info)
+        order_info["where"] = search_str
+    if page != 1:
+        order_info["page"] = page
+    r = requests.request('post', url=url, json=order_info, headers=headers)
+
+    return r
+
+
+
+

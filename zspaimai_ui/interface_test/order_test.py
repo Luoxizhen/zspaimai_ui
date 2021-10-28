@@ -140,10 +140,16 @@ def test_logistics_list_1():
         order.take_delivery(order_id)
     assert 1==2
 def test_logistics_list():
-    info = {"userno": "193317","status":2,"express_id":1}
-    r = order.logistics_list(**info)
+    #info = {"userno": "193317","status":2,"express_id":1}
+    search_info = {"userno": "193317"}
+    r = order.logistics_list(**search_info)
     print(r.json())
-    for i in range(r.json()['data']['total']):
-        order_id = r.json()['data']['data'][i]['id']
-        order.deliver(order_id)
+    # for i in range(r.json()['data']['total']):
+    #     order_id = r.json()['data']['data'][i]['id']
+    #     order.deliver(order_id)
     assert 1==2
+def test_list():
+    search_info = {'userno':193317}
+    r = order.list(**search_info)
+    print(r.json())
+    assert 1 == 2
