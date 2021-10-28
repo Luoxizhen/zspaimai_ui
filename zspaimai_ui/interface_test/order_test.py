@@ -1,6 +1,7 @@
 import time
 import pytest
 from interface_base import goods, order, user
+from utils import utils
 def test_order_coupon():
     begin_time = round(time.time())
     end_time = begin_time + 30
@@ -153,3 +154,9 @@ def test_list():
     r = order.list(**search_info)
     print(r.json())
     assert 1 == 2
+
+def test_k():
+    ke = [1,1,2]
+    r = utils.object_to_str(*ke)
+    print(r)
+    assert 1==2
