@@ -365,8 +365,11 @@ class TestUnionOrder(object):
 
     def test_union_order_001(self):
         '''验证用户2完成一笔订单支付'''
-        order_info = {'good_names': ['关联拍品1'], "user": "user2"}
+        updata_user_token('user6')
+        order_info = {'good_names': ['关联拍品1'], "user": "user6"}
         r = add_union_order(**order_info)
+        order_id = r.json()['data']['reId']
+        order.take_delivery(order_id)
         assert r.json()['status'] == 200
     def test_union_order_002(self):
         '''验证用户2完成一笔订单支付'''
