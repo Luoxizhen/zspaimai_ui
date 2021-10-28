@@ -366,7 +366,7 @@ class TestUnionOrder(object):
     def test_union_order_001(self):
         '''验证用户2完成一笔订单支付'''
         updata_user_token('user6')
-        order_info = {'good_names': ['关联拍品1'], "user": "user6"}
+        order_info = {'good_names': ['订单退款-功能验证'], "user": "user6"}
         r = add_union_order(**order_info)
         order_id = r.json()['data']['reId']
         order.take_delivery(order_id)
@@ -376,16 +376,7 @@ class TestUnionOrder(object):
         order_info = {'good_names': ['订单支付_部分退款1', '订单支付_部分退款2'], "user": "user2"}
         r = add_union_order(**order_info)
         order_id = r.json()['data']['reId']
-        good_id = order.refund_goods(order_id).json()['data'][0]['goods_id']
-        goods_id = []
-        goods_id.append(good_id)
-        goods_id_str = utils.object_to_str(*goods_id)
-        refund_info = {"order_id": order_id,
-                       "type": 1,
-                       "refund_desc": "退化退款测试-8 退款",
-                       "refund_money": "1100",
-                       "goods_id": goods_id_str}
-        order.refund(**refund_info)
+        order_defund(order_id)
         order.take_delivery(order_id)
         assert r.json()['status'] == 200
 
@@ -394,26 +385,25 @@ class TestUnionOrder(object):
         order_info = {'good_names': ['订单支付-全部退款'], "user": "user2"}
         r = add_union_order(**order_info)
         order_id = r.json()['data']['reId']
-        good_id = order.refund_goods(order_id).json()['data'][0]['goods_id']
-        goods_id = []
-        goods_id.append(good_id)
-        goods_id_str = utils.object_to_str(*goods_id)
-        refund_info = {"order_id": order_id,
-                       "type": 1,
-                       "refund_desc": "退化退款测试-8 退款",
-                       "refund_money": "1100",
-                       "goods_id": goods_id_str}
-        order.refund(**refund_info)
+        order_defund(order_id)
         assert r.json()['status'] == 200
     def test_union_order_004(self):
         '''验证用户6完成订单支付：1个拍品'''
-        order_info = {'good_names': ['关联拍品6'], "user": "user6"}
+        order_info = {'good_names': ['用户确认订单测试'], "user": "user6", "express":2}
         r = add_union_order(**order_info)
-        assert r.json()['status'] == 200
+        order_id = r.json()['data']['reId']
+        order.deliver(order_id)
+        token = get_userinfo('user6', 'token')
+        r = order.confirm_send(order_id,token=token)
+        print(r.json())
+        assert r.json()['status'] == 300
     def test_union_order_005(self):
         '''验证用户6完成订单支付：2个拍品'''
-        order_info = {'good_names': ['关联拍品7', '关联拍品8'], "user": "user6"}
+        order_info = {'good_names': ['订单退款功能验证1', '订单退款功能验证2'], "user": "user6"}
         r = add_union_order(**order_info)
+        order_id = r.json()['data']['reId']
+        order_defund(order_id)
+        order.take_delivery(order_id)
         assert r.json()['status'] == 200
     def test_union_order_006(self):
         '''验证用户6完成订单支付：1个拍品'''
@@ -676,6 +666,19 @@ def add_union_order(**order_info):
     order_id = r.json()['data']['reId']
     order.confirm_order(order_id)
     return r
+def order_defund(order_id):
+    '''订单中第一个拍品退款'''
+    good_id = order.refund_goods(order_id).json()['data'][0]['goods_id']
+    goods_id = []
+    goods_id.append(good_id)
+    goods_id_str = utils.object_to_str(*goods_id)
+    refund_info = {"order_id": order_id,
+                   "type": 1,
+                   "refund_desc": "退化退款测试-8 退款",
+                   "refund_money": "1100",
+                   "goods_id": goods_id_str}
+    order.refund(**refund_info)
+
 def test_add_order():
     # updata_user_token('user2')
     order_info = {'good_names': ['订单支付-2'], "user": "user2"}
