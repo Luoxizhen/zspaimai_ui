@@ -30,7 +30,7 @@ def update_token(token):
 
 def get_token(phone):
     # 快捷登陆获取token
-    get_msg(phone)
+    get_msg(phone=phone)
     r = quick_login(phone)
     return r.json()['data']['token']
 
@@ -44,6 +44,7 @@ def get_msg(token=None, phone = '15622145010'):
         headers = get_user_headers_unlogin()
     data = {"phone": phone}
     r = requests.request('post', url=url,  json=data, headers=headers)
+    print(r.json())
 def quick_login(phone):
     # 快捷登陆，该接口调用前先调用get_msg 接口发送验证码
     url = base_url + '/user/user/quick_login'
@@ -52,6 +53,7 @@ def quick_login(phone):
     r = requests.request('post', url=url, json=data, headers=headers)
     #token = r.json()['data']['token']
     #userno = r.json()['data']['userno']
+    print(r.json())
     return r
 # def get_msg_union(inv, phone):
 #     url = base_url + '/user/user/msg'

@@ -1,7 +1,7 @@
 import time
 import json
 from interface_base import union, user, finance, goods, order
-from utils import rwyaml
+from utils import rwyaml,utils
 from interface_test.user_test import add_pwd
 import pytest
 
@@ -370,16 +370,37 @@ class TestUnionOrder(object):
         assert r.json()['status'] == 200
     def test_union_order_002(self):
         '''验证用户2完成一笔订单支付'''
-        order_info = {'good_names': ['关联拍品2', '关联拍品3'], "user": "user2"}
+        order_info = {'good_names': ['订单支付_部分退款1', '订单支付_部分退款2'], "user": "user2"}
         r = add_union_order(**order_info)
-
-
+        order_id = r.json()['data']['reId']
+        good_id = order.refund_goods(order_id).json()['data'][0]['goods_id']
+        goods_id = []
+        goods_id.append(good_id)
+        goods_id_str = utils.object_to_str(*goods_id)
+        refund_info = {"order_id": order_id,
+                       "type": 1,
+                       "refund_desc": "退化退款测试-8 退款",
+                       "refund_money": "1100",
+                       "goods_id": goods_id_str}
+        order.refund(**refund_info)
+        order.take_delivery(order_id)
         assert r.json()['status'] == 200
 
     def test_union_order_003(self):
-        '''验证用户2完成一笔订单支付：2个拍品'''
-        order_info = {'good_names': ['关联拍品4', '关联拍品5'], "user": "user2"}
+        '''验证用户2完成一笔订单支付：1 个拍品，全部退款'''
+        order_info = {'good_names': ['订单支付-全部退款'], "user": "user2"}
         r = add_union_order(**order_info)
+        order_id = r.json()['data']['reId']
+        good_id = order.refund_goods(order_id).json()['data'][0]['goods_id']
+        goods_id = []
+        goods_id.append(good_id)
+        goods_id_str = utils.object_to_str(*goods_id)
+        refund_info = {"order_id": order_id,
+                       "type": 1,
+                       "refund_desc": "退化退款测试-8 退款",
+                       "refund_money": "1100",
+                       "goods_id": goods_id_str}
+        order.refund(**refund_info)
         assert r.json()['status'] == 200
     def test_union_order_004(self):
         '''验证用户6完成订单支付：1个拍品'''
@@ -529,6 +550,68 @@ def test_union_join_001():
 #     order_info = {"goods_ids": "["+str(good_ids[0])+','+str(good_ids[1])+"]", "total": 2200, "appointment":"2021-10-26"}#用户支付订单
 #     r = order.add_order(token,**order_info)
 #     return r
+# def add_union_order(**order_info):
+#     '''验证用户完成订单支付'''
+#     order_info_list = ['good_names', 'user','express']
+#     order_info_real = {'good_names': ['关联拍品1', '关联拍品2'], "user": "user2", 'express':0}
+#     good_ids = []
+#     goods_infos = []
+#     for key in order_info:
+#         if key in order_info_list:
+#             order_info_real[key] = order_info[key]
+#     token = get_userinfo(order_info_real['user'], 'token')
+#     for goodname in order_info_real['good_names']:
+#         begin_time = round(time.time())
+#         end_time = begin_time + 10
+#         good_info = {"begin_time": begin_time, "end_time": end_time, "name": goodname, "price": 1000}
+#         good_id = goods.goods_add(**good_info).json()['data'] #添加拍品，获取新添加拍品的id
+#         good_ids.append(good_id)
+#         goods_infos.append({"goods_id": int(good_id), "buy_number": 1})
+#         time.sleep(2)
+#         user_id = get_user_id(order_info_real['user'])
+#         recharge_info = {'money': '10000', 'user_id': user_id}
+#         finance.recharge(**recharge_info)  # 后台给用户充值
+#         bid_info = {"goods_id": good_id, "price": 1000 }
+#         r = goods.bidding(token,**bid_info) #用户竞买拍品
+#         time.sleep(10)
+#     # "["+str(good_ids[0])+','+str(good_ids[1])+"]"
+#
+#     id = "["
+#     goods_info = "["
+#     for i in range(len(good_ids)):
+#         if i < len(good_ids)-1:
+#             id = id + good_ids[i] + ","
+#             goods_info = goods_info + json.dumps(goods_infos[i]) + ","
+#         else:
+#             id = id + good_ids[i] + "]"
+#             goods_info = goods_info + json.dumps(goods_infos[i]) + "]"
+#     total = 1100 * len(good_ids)
+#     addr_id = user.addr_list(token).json()['data'][0]['id']
+#     print(goods)
+#
+#
+#     delivery_info = {
+#         "user_addr_id": addr_id,
+#         "goods": goods_info
+#     }
+#     r = order.calculate_freight(**delivery_info).json()
+#     express_fee = round(float(r['data']['freight']))
+#
+#     if order_info_real['express'] == 0: #上门自提
+#         date = time.strftime('%Y-%m-%d', time.localtime())  # "appointment": "2021-10-26"
+#         order_info = {"goods_ids": id, "total": total, "appointment": date}  # 用户支付订单
+#     else: #货到付款
+#         order_info = {"goods_ids": id, "total": total, "addr_id": addr_id, 'express_fee': express_fee}#用户支付订单
+#
+#     r = order.add_order(**order_info)
+#     order_id = r.json()['data']['reId']
+#     order.confirm_order(order_id)
+#     return r
+
+def test_dd():
+    date = time.strftime('%Y-%m-%d', time.localtime())
+    print(date)
+    assert 1==2
 def add_union_order(**order_info):
     '''验证用户完成订单支付'''
     order_info_list = ['good_names', 'user','express']
@@ -555,18 +638,22 @@ def add_union_order(**order_info):
         time.sleep(10)
     # "["+str(good_ids[0])+','+str(good_ids[1])+"]"
 
-    id = "["
-    goods_info = "["
-    for i in range(len(good_ids)):
-        if i < len(good_ids)-1:
-            id = id + good_ids[i] + ","
-            goods_info = goods_info + json.dumps(goods_infos[i]) + ","
-        else:
-            id = id + good_ids[i] + "]"
-            goods_info = goods_info + json.dumps(goods_infos[i]) + "]"
+    # id = "["
+    # goods_info = "["
+    # for i in range(len(good_ids)):
+    #     if i < len(good_ids)-1:
+    #         id = id + good_ids[i] + ","
+    #         goods_info = goods_info + json.dumps(goods_infos[i]) + ","
+    #     else:
+    #         id = id + good_ids[i] + "]"
+    #         goods_info = goods_info + json.dumps(goods_infos[i]) + "]"
     total = 1100 * len(good_ids)
     addr_id = user.addr_list(token).json()['data'][0]['id']
-    print(goods)
+    # print(goods)
+
+    id = utils.object_to_str(*good_ids)
+    goods_info = utils.object_to_str(*goods_infos)
+
 
 
     delivery_info = {
@@ -586,8 +673,7 @@ def add_union_order(**order_info):
     order_id = r.json()['data']['reId']
     order.confirm_order(order_id)
     return r
-
-def test_dd():
-    date = time.strftime('%Y-%m-%d', time.localtime())
-    print(date)
-    assert 1==2
+def test_add_order():
+    # updata_user_token('user2')
+    order_info = {'good_names': ['订单支付-2'], "user": "user2"}
+    add_union_order(**order_info)
