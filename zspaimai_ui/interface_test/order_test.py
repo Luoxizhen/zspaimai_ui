@@ -125,7 +125,7 @@ def test_add_order_003():
     token = '28e9699b6ebaed72131bca9a95649238'
     info = {"goods_ids": "[\"2395\"]", "total": 30, "appointment": "2021-10-22"}
     r = order.add_order1(token, info)
-    assert r.json()['status']==200
+    assert r.json()['status'] == 200
 
 def test_add_order_004():
     token = '28e9699b6ebaed72131bca9a95649238'
