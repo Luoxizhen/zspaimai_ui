@@ -104,13 +104,13 @@ def test_add_order1():
 
 
 def test_take_delivery():
-    order_id = 1496
+    order_id = 1526
     r = order.take_delivery(order_id)
     print(r)
-    assert r['status'] == 200
+    assert r.json()['status'] == 200
 
 def test_deliver():
-    order_id = 1434
+    order_id = 1529
     r = order.deliver(order_id)
     print(r)
     assert r.json()['status'] == 200
