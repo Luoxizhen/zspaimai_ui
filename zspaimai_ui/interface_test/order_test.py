@@ -160,3 +160,14 @@ def test_k():
     r = utils.object_to_str(*ke)
     print(r)
     assert 1==2
+
+
+def test_last_order_confirm_delivery():
+    search_info = {"status":0, "userno":"192902"}
+    r = order.list(**search_info)
+    print(r.json())
+    order_id = r.json()['data']['data'][0]['id']
+    print(order_id)
+    order.confirm_order(order_id)
+    r = order.deliver(order_id)
+
