@@ -5,9 +5,9 @@ from utils import rwyaml,utils
 from interface_test.user_test import add_pwd
 import pytest
 def test_add():
-    begin_time = round(time.time()) + 120
-    end_time = begin_time + 1200
-    topic_info = {"title": "information_test_3", "begin_time": begin_time, "end_time": end_time}
+    begin_time = round(time.time())+120
+    end_time = begin_time + 800
+    topic_info = {"title": "information_test_14", "begin_time": begin_time, "end_time": end_time}
     r = topic.add(**topic_info)
     assert r.json()['status'] == 200
 
@@ -82,7 +82,7 @@ def test_is_recommended():
     search_info = {"status": 30, "is_recommended": 1}
     last_page = topic.list(**search_info).json()['data']['last_page']
 
-    for k in range(last_page):
+    for k in range(10):
         if last_page > 2 & k != last_page-1:
             current_page_num = 10,
         else:

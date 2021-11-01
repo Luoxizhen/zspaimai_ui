@@ -1,6 +1,7 @@
 from interface_base import goods
 import pytest
 import time
+from utils import utils
 def test_goods_add():
     begin_time = round(time.time())
     end_time = begin_time + 30
@@ -11,7 +12,6 @@ def test_goods_add():
     status = r['status']
     assert status == 200
 def test_goods_list():
-
     r = goods.goods_list()
     assert r['status'] == 200
 
@@ -27,4 +27,24 @@ def test_goods_add_001():
 def test_goods_list():
     goods_info = {"status": 31}
     r = goods.goods_list(**goods_info)
-    assert r.json()['data']['total'] == 1278
+    assert r.json()['data']['status'] == 200
+
+def test_batch_shelves():
+    goods_ids = []
+    goods_info = {"status": 31, "is_shelves": 1}
+    r = goods.goods_list(**goods_info).json()
+    total = r['data']['total']
+    per_page = r['data']['per_page']
+    last_page = r['data']['last_page']
+    for i in range(last_page):
+        if last_page > 1 and i < last_page - 1:
+            page_total = 10
+        else:
+            page_total = total - per_page * (last_page - 1)
+        for j in range(page_total):
+            goods_id = goods.goods_list(page=i, **goods_info).json()['data']['data'][j]
+            goods_ids.append(goods_id)
+    goods_ids_str = utils.object_to_str(*goods_ids)
+    batch_info = {"goods_ids": goods_ids_str, "is_shelves":0}
+    goods.batch_shelves(**batch_info)
+

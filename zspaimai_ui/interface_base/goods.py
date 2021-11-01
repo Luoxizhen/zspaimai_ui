@@ -6,7 +6,7 @@ from interface_base.user import update_token, get_user_headers,base_url,admin_he
 
 
 
-def goods_list(**goods_info):
+def goods_list(page=1,**goods_info):
     '''后台拍品列表'''
     url = base_url + '/admin/goods/goods_list'
     headers = admin_headers
@@ -18,6 +18,8 @@ def goods_list(**goods_info):
                 search_info[key] = goods_info[key]
         search_str = utils.kwargs_to_str(**search_info)
         info["where"] = search_str
+    if page != 1:
+        info["page"] = page
 
 
     r = requests.request('post', url=url, json=info, headers=headers)
@@ -57,5 +59,19 @@ def goods_add(**good_infos):
             if key in goods_info_real.keys():
                 goods_info_real[key] = good_infos[key]
     r = requests.request('post', url=url, json=goods_info_real, headers=headers)
+
+    return r
+
+def batch_shelves(**goods_infos):
+    '''后台批量上下架拍品'''
+    url = base_url + '/admin/goods/batch_shelves'
+    headers = admin_headers
+    info = {"goods_ids":"[2613,2601,2593,2592,2530,2529,2528,2527,2526,2525]", "is_shelves":0}
+    if goods_infos != {}:
+        for key in goods_infos:
+            if key in info.keys():
+                info[key] = goods_infos[key]
+
+    r = requests.request('post', url=url, json=info, headers=headers)
 
     return r
