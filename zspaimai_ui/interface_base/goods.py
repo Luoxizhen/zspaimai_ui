@@ -1,18 +1,27 @@
 import requests
 import time
-from utils import rwjson, rwcfg
+from utils import rwjson, rwcfg, utils
 from interface_base.user import update_token, get_user_headers,base_url,admin_headers
 
 
 
 
-def goods_list():
+def goods_list(**goods_info):
     '''后台拍品列表'''
     url = base_url + '/admin/goods/goods_list'
     headers = admin_headers
-    json = {"where":"[{\"key\":\"name\",\"value\":\"\"},{\"key\":\"category_id\",\"value\":\"\"},{\"key\":\"status\",\"value\":\"\"},{\"key\":\"is_shelves\",\"value\":\"\"},{\"key\":\"top\",\"value\":\"\"},{\"key\":\"is_recommended\",\"value\":\"\"},{\"key\":\"type\",\"value\":1}]","page":1,"admin_name":"","topic_id":""}
-    r = requests.request('post', url=url, json=json, headers=headers)
-    return r.json()
+    info = {"where":"[{\"key\":\"name\",\"value\":\"\"},{\"key\":\"category_id\",\"value\":\"\"},{\"key\":\"status\",\"value\":\"\"},{\"key\":\"is_shelves\",\"value\":\"\"},{\"key\":\"top\",\"value\":\"\"},{\"key\":\"is_recommended\",\"value\":\"\"},{\"key\":\"type\",\"value\":1}]","page":1,"admin_name":"","topic_id":""}
+    search_info ={"name":"", "category_id":"", "status":"", "is_shelves": "", "top": "", "is_recommended": "", "type": ""}
+    if goods_info !={}:
+        for key in goods_info:
+            if key in search_info:
+                search_info[key] = goods_info[key]
+        search_str = utils.kwargs_to_str(**search_info)
+        info["where"] = search_str
+
+
+    r = requests.request('post', url=url, json=info, headers=headers)
+    return r
 def bidding(token=None, **bidinfo):
     '''用户竞买拍品'''
     if token:

@@ -24,3 +24,7 @@ def test_goods_add_001():
     r = goods.goods_add(**good_infos)
     assert r.json()['status']==200
 
+def test_goods_list():
+    goods_info = {"status": 31}
+    r = goods.goods_list(**goods_info)
+    assert r.json()['data']['total'] == 1278
