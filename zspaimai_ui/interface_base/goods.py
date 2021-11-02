@@ -98,3 +98,12 @@ def goods_edit_action(**act_infos):
     r = requests.request('post', url=url, json=act_infos, headers=headers)
 
     return r
+def goods_edit_shelves(**act_infos):
+    '''拍品操作- 下架、置顶、推荐'''
+    url = base_url + '/admin/goods/goods_edit_shelves'
+    headers = admin_headers
+    # info = {"id":2567,"act":"is_recommended","value":0}
+    # {"id":2375,"is_shelves":0}
+    r = requests.request('post', url=url, json=act_infos, headers=headers)
+
+    return r

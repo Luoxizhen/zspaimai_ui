@@ -5,24 +5,15 @@ from utils import utils
 def test_goods_add():
     begin_time = round(time.time())+120
     end_time = begin_time + 600
-    #name = '1960年第三版人民币壹圆拖拉机狮子号一枚-退货退款-3'
     # a = time.strptime('2021-11-2 14:20:00', '%Y-%m-%d %H:%M:%S')
     # b = time.strptime('2021-11-2 14:23:00', '%Y-%m-%d %H:%M:%S')
-
     # begin_time = time.mktime(a)
     # end_time = time.mktime(b)
     name = '订阅信息验证-6'
-
     good_info = {"name": name, "begin_time": int(begin_time), "end_time": int(end_time)}
     r = goods.goods_add(**good_info)
-
     status = r.json()['status']
     assert status == 200
-def test_goods_list():
-    r = goods.goods_list()
-    assert r['status'] == 200
-
-
 def test_goods_add_001():
     begin_time = round(time.time())
     end_time = begin_time + 6000
@@ -32,9 +23,16 @@ def test_goods_add_001():
     assert r.json()['status']==200
 
 def test_goods_list():
+    r = goods.goods_list()
+    assert r['status'] == 200
+def test_goods_list_001():
     goods_info = {"status": 31}
     r = goods.goods_list(**goods_info)
     assert r.json()['data']['status'] == 200
+
+
+
+
 
 def test_batch_shelves():
     goods_ids = []
@@ -95,17 +93,35 @@ def test_goods_recommended_del():
             act_info = {"id": good_id, "act": "is_recommended", "is_recommended": 0}
             goods.goods_edit_action(**act_info)
         if r['data']['data'][i]["top"] == 1:
-            act_info = {"id": good_id, "act": "top", "top": 0}
+            act_info = {"id": good_id, "act": "top", "value": 0}
             goods.goods_edit_action(**act_info)
     goods_info = {"ids": str(goods_ids)}
     goods.del_goods(**goods_info)
 
-# def test_goods_delete():
-#     for i in range(11,111):
-#         r = goods.goods_list(i).json()
-#         goods_ids = []
-#         for j in range(10):
-#             good_id = r['data']['data'][j]['id']
-#             goods_ids.append(good_id)
-#             if r['data']['data'][j][]
+def test_goods_delete():
+    '''将拍品管理列表中的拍品删除到剩下5页'''
+    r = goods.goods_list().json()
+    last_page = r['data']['last_page']
+    per_page = r['data']['per_page']
+    del_page = last_page-6
+    for i in range(del_page):
+        r = goods.goods_list(page=6).json()
+        goods_ids = []
+        for j in range(per_page):
+            good_id = r['data']['data'][j]['id']
+            goods_ids.append(good_id)
+            if r['data']['data'][j]["is_recommended"] == 1:
+                act_info = {"id": good_id, "act": "is_recommended", "value": 0} #取消推荐
+                goods.goods_edit_action(**act_info)
+            if r['data']['data'][j]["top"] == 1:
+                act_info = {"id": good_id, "act": "top", "value": 0}#取消置顶
+                goods.goods_edit_action(**act_info)
+            if r['data']['data'][j]["is_shelves"] == 1:
+                act_info = {"id": good_id,"is_shelves":0}#下架
+                goods.goods_edit_shelves(**act_info)
+        goods_info = {"ids": str(goods_ids)}
+        print(goods_info)
+        goods.del_goods(**goods_info) # 删除该页的所有拍品
+
+
 
