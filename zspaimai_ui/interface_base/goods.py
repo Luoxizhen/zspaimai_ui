@@ -75,3 +75,26 @@ def batch_shelves(**goods_infos):
     r = requests.request('post', url=url, json=info, headers=headers)
 
     return r
+
+def del_goods(**goods_infos):
+    '''后台批量上下架拍品'''
+    url = base_url + '/admin/goods/del_goods'
+    headers = admin_headers
+    # info = {"ids":"[2458,2457,2456,2455,2454,2414,2397,2396,2387,2386,2613,2601,2593,2592,2590,2575,2574,2573,2569,2568]"}
+    # if goods_infos != {}:
+    #     for key in goods_infos:
+    #         if key in info.keys():
+    #             info[key] = goods_infos[key]
+
+    r = requests.request('post', url=url, json=goods_infos, headers=headers)
+
+    return r
+def goods_edit_action(**act_infos):
+    '''拍品操作- 下架、置顶、推荐'''
+    url = base_url + '/admin/goods/goods_edit_action'
+    headers = admin_headers
+    # info = {"id":2567,"act":"is_recommended","value":0}
+    # {"id": 533, "act": "top", "value": 0}
+    r = requests.request('post', url=url, json=act_infos, headers=headers)
+
+    return r

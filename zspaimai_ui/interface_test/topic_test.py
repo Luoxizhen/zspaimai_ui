@@ -7,8 +7,9 @@ import pytest
 def test_add():
     begin_time = round(time.time())+120
     end_time = begin_time + 800
-    topic_info = {"title": "information_test_14", "begin_time": begin_time, "end_time": end_time}
+    topic_info = {"title": "information_test_18", "begin_time": begin_time, "end_time": end_time}
     r = topic.add(**topic_info)
+
     assert r.json()['status'] == 200
 
 
@@ -30,6 +31,19 @@ def act(**search_info):
             topic_id = r['data']['data'][i]['id']
             act_info = {"id": topic_id, "act": act_key, "value": act_value}
             topic.edit_action(**act_info)
+
+
+def test_add_is_recommended():
+    begin_time = round(time.time()) + 120
+    end_time = begin_time + 2000
+    topic_info = {"title": "information_test_19", "begin_time": begin_time, "end_time": end_time}
+    r = topic.add(**topic_info)
+    id =r.json()['data']
+    act_info = {"id":id, "act": "is_recommended", "value": 1}
+    topic.edit_action(**act_info)
+
+
+
 
 
 def test_shelves():

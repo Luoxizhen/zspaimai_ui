@@ -3,13 +3,20 @@ import pytest
 import time
 from utils import utils
 def test_goods_add():
-    begin_time = round(time.time())
-    end_time = begin_time + 30
+    begin_time = round(time.time())+120
+    end_time = begin_time + 600
     #name = '1960年第三版人民币壹圆拖拉机狮子号一枚-退货退款-3'
-    name = '支付'
-    r = goods.goods_add(begin_time, end_time, name)
-    print(r)
-    status = r['status']
+    # a = time.strptime('2021-11-2 14:20:00', '%Y-%m-%d %H:%M:%S')
+    # b = time.strptime('2021-11-2 14:23:00', '%Y-%m-%d %H:%M:%S')
+
+    # begin_time = time.mktime(a)
+    # end_time = time.mktime(b)
+    name = '订阅信息验证-6'
+
+    good_info = {"name": name, "begin_time": int(begin_time), "end_time": int(end_time)}
+    r = goods.goods_add(**good_info)
+
+    status = r.json()['status']
     assert status == 200
 def test_goods_list():
     r = goods.goods_list()
@@ -36,15 +43,69 @@ def test_batch_shelves():
     total = r['data']['total']
     per_page = r['data']['per_page']
     last_page = r['data']['last_page']
-    for i in range(last_page):
+    for i in range(2):
         if last_page > 1 and i < last_page - 1:
             page_total = 10
         else:
             page_total = total - per_page * (last_page - 1)
         for j in range(page_total):
-            goods_id = goods.goods_list(page=i, **goods_info).json()['data']['data'][j]
+            goods_id = goods.goods_list(page=i, **goods_info).json()['data']['data'][j]['id']
             goods_ids.append(goods_id)
-    goods_ids_str = utils.object_to_str(*goods_ids)
+    goods_ids_str =str(goods_ids)
     batch_info = {"goods_ids": goods_ids_str, "is_shelves":0}
+    print (batch_info)
     goods.batch_shelves(**batch_info)
+    # goods.del_goods()
+    assert 1 == 2
+
+def test_batch_shelves_1():
+    for k in range(9):
+        goods_ids = []
+        goods_info = {"status": 31, "is_shelves": 1}
+        r = goods.goods_list(**goods_info).json()
+        for i in range(10):
+            goods_id = r['data']['data'][i]['id']
+            goods_ids.append(goods_id)
+
+        batch_info = {"goods_ids": str(goods_ids), "is_shelves": 0}
+        # print(batch_info)
+        goods.batch_shelves(**batch_info)
+def test_goods_del():
+    for k in range(109):
+        goods_ids = []
+        goods_info = {"status": 31, "is_shelves": 0,"top":0, "type":1, "is_recommended":0}
+        r = goods.goods_list(**goods_info).json()
+        for i in range(10):
+            goods_id = r['data']['data'][i]['id']
+            goods_ids.append(goods_id)
+        batch_info = {"ids": str(goods_ids)}
+        goods.del_goods(**batch_info)
+
+
+def test_goods_recommended_del():
+    '''将流拍的拍品取消推荐、取消置顶后删除'''
+    goods_info = {"status": 31, "is_shelves":0, "type":1}
+    r = goods.goods_list(**goods_info).json()
+    goods_ids = []
+
+    for i in range(r['data']['total']):
+        good_id = r['data']['data'][i]['id']
+        goods_ids.append(good_id)
+        if r['data']['data'][i]["is_recommended"] == 1:
+            act_info = {"id": good_id, "act": "is_recommended", "is_recommended": 0}
+            goods.goods_edit_action(**act_info)
+        if r['data']['data'][i]["top"] == 1:
+            act_info = {"id": good_id, "act": "top", "top": 0}
+            goods.goods_edit_action(**act_info)
+    goods_info = {"ids": str(goods_ids)}
+    goods.del_goods(**goods_info)
+
+# def test_goods_delete():
+#     for i in range(11,111):
+#         r = goods.goods_list(i).json()
+#         goods_ids = []
+#         for j in range(10):
+#             good_id = r['data']['data'][j]['id']
+#             goods_ids.append(good_id)
+#             if r['data']['data'][j][]
 
