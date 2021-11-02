@@ -2,7 +2,7 @@ from interface_base import goods
 import pytest
 import time
 from utils import utils
-def test_goods_add():
+def goods_add():
     begin_time = round(time.time())+120
     end_time = begin_time + 600
     # a = time.strptime('2021-11-2 14:20:00', '%Y-%m-%d %H:%M:%S')
@@ -12,8 +12,8 @@ def test_goods_add():
     name = '订阅信息验证-6'
     good_info = {"name": name, "begin_time": int(begin_time), "end_time": int(end_time)}
     r = goods.goods_add(**good_info)
-    status = r.json()['status']
-    assert status == 200
+    return r.json()['data']
+
 def test_goods_add_001():
     begin_time = round(time.time())
     end_time = begin_time + 6000
@@ -124,4 +124,53 @@ def test_goods_delete():
         goods.del_goods(**goods_info) # 删除该页的所有拍品
 
 
+def goods_unrecommend():
+    '''将所有首页推荐的拍品取消推荐'''
+    goods_info = {"is_recommended": 1}
+    r = goods.goods_list(**goods_info).json()['data']
+    total = r['total']
+    per_page = r['per_page']
+    last_page = r['last_page']
+    for i in range(last_page):
+        if last_page > 2 and i < last_page-1:
+            goods_num = per_page
+        elif total > 0:
+            goods_num = total - per_page * (last_page-1)
+        goods_list = goods.goods_list(**goods_info).json()['data']['data']
+        for num in range(goods_num):
+            good_id = goods_list[num]['id']
+            act_info = {"id": good_id, "act": "is_recommended", "value": 0}  # 取消推荐
+            goods.goods_edit_action(**act_info)
 
+def goods_recommend():
+    '''将最新的拍品首页推荐,执行该函数前先将所有的推荐的拍品取消推荐'''
+
+    # for k in range(1,3):
+    r = goods.goods_list().json()['data']['data']
+    for i in range(8):
+        good_id = r[i]['id']
+        act_info = {"id": good_id, "act": "is_recommended", "value": 1}  # 推荐
+        goods.goods_edit_action(**act_info)
+
+
+def goods_add_recommend():
+    '''添加一个拍品，并首页推荐'''
+    goods_unrecommend()
+    a = time.strptime('2021-11-2 17:30:00', '%Y-%m-%d %H:%M:%S')
+    b = time.strptime('2021-11-3 17:30:00', '%Y-%m-%d %H:%M:%S')
+    begin_time = time.mktime(a)
+    end_time = time.mktime(b)
+    name = '订阅信息验证-6'
+    good_info = {"name": name, "begin_time": int(begin_time), "end_time": int(end_time)}
+    good_id = goods_add()
+    act_info = {"id": good_id, "act": "is_recommended", "value": 1}  # 推荐
+    goods.goods_edit_action(**act_info)
+
+
+def test_unrecommend():
+    goods_unrecommend()
+
+def test_recommend():
+    goods_recommend()
+def test_goods_add_recommend():
+    goods_add_recommend()
