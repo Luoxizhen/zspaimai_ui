@@ -144,7 +144,6 @@ def goods_unrecommend():
 
 def goods_recommend():
     '''将最新的拍品首页推荐,执行该函数前先将所有的推荐的拍品取消推荐'''
-
     # for k in range(1,3):
     r = goods.goods_list().json()['data']['data']
     for i in range(8):
