@@ -7,7 +7,7 @@ import pytest
 def test_add():
     begin_time = round(time.time())+120
     end_time = begin_time + 800
-    topic_info = {"title": "information_test_18", "begin_time": begin_time, "end_time": end_time}
+    topic_info = {"title": "优惠劵", "begin_time": begin_time, "end_time": end_time}
     r = topic.add(**topic_info)
 
     assert r.json()['status'] == 200

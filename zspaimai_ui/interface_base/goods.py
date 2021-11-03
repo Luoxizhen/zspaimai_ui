@@ -105,5 +105,46 @@ def goods_edit_shelves(**act_infos):
     # info = {"id":2567,"act":"is_recommended","value":0}
     # {"id":2375,"is_shelves":0}
     r = requests.request('post', url=url, json=act_infos, headers=headers)
-
+    return r
+def goods_info(**info):
+    '''获取拍品的信息'''
+    url = base_url + '/admin/goods/goods_info'
+    headers = admin_headers
+    #info = {"id":2624}
+    r = requests.request('post', url=url, json=info, headers=headers)
+    return r
+def goods_edit(**goods_info):
+    '''编辑拍品'''
+    url = base_url + '/admin/goods/goods_edit'
+    headers = admin_headers
+    info = {"topic_id":"[15]",
+            "type":1,
+            "id":2624,
+            "category_id":3,
+            "platform":"1",
+            "begin_time":1635906328,
+            "end_time":1635992730,
+            "top_price":"0.00",
+            "name":"优惠劵",
+            "delay_time":0,
+            "shape":"98",
+            "price":"50000.00",
+            "retain_price":"0.00",
+            "seller_name":"大罗",
+            "agreement_no":"a0000152",
+            "create_user":"",
+            "create_date":"",
+            "freight_id":51,
+            "is_freight":0,
+            "goods_weight":"0.000",
+            "buyer_service_rate":"10",
+            "content":"<p>1960年第三版人民币壹圆拖拉机狮子号一枚</p>",
+            "meta":"{\"min_price\":\"\",\"max_price\":\"\",\"seller_insure_deal\":\"1\",\"seller_insure_no_deal\":\"1\",\"service_fee_deal\":\"2\",\"service_fee_no_deal\":\"1\",\"production_fee_deal\":\"15\",\"production_fee_no_deal\":\"15\",\"safekeeping_fee_deal\":\"0\",\"safekeeping_fee_no_deal\":\"0\",\"seller_taxes\":\"\",\"identify_fee\":\"\",\"packing_fee\":\"\",\"texture\":\"\",\"spec\":\"\",\"opinion\":\"\"}",
+            "original_image":"[\"picture/wxTj7wm3XN2JkhFZXQCSpiRKRhZx5C.jpeg\"]",
+            "images":"[\"thumbnail/fjZac4eFCsxk2Py2z4BiQ4N4fbbC6x.png\"]"}
+    for key in goods_info:
+        if key in info.keys():
+            info[key] = goods_info[key]
+    print(info)
+    r = requests.request('post', url=url, json=info, headers=headers)
     return r

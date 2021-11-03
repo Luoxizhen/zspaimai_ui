@@ -155,13 +155,13 @@ def goods_recommend():
 def goods_add_recommend():
     '''添加一个拍品，并首页推荐'''
     goods_unrecommend()
-    a = time.strptime('2021-11-2 17:30:00', '%Y-%m-%d %H:%M:%S')
-    b = time.strptime('2021-11-3 17:30:00', '%Y-%m-%d %H:%M:%S')
+    a = time.strptime('2021-11-3 9:34:00', '%Y-%m-%d %H:%M:%S')
+    b = time.strptime('2021-11-3 9:36:00', '%Y-%m-%d %H:%M:%S')
     begin_time = time.mktime(a)
     end_time = time.mktime(b)
-    name = '订阅信息验证-6'
-    good_info = {"name": name, "begin_time": int(begin_time), "end_time": int(end_time)}
-    good_id = goods_add()
+    name = '优惠劵'
+    good_info = {"name": name, "begin_time": int(begin_time), "end_time": int(end_time), "price":50000}
+    good_id = goods.goods_add(**good_info).json()['data']
     act_info = {"id": good_id, "act": "is_recommended", "value": 1}  # 推荐
     goods.goods_edit_action(**act_info)
 
@@ -173,3 +173,40 @@ def test_recommend():
     goods_recommend()
 def test_goods_add_recommend():
     goods_add_recommend()
+
+def goods_edit():
+    '''对第一个流拍对拍品下架，重新编辑，上架'''
+    search_info = {"status": 31, "is_shelves": 1}
+    good_id = goods.goods_list(**search_info).json()['data']['data'][0]['id']
+    print(good_id)
+    act_info = {"id": good_id, "is_shelves": 0}
+    goods.goods_edit_shelves(**act_info) #拍品下架
+    good_info_json = {"id": good_id}
+    goods_json = goods.goods_info(**good_info_json).json()['data']
+
+    begin_time = round(time.time())
+    end_time = begin_time + 3600
+    topic_id = "[" +str(goods_json['topic_id'][0]) + "]"
+    images = "["+'"'+goods_json['images'][0] +'"'+"]"
+    original_image = "["+'"'+goods_json['original_image'][0] +'"'+"]"
+    print(topic_id,original_image,images)
+    goods_json['begin_time'] = begin_time
+    goods_json['end_time'] = end_time
+    goods_json['topic_id'] = topic_id
+    goods_json['images'] = images
+    goods_json['original_image'] = original_image
+
+
+
+    r = goods.goods_edit(**goods_json)
+    print(r.json())
+    act_info["is_shelves"] = 1
+    #goods.goods_edit_shelves(**act_info) #拍品上架
+    act_info = {"id":good_id,"act":"status","value":20}
+    goods.goods_edit_action(**act_info)
+
+def test_goods_edit():
+    goods_edit()
+    assert 1==2
+
+
