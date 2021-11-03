@@ -57,3 +57,29 @@ def add_topic_goods(**topic_info):
     #         info[key] = topic_info[key]
     r = requests.request('post', url=url, json=info, headers=headers)
     return r
+def edit(**topic_info):
+    '''编辑专场'''
+    url = base_url + "/admin/topic/edit"
+    headers = admin_headers
+    info = {"title":"ggg",
+            "begin_time":1635912287,
+            "end_time":1638201600,
+            "sort":1,
+            "images":"picture/3pAmz8c7cH5tNMChNG5detGwCXcr5X.png",
+            "small_images":"picture/nMhCp8sKindBmNmnkFrGSjs7KxEBKP.png",
+            "mini_images":"picture/kHd5DGCiAkmnZ5eiQDhna4AyYQSa45.png",
+            "mini_small_images":"picture/6Cdw5QwZ74ixSbsYhA22yRJfGHYcXn.png",
+            "id":162,
+            "content":""}
+    for key in topic_info:
+        if key in info.keys():
+            info[key] = topic_info[key]
+    r = requests.request('post', url=url, json=info, headers=headers)
+    return r
+def info(id):
+    '''获取专场信息'''
+    url = base_url + "/admin/topic/info"
+    headers = admin_headers
+    info = {"id": id}
+    r = requests.request('post', url=url, json=info, headers=headers)
+    return r

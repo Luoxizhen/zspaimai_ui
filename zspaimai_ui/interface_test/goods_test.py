@@ -195,9 +195,6 @@ def goods_edit():
     goods_json['topic_id'] = topic_id
     goods_json['images'] = images
     goods_json['original_image'] = original_image
-
-
-
     r = goods.goods_edit(**goods_json)
     print(r.json())
     act_info["is_shelves"] = 1
@@ -207,6 +204,6 @@ def goods_edit():
 
 def test_goods_edit():
     goods_edit()
-    assert 1==2
+
 
 
