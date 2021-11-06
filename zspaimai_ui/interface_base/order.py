@@ -2,12 +2,9 @@ import requests
 import time, json
 from utils import rwjson, utils
 from interface_base.user import update_token, get_user_headers,base_url,admin_headers
-
-
-
 def confirm_order(id):
     '''后台确认订单'''
-    url =  base_url + '/admin/order/confirm_order'
+    url = base_url + '/admin/order/confirm_order'
     headers = admin_headers
     json = {'id': id}
     r = requests.request('post', url=url, json=json, headers=headers)
@@ -42,6 +39,40 @@ def deliver(order_id, **deliverinfo):
             json[key] = json[key]
     r = requests.request('post', url=url, json=json, headers=headers)
     return r
+def refund_goods(order_id):
+    '''查找订单包含的拍品，商品'''
+    '''{"status":200,"msg":"操作成功","data":[{"goods_id":2334,"name":"退化退款测试-13"},{"goods_id":2335,"name":"退化退款测试-14"}],"shop_switch":"0"}'''
+    url = base_url + '/admin/order/refund_goods'
+    headers = admin_headers
+    json = {"order_id": order_id}
+    r = requests.request('post', url=url, json=json, headers=headers)
+    return r
+def refund(**info):
+    '''售后-仅退款'''
+    '''{"status":200,"msg":"操作成功","data":null,"shop_switch":"0"}'''
+    url = base_url +'/admin/order/refund'
+    headers = admin_headers
+
+    refund_info = {"order_id":1450,
+            "type":1,
+            "refund_desc":"退化退款测试-8 退款",
+            "refund_money":"20",
+            "goods_id":"[2328]"}
+
+    for key in info:
+        if key in refund_info.keys():
+            refund_info[key] = info[key]
+    r = requests.request('post', url=url, json=refund_info, headers=headers)
+    return r
+def remittance_finish(id):
+    '''后台确认转账汇款告知'''
+    '''{"status":200,"msg":"操作成功","data":[],"shop_switch":"0"}'''
+    url = base_url + ''
+    headers = admin_headers
+    json = {"id":id,
+            "remarks":""}
+    r = requests.request('post', url=url, json=json, headers=headers)
+    return r
 def recharge_list(token=None):
     '''获取支付方式'''
     url = base_url + '/user/wallet/recharge_list'
@@ -50,7 +81,7 @@ def recharge_list(token=None):
     headers = get_user_headers()
     json = {"is_charge":0}
     r = requests.request('post', url=url, json=json, headers=headers)
-    return r.json()
+    return r
 def addr_region(token=None):
     '''获取中国省市'''
     url = base_url + '/user/addr/region'
@@ -59,7 +90,7 @@ def addr_region(token=None):
         update_token(token)
     headers = get_user_headers()
     r = requests.request('get', url=url, params=data, headers=headers)
-    return r.json()
+    return r
 def article(token=None):
     '''获取文章信息'''
     url = base_url + '/user/post/article'
@@ -68,7 +99,7 @@ def article(token=None):
         update_token(token)
     headers = get_user_headers()
     r = requests.request('get', url=url, params=data, headers=headers)
-    return r.json()
+    return r
 def get_bid_info(goods_id,token=None):
     '''获取拍品的竞标信息'''
     url = base_url + '/user/goods/get_bid_info'
@@ -98,7 +129,6 @@ def express(token=None):
     headers = get_user_headers()
     r = requests.request('get', url=url, headers=headers)
     return r
-
 def order_coupon(goods_id,token=None):
     '''订单支付时获取可以使用的优惠劵'''
     url = base_url + '/user/coupon/order_coupon'
@@ -112,9 +142,7 @@ def order_coupon(goods_id,token=None):
             "goods": goods,
             "order_model": 10}#余额支付
     r = requests.request('post', url=url, headers=headers, json=json)
-    return r.json()
-
-
+    return r
 # def add_order1(goods_id,addr_id,token=None):
 #     '''用户提交订单'''
 #     if token:
@@ -144,7 +172,6 @@ def order_coupon(goods_id,token=None):
 #     print(json)
 #     r = requests.request('post', url=url, json=json, headers=headers)
 #     return r
-
 def add_order(token=None, **info):
     '''用户提交订单，各参数：
     express: 订单配送方式， 3-上门自提，2-快递到付
@@ -201,41 +228,6 @@ def add_order(token=None, **info):
     #     "shop_switch": "0"
     # }
     return r
-def refund_goods(order_id):
-    '''查找订单包含的拍品，商品'''
-    '''{"status":200,"msg":"操作成功","data":[{"goods_id":2334,"name":"退化退款测试-13"},{"goods_id":2335,"name":"退化退款测试-14"}],"shop_switch":"0"}'''
-    url = base_url + '/admin/order/refund_goods'
-    headers = admin_headers
-    json = {"order_id": order_id}
-    r = requests.request('post', url=url, json=json, headers=headers)
-    return r
-def refund(**info):
-    '''售后-仅退款'''
-    '''{"status":200,"msg":"操作成功","data":null,"shop_switch":"0"}'''
-    url = base_url +'/admin/order/refund'
-    headers = admin_headers
-
-    refund_info = {"order_id":1450,
-            "type":1,
-            "refund_desc":"退化退款测试-8 退款",
-            "refund_money":"20",
-            "goods_id":"[2328]"}
-
-    for key in info:
-        if key in refund_info.keys():
-            refund_info[key] = info[key]
-    r = requests.request('post', url=url, json=refund_info, headers=headers)
-    return r
-
-def remittance_finish(id):
-    '''后台确认转账汇款告知'''
-    '''{"status":200,"msg":"操作成功","data":[],"shop_switch":"0"}'''
-    url = base_url + ''
-    headers = admin_headers
-    json = {"id":id,
-            "remarks":""}
-    r = requests.request('post', url=url, json=json, headers=headers)
-    return r
 def calculate_freight(token=None,**info):
     '''计算运费'''
     url = base_url + '/user/delivery/calculate_freight'
@@ -251,7 +243,6 @@ def calculate_freight(token=None,**info):
             delivery_info[key] = info[key]
     r = requests.request('post', url=url, json=delivery_info, headers=headers)
     return r
-
 def confirm_send(order_id, token=None):
     '''用户确认收货'''
     url = base_url + '/user/order/confirm_send'
@@ -263,8 +254,6 @@ def confirm_send(order_id, token=None):
     print(json)
     r = requests.request('post', url=url, json=json, headers=headers)
     return r
-
-
 def express_info(order_id, token=None):
     '''用户查看物流信息'''
     #{"order_id":"1502"}

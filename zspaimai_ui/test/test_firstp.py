@@ -1,5 +1,6 @@
 import time
 import unittest
+import pytest
 from selenium import webdriver
 from page.firstp import Firstp
 from test.init import Init2, Init3, Init4, Init5, Init
@@ -8,29 +9,35 @@ class TestFirstp001(Init3,Firstp):
     '''检查页面主要元素显示'''
     def test_title(self):
         '''验证首页标题'''
-        self.assertEqual('中晟在线', self.driver.title)
+        #self.assertEqual('慧眼识宝，悦享收藏-中晟在线', self.driver.title)
+        assert self.driver.title == '慧眼识宝，悦享收藏-中晟在线'
 
     def test_searchBoxInfo(self):
         '''验证搜索框的提示文本信息为： 藏品名称 '''
-        self.assertEqual('藏品名称', self.get_infoOfSearchBox())
+        #self.assertEqual('藏品名称', self.get_infoOfSearchBox())
+        assert '藏品名称', self.get_infoOfSearchBox()
     def test_click_searchBox001(self):
         '''验证点击搜索框，显示搜索历史框'''
         self.click_searchBox()
         time.sleep(5)
-        self.assertTrue(self.get_historyBoxP())
+        #self.assertTrue(self.get_historyBoxP())
+        assert self.get_historyBoxP() == 1
     def test_click_searchBox002(self):
         '''验证点击搜索框，历史框包含搜索历史文本'''
         self.click_searchBox()
         time.sleep(5)
-        self.assertTrue(self.get_historyTextP())
+        #self.assertTrue(self.get_historyTextP())
+        assert self.get_historyTextP() == 1
     def test_click_searchBox003(self):
         '''验证点击搜索框，历史框包含删除按钮'''
         self.click_searchBox()
         time.sleep(5)
-        self.assertTrue(self.get_deleteIcon())
+        #self.assertTrue(self.get_deleteIcon())
+        assert self.get_deleteIcon() == 1
     def test_qrcode(self):
-        '''验证页面底部显示 中晟在线 二维码'''
-        self.assertEqual("http://home.online.zspaimai.cn/assets/img/qrcode1.d4572d6c.jpg", self.get_qrcodeP())
+        '''验证页面底部显示 中晟在线 小程序二维码'''
+        #self.assertEqual("http://home.online.zspaimai.cn/assets/img/mini-qrcode.563407c6.jpg", self.get_qrcodeP())
+        assert self.get_qrcodeP() == "http://home.online.zspaimai.cn/assets/img/mini-qrcode.563407c6.jpg"
 
 
 class TestFirstp002(Init4, Firstp):

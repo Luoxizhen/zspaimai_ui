@@ -67,4 +67,10 @@ class SeleniumHelper:
             return self.driver.find_elements(*loc)
         except NoSuchElementException as e:
             print(e.args[0])
+    def findElemets(self):
+        self.driver.find_element
+
+
+
+
 

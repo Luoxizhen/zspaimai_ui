@@ -1,12 +1,12 @@
 import time
 import unittest
 from selenium import webdriver
-from config.readCfg import ReadCfg
+from utils.rwcfg import ReadCfg
 
 from page.firstp import Firstp
 from page.zslogin import Login
 #url='http://home.online.zspaimai.cn/'
-url = ReadCfg().readCfg()
+url = 'http://home.online.zspaimai.cn/'
 
 class Init(unittest.TestCase):
     def setUp(self) -> None:

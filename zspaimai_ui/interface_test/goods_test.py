@@ -154,12 +154,12 @@ def goods_recommend():
 
 def goods_add_recommend():
     '''添加一个拍品，并首页推荐'''
-    goods_unrecommend()
-    a = time.strptime('2021-11-3 9:34:00', '%Y-%m-%d %H:%M:%S')
-    b = time.strptime('2021-11-3 9:36:00', '%Y-%m-%d %H:%M:%S')
+    #goods_unrecommend()
+    a = time.strptime('2021-11-3 17:20:00', '%Y-%m-%d %H:%M:%S')
+    b = time.strptime('2021-11-3 17:21:00', '%Y-%m-%d %H:%M:%S')
     begin_time = time.mktime(a)
     end_time = time.mktime(b)
-    name = '优惠劵'
+    name = '消息订阅-3'
     good_info = {"name": name, "begin_time": int(begin_time), "end_time": int(end_time), "price":50000}
     good_id = goods.goods_add(**good_info).json()['data']
     act_info = {"id": good_id, "act": "is_recommended", "value": 1}  # 推荐
@@ -176,7 +176,7 @@ def test_goods_add_recommend():
 
 def goods_edit():
     '''对第一个流拍对拍品下架，重新编辑，上架'''
-    search_info = {"status": 31, "is_shelves": 1}
+    search_info = {"status": 31}
     good_id = goods.goods_list(**search_info).json()['data']['data'][0]['id']
     print(good_id)
     act_info = {"id": good_id, "is_shelves": 0}
@@ -184,8 +184,8 @@ def goods_edit():
     good_info_json = {"id": good_id}
     goods_json = goods.goods_info(**good_info_json).json()['data']
 
-    begin_time = round(time.time())
-    end_time = begin_time + 3600
+    begin_time = round(time.time())+60
+    end_time = begin_time + 360
     topic_id = "[" +str(goods_json['topic_id'][0]) + "]"
     images = "["+'"'+goods_json['images'][0] +'"'+"]"
     original_image = "["+'"'+goods_json['original_image'][0] +'"'+"]"
