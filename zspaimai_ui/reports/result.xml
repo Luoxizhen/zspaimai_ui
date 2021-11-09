@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.146" timestamp="2021-11-06T21:40:50.889807" hostname="yuanyuandeMacBook-Pro.local"><testcase classname="test.test_firstp" name="test_set_comparison" time="0.001"><failure message="AssertionError: assert {'0', '1', '3', '8'} == {'0', '3', '5', '8'}&#10;  Extra items in the left set:&#10;  '1'&#10;  Extra items in the right set:&#10;  '5'&#10;  Use -v to get the full diff">def test_set_comparison():
+        set1 = set("1308")
+        set2 = set("8035")
+&gt;       assert set1 == set2
+E       AssertionError: assert {'0', '1', '3', '8'} == {'0', '3', '5', '8'}
+E         Extra items in the left set:
+E         '1'
+E         Extra items in the right set:
+E         '5'
+E         Use -v to get the full diff
+
+test/test_firstp.py:258: AssertionError</failure></testcase></testsuite></testsuites>

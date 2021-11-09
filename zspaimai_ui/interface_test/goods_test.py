@@ -10,7 +10,7 @@ def goods_add():
     # begin_time = time.mktime(a)
     # end_time = time.mktime(b)
     name = '订阅信息验证-6'
-    good_info = {"name": name, "begin_time": int(begin_time), "end_time": int(end_time)}
+    good_info = {"name": name, "begin_time": int(begin_time), "end_time": int(end_time),"price":32000}
     r = goods.goods_add(**good_info)
     return r.json()['data']
 
@@ -29,11 +29,6 @@ def test_goods_list_001():
     goods_info = {"status": 31}
     r = goods.goods_list(**goods_info)
     assert r.json()['data']['status'] == 200
-
-
-
-
-
 def test_batch_shelves():
     goods_ids = []
     goods_info = {"status": 31, "is_shelves": 1}
@@ -55,7 +50,6 @@ def test_batch_shelves():
     goods.batch_shelves(**batch_info)
     # goods.del_goods()
     assert 1 == 2
-
 def test_batch_shelves_1():
     for k in range(9):
         goods_ids = []
@@ -78,8 +72,6 @@ def test_goods_del():
             goods_ids.append(goods_id)
         batch_info = {"ids": str(goods_ids)}
         goods.del_goods(**batch_info)
-
-
 def test_goods_recommended_del():
     '''将流拍的拍品取消推荐、取消置顶后删除'''
     goods_info = {"status": 31, "is_shelves":0, "type":1}
@@ -97,7 +89,6 @@ def test_goods_recommended_del():
             goods.goods_edit_action(**act_info)
     goods_info = {"ids": str(goods_ids)}
     goods.del_goods(**goods_info)
-
 def test_goods_delete():
     '''将拍品管理列表中的拍品删除到剩下5页'''
     r = goods.goods_list().json()
@@ -122,8 +113,6 @@ def test_goods_delete():
         goods_info = {"ids": str(goods_ids)}
         print(goods_info)
         goods.del_goods(**goods_info) # 删除该页的所有拍品
-
-
 def goods_unrecommend():
     '''将所有首页推荐的拍品取消推荐'''
     goods_info = {"is_recommended": 1}
@@ -141,7 +130,6 @@ def goods_unrecommend():
             good_id = goods_list[num]['id']
             act_info = {"id": good_id, "act": "is_recommended", "value": 0}  # 取消推荐
             goods.goods_edit_action(**act_info)
-
 def goods_recommend():
     '''将最新的拍品首页推荐,执行该函数前先将所有的推荐的拍品取消推荐'''
     # for k in range(1,3):
@@ -150,17 +138,15 @@ def goods_recommend():
         good_id = r[i]['id']
         act_info = {"id": good_id, "act": "is_recommended", "value": 1}  # 推荐
         goods.goods_edit_action(**act_info)
-
-
 def goods_add_recommend():
     '''添加一个拍品，并首页推荐'''
     #goods_unrecommend()
-    a = time.strptime('2021-11-3 17:20:00', '%Y-%m-%d %H:%M:%S')
-    b = time.strptime('2021-11-3 17:21:00', '%Y-%m-%d %H:%M:%S')
+    a = time.strptime('2021-11-9 10:05:00', '%Y-%m-%d %H:%M:%S')
+    b = time.strptime('2021-11-9 10:10:00', '%Y-%m-%d %H:%M:%S')
     begin_time = time.mktime(a)
     end_time = time.mktime(b)
-    name = '消息订阅-3'
-    good_info = {"name": name, "begin_time": int(begin_time), "end_time": int(end_time), "price":50000}
+    name = '小林工'
+    good_info = {"name": name, "begin_time": int(begin_time), "end_time": int(end_time), "price":32000}
     good_id = goods.goods_add(**good_info).json()['data']
     act_info = {"id": good_id, "act": "is_recommended", "value": 1}  # 推荐
     goods.goods_edit_action(**act_info)
@@ -204,6 +190,5 @@ def goods_edit():
 
 def test_goods_edit():
     goods_edit()
-
 
 

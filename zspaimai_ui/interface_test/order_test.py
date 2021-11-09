@@ -171,3 +171,84 @@ def test_last_order_confirm_delivery():
     order.confirm_order(order_id)
     r = order.deliver(order_id)
 
+def confirm_all_order():
+    search_info = {"status":0}
+    order_list = order.list(**search_info).json()
+    total = order_list['data']['total']
+    last_page = order_list['data']['last_page']
+    per_page = order_list['data']['per_page']
+    for i in range(last_page):
+        order_list = order.list(**search_info).json()
+
+        if last_page > 1 and i < last_page-1:
+            num = per_page
+        else:
+            num = total - (last_page-1) * per_page
+        for o in range(num):
+            order_id = order_list['data']['data'][o]['id']
+            order.confirm_order(order_id)
+def all_take_delivery():
+    search_info = {"status":2, "express_id":3}
+    order_list = order.logistics_list(**search_info).json()
+    total = order_list['data']['total']
+    last_page = order_list['data']['last_page']
+    per_page = order_list['data']['per_page']
+    for i in range(last_page):
+        order_list = order.logistics_list(**search_info).json()
+
+        if last_page > 1 and i < last_page-1:
+            num = per_page
+        else:
+            num = total - (last_page-1) * per_page
+        for o in range(num):
+            order_id = order_list['data']['data'][o]['id']
+            order.take_delivery(order_id)
+
+def all_deliver():
+    '''payment_id:支付方式
+    1：余额
+    2、微信支付
+    5、银行划账
+    express_id: 快递方式
+    1：快递到付
+    2、快递
+    3、上门自提'''
+    search_info = {"status":2, "express_id":1}#,"payment_id":1
+    order_list = order.logistics_list(**search_info).json()
+    total = order_list['data']['total']
+    last_page = order_list['data']['last_page']
+    per_page = order_list['data']['per_page']
+    n = 0
+
+    for i in range(last_page):
+        page = round(n/10) + 1
+        order_list = order.logistics_list(page=page, **search_info).json()
+        if last_page > 1 and i < last_page-1:
+            num = per_page
+        else:
+            num = total - (last_page-1) * per_page
+        for o in range(num):
+            order_id = order_list['data']['data'][o]['id']
+            pay_status = order_list['data']['data'][o]['pay_status']
+            print (order_id, pay_status)
+            if pay_status == 1:
+                r = order.deliver(order_id)
+            else:
+                n += 1
+
+
+
+
+
+
+
+
+
+
+def test_000():
+    all_deliver()
+
+
+
+
+
