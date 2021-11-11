@@ -261,5 +261,72 @@ class TestTwo:
         assert order == ["two", "outer"]
 
 
+
+# @pytest.fixture(scope='function', autouse=True, name='s')
+# def init(drivers):
+#     """打开百度"""
+#     driver = webdriver.Chrome()
+#     driver.maximize_window()
+#     driver.get('http://home.online.zspaimai.cn')
+
+
+# @pytest.mark.usefixtures("s")
+class TestFirstp010:
+    '''检查页面主要元素显示'''
+    '''http://home.online.zspaimai.cn'''
+
+    # def test_title(self):
+    #     '''验证首页标题'''
+    #     #self.assertEqual('慧眼识宝，悦享收藏-中晟在线', self.driver.title)
+    #     assert self.driver.title == '慧眼识宝，悦享收藏-中晟在线'
+    # fp = Firstp()
+    #
+    def setup_class(self):
+        self.driver = webdriver.Chrome()
+        self.driver.maximize_window()
+        self.driver.get('http://home.online.zspaimai.cn')
+
+    def teardown_class(self):
+        self.driver.quit()
+
+
+
+
+
+
+
+    def test_searchBoxInfo(self):
+        '''验证搜索框的提示文本信息为： 藏品名称 '''
+        fp = Firstp(self.driver)
+        #self.assertEqual('藏品名称', self.get_infoOfSearchBox())
+        assert '藏品名称'== fp.get_infoOfSearchBox()
+    def test_click_searchBox001(self):
+        '''验证点击搜索框，显示搜索历史框'''
+        fp = Firstp(self.driver)
+        fp.click_searchBox()
+        time.sleep(5)
+        #self.assertTrue(self.get_historyBoxP())
+        assert fp.get_historyBoxP() == 1
+    def test_click_searchBox002(self):
+        '''验证点击搜索框，历史框包含搜索历史文本'''
+        fp = Firstp(self.driver)
+        fp.click_searchBox()
+        time.sleep(5)
+        #self.assertTrue(self.get_historyTextP())
+        assert fp.get_historyTextP() == 1
+    def test_click_searchBox003(self):
+        '''验证点击搜索框，历史框包含删除按钮'''
+        fp = Firstp(self.driver)
+        fp.click_searchBox()
+        time.sleep(5)
+        #self.assertTrue(self.get_deleteIcon())
+        assert fp.get_deleteIcon() == 1
+    def test_qrcode(self):
+        '''验证页面底部显示 中晟在线 小程序二维码'''
+        fp = Firstp(self.driver)
+        #self.assertEqual("http://home.online.zspaimai.cn/assets/img/mini-qrcode.563407c6.jpg", self.get_qrcodeP())
+        assert fp.get_qrcodeP() == "http://home.online.zspaimai.cn/assets/img/mini-qrcode.563407c6.jpg"
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)

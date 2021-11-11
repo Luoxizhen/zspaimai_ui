@@ -1,5 +1,5 @@
-from base.base import Web
-from base.base import SeleniumHelper
+from base.webpage import Web
+from base.webpage import SeleniumHelper
 from selenium.webdriver.common.by import By
 class MyApplyp(SeleniumHelper):
     entrust = (By.XPATH, '//div[text()="委托合同"]')

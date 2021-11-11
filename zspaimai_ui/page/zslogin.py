@@ -1,6 +1,6 @@
 from typing import Tuple
 
-from base.base import Web
+from base.webpage import Web
 
 from selenium import webdriver
 import time

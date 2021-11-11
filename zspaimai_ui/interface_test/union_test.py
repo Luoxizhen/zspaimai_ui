@@ -1,7 +1,7 @@
 import time
 import json
 from interface_base import union, user, finance, goods, order
-from utils import rwyaml,utils
+from utils import rwyaml,util
 from interface_test.user_test import add_pwd
 import pytest
 
@@ -647,8 +647,8 @@ def add_union_order(**order_info):
     addr_id = user.addr_list(token).json()['data'][0]['id']
     # print(goods)
 
-    id = utils.object_to_str(*good_ids)
-    goods_info = utils.object_to_str(*goods_infos)
+    id = util.object_to_str(*good_ids)
+    goods_info = util.object_to_str(*goods_infos)
 
 
 
@@ -674,7 +674,7 @@ def order_defund(order_id):
     good_id = order.refund_goods(order_id).json()['data'][0]['goods_id']
     goods_id = []
     goods_id.append(good_id)
-    goods_id_str = utils.object_to_str(*goods_id)
+    goods_id_str = util.object_to_str(*goods_id)
     refund_info = {"order_id": order_id,
                    "type": 1,
                    "refund_desc": "退化退款测试-8 退款",

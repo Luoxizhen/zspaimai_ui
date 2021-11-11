@@ -1,6 +1,6 @@
 import requests
 import time, json
-from utils import rwjson, utils
+from utils import rwjson, util
 from interface_base.user import update_token, get_user_headers,base_url,admin_headers
 def confirm_order(id):
     '''后台确认订单'''
@@ -284,7 +284,7 @@ def logistics_list(page=1,**orderinfo):
             print(url)
             if key in search_info.keys():
                 search_info[key] = orderinfo[key]
-        search_str = utils.kwargs_to_str(**search_info)
+        search_str = util.kwargs_to_str(**search_info)
         order_info["where"] = search_str
     if page !=1:
         order_info["page"] = page
@@ -305,7 +305,7 @@ def list(page=1, **orderinfo):
             print(url)
             if key in search_info.keys():
                 search_info[key] = orderinfo[key]
-        search_str = utils.kwargs_to_str(**search_info)
+        search_str = util.kwargs_to_str(**search_info)
         order_info["where"] = search_str
     if page != 1:
         order_info["page"] = page

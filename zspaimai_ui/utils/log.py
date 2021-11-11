@@ -1,20 +1,36 @@
 import logging
-import os
-import datetime
+from config.conf import cm
 
 
+class Log:
+    def __init__(self):
+        self.logger = logging.getLogger()
+        if not self.logger.handlers:
+            self.logger.setLevel(logging.DEBUG)
 
-def create_filename():
-    curpath = os.path.dirname(os.path.realpath(__file__))
-    parpath = os.path.dirname(curpath)
+            # 创建一个handle写入文件
+            fh = logging.FileHandler(cm.log_file, encoding='utf-8')
+            fh.setLevel(logging.INFO)
 
-    filename = os.path.join(parpath, 'log', 'my.log')
-    return filename
+            # 创建一个handle输出到控制台
+            ch = logging.StreamHandler()
+            ch.setLevel(logging.INFO)
 
-filename = create_filename()
-'''format=%(asctime)s 具体时间 %(filename)s 文件名 %(levelname)s 日志级别 %(message)s 日志内容 %(datemt)='a%%d%b%Y%H:%M:%S'日期格式,filename='my.log',fliemode='w's'''
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s  %(filename)s  %(levelname)s  %(message)s', datefmt='%a%d%b%Y  %H:%M:%S', filename=filename, filemode='a')
+            # 定义输出的格式
+            formatter = logging.Formatter(self.fmt)
+            fh.setFormatter(formatter)
+            ch.setFormatter(formatter)
+
+            # 添加到handle
+            self.logger.addHandler(fh)
+            self.logger.addHandler(ch)
+
+    @property
+    def fmt(self):
+        return '%(levelname)s\t%(asctime)s\t[%(filename)s:%(lineno)d]\t%(message)s'
 
 
-logging.info("第一条日志")
-logging.error('第一条错误信息')
+log = Log().logger
+
+if __name__ == '__main__':
+    log.info('hello world')

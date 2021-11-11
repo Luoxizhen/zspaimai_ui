@@ -1,11 +1,12 @@
+
+
 from selenium import webdriver
-from base.base import Web, Webe
+from base.webpage import Web, Webe
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver import ActionChains
 
-class Firstp(Web,Webe):
-
+class Firstp(Web):
     # 页面底部元素定位 ： 新手指南
     guideL = (By.XPATH, '//div[text()=" 新手指南 "]')
     # 竞买须知
@@ -20,8 +21,6 @@ class Firstp(Web,Webe):
     contactUs = (By.XPATH, '//div[text()=" 联系我们 "]')
     # 粤ICP备2021041206号
     ipL = (By.XPATH, '//div[text()="粤ICP备2021041206号"]')
-
-
     # 页面顶部元素定位  top-nav-container content 未登陆
     loginB = (By.XPATH, '//div[text()="未登录"]')
     #退出登陆
@@ -72,11 +71,6 @@ class Firstp(Web,Webe):
     airCommandClose = (By.XPATH, '//img[@class="cursor close"]')
     # 广告体
     airCommand = (By.XPATH, '//div[@class="airCommand"]')
-
-
-
-
-
 
 
     def click_loginB(self):

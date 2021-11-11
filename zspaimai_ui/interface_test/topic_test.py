@@ -1,7 +1,7 @@
 import time
 import json
 from interface_base import union, user, finance, goods, order,topic
-from utils import rwyaml,utils
+from utils import rwyaml,util
 from interface_test.user_test import add_pwd
 import pytest
 def test_add():

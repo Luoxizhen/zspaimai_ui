@@ -1,6 +1,6 @@
 import requests
 import time
-from utils import rwjson, rwcfg, utils
+from utils import rwjson, rwcfg, util
 from interface_base.user import update_token, get_user_headers,base_url,admin_headers
 
 
@@ -16,7 +16,7 @@ def goods_list(page=1,**goods_info):
         for key in goods_info:
             if key in search_info:
                 search_info[key] = goods_info[key]
-        search_str = utils.kwargs_to_str(**search_info)
+        search_str = util.kwargs_to_str(**search_info)
         info["where"] = search_str
     if page != 1:
         info["page"] = page

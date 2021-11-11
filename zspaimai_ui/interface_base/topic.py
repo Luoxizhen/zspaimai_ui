@@ -1,5 +1,5 @@
 import time, json
-from utils import rwjson, utils
+from utils import rwjson, util
 import requests
 from interface_base.user import update_token, get_user_headers,base_url,admin_headers
 def add(**topic_info):
@@ -31,7 +31,7 @@ def list(page=1, **topic_info):
     for key in topic_info:
         if key in search_info.keys():
             search_info[key] = topic_info[key]
-    search_str = utils.kwargs_to_str(**search_info)
+    search_str = util.kwargs_to_str(**search_info)
 
     info["where"] = search_str
     if page > 1:

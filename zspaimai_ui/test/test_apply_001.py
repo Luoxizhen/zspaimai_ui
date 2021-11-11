@@ -12,7 +12,7 @@ from page.firstp import Firstp
 from page.zslogin import Login
 from page.applyp import Applyp
 from base.browser_driver import select_browser
-from base.base import SeleniumHelper
+from base.webpage import SeleniumHelper
 import test.init as init
 
 # @pytest.fixture(scope='class',autouse=True)

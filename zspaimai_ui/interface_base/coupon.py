@@ -1,6 +1,6 @@
 from interface_base.user import update_token, get_user_headers,base_url,admin_headers
 import requests
-from utils import utils
+from utils import util
 def list(page=1,**searchinfo):
     '''后台获取优惠劵列表'''
     url = base_url + '/admin/coupon/list'
@@ -19,7 +19,7 @@ def list(page=1,**searchinfo):
         for key in searchinfo:
             if key in search_kwargs:
                 search_kwargs[key] = searchinfo[key]
-    search_str = utils.kwargs_to_str(**search_kwargs)
+    search_str = util.kwargs_to_str(**search_kwargs)
     search_info["where"] = search_str
     if page > 1:
         search_info["page"] = page

@@ -1,7 +1,7 @@
 from interface_base import goods
 import pytest
 import time
-from utils import utils
+from utils import util
 def goods_add():
     begin_time = round(time.time())+120
     end_time = begin_time + 600

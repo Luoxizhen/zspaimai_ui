@@ -1,6 +1,6 @@
 import time
 
-from base.base import Web
+from base.webpage import Web
 from selenium.webdriver.common.by import By
 class Applyp(Web):
     titel = (By.XPATH, '*[@id="app"]/div[2]/h4')
