@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.148" timestamp="2021-11-06T21:37:42.794006" hostname="yuanyuandeMacBook-Pro.local"><testcase classname="test.test_firstp" name="test_111" time="0.001"><failure message="AssertionError: value was odd, should be even&#10;assert (5 % 2) == 0">def test_111():
-        a = 5
-&gt;       assert a % 2 == 0, "value was odd, should be even"
-E       AssertionError: value was odd, should be even
-E       assert (5 % 2) == 0
-
-test/test_firstp.py:254: AssertionError</failure></testcase></testsuite></testsuites>

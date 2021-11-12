@@ -8,7 +8,7 @@ def select_browser(browser='chrome'):
         dr = webdriver.Chrome()
     elif browser == "firefox" or browser == "ff":
         dr = webdriver.Firefox()
-    elif browser == "IE" or browser == "ff":
+    elif browser == "IE" or browser == "ie":
         dr = webdriver.Ie()
     else:
         print("请输入正确的浏览器名称")

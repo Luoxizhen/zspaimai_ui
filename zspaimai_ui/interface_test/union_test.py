@@ -41,7 +41,7 @@ def union_join(user1, user2):
     inv = h5_url.replace('http://home.online.zspaimai.cn/?inv=', '')
     set_userinfo(user1, 'inv', inv)
     phone2 = get_userinfo(user2, 'phone')# 获取用户2 的手机号码
-    user.get_msg(phone2) # 获取验证码
+    user.get_msg(phone=phone2) # 获取验证码
     userinfo = user.quick_login_union(inv, phone2) #用户2快捷登陆，成为用户1的成员
     user2_token = userinfo.json()['data']['token']
     user2_userno = userinfo.json()['data']['user']['userno']
@@ -262,7 +262,7 @@ class TestUnionUser(object):
     #@pytest.mark.skip(reason='')
     def test_union_join_user1(self):
         phone = get_userinfo('user1', 'phone')
-        user.get_msg(phone)
+        user.get_msg(phone=phone)
         r = user.quick_login(phone)
         token = r.json()['data']['token']
         userno = r.json()['data']['user']['userno']
@@ -365,8 +365,8 @@ class TestUnionOrder(object):
 
     def test_union_order_001(self):
         '''验证用户2完成一笔订单支付'''
-        updata_user_token('user6')
-        order_info = {'good_names': ['订单退款-功能验证'], "user": "user6"}
+        updata_user_token('user2')
+        order_info = {'good_names': ['订单退款-功能验证'], "user": "user2"}
         r = add_union_order(**order_info)
         order_id = r.json()['data']['reId']
         order.take_delivery(order_id)
@@ -398,7 +398,7 @@ class TestUnionOrder(object):
         time.sleep(2)
         r = order.confirm_send(int(order_id))
         print(r.json())
-        assert r.json()['status'] == 300
+        assert r.json()['status'] == 200
 
     def test_union_order_005(self):
         '''验证用户6完成订单支付：2个拍品'''
@@ -422,6 +422,7 @@ class TestUnionOrder(object):
             "refund_money":"1100",
             "goods_id":goods_id}
         r = order.refund(**refund_info)
+        print(r.json())
         assert r.json()['status'] == 200
     def test_union_order_008(self):
         '''验证用户6的第二个订单部分退款'''
@@ -666,6 +667,7 @@ def add_union_order(**order_info):
         order_info = {"goods_ids": id, "total": total, "addr_id": addr_id, 'express_fee': express_fee}#用户支付订单
 
     r = order.add_order(**order_info)
+
     order_id = r.json()['data']['reId']
     order.confirm_order(order_id)
     return r

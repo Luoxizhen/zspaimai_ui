@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.752" timestamp="2021-11-12T08:46:07.932446" hostname="yuanyuandeMacBook-Pro.local"><testcase classname="interface_test.union_test.TestUnionOrder" name="test_union_order_007" time="0.573"><failure message="assert 400 == 200">self = &lt;interface_test.union_test.TestUnionOrder object at 0x10d15ca00&gt;
+
+    def test_union_order_007(self):
+        '''验证用户6的第二个订单部分退款'''
+        #order.confirm_order() #后台确认订单
+        good_id = order.refund_goods(1477).json()['data'][0]['goods_id']
+        goods_id = '['+str(good_id)+']'
+        refund_info = {"order_id":1477,
+            "refund_money":"1100",
+            "goods_id":goods_id}
+        r = order.refund(**refund_info)
+        print(r.json())
+&gt;       assert r.json()['status'] == 200
+E       assert 400 == 200
+
+interface_test/union_test.py:426: AssertionError</failure></testcase></testsuite></testsuites>

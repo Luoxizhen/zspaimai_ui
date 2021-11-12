@@ -1,4 +1,5 @@
-'''conftest.py测试框架pytest的胶水文件，里面用到了fixture的方法，封装并传递出了driver。'''
+'''conftest.py测试框架pytest的胶水文件，里面用到了fixture的方法，封装并传递出了driver。
+全局用例共用'''
 # import pytest
 # from py.xml import html
 # from selenium import webdriver

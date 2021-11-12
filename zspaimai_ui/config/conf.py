@@ -2,8 +2,6 @@
 import os
 from selenium.webdriver.common.by import By
 from utils.times import dt_strftime
-
-
 class ConfigManager(object):
     # 项目目录
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -12,7 +10,8 @@ class ConfigManager(object):
     ELEMENT_PATH = os.path.join(BASE_DIR, 'page_element')
 
     # 报告文件
-    REPORT_FILE = os.path.join(BASE_DIR, 'report.html')
+    report_name = "report_" + dt_strftime(fmt="%Y%m%d_%H%M%S") + '.html'
+    REPORT_FILE = os.path.join(BASE_DIR, 'report', report_name)
 
     # 元素定位的类型
     LOCATE_MODE = {
@@ -42,7 +41,7 @@ class ConfigManager(object):
         log_dir = os.path.join(self.BASE_DIR, 'logs')
         if not os.path.exists(log_dir):
             os.makedirs(log_dir)
-        return os.path.join(log_dir, '{}.log'.format(dt_strftime()))
+        return os.path.join(log_dir, '{}.log'.format(dt_strftime(fmt="%Y%m%d_%H%M")))
 
     @property
     def ini_file(self):
@@ -55,4 +54,4 @@ class ConfigManager(object):
 
 cm = ConfigManager()
 if __name__ == '__main__':
-    print(cm.BASE_DIR)
+    print(cm.REPORT_FILE )
