@@ -19,7 +19,8 @@ class ConfigManager(object):
         'xpath': By.XPATH,
         'name': By.NAME,
         'id': By.ID,
-        'class': By.CLASS_NAME
+        'class': By.CLASS_NAME,
+        'tag': By.TAG_NAME
     }
 
     # 邮件信息

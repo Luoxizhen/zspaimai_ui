@@ -1,69 +1,49 @@
-搜索框: "id==kw"
-候选: "css==.bdsug-overflow"
-搜索候选: "css==#form div li"
-搜索按钮: "id==su"
+新手指南: xpath==//div[text()=" 新手指南 "]
+竞买须知: xpath==//div[text()=" 竞买须知 "]
+关于我们: xpath==//div[text()=" 关于我们 "]
+服务协议: xpath==//div[text()=" 服务协议 "]
+藏品保障: xpath==//div[text()=" 藏品保障 "]
+联系我们: xpath==//div[text()=" 联系我们 "]
+中晟在线二维码: xpath==//div[@class="qrcode m-r-12"]/../img
+小程序二维码: xpath==//div[@class="qrcode m-r-12"]/img
+ICP: xpath==//div[text()="粤ICP备2021041206号"]
 
-# 页面底部元素定位 ： 新手指南
-    guideL = (By.XPATH, '//div[text()=" 新手指南 "]')
-    # 竞买须知
-    biddingInfo = (By.XPATH, '//div[text()=" 竞买须知 "]')
-    #  关于我们
-    aboutUs = (By.XPATH, '//div[text()=" 关于我们 "]')
-    #  服务协议
-    serviceA = (By.XPATH, '//div[text()=" 服务协议 "]')
-    #  藏品保障
-    collectionGuarantee = (By.XPATH, '//div[text()=" 藏品保障 "]')
-    #  联系我们
-    contactUs = (By.XPATH, '//div[text()=" 联系我们 "]')
-    # 粤ICP备2021041206号
-    ipL = (By.XPATH, '//div[text()="粤ICP备2021041206号"]')
-    # 页面顶部元素定位  top-nav-container content 未登陆
-    loginB = (By.XPATH, '//div[text()="未登录"]')
-    #退出登陆
-    logoutB = (By.XPATH, '//div[text()=" 退出登录 "]')
-    #'帮助中心'
-    helpB = (By.XPATH, '//div[text()=" 帮助中心 "]')
-    #'联系我们'
-    contactB = (By.XPATH, '//div[text()=" 联系我们 "]')
-    #'header - container 我对竞买'
-    myBidB = (By.XPATH, '//div[text()=" 我的竞买 "]')
-    #'header - container 消息'
-    myMsgB = (By.XPATH, '//span[text()="消息"]')
-    #' 我要申请委托'
-    myApplyB = (By.XPATH, '//*[@id="app"]/div[3]')
-    # 页面导航栏元素定位  'header - container:  nav-container-box 首页'
-    firstPage = (By.XPATH, '//span[text()="首页"]')
-    #'header - container:  nav-container-box 竞买'
-    bid = (By.XPATH, '//span[text()="竞买"]')
-    #'header - container:  nav-container-box 专场'
-    specialP = (By.XPATH, '//span[text()="专场"]')
-    #'header - container:  nav-container-box 委托'
-    apply = (By.XPATH, '//span[text()="委托"]')
-    #'搜索框'
-    searchBox = (By.TAG_NAME, 'input')
-    #'搜索按钮'
-    searchButton = (By.XPATH, '//input/../../div[2]')
-    # 搜索历史文本
-    historyText = (By.XPATH, '//span[text()="搜索历史"]')
-    # 删除搜索历史按钮
-    deleteIcon = (By.XPATH, '//span[text()="搜索历史"]/../img')
-    # 历史为空文本
-    historyIsNull = (By.XPATH, '//div[text()=" 历史为空 "]')
-    # 搜索历史框
-    historyBox = (By.XPATH, '//div[@class="historyBox"]')
-    # 搜索历史列表第一条记录
-    lastRecoItem = (By.XPATH, '//div[@class="recoList"]/div[1]')
+移动端: xpath==//span[text()="移动端"]
+移动端二维码: xpath==//body/div[3]/img
+未登陆按钮: xpath==//div[text()="未登录"]
+退出登陆按钮: xpath==//div[text()="退出登录"]
+帮助中心: xpath==//div[text()=" 帮助中心 "]
 
 
-    # 登录框
-    loginBox = (By.XPATH, '//div[@class="login-box"]')
-    # 热门拍品底部 更多拍品
-    moreCollection = (By.XPATH, '//div[text()=" 更多拍品 "]')
-    # 更多拍品后的 按钮
-    moreCollectionId = (By.XPATH, '//div[text()=" 更多拍品 "]/../div[2]')
-    # 中晟在线二维码
-    qrcode = (By.XPATH, '//img[@class="qrcode"]')
-    # 广告关闭按钮
-    airCommandClose = (By.XPATH, '//img[@class="cursor close"]')
-    # 广告体
-    airCommand = (By.XPATH, '//div[@class="airCommand"]')
+我的竞买按钮: xpath==//div[text()=" 我的竞买 "]
+消息: xpath==//div[text()="消息"]
+
+
+我要申请委托: xpath==//div[text()="//*[@id="app"]/div[3]"]
+
+
+首页: xpath==//span[text()="首页"]
+竞买: xpath==//span[text()="竞买"]
+专场: xpath==//span[text()="专场"]
+委托: xpath==//span[text()="委托"]
+
+
+搜索框: tag==input
+搜索按钮: xpath==//input/../../div[2]
+搜索历史文本: xpath==//span[text()="搜索历史"]
+删除搜索历史按钮: xpath==//span[text()="搜索历史"]/../img
+历史为空文本: xpath==//div[text()=" 历史为空 "
+搜索历史框: xpath==//div[@class="historyBox"]
+搜索历史第一条记录: xpath==//div[@class="recoList"]/div[1]
+
+
+登陆框: xpath==//div[@class="login-box"]
+
+
+更多拍品: xpath==//div[text()=" 更多拍品 "]
+更多拍品按钮: xpath==//div[text()=" 更多拍品 "]/../div[2]
+
+广告关闭按钮: xpath==//img[@class="cursor close"]
+广告体: //div[@class="airCommand"]
+
+

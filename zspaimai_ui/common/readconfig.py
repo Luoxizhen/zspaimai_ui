@@ -25,7 +25,7 @@ class ReadConfig(object):
 
     @property
     def url(self):
-        return self._get(HOST, HOST)
+        return self._get('sys_variables', 'url')
 
 
 ini = ReadConfig()
