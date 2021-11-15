@@ -11,9 +11,9 @@ ICP: xpath==//div[text()="粤ICP备2021041206号"]
 移动端: xpath==//span[text()="移动端"]
 移动端二维码: xpath==//body/div[3]/img
 登陆: xpath==//div[text()="未登录"]
-退出登陆: xpath==//div[text()="退出登录"]
+退出登录: xpath==//div[text()=" 退出登录 "]
 帮助中心: xpath==//div[text()=" 帮助中心 "]
-昵称: xpath==//div[text()="移动端"]/../div[2]
+昵称: xpath==//div[text()=" 退出登录 "]/../div[2]
 
 
 我的竞买: xpath==//div[text()=" 我的竞买 "]
@@ -36,13 +36,17 @@ ICP: xpath==//div[text()="粤ICP备2021041206号"]
 历史为空文本: xpath==//div[text()=" 历史为空 "
 搜索历史框: xpath==//div[@class="historyBox"]
 搜索历史第一条记录: xpath==//div[@class="recoList"]/div[1]
+
+
 登陆框: xpath==//div[@class="login-box"]
 登陆关闭: xpath==//img[@class="login-title-close"]
-账号登陆: id==tab-usernum
-快捷登陆: id==tab-phone
+账号登录: id==tab-usernum
+快捷登录: id==tab-phone
 登陆框标题: xpath==//div[@class="login-title"]/span
 注册: xpath==//div[text()="注册"
 注册框小标题: id==tab-register
+
+
 
 微信: xpath==//div[@class="login-box-content"]/div[6]/img
 账号: xpath==//div[@class="login-input"]/div[1]/input
@@ -52,8 +56,14 @@ ICP: xpath==//div[text()="粤ICP备2021041206号"]
 短信验证码: xpath==//div[@class="login-input"]/div[2]/div[1]/input
 发送验证码: xpath==//div[@class="login-input"]/div[2]/button/span
 
+
 更多拍品: xpath==//div[text()=" 更多拍品 "]
 更多拍品按钮: xpath==//div[text()=" 更多拍品 "]/../div[2]
+第一个拍品: xpath==//img[@alt="小林工"]
+
+
+
+
 
 广告关闭按钮: xpath==//img[@class="cursor close"]
 广告体: //div[@class="airCommand"]

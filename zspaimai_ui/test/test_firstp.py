@@ -5,7 +5,7 @@ from selenium import webdriver
 from page.firstp import Firstp
 from test.init import Init2, Init3, Init4, Init5, Init
 from common.readconfig import ini
-
+from interface_test import goods_test
 class TestFirstp001(Init3,Firstp):
     '''检查页面主要元素显示'''
     def test_title(self):
@@ -414,36 +414,95 @@ class TestFirstp201:
         assert title == "中晟在线"
 
 
-@pytest.fixture(scope='class',name="setup")
-def firstp_setup():
-    driver = webdriver.Chrome()
-    driver.maximize_window()
-
-    return driver
-
-
+# @pytest.fixture(scope='class',name="setup")
+# def firstp_setup():
+#     driver = webdriver.Chrome()
+#     driver.maximize_window()
+#
+#     return driver
 
 
 
-@pytest.mark.usefixtures("setup")
+
+
+# @pytest.mark.usefixtures("setup")
+class Testbid:
+    '''首页点击拍品'''
+
+    def setup_class(self):
+        self.driver = webdriver.Chrome()
+        self.driver.maximize_window()
+        print(ini.url)
+        self.driver.get(ini.url)
+
+    def teardown_class(self):
+        self.driver.quit()
+    @pytest.fixture(scope="function")
+    def add_goods(self):
+        goods_test.goods_unrecommend()
+        goods_test.goods_add_recommend()
+    @pytest.mark.skip()
+    def test_click_collection(self,add_goods):
+        time.sleep(5)
+        fp = Firstp(self.driver)
+        fp.refresh()
+        fp.click_collection()
+        time.sleep(4)
+    def test_search_goods(self):
+        '''搜索藏品'''
+        fp = Firstp(self.driver)
+        fp.search()
+        fp.click_search()
+        titil = self.driver.title
+
+        assert titil == "中晟在线-搜索结果"
+
+
+
 class TestLogin:
     '''登陆登出'''
-    @pytest.fixture(scope="function")
-    def open(self):
-        fp = Firstp(firstp_setup)
-        fp.get_url(ini.url)
 
+    def setup_class(self):
+        self.driver = webdriver.Chrome()
+        self.driver.maximize_window()
+        print(ini.url)
+        self.driver.get(ini.url)
 
-    def test_login(self):
-        fp = Firstp(firstp_setup)
+    def teardown_class(self):
+        self.driver.quit()
+
+    def test_log_num(self):
+        '''验证账号登陆'''
+        fp = Firstp(self.driver)
         fp.click_login()
-        time.sleep(5)
+        fp.click_num_login()
+        fp.send_num()
+        fp.send_password()
+        fp.click_login_botton()
+        time.sleep(1)
+        nick = fp.nickname()
+        fp.click_logout()
+
+        assert nick == "hello world"
+    def test_log_phone(self):
+        '''验证账号登陆'''
+        fp = Firstp(self.driver)
+        fp.click_login()
+        fp.click_phone_login()
+        fp.send_phone()
+        fp.click_send_vcode()
+        fp.send_vcode()
+        fp.click_login_botton()
+        time.sleep(1)
+        nick = fp.nickname()
+        fp.click_logout()
+        assert nick == "hello world"
+    def test_register(self):
+        fp = Firstp(self.driver)
+        fp.click_login()
 
 
 
-
-    def login_num(self):
-        pass
 
 
 

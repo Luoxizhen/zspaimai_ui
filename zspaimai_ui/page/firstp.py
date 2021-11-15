@@ -211,6 +211,40 @@ class Firstp(Web):
         return self.element_text(firstp["登陆框标题"])
     def nickname(self):
         return self.element_text(firstp['昵称'])
+    def click_collection(self):
+        self.is_click(firstp['第一个拍品'])
+    def click_num_login(self):
+        self.is_click(firstp['账号登录'])
+    def click_phone_login(self):
+        self.is_click(firstp['快捷登录'])
+    def send_num(self,num="15622145010"):
+        self.input_text(firstp['账号'],num)
+    def send_password(self,password="123456"):
+        self.input_text(firstp['密码'],password)
+    def send_phone(self,phone='15622145010'):
+        self.input_text(firstp["手机"], phone)
+    def send_vcode(self,vcode='123456'):
+        self.input_text(firstp['短信验证码'],vcode)
+    def click_send_vcode(self):
+        self.is_click(firstp['发送验证码'])
+    def click_login_botton(self):
+        self.is_click(firstp['登陆按钮'])
+    def click_logout(self):
+        self.is_click(firstp['退出登录'])
+    def click_register(self):
+        self.is_click(firstp['注册'])
+
+
+
+    def search(self, good_name="小林工"):
+        self.input_text(firstp['搜索框'],good_name)
+    def click_search(self):
+        self.is_click(firstp['搜索按钮'])
+    def search_history(self):
+        return self.element_text(firstp['搜索历史第一条记录'])
+
+
+
 
 
 

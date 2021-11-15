@@ -144,11 +144,14 @@ def goods_recommend():
 def goods_add_recommend():
     '''添加一个拍品，并首页推荐'''
     #goods_unrecommend()
-    a = time.strptime('2021-11-9 10:05:00', '%Y-%m-%d %H:%M:%S')
-    b = time.strptime('2021-11-9 10:10:00', '%Y-%m-%d %H:%M:%S')
-    begin_time = time.mktime(a)
-    end_time = time.mktime(b)
+    # a = time.strptime('2021-11-9 10:05:00', '%Y-%m-%d %H:%M:%S')
+    # b = time.strptime('2021-11-9 10:10:00', '%Y-%m-%d %H:%M:%S')
+    # begin_time = time.mktime(a)
+    # end_time = time.mktime(b)
+    begin_time = round(time.time())
+    end_time = begin_time + 3600
     name = '小林工'
+    #lot844-第四套人民币90年50元一枚(麒麟号JQ777777777 PMG66E)
     good_info = {"name": name, "begin_time": int(begin_time), "end_time": int(end_time), "price":32000}
     good_id = goods.goods_add(**good_info).json()['data']
     act_info = {"id": good_id, "act": "is_recommended", "value": 1}  # 推荐
