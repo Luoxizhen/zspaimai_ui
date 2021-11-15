@@ -95,7 +95,7 @@ class Web(object):
     def back(self):
         '''页面返回'''
         self.driver.back()
-        self.driver.implicitly_wait(10)
+        time.sleep(1)
 
 
 

@@ -81,58 +81,7 @@ class TestFirstp0021:
     def teardown_class(self):
         self.driver.quit()
     # @pytest.mark.skip()
-    def test_click_help(self):
-        '''验证点击页面顶部 帮助中心 ，页面正确跳转'''
-        fp = Firstp(self.driver)
-        fp.click_help_button()
-        title = self.driver.title
-        fp.get_url(self.url)
-        assert'中晟在线-帮助' == title
 
-    def test_click_contact(self):
-        '''验证点击页面顶部 联系我们 ，页面正确跳转'''
-        fp = Firstp(self.driver)
-        fp.click_contact_button()
-        title = self.driver.title
-        fp.get_url(self.url)
-        assert'中晟在线-联系我们' == title
-
-    # @pytest.mark.skip()
-    def test_click_firstPage(self):
-        '''验证点击页面中间导航栏 首页 ，页面正确跳转'''
-        '''验证点击页面顶部 联系我们 ，页面正确跳转'''
-        fp = Firstp(self.driver)
-        fp.click_first_page()
-        title = self.driver.title
-
-        assert '慧眼识宝，悦享收藏-中晟在线' == title
-
-    # @pytest.mark.skip()
-    def test_click_bid(self):
-        '''验证点击页面中间导航栏 竞买 ，页面正确跳转'''
-        '''验证点击页面顶部 联系我们 ，页面正确跳转'''
-        fp = Firstp(self.driver)
-        fp.click_bidding()
-        title = self.driver.title
-        fp.back()
-        assert '中晟在线-竞买' == title
-
-    # @pytest.mark.skip()
-    def test_click_specialP(self):
-        '''验证点击页面中间导航栏 专场 ，页面正确跳转'''
-        fp = Firstp(self.driver)
-        fp.click_special()
-        title = self.driver.title
-        fp.back()
-        assert '中晟在线-拍品专场列表' == title
-    def test_click_apply(self):
-        '''验证点击页面中间导航栏 专场 ，页面正确跳转'''
-        fp = Firstp(self.driver)
-        time.sleep(30)
-        fp.click_applying()
-        title = self.driver.title
-        fp.back()
-        assert '中晟在线-我的委托-委托合同' == title
     # def test_click_moreCollection(self):
     #     '''验证点击热卖拍品底部 更多拍品 ，页面正确跳转'''
     #     self.click_moreCollection()
@@ -302,6 +251,7 @@ class TestTwo:
 
     def test_order(self, order, outer):
         assert order == ["two", "outer"]
+@pytest.mark.skip()
 class TestFirstp201:
     '''检查页面主要元素显示'''
     '''http://home.online.zspaimai.cn'''
@@ -362,11 +312,143 @@ class TestFirstp201:
         fp = Firstp(self.driver)
         #self.assertEqual("http://home.online.zspaimai.cn/assets/img/mini-qrcode.563407c6.jpg", self.get_qrcodeP())
         assert fp.src_qrcode_phone() == "http://home.online.zspaimai.cn/assets/img/mini-qrcode.563407c6.jpg"
+    @pytest.mark.header
     def test_qrcode_phone_show(self):
         '''验证点击移动端，显示小程序二维码'''
         fp = Firstp(self.driver)
         fp.click_mobile()
         assert fp.is_display_qrcode_phone() == 1
+
+    @pytest.mark.header
+    def test_click_help(self):
+        '''验证点击页面顶部 帮助中心 ，页面正确跳转'''
+        fp = Firstp(self.driver)
+        fp.click_help_button()
+        title = self.driver.title
+        fp.back()
+        assert '中晟在线-帮助' == title
+
+    @pytest.mark.header
+    def test_click_contact(self):
+        '''验证点击页面顶部 联系我们 ，页面正确跳转'''
+        fp = Firstp(self.driver)
+        fp.click_contact_button()
+        title = self.driver.title
+        fp.back()
+        assert '中晟在线-联系我们' == title
+
+    @pytest.mark.header
+    def test_click_login(self):
+        '''验证点击页面顶部 登陆，页面显示登陆框'''
+        fp = Firstp(self.driver)
+        fp.click_login()
+        is_dispaly = fp.is_display_login_box()
+        fp.close_login_box()
+        assert is_dispaly == 1
+
+
+    @pytest.mark.skip()
+    @pytest.mark.nav
+    def test_click_firstPage(self):
+        '''验证点击页面中间导航栏 首页 ，页面正确跳转'''
+        '''验证点击页面顶部 联系我们 ，页面正确跳转'''
+        fp = Firstp(self.driver)
+        fp.click_first_page()
+        title = self.driver.title
+
+        assert '慧眼识宝，悦享收藏-中晟在线' == title
+
+    # @pytest.mark.skip()
+    @pytest.mark.nav
+    def test_click_bid(self):
+        '''验证点击页面中间导航栏 竞买 ，页面正确跳转'''
+        '''验证点击页面顶部 联系我们 ，页面正确跳转'''
+        fp = Firstp(self.driver)
+        fp.click_bidding()
+        title = self.driver.title
+        fp.back()
+        assert '中晟在线-竞买' == title
+
+    # @pytest.mark.skip()
+    @pytest.mark.nav
+    def test_click_specialP(self):
+        '''验证点击页面中间导航栏 专场 ，页面正确跳转'''
+        fp = Firstp(self.driver)
+        fp.click_special()
+        title = self.driver.title
+        fp.back()
+        assert '中晟在线-拍品专场列表' == title
+
+    @pytest.mark.nav
+    def test_click_apply(self):
+        '''验证点击页面中间导航栏 专场 ，在未登陆情况下，页面显示登陆框'''
+        fp = Firstp(self.driver)
+        fp.click_applying()
+        is_display = fp.is_display_login_box()
+        fp.close_login_box()
+        assert is_display == 1
+    @pytest.mark.login
+    def test_click_my_bid(self):
+        '''验证点击我的竞买按钮，弹出登陆框'''
+        fp = Firstp(self.driver)
+        fp.click_my_bid_button()
+        is_display = fp.is_display_login_box()
+        fp.close_login_box()
+        assert is_display == 1
+
+    @pytest.mark.login
+    def test_click_msg(self):
+        '''验证点击消息按钮，弹出登陆框'''
+        fp = Firstp(self.driver)
+        fp.click_message()
+        is_display = fp.is_display_login_box()
+        fp.close_login_box()
+        assert is_display == 1
+    @pytest.mark.login
+    def test_login_title(self):
+        '''验证登陆框标题： 中晟在线'''
+        fp = Firstp(self.driver)
+        fp.click_login()
+        title = fp.login_title()
+        fp.close_login_box()
+        assert title == "中晟在线"
+
+
+@pytest.fixture(scope='class',name="setup")
+def firstp_setup():
+    driver = webdriver.Chrome()
+    driver.maximize_window()
+
+    return driver
+
+
+
+
+
+@pytest.mark.usefixtures("setup")
+class TestLogin:
+    '''登陆登出'''
+    @pytest.fixture(scope="function")
+    def open(self):
+        fp = Firstp(firstp_setup)
+        fp.get_url(ini.url)
+
+
+    def test_login(self):
+        fp = Firstp(firstp_setup)
+        fp.click_login()
+        time.sleep(5)
+
+
+
+
+    def login_num(self):
+        pass
+
+
+
+
+
 
 
 if __name__ == '__main__':

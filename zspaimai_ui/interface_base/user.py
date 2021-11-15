@@ -2,6 +2,7 @@ import requests
 from utils import rwjson, rwcfg
 
 admin_headers = rwjson.RwJson().readjson('interface_data', 'admin_headers.json')
+mini_headers = rwjson.RwJson().readjson('interface_data', 'user_headers_app.json')
 base_url = "http://api.online.zspaimai.cn"
 
 def get_user_headers():

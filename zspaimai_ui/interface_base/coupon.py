@@ -1,4 +1,4 @@
-from interface_base.user import update_token, get_user_headers,base_url,admin_headers
+from interface_base.user import update_token, get_user_headers,base_url,admin_headers,mini_headers
 import requests
 from utils import util
 def list(page=1,**searchinfo):
@@ -84,3 +84,10 @@ def add(**cp_info):
     r = requests.request('post', url=url, json=info, headers=headers)
 
     return r
+def order_coupon():
+    '''获取订单可用、不可用的优惠劵'''
+    url = base_url + '/user/coupon/order_coupon'
+    headers = mini_headers
+    info = {"goods_total": 200, "order_model": 20, "goods": "[{"goods_id":1634,"num":2}]"}
+
+    r = requests.request('post', url=url, data=info, headers=headers)

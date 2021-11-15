@@ -74,8 +74,8 @@ class Firstp(Web):
 
     def click_loginB(self):
         self.driver.find_element(*self.loginB).click()
-    def click_login_button(self):
-        self.is_click(firstp["登陆按钮"])
+    def click_login(self):
+        self.is_click(firstp["登陆"])
 
     def click_helpB(self):
         self.driver.find_element(*self.helpB).click()
@@ -203,6 +203,15 @@ class Firstp(Web):
 
     def click_airCommand(self):
         self.driver.find_element(*self.airCommandClose).click()
+    def is_display_login_box(self):
+        return self.find_element(firstp['登陆框']).is_displayed()
+    def close_login_box(self):
+        self.is_click(firstp['登陆关闭'])
+    def login_title(self):
+        return self.element_text(firstp["登陆框标题"])
+    def nickname(self):
+        return self.element_text(firstp['昵称'])
+
 
 
 

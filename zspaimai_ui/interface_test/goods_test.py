@@ -2,6 +2,9 @@ from interface_base import goods
 import pytest
 import time
 from utils import util
+from utils.rwjson import RwJson
+import random
+
 def goods_add():
     begin_time = round(time.time())+120
     end_time = begin_time + 600
@@ -190,5 +193,66 @@ def goods_edit():
 
 def test_goods_edit():
     goods_edit()
+
+
+def test_list():
+    r = goods.list()
+    print(r.json())
+    assert 1==2
+def test_detail():
+    r = goods.detail()
+    print(r.json())
+    assert 1==2
+
+def test_add():
+    r = goods.add()
+    print(r.json())
+    assert 1==2
+
+
+def test_cart_add():
+    '''将商品添加到购物车中'''
+    list = goods.list().json()
+    total = list['data']['list']['total']
+    per_page = list['data']['list']['per_page']
+    last_page = list['data']['list']['last_page']
+    for page in range(1,last_page+1):
+        if last_page > 1 and page < last_page:
+            page_num = per_page
+        else:
+            page_num = total - per_page * (last_page-1)
+        list_info = {"page": page}
+
+        goods_list = goods.list(**list_info).json()['data']["list"]['data']
+        for i in range(page_num):
+            id = goods_list[i]['id']
+            goods_inventory = goods.detail(id).json()['data']["info"]["inventory"]
+            if goods_inventory > 0:
+                print(goods.add(id).json())
+
+
+
+def test_bid_good():
+    header = RwJson().readjson('interface_data', 'user_headers_app.json')
+    for i in range(10):
+        name = "lot838-第三套人民币5元炼钢一枚(20-90318553 PMG67E)" + str(i)
+        begin_time = round(time.time())
+        end_time = begin_time + 60
+        price = random.randint(1,1000)
+        good_info ={"name":name, "price":price, 'begin_time':begin_time, "end_time":end_time}
+        good_id = goods.goods_add(**good_info).json()['data']
+        print(good_id)
+        time.sleep(4)
+        bid_price = price*2
+        bid_info = {"goods_id": good_id,
+            "price": bid_price}
+
+
+        print(goods.bidding(header=header, **bid_info))
+
+
+
+
+
 
 

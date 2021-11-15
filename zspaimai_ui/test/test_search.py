@@ -7,36 +7,32 @@ from common.readconfig import ini
 from page.searchpage import SearchPage
 from selenium import webdriver
 
+
+
 class TestSearch:
-    # @pytest.fixture(scope='function', autouse=True)
-    def setup_class(self):
-        self.driver = webdriver.Chrome()
-        self.driver.maximize_window()
-        self.driver.get('https://www.baidu.com/')
-
-    def teardown_class(self):
-        self.driver.quit()
-    def open_baidu(self):
+    @pytest.fixture(scope='function', autouse=True)
+    def open_baidu(self, drivers):
         """打开百度"""
-        search = SearchPage(self.driver)
-        search.get_url(ini.url)
+        search = SearchPage(drivers)
+        search.get_url("https://www.baidu.com")
 
-    def test_001(self):
+
+    def test_001(self, drivers):
         """搜索"""
-        search = SearchPage(self.driver)
+        search = SearchPage(drivers)
         search.input_search("selenium")
         search.click_search()
         result = re.search(r'selenium', search.get_source)
         log.info(result)
         assert result
 
-    def test_002(self):
+
+    def test_002(self, drivers):
         """测试搜索候选"""
-        search = SearchPage(self.driver)
+        search = SearchPage(drivers)
         search.input_search("selenium")
         log.info(list(search.imagine))
         assert all(["selenium" in i for i in search.imagine])
-
 
 if __name__ == '__main__':
     pytest.main(['test/test_search.py'])

@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a23e3334-f72a-43f3-a405-a3824ada1ee1" name="Default Changelist" comment="添加 config_android.json 配置android 手机测试">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../zspaimai_ui/base/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/../zspaimai_ui/base/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../zspaimai_ui/interface_base/order.py" beforeDir="false" afterPath="$PROJECT_DIR$/../zspaimai_ui/interface_base/order.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../zspaimai_ui/interface_test/goods_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/../zspaimai_ui/interface_test/goods_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../zspaimai_ui/base/webpage.py" beforeDir="false" afterPath="$PROJECT_DIR$/../zspaimai_ui/base/webpage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../zspaimai_ui/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/../zspaimai_ui/conftest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../zspaimai_ui/page/firstp.py" beforeDir="false" afterPath="$PROJECT_DIR$/../zspaimai_ui/page/firstp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../zspaimai_ui/page_element/firstp.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../zspaimai_ui/page_element/firstp.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../zspaimai_ui/test/test_firstp.py" beforeDir="false" afterPath="$PROJECT_DIR$/../zspaimai_ui/test/test_firstp.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

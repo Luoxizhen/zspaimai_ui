@@ -1,9 +1,9 @@
 '''conftest.py测试框架pytest的胶水文件，里面用到了fixture的方法，封装并传递出了driver。
 全局用例共用'''
-# import pytest
-# from py.xml import html
-# from selenium import webdriver
-#
+import pytest
+from py.xml import html
+from selenium import webdriver
+
 #
 # driver = None
 #
@@ -20,8 +20,8 @@
 #
 #     request.addfinalizer(fn)
 #     return driver
-
 #
+
 # @pytest.hookimpl(hookwrapper=True)
 # def pytest_runtest_makereport(item):
 #     """
@@ -45,7 +45,7 @@
 #                 extra.append(pytest_html.extras.html(html))
 #         report.extra = extra
 #
-#
+
 # def pytest_html_results_table_header(cells):
 #     cells.insert(1, html.th('用例名称'))
 #     cells.insert(2, html.th('Test_nodeid'))

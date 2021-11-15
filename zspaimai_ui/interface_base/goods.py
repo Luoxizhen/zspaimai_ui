@@ -1,7 +1,7 @@
 import requests
 import time
 from utils import rwjson, rwcfg, util
-from interface_base.user import update_token, get_user_headers,base_url,admin_headers
+from interface_base.user import update_token, get_user_headers,base_url,admin_headers,mini_headers
 
 
 
@@ -24,7 +24,7 @@ def goods_list(page=1,**goods_info):
 
     r = requests.request('post', url=url, json=info, headers=headers)
     return r
-def bidding(token=None, **bidinfo):
+def bidding(token=None,header=None, **bidinfo):
     '''用户竞买拍品'''
     if token:
         update_token(token)
@@ -36,7 +36,11 @@ def bidding(token=None, **bidinfo):
         if key in json.keys():
             json[key] = bidinfo[key]
 
-    headers = get_user_headers()
+    if header:
+        headers = header
+    else:
+        headers = get_user_headers()
+
     r = requests.request('post', url=url, json=json, headers=headers)
     return r.json()
 def user_bid(token=None):
@@ -147,4 +151,33 @@ def goods_edit(**goods_info):
             info[key] = goods_info[key]
     print(info)
     r = requests.request('post', url=url, json=info, headers=headers)
+    return r
+def list(**list_info):
+    '''前端获取商品列表'''
+    url = base_url + '/user/goods/list'
+    headers = mini_headers
+    # data = "category_id=0&page=2&sort=default&type=2"
+    data = {"category_id":0,
+            "page":1,
+            "sort":"default",
+            "type":2}
+    for key in list_info:
+        if key in data.keys():
+            data[key] = list_info[key]
+    r = requests.request('post', url=url, data=data, headers=headers)
+    return r
+def detail(id):
+    '''前端获取商品详情'''
+    url = base_url + '/user/goods/detail?id=1634'
+    headers = mini_headers
+    data = {"id":id}
+    r = requests.request('get', url=url, data=data, headers=headers)
+    return r
+def add(goods_id, number=1):
+    '''前端添加商品到购物车'''
+    url = base_url + '/user/cart/add'
+    headers = mini_headers
+    # data = "goods_id=1634&goods_number=1"
+    data = {"goods_id": goods_id,"goods_number":number}
+    r = requests.request('post', url=url, data=data, headers=headers)
     return r

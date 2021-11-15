@@ -10,13 +10,14 @@ ICP: xpath==//div[text()="粤ICP备2021041206号"]
 
 移动端: xpath==//span[text()="移动端"]
 移动端二维码: xpath==//body/div[3]/img
-未登陆按钮: xpath==//div[text()="未登录"]
-退出登陆按钮: xpath==//div[text()="退出登录"]
+登陆: xpath==//div[text()="未登录"]
+退出登陆: xpath==//div[text()="退出登录"]
 帮助中心: xpath==//div[text()=" 帮助中心 "]
+昵称: xpath==//div[text()="移动端"]/../div[2]
 
 
-我的竞买按钮: xpath==//div[text()=" 我的竞买 "]
-消息: xpath==//div[text()="消息"]
+我的竞买: xpath==//div[text()=" 我的竞买 "]
+消息: xpath==//span[text()="消息"]
 
 
 我要申请委托: xpath==//div[text()="//*[@id="app"]/div[3]"]
@@ -35,10 +36,21 @@ ICP: xpath==//div[text()="粤ICP备2021041206号"]
 历史为空文本: xpath==//div[text()=" 历史为空 "
 搜索历史框: xpath==//div[@class="historyBox"]
 搜索历史第一条记录: xpath==//div[@class="recoList"]/div[1]
-
-
 登陆框: xpath==//div[@class="login-box"]
+登陆关闭: xpath==//img[@class="login-title-close"]
+账号登陆: id==tab-usernum
+快捷登陆: id==tab-phone
+登陆框标题: xpath==//div[@class="login-title"]/span
+注册: xpath==//div[text()="注册"
+注册框小标题: id==tab-register
 
+微信: xpath==//div[@class="login-box-content"]/div[6]/img
+账号: xpath==//div[@class="login-input"]/div[1]/input
+密码: xpath==//div[@class="login-input"]/div[2]/input
+登陆按钮: xpath==//div[@class="login-footer"]/button/span
+手机: xpath==//div[@class="login-input"]/div[1]/input
+短信验证码: xpath==//div[@class="login-input"]/div[2]/div[1]/input
+发送验证码: xpath==//div[@class="login-input"]/div[2]/button/span
 
 更多拍品: xpath==//div[text()=" 更多拍品 "]
 更多拍品按钮: xpath==//div[text()=" 更多拍品 "]/../div[2]
