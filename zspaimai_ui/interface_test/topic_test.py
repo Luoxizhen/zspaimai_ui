@@ -125,7 +125,7 @@ def list_unrecommend():
     total = r['total']
     for k in range(last_page):
         if last_page > 2 and k != last_page-1:
-            topic_num = 10
+            topic_num = per_page
         elif total > 0:
             topic_num = total - per_page * (last_page-1)
         r = topic.list(**topic_info).json()['data']['data']
@@ -133,16 +133,42 @@ def list_unrecommend():
             topic_id = r[i]['id']
             act_info = {"id": topic_id, "act": "is_recommended", "value": 0}
             topic.edit_action(**act_info)# 取消推荐
+def list_nums(fun,key,**list_info):
+    list=[]
+    r = fun(**list_info).json()['data']
+    last_page = r['last_page']
+    per_page = r['per_page']
+    total = r['total']
+    for i in range(1,last_page+1):
+        r = fun(page=i, **list_info).json()['data']['data']
+        for i in range(len(r)):
+            list.append(r[i][key])
+    print(list)
+    return list
+def test_list_nums():
+    topic_info = {"is_recommended": 1}
+    list_nums(goods.goods_list,'id',**topic_info)
+    assert 1 ==2
 
-def test_add_recommend():
+
+
+
+
+
+
+    '''列表编辑函数'''
+
+
+def add_recommend(**topic_info):
     '''将推奖的专场全部下架，然后上传新专场，并首页推荐'''
-    list_unrecommend()
-    begin_time = round(time.time()) + 120
-    end_time = begin_time + 360000
-    topic_info = {"title": "11月专场", "begin_time": begin_time, "end_time": end_time}
+    # list_unrecommend()
+    # begin_time = round(time.time()) + 120
+    # end_time = begin_time + 360000
+    # topic_info = {"title": "11月专场", "begin_time": begin_time, "end_time": end_time}
     topic_id = topic.add(**topic_info).json()['data']
     act_info = {"id": topic_id, "act": "is_recommended", "value": 1} #首页推荐
     topic.edit_action(**act_info)
+    return topic_id
 def edit_topic():
     '''编辑专场: 将首页推荐的专场进行编辑'''
     search_info = {"is_shelves": 1,"is_recommended":1}

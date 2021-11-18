@@ -15,10 +15,13 @@ def kwargs_to_str(**kwargs):
 
 def object_to_str(*args):
     s1 = "["
+    print(args)
     if args != []:
         for i in range(len(args)):
+            print(len(args))
             if type(args[i]) == dict:
                 temp = json.dumps(args[i])
+                print(temp)
             elif type(args[i]) == int:
                 temp = str(args[i])
             else:
@@ -27,6 +30,7 @@ def object_to_str(*args):
 
                 s1 = s1 + temp + ","
             else:
+                print(s1)
                 s1 = s1 + temp + "]"
     return s1
 

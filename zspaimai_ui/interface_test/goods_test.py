@@ -126,7 +126,7 @@ def goods_unrecommend():
     for i in range(last_page):
         if last_page > 2 and i < last_page-1:
             goods_num = per_page
-        elif total > 0:
+        else:
             goods_num = total - per_page * (last_page-1)
         goods_list = goods.goods_list(**goods_info).json()['data']['data']
         for num in range(goods_num):
@@ -141,21 +141,24 @@ def goods_recommend():
         good_id = r[i]['id']
         act_info = {"id": good_id, "act": "is_recommended", "value": 1}  # 推荐
         goods.goods_edit_action(**act_info)
-def goods_add_recommend():
+def goods_add_recommend(**good_info):
     '''添加一个拍品，并首页推荐'''
     #goods_unrecommend()
     # a = time.strptime('2021-11-9 10:05:00', '%Y-%m-%d %H:%M:%S')
     # b = time.strptime('2021-11-9 10:10:00', '%Y-%m-%d %H:%M:%S')
     # begin_time = time.mktime(a)
     # end_time = time.mktime(b)
-    begin_time = round(time.time())
-    end_time = begin_time + 3600
-    name = '小林工'
-    #lot844-第四套人民币90年50元一枚(麒麟号JQ777777777 PMG66E)
-    good_info = {"name": name, "begin_time": int(begin_time), "end_time": int(end_time), "price":32000}
+    # begin_time = round(time.time())
+    # end_time = begin_time + 3600
+    # name = '小林工'
+    # #lot844-第四套人民币90年50元一枚(麒麟号JQ777777777 PMG66E)
+    # good_info = {"name": name, "begin_time": int(begin_time), "end_time": int(end_time), "price":32000}
     good_id = goods.goods_add(**good_info).json()['data']
+
     act_info = {"id": good_id, "act": "is_recommended", "value": 1}  # 推荐
     goods.goods_edit_action(**act_info)
+    return good_id
+
 
 
 def test_unrecommend():

@@ -1,22 +1,79 @@
-#首页添加的专场
----
-topic1:
-  name: 专场1
-  begin_time: 2021-11-17
-  end_time: 2021-11-18
-
-
-
-...
-
-
-#首页推荐的拍品
----
-good1:
-  name: 拍品1
-  begin_time: 2021-11-17
-  end_time: 2021-11-18
-  price: 10
-
-
-...
+goods:
+  good1:
+    begin_time: 1637226166
+    end_time: 1637229766
+    name: "\u62CD\u54C11"
+    price: 10
+  good2:
+    begin_time: 1637226526
+    end_time: 1637233726
+    name: "\u62CD\u54C12"
+    price: 10
+  good3:
+    begin_time: 1637226886
+    end_time: 1637237686
+    name: "\u62CD\u54C13"
+    price: 10
+  good4:
+    begin_time: 1637227246
+    end_time: 1637241646
+    name: "\u62CD\u54C14"
+    price: 10
+  good5:
+    begin_time: 1637227606
+    end_time: 1637245606
+    name: "\u62CD\u54C15"
+    price: 10
+  good6:
+    begin_time: 1637227966
+    end_time: 1637249566
+    name: "\u62CD\u54C16"
+    price: 10
+  good7:
+    begin_time: 1637228326
+    end_time: 1637253526
+    name: "\u62CD\u54C17"
+    price: 10
+  good8:
+    begin_time: 1637228686
+    end_time: 1637257486
+    name: "\u62CD\u54C18"
+    price: 10
+info:
+  good_ids:
+  - '2786'
+  - '2787'
+  - '2788'
+  - '2789'
+  - '2790'
+  - '2791'
+  - '2792'
+  - '2793'
+  time: 1637226166
+  topic_ids:
+  - '175'
+  - '176'
+  - '177'
+  - '178'
+  - '179'
+topics:
+  topic1:
+    begin_time: 1637226166
+    end_time: 1637229766
+    title: "\u4E13\u573A_1"
+  topic2:
+    begin_time: 1637226526
+    end_time: 1637233726
+    title: "\u4E13\u573A_2"
+  topic3:
+    begin_time: 1637226886
+    end_time: 1637237686
+    title: "\u4E13\u573A_3"
+  topic4:
+    begin_time: 1637227246
+    end_time: 1637241646
+    title: "\u4E13\u573A_4"
+  topic5:
+    begin_time: 1637227606
+    end_time: 1637245606
+    title: "\u4E13\u573A_5"

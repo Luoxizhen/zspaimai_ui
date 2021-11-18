@@ -49,12 +49,14 @@ def goods_add_list(**topic_info):
     r = requests.request('post', url=url, json=info, headers=headers)
     return r
 def add_topic_goods(**topic_info):
-    url = base_url + "/admin/topic/goods_add_list"
+    '''专场添加拍品'''
+    url = base_url + "/admin/topic/add_topic_goods"
     headers = admin_headers
     info = {"topic_id":129,"goods":"[{\"goods_id\":2495,\"is_recommended\":0}]"}
-    # for key in topic_info:
-    #     if key in info.keys():
-    #         info[key] = topic_info[key]
+    for key in topic_info:
+        if key in info.keys():
+            info[key] = topic_info[key]
+    print(info)
     r = requests.request('post', url=url, json=info, headers=headers)
     return r
 def edit(**topic_info):
