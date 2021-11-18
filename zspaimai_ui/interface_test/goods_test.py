@@ -256,6 +256,18 @@ def test_bid_good():
 
 
 
-
+def test_delay():
+    for i in (1,10):
+        name = "新延拍验证-" + str(i) + "分钟"
+        a = time.strptime('2021-11-16 12:02:00', '%Y-%m-%d %H:%M:%S')
+        b = time.strptime('2021-11-16 12:10:00', '%Y-%m-%d %H:%M:%S')
+        begin_time = time.mktime(a)
+        end_time = time.mktime(b)
+        delay_time = i * 60
+        price = 10
+        goods_info = {"name":name,"begin_time":begin_time,"end_time":end_time,"price":price,"delay_time":delay_time}
+        good_id = goods.goods_add(**goods_info).json()['data']
+        act_info = {"id": good_id, "act": "is_recommended", "value": 1}  # 推荐
+        goods.goods_edit_action(**act_info)
 
 

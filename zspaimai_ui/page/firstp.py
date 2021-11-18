@@ -242,6 +242,30 @@ class Firstp(Web):
         self.is_click(firstp['搜索按钮'])
     def search_history(self):
         return self.element_text(firstp['搜索历史第一条记录'])
+    def click_more_collection(self):
+        self.is_click(firstp['更多拍品'])
+    def click_more_colletion_button(self):
+        self.is_click(firstp['更多拍品按钮'])
+
+
+
+
+    def click_topic1(self):
+        self.is_click(firstp["专场一"])
+    def topic1_name(self):
+        return self.element_text(firstp['专场一名称'])
+
+    def topic1_name1(self):
+        return self.element_text(firstp['专场一之名称'])
+    def topic1_status(self):
+        return self.element_text(firstp['专场一状态'])
+    def topic1_end_date(self):
+        return self.element_text(firstp['专场一之结束时间'])
+    def topic1_collection_num(self):
+        return self.element_text(firstp['专场一之拍品数'])
+    def topic1_bid_num(self):
+        return self.element_text(firstp['专场一之出价次数'])
+
 
 
 

@@ -6,6 +6,7 @@ from page.firstp import Firstp
 from test.init import Init2, Init3, Init4, Init5, Init
 from common.readconfig import ini
 from interface_test import goods_test
+import yaml
 class TestFirstp001(Init3,Firstp):
     '''检查页面主要元素显示'''
     def test_title(self):
@@ -251,7 +252,7 @@ class TestTwo:
 
     def test_order(self, order, outer):
         assert order == ["two", "outer"]
-@pytest.mark.skip()
+#@pytest.mark.skip()
 class TestFirstp201:
     '''检查页面主要元素显示'''
     '''http://home.online.zspaimai.cn'''
@@ -368,7 +369,20 @@ class TestFirstp201:
         title = self.driver.title
         fp.back()
         assert '中晟在线-竞买' == title
-
+    def test_click_more_collection(self):
+        '''验证点击页面底部更多拍品，页面正确跳转'''
+        fp = Firstp(self.driver)
+        fp.click_more_collection()
+        title = self.driver.title
+        fp.back()
+        assert '中晟在线-竞买' == title
+    def test_click_more_collection_button(self):
+        '''验证点击页面底部更多拍品后面的按钮，页面正确跳转'''
+        fp = Firstp(self.driver)
+        fp.click_more_colletion_button()
+        title = self.driver.title
+        fp.back()
+        assert '中晟在线-竞买' == title
     # @pytest.mark.skip()
     @pytest.mark.nav
     def test_click_specialP(self):
@@ -412,8 +426,31 @@ class TestFirstp201:
         title = fp.login_title()
         fp.close_login_box()
         assert title == "中晟在线"
-
-
+    def test_topic1_name(self):
+        '''验证专场1的名称显示准确'''
+        fp = Firstp(self.driver)
+        name = fp.topic1_name()
+        assert name == "topic"
+    def test_topic1_name1(self):
+        fp = Firstp(self.driver)
+        name = fp.topic1_name1()
+        assert name == "topic"
+    def test_topic1_status(self):
+        fp = Firstp(self.driver)
+        status = fp.topic1_status()
+        assert status == "进行中"
+    def test_topic1_end_time(self):
+        fp = Firstp(self.driver)
+        end_time = fp.topic1_end_date()
+        assert end_time == "11月30 00:00"
+    def test_topic1_num(self):
+        fp = Firstp(self.driver)
+        num = fp.topic1_collection_num()
+        assert num == '1'
+    def test_topic1_bid_num(self):
+        fp = Firstp(self.driver)
+        num = fp.topic1_bid_num()
+        assert num == '1'
 # @pytest.fixture(scope='class',name="setup")
 # def firstp_setup():
 #     driver = webdriver.Chrome()
@@ -454,8 +491,8 @@ class Testbid:
         fp.search()
         fp.click_search()
         titil = self.driver.title
-
         assert titil == "中晟在线-搜索结果"
+
 
 
 

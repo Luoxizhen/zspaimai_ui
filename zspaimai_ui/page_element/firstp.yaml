@@ -57,9 +57,33 @@ ICP: xpath==//div[text()="粤ICP备2021041206号"]
 发送验证码: xpath==//div[@class="login-input"]/div[2]/button/span
 
 
-更多拍品: xpath==//div[text()=" 更多拍品 "]
-更多拍品按钮: xpath==//div[text()=" 更多拍品 "]/../div[2]
-第一个拍品: xpath==//img[@alt="小林工"]
+更多拍品: xpath==//img[@class="morePrd m-r-7"]
+更多拍品按钮: xpath==//img[@class="morePrd m-r-7"]/../div
+拍品一: xpath==//img[@alt="热门拍品"]/../div/div[1]/div
+拍品一名称: xpath==//img[@alt="热门拍品"]/../div/div[1]/div[2]
+拍品一价格: xpath==//img[@alt="热门拍品"]/../div/div[1]/div[3]
+拍品一竞买按钮: xpath==//img[@alt="热门拍品"]/../div/div[1]/div[4]
+拍品二:
+拍品三:
+拍品四:
+拍品五:
+拍品六:
+拍品七:
+拍品八:
+
+
+专场一: xpath==//img[@alt="热门专场"]/../div/div/div/div[2]/img
+专场一名称: xpath==//img[@alt="热门专场"]/../div/div/div/div[3]/div
+专场一状态: xpath==//img[@alt="热门专场"]/../div/div/div/div
+
+
+专场一之名称: xpath==//img[@alt="热门专场"]/../div/div/div[2]/div[1]
+
+专场一之结束时间: xpath==//img[@alt="热门专场"]/../div/div/div[2]/div[2]/div[1]/div[2]
+专场一之拍品数: xpath==//img[@alt="热门专场"]/../div/div/div[2]/div[2]/div[2]/div[1]/span
+专场一之出价次数: xpath==//img[@alt="热门专场"]/../div/div/div[2]/div[2]/div[2]/div[2]/span
+
+
 
 
 

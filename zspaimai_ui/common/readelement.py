@@ -26,5 +26,5 @@ class Element(object):
 
 
 if __name__ == '__main__':
-    search = Element("firstp")
-    print(search['联系我们'])
+    search = Element("firstp1")
+    print(search['联系我的们'])

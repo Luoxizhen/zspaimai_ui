@@ -12,6 +12,7 @@ def dt_strftime(fmt="%Y%m"):
     :return:
     '''
     return datetime.datetime.now().strftime(fmt)
+
 def sleep(seconds=1.0):
     '''
     睡眠时间
@@ -21,15 +22,21 @@ def sleep(seconds=1.0):
     time.sleep(seconds)
 def running_time(func):
     '''函数运行时间'''
-    @wraps(func)
+    #@wraps(func)
     def wrapper(*args, **kwargs):
         start = timestamp()
         res = func(*args, **kwargs)
         print("检验元素done！用时%.3fs!" %(timestamp()-start))
         return res
     return wrapper
-
+@running_time
+def sleep1():
+    time.sleep(2)
+    print("已经过2s")
 if __name__ == '__main__':
     print(dt_strftime("%Y%m%d%H%M%S"))
+    sleep = running_time(sleep)
+    sleep(2)
+
 
 

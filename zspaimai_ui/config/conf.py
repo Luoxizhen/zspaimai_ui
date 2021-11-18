@@ -8,6 +8,8 @@ class ConfigManager(object):
 
     # 页面元素目录
     ELEMENT_PATH = os.path.join(BASE_DIR, 'page_element')
+    # 测试数据路径
+    WEB_DATA_PATH = os.path.join(BASE_DIR, 'data')
 
     # 报告文件
     report_name = "report_" + dt_strftime(fmt="%Y%m%d_%H%M%S") + '.html'
