@@ -6,70 +6,70 @@ from base.webpage import Web, sleep
 from common.readelement import Element
 firstp = Element("firstp")
 class Firstp(Web):
-    # 页面底部元素定位 ： 新手指南
-    guideL = (By.XPATH, '//div[text()=" 新手指南 "]')
-    # 竞买须知
-    biddingInfo = (By.XPATH, '//div[text()=" 竞买须知 "]')
-    #  关于我们
-    aboutUs = (By.XPATH, '//div[text()=" 关于我们 "]')
-    #  服务协议
-    serviceA = (By.XPATH, '//div[text()=" 服务协议 "]')
-    #  藏品保障
-    collectionGuarantee = (By.XPATH, '//div[text()=" 藏品保障 "]')
-    #  联系我们
-    contactUs = (By.XPATH, '//div[text()=" 联系我们 "]')
-    # 粤ICP备2021041206号
-    ipL = (By.XPATH, '//div[text()="粤ICP备2021041206号"]')
-    # 页面顶部元素定位  top-nav-container content 未登陆
-    loginB = (By.XPATH, '//div[text()="未登录"]')
-    #退出登陆
-    logoutB = (By.XPATH, '//div[text()=" 退出登录 "]')
-    #'帮助中心'
-    helpB = (By.XPATH, '//div[text()=" 帮助中心 "]')
-    #'联系我们'
-    contactB = (By.XPATH, '//div[text()=" 联系我们 "]')
-    #'header - container 我对竞买'
-    myBidB = (By.XPATH, '//div[text()=" 我的竞买 "]')
-    #'header - container 消息'
-    myMsgB = (By.XPATH, '//span[text()="消息"]')
-    #' 我要申请委托'
-    myApplyB = (By.XPATH, '//*[@id="app"]/div[3]')
-    # 页面导航栏元素定位  'header - container:  nav-container-box 首页'
-    firstPage = (By.XPATH, '//span[text()="首页"]')
-    #'header - container:  nav-container-box 竞买'
-    bid = (By.XPATH, '//span[text()="竞买"]')
-    #'header - container:  nav-container-box 专场'
-    specialP = (By.XPATH, '//span[text()="专场"]')
-    #'header - container:  nav-container-box 委托'
-    apply = (By.XPATH, '//span[text()="委托"]')
-    #'搜索框'
-    searchBox = (By.TAG_NAME, 'input')
-    #'搜索按钮'
-    searchButton = (By.XPATH, '//input/../../div[2]')
-    # 搜索历史文本
-    historyText = (By.XPATH, '//span[text()="搜索历史"]')
-    # 删除搜索历史按钮
-    deleteIcon = (By.XPATH, '//span[text()="搜索历史"]/../img')
-    # 历史为空文本
-    historyIsNull = (By.XPATH, '//div[text()=" 历史为空 "]')
-    # 搜索历史框
-    historyBox = (By.XPATH, '//div[@class="historyBox"]')
-    # 搜索历史列表第一条记录
-    lastRecoItem = (By.XPATH, '//div[@class="recoList"]/div[1]')
-
-
-    # 登录框
-    loginBox = (By.XPATH, '//div[@class="login-box"]')
-    # 热门拍品底部 更多拍品
-    moreCollection = (By.XPATH, '//div[text()=" 更多拍品 "]')
-    # 更多拍品后的 按钮
-    moreCollectionId = (By.XPATH, '//div[text()=" 更多拍品 "]/../div[2]')
-    # 中晟在线二维码
-    qrcode = (By.XPATH, '//img[@class="qrcode"]')
-    # 广告关闭按钮
-    airCommandClose = (By.XPATH, '//img[@class="cursor close"]')
-    # 广告体
-    airCommand = (By.XPATH, '//div[@class="airCommand"]')
+    # # 页面底部元素定位 ： 新手指南
+    # guideL = (By.XPATH, '//div[text()=" 新手指南 "]')
+    # # 竞买须知
+    # biddingInfo = (By.XPATH, '//div[text()=" 竞买须知 "]')
+    # #  关于我们
+    # aboutUs = (By.XPATH, '//div[text()=" 关于我们 "]')
+    # #  服务协议
+    # serviceA = (By.XPATH, '//div[text()=" 服务协议 "]')
+    # #  藏品保障
+    # collectionGuarantee = (By.XPATH, '//div[text()=" 藏品保障 "]')
+    # #  联系我们
+    # contactUs = (By.XPATH, '//div[text()=" 联系我们 "]')
+    # # 粤ICP备2021041206号
+    # ipL = (By.XPATH, '//div[text()="粤ICP备2021041206号"]')
+    # # 页面顶部元素定位  top-nav-container content 未登陆
+    # loginB = (By.XPATH, '//div[text()="未登录"]')
+    # #退出登陆
+    # logoutB = (By.XPATH, '//div[text()=" 退出登录 "]')
+    # #'帮助中心'
+    # helpB = (By.XPATH, '//div[text()=" 帮助中心 "]')
+    # #'联系我们'
+    # contactB = (By.XPATH, '//div[text()=" 联系我们 "]')
+    # #'header - container 我对竞买'
+    # myBidB = (By.XPATH, '//div[text()=" 我的竞买 "]')
+    # #'header - container 消息'
+    # myMsgB = (By.XPATH, '//span[text()="消息"]')
+    # #' 我要申请委托'
+    # myApplyB = (By.XPATH, '//*[@id="app"]/div[3]')
+    # # 页面导航栏元素定位  'header - container:  nav-container-box 首页'
+    # firstPage = (By.XPATH, '//span[text()="首页"]')
+    # #'header - container:  nav-container-box 竞买'
+    # bid = (By.XPATH, '//span[text()="竞买"]')
+    # #'header - container:  nav-container-box 专场'
+    # specialP = (By.XPATH, '//span[text()="专场"]')
+    # #'header - container:  nav-container-box 委托'
+    # apply = (By.XPATH, '//span[text()="委托"]')
+    # #'搜索框'
+    # searchBox = (By.TAG_NAME, 'input')
+    # #'搜索按钮'
+    # searchButton = (By.XPATH, '//input/../../div[2]')
+    # # 搜索历史文本
+    # historyText = (By.XPATH, '//span[text()="搜索历史"]')
+    # # 删除搜索历史按钮
+    # deleteIcon = (By.XPATH, '//span[text()="搜索历史"]/../img')
+    # # 历史为空文本
+    # historyIsNull = (By.XPATH, '//div[text()=" 历史为空 "]')
+    # # 搜索历史框
+    # historyBox = (By.XPATH, '//div[@class="historyBox"]')
+    # # 搜索历史列表第一条记录
+    # lastRecoItem = (By.XPATH, '//div[@class="recoList"]/div[1]')
+    #
+    #
+    # # 登录框
+    # loginBox = (By.XPATH, '//div[@class="login-box"]')
+    # # 热门拍品底部 更多拍品
+    # moreCollection = (By.XPATH, '//div[text()=" 更多拍品 "]')
+    # # 更多拍品后的 按钮
+    # moreCollectionId = (By.XPATH, '//div[text()=" 更多拍品 "]/../div[2]')
+    # # 中晟在线二维码
+    # qrcode = (By.XPATH, '//img[@class="qrcode"]')
+    # # 广告关闭按钮
+    # airCommandClose = (By.XPATH, '//img[@class="cursor close"]')
+    # # 广告体
+    # airCommand = (By.XPATH, '//div[@class="airCommand"]')
 
 
     def click_loginB(self):
@@ -211,8 +211,7 @@ class Firstp(Web):
         return self.element_text(firstp["登陆框标题"])
     def nickname(self):
         return self.element_text(firstp['昵称'])
-    def click_collection(self):
-        self.is_click(firstp['第一个拍品'])
+
     def click_num_login(self):
         self.is_click(firstp['账号登录'])
     def click_phone_login(self):
@@ -249,7 +248,7 @@ class Firstp(Web):
 
 
 
-
+    #专场操作
     def click_topic1(self):
         self.is_click(firstp["专场一"])
     def topic1_name(self):
@@ -258,7 +257,7 @@ class Firstp(Web):
     def topic1_name1(self):
         return self.element_text(firstp['专场一之名称'])
     def topic1_status(self):
-        return self.element_text(firstp['专场一状态'])
+        return self.element_text(firstp['专场一状态']) #进行中，预展，已结束
     def topic1_end_date(self):
         return self.element_text(firstp['专场一之结束时间'])
     def topic1_collection_num(self):
@@ -267,7 +266,19 @@ class Firstp(Web):
         return self.element_text(firstp['专场一之出价次数'])
 
 
-
+    #拍品操作
+    def click_collection(self):
+        self.is_click(firstp['拍品一'])
+    def click_collection_detail(self):
+        self.is_click(firstp['拍品详情'])
+    def collection_name(self):
+        return self.element_text(firstp['拍品一名称'])
+    def collection_price(self):
+        return self.element_text(firstp['拍品一价格']) #￥10.00
+    def click_bid(self):
+        self.is_click(firstp['拍品一竞买按钮'])
+    def collection_status(self):
+        return self.element_text(firstp['拍品一状态']) #正在拍卖、未开始、流拍、已结束
 
 
 

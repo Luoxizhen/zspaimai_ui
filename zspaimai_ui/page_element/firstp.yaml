@@ -16,6 +16,7 @@ ICP: xpath==//div[text()="粤ICP备2021041206号"]
 昵称: xpath==//div[text()=" 退出登录 "]/../div[2]
 
 
+
 我的竞买: xpath==//div[text()=" 我的竞买 "]
 消息: xpath==//span[text()="消息"]
 
@@ -63,6 +64,7 @@ ICP: xpath==//div[text()="粤ICP备2021041206号"]
 拍品一名称: xpath==//img[@alt="热门拍品"]/../div/div[1]/div[2]
 拍品一价格: xpath==//img[@alt="热门拍品"]/../div/div[1]/div[3]
 拍品一竞买按钮: xpath==//img[@alt="热门拍品"]/../div/div[1]/div[4]
+拍品一状态: xpath==//img[@alt="热门拍品"]/../div/div/div/div
 拍品二:
 拍品三:
 拍品四:
@@ -70,6 +72,7 @@ ICP: xpath==//div[text()="粤ICP备2021041206号"]
 拍品六:
 拍品七:
 拍品八:
+拍品详情: xpath==//img[@alt="拍品1"]
 
 
 专场一: xpath==//img[@alt="热门专场"]/../div/div/div/div[2]/img

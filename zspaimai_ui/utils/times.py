@@ -33,10 +33,21 @@ def running_time(func):
 def sleep1():
     time.sleep(2)
     print("已经过2s")
+
+def time_to_str(t):
+    lt = time.localtime(t)
+    print(lt)
+    r = time.strftime("%Y-%m-%d %H:%M:%S", lt)
+    return r
+def str_to_time(str):
+    p_tuple = time.strptime(str, "%Y-%m-%d %H:%M:%S")
+    t = time.mktime(p_tuple)
+    return round(t)
+
+
 if __name__ == '__main__':
-    print(dt_strftime("%Y%m%d%H%M%S"))
-    sleep = running_time(sleep)
-    sleep(2)
+   p = "2021_11_18-180246"
+   print(str_to_time(p))
 
 
 

@@ -133,22 +133,7 @@ def list_unrecommend():
             topic_id = r[i]['id']
             act_info = {"id": topic_id, "act": "is_recommended", "value": 0}
             topic.edit_action(**act_info)# 取消推荐
-def list_nums(fun,key,**list_info):
-    list=[]
-    r = fun(**list_info).json()['data']
-    last_page = r['last_page']
-    per_page = r['per_page']
-    total = r['total']
-    for i in range(1,last_page+1):
-        r = fun(page=i, **list_info).json()['data']['data']
-        for i in range(len(r)):
-            list.append(r[i][key])
-    print(list)
-    return list
-def test_list_nums():
-    topic_info = {"is_recommended": 1}
-    list_nums(goods.goods_list,'id',**topic_info)
-    assert 1 ==2
+
 
 
 

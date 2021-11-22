@@ -475,14 +475,16 @@ def add_goods():
     good_ids = []
     for i in range(1,9):
         name = 'good' + str(i)
-        begin_time = now + 360 * (i-1)
-        end_time = begin_time + 3600 * i
+        begin_time = now + 3600 * (i-1)
+        end_time = begin_time + 86400 * i
         new_goods_info[name]['begin_time'] = begin_time
         new_goods_info[name]['end_time'] = end_time
         good_info = new_goods_info[name]
-
         good_id = goods_test.goods_add_recommend(**good_info)
+        new_goods_info[name]['begin_time'] = times.time_to_str(begin_time)
+        new_goods_info[name]['end_time'] = times.time_to_str(end_time)
         good_ids.append(good_id)
+
     info = pd.data['info']
     info['good_ids'] = good_ids
     info['time'] = now
@@ -499,13 +501,14 @@ def add_topic():
     topic_ids = []
     for i in range(1, 6):
         name = 'topic' + str(i)
-        begin_time = time + 360 * (i - 1)
-        end_time = begin_time + 3600 * i
+        begin_time = time + 3600 * (i - 1)
+        end_time = begin_time + 86400 * i
         new_topics_info[name]['begin_time'] = begin_time
         new_topics_info[name]['end_time'] = end_time
         topic_info = new_topics_info[name]
-
         topic_id = topic_test.add_recommend(**topic_info)
+        new_topics_info[name]['begin_time'] = times.time_to_str(begin_time)
+        new_topics_info[name]['end_time'] = times.time_to_str(end_time)
         topic_ids.append(topic_id)
     info = pd.data['info']
     info['topic_ids'] = topic_ids
@@ -529,13 +532,15 @@ def topic_add_goods():
     print(add_topic_goods(**topic_good_info).json())
 
 
-@pytest.mark.usefixtures('add_goods','add_topic','topic_add_goods')
+#@pytest.mark.usefixtures('add_goods','add_topic','topic_add_goods')
 class Testbid:
     '''首页点击拍品'''
     pd = Pagedata('firstp')
     topic_info = pd['topics']['topic1']
+    good_info = pd['goods']['good1']
 
     def setup_class(self):
+        time.sleep(10)
         self.driver = webdriver.Chrome()
         self.driver.maximize_window()
         print(ini.url)
@@ -553,7 +558,7 @@ class Testbid:
     def test_topic1_name1(self):
         fp = Firstp(self.driver)
         name = fp.topic1_name1()
-        assert name == self.topic_info['name']
+        assert name == self.topic_info['title']
 
     def test_topic1_status(self):
         fp = Firstp(self.driver)
@@ -575,6 +580,21 @@ class Testbid:
         num = fp.topic1_bid_num()
         assert num == '0'
 
+    def test_good1_name(self):
+        '''验证拍品一名称显示准确'''
+        fp = Firstp(self.driver)
+        name = fp.collection_name()
+        assert name == self.good_info['name']
+    def test_good1_status(self):
+        '''验证拍品一状态'''
+        fp = Firstp(self.driver)
+        status = fp.collection_status()
+        assert status == "正在拍卖"
+    def test_good1_price(self):
+        '''验证拍品一价格'''
+        fp = Firstp(self.driver)
+        price = fp.collection_price()
+        assert price == "￥10.00"
 
 
 
