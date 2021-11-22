@@ -9,18 +9,27 @@
 #用户操作信息
 优惠劵:
 查看更多:
-收藏: xpath==//div[text()="竞买时间："]/../../div/div[1]/img
-提醒: xpath==//div[text()="竞买时间："]/../../div/div[1]/img[1]
+收藏: xpath==//div[text()="竞买时间："]/../../div/div[2]/img[1]
+#//span[text()="拍品*"]/../../div[2]/img
+#//div[text()="竞买时间："]/../../div/div[2]/img[1]
+提醒: xpath==//div[text()="竞买时间："]/../../div/div[2]/img[2]
+#//span[text()="拍品*"]/../../div[2]/img[2]
+#//div[text()="竞买时间："]/../../div/div[2]/img[2]
 出价按钮: xpath==//div[@class="sell-button fz-18 cursor"]
+# 出代理价按钮
+更新代理价: xpath==//div[@class="update-button cursor fz-18"]
 本场昵称: //*[@id="app"]/div[2]/div/div[1]/div[2]/div[7]/div
 切换昵称: xpath==//div[text()=" 切换昵称 "]
+切换昵称图标: xpath==//div[text()=" 切换昵称 "]/../img
 出价状态: xpath==//div[text()="当前价"]/../div[2] #" 未出价"
-竞买额度: xpath==//div[text()=" 竞买额度 "]/../div[1]
+我的状态: xpath==//div[text()="当前价"]/../div[3]
+竞买额度: xpath==//div[text()=" 竞买额度 "]/../div[2]
 出价记录数目: xpath==//span[text()="出价记录"]/../span[2]
 出价记录: xpath==//span[text()="出价记录"]/../../div[2]
 出价+: xpath==//div[text()=" + "]
 出价-: xpath==//div[text()="-"]
 出价金额: tag==input
+关闭代理: xpath==//div[text()=" 关闭代理 "]
 #其余信息
 竞拍流程:
 支付方式: xpath==//*[@id="app"]/div[2]/div/div[4]/div[1]
@@ -35,5 +44,25 @@
 登陆按钮: xpath==//div[@class="login-footer"]/button/span
 账号登录: id==tab-usernu
 
+# 弹窗信息
+#弹窗: xpath==//*[@id="app"]/div[5]/div/div[1]/button
+关闭弹窗: xpath==//*[@id="app"]/div[5]/div/div[1]/button
+  #xpath==//div[@class="el-dialog__headerbtn"]
+# xpath==//*[@id="app"]/div[5]/div/div[1]/button
+# //*[@id="app"]/div[5]/div/div[1]/button
+# //button[@aria-lable="close"]
+弹窗信息: xpath==//*[@id="app"]/div[5]/div/div[2]/div
+#xpath==//div[@role="dialog"]/div[2]/div
+弹窗确认: xpath==//*[@id="app"]/div[5]/div/div[3]/span/button[1]
+
+  #xpath==//div[@role="dialog"]/div[3]/span/button[1]
+弹窗拒绝: xpath==//*[@id="app"]/div[5]/div/div[3]/span/button[2]
 
 
+
+
+
+
+# 提示信息
+提示信息: xpath==//p[@class=el-message__content"]
+#内容：请勿重复出同样代理价
