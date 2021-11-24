@@ -22,7 +22,8 @@ class ConfigManager(object):
         'name': By.NAME,
         'id': By.ID,
         'class': By.CLASS_NAME,
-        'tag': By.TAG_NAME
+        'tag': By.TAG_NAME,
+        'link': By.LINK_TEXT
     }
 
     # 邮件信息

@@ -235,6 +235,7 @@ class Firstp(Web):
 
 
 
+
     def search(self, good_name="小林工"):
         self.input_text(firstp['搜索框'],good_name)
     def click_search(self):

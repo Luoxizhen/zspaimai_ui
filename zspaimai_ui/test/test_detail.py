@@ -17,8 +17,8 @@ class TestCollectionInfo:
         fp.click_collection_detail()
         self.driver.switch_to.window(self.driver.window_handles[-1])
 
-        if fp.is_diplayed_loginbox()==1:
-            fp.click_close_login()
+        if fp.is_display_login_box()==1:
+            fp.close_login_box()
         self.dp = Detail(self.driver)
 
 
@@ -94,6 +94,152 @@ class TestCollectionInfo:
         assert self.dp.nickname() == " 本场昵称：未登录"
     def test_button_text(self):
         assert self.dp.button_text() == "立即出价"
+    def test_minus(self):
+        self.dp.send_price(49)
+        self.dp.minus()
+        assert self.dp.bid_price() == '48'
+        self.dp.send_price(51)
+        self.dp.minus()
+        assert self.dp.bid_price() == '50'
+        # self.dp.send_price(51.500004)
+        # self.dp.minus()
+        # assert self.dp.bid_price() == '50'
+
+        self.dp.send_price(52)
+        self.dp.minus()
+        assert self.dp.bid_price() == '50'
+
+        self.dp.send_price(99)
+        self.dp.minus()
+        assert self.dp.bid_price() == '98'
+        self.dp.send_price(101)
+        self.dp.minus()
+        assert self.dp.bid_price() == '100'
+
+        self.dp.send_price(100)
+        self.dp.minus()
+        assert self.dp.bid_price() == '98'
+        self.dp.send_price(105)
+        self.dp.minus()
+        assert self.dp.bid_price() == '100'
+        self.dp.send_price(500)
+        self.dp.minus()
+        assert self.dp.bid_price() == '495'
+        self.dp.send_price(510)
+        self.dp.minus()
+        assert self.dp.bid_price() == '500'
+        self.dp.send_price(1000)
+        self.dp.minus()
+        assert self.dp.bid_price() == '990'
+        self.dp.send_price(1025)
+        self.dp.minus()
+        assert self.dp.bid_price() == '1020'
+        self.dp.send_price(2000)
+        self.dp.minus()
+        assert self.dp.bid_price() == '1980'
+        self.dp.send_price(2049)
+        self.dp.minus()
+        assert self.dp.bid_price() == '2000'
+        self.dp.send_price(5000)
+        self.dp.minus()
+        assert self.dp.bid_price() == '4950'
+        self.dp.send_price(5100)
+        self.dp.minus()
+        assert self.dp.bid_price() == '5000'
+        self.dp.send_price(10000)
+        self.dp.minus()
+        assert self.dp.bid_price() == '9900'
+        self.dp.send_price(10200)
+        self.dp.minus()
+        assert self.dp.bid_price() == '10000'
+        self.dp.send_price(20000)
+        self.dp.minus()
+        assert self.dp.bid_price() == '19800'
+        self.dp.send_price(20400)
+        self.dp.minus()
+        assert self.dp.bid_price() == '20000'
+        self.dp.send_price(50000)
+        self.dp.minus()
+        assert self.dp.bid_price() == '49500'
+        self.dp.send_price(51000)
+        self.dp.minus()
+        assert self.dp.bid_price() == '50000'
+        self.dp.send_price(200000)
+        self.dp.minus()
+        assert self.dp.bid_price() == '199000'
+        self.dp.send_price(20000000000)
+        self.dp.minus()
+        assert self.dp.bid_price() == '19999998000'
+    def test_add(self):
+        self.dp.send_price(49)
+        self.dp.add()
+        assert self.dp.bid_price() == '50'
+        self.dp.send_price(51)
+        self.dp.add()
+        assert self.dp.bid_price() == '52'
+        # self.dp.send_price(51.500004)
+        # self.dp.add()
+        # assert self.dp.bid_price() == '52'
+        self.dp.send_price(98)
+        self.dp.add()
+        assert self.dp.bid_price() == '100'
+
+        self.dp.send_price(100)
+        self.dp.add()
+        assert self.dp.bid_price() == '105'
+        self.dp.send_price(496)
+        self.dp.add()
+        assert self.dp.bid_price() == '500'
+
+
+        self.dp.send_price(500)
+        self.dp.add()
+        assert self.dp.bid_price() == '510'
+        self.dp.send_price(990)
+        self.dp.add()
+        assert self.dp.bid_price() == '1000'
+        self.dp.send_price(1000)
+        self.dp.add()
+        assert self.dp.bid_price() == '1020'
+        self.dp.send_price(1980)
+        self.dp.add()
+        assert self.dp.bid_price() == '2000'
+        self.dp.send_price(2000)
+        self.dp.add()
+        assert self.dp.bid_price() == '2050'
+        self.dp.send_price(4950)
+        self.dp.add()
+        assert self.dp.bid_price() == '5000'
+        self.dp.send_price(5000)
+        self.dp.add()
+        assert self.dp.bid_price() == '5100'
+        self.dp.send_price(9900)
+        self.dp.add()
+        assert self.dp.bid_price() == '10000'
+        self.dp.send_price(10000)
+        self.dp.add()
+        assert self.dp.bid_price() == '10200'
+        self.dp.send_price(19800)
+        self.dp.add()
+        assert self.dp.bid_price() == '20000'
+        self.dp.send_price(20000)
+        self.dp.add()
+        assert self.dp.bid_price() == '20500'
+        self.dp.send_price(49500)
+        self.dp.add()
+        assert self.dp.bid_price() == '50000'
+        self.dp.send_price(50000)
+        self.dp.add()
+        assert self.dp.bid_price() == '51000'
+        self.dp.send_price(199500)
+        self.dp.add()
+        assert self.dp.bid_price() == '200000'
+        self.dp.send_price(200000)
+        self.dp.add()
+        assert self.dp.bid_price() == '202000'
+        self.dp.send_price(19999998000)
+        self.dp.add()
+        assert self.dp.bid_price() == '20000000000'
 
 
 class TestBid:
@@ -118,16 +264,16 @@ class TestBid:
     def test_bid_001(self):
         #self.dp.bid()
         #self.dp.refresh()
-        # print(self.quota)
-        quota = int(self.dp.bid_quota())
-        pd = Pagedata("detail")
-        user_data = pd['users']
-        user_data['user1']['quota'] = quota
-        pd.setitem("users",user_data)
+        print(self.quota)
+        # quota = int(self.dp.bid_quota())
+        # pd = Pagedata("detail")
+        # user_data = pd['users']
+        # user_data['user1']['quota'] = quota
+        # pd.setitem("users",user_data)
 
-        # self.quota =100
-        # print(self.dp.bid_quota())
-        # print(self.quota)
+        self.quota =100
+        print(self.dp.bid_quota())
+        print(self.quota)
         assert self.dp.button_text() == "出代理价"
         assert self.dp.collection_price() == "￥"+str(good_info['price'])+".00"
         assert self.dp.bid_price() == str(good_info['price'] + 1)

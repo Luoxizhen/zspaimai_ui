@@ -91,3 +91,12 @@ class Detail(Web):
         self.element_text(dp['弹窗信息'])
     def tip(self):
         return self.element_text(dp['提示信息'])
+
+
+    # 点击常见问题
+    def alway_ask(self):
+        self.is_click(dp['常见问题'])
+    def alway_ask1(self):
+        self.is_click(dp['常见问题按钮'])
+    def is_displayed_of_alway_ask(self):
+        return self.find_element(dp['常见问题弹窗']).is_displayed()
