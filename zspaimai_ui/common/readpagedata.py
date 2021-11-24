@@ -25,6 +25,11 @@ class Pagedata:
         with open(self.file_path, 'w', encoding='utf-8') as f:
             yaml.dump(self.data, stream=f)
             f.close()
+    def setitem_c(self, key, child, value):
+        self.data[key][child] = value
+        with open(self.file_path, 'w', encoding='utf-8') as f:
+            yaml.dump(self.data, stream=f)
+            f.close()
 
 if __name__ == '__main__':
     time1 = round(times.timestamp())

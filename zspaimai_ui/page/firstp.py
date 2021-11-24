@@ -279,7 +279,8 @@ class Firstp(Web):
         self.is_click(firstp['拍品一竞买按钮'])
     def collection_status(self):
         return self.element_text(firstp['拍品一状态']) #正在拍卖、未开始、流拍、已结束
-
+    def click_nickname(self):
+        self.is_click(firstp['昵称'])
 
 
 

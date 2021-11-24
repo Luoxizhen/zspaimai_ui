@@ -6,6 +6,7 @@ from selenium import webdriver
 from page.firstp import Firstp
 from common.readpagedata import Pagedata
 good_info = Pagedata('firstp')['goods']['good1']
+
 class TestCollectionInfo:
     '''验证拍品基本信息'''
     def setup_class(self):
@@ -105,6 +106,7 @@ class TestBid:
         fp = Firstp(self.driver)
         fp.click_collection_detail()
         self.driver.switch_to.window(self.driver.window_handles[-1])
+
         if fp.is_display_login_box() == 1:
             fp.click_num_login()
             fp.send_num('15622145010')
@@ -113,16 +115,30 @@ class TestBid:
         self.dp = Detail(self.driver)
     def teardown_class(self):
         self.driver.quit()
-    def bid_001(self):
+    def test_bid_001(self):
         #self.dp.bid()
-        self.dp.refresh()
+        #self.dp.refresh()
+        # print(self.quota)
+        quota = int(self.dp.bid_quota())
+        pd = Pagedata("detail")
+        user_data = pd['users']
+        user_data['user1']['quota'] = quota
+        pd.setitem("users",user_data)
+
+        # self.quota =100
+        # print(self.dp.bid_quota())
+        # print(self.quota)
         assert self.dp.button_text() == "出代理价"
         assert self.dp.collection_price() == "￥"+str(good_info['price'])+".00"
         assert self.dp.bid_price() == str(good_info['price'] + 1)
         assert self.dp.my_status() == "领先"
         assert self.dp.buyer_service_rate() == "成交需支付￥21.00 (其中含服务费：￥10.00，费率 10%，最低10元)"
         assert self.dp.bid_num() == '(1)'
-        assert self.dp.bid_quota() == "5000015040446"
+
+
+        #quota = Pagedata("personal")['info']['quota']
+
+        #assert self.dp.bid_quota() == quota
     @pytest.mark.skip()
     def test_click_favorite(self):
         self.dp.favorite()
@@ -136,15 +152,17 @@ class TestBid:
         time.sleep(3)
         a = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAhCAMAAACP+FljAAAAjVBMVEUAAACoABPDEzDDEzDDFDC8ECm2ACPDEzDDEzDDEzDCEzDCEjDCEi/CES3ADyy/CyrDFDDDEzDCEzDCEzDDEzDCEzDAEzDCEi6+ECrDEzDCEzDDEzDCEzDDEzDCEy/CEi/BETHCEi/CDi+5DSbDFDHDEzDDETHBEy/DEzDCFDDDEzHCEy/CETDDFDH///9MeZsOAAAALXRSTlMABMn7+A8JxPLvpX5hMhoV6tGilY6EQDce5ODBsat5ckcpJA3c11lOurWIbDs0En7jAAABE0lEQVQ4y33S17KCQBBF0TMDDDlLMGe96fj/n3cFLSzQmfXa+6G7qtFrVhEmolWDwcWnRCfdN80+RUfSv+BBhBbnNRBXbmaTduZWMVAvaIUCd05BygPqb4sDe/WHgyQLB0BAro+qfI6HZKaOazIAUHoVEpdvlgkqrwQgWiQ5P5ApWoGOWvKjL4WHH2qE6MU2Nbw9OgG1CtwdPL7cbqPAbwH8Uh8wArA2BQEgzqYgF0gzUzB30HqmwE+Q+OOgN3RZCmduChYKQtLABVDSYAbgSoMdAGdBrdMRdxtqbdFxTtQ4O+hdLX5k7fAUGh+qM9OdONjYnLA3GNlJjsgaEyqS1rCdGym8E/E2cPN8WWxjAS0xnf0DtH5+r8QWNBAAAAAASUVORK5CYII="
         assert self.dp.remind_src() == a
-    @pytest.mark.skip()
+    # @pytest.mark.skip()
     def test_bid_002(self):
         '''验证出代理价功能'''
-        self.dp.refresh()
+        #self.dp.refresh()
         self.dp.bid()
         assert self.dp.buyer_service_rate() == "成交需支付￥21.00 (其中含服务费：￥10.00，费率 10%，最低10元)"
-
         assert "当前代理价￥11.00 (更新)" in self.dp.proxy()
         assert self.dp.my_status() == "代理·领先"
+        quota = Pagedata('detail')['users']['user1']['quota']
+        assert self.dp.bid_quota() == str(quota - 1)
+        # self.quota = self.dp.bid_quota()
 
     @pytest.mark.skip()
     def test_bid_003(self):
@@ -162,43 +180,54 @@ class TestBid:
     def test_bid_004(self):
         '''验证"是否关闭代理"弹窗，否按钮功能'''
         self.dp.close_proxy()
-
         self.dp.refuse_alert()
         assert "当前代理价￥11.00 (更新)" in self.dp.proxy()
     def test_bid_005(self):
         '''验证"是否关闭代理"弹窗，是按钮功能'''
         self.dp.close_proxy()
-
         self.dp.accept_alert()
         assert "出代理价" in self.dp.button_text()
+        quota = Pagedata('detail')['users']['user1']['quota']
+        assert self.dp.bid_quota() == str(quota)
     def test_bid_006(self):
-        '''验证"是否关闭代理"弹窗，是按钮功能'''
-        self.dp.refresh()
+        '''验证关闭代理后，重新出价'''
+        #self.dp.refresh()
         time.sleep(2)
         self.dp.bid()
         assert self.dp.buyer_service_rate() == "成交需支付￥21.00 (其中含服务费：￥10.00，费率 10%，最低10元)"
-
         assert "当前代理价￥11.00 (更新)" in self.dp.proxy()
         assert self.dp.my_status() == "代理·领先"
+        quota = Pagedata('detail')['users']['user1']['quota']
+        assert self.dp.bid_quota() == str(quota -1)
+
+    @pytest.mark.skip()
     def test_bid_007(self):
         self.dp.change_price()
         tip = "请勿重复出同样代理价"
         assert self.dp.tip() == tip
     def test_bid_008(self):
+        '''验证默认代理价情况下，点 - ，代理价不变'''
+        bid_price = self.dp.bid_price()
         self.dp.minus()
-        assert self.dp.bid_price() == '11'
+        assert self.dp.bid_price() == bid_price
     def test_bid_009(self):
+        '''验证默认代理价情况下，点 +，代理价 +1'''
+        bid_price = self.dp.bid_price()
         self.dp.add()
-        assert self.dp.bid_price() == '12'
+        assert self.dp.bid_price() == str(int(bid_price)+1)
     def test_bid_010(self):
+        '''验证更新代理价情况'''
         self.dp.change_price()
-        assert self.dp.bid_quota() == "5000015040454"
-        assert self.dp.buyer_service_rate() == "成交需支付￥21.00 (其中含服务费：￥10.00，费率 10%，最低10元)"
+        quota = Pagedata('detail')['users']['user1']['quota']
+        assert self.dp.bid_quota() == str(quota - 2)
+        assert self.dp.buyer_service_rate() == "成交需支付￥22.00 (其中含服务费：￥10.00，费率 10%，最低10元)"
         assert "当前代理价￥12.00 (更新)" in self.dp.proxy()
     def test_bid_011(self):
-        self.dp.send_price(15)
+        '''验证更新代理价后-1'''
+        bid_price = int(self.dp.bid_price()) +5
+        self.dp.send_price(bid_price)
         self.dp.minus()
-        assert self.dp.bid_price() == '14'
+        assert self.dp.bid_price() == str(bid_price -1)
 
 
 

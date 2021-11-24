@@ -9,7 +9,7 @@ class Element(object):
     """获取元素"""
 
     def __init__(self, name):
-        self.file_name = '%s.yaml' % name
+        self.file_name = '%s.yml' % name
         self.element_path = os.path.join(cm.ELEMENT_PATH, self.file_name)
         if not os.path.exists(self.element_path):
             raise FileNotFoundError("%s 文件不存在！" % self.element_path)

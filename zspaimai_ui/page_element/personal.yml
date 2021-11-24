@@ -1,0 +1,19 @@
+钱包余额: xpath==//div[text()=" 钱包余额 "]/../div[2]
+余额用途: xpath==//div[text()=" 钱包余额 "]/../div[3]
+查看余额: xpath==//div[text()=" 钱包余额 "]/../../div[2]
+竞买额度: xpath==//div[text()=" 竞买额度 "]/../div[2]
+额度用途: xpath==//div[text()=" 竞买额度 "]/../div[3]
+查看额度: xpath==//div[text()=" 竞买额度 "]/../../div[2]
+默认昵称: xpath==//div[@class="info"]/div
+用户编码: xpath==//div[@class="info"]/div[2]
+待支付: xpath==//div[text()="我的订单"]/../div[2]/div[1]/div
+待支付1:  xpath==//div[text()="我的订单"]/../div[2]/div[1]/div/p
+待发货: xpath==//div[text()="我的订单"]/../div[2]/div[2]/div
+待发货1: xpath==//div[text()="我的订单"]/../div[2]/div[2]/div/p
+待收货: xpath==//div[text()="我的订单"]/../div[2]/div[3]/div
+待收货1: xpath==//div[text()="我的订单"]/../div[2]/div[3]/div/p
+我的订单展开: xpath==//div[text()="我的订单"]/../div[2]/div[4]/div
+全部: xpath==//div[text()="我的订单"]/../div[2]/div[5]/div
+全部1: xpath==//div[text()="我的订单"]/../div[2]/div[5]/div/p
+
+
