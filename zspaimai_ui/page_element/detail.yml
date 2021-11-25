@@ -11,12 +11,14 @@
 #常见问题
 常见问题: xpath==//div[text()="常见问题"]
 常见问题按钮: xpath==//div[text()="常见问题"]/../div[2]
-常见问题弹窗: id==el-popper-2406
+常见问题弹窗: xpath==//div[text()="竞买常见问题"]/../div
 竞买常见问题: xpath==//div[@id="el-popper-2406"]/div
-点击阅读详情: link=="点击阅读详情"
+点击阅读详情: xpath==//a[text()="点击阅读详情"]
 #用户操作信息
 优惠劵:
-查看更多:
+查看更多: xpath==//div[text()=" 查看更多 "]
+关闭出价记录: xpath==//*[@id="app"]/div[3]/div/div[1]/button
+
 收藏: xpath==//div[text()="竞买时间："]/../../div/div[2]/img[1]
 #//span[text()="拍品*"]/../../div[2]/img
 #//div[text()="竞买时间："]/../../div/div[2]/img[1]

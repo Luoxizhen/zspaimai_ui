@@ -1,9 +1,11 @@
 from interface_base import goods
+from interface_base.user import user_login
 import pytest
 import time
 from utils import util
 from utils.rwjson import RwJson
 import random
+
 
 def goods_add():
     begin_time = round(time.time())+120
@@ -159,7 +161,38 @@ def test_recommend():
     goods_recommend()
 def test_goods_add_recommend():
     goods_add_recommend()
+def test_good_edit():
+    info = {"name": "拍品6", "retain_price": "100"}
+    good_edit(2799, **info)
 
+
+def good_edit(good_id,**good_info):
+    act_info = {"id": good_id, "is_shelves": 0}
+    goods.goods_edit_shelves(**act_info)  # 拍品下架
+    good_info_json = {"id": good_id}
+    goods_json = goods.goods_info(**good_info_json).json()['data']
+
+    begin_time = round(time.time()) + 60
+    end_time = begin_time + 360
+    topic_id = "[" + str(goods_json['topic_id'][0]) + "]"
+    images = "[" + '"' + goods_json['images'][0] + '"' + "]"
+    original_image = "[" + '"' + goods_json['original_image'][0] + '"' + "]"
+    print(topic_id, original_image, images)
+    goods_json['begin_time'] = begin_time
+    goods_json['end_time'] = end_time
+    goods_json['topic_id'] = topic_id
+    goods_json['images'] = images
+    goods_json['original_image'] = original_image
+    for key in good_info:
+        if key in goods_json.keys():
+            goods_json[key] = good_info[key]
+
+    r = goods.goods_edit(**goods_json)
+    print(r.json())
+    act_info["is_shelves"] = 1
+    # goods.goods_edit_shelves(**act_info) #拍品上架
+    act_info = {"id": good_id, "act": "status", "value": 20}
+    goods.goods_edit_action(**act_info)
 def goods_edit():
     '''对第一个流拍对拍品下架，重新编辑，上架'''
     search_info = {"status": 31}
@@ -263,5 +296,16 @@ def test_delay():
         good_id = goods.goods_add(**goods_info).json()['data']
         act_info = {"id": good_id, "act": "is_recommended", "value": 1}  # 推荐
         goods.goods_edit_action(**act_info)
+
+
+def user_bid(**info):
+    user_info = info['user_info']
+    bid_info = info['bid_info']
+    if user_info != {}:
+        user_login(**user_info)
+
+    goods.bidding(**bid_info)
+
+
 
 

@@ -1,6 +1,7 @@
 goods: null
 users:
   user1:
-    quota: 5000015042219
+    quota: 5000015041942
   user2:
     quota: null
+    token: null

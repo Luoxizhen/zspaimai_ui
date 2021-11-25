@@ -19,9 +19,13 @@ class Detail(Web):
 
     def buyer_service_rate(self):
         return self.element_text(dp["服务费"])
-    def bid(self):
+    def bid(self,price=None):
+        if price:
+            self.send_price(price)
         self.is_click(dp["出价按钮"])
-    def change_price(self):
+    def change_price(self,price=None):
+        if price:
+            self.send_price(price)
         self.is_click(dp["更新代理价"])
     def button_text(self):
         return self.element_text(dp["出价按钮"])
@@ -71,6 +75,15 @@ class Detail(Web):
     def close_proxy(self):
         self.is_click(dp["关闭代理"])
 
+    # 出价记录
+    def more_bid_price(self):
+        self.is_click(dp['查看更多'])
+    def is_display_of_bid_price(self):
+        return self.find_element(dp['关闭出价记录']).is_displayed()
+    def close_bid_price(self):
+        self.is_click(dp['关闭出价记录'])
+
+
 
     #登陆操作
     def click_num_login(self):
@@ -95,8 +108,12 @@ class Detail(Web):
 
     # 点击常见问题
     def alway_ask(self):
+        #self.move_to_element(dp['常见问题'])
         self.is_click(dp['常见问题'])
     def alway_ask1(self):
+        #self.move_to_element(dp['常见问题按钮'])
         self.is_click(dp['常见问题按钮'])
     def is_displayed_of_alway_ask(self):
         return self.find_element(dp['常见问题弹窗']).is_displayed()
+    def read_alway_ask(self):
+        self.is_click(dp['点击阅读详情'])

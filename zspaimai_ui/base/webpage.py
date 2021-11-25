@@ -97,9 +97,13 @@ class Web(object):
         self.driver.back()
         time.sleep(1)
 
+    def move_to_element(self,locator):
+        action = ActionChains(self.driver)
+        action.move_to_element(self.find_element(locator))
 
-
-
+    def move(self, x, y):
+        action = ActionChains(self.driver)
+        action.move_by_offset(x, y)
     def findElement(self, *loc):
         try:
             return self.driver.find_element(*loc)

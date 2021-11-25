@@ -9,7 +9,7 @@ def get_user_headers():
     return rwjson.RwJson().readjson('interface_data', 'user_headers.json')
 def get_user_headers_unlogin():
     return rwjson.RwJson().readjson('interface_data', 'user_headers_unlogin.json')
-def get_token(**userinfo):
+def login(**userinfo):
     '''获取用户的token '''
     url = base_url+"/user/user/login?from=pc"
     headers = get_user_headers_unlogin()
@@ -28,6 +28,10 @@ def update_token(token):
     dict = rwjson.RwJson().readjson('interface_data', 'user_headers.json')
     dict["token"] = token
     rwjson.RwJson().writejson('interface_data', 'user_headers.json', dict)
+def user_login(**userinfo):
+    r = login(**userinfo)
+    token = update_token(r.json()['data']['token'])
+
 
 def get_token(phone):
     # 快捷登陆获取token

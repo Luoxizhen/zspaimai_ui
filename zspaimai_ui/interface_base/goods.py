@@ -94,7 +94,7 @@ def del_goods(**goods_infos):
 
     return r
 def goods_edit_action(**act_infos):
-    '''拍品操作- 下架、置顶、推荐'''
+    '''拍品操作- 置顶、推荐'''
     url = base_url + '/admin/goods/goods_edit_action'
     headers = admin_headers
     # info = {"id":2567,"act":"is_recommended","value":0}
@@ -103,11 +103,12 @@ def goods_edit_action(**act_infos):
 
     return r
 def goods_edit_shelves(**act_infos):
-    '''拍品操作- 下架、置顶、推荐'''
+    '''拍品操作- 下架'''
     url = base_url + '/admin/goods/goods_edit_shelves'
     headers = admin_headers
     # info = {"id":2567,"act":"is_recommended","value":0}
-    # {"id":2375,"is_shelves":0}
+    # act_infos = {"id":2375,"is_shelves":0}
+
     r = requests.request('post', url=url, json=act_infos, headers=headers)
     return r
 def goods_info(**info):
@@ -117,6 +118,71 @@ def goods_info(**info):
     #info = {"id":2624}
     r = requests.request('post', url=url, json=info, headers=headers)
     return r
+"""
+data: {id: 2799, category_id: 3, name: "拍品666", simple_desc: "", seller_name: "大罗", agreement_no: "a0000152",…}
+access_count: 0
+admin_id: 2
+admin_name: "yylAdmin"
+agreement_no: "a0000152"
+begin_time: 1637643600
+bid_count: 1
+buyer_service_rate: "10"
+category_id: 3
+content: "<p>1960年第三版人民币壹圆拖拉机狮子号一枚</p>"
+create_date: ""
+create_time: "2021-11-19 10:20:17"
+create_user: ""
+delay_time: 0
+delete_time: 0
+end_time: 1637960400
+freight_id: 51
+goods_weight: "0.000"
+id: 2799
+images: ["thumbnail/fjZac4eFCsxk2Py2z4BiQ4N4fbbC6x.png"]
+0: "thumbnail/fjZac4eFCsxk2Py2z4BiQ4N4fbbC6x.png"
+inventory: 0
+inventory_unit: ""
+is_recommended: 1
+is_shelves: 0
+meta: "{\"min_price\":\"\",\"max_price\":\"\",\"seller_insure_deal\":\"1\",\"seller_insure_no_deal\":\"1\",\"service_fee_deal\":\"2\",\"service_fee_no_deal\":\"1\",\"production_fee_deal\":\"15\",\"production_fee_no_deal\":\"15\",\"safekeeping_fee_deal\":\"0\",\"safekeeping_fee_no_deal\":\"0\",\"seller_taxes\":\"\",\"identify_fee\":\"\",\"packing_fee\":\"\",\"texture\":\"\",\"spec\":\"\",\"opinion\":\"\"}"
+name: "拍品666"
+now_price: "10.00"
+original_image: ["picture/wxTj7wm3XN2JkhFZXQCSpiRKRhZx5C.jpeg"]
+original_price: "0.00"
+platform: 1
+price: "10.00"
+retain_price: "0.00"
+sales_count: 0
+seller_name: "大罗"
+seo_desc: ""
+seo_keywords: ""
+seo_title: ""
+shape: "100"
+show_verify: 2
+simple_desc: ""
+spec_base: null
+status: 10
+top: 0
+top_price: "0.00"
+topic_id: [2, 2, 181, 2, 2, 2, 2, 162, 2, 2, 2, 164]
+0: 2
+1: 2
+2: 181
+3: 2
+4: 2
+5: 2
+6: 2
+7: 162
+8: 2
+9: 2
+10: 2
+11: 164
+type: 1
+update_time: "2021-11-25 17:13:53"
+msg: "操作成功"
+shop_switch: "0"
+status: 200
+"""
 def goods_edit(**goods_info):
     '''编辑拍品'''
     url = base_url + '/admin/goods/goods_edit'
@@ -146,12 +212,42 @@ def goods_edit(**goods_info):
             "meta":"{\"min_price\":\"\",\"max_price\":\"\",\"seller_insure_deal\":\"1\",\"seller_insure_no_deal\":\"1\",\"service_fee_deal\":\"2\",\"service_fee_no_deal\":\"1\",\"production_fee_deal\":\"15\",\"production_fee_no_deal\":\"15\",\"safekeeping_fee_deal\":\"0\",\"safekeeping_fee_no_deal\":\"0\",\"seller_taxes\":\"\",\"identify_fee\":\"\",\"packing_fee\":\"\",\"texture\":\"\",\"spec\":\"\",\"opinion\":\"\"}",
             "original_image":"[\"picture/wxTj7wm3XN2JkhFZXQCSpiRKRhZx5C.jpeg\"]",
             "images":"[\"thumbnail/fjZac4eFCsxk2Py2z4BiQ4N4fbbC6x.png\"]"}
+
+    #{"topic_id":"[2,2,181,2,2,2,2,162,2,2,2,164]","type":1,"id":2799,"category_id":3,"platform":"1","begin_time":1637643600,"end_time":1638046800,"top_price":"0.00","name":"拍品666","delay_time":0,"shape":"100","price":"10.00","retain_price":"0.00","seller_name":"大罗","agreement_no":"a0000152","create_user":"","create_date":"","freight_id":51,"is_freight":0,"goods_weight":"0.000","buyer_service_rate":"10","content":"<p>1960年第三版人民币壹圆拖拉机狮子号一枚</p>","meta":"{\"min_price\":\"\",\"max_price\":\"\",\"seller_insure_deal\":\"1\",\"seller_insure_no_deal\":\"1\",\"service_fee_deal\":\"2\",\"service_fee_no_deal\":\"1\",\"production_fee_deal\":\"15\",\"production_fee_no_deal\":\"15\",\"safekeeping_fee_deal\":\"0\",\"safekeeping_fee_no_deal\":\"0\",\"seller_taxes\":\"\",\"identify_fee\":\"\",\"packing_fee\":\"\",\"texture\":\"\",\"spec\":\"\",\"opinion\":\"\"}","original_image":"[\"picture/wxTj7wm3XN2JkhFZXQCSpiRKRhZx5C.jpeg\"]","images":"[\"thumbnail/fjZac4eFCsxk2Py2z4BiQ4N4fbbC6x.png\"]"}
     for key in goods_info:
         if key in info.keys():
             info[key] = goods_info[key]
     print(info)
     r = requests.request('post', url=url, json=info, headers=headers)
     return r
+'''
+{topic_id: "[2,2,181,2,2,2,2,162,2,2,2,164]", type: 1, id: 2799, category_id: 3, platform: "1",…}
+agreement_no: "a0000152"
+begin_time: 1637643600
+buyer_service_rate: "10"
+category_id: 3
+content: "<p>1960年第三版人民币壹圆拖拉机狮子号一枚</p>"
+create_date: ""
+create_user: ""
+delay_time: 0
+end_time: 1638046800
+freight_id: 51
+goods_weight: "0.000"
+id: 2799
+images: "[\"thumbnail/fjZac4eFCsxk2Py2z4BiQ4N4fbbC6x.png\"]"
+is_freight: 0
+meta: "{\"min_price\":\"\",\"max_price\":\"\",\"seller_insure_deal\":\"1\",\"seller_insure_no_deal\":\"1\",\"service_fee_deal\":\"2\",\"service_fee_no_deal\":\"1\",\"production_fee_deal\":\"15\",\"production_fee_no_deal\":\"15\",\"safekeeping_fee_deal\":\"0\",\"safekeeping_fee_no_deal\":\"0\",\"seller_taxes\":\"\",\"identify_fee\":\"\",\"packing_fee\":\"\",\"texture\":\"\",\"spec\":\"\",\"opinion\":\"\"}"
+name: "拍品666"
+original_image: "[\"picture/wxTj7wm3XN2JkhFZXQCSpiRKRhZx5C.jpeg\"]"
+platform: "1"
+price: "10.00"
+retain_price: "0.00"
+seller_name: "大罗"
+shape: "100"
+top_price: "0.00"
+topic_id: "[2,2,181,2,2,2,2,162,2,2,2,164]"
+type: 1
+'''
 def list(**list_info):
     '''前端获取商品列表'''
     url = base_url + '/user/goods/list'
