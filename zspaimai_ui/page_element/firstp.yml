@@ -46,9 +46,6 @@ ICP: xpath==//div[text()="粤ICP备2021041206号"]
 登陆框标题: xpath==//div[@class="login-title"]/span
 注册: xpath==//div[text()="注册"
 注册框小标题: id==tab-register
-
-
-
 微信: xpath==//div[@class="login-box-content"]/div[6]/img
 账号: xpath==//div[@class="login-input"]/div[1]/input
 密码: xpath==//div[@class="login-input"]/div[2]/input
@@ -56,6 +53,9 @@ ICP: xpath==//div[text()="粤ICP备2021041206号"]
 手机: xpath==//div[@class="login-input"]/div[1]/input
 短信验证码: xpath==//div[@class="login-input"]/div[2]/div[1]/input
 发送验证码: xpath==//div[@class="login-input"]/div[2]/button/span
+我同意并遵守: xpath==//div[@class="login-footer"]//span[text()="我同意并遵守"]/../div
+用户服务协议: xpath==//div[@class="login-footer"]//span[text()="《用户服务协议》"]
+隐私协议: xpath==//div[@class="login-footer"]//span[text()="《隐私协议》"]
 
 
 更多拍品: xpath==//img[@class="morePrd m-r-7"]
@@ -72,7 +72,15 @@ ICP: xpath==//div[text()="粤ICP备2021041206号"]
 拍品六:
 拍品七:
 拍品八:
-拍品详情: xpath==//img[@alt="拍品5"]
+拍品详情: xpath==//img[@alt="拍品1"]
+拍品详情2: xpath==//img[@alt="拍品2"]
+拍品详情3: xpath==//img[@alt="拍品3"]
+拍品详情4: xpath==//img[@alt="拍品4"]
+拍品详情5: xpath==//img[@alt="拍品5"]
+拍品详情6: xpath==//img[@alt="拍品6"]
+拍品详情7: xpath==//img[@alt="拍品7"]
+拍品详情8: xpath==//img[@alt="拍品8"]
+
 
 
 专场一: xpath==//img[@alt="热门专场"]/../div/div/div/div[2]/img
@@ -94,5 +102,8 @@ ICP: xpath==//div[text()="粤ICP备2021041206号"]
 
 广告关闭按钮: xpath==//img[@class="cursor close"]
 广告体: //div[@class="airCommand"]
+
+
+
 
 

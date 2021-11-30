@@ -1,0 +1,32 @@
+相关名词解释: xpath==//div[text()=" 相关名词解释 "]
+拍品名称: xpath==//*[@id="app"]/div[2]/div[1]/div[1]/div/div[2]/div[1]/div[2]/div
+支付金额: xpath==//*[@id="app"]/div[2]/div[1]/div[1]/div/div[2]/div[2]
+服务费: xpath==//*[@id="app"]/div[2]/div[1]/div[1]/div/div[2]/div[2]/p
+收货信息: xpath==//div[text()="收货信息"]
+修改收货信息: xpath==//div[text()="收货信息"]/../div[2]/div[1]/div[2]
+收货人: xpath==//div[text()="收货信息"]/../div[2]/div[2]
+联系方式: xpath==//div[text()="收货信息"]/../div[2]/div[3]
+收货地址: xpath==//div[text()="收货信息"]/../div[2]/div[4]
+配送方式: xpath==//div[text()="配送方式"]
+运费标准: xpath==//div[text()="运费标准"]
+快递到付: xpath==//div[text()="快递到付"]
+上门自提: xpath==//div[text()="上门自提"]
+快递费: xpath==//div[text()="快递费"]/../div[2]
+保价金额: xpath==//div[text()="保价金额"]/../div[2]/input
+保价费: xpath==//div[text()="保价费"]/../div[2]/input
+保价费？: xpath==//div[text()="保价费"]/../div[2]/img
+优惠劵: xpath==//div[text()="优惠劵"]/../div[2]/div
+请选择支付方式: xpath==//div[text()="请选择支付方式"]
+合计: xpath==//span[text()="合计："]/../span[2]
+余额: xpath==//div[text()="余额"]
+微信支付: xpath==//div[text()="微信支付"]
+银行转账: xpath==//div[text()="银行转账"]
+提交订单: xpath==//div[text()=" 提交订单 "]
+金额确认: xpath==//h4[text()="请输入支付密码"]/../strong
+关闭密码输入框: xpath==//button[@class="el-dialog__headerbtn"]
+输入密码: xpath==//input[@class="el-input__inner"]
+忘记密码: xpath==//p[text()=" 忘记密码 "]
+优惠劵列表: xpaht==//div[@class="discountList"]
+关闭优惠劵选择框: xpath==//div[@class="discountList"]/../../div/button
+第一个优惠劵: xpaht==//div[@class="discountList"]/div/div
+确认所选优惠劵: xpath==//div[@class="discountList"]/../..//div[text()=" 确 认 "]

@@ -122,10 +122,14 @@ def goods_unrecommend():
     '''将所有首页推荐的拍品取消推荐'''
     goods_info = {"is_recommended": 1}
     goods_recommend_list = util.list_nums(goods.goods_list,'id',**goods_info)
-    for id in range(len(goods_recommend_list)):
-        act_info = {"id": id, "act": "is_recommended", "value": 0}
+    print(goods_recommend_list)
+    for i in range(len(goods_recommend_list)):
+        act_info = {"id": goods_recommend_list[i], "act": "is_recommended", "value": 0}
+        print(act_info)
         goods.goods_edit_action(**act_info)
-
+def test_goods_unrecommend():
+    goods_unrecommend()
+    assert 1==2
 def goods_recommend():
     '''将最新的拍品首页推荐,执行该函数前先将所有的推荐的拍品取消推荐'''
     # for k in range(1,3):

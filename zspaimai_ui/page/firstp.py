@@ -232,6 +232,16 @@ class Firstp(Web):
         self.is_click(firstp['退出登录'])
     def click_register(self):
         self.is_click(firstp['注册'])
+    def agree(self):
+        self.is_click(firstp["我同意并遵守"])
+    def login_num_password(self,num="15622145010",password="123456"):
+        self.click_num_login()
+        self.send_num(num)
+        self.send_password(password)
+        self.agree()
+        self.click_login_botton()
+
+
 
 
 
@@ -270,8 +280,9 @@ class Firstp(Web):
     #拍品操作
     def click_collection(self):
         self.is_click(firstp['拍品一'])
-    def click_collection_detail(self):
-        self.is_click(firstp['拍品详情'])
+    def click_collection_detail(self, i="拍品详情"):
+        self.is_click(firstp[i])
+
     def collection_name(self):
         return self.element_text(firstp['拍品一名称'])
     def collection_price(self):

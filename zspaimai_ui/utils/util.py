@@ -39,13 +39,15 @@ def list_nums(fun, key, **list_info):
     list=[]
     r = fun(**list_info).json()['data']
     last_page = r['last_page']
+    #print(last_page)
     per_page = r['per_page']
     total = r['total']
     for i in range(1,last_page+1):
         r = fun(page=i, **list_info).json()['data']['data']
-        for i in range(len(r)):
-            list.append(r[i][key])
-
+        print(r)
+        for j in range(len(r)):
+            list.append(r[j][key])
+    #print(list)
     return list
 
 

@@ -134,7 +134,9 @@ def list_unrecommend():
             act_info = {"id": topic_id, "act": "is_recommended", "value": 0}
             topic.edit_action(**act_info)# 取消推荐
 
-
+def test_list_unrecommend():
+    list_unrecommend()
+    assert 1==2
 
 
 

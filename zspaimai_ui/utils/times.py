@@ -3,7 +3,7 @@ import time
 import datetime
 def timestamp():
     #时间戳
-    return time.time()
+    return round(time.time())
 
 def dt_strftime(fmt="%Y%m"):
     '''

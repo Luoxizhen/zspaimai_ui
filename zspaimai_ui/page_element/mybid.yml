@@ -1,0 +1,10 @@
+中标记录: xpath==//div[@class="disp-flex"]/div[@class="m-r-66 c-5656 label-item "]/div/div
+全部竞买: xpath==//div[@class="disp-flex"]/div[@class="m-r-66 c-5656 label-item "][2]/div/div
+我的代理: xpath==//div[@class="disp-flex"]/div[@class="m-r-66 c-5656 label-item "][3]/div/div
+关注: xpath==//div[@class="disp-flex"]/div[@class="m-r-66 c-5656 label-item "][4]/div/div
+进行中: xpath==//div[@class="disp-flex"][2]/div
+已结束: xpath==//div[@class="disp-flex"][2]/div[2]
+第一个记录: xpath==//div[@class="bid-box"]//div[@class="el-row bit-row"]//div[@class="correct-box"]
+合计: xpath==//span[@class="合计:"]/../pan[2]
+去支付: xpath==//span[@class="合计:"]/../div
+共几项: xpath==//span[@class="合计:"]/../../div

@@ -28,7 +28,7 @@ class Pagedata:
     def setitem_c(self, key, child, value):
         self.data[key][child] = value
         with open(self.file_path, 'w', encoding='utf-8') as f:
-            yaml.dump(self.data, stream=f)
+            yaml.dump(self.data, stream=f, allow_unicode=True)
             f.close()
 
 if __name__ == '__main__':

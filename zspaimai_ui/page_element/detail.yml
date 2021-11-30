@@ -26,11 +26,14 @@
 #//span[text()="拍品*"]/../../div[2]/img[2]
 #//div[text()="竞买时间："]/../../div/div[2]/img[2]
 出价按钮: xpath==//div[@class="sell-button fz-18 cursor"]
+未出价按钮: xpath==//div[@class="sell-button fz-18 cant"]
+已结束按钮: xpath==//div[@class="end-button text-c c-fff"]
 # 出代理价按钮
 更新代理价: xpath==//div[@class="update-button cursor fz-18"]
-本场昵称: //*[@id="app"]/div[2]/div/div[1]/div[2]/div[7]/div
+本场昵称: xpath==//*[@id="app"]/div[2]/div/div[1]/div[2]/div[7]/div
+本场昵称未登陆: xpath==//*[@id="app"]/div[2]/div/div[1]/div[2]/div[7]
 切换昵称: xpath==//div[text()=" 切换昵称 "]
-切换昵称图标: xpath==//div[text()=" 切换昵称 "]/../img
+切换昵称图标: xpath==//div[text()=" 切换昵称 "]/img
 出价状态: xpath==//div[text()="当前价"]/../div[2] #" 未出价"
 我的状态: xpath==//div[text()="当前价"]/../div[3]
 竞买额度: xpath==//div[text()=" 竞买额度 "]/../div[2]
@@ -76,3 +79,12 @@
 # 提示信息
 提示信息: xpath==//p[@class=el-message__content"]
 #内容：请勿重复出同样代理价
+# 提示信息：
+获取拍品失败: xpath==//p[text()="获取商品失败"]
+
+
+#中标页面：
+中标价: xpath==//div[text()="中标价"]/../div[2] #"￥1,000.00"
+中标: xpath==//div[text()="中标价"]/../div[3] #" 中标"
+中标图标: xpath==//div[text()="中标价"]/../div[3]/img
+#data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAANIilAAAAAgVBMVEUAAADPNDTONDTONDTPNDTONDTNNDTTNTXZMzPPNTXONDT///+9mmfooKD9+vrsr6/QPj777+/56ej229vuvLzqq6vkk5PYX1/AiF3j1cDTSUnJVUT59/Pr4dLww8PTvJveeXnAlWjCelbEb1HGZEvLRz3nvLPlrKXjiIjBoXLIiGgQmBD8AAAACnRSTlMA6uLZq6JxHRQwlSBKbwAAAaxJREFUSMel19mugjAQgGHctTPUVlnFHXB7/wc8BCVwjp2hh/43XjRfJE0hU69uMZ9ORsKy0WQ6X3hNy5n4d7Pl267GYkDjVf2/tOX1ssIzMbBZtVdicAtvPhzPvelwPPUmw/HEGw3HI49aiaNgq6XU2yCKBZEZ7/wNdNr4O2usQgl/kqGyw2cNhvTZBodAFPZidQSyo+rBlWU0j0NgCzl8hp7ONFa6D2tF4hB6Cym8k/1Y7gjss8xXj/qHwBvWCqHqc27GMW+bJ4uNOLKyEBlxYGUhMOKtlYWtEWsrC9qIpZUFyeKHWjMWJPvYSog1bUGzG7YWlSYsuWEBdDVlIaAPSasJCxFzPFttthBzL0arjXbDvpKtNlnw2Y9BV/v2HwNxg65W6tvCTVD4soee9hcKKzz14RMqAmeIKW9TxIzAOSIeOHtAxJzACdaatZgQGOtS+pnrzLjEd6e9cZ9Pn+XSiAv89Ey/x4r02awWRnxtli/J6/57oLm/kkuzejXiJLnmRZaV1ChVZlmRX5OkFU5DnNP46DS4Oo3MTsO6yzXB6YLicjVyvJQ5XQd/AEX2l/H24qeAAAAAAElFTkSuQmCC

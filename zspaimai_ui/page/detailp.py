@@ -27,8 +27,11 @@ class Detail(Web):
         if price:
             self.send_price(price)
         self.is_click(dp["更新代理价"])
-    def button_text(self):
-        return self.element_text(dp["出价按钮"])
+    def button_text(self,name="出价按钮"):
+        return self.element_text(dp[name])
+
+    def end_button_text(self):
+        return self.element_text(dp["已结束按钮"])
     def proxy(self):
         return self.element_text(dp["更新代理价"])
     def favorite(self):
@@ -68,6 +71,8 @@ class Detail(Web):
         return self.find_element(dp["登陆框"]).is_displayed()
     def nickname(self):
         return self.element_text(dp['本场昵称'])
+    def nickname_unlogin(self):
+        return self.element_text(dp['本场昵称未登陆'])
     def change_nickname(self):
         self.is_click(dp["切换昵称图标"])
     def click_change_nickname(self):
@@ -117,3 +122,20 @@ class Detail(Web):
         return self.find_element(dp['常见问题弹窗']).is_displayed()
     def read_alway_ask(self):
         self.is_click(dp['点击阅读详情'])
+
+
+    # 提示信息
+    def tip_text_of_refresh(self):
+        try:
+            self.find_element(dp['获取拍品失败'])
+        except("TimeoutException(message, screen, stacktrace)"):
+            return 1
+
+    # 中拍页面
+    def win_price(self):
+        return self.element_text(dp["中标价"])
+    def win_src(self):
+        return self.find_element(dp['中标图标']).get_attribute("src")
+    def win_status(self):
+        return self.element_text(dp["中标"])
+

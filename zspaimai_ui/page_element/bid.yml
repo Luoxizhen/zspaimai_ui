@@ -1,0 +1,14 @@
+#拍品
+拍品盒: xpath==//div[@class="w1200 disp-flex flex-wrap hotShowBox"]
+第一个拍品: xpath==//div[@class="w1200 disp-flex flex-wrap hotShowBox"]/div
+拍品状态: xpath==//div[@class="w1200 disp-flex flex-wrap hotShowBox"]/div/div/div #正在拍卖
+拍品名称: xpath==//div[@class="w1200 disp-flex flex-wrap hotShowBox"]/div/div[2]
+拍品价格: xpath==//div[@class="w1200 disp-flex flex-wrap hotShowBox"]/div/div[3]
+#//*[@id="app"]/div[2]/div[4]/div[1]/div[3]
+竞买: xpath==//div[@class="w1200 disp-flex flex-wrap hotShowBox"]/div[4]
+前往: xpath==//span[text()="前往"]
+共几页: xpath==//span[text()="前往"]/../div/span
+前翻页按钮: xpath==//span[text()="前往"]/../div/button[1]
+后翻页按钮: xpath==//span[text()="前往"]/../div/button[2]
+页数填写: xpath==//span[text()="前往"]/div/input
+
