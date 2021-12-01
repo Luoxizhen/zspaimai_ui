@@ -69,6 +69,10 @@ class MyBid(Web):
         self.is_click(mb[n])
     def tip(self):
         return self.element_text(mb['提示内容'])
+    def go_to_pay(self):
+        self.swith_to_list("中标记录")
+        self.select("一")
+        self.pay()
 
 
 
