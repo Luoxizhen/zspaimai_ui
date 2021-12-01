@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 
 from base.webpage import Web, sleep
 from common.readelement import Element
+from selenium.common.exceptions import TimeoutException
 firstp = Element("firstp")
 class Firstp(Web):
     # # 页面底部元素定位 ： 新手指南
@@ -235,16 +236,16 @@ class Firstp(Web):
     def agree(self):
         self.is_click(firstp["我同意并遵守"])
     def login_num_password(self,num="15622145010",password="123456"):
+        try:
+            self.click_num_login()
+        except TimeoutException:
+            self.click_login()
+            self.click_num_login()
         self.click_num_login()
         self.send_num(num)
         self.send_password(password)
         self.agree()
         self.click_login_botton()
-
-
-
-
-
 
     def search(self, good_name="小林工"):
         self.input_text(firstp['搜索框'],good_name)

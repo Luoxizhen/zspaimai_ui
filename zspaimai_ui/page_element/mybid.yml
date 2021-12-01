@@ -4,7 +4,54 @@
 关注: xpath==//div[@class="disp-flex"]/div[@class="m-r-66 c-5656 label-item "][4]/div/div
 进行中: xpath==//div[@class="disp-flex"][2]/div
 已结束: xpath==//div[@class="disp-flex"][2]/div[2]
-第一个记录: xpath==//div[@class="bid-box"]//div[@class="el-row bit-row"]//div[@class="correct-box"]
-合计: xpath==//span[@class="合计:"]/../pan[2]
-去支付: xpath==//span[@class="合计:"]/../div
-共几项: xpath==//span[@class="合计:"]/../../div
+第一个记录: xpath==//div[@class="bid-box"]//div[@class="el-row bit-row"][1]//div[@class="correct-box"][1]
+第一个记录取消: xpath==//div[@class="bid-box"]//div[@class="el-row bit-row"][1]//div[@class="isCorrect correct-box"][1]
+第二个记录: xpath==//div[@class="bid-box"]//div[@class="el-row bit-row"][2]//div[@class="correct-box"][1]
+第一个记录名称: xpath==//div[@class="bid-box"]/div/div/div[2]/div[2]/div/div[2]
+第一个记录价格: xpath==//div[@class="bid-box"]/div/div/div[2]/div[3]/div
+第一个记录数量: xpath==//div[@class="bid-box"]/div/div/div[2]/div[4]/div
+第一个记录总价: xpath==//div[@class="bid-box"]/div/div/div[2]/div[5]/div
+第一条记录服务费: xpath==//div[@class="bid-box"]/div/div/div[2]/div[5]/div/p
+第一条记录支付状态: xpath==//div[@class="bid-box"]/div/div/div[2]/div[6]/div/div/div[1]
+合计: xpath==//div[@class="bid-box"]/../div[4]/div[2]/span[2]
+去支付: xpath==//div[@class="bid-box"]/../div[4]/div[2]/div
+共几项: xpath==//div[@class="bid-box"]/../div[4]/div
+
+全部竞买拍品信息: xpath==//div[@class="el-row list-title disp-flex align-center m-b-20"]/div[1]
+全部竞买开拍/结束时间: xpath==//div[@class="el-row list-title disp-flex align-center m-b-20"]/div[2]
+全部竞买当前竞买价: xpath==//div[@class="el-row list-title disp-flex align-center m-b-20"]/div[3]
+全部竞买出价次数: xpath==//div[@class="el-row list-title disp-flex align-center m-b-20"]/div[4]
+全部竞买竞买状态: xpath==//div[@class="el-row list-title disp-flex align-center m-b-20"]/div[5]
+全部竞买开启提醒: xpath==//div[@class="el-row list-title disp-flex align-center m-b-20"]/div[6]
+
+第一条记录状态: xpath==//div[@class="disp-flex flex-column"]/div[1]/div[1]/div[1]
+第一条记录名称: xpath==//div[@class="disp-flex flex-column"]/div[1]/div[1]/div[3]
+第一条记录开拍结束时间: xpath==//div[@class="disp-flex flex-column"]/div[1]/div[2]/div[3]
+第一条记录当前竞买价: xpath==//div[@class="disp-flex flex-column"]/div[1]/div[3]/div[1]
+第一条记录出价次数: xpath==//div[@class="disp-flex flex-column"]/div[1]/div[4]/div[1]
+第一条记录竞买状态: xpath==//div[@class="disp-flex flex-column"]/div[1]/div[5]/div[1]
+第一条记录开启提醒: xpath==//div[@class="disp-flex flex-column"]/div[1]/div[6]/div[1]/img
+第二条记录状态: xpath==//div[@class="disp-flex flex-column"]/div[2]/div[1]/div[1]
+第二条记录名称: xpath==//div[@class="disp-flex flex-column"]/div[2]/div[1]/div[3]
+第二条记录开拍结束时间: xpath==//div[@class="disp-flex flex-column"]/div[2]/div[2]/div[3]
+第二条记录当前竞买价: xpath==//div[@class="disp-flex flex-column"]/div[2]/div[3]/div[1]
+第二条记录出价次数: xpath==//div[@class="disp-flex flex-column"]/div[2]/div[4]/div[1]
+第二条记录竞买状态: xpath==//div[@class="disp-flex flex-column"]/div[2]/div[5]/div[1]
+第二条记录开启提醒: xpath==//div[@class="disp-flex flex-column"]/div[2]/div[6]/div[1]/img
+第三条记录状态: xpath==//div[@class="disp-flex flex-column"]/div[3]/div[1]/div[1]
+第三条记录名称: xpath==//div[@class="disp-flex flex-column"]/div[3]/div[1]/div[3]
+第三条记录开拍结束时间: xpath==//div[@class="disp-flex flex-column"]/div[3]/div[2]/div[3]
+第三条记录当前竞买价: xpath==//div[@class="disp-flex flex-column"]/div[3]/div[3]/div[1]
+第三条记录出价次数: xpath==//div[@class="disp-flex flex-column"]/div[3]/div[4]/div[1]
+第三条记录竞买状态: xpath==//div[@class="disp-flex flex-column"]/div[3]/div[5]/div[1]
+第三条记录开启提醒: xpath==//div[@class="disp-flex flex-column"]/div[3]/div[6]/div[1]/img
+
+
+#弹窗
+开启提醒前提示: xpath==//span[text()="提示设置"]
+取消提醒: xpath==//span[text()="提示设置"]/../../div[3]/div/button[1]
+确认提醒: xpath==//span[text()="提示设置"]/../../div[3]/div/button[2]
+关闭提醒: xpath==//span[text()="提示设置"]/../../div[1]/button
+提示内容: xpath==//span[text()="提示设置"]/../../div[2]/span
+#开启提醒设置后，将在拍品结拍前5分钟，通过短信和站内信的形式通知您
+#确定要关闭提醒功能吗
