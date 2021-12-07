@@ -24,7 +24,7 @@
 提交订单: xpath==//div[text()=" 提交订单 "]
 金额确认: xpath==//h4[text()="请输入支付密码"]/../strong
 关闭密码输入框: xpath==//button[@class="el-dialog__headerbtn"]
-输入密码: xpath==//input[@class="el-input__inner"]
+输入密码: xpath==//div[@class="el-input   pwd-input"]/input[@class="el-input__inner"]
 忘记密码: xpath==//p[text()=" 忘记密码 "]
 优惠劵列表: xpaht==//div[@class="discountList"]
 关闭优惠劵选择框: xpath==//div[@class="discountList"]/../../div/button

@@ -300,6 +300,10 @@ class Firstp(Web):
 
 
 
-
+    # 弹窗
+    def is_display_of_dialog(self):
+        return self.find_element(firstp["弹窗体"]).is_displayed()
+    def close_dialog(self):
+        self.is_click(firstp['关闭弹窗'])
 
 

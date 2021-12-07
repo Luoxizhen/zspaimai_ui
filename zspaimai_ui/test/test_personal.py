@@ -11,11 +11,7 @@ class TestPersonalInfo:
         self.driver.maximize_window()
         self.driver.get(ini.url)
         self.fp = Firstp(self.driver)
-        self.fp.click_login()
-        self.fp.click_num_login()
-        self.fp.send_num("15622145010")
-        self.fp.send_password('123456')
-        self.fp.click_login_botton()
+        self.fp.login_num_password()
         self.fp.click_nickname()
         self.driver.switch_to.window(self.driver.window_handles[-1])
         self.pp = Personal(self.driver)
@@ -35,3 +31,41 @@ class TestPersonalInfo:
     def test_userno(self):
         userno = self.pp.userno().removeprefix("用户编码：")
         personal_data.setitem_c("info", "userno", userno)
+    def test_go_to_page(self):
+        self.pp.go_to_page("个人中心")
+        title = self.driver.title
+        assert title == "中晟在线-个人中心"
+        self.pp.go_to_page("我的竞买")
+        title = self.driver.title
+        assert title == "中晟在线-个人中心-我的竞买"
+        self.pp.go_to_page("我的订单")
+        title = self.driver.title
+        assert title == "中晟在线-个人中心-我的订单"
+        self.pp.go_to_page("我的委托")
+        title = self.driver.title
+        assert title == "中晟在线-个人中心-我的委托"
+        self.pp.go_to_page("收货地址")
+        title = self.driver.title
+        assert title == "中晟在线-个人中心-收货地址"
+        self.pp.go_to_page("推广计划")
+        title = self.driver.title
+        assert title == "中晟在线-个人中心-推广计划"
+        self.pp.go_to_page("关注")
+        title = self.driver.title
+        assert title == "中晟在线-个人中心-关注"
+        self.pp.go_to_page("财务")
+        title = self.driver.title
+        assert title == "中晟在线-个人中心-财务"
+        self.pp.go_to_page("优惠")
+        title = self.driver.title
+        assert title == "中晟在线-个人中心-优惠"
+        self.pp.go_to_page("设置")
+        title = self.driver.title
+        assert title == "中晟在线-个人中心-个人设置"
+
+    def test_my_order_of_good3(self):
+        self.pp.go_to_page("我的订单")
+        info = self.pp.order_info()
+        assert info == {"price":"￥1,000.00", "num":"1", "total_money":"￥1,100.00/n(含实际服务费￥100.00)","pay_time":"下单时间：2021-12-02 11:09:12","order_num":"订单编号：2021120211091203917"}
+
+

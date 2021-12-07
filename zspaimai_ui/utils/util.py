@@ -44,11 +44,33 @@ def list_nums(fun, key, **list_info):
     total = r['total']
     for i in range(1,last_page+1):
         r = fun(page=i, **list_info).json()['data']['data']
-        print(r)
+        #print(r)
         for j in range(len(r)):
             list.append(r[j][key])
     #print(list)
     return list
 
+def str_to_dict(str):
+    '''将接口数据信息中的字符串转换成字典
+    字符串："[{\"key\":\"userno\",\"value\":\"\"},{\"key\":\"phone\",\"value\":\"\"},{\"key\":\"is_mobile\",\"value\":\"\"},{\"key\":\"is_real\",\"value\":\"\"},{\"key\":\"status\",\"value\":\"\"},{\"key\":\"is_robot\",\"value\":\"\"}]"
+    '''
+    d = {}
+    l = str.replace("""{\"key\":\"""","").replace("""",\"value\":\"\"}""","").removeprefix('[').removesuffix(']').rsplit(",")
+        #str.removeprefix('"').removesuffix(']"').replace("""{\"key\":\"""","").replace("""",\"value\":\"\"}""","")
+    for i in l:
+        d[i]=""
+    return d
 
 
+
+
+
+
+
+
+
+
+
+if __name__ == "__main__":
+    str ="[{\"key\":\"userno\",\"value\":\"\"},{\"key\":\"phone\",\"value\":\"\"},{\"key\":\"is_mobile\",\"value\":\"\"},{\"key\":\"is_real\",\"value\":\"\"},{\"key\":\"status\",\"value\":\"\"},{\"key\":\"is_robot\",\"value\":\"\"}]"
+    str_to_dict(str)

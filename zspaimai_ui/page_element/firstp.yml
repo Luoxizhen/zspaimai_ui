@@ -107,3 +107,12 @@ ICP: xpath==//div[text()="粤ICP备2021041206号"]
 
 
 
+#地址信息弹窗
+弹窗体: xpath==//div[@class="el-dialog"]
+弹窗标题: xpath==//div[@class="el-dialog__header"]/span[@class="el-dialog__title"]
+关闭弹窗: xpath==//div[@class="el-dialog__header"]/button[@class="el-dialog__headerbtn"]
+弹窗信息体: xpath==//div[@class="el-dialog__body"]
+地址1_收件人: xpath==//div[@class="el-dialog__body"]/div[@class="el-row editBoxItme"]/label/span[2]/div/div/div[1]
+地址1_电话: xpath==//div[@class="el-dialog__body"]/div[@class="el-row editBoxItme"]/label/span[2]/div/div/div[2]
+地址1_地址: xpath==//div[@class="el-dialog__body"]/div[@class="el-row editBoxItme"]/label/span[2]/div[2]/div
+选择地址1: xpath==//div[@class="el-row editBoxItme"]/label/span/span

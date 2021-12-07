@@ -17,3 +17,26 @@
 全部1: xpath==//div[text()="我的订单"]/../div[2]/div[5]/div/p
 
 
+
+#页面左侧导航栏
+个人中心: xpath==//div[@class="nav-container disp-flex flex-column align-center"]//div[text()=" 个人中心"]
+我的竞买: xpath==//div[@class="nav-container disp-flex flex-column align-center"]//div[text()=" 我的竞买"]
+我的订单: xpath==//div[@class="nav-container disp-flex flex-column align-center"]//div[text()=" 我的订单"]
+我的委托: xpath==//div[@class="nav-container disp-flex flex-column align-center"]//div[text()=" 我的委托"]
+收货地址: xpath==//div[@class="nav-container disp-flex flex-column align-center"]//div[text()=" 收货地址"]
+推广计划: xpath==//div[@class="nav-container disp-flex flex-column align-center"]//div[text()=" 推广计划"]
+关注: xpath==//div[@class="nav-container disp-flex flex-column align-center"]//div[text()=" 关注"]
+财务: xpath==//div[@class="nav-container disp-flex flex-column align-center"]//div[text()=" 财务"]
+优惠: xpath==//div[@class="nav-container disp-flex flex-column align-center"]//div[text()=" 优惠"]
+设置: xpath==//div[@class="nav-container disp-flex flex-column align-center"]//div[text()=" 设置"]
+
+
+# 我的订单
+订单体: xpath==//div[@class="list-box m-b-25"]//div[text()="拍品3"]
+成交价: xpath==//div[@class="list-box m-b-25"]//div[text()="拍品3"]/../../div[2]
+商品数量: xpath==//div[@class="list-box m-b-25"]//div[text()="拍品3"]/../../div[3]
+订单总价: xpath==//div[@class="list-box m-b-25"]//div[text()="拍品3"]/../../div[3]
+状态: xpath==//div[@class="list-box m-b-25"]//div[text()="拍品3"]/../../../div[2]/div/div
+操作: xpath==//div[@class="list-box m-b-25"]//div[text()="拍品3"]/../../../div[3]/div/div
+下单时间: xpath==//div[@class="list-box m-b-25"]//div[text()="拍品3"]/../../../../div/div
+订单编号: xpath==//div[@class="list-box m-b-25"]//div[text()="拍品3"]/../../../../div/div[2]

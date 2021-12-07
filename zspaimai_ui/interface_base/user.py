@@ -1,5 +1,7 @@
 import requests
 from utils import rwjson, rwcfg
+from utils import util
+
 
 admin_headers = rwjson.RwJson().readjson('interface_data', 'admin_headers.json')
 mini_headers = rwjson.RwJson().readjson('interface_data', 'user_headers_app.json')
@@ -135,4 +137,29 @@ def addr_list(token=None):
     headers = get_user_headers()
     r = requests.request('get', url=url, headers=headers)
     #{"status":200,"msg":"操作成功","data":[{"id":192,"name":"大罗","phone":"15622145020","address":"珠江嘉苑","zipcode":"","province":19,"city":289,"county":3040,"is_default":1,"area":"广东省,广州市,天河区","province_name":"广东省","city_name":"广州市","county_name":"天河区"}],"shop_switch":"0"}
+    return r
+def list(page=1,**user_info):
+    '''后台获取用户列表'''
+    url = base_url + '/admin/user/list'
+    headers = admin_headers
+    list_info = {"where":"[{\"key\":\"userno\",\"value\":\"\"},{\"key\":\"phone\",\"value\":\"\"},{\"key\":\"is_mobile\",\"value\":\"\"},{\"key\":\"is_real\",\"value\":\"\"},{\"key\":\"status\",\"value\":\"\"},{\"key\":\"is_robot\",\"value\":\"\"}]","page":1}
+
+    if page:
+        list_info['page'] = page
+    if user_info != {}:
+        user_infos = util.str_to_dict(list_info["where"])
+        for key in user_info:
+            if key in user_infos.keys():
+                user_infos[key] = user_info[key]
+        ui = util.kwargs_to_str(user_infos)
+        list_info["where"] = ui
+
+    r = requests.request('post', url=url, json=list_info, headers=headers)
+    return r
+def info(user_id):
+    '''后台获取用户信息'''
+    url = base_url + '/admin/user/info'
+    headers = admin_headers
+    user_info = {"user_id":user_id}
+    r = requests.request('post', url=url, json=user_info, headers=headers)
     return r

@@ -37,3 +37,17 @@ class Personal(Web):
         self.is_click(personal['全部1'])
     def my_order(self):
         self.is_click(personal['我的订单展开'])
+
+    def go_to_page(self,n="个人中心"):
+        '''n 为个人中心页面左侧导航栏的名字，点击进入响应页面'''
+        self.is_click(personal[n])
+
+    def order_info(self):
+        '''订单：拍品3 的详细信息'''
+        price = self.element_text(personal["成交价"])
+        num = self.element_text(personal["商品数量"])
+        total_money = self.element_text(personal["订单总价"])
+        pay_time = self.element_text(personal["下单时间"])
+        order_num = self.element_text(personal["订单编号"])
+        info = {"price":price, "num":num, "total_money":total_money,"pay_time":pay_time,"order_num":order_num}
+        return info
