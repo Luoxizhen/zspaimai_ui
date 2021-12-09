@@ -10,7 +10,8 @@ class ConfigManager(object):
     ELEMENT_PATH = os.path.join(BASE_DIR, 'page_element')
     # 测试数据路径
     WEB_DATA_PATH = os.path.join(BASE_DIR, 'data')
-
+    # 接口数据路径
+    INTERFACE_DATA_PATH = os.path.join(BASE_DIR, 'interface_data')
     # 报告文件
     report_name = "report_" + dt_strftime(fmt="%Y%m%d_%H%M%S") + '.html'
     REPORT_FILE = os.path.join(BASE_DIR, 'report', report_name)

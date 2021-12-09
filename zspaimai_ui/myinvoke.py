@@ -7,4 +7,6 @@ class MyPlugin:
         print("*** test run reporting finishing")
 
 
+
+
 pytest.main(["-x", "test/test_firstp.py::test_111", "--junitxml=reports/result1.xml"], plugins=[MyPlugin()])

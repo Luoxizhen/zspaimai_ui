@@ -1,0 +1,11 @@
+user:
+  id: 531
+  password: null
+  phone: '15622145010'
+  token: 55016adebdace8cf7c3b8eb2df7bc712
+  userno: '193330'
+money:
+  in: 1000
+  out: 100
+quota:
+  in: 1000

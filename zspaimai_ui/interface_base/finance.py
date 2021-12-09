@@ -76,26 +76,30 @@ def recharge(**rechargeinfo):
     '''后台给用户充值'''
     url = base_url + '/admin/wallet/recharge'
     headers = admin_headers
-    recharge_real = {'money': '100', 'user_id': 102}
+    recharge_real = {'money': '100', 'user_id': 531}
     for key in rechargeinfo:
         if key in recharge_real.keys():
             recharge_real[key] = rechargeinfo[key]
     r = requests.request('post', url=url, json=recharge_real, headers=headers)
     '''返回充值状态'''
-    print(r.json())
-    logging.info("后台充值")
-    return r.json()['status']
 
-def change_quota():
+    return r
+
+def change_quota(**charge_info):
     '''后台给用户充额度'''
     url = base_url + '/admin/wallet/change_quota'
     headers = admin_headers
+
     json = {'quota': '100',
-            'user_id': 102,
+            'user_id': 531,
             'msg': ''}
+    if charge_info != {}:
+        for key in charge_info:
+            if key in json.keys():
+                json[key] = charge_info[key]
     r = requests.request('post', url=url, json=json, headers=headers)
     '''充值状态'''
-    return r.json()['status']
+    return r
 
 def remittance(token=None):
     ''' pc 端用户充值 '''
@@ -124,37 +128,42 @@ def remittance(token=None):
     first_record = r.json()['data']['data'][0]
     '''{"quota":"10.00","operation_type":1,"msg":"余额支付","create_time":"2021-07-23 09:55:13"}'''
 
-    return status
+    return r
 def remittance_finish():
     '''后台确认充值'''
     url = base_url + '/admin/remittance/finish'
     headers = admin_headers
-    json = {'id': 164,
+    json = {'id': 531,
             'remarks': ""}
     r = requests.request('post', url=url, json=json, headers=headers)
     '''充值状态'''
     status = r.json()['status']
+    return r
 def remittance_auditfailed():
     '''后台拒绝银行划账'''
     url = base_url + '/admin/remittance/audit_failed'
     headers = admin_headers
-    json = {'id': 164}
+    json = {'id': 531}
     r = requests.request('post', url=url, json=json, headers=headers)
     '''充值状态'''
     status = r.json()['status']
-    return status
-def cashout():
+    return r
+def cashout(**cashinfo):
     '''后台提现'''
     url = base_url + '/admin/wallet/cashout'
     headers = admin_headers
     json = {
-        "user_id": 102,
+        "user_id": 1,
         "money": "100",
         "remarks": ""
     }
+    if cashinfo !={}:
+        for key in cashinfo:
+            if key in json.keys():
+                json[key] = cashinfo[key]
     r = requests.request('post', url=url, json=json, headers=headers)
     status = r.json()['status']
-    return status
+    return r
 def cashout_user1(token=None):
     '''用户提现前获取绑定的银行卡信息'''
     url = base_url + "/user/wallet/bank_info?from=pc"
@@ -164,8 +173,9 @@ def cashout_user1(token=None):
     json = {"is_charge": 1,
             "from": "pc"}
     r = requests.request('post', url=url, json=json, headers=headers)
-    print(r.json())
-    return r.json()['data']['id']
+
+    #return r.json()['data']['id']
+    return r
 def cashout_user2(token=None):
     '''用户申请提现'''
     url = base_url + "/user/wallet/cashout"
@@ -177,7 +187,7 @@ def cashout_user2(token=None):
             "bank_id": bank_id,
             "money": "100"}
     r = requests.request('post', url=url, json=json, headers=headers)
-    return r.json()
+    return r
 
 
 def cashout_list():

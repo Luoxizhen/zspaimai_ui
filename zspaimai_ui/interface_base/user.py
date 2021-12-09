@@ -151,7 +151,7 @@ def list(page=1,**user_info):
         for key in user_info:
             if key in user_infos.keys():
                 user_infos[key] = user_info[key]
-        ui = util.kwargs_to_str(user_infos)
+        ui = util.kwargs_to_str(**user_infos)
         list_info["where"] = ui
 
     r = requests.request('post', url=url, json=list_info, headers=headers)

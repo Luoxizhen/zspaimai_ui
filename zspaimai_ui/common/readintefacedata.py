@@ -3,17 +3,12 @@ from config.conf import cm
 import os
 from utils import times
 class Pagedata:
-    def __init__(self, name, dir='data'):
+    def __init__(self, name):
         self.file_name = "%s.yml" % name
-        if dir == "data":
-            self.file_path = os.path.join(cm.WEB_DATA_PATH, self.file_name)
-        else:
-            self.file_path = os.path.join(cm.INTERFACE_DATA_PATH, self.file_name)
+        self.file_path = os.path.join(cm.WEB_DATA_PATH, self.file_name)
 
         if not os.path.exists(self.file_path):
-
-
-            raise FileNotFoundError("%s 文件不存在" % self.file_path)
+            raise FileNotFoundError("%s 文件不存在" % self.file_path )
         with open(self.file_path, encoding='utf-8') as f:
             file_data = f.read()
             f.close()
