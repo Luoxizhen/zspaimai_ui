@@ -288,20 +288,20 @@ class TestFirstp201:
         #self.assertTrue(self.get_historyBoxP())
         assert fp.is_display_search_history_box() == 1
 
-    def test_click_searchBox002(self):
-        '''验证点击搜索框，历史框包含搜索历史文本'''
-        fp = Firstp(self.driver)
-        fp.click_searchBox()
-        time.sleep(5)
-        #self.assertTrue(self.get_historyTextP())
-        assert fp.get_historyTextP() == 1
-    def test_click_searchBox003(self):
-        '''验证点击搜索框，历史框包含删除按钮'''
-        fp = Firstp(self.driver)
-        fp.click_searchBox()
-        time.sleep(5)
-        #self.assertTrue(self.get_deleteIcon())
-        assert fp.get_deleteIcon() == 1
+    # def test_click_searchBox002(self):
+    #     '''验证点击搜索框，历史框包含搜索历史文本'''
+    #     fp = Firstp(self.driver)
+    #     fp.click_search_box()
+    #     time.sleep(5)
+    #     #self.assertTrue(self.get_historyTextP())
+    #     assert fp.get_historyTextP() == 1
+    # def test_click_searchBox003(self):
+    #     '''验证点击搜索框，历史框包含删除按钮'''
+    #     fp = Firstp(self.driver)
+    #     fp.click_search_box()
+    #     time.sleep(5)
+    #     #self.assertTrue(self.get_deleteIcon())
+    #     assert fp.get_deleteIcon() == 1
     def test_qrcode_app(self):
         '''验证页面底部显示 中晟在线 小程序二维码'''
         fp = Firstp(self.driver)

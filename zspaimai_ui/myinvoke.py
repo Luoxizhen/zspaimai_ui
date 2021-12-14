@@ -9,4 +9,9 @@ class MyPlugin:
 
 
 
-pytest.main(["-x", "test/test_firstp.py::test_111", "--junitxml=reports/result1.xml"], plugins=[MyPlugin()])
+
+
+#pytest.main(["-x", "test/test_firstp.py::test_111", "--junitxml=reports/result1.xml"], plugins=[MyPlugin()])
+
+pytest.main(["-x", "test/test_firstp.py"], plugins=[MyPlugin()])
+pytest.main(["-x", "test/test_detail.py"], plugins=[MyPlugin()])

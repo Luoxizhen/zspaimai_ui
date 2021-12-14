@@ -486,3 +486,7 @@
 2021-12-09 11:32:40,947 - CRITICAL - __init__.py[:22] - critical message
 2021-12-09 11:34:20,838 - ERROR - __init__.py[:21] - error message
 2021-12-09 11:34:20,838 - CRITICAL - __init__.py[:22] - critical message
+2021-12-13 11:53:10,125 - ERROR - __init__.py[:21] - error message
+2021-12-13 11:53:10,125 - CRITICAL - __init__.py[:22] - critical message
+2021-12-13 12:10:16,086 - ERROR - __init__.py[:21] - error message
+2021-12-13 12:10:16,086 - CRITICAL - __init__.py[:22] - critical message

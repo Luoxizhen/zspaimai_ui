@@ -73,124 +73,154 @@ class Firstp(Web):
     # airCommand = (By.XPATH, '//div[@class="airCommand"]')
 
 
-    def click_loginB(self):
-        self.driver.find_element(*self.loginB).click()
+    # def click_loginB(self):
+    #     self.driver.find_element(*self.loginB).click()
     def click_login(self):
         self.is_click(firstp["登陆"])
 
-    def click_helpB(self):
-        self.driver.find_element(*self.helpB).click()
+    # def click_helpB(self):
+    #     self.driver.find_element(*self.helpB).click()
     def click_help_button(self):
         print(firstp['帮助中心'])
         self.is_click(firstp['帮助中心'])
-    def click_contactB(self):
-        self.driver.find_element(*self.contactB).click()
+    # def click_contactB(self):
+    #     self.driver.find_element(*self.contactB).click()
     def click_contact_button(self):
         print(firstp["联系我们"])
         self.find_elements(firstp["联系我们"])[0].click()
 
 
-    def send_search_info(self,key):
-        '''搜索输入框输入信息'''
-        self.driver.find_element(*self.searchBox).send_keys(key)
+    # def send_search_info(self,key):
+    #     '''搜索输入框输入信息'''
+    #     self.driver.find_element(*self.searchBox).send_keys(key)
+
+    # def click_searchBox(self):
+    #     '''点击搜索输入框'''
+    #     self.driver.find_element(*self.searchBox).click()
     def input_search(self,content):
         self.input_text(locator=firstp['搜索框'], txt=content)
-    def click_searchBox(self):
-        '''点击搜索输入框'''
-        self.driver.find_element(*self.searchBox).click()
     def click_search_box(self):
         self.is_click(firstp['搜索框'])
-    def searchBoxE(self):
-        return self.driver.find_element(*self.searchBox)
     def get_infoOfSearchBox(self):
         '''获取搜索框的默认文本'''
         return self.searchBoxE().get_attribute("placeholder")
     def info_of_search_box(self):
         return self.find_element(firstp['搜索框']).get_attribute("placeholder")
-
-    def click_firstPage(self):
-        self.driver.find_element(*self.firstPage).click()
     def click_first_page(self):
         self.is_click(firstp["首页"])
-    def click_bid(self):
-        self.driver.find_element(*self.bid).click()
     def click_bidding(self):
         self.is_click(firstp['竞买'])
-
-    def click_apply(self):
-        self.driver.find_element(*self.apply).click()
     def click_applying(self):
         self.is_click(firstp['委托'])
-    def click_specialP(self):
-        self.driver.find_element(*self.specialP).click()
     def click_special(self):
         self.is_click(firstp['专场'])
-    def click_myBidB(self):
-        self.driver.find_element(*self.myBidB).click()
     def click_my_bid_button(self):
         self.is_click(firstp['我的竞买'])
-    def click_myMsgB(self):
-        self.driver.find_element(*self.myMsgB).click()
     def click_message(self):
         self.is_click(firstp['消息'])
-
-
-    # 点击页面底部链接
-    def click_guildL(self):
-        self.driver.find_element(*self.guideL).click()
     def click_guild_link(self):
         self.is_click(firstp['新手指南'])
-    def click_biddingInfo(self):
-        self.driver.find_element(*self.biddingInfo).click()
+
     def click_bidding_info_link(self):
         self.is_click(firstp['竞买须知'])
-    def click_aboutUs(self):
-        self.driver.find_element(*self.aboutUs).click()
+
     def click_about_us_link(self):
         self.is_click(firstp['关于我们'])
 
-    def click_serviceA(self):
-        self.driver.find_element(*self.serviceA).click()
     def click_service_link(self):
         self.is_click(firstp['服务协议'])
-    def click_collectionGuarantee(self):
-        self.driver.find_element(*self.collectionGuarantee).click()
+
     def click_collection_guarantee_link(self):
         self.is_click(firstp["藏品保障"])
-    def click_contactUs(self):
-        self.driver.find_element(*self.contactUs).click()
+
     def click_contact_us_link(self):
         self.find_elements(firstp["联系我们"])[1].click()
-    def click_myApplyB(self):
-        self.driver.find_element(*self.myApplyB).click()
+
     def click_apply_button(self):
         self.is_click(firstp['我要申请委托'])
-    def click_moreCollection(self):
-        self.driver.find_element(*self.moreCollection).click()
+
     def click_more_collection(self):
         self.is_click(firstp['更多拍品'])
-    def click_moreCollectionID(self):
-        self.driver.find_element(*self.moreCollectionId).click()
+    # def searchBoxE(self):
+    #     return self.driver.find_element(*self.searchBox)
+
+
+
+    # def click_firstPage(self):
+    #     self.driver.find_element(*self.firstPage).click()
+    #
+    # def click_bid(self):
+    #     self.driver.find_element(*self.bid).click()
+    #
+    #
+    # def click_apply(self):
+    #     self.driver.find_element(*self.apply).click()
+    #
+    # def click_specialP(self):
+    #     self.driver.find_element(*self.specialP).click()
+    #
+    # def click_myBidB(self):
+    #     self.driver.find_element(*self.myBidB).click()
+    #
+    # def click_myMsgB(self):
+    #     self.driver.find_element(*self.myMsgB).click()
+    #
+    #
+    #
+    # # 点击页面底部链接
+    # def click_guildL(self):
+    #     self.driver.find_element(*self.guideL).click()
+    #
+    # def click_biddingInfo(self):
+    #     self.driver.find_element(*self.biddingInfo).click()
+    #
+    # def click_aboutUs(self):
+    #     self.driver.find_element(*self.aboutUs).click()
+    #
+    #
+    #
+    #
+    # def click_serviceA(self):
+    #     self.driver.find_element(*self.serviceA).click()
+    #
+    # def click_collectionGuarantee(self):
+    #     self.driver.find_element(*self.collectionGuarantee).click()
+    #
+    # def click_contactUs(self):
+    #     self.driver.find_element(*self.contactUs).click()
+    #
+    # def click_myApplyB(self):
+    #     self.driver.find_element(*self.myApplyB).click()
+    #
+    # def click_moreCollection(self):
+    #     self.driver.find_element(*self.moreCollection).click()
+    #
+    # def click_moreCollectionID(self):
+    #     self.driver.find_element(*self.moreCollectionId).click()
+    #
+    # def click_ipL(self):
+    #     self.driver.find_element(*self.ipL).click()
+    # def get_historyBoxP(self):
+    #     return self.driver.find_element(*self.historyBox).is_displayed()
+    # def get_historyTextP(self):
+    #     return self.driver.find_element(*self.historyText).is_displayed()
+    # def get_deleteIcon(self):
+    #     return self.driver.find_element(*self.deleteIcon).is_displayed()
+    # def click_searchButton(self):
+    #     self.driver.find_element(*self.searchButton).click()
+    # def get_lastReco(self):
+    #     return self.driver.find_element(*self.lastRecoItem).text
+    # def click_delectIcon(self):
+    #     self.driver.find_element(*self.deleteIcon).click()
+    # def get_qrcodeP(self):
+    #     return self.driver.find_element(*self.qrcode).get_property('src')
+    # def click_airCommand(self):
+    #     self.driver.find_element(*self.airCommandClose).click()
     def click_more_collection_button(self):
         self.is_click(firstp['更多拍品按钮'])
-    def click_ipL(self):
-        self.driver.find_element(*self.ipL).click()
-    def get_historyBoxP(self):
-        return self.driver.find_element(*self.historyBox).is_displayed()
     def is_display_search_history_box(self):
         return self.find_element(firstp['搜索历史框']).is_displayed()
-    def get_historyTextP(self):
-        return self.driver.find_element(*self.historyText).is_displayed()
-    def get_deleteIcon(self):
-        return self.driver.find_element(*self.deleteIcon).is_displayed()
-    def click_searchButton(self):
-        self.driver.find_element(*self.searchButton).click()
-    def get_lastReco(self):
-        return self.driver.find_element(*self.lastRecoItem).text
-    def click_delectIcon(self):
-        self.driver.find_element(*self.deleteIcon).click()
-    def get_qrcodeP(self):
-        return self.driver.find_element(*self.qrcode).get_property('src')
+
     def src_qrcode_zsonline(self):
         return self.find_element(firstp['中晟在线二维码']).get_property('src')
     def src_qrcode_app(self):
@@ -202,8 +232,7 @@ class Firstp(Web):
     def click_mobile(self):
         self.is_click(firstp['移动端'])
 
-    def click_airCommand(self):
-        self.driver.find_element(*self.airCommandClose).click()
+
     def is_display_login_box(self):
         return self.find_element(firstp['登陆框']).is_displayed()
     def close_login_box(self):
