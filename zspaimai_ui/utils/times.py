@@ -5,7 +5,7 @@ def timestamp():
     #时间戳
     return round(time.time())
 
-def dt_strftime(fmt="%Y%m"):
+def dt_strftime(fmt="%Y%m%d-%H%M%S"):
     '''
     datetime 格式化时间
     :param fmt:

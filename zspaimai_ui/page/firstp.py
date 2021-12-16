@@ -310,7 +310,7 @@ class Firstp(Web):
     #拍品操作
     def click_collection(self):
         self.is_click(firstp['拍品一'])
-    def click_collection_detail(self, i="拍品详情"):
+    def click_collection_detail(self, i="拍品详情1"):
         self.is_click(firstp[i])
 
     def collection_name(self):

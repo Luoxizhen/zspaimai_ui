@@ -1,7 +1,452 @@
-<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.147" timestamp="2021-11-06T21:42:39.185357" hostname="yuanyuandeMacBook-Pro.local"><testcase classname="test.test_firstp" name="test_111" time="0.001"><failure message="AssertionError: value was odd, should be even&#10;assert (5 % 2) == 0">def test_111():
-        a = 5
-&gt;       assert a % 2 == 0, "value was odd, should be even"
-E       AssertionError: value was odd, should be even
-E       assert (5 % 2) == 0
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="9" skipped="4" tests="31" time="155.543" timestamp="2021-12-16T12:04:03.943055" hostname="yuanyuandeMacBook-Pro.local"><testcase classname="test.test_firstp.TestFirstp001" name="test_title" time="30.064" /><testcase classname="test.test_firstp.TestFirstp001" name="test_searchBoxInfo" time="0.083" /><testcase classname="test.test_firstp.TestFirstp001" name="test_show_search_history_box" time="6.321" /><testcase classname="test.test_firstp.TestFirstp001" name="test_qrcode_app" time="0.022" /><testcase classname="test.test_firstp.TestFirstp001" name="test_qrcode_zsonline" time="0.022" /><testcase classname="test.test_firstp.TestFirstp001" name="test_qrcode_phone" time="0.027" /><testcase classname="test.test_firstp.TestFirstp001" name="test_qrcode_phone_show" time="1.270" /><testcase classname="test.test_firstp.TestFirstp001" name="test_click_help" time="2.314" /><testcase classname="test.test_firstp.TestFirstp001" name="test_click_contact" time="2.660" /><testcase classname="test.test_firstp.TestFirstp001" name="test_click_login" time="3.478" /><testcase classname="test.test_firstp.TestFirstp001" name="test_click_firstPage" time="0.000"><skipped type="pytest.skip" message="unconditional skip">/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py:344: unconditional skip</skipped></testcase><testcase classname="test.test_firstp.TestFirstp001" name="test_click_bid" time="7.641" /><testcase classname="test.test_firstp.TestFirstp001" name="test_click_more_collection" time="20.332"><failure message="selenium.common.exceptions.TimeoutException: Message:">self = &lt;test.test_firstp.TestFirstp001 object at 0x10da62af0&gt;
 
-test/test_firstp.py:254: AssertionError</failure></testcase></testsuite></testsuites>
+    def test_click_more_collection(self):
+        '''验证点击页面底部更多拍品，页面正确跳转'''
+&gt;       self.fp.click_more_collection()
+
+test/test_firstp.py:363: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+page/firstp.py:286: in click_more_collection
+    self.is_click(firstp['更多拍品'])
+base/webpage.py:75: in is_click
+    self.find_element(locator).click()
+base/webpage.py:50: in find_element
+    return Web.element_locator(lambda *args: self.wait.until(
+base/webpage.py:46: in element_locator
+    return func(cm.LOCATE_MODE[name], value)
+base/webpage.py:50: in &lt;lambda&gt;
+    return Web.element_locator(lambda *args: self.wait.until(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;selenium.webdriver.support.wait.WebDriverWait (session="f7a9746fce1b70e5ee92338b14c30ddd")&gt;
+method = &lt;selenium.webdriver.support.expected_conditions.presence_of_element_located object at 0x10da62d90&gt;
+message = ''
+
+    def until(self, method, message=''):
+        """Calls the method provided with the driver as an argument until the \
+        return value is not False."""
+        screen = None
+        stacktrace = None
+    
+        end_time = time.time() + self._timeout
+        while True:
+            try:
+                value = method(self._driver)
+                if value:
+                    return value
+            except self._ignored_exceptions as exc:
+                screen = getattr(exc, 'screen', None)
+                stacktrace = getattr(exc, 'stacktrace', None)
+            time.sleep(self._poll)
+            if time.time() &gt; end_time:
+                break
+&gt;       raise TimeoutException(message, screen, stacktrace)
+E       selenium.common.exceptions.TimeoutException: Message:
+
+venv/lib/python3.9/site-packages/selenium/webdriver/support/wait.py:80: TimeoutException</failure></testcase><testcase classname="test.test_firstp.TestFirstp001" name="test_click_more_collection_button" time="9.957" /><testcase classname="test.test_firstp.TestFirstp001" name="test_click_specialP" time="2.318" /><testcase classname="test.test_firstp.TestFirstp001" name="test_click_apply" time="2.226" /><testcase classname="test.test_firstp.TestFirstp001" name="test_click_my_bid" time="2.218" /><testcase classname="test.test_firstp.TestFirstp001" name="test_click_msg" time="2.191" /><testcase classname="test.test_firstp.TestFirstp001" name="test_login_title" time="2.273" /><testcase classname="test.test_firstp.TestFirstp002" name="test_topic1_name" time="35.798"><failure message="AssertionError: assert '专场_2' == '专场_1'&#10;  - 专场_1&#10;  ?    ^&#10;  + 专场_2&#10;  ?    ^">self = &lt;test.test_firstp.TestFirstp002 object at 0x10d9fdb50&gt;
+
+    def test_topic1_name(self):
+        '''验证专场1的名称显示准确'''
+        name = self.fp.topic1_name()
+&gt;       assert name == self.topic_info['title']
+E       AssertionError: assert '专场_2' == '专场_1'
+E         - 专场_1
+E         ?    ^
+E         + 专场_2
+E         ?    ^
+
+test/test_firstp.py:528: AssertionError</failure></testcase><testcase classname="test.test_firstp.TestFirstp002" name="test_topic1_status" time="0.036" /><testcase classname="test.test_firstp.TestFirstp002" name="test_topic1_num" time="0.036"><failure message="AssertionError: assert '301' == '8'&#10;  - 8&#10;  + 301">self = &lt;test.test_firstp.TestFirstp002 object at 0x10dba1f10&gt;
+
+    def test_topic1_num(self):
+        '''验证专场1中的拍品数量显示准确'''
+        num = self.fp.topic1_collection_num()
+&gt;       assert num == '8'
+E       AssertionError: assert '301' == '8'
+E         - 8
+E         + 301
+
+test/test_firstp.py:540: AssertionError</failure></testcase><testcase classname="test.test_firstp.TestFirstp002" name="test_topic1_bid_num" time="0.043"><failure message="AssertionError: assert '17' == '0'&#10;  - 0&#10;  + 17">self = &lt;test.test_firstp.TestFirstp002 object at 0x10db6a2e0&gt;
+
+    def test_topic1_bid_num(self):
+        '''验证专场1中的出价次数显示准确'''
+        num = self.fp.topic1_bid_num()
+&gt;       assert num == '0'
+E       AssertionError: assert '17' == '0'
+E         - 0
+E         + 17
+
+test/test_firstp.py:544: AssertionError</failure></testcase><testcase classname="test.test_firstp.TestFirstp002" name="test_good1_name" time="0.034"><failure message="AssertionError: assert '拍品8' == '拍品1'&#10;  - 拍品1&#10;  + 拍品8">self = &lt;test.test_firstp.TestFirstp002 object at 0x10da9a5e0&gt;
+
+    def test_good1_name(self):
+        '''验证拍品一名称显示准确'''
+        name = self.fp.collection_name()
+&gt;       assert name == self.good_info['name']
+E       AssertionError: assert '拍品8' == '拍品1'
+E         - 拍品1
+E         + 拍品8
+
+test/test_firstp.py:548: AssertionError</failure></testcase><testcase classname="test.test_firstp.TestFirstp002" name="test_good1_status" time="0.033"><failure message="AssertionError: assert '已成交' == '正在拍卖'&#10;  - 正在拍卖&#10;  + 已成交">self = &lt;test.test_firstp.TestFirstp002 object at 0x10dbd3e20&gt;
+
+    def test_good1_status(self):
+        '''验证拍品一状态'''
+        status = self.fp.collection_status()
+&gt;       assert status == "正在拍卖"
+E       AssertionError: assert '已成交' == '正在拍卖'
+E         - 正在拍卖
+E         + 已成交
+
+test/test_firstp.py:552: AssertionError</failure></testcase><testcase classname="test.test_firstp.TestFirstp002" name="test_good1_price" time="0.042"><failure message="AssertionError: assert '￥205.00' == '￥10.00'&#10;  - ￥10.00&#10;  ?  ^&#10;  + ￥205.00&#10;  ?  ^ +">self = &lt;test.test_firstp.TestFirstp002 object at 0x10db16250&gt;
+
+    def test_good1_price(self):
+        '''验证拍品一价格'''
+        price = self.fp.collection_price()
+&gt;       assert price == "￥10.00"
+E       AssertionError: assert '￥205.00' == '￥10.00'
+E         - ￥10.00
+E         ?  ^
+E         + ￥205.00
+E         ?  ^ +
+
+test/test_firstp.py:556: AssertionError</failure></testcase><testcase classname="test.test_firstp.TestFirstp002" name="test_click_collection" time="0.000"><skipped type="pytest.skip" message="unconditional skip">/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py:557: unconditional skip</skipped></testcase><testcase classname="test.test_firstp.TestFirstp002" name="test_search_goods" time="0.066"><skipped type="pytest.skip" message="unconditional skip">/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py:565: unconditional skip</skipped></testcase><testcase classname="test.test_firstp.TestFirstp003" name="test_log_num" time="22.356"><failure message="selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable&#10;  (Session info: chrome=96.0.4664.110)">self = &lt;test.test_firstp.TestFirstp003 object at 0x10da7ae80&gt;
+
+    def test_log_num(self):
+        '''验证账号、密码登陆登出功能'''
+        fp = Firstp(self.driver)
+        fp.click_login()
+        fp.click_num_login()
+        fp.send_num()
+        fp.send_password()
+        fp.agree()
+        fp.click_login_botton()
+        time.sleep(1)
+        nick = fp.nickname()
+&gt;       fp.click_logout()
+
+test/test_firstp.py:596: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+page/firstp.py:262: in click_logout
+    self.is_click(firstp['退出登录'])
+base/webpage.py:75: in is_click
+    self.find_element(locator).click()
+venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py:80: in click
+    self._execute(Command.CLICK_ELEMENT)
+venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py:633: in _execute
+    return self._parent.execute(command, params)
+venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:321: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x10da7aa00&gt;
+response = {'status': 400, 'value': '{"value":{"error":"element not interactable","message":"element not interactable\\n  (Sessio...0001a21a506c _pthread_start + 320\\n17  libsystem_pthread.dylib             0x00000001a219fda0 thread_start + 8\\n"}}'}
+
+    def check_response(self, response):
+        """
+        Checks that a JSON response from the WebDriver does not have an error.
+    
+        :Args:
+         - response - The JSON response from the WebDriver server as a dictionary
+           object.
+    
+        :Raises: If the response contains an error message.
+        """
+        status = response.get('status', None)
+        if status is None or status == ErrorCode.SUCCESS:
+            return
+        value = None
+        message = response.get("message", "")
+        screen = response.get("screen", "")
+        stacktrace = None
+        if isinstance(status, int):
+            value_json = response.get('value', None)
+            if value_json and isinstance(value_json, basestring):
+                import json
+                try:
+                    value = json.loads(value_json)
+                    if len(value.keys()) == 1:
+                        value = value['value']
+                    status = value.get('error', None)
+                    if status is None:
+                        status = value["status"]
+                        message = value["value"]
+                        if not isinstance(message, basestring):
+                            value = message
+                            message = message.get('message')
+                    else:
+                        message = value.get('message', None)
+                except ValueError:
+                    pass
+    
+        exception_class = ErrorInResponseException
+        if status in ErrorCode.NO_SUCH_ELEMENT:
+            exception_class = NoSuchElementException
+        elif status in ErrorCode.NO_SUCH_FRAME:
+            exception_class = NoSuchFrameException
+        elif status in ErrorCode.NO_SUCH_WINDOW:
+            exception_class = NoSuchWindowException
+        elif status in ErrorCode.STALE_ELEMENT_REFERENCE:
+            exception_class = StaleElementReferenceException
+        elif status in ErrorCode.ELEMENT_NOT_VISIBLE:
+            exception_class = ElementNotVisibleException
+        elif status in ErrorCode.INVALID_ELEMENT_STATE:
+            exception_class = InvalidElementStateException
+        elif status in ErrorCode.INVALID_SELECTOR \
+                or status in ErrorCode.INVALID_XPATH_SELECTOR \
+                or status in ErrorCode.INVALID_XPATH_SELECTOR_RETURN_TYPER:
+            exception_class = InvalidSelectorException
+        elif status in ErrorCode.ELEMENT_IS_NOT_SELECTABLE:
+            exception_class = ElementNotSelectableException
+        elif status in ErrorCode.ELEMENT_NOT_INTERACTABLE:
+            exception_class = ElementNotInteractableException
+        elif status in ErrorCode.INVALID_COOKIE_DOMAIN:
+            exception_class = InvalidCookieDomainException
+        elif status in ErrorCode.UNABLE_TO_SET_COOKIE:
+            exception_class = UnableToSetCookieException
+        elif status in ErrorCode.TIMEOUT:
+            exception_class = TimeoutException
+        elif status in ErrorCode.SCRIPT_TIMEOUT:
+            exception_class = TimeoutException
+        elif status in ErrorCode.UNKNOWN_ERROR:
+            exception_class = WebDriverException
+        elif status in ErrorCode.UNEXPECTED_ALERT_OPEN:
+            exception_class = UnexpectedAlertPresentException
+        elif status in ErrorCode.NO_ALERT_OPEN:
+            exception_class = NoAlertPresentException
+        elif status in ErrorCode.IME_NOT_AVAILABLE:
+            exception_class = ImeNotAvailableException
+        elif status in ErrorCode.IME_ENGINE_ACTIVATION_FAILED:
+            exception_class = ImeActivationFailedException
+        elif status in ErrorCode.MOVE_TARGET_OUT_OF_BOUNDS:
+            exception_class = MoveTargetOutOfBoundsException
+        elif status in ErrorCode.JAVASCRIPT_ERROR:
+            exception_class = JavascriptException
+        elif status in ErrorCode.SESSION_NOT_CREATED:
+            exception_class = SessionNotCreatedException
+        elif status in ErrorCode.INVALID_ARGUMENT:
+            exception_class = InvalidArgumentException
+        elif status in ErrorCode.NO_SUCH_COOKIE:
+            exception_class = NoSuchCookieException
+        elif status in ErrorCode.UNABLE_TO_CAPTURE_SCREEN:
+            exception_class = ScreenshotException
+        elif status in ErrorCode.ELEMENT_CLICK_INTERCEPTED:
+            exception_class = ElementClickInterceptedException
+        elif status in ErrorCode.INSECURE_CERTIFICATE:
+            exception_class = InsecureCertificateException
+        elif status in ErrorCode.INVALID_COORDINATES:
+            exception_class = InvalidCoordinatesException
+        elif status in ErrorCode.INVALID_SESSION_ID:
+            exception_class = InvalidSessionIdException
+        elif status in ErrorCode.UNKNOWN_METHOD:
+            exception_class = UnknownMethodException
+        else:
+            exception_class = WebDriverException
+        if value == '' or value is None:
+            value = response['value']
+        if isinstance(value, basestring):
+            if exception_class == ErrorInResponseException:
+                raise exception_class(response, value)
+            raise exception_class(value)
+        if message == "" and 'message' in value:
+            message = value['message']
+    
+        screen = None
+        if 'screen' in value:
+            screen = value['screen']
+    
+        stacktrace = None
+        if 'stackTrace' in value and value['stackTrace']:
+            stacktrace = []
+            try:
+                for frame in value['stackTrace']:
+                    line = self._value_or_default(frame, 'lineNumber', '')
+                    file = self._value_or_default(frame, 'fileName', '&lt;anonymous&gt;')
+                    if line:
+                        file = "%s:%s" % (file, line)
+                    meth = self._value_or_default(frame, 'methodName', '&lt;anonymous&gt;')
+                    if 'className' in frame:
+                        meth = "%s.%s" % (frame['className'], meth)
+                    msg = "    at %s (%s)"
+                    msg = msg % (meth, file)
+                    stacktrace.append(msg)
+            except TypeError:
+                pass
+        if exception_class == ErrorInResponseException:
+            raise exception_class(response, message)
+        elif exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if 'data' in value:
+                alert_text = value['data'].get('text')
+            elif 'alert' in value:
+                alert_text = value['alert'].get('text')
+            raise exception_class(message, screen, stacktrace, alert_text)
+&gt;       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.ElementNotInteractableException: Message: element not interactable
+E         (Session info: chrome=96.0.4664.110)
+
+venv/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py:242: ElementNotInteractableException</failure></testcase><testcase classname="test.test_firstp.TestFirstp003" name="test_log_phone" time="1.194"><failure message="selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element &lt;div class=&quot;fz-12 c-fff m-r-22&quot; data-v-d8fefdc2=&quot;&quot;&gt;...&lt;/div&gt; is not clickable at point (1163, 20). Other element would receive the click: &lt;div class=&quot;login-wrap&quot; data-v-19ed8fe5=&quot;&quot;&gt;...&lt;/div&gt;&#10;  (Session info: chrome=96.0.4664.110)">self = &lt;test.test_firstp.TestFirstp003 object at 0x10dd0dbb0&gt;
+
+    def test_log_phone(self):
+        '''验证快捷登陆'''
+        fp = Firstp(self.driver)
+&gt;       fp.click_login()
+
+test/test_firstp.py:601: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+page/firstp.py:79: in click_login
+    self.is_click(firstp["登陆"])
+base/webpage.py:75: in is_click
+    self.find_element(locator).click()
+venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py:80: in click
+    self._execute(Command.CLICK_ELEMENT)
+venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py:633: in _execute
+    return self._parent.execute(command, params)
+venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:321: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x10da7aa00&gt;
+response = {'status': 400, 'value': '{"value":{"error":"element click intercepted","message":"element click intercepted: Element ...0001a21a506c _pthread_start + 320\\n20  libsystem_pthread.dylib             0x00000001a219fda0 thread_start + 8\\n"}}'}
+
+    def check_response(self, response):
+        """
+        Checks that a JSON response from the WebDriver does not have an error.
+    
+        :Args:
+         - response - The JSON response from the WebDriver server as a dictionary
+           object.
+    
+        :Raises: If the response contains an error message.
+        """
+        status = response.get('status', None)
+        if status is None or status == ErrorCode.SUCCESS:
+            return
+        value = None
+        message = response.get("message", "")
+        screen = response.get("screen", "")
+        stacktrace = None
+        if isinstance(status, int):
+            value_json = response.get('value', None)
+            if value_json and isinstance(value_json, basestring):
+                import json
+                try:
+                    value = json.loads(value_json)
+                    if len(value.keys()) == 1:
+                        value = value['value']
+                    status = value.get('error', None)
+                    if status is None:
+                        status = value["status"]
+                        message = value["value"]
+                        if not isinstance(message, basestring):
+                            value = message
+                            message = message.get('message')
+                    else:
+                        message = value.get('message', None)
+                except ValueError:
+                    pass
+    
+        exception_class = ErrorInResponseException
+        if status in ErrorCode.NO_SUCH_ELEMENT:
+            exception_class = NoSuchElementException
+        elif status in ErrorCode.NO_SUCH_FRAME:
+            exception_class = NoSuchFrameException
+        elif status in ErrorCode.NO_SUCH_WINDOW:
+            exception_class = NoSuchWindowException
+        elif status in ErrorCode.STALE_ELEMENT_REFERENCE:
+            exception_class = StaleElementReferenceException
+        elif status in ErrorCode.ELEMENT_NOT_VISIBLE:
+            exception_class = ElementNotVisibleException
+        elif status in ErrorCode.INVALID_ELEMENT_STATE:
+            exception_class = InvalidElementStateException
+        elif status in ErrorCode.INVALID_SELECTOR \
+                or status in ErrorCode.INVALID_XPATH_SELECTOR \
+                or status in ErrorCode.INVALID_XPATH_SELECTOR_RETURN_TYPER:
+            exception_class = InvalidSelectorException
+        elif status in ErrorCode.ELEMENT_IS_NOT_SELECTABLE:
+            exception_class = ElementNotSelectableException
+        elif status in ErrorCode.ELEMENT_NOT_INTERACTABLE:
+            exception_class = ElementNotInteractableException
+        elif status in ErrorCode.INVALID_COOKIE_DOMAIN:
+            exception_class = InvalidCookieDomainException
+        elif status in ErrorCode.UNABLE_TO_SET_COOKIE:
+            exception_class = UnableToSetCookieException
+        elif status in ErrorCode.TIMEOUT:
+            exception_class = TimeoutException
+        elif status in ErrorCode.SCRIPT_TIMEOUT:
+            exception_class = TimeoutException
+        elif status in ErrorCode.UNKNOWN_ERROR:
+            exception_class = WebDriverException
+        elif status in ErrorCode.UNEXPECTED_ALERT_OPEN:
+            exception_class = UnexpectedAlertPresentException
+        elif status in ErrorCode.NO_ALERT_OPEN:
+            exception_class = NoAlertPresentException
+        elif status in ErrorCode.IME_NOT_AVAILABLE:
+            exception_class = ImeNotAvailableException
+        elif status in ErrorCode.IME_ENGINE_ACTIVATION_FAILED:
+            exception_class = ImeActivationFailedException
+        elif status in ErrorCode.MOVE_TARGET_OUT_OF_BOUNDS:
+            exception_class = MoveTargetOutOfBoundsException
+        elif status in ErrorCode.JAVASCRIPT_ERROR:
+            exception_class = JavascriptException
+        elif status in ErrorCode.SESSION_NOT_CREATED:
+            exception_class = SessionNotCreatedException
+        elif status in ErrorCode.INVALID_ARGUMENT:
+            exception_class = InvalidArgumentException
+        elif status in ErrorCode.NO_SUCH_COOKIE:
+            exception_class = NoSuchCookieException
+        elif status in ErrorCode.UNABLE_TO_CAPTURE_SCREEN:
+            exception_class = ScreenshotException
+        elif status in ErrorCode.ELEMENT_CLICK_INTERCEPTED:
+            exception_class = ElementClickInterceptedException
+        elif status in ErrorCode.INSECURE_CERTIFICATE:
+            exception_class = InsecureCertificateException
+        elif status in ErrorCode.INVALID_COORDINATES:
+            exception_class = InvalidCoordinatesException
+        elif status in ErrorCode.INVALID_SESSION_ID:
+            exception_class = InvalidSessionIdException
+        elif status in ErrorCode.UNKNOWN_METHOD:
+            exception_class = UnknownMethodException
+        else:
+            exception_class = WebDriverException
+        if value == '' or value is None:
+            value = response['value']
+        if isinstance(value, basestring):
+            if exception_class == ErrorInResponseException:
+                raise exception_class(response, value)
+            raise exception_class(value)
+        if message == "" and 'message' in value:
+            message = value['message']
+    
+        screen = None
+        if 'screen' in value:
+            screen = value['screen']
+    
+        stacktrace = None
+        if 'stackTrace' in value and value['stackTrace']:
+            stacktrace = []
+            try:
+                for frame in value['stackTrace']:
+                    line = self._value_or_default(frame, 'lineNumber', '')
+                    file = self._value_or_default(frame, 'fileName', '&lt;anonymous&gt;')
+                    if line:
+                        file = "%s:%s" % (file, line)
+                    meth = self._value_or_default(frame, 'methodName', '&lt;anonymous&gt;')
+                    if 'className' in frame:
+                        meth = "%s.%s" % (frame['className'], meth)
+                    msg = "    at %s (%s)"
+                    msg = msg % (meth, file)
+                    stacktrace.append(msg)
+            except TypeError:
+                pass
+        if exception_class == ErrorInResponseException:
+            raise exception_class(response, message)
+        elif exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if 'data' in value:
+                alert_text = value['data'].get('text')
+            elif 'alert' in value:
+                alert_text = value['alert'].get('text')
+            raise exception_class(message, screen, stacktrace, alert_text)
+&gt;       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element &lt;div class="fz-12 c-fff m-r-22" data-v-d8fefdc2=""&gt;...&lt;/div&gt; is not clickable at point (1163, 20). Other element would receive the click: &lt;div class="login-wrap" data-v-19ed8fe5=""&gt;...&lt;/div&gt;
+E         (Session info: chrome=96.0.4664.110)
+
+venv/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py:242: ElementClickInterceptedException</failure></testcase><testcase classname="test.test_firstp.TestFirstp003" name="test_register" time="0.067"><skipped type="pytest.skip" message="暂未实现">/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py:612: 暂未实现</skipped></testcase></testsuite></testsuites>

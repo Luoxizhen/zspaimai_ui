@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Test Report</title>
+    <link href="assets/style.css" rel="stylesheet" type="text/css"/></head>
+  <body onLoad="init()">
+    <script>/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+
+function toArray(iter) {
+    if (iter === null) {
+        return null;
+    }
+    return Array.prototype.slice.call(iter);
+}
+
+function find(selector, elem) { // eslint-disable-line no-redeclare
+    if (!elem) {
+        elem = document;
+    }
+    return elem.querySelector(selector);
+}
+
+function findAll(selector, elem) {
+    if (!elem) {
+        elem = document;
+    }
+    return toArray(elem.querySelectorAll(selector));
+}
+
+function sortColumn(elem) {
+    toggleSortStates(elem);
+    const colIndex = toArray(elem.parentNode.childNodes).indexOf(elem);
+    let key;
+    if (elem.classList.contains('result')) {
+        key = keyResult;
+    } else if (elem.classList.contains('links')) {
+        key = keyLink;
+    } else {
+        key = keyAlpha;
+    }
+    sortTable(elem, key(colIndex));
+}
+
+function showAllExtras() { // eslint-disable-line no-unused-vars
+    findAll('.col-result').forEach(showExtras);
+}
+
+function hideAllExtras() { // eslint-disable-line no-unused-vars
+    findAll('.col-result').forEach(hideExtras);
+}
+
+function showExtras(colresultElem) {
+    const extras = colresultElem.parentNode.nextElementSibling;
+    const expandcollapse = colresultElem.firstElementChild;
+    extras.classList.remove('collapsed');
+    expandcollapse.classList.remove('expander');
+    expandcollapse.classList.add('collapser');
+}
+
+function hideExtras(colresultElem) {
+    const extras = colresultElem.parentNode.nextElementSibling;
+    const expandcollapse = colresultElem.firstElementChild;
+    extras.classList.add('collapsed');
+    expandcollapse.classList.remove('collapser');
+    expandcollapse.classList.add('expander');
+}
+
+function showFilters() {
+    const filterItems = document.getElementsByClassName('filter');
+    for (let i = 0; i < filterItems.length; i++)
+        filterItems[i].hidden = false;
+}
+
+function addCollapse() {
+    // Add links for show/hide all
+    const resulttable = find('table#results-table');
+    const showhideall = document.createElement('p');
+    showhideall.innerHTML = '<a href="javascript:showAllExtras()">Show all details</a> / ' +
+                            '<a href="javascript:hideAllExtras()">Hide all details</a>';
+    resulttable.parentElement.insertBefore(showhideall, resulttable);
+
+    // Add show/hide link to each result
+    findAll('.col-result').forEach(function(elem) {
+        const collapsed = getQueryParameter('collapsed') || 'Passed';
+        const extras = elem.parentNode.nextElementSibling;
+        const expandcollapse = document.createElement('span');
+        if (extras.classList.contains('collapsed')) {
+            expandcollapse.classList.add('expander');
+        } else if (collapsed.includes(elem.innerHTML)) {
+            extras.classList.add('collapsed');
+            expandcollapse.classList.add('expander');
+        } else {
+            expandcollapse.classList.add('collapser');
+        }
+        elem.appendChild(expandcollapse);
+
+        elem.addEventListener('click', function(event) {
+            if (event.currentTarget.parentNode.nextElementSibling.classList.contains('collapsed')) {
+                showExtras(event.currentTarget);
+            } else {
+                hideExtras(event.currentTarget);
+            }
+        });
+    });
+}
+
+function getQueryParameter(name) {
+    const match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
+
+function init () { // eslint-disable-line no-unused-vars
+    resetSortHeaders();
+
+    addCollapse();
+
+    showFilters();
+
+    sortColumn(find('.initial-sort'));
+
+    findAll('.sortable').forEach(function(elem) {
+        elem.addEventListener('click',
+            function() {
+                sortColumn(elem);
+            }, false);
+    });
+}
+
+function sortTable(clicked, keyFunc) {
+    const rows = findAll('.results-table-row');
+    const reversed = !clicked.classList.contains('asc');
+    const sortedRows = sort(rows, keyFunc, reversed);
+    /* Whole table is removed here because browsers acts much slower
+     * when appending existing elements.
+     */
+    const thead = document.getElementById('results-table-head');
+    document.getElementById('results-table').remove();
+    const parent = document.createElement('table');
+    parent.id = 'results-table';
+    parent.appendChild(thead);
+    sortedRows.forEach(function(elem) {
+        parent.appendChild(elem);
+    });
+    document.getElementsByTagName('BODY')[0].appendChild(parent);
+}
+
+function sort(items, keyFunc, reversed) {
+    const sortArray = items.map(function(item, i) {
+        return [keyFunc(item), i];
+    });
+
+    sortArray.sort(function(a, b) {
+        const keyA = a[0];
+        const keyB = b[0];
+
+        if (keyA == keyB) return 0;
+
+        if (reversed) {
+            return keyA < keyB ? 1 : -1;
+        } else {
+            return keyA > keyB ? 1 : -1;
+        }
+    });
+
+    return sortArray.map(function(item) {
+        const index = item[1];
+        return items[index];
+    });
+}
+
+function keyAlpha(colIndex) {
+    return function(elem) {
+        return elem.childNodes[1].childNodes[colIndex].firstChild.data.toLowerCase();
+    };
+}
+
+function keyLink(colIndex) {
+    return function(elem) {
+        const dataCell = elem.childNodes[1].childNodes[colIndex].firstChild;
+        return dataCell == null ? '' : dataCell.innerText.toLowerCase();
+    };
+}
+
+function keyResult(colIndex) {
+    return function(elem) {
+        const strings = ['Error', 'Failed', 'Rerun', 'XFailed', 'XPassed',
+            'Skipped', 'Passed'];
+        return strings.indexOf(elem.childNodes[1].childNodes[colIndex].firstChild.data);
+    };
+}
+
+function resetSortHeaders() {
+    findAll('.sort-icon').forEach(function(elem) {
+        elem.parentNode.removeChild(elem);
+    });
+    findAll('.sortable').forEach(function(elem) {
+        const icon = document.createElement('div');
+        icon.className = 'sort-icon';
+        icon.textContent = 'vvv';
+        elem.insertBefore(icon, elem.firstChild);
+        elem.classList.remove('desc', 'active');
+        elem.classList.add('asc', 'inactive');
+    });
+}
+
+function toggleSortStates(elem) {
+    //if active, toggle between asc and desc
+    if (elem.classList.contains('active')) {
+        elem.classList.toggle('asc');
+        elem.classList.toggle('desc');
+    }
+
+    //if inactive, reset all other functions and add ascending active
+    if (elem.classList.contains('inactive')) {
+        resetSortHeaders();
+        elem.classList.remove('inactive');
+        elem.classList.add('active');
+    }
+}
+
+function isAllRowsHidden(value) {
+    return value.hidden == false;
+}
+
+function filterTable(elem) { // eslint-disable-line no-unused-vars
+    const outcomeAtt = 'data-test-result';
+    const outcome = elem.getAttribute(outcomeAtt);
+    const classOutcome = outcome + ' results-table-row';
+    const outcomeRows = document.getElementsByClassName(classOutcome);
+
+    for(let i = 0; i < outcomeRows.length; i++){
+        outcomeRows[i].hidden = !elem.checked;
+    }
+
+    const rows = findAll('.results-table-row').filter(isAllRowsHidden);
+    const allRowsHidden = rows.length == 0 ? true : false;
+    const notFoundMessage = document.getElementById('not-found-message');
+    notFoundMessage.hidden = !allRowsHidden;
+}
+</script>
+    <h1>拍品一多用户竞买测试.html</h1>
+    <p>Report generated on 16-Dec-2021 at 17:03:11 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.1.1</p>
+    <h2>Environment</h2>
+    <table id="environment">
+      <tr>
+        <td>Packages</td>
+        <td>{"pluggy": "0.13.1", "py": "1.10.0", "pytest": "6.2.4"}</td></tr>
+      <tr>
+        <td>Platform</td>
+        <td>macOS-11.0.1-x86_64-i386-64bit</td></tr>
+      <tr>
+        <td>Plugins</td>
+        <td>{"html": "3.1.1", "metadata": "1.11.0"}</td></tr>
+      <tr>
+        <td>Python</td>
+        <td>3.9.4</td></tr></table>
+    <h2>Summary</h2>
+    <p>18 tests ran in 86.80 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">17 passed</span>, <input checked="true" class="filter" data-test-result="skipped" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">1 skipped</span>, <input checked="true" class="filter" data-test-result="failed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">1 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
+    <h2>Results</h2>
+    <table id="results-table">
+      <thead id="results-table-head">
+        <tr>
+          <th class="sortable result initial-sort" col="result">Result</th>
+          <th class="sortable" col="name">Test</th>
+          <th class="sortable" col="duration">Duration</th>
+          <th class="sortable links" col="links">Links</th></tr>
+        <tr hidden="true" id="not-found-message">
+          <th colspan="4">No results found. Try to check the filters</th></tr></thead>
+      <tbody class="failed results-table-row">
+        <tr>
+          <td class="col-result">Failed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_001</td>
+          <td class="col-duration">53.65</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">self = &lt;test.test_detail.TestGoodDetail003 object at 0x10ce15580&gt;<br/><br/>    def test_bid_001(self):<br/>        self.dp.refresh()<br/>        time.sleep(3)<br/>        self.dp.refresh()<br/>    <br/>    <br/>        #self.dp.refresh()<br/>        # print(self.quota)<br/>        quota = int(self.dp.bid_quota())<br/>        pd = Pagedata(&quot;detail&quot;)<br/>        user_info = pd[&#x27;user1&#x27;]<br/>        user_info[&#x27;quota&#x27;] = quota<br/>        pd.setitem(&quot;user1&quot;, user_info)<br/>        self.dp.bid()<br/>        time.sleep(2)<br/>        assert self.dp.button_text() == &quot;出代理价&quot;<br/>        assert self.dp.collection_price() == &quot;￥&quot;+str(good_info[&#x27;price&#x27;])+&quot;.00&quot;<br/>        assert self.dp.bid_price() == str(good_info[&#x27;price&#x27;] + 1)<br/>        assert self.dp.my_status() == &quot;领先&quot;<br/>        assert self.dp.buyer_service_rate() == &quot;成交需支付￥21.00 (其中含服务费：￥10.00，费率 10%，最低10元)&quot;<br/>        assert self.dp.bid_num() == &#x27;(1)&#x27;<br/>&gt;       assert self.dp.bid_quota() == quota - 10<br/><span class="error">E       AssertionError: assert &#x27;50002979&#x27; == (50002989 - 10)</span><br/><span class="error">E        +  where &#x27;50002979&#x27; = &lt;bound method Detail.bid_quota of &lt;page.detailp.Detail object at 0x10ce15310&gt;&gt;()</span><br/><span class="error">E        +    where &lt;bound method Detail.bid_quota of &lt;page.detailp.Detail object at 0x10ce15310&gt;&gt; = &lt;page.detailp.Detail object at 0x10ce15310&gt;.bid_quota</span><br/><span class="error">E        +      where &lt;page.detailp.Detail object at 0x10ce15310&gt; = &lt;test.test_detail.TestGoodDetail003 object at 0x10ce15580&gt;.dp</span><br/><br/>test/test_detail.py:333: AssertionError<br/> -----------------------------Captured stdout setup------------------------------ <br/>[2] [&quot;picture/wxTj7wm3XN2JkhFZXQCSpiRKRhZx5C.jpeg&quot;] [&quot;thumbnail/fjZac4eFCsxk2Py2z4BiQ4N4fbbC6x.png&quot;]
+{&#x27;topic_id&#x27;: &#x27;[2]&#x27;, &#x27;type&#x27;: 1, &#x27;id&#x27;: 3471, &#x27;category_id&#x27;: 3, &#x27;platform&#x27;: 1, &#x27;begin_time&#x27;: 1639627565, &#x27;end_time&#x27;: 1639713965, &#x27;top_price&#x27;: &#x27;0.00&#x27;, &#x27;name&#x27;: &#x27;拍品1&#x27;, &#x27;delay_time&#x27;: 0, &#x27;shape&#x27;: &#x27;98&#x27;, &#x27;price&#x27;: &#x27;10.00&#x27;, &#x27;retain_price&#x27;: &#x27;10&#x27;, &#x27;seller_name&#x27;: &#x27;大罗&#x27;, &#x27;agreement_no&#x27;: &#x27;a0000152&#x27;, &#x27;create_user&#x27;: &#x27;&#x27;, &#x27;create_date&#x27;: &#x27;&#x27;, &#x27;freight_id&#x27;: 51, &#x27;is_freight&#x27;: 0, &#x27;goods_weight&#x27;: &#x27;0.000&#x27;, &#x27;buyer_service_rate&#x27;: &#x27;10&#x27;, &#x27;content&#x27;: &#x27;&lt;p&gt;1960年第三版人民币壹圆拖拉机狮子号一枚&lt;/p&gt;&#x27;, &#x27;meta&#x27;: &#x27;{&quot;min_price&quot;:&quot;&quot;,&quot;max_price&quot;:&quot;&quot;,&quot;seller_insure_deal&quot;:&quot;1&quot;,&quot;seller_insure_no_deal&quot;:&quot;1&quot;,&quot;service_fee_deal&quot;:&quot;2&quot;,&quot;service_fee_no_deal&quot;:&quot;1&quot;,&quot;production_fee_deal&quot;:&quot;15&quot;,&quot;production_fee_no_deal&quot;:&quot;15&quot;,&quot;safekeeping_fee_deal&quot;:&quot;0&quot;,&quot;safekeeping_fee_no_deal&quot;:&quot;0&quot;,&quot;seller_taxes&quot;:&quot;&quot;,&quot;identify_fee&quot;:&quot;&quot;,&quot;packing_fee&quot;:&quot;&quot;,&quot;texture&quot;:&quot;&quot;,&quot;spec&quot;:&quot;&quot;,&quot;opinion&quot;:&quot;&quot;}&#x27;, &#x27;original_image&#x27;: &#x27;[&quot;picture/wxTj7wm3XN2JkhFZXQCSpiRKRhZx5C.jpeg&quot;]&#x27;, &#x27;images&#x27;: &#x27;[&quot;thumbnail/fjZac4eFCsxk2Py2z4BiQ4N4fbbC6x.png&quot;]&#x27;}
+{&#x27;status&#x27;: 200, &#x27;msg&#x27;: &#x27;操作成功&#x27;, &#x27;data&#x27;: 0, &#x27;shop_switch&#x27;: &#x27;0&#x27;}
+<br/></div></td></tr></tbody>
+      <tbody class="skipped results-table-row">
+        <tr>
+          <td class="col-result">Skipped</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_007</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">(&#x27;/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_detail.py&#x27;, 399, &#x27;Skipped: unconditional skip&#x27;)<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_click_favorite</td>
+          <td class="col-duration">4.12</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_click_remind</td>
+          <td class="col-duration">4.10</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_002</td>
+          <td class="col-duration">1.16</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_003</td>
+          <td class="col-duration">2.77</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>None
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_004</td>
+          <td class="col-duration">2.19</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_005</td>
+          <td class="col-duration">2.22</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_006</td>
+          <td class="col-duration">3.23</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_008</td>
+          <td class="col-duration">1.10</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_009</td>
+          <td class="col-duration">1.14</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_010</td>
+          <td class="col-duration">1.16</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_011</td>
+          <td class="col-duration">1.21</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_012</td>
+          <td class="col-duration">2.33</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_013</td>
+          <td class="col-duration">0.39</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_014</td>
+          <td class="col-duration">1.18</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_015</td>
+          <td class="col-duration">1.70</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_016</td>
+          <td class="col-duration">1.14</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_017</td>
+          <td class="col-duration">1.62</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+<br/></div></td></tr></tbody></table></body></html>

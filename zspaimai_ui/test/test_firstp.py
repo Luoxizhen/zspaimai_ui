@@ -1,3 +1,14 @@
+'''
+----------------------------------------------
+@Time：
+@Auth:
+@File : test_pytest_html.py
+@IDE  : PyCharm
+@Motto: Real warriors,dare to face the bleak warning,dare to face the incisive error!
+@QQ   : 851722443@qq.com
+
+----------------------------------------------
+'''
 import time
 import unittest
 import pytest
@@ -257,37 +268,32 @@ from interface_base.topic import add_topic_goods
 #     def test_order(self, order, outer):
 #         assert order == ["two", "outer"]
 # #@pytest.mark.skip()
-class TestFirstp201:
-    '''检查页面主要元素显示'''
-    '''http://home.online.zspaimai.cn'''
-
+class TestFirstp001:
+    '''验证点击首页顶部、底部各链接，页面跳转正常
+    验证搜索框各项元素显示正常
+    验证点击页面导航栏，页面跳转正常'''
     def setup_class(self):
         self.driver = webdriver.Chrome()
         self.driver.maximize_window()
         print(ini.url)
         self.driver.get(ini.url)
-
+        self.fp = Firstp(self.driver)
     def teardown_class(self):
         self.driver.quit()
-
     def test_title(self):
         '''验证首页标题'''
         assert self.driver.title == '慧眼识宝，悦享收藏-中晟在线'
-
-
     def test_searchBoxInfo(self):
         '''验证搜索框的提示文本信息为： 藏品名称 '''
-        fp = Firstp(self.driver)
         #self.assertEqual('藏品名称', self.get_infoOfSearchBox())
-        assert '藏品名称' == fp.info_of_search_box()
+        assert '藏品名称' == self.fp.info_of_search_box()
+    @pytest.mark.skip()
     def test_show_search_history_box(self):
         '''验证点击搜索框，显示搜索历史框'''
-        fp = Firstp(self.driver)
-        fp.click_search_box()
+        self.fp.click_search_box()
         time.sleep(5)
         #self.assertTrue(self.get_historyBoxP())
-        assert fp.is_display_search_history_box() == 1
-
+        assert self.fp.is_display_search_history_box() == 1
     # def test_click_searchBox002(self):
     #     '''验证点击搜索框，历史框包含搜索历史文本'''
     #     fp = Firstp(self.driver)
@@ -304,88 +310,67 @@ class TestFirstp201:
     #     assert fp.get_deleteIcon() == 1
     def test_qrcode_app(self):
         '''验证页面底部显示 中晟在线 小程序二维码'''
-        fp = Firstp(self.driver)
         #self.assertEqual("http://home.online.zspaimai.cn/assets/img/mini-qrcode.563407c6.jpg", self.get_qrcodeP())
-        assert fp.src_qrcode_app() == "http://home.online.zspaimai.cn/assets/img/mini-qrcode.563407c6.jpg"
+        assert self.fp.src_qrcode_app() == "http://home.online.zspaimai.cn/assets/img/mini-qrcode.563407c6.jpg"
     def test_qrcode_zsonline(self):
         '''验证页面底部显示 中晟在线 二维码'''
-        fp = Firstp(self.driver)
         src = "data:image/jpeg;base64,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"
-        assert fp.src_qrcode_zsonline() == src
+        assert self.fp.src_qrcode_zsonline() == src
     def test_qrcode_phone(self):
         '''验证页面顶部显示 中晟在线 小程序二维码'''
-        fp = Firstp(self.driver)
         #self.assertEqual("http://home.online.zspaimai.cn/assets/img/mini-qrcode.563407c6.jpg", self.get_qrcodeP())
-        assert fp.src_qrcode_phone() == "http://home.online.zspaimai.cn/assets/img/mini-qrcode.563407c6.jpg"
-    @pytest.mark.header
+        assert self.fp.src_qrcode_phone() == "http://home.online.zspaimai.cn/assets/img/mini-qrcode.563407c6.jpg"
     def test_qrcode_phone_show(self):
         '''验证点击移动端，显示小程序二维码'''
-        fp = Firstp(self.driver)
-        fp.click_mobile()
-        assert fp.is_display_qrcode_phone() == 1
-
-    @pytest.mark.header
+        self.fp.click_mobile()
+        assert self.fp.is_display_qrcode_phone() == 1
     def test_click_help(self):
         '''验证点击页面顶部 帮助中心 ，页面正确跳转'''
-        fp = Firstp(self.driver)
-        fp.click_help_button()
+        self.fp.click_help_button()
         title = self.driver.title
-        fp.back()
+        self.fp.back()
         assert '中晟在线-帮助' == title
-
-    @pytest.mark.header
     def test_click_contact(self):
         '''验证点击页面顶部 联系我们 ，页面正确跳转'''
-        fp = Firstp(self.driver)
-        fp.click_contact_button()
+        self.fp.click_contact_button()
         title = self.driver.title
-        fp.back()
+        self.fp.back()
         assert '中晟在线-联系我们' == title
-
-    @pytest.mark.header
     def test_click_login(self):
         '''验证点击页面顶部 登陆，页面显示登陆框'''
-        fp = Firstp(self.driver)
-        fp.click_login()
-        is_dispaly = fp.is_display_login_box()
-        fp.close_login_box()
+        self.fp.click_login()
+        is_dispaly = self.fp.is_display_login_box()
+        self.fp.close_login_box()
         assert is_dispaly == 1
-
-
     @pytest.mark.skip()
     @pytest.mark.nav
     def test_click_firstPage(self):
         '''验证点击页面中间导航栏 首页 ，页面正确跳转'''
         '''验证点击页面顶部 联系我们 ，页面正确跳转'''
-        fp = Firstp(self.driver)
-        fp.click_first_page()
+        self.fp.click_first_page()
         title = self.driver.title
-
+        self.fp.back()
         assert '慧眼识宝，悦享收藏-中晟在线' == title
-
     # @pytest.mark.skip()
     @pytest.mark.nav
     def test_click_bid(self):
         '''验证点击页面中间导航栏 竞买 ，页面正确跳转'''
         '''验证点击页面顶部 联系我们 ，页面正确跳转'''
-        fp = Firstp(self.driver)
-        fp.click_bidding()
+        self.fp.click_bidding()
         title = self.driver.title
-        fp.back()
+        self.fp.back()
         assert '中晟在线-竞买' == title
     def test_click_more_collection(self):
         '''验证点击页面底部更多拍品，页面正确跳转'''
-        fp = Firstp(self.driver)
-        fp.click_more_collection()
+        self.fp.click_more_collection()
         title = self.driver.title
-        fp.back()
+        self.fp.back()
         assert '中晟在线-竞买' == title
     def test_click_more_collection_button(self):
         '''验证点击页面底部更多拍品后面的按钮，页面正确跳转'''
-        fp = Firstp(self.driver)
-        fp.click_more_colletion_button()
+        self.fp.click_more_colletion_button()
         title = self.driver.title
-        fp.back()
+        self.fp.back()
         assert '中晟在线-竞买' == title
     # @pytest.mark.skip()
     @pytest.mark.nav
@@ -396,7 +381,6 @@ class TestFirstp201:
         title = self.driver.title
         fp.back()
         assert '中晟在线-拍品专场列表' == title
-
     @pytest.mark.nav
     def test_click_apply(self):
         '''验证点击页面中间导航栏 专场 ，在未登陆情况下，页面显示登陆框'''
@@ -413,7 +397,6 @@ class TestFirstp201:
         is_display = fp.is_display_login_box()
         fp.close_login_box()
         assert is_display == 1
-
     @pytest.mark.login
     def test_click_msg(self):
         '''验证点击消息按钮，弹出登陆框'''
@@ -462,7 +445,6 @@ class TestFirstp201:
 #
 #     return driver
 
-
 @pytest.fixture(scope="class",name='add_goods')
 def add_goods():
     '''将原首页推荐的拍品取消推荐，并创建8个拍品，逐个开拍，逐个结拍'''
@@ -484,7 +466,6 @@ def add_goods():
         new_goods_info[name]['begin_time'] = times.time_to_str(begin_time)
         new_goods_info[name]['end_time'] = times.time_to_str(end_time)
         good_ids.append(good_id)
-
     info = pd.data['info']
     info['good_ids'] = good_ids
     info['time'] = now
@@ -497,7 +478,6 @@ def add_topic():
     pd = Pagedata('firstp')
     time = pd['info']['time']
     new_topics_info = pd.data['topics']
-
     topic_ids = []
     for i in range(1, 6):
         name = 'topic' + str(i)
@@ -512,7 +492,6 @@ def add_topic():
         topic_ids.append(topic_id)
     info = pd.data['info']
     info['topic_ids'] = topic_ids
-
     pd.setitem('topics', new_topics_info)
     pd.setitem('info', info)
 @pytest.fixture(scope="class",name='topic_add_goods')
@@ -530,77 +509,53 @@ def topic_add_goods():
     topic_good_info = {"topic_id": topic_ids[0],'goods':str}
     print(topic_good_info)
     print(add_topic_goods(**topic_good_info).json())
-
-
 #@pytest.mark.usefixtures('add_goods','add_topic','topic_add_goods')
-class Testbid:
-    '''首页点击拍品'''
+class TestFirstp002:
+    '''首页更新拍品、专场后，验证专场、拍品的各项信息显示准确'''
     pd = Pagedata('firstp')
     topic_info = pd['topics']['topic1']
     good_info = pd['goods']['good1']
-
     def setup_class(self):
         time.sleep(10)
         self.driver = webdriver.Chrome()
         self.driver.maximize_window()
         print(ini.url)
         self.driver.get(ini.url)
-
+        self.fp = Firstp(self.driver)
     def teardown_class(self):
         self.driver.quit()
-
     def test_topic1_name(self):
         '''验证专场1的名称显示准确'''
-        fp = Firstp(self.driver)
-        name = fp.topic1_name()
+        name = self.fp.topic1_name()
         assert name == self.topic_info['title']
-
-    def test_topic1_name1(self):
-        fp = Firstp(self.driver)
-        name = fp.topic1_name1()
-        assert name == self.topic_info['title']
-
     def test_topic1_status(self):
-        fp = Firstp(self.driver)
-        status = fp.topic1_status()
+        '''验证专场1的状态显示准确'''
+        status = self.fp.topic1_status()
         assert status == "进行中"
-
     # def test_topic1_end_time(self):
     #     fp = Firstp(self.driver)
     #     end_time = fp.topic1_end_date()
     #     assert end_time == "11月30 00:00"
-
     def test_topic1_num(self):
-        fp = Firstp(self.driver)
-        num = fp.topic1_collection_num()
+        '''验证专场1中的拍品数量显示准确'''
+        num = self.fp.topic1_collection_num()
         assert num == '8'
-
     def test_topic1_bid_num(self):
-        fp = Firstp(self.driver)
-        num = fp.topic1_bid_num()
+        '''验证专场1中的出价次数显示准确'''
+        num = self.fp.topic1_bid_num()
         assert num == '0'
-
     def test_good1_name(self):
         '''验证拍品一名称显示准确'''
-        fp = Firstp(self.driver)
-        name = fp.collection_name()
+        name = self.fp.collection_name()
         assert name == self.good_info['name']
     def test_good1_status(self):
         '''验证拍品一状态'''
-        fp = Firstp(self.driver)
-        status = fp.collection_status()
+        status = self.fp.collection_status()
         assert status == "正在拍卖"
     def test_good1_price(self):
         '''验证拍品一价格'''
-        fp = Firstp(self.driver)
-        price = fp.collection_price()
+        price = self.fp.collection_price()
         assert price == "￥10.00"
-
-
-
-
-
-
     @pytest.mark.skip()
     def test_click_collection(self,add_goods):
         time.sleep(5)
@@ -618,62 +573,48 @@ class Testbid:
         titil = self.driver.title
         assert titil == "中晟在线-搜索结果"
 
-
-
-
-class TestLogin:
-    '''登陆登出'''
-
+class TestFirstp003:
+    '''验证首页登陆登出功能'''
     def setup_class(self):
         self.driver = webdriver.Chrome()
         self.driver.maximize_window()
         print(ini.url)
         self.driver.get(ini.url)
-
+        self.fp = Firstp(self.driver)
     def teardown_class(self):
         self.driver.quit()
 
     def test_log_num(self):
-        '''验证账号登陆'''
-        fp = Firstp(self.driver)
-        fp.click_login()
-        fp.click_num_login()
-        fp.send_num()
-        fp.send_password()
-        fp.agree()
-        fp.click_login_botton()
+        '''验证账号、密码登陆登出功能'''
+        self.fp.click_login()
+        self.fp.click_num_login()
+        userinfo = Pagedata('firstp')['user']
+        self.fp.send_num(userinfo['phone'])
+        self.fp.send_password(userinfo['password'])
+        self.fp.agree()
+        self.fp.click_login_botton()
         time.sleep(1)
-        nick = fp.nickname()
-        fp.click_logout()
-
-        assert nick == "hello world"
+        nick = self.fp.nickname()
+        self.fp.click_logout()
+        assert nick == userinfo['nickname']
     def test_log_phone(self):
-        '''验证账号登陆'''
-        fp = Firstp(self.driver)
-        fp.click_login()
-        fp.click_phone_login()
-        fp.send_phone()
-        fp.click_send_vcode()
-        fp.send_vcode()
-        fp.agree()
-        fp.click_login_botton()
+        '''验证快捷登陆'''
+        userinfo = Pagedata('firstp')['user']
+
+        self.fp.click_login()
+        self.fp.click_phone_login()
+        self.fp.send_phone(userinfo['phone'])
+        self.fp.click_send_vcode()
+        self.fp.send_vcode()
+        self.fp.agree()
+        self.fp.click_login_botton()
         time.sleep(1)
-        nick = fp.nickname()
-        fp.click_logout()
-        assert nick == "hello world"
+        nick = self.fp.nickname()
+        self.fp.click_logout()
+        assert nick == userinfo['nickname']
+    @pytest.mark.skip("暂未实现")
     def test_register(self):
         fp = Firstp(self.driver)
         fp.click_login()
-
-
-
-
-
-
-
-
-
-
-
 if __name__ == '__main__':
     unittest.main(verbosity=2)

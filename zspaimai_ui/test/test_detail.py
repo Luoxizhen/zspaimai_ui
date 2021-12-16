@@ -8,10 +8,15 @@ from page.personal import Personal
 from common.readpagedata import Pagedata
 from interface_test.goods_test import user_bid, good_edit
 from utils import times
-
 good_info = Pagedata('firstp')['goods']['good1']
-class TestCollectionInfoUnstart:
-    '''验证拍品基本信息: 未开始'''
+user_info = Pagedata('detail')['user1']
+n = user_info['phone']
+p = user_info['password']
+user2_info = Pagedata("detail")['user2']
+ph = user2_info['phone']
+pw = user2_info['password']
+class TestGoodDetail001:
+    '''验证未开拍的拍品的基本信息显示准确'''
     def setup_class(self):
         self.driver = webdriver.Chrome()
         self.driver.maximize_window()
@@ -19,49 +24,38 @@ class TestCollectionInfoUnstart:
         fp = Firstp(self.driver)
         fp.click_collection_detail("拍品详情8")
         self.driver.switch_to.window(self.driver.window_handles[-1])
-
         if fp.is_display_login_box()==1:
             fp.close_login_box()
         self.dp = Detail(self.driver)
-
-
-
     def teardown_class(self):
         self.driver.quit()
     def test_button_text(self):
         assert self.dp.button_text("未出价按钮") == "立即出价"
     def test_status(self):
         assert self.dp.collection_status() == "未开始"
-
-class TestCollectionInfo:
+class TestGoodDetail002:
     '''验证拍品基本信息: 正在进行中'''
     def setup_class(self):
         self.driver = webdriver.Chrome()
         self.driver.maximize_window()
         self.driver.get(ini.url)
         fp = Firstp(self.driver)
-        fp.click_collection_detail("拍品详情8")
+        fp.click_collection_detail("拍品详情1")
         self.driver.switch_to.window(self.driver.window_handles[-1])
 
         if fp.is_display_login_box()==1:
             fp.close_login_box()
         self.dp = Detail(self.driver)
-    def test_status(self):
-        assert self.dp.collection_status() == "未开始"
-
-
-
     def teardown_class(self):
         self.driver.quit()
-
+    def test_status(self):
+        assert self.dp.collection_status() == "未开始"
     def test_name(self):
         assert self.dp.collection_name() == good_info['name']
     def test_start_time(self):
         assert self.dp.start_time() == good_info['begin_time']
-
     def test_end_time(self):
         assert self.dp.end_time() == good_info['end_time']
-
     def test_status(self):
         assert self.dp.collection_status() == "正在拍卖"
     def test_price(self):
@@ -79,8 +73,6 @@ class TestCollectionInfo:
         assert self.dp.pay() == "支付方式：转账汇款、柜台现付、线上支付"
     def test_delivery(self):
         assert self.dp.delivery() == "配送方式：快递到付、快递、上门自提、暂存"
-    # def test_service_rate(self):
-    #     dp = Detail(self.driver)
     def test_set_price(self):
         self.dp.send_price(1000)
         time.sleep(5)
@@ -286,12 +278,23 @@ class TestCollectionInfo:
         url = self.driver.current_url
         self.driver.back()
         assert url == "http://home.online.zspaimai.cn/article?keywords=proxy_bid_description"
+@pytest.fixture(scope="class",name="edit_good1")
+def edit_good1():
+    '''编辑拍品一'''
+    good1 = Pagedata('firstp')['goods']['good1']
+    begin_time = times.str_to_time(good1['begin_time'])
+    end_time = times.str_to_time(good1['end_time'])
 
+    good = {
+            "retain_price": "10", "begin_time": begin_time, "end_time": end_time
 
-
-class TestBid:
-    '''验证用户正常出价'''
-
+            }
+    good_id = Pagedata("firstp")["info"]["good_ids"][0]  # 拍品2
+    good_edit(good_id, **good)
+    time.sleep(10)
+@pytest.mark.usefixtures("edit_good1")
+class TestGoodDetail003:
+    '''验证用户对拍品1正常出价'''
     def setup_class(self):
         self.driver = webdriver.Chrome()
         self.driver.maximize_window()
@@ -299,52 +302,49 @@ class TestBid:
         fp = Firstp(self.driver)
         fp.click_collection_detail()
         self.driver.switch_to.window(self.driver.window_handles[-1])
-
         if fp.is_display_login_box() == 1:
-            fp.login_num_password()
+            fp.login_num_password(num=n,password=p)
         self.dp = Detail(self.driver)
     def teardown_class(self):
         self.driver.quit()
 
     #@pytest.mark.skip()
     def test_bid_001(self):
-        self.dp.bid()
+        self.dp.refresh()
+        time.sleep(3)
+        self.dp.refresh()
+
+
         #self.dp.refresh()
         # print(self.quota)
         quota = int(self.dp.bid_quota())
         pd = Pagedata("detail")
-        user_data = pd['users']
-        user_data['user1']['quota'] = quota
-        pd.setitem("users", user_data)
-
-        # self.quota =100
-        # print(self.dp.bid_quota())
-        # print(self.quota)
+        user_info = pd['user1']
+        user_info['quota'] = quota
+        pd.setitem("user1", user_info)
+        self.dp.bid()
+        time.sleep(2)
         assert self.dp.button_text() == "出代理价"
         assert self.dp.collection_price() == "￥"+str(good_info['price'])+".00"
         assert self.dp.bid_price() == str(good_info['price'] + 1)
         assert self.dp.my_status() == "领先"
         assert self.dp.buyer_service_rate() == "成交需支付￥21.00 (其中含服务费：￥10.00，费率 10%，最低10元)"
         assert self.dp.bid_num() == '(1)'
+        assert self.dp.bid_quota() == str(quota - 10)
 
-
-        #quota = Pagedata("personal")['info']['quota']
-
-        #assert self.dp.bid_quota() == quota
-    #@pytest.mark.skip()
     def test_click_favorite(self):
         self.dp.favorite()
         time.sleep(3)
         a = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAMAAAB61OwbAAAAeFBMVEUAAADCEy/DFDDCEi/DEzG+ESy4ACPCEzHCEy/CEi/CEi3DEzDCEi66ACjDEzDDEzDDEzDCEzDCEjDCES/AEi3DEzDCFDDDEzDDEzHCFDDCEzDBEjC/Dy2/DCzDEzDCFDDCEzDDEi/BEzHAETHAEjDCCim8CyzDFDFMUyALAAAAJ3RSTlMAXfZN+x4H0mxhMvE2C+2+rnVxVyng29XHtqNAIhTkxJaMeElFGRdXRQ27AAAAz0lEQVQoz4XQ2ZKCMBCF4ZOVEHZh3J0Z137/NxQ1JaKk/e5Sf6qTajwUeZseDQKj0tZbDIpmQb1y7dHL6+x2StzzSrekIHNAIymowsjtnAbuQIPkjJ6tKKpGTxBDAXZJjBXQSWJkBi2xTpgRS3y7kEIQS8FrrsstbEKMPwAN/wVg9xPvSfFl1wp3dayv8WAijyx2CDZyqpceT0JPrEDhhfvoWmBk9t5TvHF6NF/gg5BDzxQmqJKC3w0m5fOw4A4Rprr11QVRxT/pvQUn9xi7AhtpXMgykASqAAAAAElFTkSuQmCC"
         assert self.dp.favorite_src() == a
 
-    #@pytest.mark.skip()
+
     def test_click_remind(self):
         self.dp.remind()
         time.sleep(3)
         a = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAhCAMAAACP+FljAAAAjVBMVEUAAACoABPDEzDDEzDDFDC8ECm2ACPDEzDDEzDDEzDCEzDCEjDCEi/CES3ADyy/CyrDFDDDEzDCEzDCEzDDEzDCEzDAEzDCEi6+ECrDEzDCEzDDEzDCEzDDEzDCEy/CEi/BETHCEi/CDi+5DSbDFDHDEzDDETHBEy/DEzDCFDDDEzHCEy/CETDDFDH///9MeZsOAAAALXRSTlMABMn7+A8JxPLvpX5hMhoV6tGilY6EQDce5ODBsat5ckcpJA3c11lOurWIbDs0En7jAAABE0lEQVQ4y33S17KCQBBF0TMDDDlLMGe96fj/n3cFLSzQmfXa+6G7qtFrVhEmolWDwcWnRCfdN80+RUfSv+BBhBbnNRBXbmaTduZWMVAvaIUCd05BygPqb4sDe/WHgyQLB0BAro+qfI6HZKaOazIAUHoVEpdvlgkqrwQgWiQ5P5ApWoGOWvKjL4WHH2qE6MU2Nbw9OgG1CtwdPL7cbqPAbwH8Uh8wArA2BQEgzqYgF0gzUzB30HqmwE+Q+OOgN3RZCmduChYKQtLABVDSYAbgSoMdAGdBrdMRdxtqbdFxTtQ4O+hdLX5k7fAUGh+qM9OdONjYnLA3GNlJjsgaEyqS1rCdGym8E/E2cPN8WWxjAS0xnf0DtH5+r8QWNBAAAAAASUVORK5CYII="
         assert self.dp.remind_src() == a
-    #@pytest.mark.skip()
+
     def test_bid_002(self):
         '''验证出代理价功能'''
         #self.dp.refresh()
@@ -352,11 +352,9 @@ class TestBid:
         assert self.dp.buyer_service_rate() == "成交需支付￥21.00 (其中含服务费：￥10.00，费率 10%，最低10元)"
         assert "当前代理价￥11.00 (更新)" in self.dp.proxy()
         assert self.dp.my_status() == "代理·领先"
-        quota = Pagedata('detail')['users']['user1']['quota']
-        assert self.dp.bid_quota() == str(quota - 1)
-        # self.quota = self.dp.bid_quota()
+        quota = Pagedata('detail')['user1']['quota']
+        assert self.dp.bid_quota() == str(quota - 11)
 
-    #@pytest.mark.skip()
     def test_bid_003(self):
         '''验证"是否关闭代理"弹窗关闭按钮功能'''
         self.dp.close_proxy()
@@ -383,8 +381,8 @@ class TestBid:
         self.dp.close_proxy()
         self.dp.accept_alert()
         assert "出代理价" in self.dp.button_text()
-        quota = Pagedata('detail')['users']['user1']['quota']
-        assert self.dp.bid_quota() == str(quota)
+        quota = Pagedata('detail')['user1']['quota']
+        assert self.dp.bid_quota() == str(quota-10)
 
     #@pytest.mark.skip()
     def test_bid_006(self):
@@ -395,8 +393,8 @@ class TestBid:
         assert self.dp.buyer_service_rate() == "成交需支付￥21.00 (其中含服务费：￥10.00，费率 10%，最低10元)"
         assert "当前代理价￥11.00 (更新)" in self.dp.proxy()
         assert self.dp.my_status() == "代理·领先"
-        quota = Pagedata('detail')['users']['user1']['quota']
-        assert self.dp.bid_quota() == str(quota -1)
+        quota = Pagedata('detail')['user1']['quota']
+        assert self.dp.bid_quota() == str(quota -11)
 
     @pytest.mark.skip()
     def test_bid_007(self):
@@ -422,8 +420,8 @@ class TestBid:
     def test_bid_010(self):
         '''验证更新代理价情况'''
         self.dp.change_price()
-        quota = Pagedata('detail')['users']['user1']['quota']
-        assert self.dp.bid_quota() == str(quota - 2)
+        quota = Pagedata('detail')['user1']['quota']
+        assert self.dp.bid_quota() == str(quota - 12)
         assert self.dp.buyer_service_rate() == "成交需支付￥22.00 (其中含服务费：￥10.00，费率 10%，最低10元)"
         assert "当前代理价￥12.00 (更新)" in self.dp.proxy()
 
@@ -455,7 +453,8 @@ class TestBid:
         #quota = int(self.dp.bid_quota())
         # bid_num = self.b_num()
         goods_id = Pagedata("firstp")["info"]["good_ids"][0]
-        info = {"user_info":{"phone": "18023038634","password": "123456"}, "bid_info":{"goods_id": goods_id, "price": 100}}
+
+        info = {"user_info":{"phone": ph,"password": pw}, "bid_info":{"goods_id": goods_id, "price": 100}}
         user_bid(**info)
         # assert self.c_price() == collection_price + 1 #拍品价格验证
         assert self.dp.my_status() == "出局" #用户当前出价状态验证
@@ -503,25 +502,14 @@ class TestBid:
         quota = int(self.dp.bid_quota())
 
         goods_id = Pagedata("firstp")["info"]["good_ids"][0]
-        info = {"user_info": {},
-                "bid_info": {"goods_id": goods_id, "price": 200}}
+
+        info = {"user_info": {"phone": ph, "password": pw}, "bid_info": {"goods_id": goods_id, "price": 200}}
         user_bid(**info)
         self.dp.bid(300)
         assert self.dp.my_status() == "代理·领先"
         assert self.dp.collection_price() == "￥205.00"
         assert self.dp.bid_quota() == str(quota + 105 -300)
         assert self.dp.bid_num().removeprefix("(").removesuffix(")") == str(bid_num + 4)
-
-
-
-
-
-
-
-
-
-
-
     def click_bid_003(self):
         #self.dp.refresh()
         self.dp.bid()
@@ -529,11 +517,10 @@ class TestBid:
         self.dp.bid()
         #assert self.dp.buyer_service_rate() == "成交需支付￥22.00 (其中含服务费：￥10.00，费率 10%，最低10元)"
         assert self.dp.button_text() == " 当前代理价￥12.00 (更新)"
-        assert self.dp.bid_quota() == "5000015040444"
+
         alert = self.driver.switch_to.alert
         alert.accept()
         assert self.dp.buyer_service_rate() == "成交需支付￥22.00 (其中含服务费：￥10.00，费率 10%，最低10元)"
-
 @pytest.fixture(scope="class",name="good2_edit")
 def edit_good2():
 
@@ -546,11 +533,8 @@ def edit_good2():
             }
     good_id = Pagedata("firstp")["info"]["good_ids"][1]  # 拍品2
     good_edit(good_id, **good)
-
-
-
 @pytest.mark.usefixtures("good2_edit")
-class TestAbort:
+class TestGoodDetail004:
     '''测试拍品流拍'''
     def setup_class(self):
         self.driver = webdriver.Chrome()
@@ -560,19 +544,18 @@ class TestAbort:
         fp.click_collection_detail("拍品详情2")
         self.driver.switch_to.window(self.driver.window_handles[-1])
         if fp.is_display_login_box() == 1:
-            fp.login_num_password()
+            fp.login_num_password(num=n,password=p)
         self.dp = Detail(self.driver)
     def teardown_class(self):
         self.driver.quit()
     def test_001(self):
         times.sleep(70)
         self.dp.refresh()
-        # while self.dp.tip_text_of_refresh():
-        #     self.dp.refresh()
-
         quota = self.dp.bid_quota()
-        user = {"user1":{"quota": quota}}
-        pd = Pagedata("detail").setitem("users", user)
+        pd = Pagedata("detail")
+        user1_info = pd['user1']
+        user1_info['quoto'] = quota
+        pd.setitem('user1',user1_info)
         assert self.dp.my_status() == "未出价"
     def test_002(self):
         times.sleep(10)
@@ -584,14 +567,13 @@ class TestAbort:
         assert self.dp.collection_status() == "流拍"
         assert self.dp.end_button_text() == "已结束"
     def test_004(self):
-        q = Pagedata("detail")["users"]["user1"]["quota"]
+        q = Pagedata("detail")["user1"]["quota"]
         fp = Firstp(self.driver)
         fp.click_nickname()
         self.driver.switch_to.window(self.driver.window_handles[-1])
         pp = Personal(self.driver)
         quota = pp.quota()
-        assert q == quota
-
+        assert str(q) == quota
 @pytest.fixture(scope="class",name="edit_good3")
 def edit_good3():
     now = times.timestamp()
@@ -604,7 +586,7 @@ def edit_good3():
     good_id = Pagedata("firstp")["info"]["good_ids"][2]  # 拍品2
     good_edit(good_id, **good)
 @pytest.mark.usefixtures("edit_good3")
-class TestWin:
+class TestGoodDetail005:
     '''测试用户中标'''
     def setup_class(self):
         self.driver = webdriver.Chrome()
@@ -614,7 +596,7 @@ class TestWin:
         fp.click_collection_detail("拍品详情3")
         self.driver.switch_to.window(self.driver.window_handles[-1])
         if fp.is_display_login_box() == 1:
-            fp.login_num_password()
+            fp.login_num_password(num=n,password=p)
         self.dp = Detail(self.driver)
     def teardown_class(self):
         self.driver.quit()
@@ -626,8 +608,8 @@ class TestWin:
         #     self.dp.refresh()
 
         quota = self.dp.bid_quota()
-        user = {"user1": {"quota": quota}}
-        pd = Pagedata("detail").setitem("users", user)
+        user1_info = Pagedata("detail")['user1']
+        pd = Pagedata("detail").setitem("user1", user1_info)
         assert self.dp.my_status() == "未出价"
 
     def test_002(self):
@@ -646,7 +628,7 @@ class TestWin:
         assert self.dp.win_src() == "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAANIilAAAAAgVBMVEUAAADPNDTONDTONDTPNDTONDTNNDTTNTXZMzPPNTXONDT///+9mmfooKD9+vrsr6/QPj777+/56ej229vuvLzqq6vkk5PYX1/AiF3j1cDTSUnJVUT59/Pr4dLww8PTvJveeXnAlWjCelbEb1HGZEvLRz3nvLPlrKXjiIjBoXLIiGgQmBD8AAAACnRSTlMA6uLZq6JxHRQwlSBKbwAAAaxJREFUSMel19mugjAQgGHctTPUVlnFHXB7/wc8BCVwjp2hh/43XjRfJE0hU69uMZ9ORsKy0WQ6X3hNy5n4d7Pl267GYkDjVf2/tOX1ssIzMbBZtVdicAtvPhzPvelwPPUmw/HEGw3HI49aiaNgq6XU2yCKBZEZ7/wNdNr4O2usQgl/kqGyw2cNhvTZBodAFPZidQSyo+rBlWU0j0NgCzl8hp7ONFa6D2tF4hB6Cym8k/1Y7gjss8xXj/qHwBvWCqHqc27GMW+bJ4uNOLKyEBlxYGUhMOKtlYWtEWsrC9qIpZUFyeKHWjMWJPvYSog1bUGzG7YWlSYsuWEBdDVlIaAPSasJCxFzPFttthBzL0arjXbDvpKtNlnw2Y9BV/v2HwNxg65W6tvCTVD4soee9hcKKzz14RMqAmeIKW9TxIzAOSIeOHtAxJzACdaatZgQGOtS+pnrzLjEd6e9cZ9Pn+XSiAv89Ey/x4r02awWRnxtli/J6/57oLm/kkuzejXiJLnmRZaV1ChVZlmRX5OkFU5DnNP46DS4Oo3MTsO6yzXB6YLicjVyvJQ5XQd/AEX2l/H24qeAAAAAAElFTkSuQmCC"
 
     def test_004(self):
-        q = Pagedata("detail")["users"]["user1"]["quota"]
+        q = Pagedata("detail")["user1"]["quota"]
         fp = Firstp(self.driver)
         fp.click_nickname()
         self.driver.switch_to.window(self.driver.window_handles[-1])

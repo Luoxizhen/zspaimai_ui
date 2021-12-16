@@ -70,3 +70,8 @@ from selenium import webdriver
 #     :return:
 #     '''
 #     return driver.get_screenshot_as_base64()
+# def pytest_configure(config):
+#     # 添加接口地址和项目名称
+#     config._metadata['项目名称']='中晟在线'
+#     config._metadata['接口地址']='http://home.online.zspaimai.cn/'
+

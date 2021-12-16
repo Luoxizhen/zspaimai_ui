@@ -1,4 +1,8 @@
-goods: null
-users:
-  user1:
-    quota: '5000015037342'
+user1:
+  password: 123456
+  phone: 13111111338
+  quota: 50002989
+  quoto: '50002689'
+user2:
+  password: 123456
+  phone: 18023038634

@@ -72,7 +72,7 @@ ICP: xpath==//div[text()="粤ICP备2021041206号"]
 拍品六:
 拍品七:
 拍品八:
-拍品详情: xpath==//img[@alt="拍品1"]
+拍品详情1: xpath==//img[@alt="拍品1"]
 拍品详情2: xpath==//img[@alt="拍品2"]
 拍品详情3: xpath==//img[@alt="拍品3"]
 拍品详情4: xpath==//img[@alt="拍品4"]
