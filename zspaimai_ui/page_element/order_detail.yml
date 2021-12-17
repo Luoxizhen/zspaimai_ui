@@ -30,3 +30,16 @@
 关闭优惠劵选择框: xpath==//div[@class="discountList"]/../../div/button
 第一个优惠劵: xpaht==//div[@class="discountList"]/div/div
 确认所选优惠劵: xpath==//div[@class="discountList"]/../..//div[text()=" 确 认 "]
+
+# 上门自提
+当天: xpath==//td[@class="available today"]/div/span
+微信支付提示: xpath==//div[@class="pay-way disp-flex flex-column"]/p #1000元以上收取６‰手续费
+预约时间: xpath==//div[@text="预约时间"]/../div[2]/input
+
+#地图
+地图: id==mapContainer
+取货地址: xpath==//div[text()="取货地址"]/../div[2] #中晟在线（广州）信息技术有限公司
+
+上门提示1: xpath==//div[text()="取货地址"]/../../div[3]/div[1]
+上门提示2: xpath==//div[text()="取货地址"]/../../div[3]/div[2]
+上门提示3: xpath==//div[text()="取货地址"]/../../div[3]/div[3]

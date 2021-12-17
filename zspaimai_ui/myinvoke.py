@@ -24,7 +24,10 @@ class MyPlugin(object):
 #pytest.main(["-x", "test/test_firstp.py::test_111", "--junitxml=reports/result1.xml"], plugins=[MyPlugin()])
 '''html 报告格式生成方式'''
 if __name__ == "__main__":
-
-    pytest.main(["test/test_mybid.py","--html=reports/我的竞买页面测试报告.html"])
+    pytest.main(["test/test_firstp.py",
+                 "test/test_detail.py",
+                 "test/test_mybid.py",
+                 "test/test_order_detail.py",
+                 "--html=reports/中晟在线web端自动化测试报告.html"])
 
 #pytest.main(["test/test_detail.py"], plugins=[MyPlugin()])

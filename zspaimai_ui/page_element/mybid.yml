@@ -13,10 +13,11 @@
 第一个记录总价: xpath==//div[@class="bid-box"]/div/div/div[2]/div[5]/div
 第一条记录服务费: xpath==//div[@class="bid-box"]/div/div/div[2]/div[5]/div/p
 第一条记录支付状态: xpath==//div[@class="bid-box"]/div/div/div[2]/div[6]/div/div/div[1]
-合计: xpath==//div[@class="bid-box"]/../div[4]/div[2]/span[2]
-去支付: xpath==//div[@class="bid-box"]/../div[4]/div[2]/div
+合计: xpath==//div[@class="bid-box"]/../div[3]/div[2]/span[2]
+#//*[@id="app"]/div[2]/div/div/div[2]/div/div[2]/div[3]/div[2]/span[2]
+去支付: xpath==//div[@class="bid-box"]/../div[3]/div[2]/div
 #共几项: xpath==//div[@class="bid-box"]/../div[4]/div
-共几项: xpath==//div[text()='共*项']
+共几项: xpath==//div[@class="bid-box"]/../div[3]/div
 全部竞买拍品信息: xpath==//div[@class="el-row list-title disp-flex align-center m-b-20"]/div[1]
 全部竞买开拍/结束时间: xpath==//div[@class="el-row list-title disp-flex align-center m-b-20"]/div[2]
 全部竞买当前竞买价: xpath==//div[@class="el-row list-title disp-flex align-center m-b-20"]/div[3]
@@ -49,9 +50,9 @@
 
 #弹窗
 开启提醒前提示: xpath==//span[text()="提示设置"]
-取消提醒: xpath==//span[text()="提示设置"]/../../div[3]/div/button[1]
-确定提醒: xpath==//span[text()="提示设置"]/../../div[3]/div/button[2]
-关闭提醒: xpath==//span[text()="提示设置"]/../../div[1]/button
+取消提醒: xpath==//span[text()="提示设置"]/../..//button
+确定提醒: xpath==//span[text()="提示设置"]/../..//button
+关闭提醒: xpath==//span[text()="提示设置"]/../..//button
 提示内容: xpath==//span[text()="提示设置"]/../../div[2]/span
 #开启提醒设置后，将在拍品结拍前5分钟，通过短信和站内信的形式通知您
 #确定要关闭提醒功能吗

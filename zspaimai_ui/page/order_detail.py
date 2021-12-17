@@ -14,7 +14,7 @@ class OrderDetail(Web):
         self.is_click(od["第一个优惠劵"])
         self.is_click(od["确认所选优惠劵"])
     def all_to_pay(self):
-        self.element_text(od["合计"])
+        return self.element_text(od["合计"])
     def pay(self):
         self.is_click(od["提交订单"])
     def input_password(self):
@@ -37,4 +37,20 @@ class OrderDetail(Web):
     def change_delivery_info(self):
         self.is_click(od["修改收货信息"])
 
+    def change_delivery_day(self):
+        self.is_click(od["预约时间"])
+        self.is_click(od['当天'])
+    def tip_of_wechat_tip(self):
+        return self.element_text(od['微信支付提示'])
+    def tip_of_delivery(self):
+        tip = []
+        tip.append(self.element_text(od['上门提示1']))
+        tip.append(self.element_text(od['上门提示2']))
+        tip.append(self.element_text(od['上门提示3']))
+        return tip
+    def is_display_of_map(self):
+        return self.find_element(od['地图']).is_displayed()
+
+    def address_of_zs(self):
+        return self.element_text(od['取货地址'])
 

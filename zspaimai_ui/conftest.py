@@ -3,7 +3,10 @@
 import pytest
 from py.xml import html
 from selenium import webdriver
-
+from interface_test import goods_test,topic_test
+from utils import times,util
+from common.readpagedata import Pagedata
+from interface_base.topic import add_topic_goods
 #
 # driver = None
 #
@@ -75,3 +78,65 @@ from selenium import webdriver
 #     config._metadata['项目名称']='中晟在线'
 #     config._metadata['接口地址']='http://home.online.zspaimai.cn/'
 
+@pytest.fixture(scope='session',autouse=True)
+def add_goods():
+    '''将原首页推荐的拍品取消推荐，并创建8个拍品，逐个开拍，逐个结拍'''
+    goods_test.goods_unrecommend()
+    # goods_test.goods_add_recommend()
+    pd = Pagedata('firstp')
+    new_goods_info = pd.data['goods']
+    #拍品的时间
+    now = round(times.timestamp())
+    good_ids = []
+    for i in range(1,9):
+        name = 'good' + str(i)
+        begin_time = now + 3600 * (i-1)
+        end_time = begin_time + 86400 * i
+        new_goods_info[name]['begin_time'] = begin_time
+        new_goods_info[name]['end_time'] = end_time
+        good_info = new_goods_info[name]
+        good_id = goods_test.goods_add_recommend(**good_info)
+        new_goods_info[name]['begin_time'] = times.time_to_str(begin_time)
+        new_goods_info[name]['end_time'] = times.time_to_str(end_time)
+        good_ids.append(good_id)
+    info = pd.data['info']
+    info['good_ids'] = good_ids
+    info['time'] = now
+    pd.setitem('goods',new_goods_info)
+    pd.setitem('info',info)
+#def add_topic():
+    '''将首页推荐的专场取消推荐，并创建2个专场，并首页推荐'''
+    topic_test.list_unrecommend()
+    pd = Pagedata('firstp')
+    time = pd['info']['time']
+    new_topics_info = pd.data['topics']
+    topic_ids = []
+    for i in range(1, 6):
+        name = 'topic' + str(i)
+        begin_time = time + 3600 * (i - 1)
+        end_time = begin_time + 86400 * i
+        new_topics_info[name]['begin_time'] = begin_time
+        new_topics_info[name]['end_time'] = end_time
+        topic_info = new_topics_info[name]
+        topic_id = topic_test.add_recommend(**topic_info)
+        new_topics_info[name]['begin_time'] = times.time_to_str(begin_time)
+        new_topics_info[name]['end_time'] = times.time_to_str(end_time)
+        topic_ids.append(topic_id)
+    info = pd.data['info']
+    info['topic_ids'] = topic_ids
+    pd.setitem('topics', new_topics_info)
+    pd.setitem('info', info)
+#def topic_add_goods():
+    '''在首页推荐的第一个专场中添加首页推荐的8个拍品'''
+    info = Pagedata('firstp')['info']
+    good_ids = info['good_ids']
+    topic_ids = info['topic_ids']
+    goods = []
+    for i in range(8):
+        good_info = {'goods_id':good_ids[i],'is_recommended':1}
+        goods.append(good_info)
+    print(goods)
+    str1 = util.object_to_str(*goods)
+    topic_good_info = {"topic_id": topic_ids[0],'goods':str1}
+    print(topic_good_info)
+    print(add_topic_goods(**topic_good_info).json())

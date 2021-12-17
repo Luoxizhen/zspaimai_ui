@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Test Report</title>
+    <link href="assets/style.css" rel="stylesheet" type="text/css"/></head>
+  <body onLoad="init()">
+    <script>/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+
+function toArray(iter) {
+    if (iter === null) {
+        return null;
+    }
+    return Array.prototype.slice.call(iter);
+}
+
+function find(selector, elem) { // eslint-disable-line no-redeclare
+    if (!elem) {
+        elem = document;
+    }
+    return elem.querySelector(selector);
+}
+
+function findAll(selector, elem) {
+    if (!elem) {
+        elem = document;
+    }
+    return toArray(elem.querySelectorAll(selector));
+}
+
+function sortColumn(elem) {
+    toggleSortStates(elem);
+    const colIndex = toArray(elem.parentNode.childNodes).indexOf(elem);
+    let key;
+    if (elem.classList.contains('result')) {
+        key = keyResult;
+    } else if (elem.classList.contains('links')) {
+        key = keyLink;
+    } else {
+        key = keyAlpha;
+    }
+    sortTable(elem, key(colIndex));
+}
+
+function showAllExtras() { // eslint-disable-line no-unused-vars
+    findAll('.col-result').forEach(showExtras);
+}
+
+function hideAllExtras() { // eslint-disable-line no-unused-vars
+    findAll('.col-result').forEach(hideExtras);
+}
+
+function showExtras(colresultElem) {
+    const extras = colresultElem.parentNode.nextElementSibling;
+    const expandcollapse = colresultElem.firstElementChild;
+    extras.classList.remove('collapsed');
+    expandcollapse.classList.remove('expander');
+    expandcollapse.classList.add('collapser');
+}
+
+function hideExtras(colresultElem) {
+    const extras = colresultElem.parentNode.nextElementSibling;
+    const expandcollapse = colresultElem.firstElementChild;
+    extras.classList.add('collapsed');
+    expandcollapse.classList.remove('collapser');
+    expandcollapse.classList.add('expander');
+}
+
+function showFilters() {
+    const filterItems = document.getElementsByClassName('filter');
+    for (let i = 0; i < filterItems.length; i++)
+        filterItems[i].hidden = false;
+}
+
+function addCollapse() {
+    // Add links for show/hide all
+    const resulttable = find('table#results-table');
+    const showhideall = document.createElement('p');
+    showhideall.innerHTML = '<a href="javascript:showAllExtras()">Show all details</a> / ' +
+                            '<a href="javascript:hideAllExtras()">Hide all details</a>';
+    resulttable.parentElement.insertBefore(showhideall, resulttable);
+
+    // Add show/hide link to each result
+    findAll('.col-result').forEach(function(elem) {
+        const collapsed = getQueryParameter('collapsed') || 'Passed';
+        const extras = elem.parentNode.nextElementSibling;
+        const expandcollapse = document.createElement('span');
+        if (extras.classList.contains('collapsed')) {
+            expandcollapse.classList.add('expander');
+        } else if (collapsed.includes(elem.innerHTML)) {
+            extras.classList.add('collapsed');
+            expandcollapse.classList.add('expander');
+        } else {
+            expandcollapse.classList.add('collapser');
+        }
+        elem.appendChild(expandcollapse);
+
+        elem.addEventListener('click', function(event) {
+            if (event.currentTarget.parentNode.nextElementSibling.classList.contains('collapsed')) {
+                showExtras(event.currentTarget);
+            } else {
+                hideExtras(event.currentTarget);
+            }
+        });
+    });
+}
+
+function getQueryParameter(name) {
+    const match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
+
+function init () { // eslint-disable-line no-unused-vars
+    resetSortHeaders();
+
+    addCollapse();
+
+    showFilters();
+
+    sortColumn(find('.initial-sort'));
+
+    findAll('.sortable').forEach(function(elem) {
+        elem.addEventListener('click',
+            function() {
+                sortColumn(elem);
+            }, false);
+    });
+}
+
+function sortTable(clicked, keyFunc) {
+    const rows = findAll('.results-table-row');
+    const reversed = !clicked.classList.contains('asc');
+    const sortedRows = sort(rows, keyFunc, reversed);
+    /* Whole table is removed here because browsers acts much slower
+     * when appending existing elements.
+     */
+    const thead = document.getElementById('results-table-head');
+    document.getElementById('results-table').remove();
+    const parent = document.createElement('table');
+    parent.id = 'results-table';
+    parent.appendChild(thead);
+    sortedRows.forEach(function(elem) {
+        parent.appendChild(elem);
+    });
+    document.getElementsByTagName('BODY')[0].appendChild(parent);
+}
+
+function sort(items, keyFunc, reversed) {
+    const sortArray = items.map(function(item, i) {
+        return [keyFunc(item), i];
+    });
+
+    sortArray.sort(function(a, b) {
+        const keyA = a[0];
+        const keyB = b[0];
+
+        if (keyA == keyB) return 0;
+
+        if (reversed) {
+            return keyA < keyB ? 1 : -1;
+        } else {
+            return keyA > keyB ? 1 : -1;
+        }
+    });
+
+    return sortArray.map(function(item) {
+        const index = item[1];
+        return items[index];
+    });
+}
+
+function keyAlpha(colIndex) {
+    return function(elem) {
+        return elem.childNodes[1].childNodes[colIndex].firstChild.data.toLowerCase();
+    };
+}
+
+function keyLink(colIndex) {
+    return function(elem) {
+        const dataCell = elem.childNodes[1].childNodes[colIndex].firstChild;
+        return dataCell == null ? '' : dataCell.innerText.toLowerCase();
+    };
+}
+
+function keyResult(colIndex) {
+    return function(elem) {
+        const strings = ['Error', 'Failed', 'Rerun', 'XFailed', 'XPassed',
+            'Skipped', 'Passed'];
+        return strings.indexOf(elem.childNodes[1].childNodes[colIndex].firstChild.data);
+    };
+}
+
+function resetSortHeaders() {
+    findAll('.sort-icon').forEach(function(elem) {
+        elem.parentNode.removeChild(elem);
+    });
+    findAll('.sortable').forEach(function(elem) {
+        const icon = document.createElement('div');
+        icon.className = 'sort-icon';
+        icon.textContent = 'vvv';
+        elem.insertBefore(icon, elem.firstChild);
+        elem.classList.remove('desc', 'active');
+        elem.classList.add('asc', 'inactive');
+    });
+}
+
+function toggleSortStates(elem) {
+    //if active, toggle between asc and desc
+    if (elem.classList.contains('active')) {
+        elem.classList.toggle('asc');
+        elem.classList.toggle('desc');
+    }
+
+    //if inactive, reset all other functions and add ascending active
+    if (elem.classList.contains('inactive')) {
+        resetSortHeaders();
+        elem.classList.remove('inactive');
+        elem.classList.add('active');
+    }
+}
+
+function isAllRowsHidden(value) {
+    return value.hidden == false;
+}
+
+function filterTable(elem) { // eslint-disable-line no-unused-vars
+    const outcomeAtt = 'data-test-result';
+    const outcome = elem.getAttribute(outcomeAtt);
+    const classOutcome = outcome + ' results-table-row';
+    const outcomeRows = document.getElementsByClassName(classOutcome);
+
+    for(let i = 0; i < outcomeRows.length; i++){
+        outcomeRows[i].hidden = !elem.checked;
+    }
+
+    const rows = findAll('.results-table-row').filter(isAllRowsHidden);
+    const allRowsHidden = rows.length == 0 ? true : false;
+    const notFoundMessage = document.getElementById('not-found-message');
+    notFoundMessage.hidden = !allRowsHidden;
+}
+</script>
+    <h1>中晟在线web端自动化测试报告.html</h1>
+    <p>Report generated on 17-Dec-2021 at 15:32:13 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.1.1</p>
+    <h2>Environment</h2>
+    <table id="environment">
+      <tr>
+        <td>Packages</td>
+        <td>{"pluggy": "0.13.1", "py": "1.10.0", "pytest": "6.2.4"}</td></tr>
+      <tr>
+        <td>Platform</td>
+        <td>macOS-11.0.1-x86_64-i386-64bit</td></tr>
+      <tr>
+        <td>Plugins</td>
+        <td>{"html": "3.1.1", "metadata": "1.11.0"}</td></tr>
+      <tr>
+        <td>Python</td>
+        <td>3.9.4</td></tr></table>
+    <h2>Summary</h2>
+    <p>94 tests ran in 886.61 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">79 passed</span>, <input checked="true" class="filter" data-test-result="skipped" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">13 skipped</span>, <input checked="true" class="filter" data-test-result="failed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">15 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
+    <h2>Results</h2>
+    <table id="results-table">
+      <thead id="results-table-head">
+        <tr>
+          <th class="sortable result initial-sort" col="result">Result</th>
+          <th class="sortable" col="name">Test</th>
+          <th class="sortable" col="duration">Duration</th>
+          <th class="sortable links" col="links">Links</th></tr>
+        <tr hidden="true" id="not-found-message">
+          <th colspan="4">No results found. Try to check the filters</th></tr></thead>
+      <tbody class="failed results-table-row">
+        <tr>
+          <td class="col-result">Failed</td>
+          <td class="col-name">test/test_firstp.py::TestFirstp001::test_click_bid</td>
+          <td class="col-duration">8.49</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">self = &lt;test.test_firstp.TestFirstp001 object at 0x10d720bb0&gt;<br/><br/>    @pytest.mark.nav<br/>    def test_click_bid(self):<br/>        &#x27;&#x27;&#x27;验证点击页面中间导航栏 竞买 ，页面正确跳转&#x27;&#x27;&#x27;<br/>        &#x27;&#x27;&#x27;验证点击页面顶部 联系我们 ，页面正确跳转&#x27;&#x27;&#x27;<br/>        self.fp.click_bidding()<br/>        title = self.driver.title<br/>        self.fp.back()<br/>&gt;       assert &#x27;中晟在线-竞买&#x27; == title<br/><span class="error">E       AssertionError: assert &#x27;中晟在线-竞买&#x27; == &#x27;慧眼识宝，悦享收藏-中晟在线&#x27;</span><br/><span class="error">E         - 慧眼识宝，悦享收藏-中晟在线</span><br/><span class="error">E         + 中晟在线-竞买</span><br/><br/>test/test_firstp.py:362: AssertionError<br/></div></td></tr></tbody>
+      <tbody class="failed results-table-row">
+        <tr>
+          <td class="col-result">Failed</td>
+          <td class="col-name">test/test_firstp.py::TestFirstp001::test_click_more_collection</td>
+          <td class="col-duration">20.45</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">self = &lt;test.test_firstp.TestFirstp001 object at 0x10d863e80&gt;<br/><br/>    def test_click_more_collection(self):<br/>        &#x27;&#x27;&#x27;验证点击页面底部更多拍品，页面正确跳转&#x27;&#x27;&#x27;<br/>&gt;       self.fp.click_more_collection()<br/><br/>test/test_firstp.py:365: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/>page/firstp.py:286: in click_more_collection<br/>    self.is_click(firstp[&#x27;更多拍品&#x27;])<br/>base/webpage.py:75: in is_click<br/>    self.find_element(locator).click()<br/>base/webpage.py:50: in find_element<br/>    return Web.element_locator(lambda *args: self.wait.until(<br/>base/webpage.py:46: in element_locator<br/>    return func(cm.LOCATE_MODE[name], value)<br/>base/webpage.py:50: in &lt;lambda&gt;<br/>    return Web.element_locator(lambda *args: self.wait.until(<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;selenium.webdriver.support.wait.WebDriverWait (session=&quot;87b37fb20dae1302966efea0bedf2db3&quot;)&gt;<br/>method = &lt;selenium.webdriver.support.expected_conditions.presence_of_element_located object at 0x10d7cedf0&gt;<br/>message = &#x27;&#x27;<br/><br/>    def until(self, method, message=&#x27;&#x27;):<br/>        &quot;&quot;&quot;Calls the method provided with the driver as an argument until the \<br/>        return value is not False.&quot;&quot;&quot;<br/>        screen = None<br/>        stacktrace = None<br/>    <br/>        end_time = time.time() + self._timeout<br/>        while True:<br/>            try:<br/>                value = method(self._driver)<br/>                if value:<br/>                    return value<br/>            except self._ignored_exceptions as exc:<br/>                screen = getattr(exc, &#x27;screen&#x27;, None)<br/>                stacktrace = getattr(exc, &#x27;stacktrace&#x27;, None)<br/>            time.sleep(self._poll)<br/>            if time.time() &gt; end_time:<br/>                break<br/>&gt;       raise TimeoutException(message, screen, stacktrace)<br/><span class="error">E       selenium.common.exceptions.TimeoutException: Message:</span><br/><br/>venv/lib/python3.9/site-packages/selenium/webdriver/support/wait.py:80: TimeoutException<br/></div></td></tr></tbody>
+      <tbody class="failed results-table-row">
+        <tr>
+          <td class="col-result">Failed</td>
+          <td class="col-name">test/test_firstp.py::TestFirstp002::test_topic1_num</td>
+          <td class="col-duration">0.04</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">self = &lt;test.test_firstp.TestFirstp002 object at 0x10d926d00&gt;<br/><br/>    def test_topic1_num(self):<br/>        &#x27;&#x27;&#x27;验证专场1中的拍品数量显示准确&#x27;&#x27;&#x27;<br/>        num = self.fp.topic1_collection_num()<br/>&gt;       assert num == &#x27;8&#x27;<br/><span class="error">E       AssertionError: assert &#x27;5&#x27; == &#x27;8&#x27;</span><br/><span class="error">E         - 8</span><br/><span class="error">E         + 5</span><br/><br/>test/test_firstp.py:542: AssertionError<br/></div></td></tr></tbody>
+      <tbody class="failed results-table-row">
+        <tr>
+          <td class="col-result">Failed</td>
+          <td class="col-name">test/test_firstp.py::TestFirstp002::test_topic1_bid_num</td>
+          <td class="col-duration">0.03</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">self = &lt;test.test_firstp.TestFirstp002 object at 0x10d974d90&gt;<br/><br/>    def test_topic1_bid_num(self):<br/>        &#x27;&#x27;&#x27;验证专场1中的出价次数显示准确&#x27;&#x27;&#x27;<br/>        num = self.fp.topic1_bid_num()<br/>&gt;       assert num == &#x27;0&#x27;<br/><span class="error">E       AssertionError: assert &#x27;10&#x27; == &#x27;0&#x27;</span><br/><span class="error">E         - 0</span><br/><span class="error">E         + 10</span><br/><br/>test/test_firstp.py:546: AssertionError<br/></div></td></tr></tbody>
+      <tbody class="failed results-table-row">
+        <tr>
+          <td class="col-result">Failed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail002::test_start_time</td>
+          <td class="col-duration">0.12</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">self = &lt;test.test_detail.TestGoodDetail002 object at 0x10d974d30&gt;<br/><br/>    def test_start_time(self):<br/>&gt;       assert self.dp.start_time() == good_info[&#x27;begin_time&#x27;]<br/><span class="error">E       AssertionError: assert &#x27;2021-12-17 15:20:07&#x27; == &#x27;2021-12-17 14:58:48&#x27;</span><br/><span class="error">E         - 2021-12-17 14:58:48</span><br/><span class="error">E         + 2021-12-17 15:20:07</span><br/><br/>test/test_detail.py:56: AssertionError<br/></div></td></tr></tbody>
+      <tbody class="failed results-table-row">
+        <tr>
+          <td class="col-result">Failed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail002::test_end_time</td>
+          <td class="col-duration">0.03</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">self = &lt;test.test_detail.TestGoodDetail002 object at 0x10d7d30d0&gt;<br/><br/>    def test_end_time(self):<br/>&gt;       assert self.dp.end_time() == good_info[&#x27;end_time&#x27;]<br/><span class="error">E       AssertionError: assert &#x27;2021-12-18 15:20:07&#x27; == &#x27;2021-12-18 14:58:48&#x27;</span><br/><span class="error">E         - 2021-12-18 14:58:48</span><br/><span class="error">E         + 2021-12-18 15:20:07</span><br/><br/>test/test_detail.py:58: AssertionError<br/></div></td></tr></tbody>
+      <tbody class="failed results-table-row">
+        <tr>
+          <td class="col-result">Failed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail004::test_004</td>
+          <td class="col-duration">1.77</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">self = &lt;test.test_detail.TestGoodDetail004 object at 0x10d904fa0&gt;<br/><br/>    def test_004(self):<br/>        q = Pagedata(&quot;detail&quot;)[&quot;user1&quot;][&quot;quota&quot;]<br/>        fp = Firstp(self.driver)<br/>        fp.click_nickname()<br/>        self.driver.switch_to.window(self.driver.window_handles[-1])<br/>        pp = Personal(self.driver)<br/>        quota = pp.quota()<br/>&gt;       assert str(q) == quota<br/><span class="error">E       AssertionError: assert &#x27;50001774&#x27; == &#x27;50001474&#x27;</span><br/><span class="error">E         - 50001474</span><br/><span class="error">E         ?      ^</span><br/><span class="error">E         + 50001774</span><br/><span class="error">E         ?      ^</span><br/><br/>test/test_detail.py:576: AssertionError<br/></div></td></tr></tbody>
+      <tbody class="failed results-table-row">
+        <tr>
+          <td class="col-result">Failed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail005::test_004</td>
+          <td class="col-duration">1.36</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">self = &lt;test.test_detail.TestGoodDetail005 object at 0x10d7a4f70&gt;<br/><br/>    def test_004(self):<br/>        q = Pagedata(&quot;detail&quot;)[&quot;user1&quot;][&quot;quota&quot;]<br/>        fp = Firstp(self.driver)<br/>        fp.click_nickname()<br/>        self.driver.switch_to.window(self.driver.window_handles[-1])<br/>        pp = Personal(self.driver)<br/>        quota = pp.quota()<br/>&gt;       assert str(int(q)-1000) == quota<br/><span class="error">E       AssertionError: assert &#x27;50000774&#x27; == &#x27;50000474&#x27;</span><br/><span class="error">E         - 50000474</span><br/><span class="error">E         ?      ^</span><br/><span class="error">E         + 50000774</span><br/><span class="error">E         ?      ^</span><br/><br/>test/test_detail.py:637: AssertionError<br/></div></td></tr></tbody>
+      <tbody class="failed results-table-row">
+        <tr>
+          <td class="col-result">Failed</td>
+          <td class="col-name">test/test_mybid.py::TestMybidInfo::test_good_in_my_proxy</td>
+          <td class="col-duration">1.28</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">self = &lt;test.test_mybid.TestMybidInfo object at 0x10d8ec4c0&gt;<br/><br/>    def test_good_in_my_proxy(self):<br/>        &#x27;&#x27;&#x27;验证我的代理页面的第一个拍品信息&#x27;&#x27;&#x27;<br/>        info = self.mb.good_in_list(&quot;我的代理&quot;)<br/>&gt;       assert info == {&quot;good_name&quot;:&quot;拍品1&quot;,&quot;good_status&quot;:&quot;进行中&quot;,&quot;good_price&quot;:&quot;￥205.00&quot;,&quot;good_bid_n&quot;:&quot;58次出价&quot;,&quot;my_status_of_good&quot;:&quot;领先&quot;}<br/><span class="error">E       AssertionError: assert {&#x27;good_bid_n&#x27;...&#x27;: &#x27;进行中&#x27;, ...} == {&#x27;good_bid_n&#x27;...&#x27;: &#x27;进行中&#x27;, ...}</span><br/><span class="error">E         Omitting 4 identical items, use -vv to show</span><br/><span class="error">E         Differing items:</span><br/><span class="error">E         {&#x27;good_bid_n&#x27;: &#x27;13次出价&#x27;} != {&#x27;good_bid_n&#x27;: &#x27;58次出价&#x27;}</span><br/><span class="error">E         Use -v to get the full diff</span><br/><br/>test/test_mybid.py:47: AssertionError<br/></div></td></tr></tbody>
+      <tbody class="failed results-table-row">
+        <tr>
+          <td class="col-result">Failed</td>
+          <td class="col-name">test/test_mybid.py::TestMybidInfo::test_good_in_my_favourite</td>
+          <td class="col-duration">1.22</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">self = &lt;test.test_mybid.TestMybidInfo object at 0x10d90c4c0&gt;<br/><br/>    def test_good_in_my_favourite(self):<br/>        &#x27;&#x27;&#x27;验证我的关注页面的第一个拍品信息&#x27;&#x27;&#x27;<br/>        info = self.mb.good_in_list(&quot;关注&quot;)<br/>&gt;       assert info == {&quot;good_name&quot;:&quot;拍品1&quot;,&quot;good_status&quot;:&quot;进行中&quot;,&quot;good_price&quot;:&quot;￥205.00&quot;,&quot;good_bid_n&quot;:&quot;58次出价&quot;,&quot;my_status_of_good&quot;:&quot;领先&quot;}<br/><span class="error">E       AssertionError: assert {&#x27;good_bid_n&#x27;...&#x27;: &#x27;进行中&#x27;, ...} == {&#x27;good_bid_n&#x27;...&#x27;: &#x27;进行中&#x27;, ...}</span><br/><span class="error">E         Omitting 4 identical items, use -vv to show</span><br/><span class="error">E         Differing items:</span><br/><span class="error">E         {&#x27;good_bid_n&#x27;: &#x27;13次出价&#x27;} != {&#x27;good_bid_n&#x27;: &#x27;58次出价&#x27;}</span><br/><span class="error">E         Use -v to get the full diff</span><br/><br/>test/test_mybid.py:52: AssertionError<br/></div></td></tr></tbody>
+      <tbody class="failed results-table-row">
+        <tr>
+          <td class="col-result">Failed</td>
+          <td class="col-name">test/test_mybid.py::TestMybidInfo::test_good_in_all_bid</td>
+          <td class="col-duration">3.71</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">self = &lt;test.test_mybid.TestMybidInfo object at 0x10d8f0640&gt;<br/><br/>    def test_good_in_all_bid(self):<br/>        &#x27;&#x27;&#x27;验证我的全部竞买页面的第一个拍品信息&#x27;&#x27;&#x27;<br/>        info = self.mb.good_in_list(&quot;全部竞买&quot;)<br/>        info_2 = self.mb.good_in_list(&quot;全部竞买&quot;,&quot;二&quot;)<br/>        info_3 = self.mb.good_in_list(&quot;全部竞买&quot;,&quot;三&quot;)<br/>&gt;       assert info_3 == {&quot;good_name&quot;:&quot;拍品2&quot;,&quot;good_status&quot;:&quot;流拍&quot;,&quot;good_price&quot;:&quot;￥10.00&quot;,&quot;good_bid_n&quot;:&quot;2次出价&quot;,&quot;my_status_of_good&quot;:&quot;出局&quot;}<br/><span class="error">E       AssertionError: assert {&#x27;good_bid_n&#x27;...&#x27;: &#x27;进行中&#x27;, ...} == {&#x27;good_bid_n&#x27;...s&#x27;: &#x27;流拍&#x27;, ...}</span><br/><span class="error">E         Differing items:</span><br/><span class="error">E         {&#x27;good_bid_n&#x27;: &#x27;13次出价&#x27;} != {&#x27;good_bid_n&#x27;: &#x27;2次出价&#x27;}</span><br/><span class="error">E         {&#x27;good_price&#x27;: &#x27;￥205.00&#x27;} != {&#x27;good_price&#x27;: &#x27;￥10.00&#x27;}</span><br/><span class="error">E         {&#x27;good_status&#x27;: &#x27;进行中&#x27;} != {&#x27;good_status&#x27;: &#x27;流拍&#x27;}</span><br/><span class="error">E         {&#x27;good_name&#x27;: &#x27;拍品1&#x27;} != {&#x27;good_name&#x27;: &#x27;拍品2&#x27;}</span><br/><span class="error">E         {&#x27;my_status_of_good&#x27;: &#x27;领先&#x27;} != {&#x27;my_status_of_good&#x27;: &#x27;出局&#x27;}</span><br/><span class="error">E         Use -v to get the full diff</span><br/><br/>test/test_mybid.py:58: AssertionError<br/></div></td></tr></tbody>
+      <tbody class="failed results-table-row">
+        <tr>
+          <td class="col-result">Failed</td>
+          <td class="col-name">test/test_mybid.py::TestMybidInfo::test_remind_001</td>
+          <td class="col-duration">2.33</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">self = &lt;test.test_mybid.TestMybidInfo object at 0x10d9044f0&gt;<br/><br/>    def test_remind_001(self):<br/>        &#x27;&#x27;&#x27;验证流拍的拍品，点击开启提醒&#x27;&#x27;&#x27;<br/>        self.mb.remind(l=&quot;全部竞买&quot;,n=&quot;三&quot;)<br/>&gt;       assert self.mb.is_displayed_remind_tip() == 0<br/><span class="error">E       assert True == 0</span><br/><span class="error">E        +  where True = &lt;bound method MyBid.is_displayed_remind_tip of &lt;page.mybid.MyBid object at 0x10d914be0&gt;&gt;()</span><br/><span class="error">E        +    where &lt;bound method MyBid.is_displayed_remind_tip of &lt;page.mybid.MyBid object at 0x10d914be0&gt;&gt; = &lt;page.mybid.MyBid object at 0x10d914be0&gt;.is_displayed_remind_tip</span><br/><span class="error">E        +      where &lt;page.mybid.MyBid object at 0x10d914be0&gt; = &lt;test.test_mybid.TestMybidInfo object at 0x10d9044f0&gt;.mb</span><br/><br/>test/test_mybid.py:65: AssertionError<br/></div></td></tr></tbody>
+      <tbody class="failed results-table-row">
+        <tr>
+          <td class="col-result">Failed</td>
+          <td class="col-name">test/test_mybid.py::TestMybidInfo::test_remind_002</td>
+          <td class="col-duration">1.06</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">self = &lt;test.test_mybid.TestMybidInfo object at 0x10d8ec970&gt;<br/><br/>    def test_remind_002(self):<br/>        &#x27;&#x27;&#x27;验证已结束的拍品，点击开启提醒&#x27;&#x27;&#x27;<br/>&gt;       self.mb.remind(l=&quot;全部竞买&quot;, n=&quot;二&quot;)<br/><br/>test/test_mybid.py:68: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/>page/mybid.py:63: in remind<br/>    self.swith_to_list(l)<br/>page/mybid.py:35: in swith_to_list<br/>    self.is_click(mb[ln])<br/>base/webpage.py:75: in is_click<br/>    self.find_element(locator).click()<br/>venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py:80: in click<br/>    self._execute(Command.CLICK_ELEMENT)<br/>venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py:633: in _execute<br/>    return self._parent.execute(command, params)<br/>venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:321: in execute<br/>    self.error_handler.check_response(response)<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x10d9149d0&gt;<br/>response = {&#x27;status&#x27;: 400, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;element click intercepted&quot;,&quot;message&quot;:&quot;element click intercepted: Element ...00019bf0506c _pthread_start + 320\\n20  libsystem_pthread.dylib             0x000000019beffda0 thread_start + 8\\n&quot;}}&#x27;}<br/><br/>    def check_response(self, response):<br/>        &quot;&quot;&quot;<br/>        Checks that a JSON response from the WebDriver does not have an error.<br/>    <br/>        :Args:<br/>         - response - The JSON response from the WebDriver server as a dictionary<br/>           object.<br/>    <br/>        :Raises: If the response contains an error message.<br/>        &quot;&quot;&quot;<br/>        status = response.get(&#x27;status&#x27;, None)<br/>        if status is None or status == ErrorCode.SUCCESS:<br/>            return<br/>        value = None<br/>        message = response.get(&quot;message&quot;, &quot;&quot;)<br/>        screen = response.get(&quot;screen&quot;, &quot;&quot;)<br/>        stacktrace = None<br/>        if isinstance(status, int):<br/>            value_json = response.get(&#x27;value&#x27;, None)<br/>            if value_json and isinstance(value_json, basestring):<br/>                import json<br/>                try:<br/>                    value = json.loads(value_json)<br/>                    if len(value.keys()) == 1:<br/>                        value = value[&#x27;value&#x27;]<br/>                    status = value.get(&#x27;error&#x27;, None)<br/>                    if status is None:<br/>                        status = value[&quot;status&quot;]<br/>                        message = value[&quot;value&quot;]<br/>                        if not isinstance(message, basestring):<br/>                            value = message<br/>                            message = message.get(&#x27;message&#x27;)<br/>                    else:<br/>                        message = value.get(&#x27;message&#x27;, None)<br/>                except ValueError:<br/>                    pass<br/>    <br/>        exception_class = ErrorInResponseException<br/>        if status in ErrorCode.NO_SUCH_ELEMENT:<br/>            exception_class = NoSuchElementException<br/>        elif status in ErrorCode.NO_SUCH_FRAME:<br/>            exception_class = NoSuchFrameException<br/>        elif status in ErrorCode.NO_SUCH_WINDOW:<br/>            exception_class = NoSuchWindowException<br/>        elif status in ErrorCode.STALE_ELEMENT_REFERENCE:<br/>            exception_class = StaleElementReferenceException<br/>        elif status in ErrorCode.ELEMENT_NOT_VISIBLE:<br/>            exception_class = ElementNotVisibleException<br/>        elif status in ErrorCode.INVALID_ELEMENT_STATE:<br/>            exception_class = InvalidElementStateException<br/>        elif status in ErrorCode.INVALID_SELECTOR \<br/>                or status in ErrorCode.INVALID_XPATH_SELECTOR \<br/>                or status in ErrorCode.INVALID_XPATH_SELECTOR_RETURN_TYPER:<br/>            exception_class = InvalidSelectorException<br/>        elif status in ErrorCode.ELEMENT_IS_NOT_SELECTABLE:<br/>            exception_class = ElementNotSelectableException<br/>        elif status in ErrorCode.ELEMENT_NOT_INTERACTABLE:<br/>            exception_class = ElementNotInteractableException<br/>        elif status in ErrorCode.INVALID_COOKIE_DOMAIN:<br/>            exception_class = InvalidCookieDomainException<br/>        elif status in ErrorCode.UNABLE_TO_SET_COOKIE:<br/>            exception_class = UnableToSetCookieException<br/>        elif status in ErrorCode.TIMEOUT:<br/>            exception_class = TimeoutException<br/>        elif status in ErrorCode.SCRIPT_TIMEOUT:<br/>            exception_class = TimeoutException<br/>        elif status in ErrorCode.UNKNOWN_ERROR:<br/>            exception_class = WebDriverException<br/>        elif status in ErrorCode.UNEXPECTED_ALERT_OPEN:<br/>            exception_class = UnexpectedAlertPresentException<br/>        elif status in ErrorCode.NO_ALERT_OPEN:<br/>            exception_class = NoAlertPresentException<br/>        elif status in ErrorCode.IME_NOT_AVAILABLE:<br/>            exception_class = ImeNotAvailableException<br/>        elif status in ErrorCode.IME_ENGINE_ACTIVATION_FAILED:<br/>            exception_class = ImeActivationFailedException<br/>        elif status in ErrorCode.MOVE_TARGET_OUT_OF_BOUNDS:<br/>            exception_class = MoveTargetOutOfBoundsException<br/>        elif status in ErrorCode.JAVASCRIPT_ERROR:<br/>            exception_class = JavascriptException<br/>        elif status in ErrorCode.SESSION_NOT_CREATED:<br/>            exception_class = SessionNotCreatedException<br/>        elif status in ErrorCode.INVALID_ARGUMENT:<br/>            exception_class = InvalidArgumentException<br/>        elif status in ErrorCode.NO_SUCH_COOKIE:<br/>            exception_class = NoSuchCookieException<br/>        elif status in ErrorCode.UNABLE_TO_CAPTURE_SCREEN:<br/>            exception_class = ScreenshotException<br/>        elif status in ErrorCode.ELEMENT_CLICK_INTERCEPTED:<br/>            exception_class = ElementClickInterceptedException<br/>        elif status in ErrorCode.INSECURE_CERTIFICATE:<br/>            exception_class = InsecureCertificateException<br/>        elif status in ErrorCode.INVALID_COORDINATES:<br/>            exception_class = InvalidCoordinatesException<br/>        elif status in ErrorCode.INVALID_SESSION_ID:<br/>            exception_class = InvalidSessionIdException<br/>        elif status in ErrorCode.UNKNOWN_METHOD:<br/>            exception_class = UnknownMethodException<br/>        else:<br/>            exception_class = WebDriverException<br/>        if value == &#x27;&#x27; or value is None:<br/>            value = response[&#x27;value&#x27;]<br/>        if isinstance(value, basestring):<br/>            if exception_class == ErrorInResponseException:<br/>                raise exception_class(response, value)<br/>            raise exception_class(value)<br/>        if message == &quot;&quot; and &#x27;message&#x27; in value:<br/>            message = value[&#x27;message&#x27;]<br/>    <br/>        screen = None<br/>        if &#x27;screen&#x27; in value:<br/>            screen = value[&#x27;screen&#x27;]<br/>    <br/>        stacktrace = None<br/>        if &#x27;stackTrace&#x27; in value and value[&#x27;stackTrace&#x27;]:<br/>            stacktrace = []<br/>            try:<br/>                for frame in value[&#x27;stackTrace&#x27;]:<br/>                    line = self._value_or_default(frame, &#x27;lineNumber&#x27;, &#x27;&#x27;)<br/>                    file = self._value_or_default(frame, &#x27;fileName&#x27;, &#x27;&lt;anonymous&gt;&#x27;)<br/>                    if line:<br/>                        file = &quot;%s:%s&quot; % (file, line)<br/>                    meth = self._value_or_default(frame, &#x27;methodName&#x27;, &#x27;&lt;anonymous&gt;&#x27;)<br/>                    if &#x27;className&#x27; in frame:<br/>                        meth = &quot;%s.%s&quot; % (frame[&#x27;className&#x27;], meth)<br/>                    msg = &quot;    at %s (%s)&quot;<br/>                    msg = msg % (meth, file)<br/>                    stacktrace.append(msg)<br/>            except TypeError:<br/>                pass<br/>        if exception_class == ErrorInResponseException:<br/>            raise exception_class(response, message)<br/>        elif exception_class == UnexpectedAlertPresentException:<br/>            alert_text = None<br/>            if &#x27;data&#x27; in value:<br/>                alert_text = value[&#x27;data&#x27;].get(&#x27;text&#x27;)<br/>            elif &#x27;alert&#x27; in value:<br/>                alert_text = value[&#x27;alert&#x27;].get(&#x27;text&#x27;)<br/>            raise exception_class(message, screen, stacktrace, alert_text)<br/>&gt;       raise exception_class(message, screen, stacktrace)<br/><span class="error">E       selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element &lt;div class=&quot;m-b-5 &quot; data-v-223d73de=&quot;&quot;&gt;...&lt;/div&gt; is not clickable at point (341, 30). Other element would receive the click: &lt;div class=&quot;el-overlay&quot; style=&quot;z-index: 2005;&quot;&gt;...&lt;/div&gt;</span><br/><span class="error">E         (Session info: chrome=96.0.4664.110)</span><br/><br/>venv/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py:242: ElementClickInterceptedException<br/></div></td></tr></tbody>
+      <tbody class="failed results-table-row">
+        <tr>
+          <td class="col-result">Failed</td>
+          <td class="col-name">test/test_mybid.py::TestMybidInfo::test_pay</td>
+          <td class="col-duration">1.12</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">self = &lt;test.test_mybid.TestMybidInfo object at 0x10da7a370&gt;<br/><br/>    def test_pay(self):<br/>        &#x27;&#x27;&#x27;验证在中标页面选择拍品后，去支付&#x27;&#x27;&#x27;<br/>&gt;       self.mb.swith_to_list(&quot;中标记录&quot;)<br/><br/>test/test_mybid.py:96: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/>page/mybid.py:35: in swith_to_list<br/>    self.is_click(mb[ln])<br/>base/webpage.py:75: in is_click<br/>    self.find_element(locator).click()<br/>venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py:80: in click<br/>    self._execute(Command.CLICK_ELEMENT)<br/>venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py:633: in _execute<br/>    return self._parent.execute(command, params)<br/>venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:321: in execute<br/>    self.error_handler.check_response(response)<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x10d9149d0&gt;<br/>response = {&#x27;status&#x27;: 400, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;element click intercepted&quot;,&quot;message&quot;:&quot;element click intercepted: Element ...00019bf0506c _pthread_start + 320\\n20  libsystem_pthread.dylib             0x000000019beffda0 thread_start + 8\\n&quot;}}&#x27;}<br/><br/>    def check_response(self, response):<br/>        &quot;&quot;&quot;<br/>        Checks that a JSON response from the WebDriver does not have an error.<br/>    <br/>        :Args:<br/>         - response - The JSON response from the WebDriver server as a dictionary<br/>           object.<br/>    <br/>        :Raises: If the response contains an error message.<br/>        &quot;&quot;&quot;<br/>        status = response.get(&#x27;status&#x27;, None)<br/>        if status is None or status == ErrorCode.SUCCESS:<br/>            return<br/>        value = None<br/>        message = response.get(&quot;message&quot;, &quot;&quot;)<br/>        screen = response.get(&quot;screen&quot;, &quot;&quot;)<br/>        stacktrace = None<br/>        if isinstance(status, int):<br/>            value_json = response.get(&#x27;value&#x27;, None)<br/>            if value_json and isinstance(value_json, basestring):<br/>                import json<br/>                try:<br/>                    value = json.loads(value_json)<br/>                    if len(value.keys()) == 1:<br/>                        value = value[&#x27;value&#x27;]<br/>                    status = value.get(&#x27;error&#x27;, None)<br/>                    if status is None:<br/>                        status = value[&quot;status&quot;]<br/>                        message = value[&quot;value&quot;]<br/>                        if not isinstance(message, basestring):<br/>                            value = message<br/>                            message = message.get(&#x27;message&#x27;)<br/>                    else:<br/>                        message = value.get(&#x27;message&#x27;, None)<br/>                except ValueError:<br/>                    pass<br/>    <br/>        exception_class = ErrorInResponseException<br/>        if status in ErrorCode.NO_SUCH_ELEMENT:<br/>            exception_class = NoSuchElementException<br/>        elif status in ErrorCode.NO_SUCH_FRAME:<br/>            exception_class = NoSuchFrameException<br/>        elif status in ErrorCode.NO_SUCH_WINDOW:<br/>            exception_class = NoSuchWindowException<br/>        elif status in ErrorCode.STALE_ELEMENT_REFERENCE:<br/>            exception_class = StaleElementReferenceException<br/>        elif status in ErrorCode.ELEMENT_NOT_VISIBLE:<br/>            exception_class = ElementNotVisibleException<br/>        elif status in ErrorCode.INVALID_ELEMENT_STATE:<br/>            exception_class = InvalidElementStateException<br/>        elif status in ErrorCode.INVALID_SELECTOR \<br/>                or status in ErrorCode.INVALID_XPATH_SELECTOR \<br/>                or status in ErrorCode.INVALID_XPATH_SELECTOR_RETURN_TYPER:<br/>            exception_class = InvalidSelectorException<br/>        elif status in ErrorCode.ELEMENT_IS_NOT_SELECTABLE:<br/>            exception_class = ElementNotSelectableException<br/>        elif status in ErrorCode.ELEMENT_NOT_INTERACTABLE:<br/>            exception_class = ElementNotInteractableException<br/>        elif status in ErrorCode.INVALID_COOKIE_DOMAIN:<br/>            exception_class = InvalidCookieDomainException<br/>        elif status in ErrorCode.UNABLE_TO_SET_COOKIE:<br/>            exception_class = UnableToSetCookieException<br/>        elif status in ErrorCode.TIMEOUT:<br/>            exception_class = TimeoutException<br/>        elif status in ErrorCode.SCRIPT_TIMEOUT:<br/>            exception_class = TimeoutException<br/>        elif status in ErrorCode.UNKNOWN_ERROR:<br/>            exception_class = WebDriverException<br/>        elif status in ErrorCode.UNEXPECTED_ALERT_OPEN:<br/>            exception_class = UnexpectedAlertPresentException<br/>        elif status in ErrorCode.NO_ALERT_OPEN:<br/>            exception_class = NoAlertPresentException<br/>        elif status in ErrorCode.IME_NOT_AVAILABLE:<br/>            exception_class = ImeNotAvailableException<br/>        elif status in ErrorCode.IME_ENGINE_ACTIVATION_FAILED:<br/>            exception_class = ImeActivationFailedException<br/>        elif status in ErrorCode.MOVE_TARGET_OUT_OF_BOUNDS:<br/>            exception_class = MoveTargetOutOfBoundsException<br/>        elif status in ErrorCode.JAVASCRIPT_ERROR:<br/>            exception_class = JavascriptException<br/>        elif status in ErrorCode.SESSION_NOT_CREATED:<br/>            exception_class = SessionNotCreatedException<br/>        elif status in ErrorCode.INVALID_ARGUMENT:<br/>            exception_class = InvalidArgumentException<br/>        elif status in ErrorCode.NO_SUCH_COOKIE:<br/>            exception_class = NoSuchCookieException<br/>        elif status in ErrorCode.UNABLE_TO_CAPTURE_SCREEN:<br/>            exception_class = ScreenshotException<br/>        elif status in ErrorCode.ELEMENT_CLICK_INTERCEPTED:<br/>            exception_class = ElementClickInterceptedException<br/>        elif status in ErrorCode.INSECURE_CERTIFICATE:<br/>            exception_class = InsecureCertificateException<br/>        elif status in ErrorCode.INVALID_COORDINATES:<br/>            exception_class = InvalidCoordinatesException<br/>        elif status in ErrorCode.INVALID_SESSION_ID:<br/>            exception_class = InvalidSessionIdException<br/>        elif status in ErrorCode.UNKNOWN_METHOD:<br/>            exception_class = UnknownMethodException<br/>        else:<br/>            exception_class = WebDriverException<br/>        if value == &#x27;&#x27; or value is None:<br/>            value = response[&#x27;value&#x27;]<br/>        if isinstance(value, basestring):<br/>            if exception_class == ErrorInResponseException:<br/>                raise exception_class(response, value)<br/>            raise exception_class(value)<br/>        if message == &quot;&quot; and &#x27;message&#x27; in value:<br/>            message = value[&#x27;message&#x27;]<br/>    <br/>        screen = None<br/>        if &#x27;screen&#x27; in value:<br/>            screen = value[&#x27;screen&#x27;]<br/>    <br/>        stacktrace = None<br/>        if &#x27;stackTrace&#x27; in value and value[&#x27;stackTrace&#x27;]:<br/>            stacktrace = []<br/>            try:<br/>                for frame in value[&#x27;stackTrace&#x27;]:<br/>                    line = self._value_or_default(frame, &#x27;lineNumber&#x27;, &#x27;&#x27;)<br/>                    file = self._value_or_default(frame, &#x27;fileName&#x27;, &#x27;&lt;anonymous&gt;&#x27;)<br/>                    if line:<br/>                        file = &quot;%s:%s&quot; % (file, line)<br/>                    meth = self._value_or_default(frame, &#x27;methodName&#x27;, &#x27;&lt;anonymous&gt;&#x27;)<br/>                    if &#x27;className&#x27; in frame:<br/>                        meth = &quot;%s.%s&quot; % (frame[&#x27;className&#x27;], meth)<br/>                    msg = &quot;    at %s (%s)&quot;<br/>                    msg = msg % (meth, file)<br/>                    stacktrace.append(msg)<br/>            except TypeError:<br/>                pass<br/>        if exception_class == ErrorInResponseException:<br/>            raise exception_class(response, message)<br/>        elif exception_class == UnexpectedAlertPresentException:<br/>            alert_text = None<br/>            if &#x27;data&#x27; in value:<br/>                alert_text = value[&#x27;data&#x27;].get(&#x27;text&#x27;)<br/>            elif &#x27;alert&#x27; in value:<br/>                alert_text = value[&#x27;alert&#x27;].get(&#x27;text&#x27;)<br/>            raise exception_class(message, screen, stacktrace, alert_text)<br/>&gt;       raise exception_class(message, screen, stacktrace)<br/><span class="error">E       selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element &lt;div class=&quot;m-b-5 &quot; data-v-223d73de=&quot;&quot;&gt;...&lt;/div&gt; is not clickable at point (164, 30). Other element would receive the click: &lt;div class=&quot;el-overlay&quot; style=&quot;z-index: 2005;&quot;&gt;...&lt;/div&gt;</span><br/><span class="error">E         (Session info: chrome=96.0.4664.110)</span><br/><br/>venv/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py:242: ElementClickInterceptedException<br/></div></td></tr></tbody>
+      <tbody class="failed results-table-row">
+        <tr>
+          <td class="col-result">Failed</td>
+          <td class="col-name">test/test_order_detail.py::TestOrderDetail::test_delivery_type</td>
+          <td class="col-duration">5.37</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">self = &lt;test.test_order_detail.TestOrderDetail object at 0x10d825fd0&gt;<br/><br/>    def test_delivery_type(self):<br/>        &#x27;&#x27;&#x27;验证选择不同的提货方式，页面显示准确&#x27;&#x27;&#x27;<br/>        self.od.deliver_type(&#x27;上门自提&#x27;)<br/>        time.sleep(1)<br/>        is_display = self.od.is_display_of_map()<br/>    <br/>        tip = self.od.tip_of_delivery()<br/>        address = self.od.address_of_zs()<br/>        assert is_display == 1  # 显示地图<br/>        assert address == &quot;中晟在线（广州）信息技术有限公司&quot;<br/>&gt;       assert tip == (&#x27;1、本人办理，请携带身份证&#x27;,&#x27;2、委托他人办理，请携带双方证件和授权书&#x27;,&#x27;3、预约时间要在支付期限内&#x27;)<br/><span class="error">E       AssertionError: assert [&#x27;1、本人办理，请携带身...、预约时间要在支付期限内&#x27;] == (&#x27;1、本人办理，请携带身...、预约时间要在支付期限内&#x27;)</span><br/><span class="error">E         Use -v to get the full diff</span><br/><br/>test/test_order_detail.py:78: AssertionError<br/></div></td></tr></tbody>
+      <tbody class="skipped results-table-row">
+        <tr>
+          <td class="col-result">Skipped</td>
+          <td class="col-name">test/test_firstp.py::TestFirstp001::test_show_search_history_box</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">(&#x27;/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py&#x27;, 290, &#x27;Skipped: unconditional skip&#x27;)<br/></div></td></tr></tbody>
+      <tbody class="skipped results-table-row">
+        <tr>
+          <td class="col-result">Skipped</td>
+          <td class="col-name">test/test_firstp.py::TestFirstp001::test_click_firstPage</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">(&#x27;/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py&#x27;, 345, &#x27;Skipped: unconditional skip&#x27;)<br/></div></td></tr></tbody>
+      <tbody class="skipped results-table-row">
+        <tr>
+          <td class="col-result">Skipped</td>
+          <td class="col-name">test/test_firstp.py::TestFirstp002::test_click_collection</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">(&#x27;/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py&#x27;, 559, &#x27;Skipped: unconditional skip&#x27;)<br/></div></td></tr></tbody>
+      <tbody class="skipped results-table-row">
+        <tr>
+          <td class="col-result">Skipped</td>
+          <td class="col-name">test/test_firstp.py::TestFirstp002::test_search_goods</td>
+          <td class="col-duration">0.07</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">(&#x27;/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py&#x27;, 567, &#x27;Skipped: unconditional skip&#x27;)<br/></div></td></tr></tbody>
+      <tbody class="skipped results-table-row">
+        <tr>
+          <td class="col-result">Skipped</td>
+          <td class="col-name">test/test_firstp.py::TestFirstp003::test_register</td>
+          <td class="col-duration">0.07</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">(&#x27;/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_firstp.py&#x27;, 615, &#x27;Skipped: 暂未实现&#x27;)<br/></div></td></tr></tbody>
+      <tbody class="skipped results-table-row">
+        <tr>
+          <td class="col-result">Skipped</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_007</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">(&#x27;/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_detail.py&#x27;, 399, &#x27;Skipped: unconditional skip&#x27;)<br/></div></td></tr></tbody>
+      <tbody class="skipped results-table-row">
+        <tr>
+          <td class="col-result">Skipped</td>
+          <td class="col-name">test/test_mybid.py::TestMybidInfo::test_remind_003</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">(&#x27;/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_mybid.py&#x27;, 70, &#x27;Skipped: 页面元素定位有异常&#x27;)<br/></div></td></tr></tbody>
+      <tbody class="skipped results-table-row">
+        <tr>
+          <td class="col-result">Skipped</td>
+          <td class="col-name">test/test_mybid.py::TestMybidInfo::test_remind_004</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">(&#x27;/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_mybid.py&#x27;, 78, &#x27;Skipped: 页面元素定位有异常&#x27;)<br/></div></td></tr></tbody>
+      <tbody class="skipped results-table-row">
+        <tr>
+          <td class="col-result">Skipped</td>
+          <td class="col-name">test/test_mybid.py::TestMybidInfo::test_remind_005</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">(&#x27;/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_mybid.py&#x27;, 86, &#x27;Skipped: 页面元素定位有异常&#x27;)<br/></div></td></tr></tbody>
+      <tbody class="skipped results-table-row">
+        <tr>
+          <td class="col-result">Skipped</td>
+          <td class="col-name">test/test_order_detail.py::TestOrderDetail::test_delivery_info</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">(&#x27;/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_order_detail.py&#x27;, 30, &#x27;Skipped: 用户未设置密码&#x27;)<br/></div></td></tr></tbody>
+      <tbody class="skipped results-table-row">
+        <tr>
+          <td class="col-result">Skipped</td>
+          <td class="col-name">test/test_order_detail.py::TestOrderDetail::test_change_delivery_info_001</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">(&#x27;/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_order_detail.py&#x27;, 34, &#x27;Skipped&#x27;)<br/></div></td></tr></tbody>
+      <tbody class="skipped results-table-row">
+        <tr>
+          <td class="col-result">Skipped</td>
+          <td class="col-name">test/test_order_detail.py::TestOrderDetail::test_pay_order</td>
+          <td class="col-duration">0.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">(&#x27;/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_order_detail.py&#x27;, 41, &#x27;Skipped: 支付流程测试用例设置在其他类&#x27;)<br/></div></td></tr></tbody>
+      <tbody class="skipped results-table-row">
+        <tr>
+          <td class="col-result">Skipped</td>
+          <td class="col-name">test/test_order_detail.py::TestOrderDetail::test_money_pay</td>
+          <td class="col-duration">0.09</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">(&#x27;/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/test/test_order_detail.py&#x27;, 79, &#x27;Skipped: div 提示框后续样式确定后再做&#x27;)<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_firstp.py::TestFirstp001::test_title</td>
+          <td class="col-duration">20.24</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> -----------------------------Captured stdout setup------------------------------ <br/>[]
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=15, tm_min=17, tm_sec=28, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=18, tm_hour=15, tm_min=17, tm_sec=28, tm_wday=5, tm_yday=352, tm_isdst=0)
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=16, tm_min=17, tm_sec=28, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=19, tm_hour=16, tm_min=17, tm_sec=28, tm_wday=6, tm_yday=353, tm_isdst=0)
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=17, tm_min=17, tm_sec=28, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=20, tm_hour=17, tm_min=17, tm_sec=28, tm_wday=0, tm_yday=354, tm_isdst=0)
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=18, tm_min=17, tm_sec=28, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=21, tm_hour=18, tm_min=17, tm_sec=28, tm_wday=1, tm_yday=355, tm_isdst=0)
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=19, tm_min=17, tm_sec=28, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=17, tm_sec=28, tm_wday=2, tm_yday=356, tm_isdst=0)
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=20, tm_min=17, tm_sec=28, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=23, tm_hour=20, tm_min=17, tm_sec=28, tm_wday=3, tm_yday=357, tm_isdst=0)
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=21, tm_min=17, tm_sec=28, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=24, tm_hour=21, tm_min=17, tm_sec=28, tm_wday=4, tm_yday=358, tm_isdst=0)
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=22, tm_min=17, tm_sec=28, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=25, tm_hour=22, tm_min=17, tm_sec=28, tm_wday=5, tm_yday=359, tm_isdst=0)
+http://home.online.zspaimai.cn/
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_firstp.py::TestFirstp001::test_searchBoxInfo</td>
+          <td class="col-duration">0.09</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_firstp.py::TestFirstp001::test_qrcode_app</td>
+          <td class="col-duration">0.06</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_firstp.py::TestFirstp001::test_qrcode_zsonline</td>
+          <td class="col-duration">0.03</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_firstp.py::TestFirstp001::test_qrcode_phone</td>
+          <td class="col-duration">0.05</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_firstp.py::TestFirstp001::test_qrcode_phone_show</td>
+          <td class="col-duration">1.27</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_firstp.py::TestFirstp001::test_click_help</td>
+          <td class="col-duration">2.33</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>(&#x27;xpath&#x27;, &#x27;//div[text()=&quot; 帮助中心 &quot;]&#x27;)
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_firstp.py::TestFirstp001::test_click_contact</td>
+          <td class="col-duration">3.17</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>(&#x27;xpath&#x27;, &#x27;//div[text()=&quot; 联系我们 &quot;]&#x27;)
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_firstp.py::TestFirstp001::test_click_login</td>
+          <td class="col-duration">4.62</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_firstp.py::TestFirstp001::test_click_more_collection_button</td>
+          <td class="col-duration">11.95</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_firstp.py::TestFirstp001::test_click_specialP</td>
+          <td class="col-duration">4.34</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_firstp.py::TestFirstp001::test_click_apply</td>
+          <td class="col-duration">2.66</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_firstp.py::TestFirstp001::test_click_my_bid</td>
+          <td class="col-duration">2.44</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_firstp.py::TestFirstp001::test_click_msg</td>
+          <td class="col-duration">2.16</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_firstp.py::TestFirstp001::test_login_title</td>
+          <td class="col-duration">2.32</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_firstp.py::TestFirstp002::test_topic1_name</td>
+          <td class="col-duration">29.97</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> -----------------------------Captured stdout setup------------------------------ <br/>[3513, 3512, 3511, 3510, 3509, 3508, 3507, 3506]
+{&#x27;id&#x27;: 3513, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3512, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3511, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3510, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3509, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3508, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3507, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3506, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=15, tm_min=18, tm_sec=57, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=18, tm_hour=15, tm_min=18, tm_sec=57, tm_wday=5, tm_yday=352, tm_isdst=0)
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=16, tm_min=18, tm_sec=57, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=19, tm_hour=16, tm_min=18, tm_sec=57, tm_wday=6, tm_yday=353, tm_isdst=0)
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=17, tm_min=18, tm_sec=57, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=20, tm_hour=17, tm_min=18, tm_sec=57, tm_wday=0, tm_yday=354, tm_isdst=0)
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=18, tm_min=18, tm_sec=57, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=21, tm_hour=18, tm_min=18, tm_sec=57, tm_wday=1, tm_yday=355, tm_isdst=0)
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=19, tm_min=18, tm_sec=57, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=18, tm_sec=57, tm_wday=2, tm_yday=356, tm_isdst=0)
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=20, tm_min=18, tm_sec=57, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=23, tm_hour=20, tm_min=18, tm_sec=57, tm_wday=3, tm_yday=357, tm_isdst=0)
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=21, tm_min=18, tm_sec=57, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=24, tm_hour=21, tm_min=18, tm_sec=57, tm_wday=4, tm_yday=358, tm_isdst=0)
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=22, tm_min=18, tm_sec=57, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=25, tm_hour=22, tm_min=18, tm_sec=57, tm_wday=5, tm_yday=359, tm_isdst=0)
+http://home.online.zspaimai.cn/
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_firstp.py::TestFirstp002::test_topic1_status</td>
+          <td class="col-duration">0.03</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_firstp.py::TestFirstp002::test_good1_name</td>
+          <td class="col-duration">0.05</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_firstp.py::TestFirstp002::test_good1_status</td>
+          <td class="col-duration">0.03</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_firstp.py::TestFirstp002::test_good1_price</td>
+          <td class="col-duration">0.04</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_firstp.py::TestFirstp003::test_log_num</td>
+          <td class="col-duration">30.50</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> -----------------------------Captured stdout setup------------------------------ <br/>[3521, 3520, 3519, 3518, 3517, 3516, 3515, 3514]
+{&#x27;id&#x27;: 3521, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3520, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3519, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3518, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3517, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3516, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3515, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3514, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=15, tm_min=19, tm_sec=28, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=18, tm_hour=15, tm_min=19, tm_sec=28, tm_wday=5, tm_yday=352, tm_isdst=0)
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=16, tm_min=19, tm_sec=28, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=19, tm_hour=16, tm_min=19, tm_sec=28, tm_wday=6, tm_yday=353, tm_isdst=0)
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=17, tm_min=19, tm_sec=28, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=20, tm_hour=17, tm_min=19, tm_sec=28, tm_wday=0, tm_yday=354, tm_isdst=0)
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=18, tm_min=19, tm_sec=28, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=21, tm_hour=18, tm_min=19, tm_sec=28, tm_wday=1, tm_yday=355, tm_isdst=0)
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=19, tm_min=19, tm_sec=28, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=19, tm_sec=28, tm_wday=2, tm_yday=356, tm_isdst=0)
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=20, tm_min=19, tm_sec=28, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=23, tm_hour=20, tm_min=19, tm_sec=28, tm_wday=3, tm_yday=357, tm_isdst=0)
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=21, tm_min=19, tm_sec=28, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=24, tm_hour=21, tm_min=19, tm_sec=28, tm_wday=4, tm_yday=358, tm_isdst=0)
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=22, tm_min=19, tm_sec=28, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=25, tm_hour=22, tm_min=19, tm_sec=28, tm_wday=5, tm_yday=359, tm_isdst=0)
+http://home.online.zspaimai.cn/
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_firstp.py::TestFirstp003::test_log_phone</td>
+          <td class="col-duration">9.30</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail001::test_button_text</td>
+          <td class="col-duration">32.21</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> -----------------------------Captured stdout setup------------------------------ <br/>[3529, 3528, 3527, 3526, 3525, 3524, 3523, 3522]
+{&#x27;id&#x27;: 3529, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3528, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3527, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3526, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3525, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3524, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3523, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3522, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=15, tm_min=20, tm_sec=7, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=18, tm_hour=15, tm_min=20, tm_sec=7, tm_wday=5, tm_yday=352, tm_isdst=0)
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=16, tm_min=20, tm_sec=7, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=19, tm_hour=16, tm_min=20, tm_sec=7, tm_wday=6, tm_yday=353, tm_isdst=0)
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=17, tm_min=20, tm_sec=7, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=20, tm_hour=17, tm_min=20, tm_sec=7, tm_wday=0, tm_yday=354, tm_isdst=0)
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=18, tm_min=20, tm_sec=7, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=21, tm_hour=18, tm_min=20, tm_sec=7, tm_wday=1, tm_yday=355, tm_isdst=0)
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=19, tm_min=20, tm_sec=7, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=20, tm_sec=7, tm_wday=2, tm_yday=356, tm_isdst=0)
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=20, tm_min=20, tm_sec=7, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=23, tm_hour=20, tm_min=20, tm_sec=7, tm_wday=3, tm_yday=357, tm_isdst=0)
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=21, tm_min=20, tm_sec=7, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=24, tm_hour=21, tm_min=20, tm_sec=7, tm_wday=4, tm_yday=358, tm_isdst=0)
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=22, tm_min=20, tm_sec=7, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=25, tm_hour=22, tm_min=20, tm_sec=7, tm_wday=5, tm_yday=359, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=15, tm_min=20, tm_sec=7, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=18, tm_hour=15, tm_min=20, tm_sec=7, tm_wday=5, tm_yday=352, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=16, tm_min=20, tm_sec=7, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=19, tm_hour=16, tm_min=20, tm_sec=7, tm_wday=6, tm_yday=353, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=17, tm_min=20, tm_sec=7, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=20, tm_hour=17, tm_min=20, tm_sec=7, tm_wday=0, tm_yday=354, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=18, tm_min=20, tm_sec=7, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=21, tm_hour=18, tm_min=20, tm_sec=7, tm_wday=1, tm_yday=355, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=19, tm_min=20, tm_sec=7, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=20, tm_sec=7, tm_wday=2, tm_yday=356, tm_isdst=0)
+[{&#x27;goods_id&#x27;: &#x27;3530&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3531&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3532&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3533&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3534&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3535&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3536&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3537&#x27;, &#x27;is_recommended&#x27;: 1}]
+({&#x27;goods_id&#x27;: &#x27;3530&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3531&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3532&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3533&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3534&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3535&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3536&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3537&#x27;, &#x27;is_recommended&#x27;: 1})
+8
+{&quot;goods_id&quot;: &quot;3530&quot;, &quot;is_recommended&quot;: 1}
+8
+{&quot;goods_id&quot;: &quot;3531&quot;, &quot;is_recommended&quot;: 1}
+8
+{&quot;goods_id&quot;: &quot;3532&quot;, &quot;is_recommended&quot;: 1}
+8
+{&quot;goods_id&quot;: &quot;3533&quot;, &quot;is_recommended&quot;: 1}
+8
+{&quot;goods_id&quot;: &quot;3534&quot;, &quot;is_recommended&quot;: 1}
+8
+{&quot;goods_id&quot;: &quot;3535&quot;, &quot;is_recommended&quot;: 1}
+8
+{&quot;goods_id&quot;: &quot;3536&quot;, &quot;is_recommended&quot;: 1}
+8
+{&quot;goods_id&quot;: &quot;3537&quot;, &quot;is_recommended&quot;: 1}
+[{&quot;goods_id&quot;: &quot;3530&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3531&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3532&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3533&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3534&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3535&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3536&quot;, &quot;is_recommended&quot;: 1},
+{&#x27;topic_id&#x27;: &#x27;229&#x27;, &#x27;goods&#x27;: &#x27;[{&quot;goods_id&quot;: &quot;3530&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3531&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3532&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3533&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3534&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3535&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3536&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3537&quot;, &quot;is_recommended&quot;: 1}]&#x27;}
+{&#x27;topic_id&#x27;: &#x27;229&#x27;, &#x27;goods&#x27;: &#x27;[{&quot;goods_id&quot;: &quot;3530&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3531&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3532&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3533&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3534&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3535&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3536&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3537&quot;, &quot;is_recommended&quot;: 1}]&#x27;}
+{&#x27;status&#x27;: 200, &#x27;msg&#x27;: &#x27;操作成功&#x27;, &#x27;data&#x27;: 8, &#x27;shop_switch&#x27;: &#x27;0&#x27;}
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail001::test_status</td>
+          <td class="col-duration">0.37</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail002::test_name</td>
+          <td class="col-duration">17.63</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail002::test_status</td>
+          <td class="col-duration">0.05</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail002::test_price</td>
+          <td class="col-duration">0.03</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail002::test_bid_price</td>
+          <td class="col-duration">0.02</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail002::test_service_rate</td>
+          <td class="col-duration">0.03</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail002::test_bid_num</td>
+          <td class="col-duration">0.03</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail002::test_bid_list</td>
+          <td class="col-duration">0.03</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail002::test_pay</td>
+          <td class="col-duration">0.04</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail002::test_delivery</td>
+          <td class="col-duration">0.04</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail002::test_set_price</td>
+          <td class="col-duration">5.43</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail002::test_favorite_src</td>
+          <td class="col-duration">0.03</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail002::test_remind_src</td>
+          <td class="col-duration">0.02</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail002::test_click_favorite_unlogin</td>
+          <td class="col-duration">2.22</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail002::test_click_remind_unlogin</td>
+          <td class="col-duration">2.22</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail002::test_click_bid_unlogin</td>
+          <td class="col-duration">2.24</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail002::test_click_change_nickname</td>
+          <td class="col-duration">2.32</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail002::test_click_change_nickname_1</td>
+          <td class="col-duration">2.26</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail002::test_nickname</td>
+          <td class="col-duration">0.04</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail002::test_button_text</td>
+          <td class="col-duration">0.02</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail002::test_minus</td>
+          <td class="col-duration">27.64</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail002::test_add</td>
+          <td class="col-duration">24.12</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail002::test_alway_ask</td>
+          <td class="col-duration">3.23</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail002::test_alway_ask1</td>
+          <td class="col-duration">1.10</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail002::test_read_alway_ask</td>
+          <td class="col-duration">2.52</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_001</td>
+          <td class="col-duration">45.42</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> -----------------------------Captured stdout setup------------------------------ <br/>[2] [&quot;picture/wxTj7wm3XN2JkhFZXQCSpiRKRhZx5C.jpeg&quot;] [&quot;thumbnail/fjZac4eFCsxk2Py2z4BiQ4N4fbbC6x.png&quot;]
+{&#x27;topic_id&#x27;: &#x27;[2]&#x27;, &#x27;type&#x27;: 1, &#x27;id&#x27;: 3530, &#x27;category_id&#x27;: 3, &#x27;platform&#x27;: 1, &#x27;begin_time&#x27;: 1639725607, &#x27;end_time&#x27;: 1639812007, &#x27;top_price&#x27;: &#x27;0.00&#x27;, &#x27;name&#x27;: &#x27;拍品1&#x27;, &#x27;delay_time&#x27;: 0, &#x27;shape&#x27;: &#x27;98&#x27;, &#x27;price&#x27;: &#x27;10.00&#x27;, &#x27;retain_price&#x27;: &#x27;10&#x27;, &#x27;seller_name&#x27;: &#x27;大罗&#x27;, &#x27;agreement_no&#x27;: &#x27;a0000152&#x27;, &#x27;create_user&#x27;: &#x27;&#x27;, &#x27;create_date&#x27;: &#x27;&#x27;, &#x27;freight_id&#x27;: 51, &#x27;is_freight&#x27;: 0, &#x27;goods_weight&#x27;: &#x27;0.000&#x27;, &#x27;buyer_service_rate&#x27;: &#x27;10&#x27;, &#x27;content&#x27;: &#x27;&lt;p&gt;1960年第三版人民币壹圆拖拉机狮子号一枚&lt;/p&gt;&#x27;, &#x27;meta&#x27;: &#x27;{&quot;min_price&quot;:&quot;&quot;,&quot;max_price&quot;:&quot;&quot;,&quot;seller_insure_deal&quot;:&quot;1&quot;,&quot;seller_insure_no_deal&quot;:&quot;1&quot;,&quot;service_fee_deal&quot;:&quot;2&quot;,&quot;service_fee_no_deal&quot;:&quot;1&quot;,&quot;production_fee_deal&quot;:&quot;15&quot;,&quot;production_fee_no_deal&quot;:&quot;15&quot;,&quot;safekeeping_fee_deal&quot;:&quot;0&quot;,&quot;safekeeping_fee_no_deal&quot;:&quot;0&quot;,&quot;seller_taxes&quot;:&quot;&quot;,&quot;identify_fee&quot;:&quot;&quot;,&quot;packing_fee&quot;:&quot;&quot;,&quot;texture&quot;:&quot;&quot;,&quot;spec&quot;:&quot;&quot;,&quot;opinion&quot;:&quot;&quot;}&#x27;, &#x27;original_image&#x27;: &#x27;[&quot;picture/wxTj7wm3XN2JkhFZXQCSpiRKRhZx5C.jpeg&quot;]&#x27;, &#x27;images&#x27;: &#x27;[&quot;thumbnail/fjZac4eFCsxk2Py2z4BiQ4N4fbbC6x.png&quot;]&#x27;}
+{&#x27;status&#x27;: 200, &#x27;msg&#x27;: &#x27;操作成功&#x27;, &#x27;data&#x27;: 1, &#x27;shop_switch&#x27;: &#x27;0&#x27;}
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_click_favorite</td>
+          <td class="col-duration">4.11</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_click_remind</td>
+          <td class="col-duration">4.11</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_002</td>
+          <td class="col-duration">1.18</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_003</td>
+          <td class="col-duration">2.36</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>None
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_004</td>
+          <td class="col-duration">2.22</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_005</td>
+          <td class="col-duration">2.25</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_006</td>
+          <td class="col-duration">3.24</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_008</td>
+          <td class="col-duration">1.09</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_009</td>
+          <td class="col-duration">1.11</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_010</td>
+          <td class="col-duration">1.16</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_011</td>
+          <td class="col-duration">1.18</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_012</td>
+          <td class="col-duration">2.35</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_013</td>
+          <td class="col-duration">0.30</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_014</td>
+          <td class="col-duration">1.18</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_015</td>
+          <td class="col-duration">1.25</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_016</td>
+          <td class="col-duration">1.13</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_017</td>
+          <td class="col-duration">1.58</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail004::test_001</td>
+          <td class="col-duration">97.45</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> -----------------------------Captured stdout setup------------------------------ <br/>[2] [&quot;picture/wxTj7wm3XN2JkhFZXQCSpiRKRhZx5C.jpeg&quot;] [&quot;thumbnail/fjZac4eFCsxk2Py2z4BiQ4N4fbbC6x.png&quot;]
+{&#x27;topic_id&#x27;: &#x27;[2]&#x27;, &#x27;type&#x27;: 1, &#x27;id&#x27;: 3531, &#x27;category_id&#x27;: 3, &#x27;platform&#x27;: 1, &#x27;begin_time&#x27;: 1639725833, &#x27;end_time&#x27;: 1639725953, &#x27;top_price&#x27;: &#x27;0.00&#x27;, &#x27;name&#x27;: &#x27;拍品2&#x27;, &#x27;delay_time&#x27;: 0, &#x27;shape&#x27;: &#x27;98&#x27;, &#x27;price&#x27;: &#x27;10.00&#x27;, &#x27;retain_price&#x27;: &#x27;10000&#x27;, &#x27;seller_name&#x27;: &#x27;大罗&#x27;, &#x27;agreement_no&#x27;: &#x27;a0000152&#x27;, &#x27;create_user&#x27;: &#x27;&#x27;, &#x27;create_date&#x27;: &#x27;&#x27;, &#x27;freight_id&#x27;: 51, &#x27;is_freight&#x27;: 0, &#x27;goods_weight&#x27;: &#x27;0.000&#x27;, &#x27;buyer_service_rate&#x27;: &#x27;10&#x27;, &#x27;content&#x27;: &#x27;&lt;p&gt;1960年第三版人民币壹圆拖拉机狮子号一枚&lt;/p&gt;&#x27;, &#x27;meta&#x27;: &#x27;{&quot;min_price&quot;:&quot;&quot;,&quot;max_price&quot;:&quot;&quot;,&quot;seller_insure_deal&quot;:&quot;1&quot;,&quot;seller_insure_no_deal&quot;:&quot;1&quot;,&quot;service_fee_deal&quot;:&quot;2&quot;,&quot;service_fee_no_deal&quot;:&quot;1&quot;,&quot;production_fee_deal&quot;:&quot;15&quot;,&quot;production_fee_no_deal&quot;:&quot;15&quot;,&quot;safekeeping_fee_deal&quot;:&quot;0&quot;,&quot;safekeeping_fee_no_deal&quot;:&quot;0&quot;,&quot;seller_taxes&quot;:&quot;&quot;,&quot;identify_fee&quot;:&quot;&quot;,&quot;packing_fee&quot;:&quot;&quot;,&quot;texture&quot;:&quot;&quot;,&quot;spec&quot;:&quot;&quot;,&quot;opinion&quot;:&quot;&quot;}&#x27;, &#x27;original_image&#x27;: &#x27;[&quot;picture/wxTj7wm3XN2JkhFZXQCSpiRKRhZx5C.jpeg&quot;]&#x27;, &#x27;images&#x27;: &#x27;[&quot;thumbnail/fjZac4eFCsxk2Py2z4BiQ4N4fbbC6x.png&quot;]&#x27;}
+{&#x27;status&#x27;: 200, &#x27;msg&#x27;: &#x27;操作成功&#x27;, &#x27;data&#x27;: 1, &#x27;shop_switch&#x27;: &#x27;0&#x27;}
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail004::test_002</td>
+          <td class="col-duration">11.35</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail004::test_003</td>
+          <td class="col-duration">50.12</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail005::test_001</td>
+          <td class="col-duration">96.36</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> -----------------------------Captured stdout setup------------------------------ <br/>[2] [&quot;picture/wxTj7wm3XN2JkhFZXQCSpiRKRhZx5C.jpeg&quot;] [&quot;thumbnail/fjZac4eFCsxk2Py2z4BiQ4N4fbbC6x.png&quot;]
+{&#x27;topic_id&#x27;: &#x27;[2]&#x27;, &#x27;type&#x27;: 1, &#x27;id&#x27;: 3532, &#x27;category_id&#x27;: 3, &#x27;platform&#x27;: 1, &#x27;begin_time&#x27;: 1639725994, &#x27;end_time&#x27;: 1639726114, &#x27;top_price&#x27;: &#x27;0.00&#x27;, &#x27;name&#x27;: &#x27;拍品3&#x27;, &#x27;delay_time&#x27;: 0, &#x27;shape&#x27;: &#x27;98&#x27;, &#x27;price&#x27;: &#x27;10.00&#x27;, &#x27;retain_price&#x27;: &#x27;1000&#x27;, &#x27;seller_name&#x27;: &#x27;大罗&#x27;, &#x27;agreement_no&#x27;: &#x27;a0000152&#x27;, &#x27;create_user&#x27;: &#x27;&#x27;, &#x27;create_date&#x27;: &#x27;&#x27;, &#x27;freight_id&#x27;: 51, &#x27;is_freight&#x27;: 0, &#x27;goods_weight&#x27;: &#x27;0.000&#x27;, &#x27;buyer_service_rate&#x27;: &#x27;10&#x27;, &#x27;content&#x27;: &#x27;&lt;p&gt;1960年第三版人民币壹圆拖拉机狮子号一枚&lt;/p&gt;&#x27;, &#x27;meta&#x27;: &#x27;{&quot;min_price&quot;:&quot;&quot;,&quot;max_price&quot;:&quot;&quot;,&quot;seller_insure_deal&quot;:&quot;1&quot;,&quot;seller_insure_no_deal&quot;:&quot;1&quot;,&quot;service_fee_deal&quot;:&quot;2&quot;,&quot;service_fee_no_deal&quot;:&quot;1&quot;,&quot;production_fee_deal&quot;:&quot;15&quot;,&quot;production_fee_no_deal&quot;:&quot;15&quot;,&quot;safekeeping_fee_deal&quot;:&quot;0&quot;,&quot;safekeeping_fee_no_deal&quot;:&quot;0&quot;,&quot;seller_taxes&quot;:&quot;&quot;,&quot;identify_fee&quot;:&quot;&quot;,&quot;packing_fee&quot;:&quot;&quot;,&quot;texture&quot;:&quot;&quot;,&quot;spec&quot;:&quot;&quot;,&quot;opinion&quot;:&quot;&quot;}&#x27;, &#x27;original_image&#x27;: &#x27;[&quot;picture/wxTj7wm3XN2JkhFZXQCSpiRKRhZx5C.jpeg&quot;]&#x27;, &#x27;images&#x27;: &#x27;[&quot;thumbnail/fjZac4eFCsxk2Py2z4BiQ4N4fbbC6x.png&quot;]&#x27;}
+{&#x27;status&#x27;: 200, &#x27;msg&#x27;: &#x27;操作成功&#x27;, &#x27;data&#x27;: 1, &#x27;shop_switch&#x27;: &#x27;0&#x27;}
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail005::test_002</td>
+          <td class="col-duration">11.40</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail005::test_003</td>
+          <td class="col-duration">50.35</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
+/Users/yuanyuanhe/PycharmProjects/zspaimai_ui
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_mybid.py::TestMybidInfo::test_the_first_goods_info</td>
+          <td class="col-duration">48.54</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_mybid.py::TestMybidInfo::test_click_list</td>
+          <td class="col-duration">4.46</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_mybid.py::TestMybidInfo::test_info_of_all_bid</td>
+          <td class="col-duration">1.38</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_mybid.py::TestMybidInfo::test_info_of_my_proxy</td>
+          <td class="col-duration">1.16</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_mybid.py::TestMybidInfo::test_info_of_my_favourite</td>
+          <td class="col-duration">1.13</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_order_detail.py::TestOrderDetail::test_good_info</td>
+          <td class="col-duration">130.05</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_order_detail.py::TestOrderDetail::test_all_to_pay</td>
+          <td class="col-duration">2.43</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody></table></body></html>

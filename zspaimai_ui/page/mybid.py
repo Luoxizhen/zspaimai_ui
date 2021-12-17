@@ -65,14 +65,16 @@ class MyBid(Web):
         self.is_click(mb[n])
     def is_displayed_remind_tip(self):
         return self.find_element(mb["开启提醒前提示"]).is_displayed()
-    def close_remind_tip(self,n="确认提醒"):
-        self.is_click(mb[n])
+    def close_remind_tip(self,n="确认提醒",i=0):
+        #self.is_click(mb[n])
+        self.find_elements(mb["取消提醒"][i]).click()
     def tip(self):
         return self.element_text(mb['提示内容'])
-    def go_to_pay(self):
+    def go_to_pay(self,n="一"):
         self.swith_to_list("中标记录")
-        self.select("一")
+        self.select(n)
         self.pay()
+
 
 
 
