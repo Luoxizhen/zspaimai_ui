@@ -3,7 +3,193 @@
   <head>
     <meta charset="utf-8"/>
     <title>Test Report</title>
-    <link href="assets/style.css" rel="stylesheet" type="text/css"/></head>
+    <style>body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  /* do not increase min-width as some may use split screens */
+  min-width: 800px;
+  color: #999;
+}
+
+h1 {
+  font-size: 24px;
+  color: black;
+}
+
+h2 {
+  font-size: 16px;
+  color: black;
+}
+
+p {
+  color: black;
+}
+
+a {
+  color: #999;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+/******************************
+ * SUMMARY INFORMATION
+ ******************************/
+#environment td {
+  padding: 5px;
+  border: 1px solid #E6E6E6;
+}
+#environment tr:nth-child(odd) {
+  background-color: #f6f6f6;
+}
+
+/******************************
+ * TEST RESULT COLORS
+ ******************************/
+span.passed,
+.passed .col-result {
+  color: green;
+}
+
+span.skipped,
+span.xfailed,
+span.rerun,
+.skipped .col-result,
+.xfailed .col-result,
+.rerun .col-result {
+  color: orange;
+}
+
+span.error,
+span.failed,
+span.xpassed,
+.error .col-result,
+.failed .col-result,
+.xpassed .col-result {
+  color: red;
+}
+
+/******************************
+ * RESULTS TABLE
+ *
+ * 1. Table Layout
+ * 2. Extra
+ * 3. Sorting items
+ *
+ ******************************/
+/*------------------
+ * 1. Table Layout
+ *------------------*/
+#results-table {
+  border: 1px solid #e6e6e6;
+  color: #999;
+  font-size: 12px;
+  width: 100%;
+}
+#results-table th,
+#results-table td {
+  padding: 5px;
+  border: 1px solid #E6E6E6;
+  text-align: left;
+}
+#results-table th {
+  font-weight: bold;
+}
+
+/*------------------
+ * 2. Extra
+ *------------------*/
+.log {
+  background-color: #e6e6e6;
+  border: 1px solid #e6e6e6;
+  color: black;
+  display: block;
+  font-family: "Courier New", Courier, monospace;
+  height: 230px;
+  overflow-y: scroll;
+  padding: 5px;
+  white-space: pre-wrap;
+}
+.log:only-child {
+  height: inherit;
+}
+
+div.image {
+  border: 1px solid #e6e6e6;
+  float: right;
+  height: 240px;
+  margin-left: 5px;
+  overflow: hidden;
+  width: 320px;
+}
+div.image img {
+  width: 320px;
+}
+
+div.video {
+  border: 1px solid #e6e6e6;
+  float: right;
+  height: 240px;
+  margin-left: 5px;
+  overflow: hidden;
+  width: 320px;
+}
+div.video video {
+  overflow: hidden;
+  width: 320px;
+  height: 240px;
+}
+
+.collapsed {
+  display: none;
+}
+
+.expander::after {
+  content: " (show details)";
+  color: #BBB;
+  font-style: italic;
+  cursor: pointer;
+}
+
+.collapser::after {
+  content: " (hide details)";
+  color: #BBB;
+  font-style: italic;
+  cursor: pointer;
+}
+
+/*------------------
+ * 3. Sorting items
+ *------------------*/
+.sortable {
+  cursor: pointer;
+}
+
+.sort-icon {
+  font-size: 0px;
+  float: left;
+  margin-right: 5px;
+  margin-top: 5px;
+  /*triangle*/
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+}
+.inactive .sort-icon {
+  /*finish triangle*/
+  border-top: 8px solid #E6E6E6;
+}
+.asc.active .sort-icon {
+  /*finish triangle*/
+  border-bottom: 8px solid #999;
+}
+.desc.active .sort-icon {
+  /*finish triangle*/
+  border-top: 8px solid #999;
+}
+</style></head>
   <body onLoad="init()">
     <script>/* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
@@ -243,7 +429,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
 }
 </script>
     <h1>中晟在线web端自动化测试报告.html</h1>
-    <p>Report generated on 17-Dec-2021 at 15:32:13 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.1.1</p>
+    <p>Report generated on 17-Dec-2021 at 16:46:24 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.1.1</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -259,8 +445,8 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <td>Python</td>
         <td>3.9.4</td></tr></table>
     <h2>Summary</h2>
-    <p>94 tests ran in 886.61 seconds. </p>
-    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">79 passed</span>, <input checked="true" class="filter" data-test-result="skipped" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">13 skipped</span>, <input checked="true" class="filter" data-test-result="failed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">15 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
+    <p>94 tests ran in 1190.25 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">78 passed</span>, <input checked="true" class="filter" data-test-result="skipped" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">13 skipped</span>, <input checked="true" class="filter" data-test-result="failed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">16 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
     <h2>Results</h2>
     <table id="results-table">
       <thead id="results-table-head">
@@ -274,48 +460,30 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
       <tbody class="failed results-table-row">
         <tr>
           <td class="col-result">Failed</td>
-          <td class="col-name">test/test_firstp.py::TestFirstp001::test_click_bid</td>
-          <td class="col-duration">8.49</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log">self = &lt;test.test_firstp.TestFirstp001 object at 0x10d720bb0&gt;<br/><br/>    @pytest.mark.nav<br/>    def test_click_bid(self):<br/>        &#x27;&#x27;&#x27;验证点击页面中间导航栏 竞买 ，页面正确跳转&#x27;&#x27;&#x27;<br/>        &#x27;&#x27;&#x27;验证点击页面顶部 联系我们 ，页面正确跳转&#x27;&#x27;&#x27;<br/>        self.fp.click_bidding()<br/>        title = self.driver.title<br/>        self.fp.back()<br/>&gt;       assert &#x27;中晟在线-竞买&#x27; == title<br/><span class="error">E       AssertionError: assert &#x27;中晟在线-竞买&#x27; == &#x27;慧眼识宝，悦享收藏-中晟在线&#x27;</span><br/><span class="error">E         - 慧眼识宝，悦享收藏-中晟在线</span><br/><span class="error">E         + 中晟在线-竞买</span><br/><br/>test/test_firstp.py:362: AssertionError<br/></div></td></tr></tbody>
-      <tbody class="failed results-table-row">
-        <tr>
-          <td class="col-result">Failed</td>
           <td class="col-name">test/test_firstp.py::TestFirstp001::test_click_more_collection</td>
-          <td class="col-duration">20.45</td>
+          <td class="col-duration">20.13</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log">self = &lt;test.test_firstp.TestFirstp001 object at 0x10d863e80&gt;<br/><br/>    def test_click_more_collection(self):<br/>        &#x27;&#x27;&#x27;验证点击页面底部更多拍品，页面正确跳转&#x27;&#x27;&#x27;<br/>&gt;       self.fp.click_more_collection()<br/><br/>test/test_firstp.py:365: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/>page/firstp.py:286: in click_more_collection<br/>    self.is_click(firstp[&#x27;更多拍品&#x27;])<br/>base/webpage.py:75: in is_click<br/>    self.find_element(locator).click()<br/>base/webpage.py:50: in find_element<br/>    return Web.element_locator(lambda *args: self.wait.until(<br/>base/webpage.py:46: in element_locator<br/>    return func(cm.LOCATE_MODE[name], value)<br/>base/webpage.py:50: in &lt;lambda&gt;<br/>    return Web.element_locator(lambda *args: self.wait.until(<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;selenium.webdriver.support.wait.WebDriverWait (session=&quot;87b37fb20dae1302966efea0bedf2db3&quot;)&gt;<br/>method = &lt;selenium.webdriver.support.expected_conditions.presence_of_element_located object at 0x10d7cedf0&gt;<br/>message = &#x27;&#x27;<br/><br/>    def until(self, method, message=&#x27;&#x27;):<br/>        &quot;&quot;&quot;Calls the method provided with the driver as an argument until the \<br/>        return value is not False.&quot;&quot;&quot;<br/>        screen = None<br/>        stacktrace = None<br/>    <br/>        end_time = time.time() + self._timeout<br/>        while True:<br/>            try:<br/>                value = method(self._driver)<br/>                if value:<br/>                    return value<br/>            except self._ignored_exceptions as exc:<br/>                screen = getattr(exc, &#x27;screen&#x27;, None)<br/>                stacktrace = getattr(exc, &#x27;stacktrace&#x27;, None)<br/>            time.sleep(self._poll)<br/>            if time.time() &gt; end_time:<br/>                break<br/>&gt;       raise TimeoutException(message, screen, stacktrace)<br/><span class="error">E       selenium.common.exceptions.TimeoutException: Message:</span><br/><br/>venv/lib/python3.9/site-packages/selenium/webdriver/support/wait.py:80: TimeoutException<br/></div></td></tr></tbody>
+            <div class="log">self = &lt;test.test_firstp.TestFirstp001 object at 0x10b17a5b0&gt;<br/><br/>    def test_click_more_collection(self):<br/>        &#x27;&#x27;&#x27;验证点击页面底部更多拍品，页面正确跳转&#x27;&#x27;&#x27;<br/>&gt;       self.fp.click_more_collection()<br/><br/>test/test_firstp.py:365: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/>page/firstp.py:286: in click_more_collection<br/>    self.is_click(firstp[&#x27;更多拍品&#x27;])<br/>base/webpage.py:75: in is_click<br/>    self.find_element(locator).click()<br/>base/webpage.py:50: in find_element<br/>    return Web.element_locator(lambda *args: self.wait.until(<br/>base/webpage.py:46: in element_locator<br/>    return func(cm.LOCATE_MODE[name], value)<br/>base/webpage.py:50: in &lt;lambda&gt;<br/>    return Web.element_locator(lambda *args: self.wait.until(<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;selenium.webdriver.support.wait.WebDriverWait (session=&quot;e96259fe7532212e1bd794a5c5b181f3&quot;)&gt;<br/>method = &lt;selenium.webdriver.support.expected_conditions.presence_of_element_located object at 0x10b17a8e0&gt;<br/>message = &#x27;&#x27;<br/><br/>    def until(self, method, message=&#x27;&#x27;):<br/>        &quot;&quot;&quot;Calls the method provided with the driver as an argument until the \<br/>        return value is not False.&quot;&quot;&quot;<br/>        screen = None<br/>        stacktrace = None<br/>    <br/>        end_time = time.time() + self._timeout<br/>        while True:<br/>            try:<br/>                value = method(self._driver)<br/>                if value:<br/>                    return value<br/>            except self._ignored_exceptions as exc:<br/>                screen = getattr(exc, &#x27;screen&#x27;, None)<br/>                stacktrace = getattr(exc, &#x27;stacktrace&#x27;, None)<br/>            time.sleep(self._poll)<br/>            if time.time() &gt; end_time:<br/>                break<br/>&gt;       raise TimeoutException(message, screen, stacktrace)<br/><span class="error">E       selenium.common.exceptions.TimeoutException: Message:</span><br/><br/>venv/lib/python3.9/site-packages/selenium/webdriver/support/wait.py:80: TimeoutException<br/></div></td></tr></tbody>
       <tbody class="failed results-table-row">
         <tr>
           <td class="col-result">Failed</td>
-          <td class="col-name">test/test_firstp.py::TestFirstp002::test_topic1_num</td>
-          <td class="col-duration">0.04</td>
+          <td class="col-name">test/test_firstp.py::TestFirstp001::test_click_more_collection_button</td>
+          <td class="col-duration">20.03</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log">self = &lt;test.test_firstp.TestFirstp002 object at 0x10d926d00&gt;<br/><br/>    def test_topic1_num(self):<br/>        &#x27;&#x27;&#x27;验证专场1中的拍品数量显示准确&#x27;&#x27;&#x27;<br/>        num = self.fp.topic1_collection_num()<br/>&gt;       assert num == &#x27;8&#x27;<br/><span class="error">E       AssertionError: assert &#x27;5&#x27; == &#x27;8&#x27;</span><br/><span class="error">E         - 8</span><br/><span class="error">E         + 5</span><br/><br/>test/test_firstp.py:542: AssertionError<br/></div></td></tr></tbody>
-      <tbody class="failed results-table-row">
-        <tr>
-          <td class="col-result">Failed</td>
-          <td class="col-name">test/test_firstp.py::TestFirstp002::test_topic1_bid_num</td>
-          <td class="col-duration">0.03</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log">self = &lt;test.test_firstp.TestFirstp002 object at 0x10d974d90&gt;<br/><br/>    def test_topic1_bid_num(self):<br/>        &#x27;&#x27;&#x27;验证专场1中的出价次数显示准确&#x27;&#x27;&#x27;<br/>        num = self.fp.topic1_bid_num()<br/>&gt;       assert num == &#x27;0&#x27;<br/><span class="error">E       AssertionError: assert &#x27;10&#x27; == &#x27;0&#x27;</span><br/><span class="error">E         - 0</span><br/><span class="error">E         + 10</span><br/><br/>test/test_firstp.py:546: AssertionError<br/></div></td></tr></tbody>
+            <div class="log">self = &lt;test.test_firstp.TestFirstp001 object at 0x10b2b3f10&gt;<br/><br/>    def test_click_more_collection_button(self):<br/>        &#x27;&#x27;&#x27;验证点击页面底部更多拍品后面的按钮，页面正确跳转&#x27;&#x27;&#x27;<br/>&gt;       self.fp.click_more_colletion_button()<br/><br/>test/test_firstp.py:371: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/>page/firstp.py:288: in click_more_colletion_button<br/>    self.is_click(firstp[&#x27;更多拍品按钮&#x27;])<br/>base/webpage.py:75: in is_click<br/>    self.find_element(locator).click()<br/>base/webpage.py:50: in find_element<br/>    return Web.element_locator(lambda *args: self.wait.until(<br/>base/webpage.py:46: in element_locator<br/>    return func(cm.LOCATE_MODE[name], value)<br/>base/webpage.py:50: in &lt;lambda&gt;<br/>    return Web.element_locator(lambda *args: self.wait.until(<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;selenium.webdriver.support.wait.WebDriverWait (session=&quot;e96259fe7532212e1bd794a5c5b181f3&quot;)&gt;<br/>method = &lt;selenium.webdriver.support.expected_conditions.presence_of_element_located object at 0x10b2b3eb0&gt;<br/>message = &#x27;&#x27;<br/><br/>    def until(self, method, message=&#x27;&#x27;):<br/>        &quot;&quot;&quot;Calls the method provided with the driver as an argument until the \<br/>        return value is not False.&quot;&quot;&quot;<br/>        screen = None<br/>        stacktrace = None<br/>    <br/>        end_time = time.time() + self._timeout<br/>        while True:<br/>            try:<br/>                value = method(self._driver)<br/>                if value:<br/>                    return value<br/>            except self._ignored_exceptions as exc:<br/>                screen = getattr(exc, &#x27;screen&#x27;, None)<br/>                stacktrace = getattr(exc, &#x27;stacktrace&#x27;, None)<br/>            time.sleep(self._poll)<br/>            if time.time() &gt; end_time:<br/>                break<br/>&gt;       raise TimeoutException(message, screen, stacktrace)<br/><span class="error">E       selenium.common.exceptions.TimeoutException: Message:</span><br/><br/>venv/lib/python3.9/site-packages/selenium/webdriver/support/wait.py:80: TimeoutException<br/></div></td></tr></tbody>
       <tbody class="failed results-table-row">
         <tr>
           <td class="col-result">Failed</td>
           <td class="col-name">test/test_detail.py::TestGoodDetail002::test_start_time</td>
-          <td class="col-duration">0.12</td>
+          <td class="col-duration">0.07</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log">self = &lt;test.test_detail.TestGoodDetail002 object at 0x10d974d30&gt;<br/><br/>    def test_start_time(self):<br/>&gt;       assert self.dp.start_time() == good_info[&#x27;begin_time&#x27;]<br/><span class="error">E       AssertionError: assert &#x27;2021-12-17 15:20:07&#x27; == &#x27;2021-12-17 14:58:48&#x27;</span><br/><span class="error">E         - 2021-12-17 14:58:48</span><br/><span class="error">E         + 2021-12-17 15:20:07</span><br/><br/>test/test_detail.py:56: AssertionError<br/></div></td></tr></tbody>
+            <div class="log">self = &lt;test.test_detail.TestGoodDetail002 object at 0x10b16a370&gt;<br/><br/>    def test_start_time(self):<br/>&gt;       assert self.dp.start_time() == good_info[&#x27;begin_time&#x27;]<br/><span class="error">E       AssertionError: assert &#x27;2021-12-17 16:29:43&#x27; == &#x27;2021-12-17 15:47:20&#x27;</span><br/><span class="error">E         - 2021-12-17 15:47:20</span><br/><span class="error">E         + 2021-12-17 16:29:43</span><br/><br/>test/test_detail.py:56: AssertionError<br/></div></td></tr></tbody>
       <tbody class="failed results-table-row">
         <tr>
           <td class="col-result">Failed</td>
@@ -324,43 +492,70 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log">self = &lt;test.test_detail.TestGoodDetail002 object at 0x10d7d30d0&gt;<br/><br/>    def test_end_time(self):<br/>&gt;       assert self.dp.end_time() == good_info[&#x27;end_time&#x27;]<br/><span class="error">E       AssertionError: assert &#x27;2021-12-18 15:20:07&#x27; == &#x27;2021-12-18 14:58:48&#x27;</span><br/><span class="error">E         - 2021-12-18 14:58:48</span><br/><span class="error">E         + 2021-12-18 15:20:07</span><br/><br/>test/test_detail.py:58: AssertionError<br/></div></td></tr></tbody>
+            <div class="log">self = &lt;test.test_detail.TestGoodDetail002 object at 0x10b2b4100&gt;<br/><br/>    def test_end_time(self):<br/>&gt;       assert self.dp.end_time() == good_info[&#x27;end_time&#x27;]<br/><span class="error">E       AssertionError: assert &#x27;2021-12-18 16:29:43&#x27; == &#x27;2021-12-18 15:47:20&#x27;</span><br/><span class="error">E         - 2021-12-18 15:47:20</span><br/><span class="error">E         + 2021-12-18 16:29:43</span><br/><br/>test/test_detail.py:58: AssertionError<br/></div></td></tr></tbody>
+      <tbody class="failed results-table-row">
+        <tr>
+          <td class="col-result">Failed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_004</td>
+          <td class="col-duration">1.06</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">self = &lt;test.test_detail.TestGoodDetail003 object at 0x10b05b130&gt;<br/><br/>    def test_bid_004(self):<br/>        &#x27;&#x27;&#x27;验证&quot;是否关闭代理&quot;弹窗，否按钮功能&#x27;&#x27;&#x27;<br/>&gt;       self.dp.close_proxy()<br/><br/>test/test_detail.py:374: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/>page/detailp.py:81: in close_proxy<br/>    self.is_click(dp[&quot;关闭代理&quot;])<br/>base/webpage.py:75: in is_click<br/>    self.find_element(locator).click()<br/>venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py:80: in click<br/>    self._execute(Command.CLICK_ELEMENT)<br/>venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py:633: in _execute<br/>    return self._parent.execute(command, params)<br/>venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:321: in execute<br/>    self.error_handler.check_response(response)<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x10b279850&gt;<br/>response = {&#x27;status&#x27;: 400, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;element click intercepted&quot;,&quot;message&quot;:&quot;element click intercepted: Element ...00019bf0506c _pthread_start + 320\\n20  libsystem_pthread.dylib             0x000000019beffda0 thread_start + 8\\n&quot;}}&#x27;}<br/><br/>    def check_response(self, response):<br/>        &quot;&quot;&quot;<br/>        Checks that a JSON response from the WebDriver does not have an error.<br/>    <br/>        :Args:<br/>         - response - The JSON response from the WebDriver server as a dictionary<br/>           object.<br/>    <br/>        :Raises: If the response contains an error message.<br/>        &quot;&quot;&quot;<br/>        status = response.get(&#x27;status&#x27;, None)<br/>        if status is None or status == ErrorCode.SUCCESS:<br/>            return<br/>        value = None<br/>        message = response.get(&quot;message&quot;, &quot;&quot;)<br/>        screen = response.get(&quot;screen&quot;, &quot;&quot;)<br/>        stacktrace = None<br/>        if isinstance(status, int):<br/>            value_json = response.get(&#x27;value&#x27;, None)<br/>            if value_json and isinstance(value_json, basestring):<br/>                import json<br/>                try:<br/>                    value = json.loads(value_json)<br/>                    if len(value.keys()) == 1:<br/>                        value = value[&#x27;value&#x27;]<br/>                    status = value.get(&#x27;error&#x27;, None)<br/>                    if status is None:<br/>                        status = value[&quot;status&quot;]<br/>                        message = value[&quot;value&quot;]<br/>                        if not isinstance(message, basestring):<br/>                            value = message<br/>                            message = message.get(&#x27;message&#x27;)<br/>                    else:<br/>                        message = value.get(&#x27;message&#x27;, None)<br/>                except ValueError:<br/>                    pass<br/>    <br/>        exception_class = ErrorInResponseException<br/>        if status in ErrorCode.NO_SUCH_ELEMENT:<br/>            exception_class = NoSuchElementException<br/>        elif status in ErrorCode.NO_SUCH_FRAME:<br/>            exception_class = NoSuchFrameException<br/>        elif status in ErrorCode.NO_SUCH_WINDOW:<br/>            exception_class = NoSuchWindowException<br/>        elif status in ErrorCode.STALE_ELEMENT_REFERENCE:<br/>            exception_class = StaleElementReferenceException<br/>        elif status in ErrorCode.ELEMENT_NOT_VISIBLE:<br/>            exception_class = ElementNotVisibleException<br/>        elif status in ErrorCode.INVALID_ELEMENT_STATE:<br/>            exception_class = InvalidElementStateException<br/>        elif status in ErrorCode.INVALID_SELECTOR \<br/>                or status in ErrorCode.INVALID_XPATH_SELECTOR \<br/>                or status in ErrorCode.INVALID_XPATH_SELECTOR_RETURN_TYPER:<br/>            exception_class = InvalidSelectorException<br/>        elif status in ErrorCode.ELEMENT_IS_NOT_SELECTABLE:<br/>            exception_class = ElementNotSelectableException<br/>        elif status in ErrorCode.ELEMENT_NOT_INTERACTABLE:<br/>            exception_class = ElementNotInteractableException<br/>        elif status in ErrorCode.INVALID_COOKIE_DOMAIN:<br/>            exception_class = InvalidCookieDomainException<br/>        elif status in ErrorCode.UNABLE_TO_SET_COOKIE:<br/>            exception_class = UnableToSetCookieException<br/>        elif status in ErrorCode.TIMEOUT:<br/>            exception_class = TimeoutException<br/>        elif status in ErrorCode.SCRIPT_TIMEOUT:<br/>            exception_class = TimeoutException<br/>        elif status in ErrorCode.UNKNOWN_ERROR:<br/>            exception_class = WebDriverException<br/>        elif status in ErrorCode.UNEXPECTED_ALERT_OPEN:<br/>            exception_class = UnexpectedAlertPresentException<br/>        elif status in ErrorCode.NO_ALERT_OPEN:<br/>            exception_class = NoAlertPresentException<br/>        elif status in ErrorCode.IME_NOT_AVAILABLE:<br/>            exception_class = ImeNotAvailableException<br/>        elif status in ErrorCode.IME_ENGINE_ACTIVATION_FAILED:<br/>            exception_class = ImeActivationFailedException<br/>        elif status in ErrorCode.MOVE_TARGET_OUT_OF_BOUNDS:<br/>            exception_class = MoveTargetOutOfBoundsException<br/>        elif status in ErrorCode.JAVASCRIPT_ERROR:<br/>            exception_class = JavascriptException<br/>        elif status in ErrorCode.SESSION_NOT_CREATED:<br/>            exception_class = SessionNotCreatedException<br/>        elif status in ErrorCode.INVALID_ARGUMENT:<br/>            exception_class = InvalidArgumentException<br/>        elif status in ErrorCode.NO_SUCH_COOKIE:<br/>            exception_class = NoSuchCookieException<br/>        elif status in ErrorCode.UNABLE_TO_CAPTURE_SCREEN:<br/>            exception_class = ScreenshotException<br/>        elif status in ErrorCode.ELEMENT_CLICK_INTERCEPTED:<br/>            exception_class = ElementClickInterceptedException<br/>        elif status in ErrorCode.INSECURE_CERTIFICATE:<br/>            exception_class = InsecureCertificateException<br/>        elif status in ErrorCode.INVALID_COORDINATES:<br/>            exception_class = InvalidCoordinatesException<br/>        elif status in ErrorCode.INVALID_SESSION_ID:<br/>            exception_class = InvalidSessionIdException<br/>        elif status in ErrorCode.UNKNOWN_METHOD:<br/>            exception_class = UnknownMethodException<br/>        else:<br/>            exception_class = WebDriverException<br/>        if value == &#x27;&#x27; or value is None:<br/>            value = response[&#x27;value&#x27;]<br/>        if isinstance(value, basestring):<br/>            if exception_class == ErrorInResponseException:<br/>                raise exception_class(response, value)<br/>            raise exception_class(value)<br/>        if message == &quot;&quot; and &#x27;message&#x27; in value:<br/>            message = value[&#x27;message&#x27;]<br/>    <br/>        screen = None<br/>        if &#x27;screen&#x27; in value:<br/>            screen = value[&#x27;screen&#x27;]<br/>    <br/>        stacktrace = None<br/>        if &#x27;stackTrace&#x27; in value and value[&#x27;stackTrace&#x27;]:<br/>            stacktrace = []<br/>            try:<br/>                for frame in value[&#x27;stackTrace&#x27;]:<br/>                    line = self._value_or_default(frame, &#x27;lineNumber&#x27;, &#x27;&#x27;)<br/>                    file = self._value_or_default(frame, &#x27;fileName&#x27;, &#x27;&lt;anonymous&gt;&#x27;)<br/>                    if line:<br/>                        file = &quot;%s:%s&quot; % (file, line)<br/>                    meth = self._value_or_default(frame, &#x27;methodName&#x27;, &#x27;&lt;anonymous&gt;&#x27;)<br/>                    if &#x27;className&#x27; in frame:<br/>                        meth = &quot;%s.%s&quot; % (frame[&#x27;className&#x27;], meth)<br/>                    msg = &quot;    at %s (%s)&quot;<br/>                    msg = msg % (meth, file)<br/>                    stacktrace.append(msg)<br/>            except TypeError:<br/>                pass<br/>        if exception_class == ErrorInResponseException:<br/>            raise exception_class(response, message)<br/>        elif exception_class == UnexpectedAlertPresentException:<br/>            alert_text = None<br/>            if &#x27;data&#x27; in value:<br/>                alert_text = value[&#x27;data&#x27;].get(&#x27;text&#x27;)<br/>            elif &#x27;alert&#x27; in value:<br/>                alert_text = value[&#x27;alert&#x27;].get(&#x27;text&#x27;)<br/>            raise exception_class(message, screen, stacktrace, alert_text)<br/>&gt;       raise exception_class(message, screen, stacktrace)<br/><span class="error">E       selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element &lt;div class=&quot;agency-button cursor fz-18&quot; data-v-19b6be6f=&quot;&quot;&gt;...&lt;/div&gt; is not clickable at point (1199, 547). Other element would receive the click: &lt;div class=&quot;el-overlay dialog-fade-enter-from dialog-fade-leave-from dialog-fade-leave-active&quot; style=&quot;z-index: 2012;&quot;&gt;...&lt;/div&gt;</span><br/><span class="error">E         (Session info: chrome=96.0.4664.110)</span><br/><br/>venv/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py:242: ElementClickInterceptedException<br/></div></td></tr></tbody>
+      <tbody class="failed results-table-row">
+        <tr>
+          <td class="col-result">Failed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_005</td>
+          <td class="col-duration">1.04</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">self = &lt;test.test_detail.TestGoodDetail003 object at 0x10b427d30&gt;<br/><br/>    def test_bid_005(self):<br/>        &#x27;&#x27;&#x27;验证&quot;是否关闭代理&quot;弹窗，是按钮功能&#x27;&#x27;&#x27;<br/>&gt;       self.dp.close_proxy()<br/><br/>test/test_detail.py:381: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/>page/detailp.py:81: in close_proxy<br/>    self.is_click(dp[&quot;关闭代理&quot;])<br/>base/webpage.py:75: in is_click<br/>    self.find_element(locator).click()<br/>venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py:80: in click<br/>    self._execute(Command.CLICK_ELEMENT)<br/>venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py:633: in _execute<br/>    return self._parent.execute(command, params)<br/>venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:321: in execute<br/>    self.error_handler.check_response(response)<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x10b279850&gt;<br/>response = {&#x27;status&#x27;: 400, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;element click intercepted&quot;,&quot;message&quot;:&quot;element click intercepted: Element ...00019bf0506c _pthread_start + 320\\n20  libsystem_pthread.dylib             0x000000019beffda0 thread_start + 8\\n&quot;}}&#x27;}<br/><br/>    def check_response(self, response):<br/>        &quot;&quot;&quot;<br/>        Checks that a JSON response from the WebDriver does not have an error.<br/>    <br/>        :Args:<br/>         - response - The JSON response from the WebDriver server as a dictionary<br/>           object.<br/>    <br/>        :Raises: If the response contains an error message.<br/>        &quot;&quot;&quot;<br/>        status = response.get(&#x27;status&#x27;, None)<br/>        if status is None or status == ErrorCode.SUCCESS:<br/>            return<br/>        value = None<br/>        message = response.get(&quot;message&quot;, &quot;&quot;)<br/>        screen = response.get(&quot;screen&quot;, &quot;&quot;)<br/>        stacktrace = None<br/>        if isinstance(status, int):<br/>            value_json = response.get(&#x27;value&#x27;, None)<br/>            if value_json and isinstance(value_json, basestring):<br/>                import json<br/>                try:<br/>                    value = json.loads(value_json)<br/>                    if len(value.keys()) == 1:<br/>                        value = value[&#x27;value&#x27;]<br/>                    status = value.get(&#x27;error&#x27;, None)<br/>                    if status is None:<br/>                        status = value[&quot;status&quot;]<br/>                        message = value[&quot;value&quot;]<br/>                        if not isinstance(message, basestring):<br/>                            value = message<br/>                            message = message.get(&#x27;message&#x27;)<br/>                    else:<br/>                        message = value.get(&#x27;message&#x27;, None)<br/>                except ValueError:<br/>                    pass<br/>    <br/>        exception_class = ErrorInResponseException<br/>        if status in ErrorCode.NO_SUCH_ELEMENT:<br/>            exception_class = NoSuchElementException<br/>        elif status in ErrorCode.NO_SUCH_FRAME:<br/>            exception_class = NoSuchFrameException<br/>        elif status in ErrorCode.NO_SUCH_WINDOW:<br/>            exception_class = NoSuchWindowException<br/>        elif status in ErrorCode.STALE_ELEMENT_REFERENCE:<br/>            exception_class = StaleElementReferenceException<br/>        elif status in ErrorCode.ELEMENT_NOT_VISIBLE:<br/>            exception_class = ElementNotVisibleException<br/>        elif status in ErrorCode.INVALID_ELEMENT_STATE:<br/>            exception_class = InvalidElementStateException<br/>        elif status in ErrorCode.INVALID_SELECTOR \<br/>                or status in ErrorCode.INVALID_XPATH_SELECTOR \<br/>                or status in ErrorCode.INVALID_XPATH_SELECTOR_RETURN_TYPER:<br/>            exception_class = InvalidSelectorException<br/>        elif status in ErrorCode.ELEMENT_IS_NOT_SELECTABLE:<br/>            exception_class = ElementNotSelectableException<br/>        elif status in ErrorCode.ELEMENT_NOT_INTERACTABLE:<br/>            exception_class = ElementNotInteractableException<br/>        elif status in ErrorCode.INVALID_COOKIE_DOMAIN:<br/>            exception_class = InvalidCookieDomainException<br/>        elif status in ErrorCode.UNABLE_TO_SET_COOKIE:<br/>            exception_class = UnableToSetCookieException<br/>        elif status in ErrorCode.TIMEOUT:<br/>            exception_class = TimeoutException<br/>        elif status in ErrorCode.SCRIPT_TIMEOUT:<br/>            exception_class = TimeoutException<br/>        elif status in ErrorCode.UNKNOWN_ERROR:<br/>            exception_class = WebDriverException<br/>        elif status in ErrorCode.UNEXPECTED_ALERT_OPEN:<br/>            exception_class = UnexpectedAlertPresentException<br/>        elif status in ErrorCode.NO_ALERT_OPEN:<br/>            exception_class = NoAlertPresentException<br/>        elif status in ErrorCode.IME_NOT_AVAILABLE:<br/>            exception_class = ImeNotAvailableException<br/>        elif status in ErrorCode.IME_ENGINE_ACTIVATION_FAILED:<br/>            exception_class = ImeActivationFailedException<br/>        elif status in ErrorCode.MOVE_TARGET_OUT_OF_BOUNDS:<br/>            exception_class = MoveTargetOutOfBoundsException<br/>        elif status in ErrorCode.JAVASCRIPT_ERROR:<br/>            exception_class = JavascriptException<br/>        elif status in ErrorCode.SESSION_NOT_CREATED:<br/>            exception_class = SessionNotCreatedException<br/>        elif status in ErrorCode.INVALID_ARGUMENT:<br/>            exception_class = InvalidArgumentException<br/>        elif status in ErrorCode.NO_SUCH_COOKIE:<br/>            exception_class = NoSuchCookieException<br/>        elif status in ErrorCode.UNABLE_TO_CAPTURE_SCREEN:<br/>            exception_class = ScreenshotException<br/>        elif status in ErrorCode.ELEMENT_CLICK_INTERCEPTED:<br/>            exception_class = ElementClickInterceptedException<br/>        elif status in ErrorCode.INSECURE_CERTIFICATE:<br/>            exception_class = InsecureCertificateException<br/>        elif status in ErrorCode.INVALID_COORDINATES:<br/>            exception_class = InvalidCoordinatesException<br/>        elif status in ErrorCode.INVALID_SESSION_ID:<br/>            exception_class = InvalidSessionIdException<br/>        elif status in ErrorCode.UNKNOWN_METHOD:<br/>            exception_class = UnknownMethodException<br/>        else:<br/>            exception_class = WebDriverException<br/>        if value == &#x27;&#x27; or value is None:<br/>            value = response[&#x27;value&#x27;]<br/>        if isinstance(value, basestring):<br/>            if exception_class == ErrorInResponseException:<br/>                raise exception_class(response, value)<br/>            raise exception_class(value)<br/>        if message == &quot;&quot; and &#x27;message&#x27; in value:<br/>            message = value[&#x27;message&#x27;]<br/>    <br/>        screen = None<br/>        if &#x27;screen&#x27; in value:<br/>            screen = value[&#x27;screen&#x27;]<br/>    <br/>        stacktrace = None<br/>        if &#x27;stackTrace&#x27; in value and value[&#x27;stackTrace&#x27;]:<br/>            stacktrace = []<br/>            try:<br/>                for frame in value[&#x27;stackTrace&#x27;]:<br/>                    line = self._value_or_default(frame, &#x27;lineNumber&#x27;, &#x27;&#x27;)<br/>                    file = self._value_or_default(frame, &#x27;fileName&#x27;, &#x27;&lt;anonymous&gt;&#x27;)<br/>                    if line:<br/>                        file = &quot;%s:%s&quot; % (file, line)<br/>                    meth = self._value_or_default(frame, &#x27;methodName&#x27;, &#x27;&lt;anonymous&gt;&#x27;)<br/>                    if &#x27;className&#x27; in frame:<br/>                        meth = &quot;%s.%s&quot; % (frame[&#x27;className&#x27;], meth)<br/>                    msg = &quot;    at %s (%s)&quot;<br/>                    msg = msg % (meth, file)<br/>                    stacktrace.append(msg)<br/>            except TypeError:<br/>                pass<br/>        if exception_class == ErrorInResponseException:<br/>            raise exception_class(response, message)<br/>        elif exception_class == UnexpectedAlertPresentException:<br/>            alert_text = None<br/>            if &#x27;data&#x27; in value:<br/>                alert_text = value[&#x27;data&#x27;].get(&#x27;text&#x27;)<br/>            elif &#x27;alert&#x27; in value:<br/>                alert_text = value[&#x27;alert&#x27;].get(&#x27;text&#x27;)<br/>            raise exception_class(message, screen, stacktrace, alert_text)<br/>&gt;       raise exception_class(message, screen, stacktrace)<br/><span class="error">E       selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element &lt;div class=&quot;agency-button cursor fz-18&quot; data-v-19b6be6f=&quot;&quot;&gt;...&lt;/div&gt; is not clickable at point (1199, 547). Other element would receive the click: &lt;div class=&quot;el-overlay dialog-fade-enter-from dialog-fade-leave-from dialog-fade-leave-active&quot; style=&quot;z-index: 2012;&quot;&gt;...&lt;/div&gt;</span><br/><span class="error">E         (Session info: chrome=96.0.4664.110)</span><br/><br/>venv/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py:242: ElementClickInterceptedException<br/></div></td></tr></tbody>
+      <tbody class="failed results-table-row">
+        <tr>
+          <td class="col-result">Failed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_006</td>
+          <td class="col-duration">32.57</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">self = &lt;test.test_detail.TestGoodDetail003 object at 0x10b2efe20&gt;<br/><br/>    def test_bid_006(self):<br/>        &#x27;&#x27;&#x27;验证关闭代理后，重新出价&#x27;&#x27;&#x27;<br/>        #self.dp.refresh()<br/>        time.sleep(2)<br/>&gt;       self.dp.bid()<br/><br/>test/test_detail.py:392: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/>page/detailp.py:25: in bid<br/>    self.is_click(dp[&quot;出价按钮&quot;])<br/>base/webpage.py:75: in is_click<br/>    self.find_element(locator).click()<br/>base/webpage.py:50: in find_element<br/>    return Web.element_locator(lambda *args: self.wait.until(<br/>base/webpage.py:46: in element_locator<br/>    return func(cm.LOCATE_MODE[name], value)<br/>base/webpage.py:50: in &lt;lambda&gt;<br/>    return Web.element_locator(lambda *args: self.wait.until(<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;selenium.webdriver.support.wait.WebDriverWait (session=&quot;eb914efa7c26db1ba63c9f05f2c52512&quot;)&gt;<br/>method = &lt;selenium.webdriver.support.expected_conditions.presence_of_element_located object at 0x10b2efd90&gt;<br/>message = &#x27;&#x27;<br/><br/>    def until(self, method, message=&#x27;&#x27;):<br/>        &quot;&quot;&quot;Calls the method provided with the driver as an argument until the \<br/>        return value is not False.&quot;&quot;&quot;<br/>        screen = None<br/>        stacktrace = None<br/>    <br/>        end_time = time.time() + self._timeout<br/>        while True:<br/>            try:<br/>                value = method(self._driver)<br/>                if value:<br/>                    return value<br/>            except self._ignored_exceptions as exc:<br/>                screen = getattr(exc, &#x27;screen&#x27;, None)<br/>                stacktrace = getattr(exc, &#x27;stacktrace&#x27;, None)<br/>            time.sleep(self._poll)<br/>            if time.time() &gt; end_time:<br/>                break<br/>&gt;       raise TimeoutException(message, screen, stacktrace)<br/><span class="error">E       selenium.common.exceptions.TimeoutException: Message:</span><br/><br/>venv/lib/python3.9/site-packages/selenium/webdriver/support/wait.py:80: TimeoutException<br/></div></td></tr></tbody>
       <tbody class="failed results-table-row">
         <tr>
           <td class="col-result">Failed</td>
           <td class="col-name">test/test_detail.py::TestGoodDetail004::test_004</td>
-          <td class="col-duration">1.77</td>
+          <td class="col-duration">2.53</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log">self = &lt;test.test_detail.TestGoodDetail004 object at 0x10d904fa0&gt;<br/><br/>    def test_004(self):<br/>        q = Pagedata(&quot;detail&quot;)[&quot;user1&quot;][&quot;quota&quot;]<br/>        fp = Firstp(self.driver)<br/>        fp.click_nickname()<br/>        self.driver.switch_to.window(self.driver.window_handles[-1])<br/>        pp = Personal(self.driver)<br/>        quota = pp.quota()<br/>&gt;       assert str(q) == quota<br/><span class="error">E       AssertionError: assert &#x27;50001774&#x27; == &#x27;50001474&#x27;</span><br/><span class="error">E         - 50001474</span><br/><span class="error">E         ?      ^</span><br/><span class="error">E         + 50001774</span><br/><span class="error">E         ?      ^</span><br/><br/>test/test_detail.py:576: AssertionError<br/></div></td></tr></tbody>
+            <div class="log">self = &lt;test.test_detail.TestGoodDetail004 object at 0x10b4e8f10&gt;<br/><br/>    def test_004(self):<br/>        q = Pagedata(&quot;detail&quot;)[&quot;user1&quot;][&quot;quota&quot;]<br/>        fp = Firstp(self.driver)<br/>        fp.click_nickname()<br/>        self.driver.switch_to.window(self.driver.window_handles[-1])<br/>        pp = Personal(self.driver)<br/>        quota = pp.quota()<br/>&gt;       assert str(q) == quota<br/><span class="error">E       AssertionError: assert &#x27;49999174&#x27; == &#x27;49998874&#x27;</span><br/><span class="error">E         - 49998874</span><br/><span class="error">E         ?     ^^</span><br/><span class="error">E         + 49999174</span><br/><span class="error">E         ?     ^^</span><br/><br/>test/test_detail.py:576: AssertionError<br/></div></td></tr></tbody>
       <tbody class="failed results-table-row">
         <tr>
           <td class="col-result">Failed</td>
           <td class="col-name">test/test_detail.py::TestGoodDetail005::test_004</td>
-          <td class="col-duration">1.36</td>
+          <td class="col-duration">1.37</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log">self = &lt;test.test_detail.TestGoodDetail005 object at 0x10d7a4f70&gt;<br/><br/>    def test_004(self):<br/>        q = Pagedata(&quot;detail&quot;)[&quot;user1&quot;][&quot;quota&quot;]<br/>        fp = Firstp(self.driver)<br/>        fp.click_nickname()<br/>        self.driver.switch_to.window(self.driver.window_handles[-1])<br/>        pp = Personal(self.driver)<br/>        quota = pp.quota()<br/>&gt;       assert str(int(q)-1000) == quota<br/><span class="error">E       AssertionError: assert &#x27;50000774&#x27; == &#x27;50000474&#x27;</span><br/><span class="error">E         - 50000474</span><br/><span class="error">E         ?      ^</span><br/><span class="error">E         + 50000774</span><br/><span class="error">E         ?      ^</span><br/><br/>test/test_detail.py:637: AssertionError<br/></div></td></tr></tbody>
+            <div class="log">self = &lt;test.test_detail.TestGoodDetail005 object at 0x10b16aee0&gt;<br/><br/>    def test_004(self):<br/>        q = Pagedata(&quot;detail&quot;)[&quot;user1&quot;][&quot;quota&quot;]<br/>        fp = Firstp(self.driver)<br/>        fp.click_nickname()<br/>        self.driver.switch_to.window(self.driver.window_handles[-1])<br/>        pp = Personal(self.driver)<br/>        quota = pp.quota()<br/>&gt;       assert str(int(q)-1000) == quota<br/><span class="error">E       AssertionError: assert &#x27;49998174&#x27; == &#x27;49997874&#x27;</span><br/><span class="error">E         - 49997874</span><br/><span class="error">E         ?     -</span><br/><span class="error">E         + 49998174</span><br/><span class="error">E         ?      +</span><br/><br/>test/test_detail.py:637: AssertionError<br/></div></td></tr></tbody>
       <tbody class="failed results-table-row">
         <tr>
           <td class="col-result">Failed</td>
           <td class="col-name">test/test_mybid.py::TestMybidInfo::test_good_in_my_proxy</td>
-          <td class="col-duration">1.28</td>
+          <td class="col-duration">1.26</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log">self = &lt;test.test_mybid.TestMybidInfo object at 0x10d8ec4c0&gt;<br/><br/>    def test_good_in_my_proxy(self):<br/>        &#x27;&#x27;&#x27;验证我的代理页面的第一个拍品信息&#x27;&#x27;&#x27;<br/>        info = self.mb.good_in_list(&quot;我的代理&quot;)<br/>&gt;       assert info == {&quot;good_name&quot;:&quot;拍品1&quot;,&quot;good_status&quot;:&quot;进行中&quot;,&quot;good_price&quot;:&quot;￥205.00&quot;,&quot;good_bid_n&quot;:&quot;58次出价&quot;,&quot;my_status_of_good&quot;:&quot;领先&quot;}<br/><span class="error">E       AssertionError: assert {&#x27;good_bid_n&#x27;...&#x27;: &#x27;进行中&#x27;, ...} == {&#x27;good_bid_n&#x27;...&#x27;: &#x27;进行中&#x27;, ...}</span><br/><span class="error">E         Omitting 4 identical items, use -vv to show</span><br/><span class="error">E         Differing items:</span><br/><span class="error">E         {&#x27;good_bid_n&#x27;: &#x27;13次出价&#x27;} != {&#x27;good_bid_n&#x27;: &#x27;58次出价&#x27;}</span><br/><span class="error">E         Use -v to get the full diff</span><br/><br/>test/test_mybid.py:47: AssertionError<br/></div></td></tr></tbody>
+            <div class="log">self = &lt;test.test_mybid.TestMybidInfo object at 0x10b1d0e80&gt;<br/><br/>    def test_good_in_my_proxy(self):<br/>        &#x27;&#x27;&#x27;验证我的代理页面的第一个拍品信息&#x27;&#x27;&#x27;<br/>        info = self.mb.good_in_list(&quot;我的代理&quot;)<br/>&gt;       assert info == {&quot;good_name&quot;:&quot;拍品1&quot;,&quot;good_status&quot;:&quot;进行中&quot;,&quot;good_price&quot;:&quot;￥205.00&quot;,&quot;good_bid_n&quot;:&quot;58次出价&quot;,&quot;my_status_of_good&quot;:&quot;领先&quot;}<br/><span class="error">E       AssertionError: assert {&#x27;good_bid_n&#x27;...&#x27;: &#x27;进行中&#x27;, ...} == {&#x27;good_bid_n&#x27;...&#x27;: &#x27;进行中&#x27;, ...}</span><br/><span class="error">E         Omitting 4 identical items, use -vv to show</span><br/><span class="error">E         Differing items:</span><br/><span class="error">E         {&#x27;good_bid_n&#x27;: &#x27;13次出价&#x27;} != {&#x27;good_bid_n&#x27;: &#x27;58次出价&#x27;}</span><br/><span class="error">E         Use -v to get the full diff</span><br/><br/>test/test_mybid.py:47: AssertionError<br/></div></td></tr></tbody>
       <tbody class="failed results-table-row">
         <tr>
           <td class="col-result">Failed</td>
           <td class="col-name">test/test_mybid.py::TestMybidInfo::test_good_in_my_favourite</td>
-          <td class="col-duration">1.22</td>
+          <td class="col-duration">1.20</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log">self = &lt;test.test_mybid.TestMybidInfo object at 0x10d90c4c0&gt;<br/><br/>    def test_good_in_my_favourite(self):<br/>        &#x27;&#x27;&#x27;验证我的关注页面的第一个拍品信息&#x27;&#x27;&#x27;<br/>        info = self.mb.good_in_list(&quot;关注&quot;)<br/>&gt;       assert info == {&quot;good_name&quot;:&quot;拍品1&quot;,&quot;good_status&quot;:&quot;进行中&quot;,&quot;good_price&quot;:&quot;￥205.00&quot;,&quot;good_bid_n&quot;:&quot;58次出价&quot;,&quot;my_status_of_good&quot;:&quot;领先&quot;}<br/><span class="error">E       AssertionError: assert {&#x27;good_bid_n&#x27;...&#x27;: &#x27;进行中&#x27;, ...} == {&#x27;good_bid_n&#x27;...&#x27;: &#x27;进行中&#x27;, ...}</span><br/><span class="error">E         Omitting 4 identical items, use -vv to show</span><br/><span class="error">E         Differing items:</span><br/><span class="error">E         {&#x27;good_bid_n&#x27;: &#x27;13次出价&#x27;} != {&#x27;good_bid_n&#x27;: &#x27;58次出价&#x27;}</span><br/><span class="error">E         Use -v to get the full diff</span><br/><br/>test/test_mybid.py:52: AssertionError<br/></div></td></tr></tbody>
+            <div class="log">self = &lt;test.test_mybid.TestMybidInfo object at 0x10b2ef1c0&gt;<br/><br/>    def test_good_in_my_favourite(self):<br/>        &#x27;&#x27;&#x27;验证我的关注页面的第一个拍品信息&#x27;&#x27;&#x27;<br/>        info = self.mb.good_in_list(&quot;关注&quot;)<br/>&gt;       assert info == {&quot;good_name&quot;:&quot;拍品1&quot;,&quot;good_status&quot;:&quot;进行中&quot;,&quot;good_price&quot;:&quot;￥205.00&quot;,&quot;good_bid_n&quot;:&quot;58次出价&quot;,&quot;my_status_of_good&quot;:&quot;领先&quot;}<br/><span class="error">E       AssertionError: assert {&#x27;good_bid_n&#x27;...&#x27;: &#x27;进行中&#x27;, ...} == {&#x27;good_bid_n&#x27;...&#x27;: &#x27;进行中&#x27;, ...}</span><br/><span class="error">E         Omitting 4 identical items, use -vv to show</span><br/><span class="error">E         Differing items:</span><br/><span class="error">E         {&#x27;good_bid_n&#x27;: &#x27;13次出价&#x27;} != {&#x27;good_bid_n&#x27;: &#x27;58次出价&#x27;}</span><br/><span class="error">E         Use -v to get the full diff</span><br/><br/>test/test_mybid.py:52: AssertionError<br/></div></td></tr></tbody>
       <tbody class="failed results-table-row">
         <tr>
           <td class="col-result">Failed</td>
@@ -369,16 +564,16 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log">self = &lt;test.test_mybid.TestMybidInfo object at 0x10d8f0640&gt;<br/><br/>    def test_good_in_all_bid(self):<br/>        &#x27;&#x27;&#x27;验证我的全部竞买页面的第一个拍品信息&#x27;&#x27;&#x27;<br/>        info = self.mb.good_in_list(&quot;全部竞买&quot;)<br/>        info_2 = self.mb.good_in_list(&quot;全部竞买&quot;,&quot;二&quot;)<br/>        info_3 = self.mb.good_in_list(&quot;全部竞买&quot;,&quot;三&quot;)<br/>&gt;       assert info_3 == {&quot;good_name&quot;:&quot;拍品2&quot;,&quot;good_status&quot;:&quot;流拍&quot;,&quot;good_price&quot;:&quot;￥10.00&quot;,&quot;good_bid_n&quot;:&quot;2次出价&quot;,&quot;my_status_of_good&quot;:&quot;出局&quot;}<br/><span class="error">E       AssertionError: assert {&#x27;good_bid_n&#x27;...&#x27;: &#x27;进行中&#x27;, ...} == {&#x27;good_bid_n&#x27;...s&#x27;: &#x27;流拍&#x27;, ...}</span><br/><span class="error">E         Differing items:</span><br/><span class="error">E         {&#x27;good_bid_n&#x27;: &#x27;13次出价&#x27;} != {&#x27;good_bid_n&#x27;: &#x27;2次出价&#x27;}</span><br/><span class="error">E         {&#x27;good_price&#x27;: &#x27;￥205.00&#x27;} != {&#x27;good_price&#x27;: &#x27;￥10.00&#x27;}</span><br/><span class="error">E         {&#x27;good_status&#x27;: &#x27;进行中&#x27;} != {&#x27;good_status&#x27;: &#x27;流拍&#x27;}</span><br/><span class="error">E         {&#x27;good_name&#x27;: &#x27;拍品1&#x27;} != {&#x27;good_name&#x27;: &#x27;拍品2&#x27;}</span><br/><span class="error">E         {&#x27;my_status_of_good&#x27;: &#x27;领先&#x27;} != {&#x27;my_status_of_good&#x27;: &#x27;出局&#x27;}</span><br/><span class="error">E         Use -v to get the full diff</span><br/><br/>test/test_mybid.py:58: AssertionError<br/></div></td></tr></tbody>
+            <div class="log">self = &lt;test.test_mybid.TestMybidInfo object at 0x10b428c40&gt;<br/><br/>    def test_good_in_all_bid(self):<br/>        &#x27;&#x27;&#x27;验证我的全部竞买页面的第一个拍品信息&#x27;&#x27;&#x27;<br/>        info = self.mb.good_in_list(&quot;全部竞买&quot;)<br/>        info_2 = self.mb.good_in_list(&quot;全部竞买&quot;,&quot;二&quot;)<br/>        info_3 = self.mb.good_in_list(&quot;全部竞买&quot;,&quot;三&quot;)<br/>&gt;       assert info_3 == {&quot;good_name&quot;:&quot;拍品2&quot;,&quot;good_status&quot;:&quot;流拍&quot;,&quot;good_price&quot;:&quot;￥10.00&quot;,&quot;good_bid_n&quot;:&quot;2次出价&quot;,&quot;my_status_of_good&quot;:&quot;出局&quot;}<br/><span class="error">E       AssertionError: assert {&#x27;good_bid_n&#x27;...&#x27;: &#x27;进行中&#x27;, ...} == {&#x27;good_bid_n&#x27;...s&#x27;: &#x27;流拍&#x27;, ...}</span><br/><span class="error">E         Differing items:</span><br/><span class="error">E         {&#x27;good_price&#x27;: &#x27;￥205.00&#x27;} != {&#x27;good_price&#x27;: &#x27;￥10.00&#x27;}</span><br/><span class="error">E         {&#x27;good_name&#x27;: &#x27;拍品1&#x27;} != {&#x27;good_name&#x27;: &#x27;拍品2&#x27;}</span><br/><span class="error">E         {&#x27;my_status_of_good&#x27;: &#x27;领先&#x27;} != {&#x27;my_status_of_good&#x27;: &#x27;出局&#x27;}</span><br/><span class="error">E         {&#x27;good_status&#x27;: &#x27;进行中&#x27;} != {&#x27;good_status&#x27;: &#x27;流拍&#x27;}</span><br/><span class="error">E         {&#x27;good_bid_n&#x27;: &#x27;13次出价&#x27;} != {&#x27;good_bid_n&#x27;: &#x27;2次出价&#x27;}</span><br/><span class="error">E         Use -v to get the full diff</span><br/><br/>test/test_mybid.py:58: AssertionError<br/></div></td></tr></tbody>
       <tbody class="failed results-table-row">
         <tr>
           <td class="col-result">Failed</td>
           <td class="col-name">test/test_mybid.py::TestMybidInfo::test_remind_001</td>
-          <td class="col-duration">2.33</td>
+          <td class="col-duration">2.28</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log">self = &lt;test.test_mybid.TestMybidInfo object at 0x10d9044f0&gt;<br/><br/>    def test_remind_001(self):<br/>        &#x27;&#x27;&#x27;验证流拍的拍品，点击开启提醒&#x27;&#x27;&#x27;<br/>        self.mb.remind(l=&quot;全部竞买&quot;,n=&quot;三&quot;)<br/>&gt;       assert self.mb.is_displayed_remind_tip() == 0<br/><span class="error">E       assert True == 0</span><br/><span class="error">E        +  where True = &lt;bound method MyBid.is_displayed_remind_tip of &lt;page.mybid.MyBid object at 0x10d914be0&gt;&gt;()</span><br/><span class="error">E        +    where &lt;bound method MyBid.is_displayed_remind_tip of &lt;page.mybid.MyBid object at 0x10d914be0&gt;&gt; = &lt;page.mybid.MyBid object at 0x10d914be0&gt;.is_displayed_remind_tip</span><br/><span class="error">E        +      where &lt;page.mybid.MyBid object at 0x10d914be0&gt; = &lt;test.test_mybid.TestMybidInfo object at 0x10d9044f0&gt;.mb</span><br/><br/>test/test_mybid.py:65: AssertionError<br/></div></td></tr></tbody>
+            <div class="log">self = &lt;test.test_mybid.TestMybidInfo object at 0x10b2ef5b0&gt;<br/><br/>    def test_remind_001(self):<br/>        &#x27;&#x27;&#x27;验证流拍的拍品，点击开启提醒&#x27;&#x27;&#x27;<br/>        self.mb.remind(l=&quot;全部竞买&quot;,n=&quot;三&quot;)<br/>&gt;       assert self.mb.is_displayed_remind_tip() == 0<br/><span class="error">E       assert True == 0</span><br/><span class="error">E        +  where True = &lt;bound method MyBid.is_displayed_remind_tip of &lt;page.mybid.MyBid object at 0x10b268c70&gt;&gt;()</span><br/><span class="error">E        +    where &lt;bound method MyBid.is_displayed_remind_tip of &lt;page.mybid.MyBid object at 0x10b268c70&gt;&gt; = &lt;page.mybid.MyBid object at 0x10b268c70&gt;.is_displayed_remind_tip</span><br/><span class="error">E        +      where &lt;page.mybid.MyBid object at 0x10b268c70&gt; = &lt;test.test_mybid.TestMybidInfo object at 0x10b2ef5b0&gt;.mb</span><br/><br/>test/test_mybid.py:65: AssertionError<br/></div></td></tr></tbody>
       <tbody class="failed results-table-row">
         <tr>
           <td class="col-result">Failed</td>
@@ -387,25 +582,25 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log">self = &lt;test.test_mybid.TestMybidInfo object at 0x10d8ec970&gt;<br/><br/>    def test_remind_002(self):<br/>        &#x27;&#x27;&#x27;验证已结束的拍品，点击开启提醒&#x27;&#x27;&#x27;<br/>&gt;       self.mb.remind(l=&quot;全部竞买&quot;, n=&quot;二&quot;)<br/><br/>test/test_mybid.py:68: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/>page/mybid.py:63: in remind<br/>    self.swith_to_list(l)<br/>page/mybid.py:35: in swith_to_list<br/>    self.is_click(mb[ln])<br/>base/webpage.py:75: in is_click<br/>    self.find_element(locator).click()<br/>venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py:80: in click<br/>    self._execute(Command.CLICK_ELEMENT)<br/>venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py:633: in _execute<br/>    return self._parent.execute(command, params)<br/>venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:321: in execute<br/>    self.error_handler.check_response(response)<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x10d9149d0&gt;<br/>response = {&#x27;status&#x27;: 400, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;element click intercepted&quot;,&quot;message&quot;:&quot;element click intercepted: Element ...00019bf0506c _pthread_start + 320\\n20  libsystem_pthread.dylib             0x000000019beffda0 thread_start + 8\\n&quot;}}&#x27;}<br/><br/>    def check_response(self, response):<br/>        &quot;&quot;&quot;<br/>        Checks that a JSON response from the WebDriver does not have an error.<br/>    <br/>        :Args:<br/>         - response - The JSON response from the WebDriver server as a dictionary<br/>           object.<br/>    <br/>        :Raises: If the response contains an error message.<br/>        &quot;&quot;&quot;<br/>        status = response.get(&#x27;status&#x27;, None)<br/>        if status is None or status == ErrorCode.SUCCESS:<br/>            return<br/>        value = None<br/>        message = response.get(&quot;message&quot;, &quot;&quot;)<br/>        screen = response.get(&quot;screen&quot;, &quot;&quot;)<br/>        stacktrace = None<br/>        if isinstance(status, int):<br/>            value_json = response.get(&#x27;value&#x27;, None)<br/>            if value_json and isinstance(value_json, basestring):<br/>                import json<br/>                try:<br/>                    value = json.loads(value_json)<br/>                    if len(value.keys()) == 1:<br/>                        value = value[&#x27;value&#x27;]<br/>                    status = value.get(&#x27;error&#x27;, None)<br/>                    if status is None:<br/>                        status = value[&quot;status&quot;]<br/>                        message = value[&quot;value&quot;]<br/>                        if not isinstance(message, basestring):<br/>                            value = message<br/>                            message = message.get(&#x27;message&#x27;)<br/>                    else:<br/>                        message = value.get(&#x27;message&#x27;, None)<br/>                except ValueError:<br/>                    pass<br/>    <br/>        exception_class = ErrorInResponseException<br/>        if status in ErrorCode.NO_SUCH_ELEMENT:<br/>            exception_class = NoSuchElementException<br/>        elif status in ErrorCode.NO_SUCH_FRAME:<br/>            exception_class = NoSuchFrameException<br/>        elif status in ErrorCode.NO_SUCH_WINDOW:<br/>            exception_class = NoSuchWindowException<br/>        elif status in ErrorCode.STALE_ELEMENT_REFERENCE:<br/>            exception_class = StaleElementReferenceException<br/>        elif status in ErrorCode.ELEMENT_NOT_VISIBLE:<br/>            exception_class = ElementNotVisibleException<br/>        elif status in ErrorCode.INVALID_ELEMENT_STATE:<br/>            exception_class = InvalidElementStateException<br/>        elif status in ErrorCode.INVALID_SELECTOR \<br/>                or status in ErrorCode.INVALID_XPATH_SELECTOR \<br/>                or status in ErrorCode.INVALID_XPATH_SELECTOR_RETURN_TYPER:<br/>            exception_class = InvalidSelectorException<br/>        elif status in ErrorCode.ELEMENT_IS_NOT_SELECTABLE:<br/>            exception_class = ElementNotSelectableException<br/>        elif status in ErrorCode.ELEMENT_NOT_INTERACTABLE:<br/>            exception_class = ElementNotInteractableException<br/>        elif status in ErrorCode.INVALID_COOKIE_DOMAIN:<br/>            exception_class = InvalidCookieDomainException<br/>        elif status in ErrorCode.UNABLE_TO_SET_COOKIE:<br/>            exception_class = UnableToSetCookieException<br/>        elif status in ErrorCode.TIMEOUT:<br/>            exception_class = TimeoutException<br/>        elif status in ErrorCode.SCRIPT_TIMEOUT:<br/>            exception_class = TimeoutException<br/>        elif status in ErrorCode.UNKNOWN_ERROR:<br/>            exception_class = WebDriverException<br/>        elif status in ErrorCode.UNEXPECTED_ALERT_OPEN:<br/>            exception_class = UnexpectedAlertPresentException<br/>        elif status in ErrorCode.NO_ALERT_OPEN:<br/>            exception_class = NoAlertPresentException<br/>        elif status in ErrorCode.IME_NOT_AVAILABLE:<br/>            exception_class = ImeNotAvailableException<br/>        elif status in ErrorCode.IME_ENGINE_ACTIVATION_FAILED:<br/>            exception_class = ImeActivationFailedException<br/>        elif status in ErrorCode.MOVE_TARGET_OUT_OF_BOUNDS:<br/>            exception_class = MoveTargetOutOfBoundsException<br/>        elif status in ErrorCode.JAVASCRIPT_ERROR:<br/>            exception_class = JavascriptException<br/>        elif status in ErrorCode.SESSION_NOT_CREATED:<br/>            exception_class = SessionNotCreatedException<br/>        elif status in ErrorCode.INVALID_ARGUMENT:<br/>            exception_class = InvalidArgumentException<br/>        elif status in ErrorCode.NO_SUCH_COOKIE:<br/>            exception_class = NoSuchCookieException<br/>        elif status in ErrorCode.UNABLE_TO_CAPTURE_SCREEN:<br/>            exception_class = ScreenshotException<br/>        elif status in ErrorCode.ELEMENT_CLICK_INTERCEPTED:<br/>            exception_class = ElementClickInterceptedException<br/>        elif status in ErrorCode.INSECURE_CERTIFICATE:<br/>            exception_class = InsecureCertificateException<br/>        elif status in ErrorCode.INVALID_COORDINATES:<br/>            exception_class = InvalidCoordinatesException<br/>        elif status in ErrorCode.INVALID_SESSION_ID:<br/>            exception_class = InvalidSessionIdException<br/>        elif status in ErrorCode.UNKNOWN_METHOD:<br/>            exception_class = UnknownMethodException<br/>        else:<br/>            exception_class = WebDriverException<br/>        if value == &#x27;&#x27; or value is None:<br/>            value = response[&#x27;value&#x27;]<br/>        if isinstance(value, basestring):<br/>            if exception_class == ErrorInResponseException:<br/>                raise exception_class(response, value)<br/>            raise exception_class(value)<br/>        if message == &quot;&quot; and &#x27;message&#x27; in value:<br/>            message = value[&#x27;message&#x27;]<br/>    <br/>        screen = None<br/>        if &#x27;screen&#x27; in value:<br/>            screen = value[&#x27;screen&#x27;]<br/>    <br/>        stacktrace = None<br/>        if &#x27;stackTrace&#x27; in value and value[&#x27;stackTrace&#x27;]:<br/>            stacktrace = []<br/>            try:<br/>                for frame in value[&#x27;stackTrace&#x27;]:<br/>                    line = self._value_or_default(frame, &#x27;lineNumber&#x27;, &#x27;&#x27;)<br/>                    file = self._value_or_default(frame, &#x27;fileName&#x27;, &#x27;&lt;anonymous&gt;&#x27;)<br/>                    if line:<br/>                        file = &quot;%s:%s&quot; % (file, line)<br/>                    meth = self._value_or_default(frame, &#x27;methodName&#x27;, &#x27;&lt;anonymous&gt;&#x27;)<br/>                    if &#x27;className&#x27; in frame:<br/>                        meth = &quot;%s.%s&quot; % (frame[&#x27;className&#x27;], meth)<br/>                    msg = &quot;    at %s (%s)&quot;<br/>                    msg = msg % (meth, file)<br/>                    stacktrace.append(msg)<br/>            except TypeError:<br/>                pass<br/>        if exception_class == ErrorInResponseException:<br/>            raise exception_class(response, message)<br/>        elif exception_class == UnexpectedAlertPresentException:<br/>            alert_text = None<br/>            if &#x27;data&#x27; in value:<br/>                alert_text = value[&#x27;data&#x27;].get(&#x27;text&#x27;)<br/>            elif &#x27;alert&#x27; in value:<br/>                alert_text = value[&#x27;alert&#x27;].get(&#x27;text&#x27;)<br/>            raise exception_class(message, screen, stacktrace, alert_text)<br/>&gt;       raise exception_class(message, screen, stacktrace)<br/><span class="error">E       selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element &lt;div class=&quot;m-b-5 &quot; data-v-223d73de=&quot;&quot;&gt;...&lt;/div&gt; is not clickable at point (341, 30). Other element would receive the click: &lt;div class=&quot;el-overlay&quot; style=&quot;z-index: 2005;&quot;&gt;...&lt;/div&gt;</span><br/><span class="error">E         (Session info: chrome=96.0.4664.110)</span><br/><br/>venv/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py:242: ElementClickInterceptedException<br/></div></td></tr></tbody>
+            <div class="log">self = &lt;test.test_mybid.TestMybidInfo object at 0x10b428130&gt;<br/><br/>    def test_remind_002(self):<br/>        &#x27;&#x27;&#x27;验证已结束的拍品，点击开启提醒&#x27;&#x27;&#x27;<br/>&gt;       self.mb.remind(l=&quot;全部竞买&quot;, n=&quot;二&quot;)<br/><br/>test/test_mybid.py:68: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/>page/mybid.py:63: in remind<br/>    self.swith_to_list(l)<br/>page/mybid.py:35: in swith_to_list<br/>    self.is_click(mb[ln])<br/>base/webpage.py:75: in is_click<br/>    self.find_element(locator).click()<br/>venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py:80: in click<br/>    self._execute(Command.CLICK_ELEMENT)<br/>venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py:633: in _execute<br/>    return self._parent.execute(command, params)<br/>venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:321: in execute<br/>    self.error_handler.check_response(response)<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x10b2686a0&gt;<br/>response = {&#x27;status&#x27;: 400, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;element click intercepted&quot;,&quot;message&quot;:&quot;element click intercepted: Element ...00019bf0506c _pthread_start + 320\\n20  libsystem_pthread.dylib             0x000000019beffda0 thread_start + 8\\n&quot;}}&#x27;}<br/><br/>    def check_response(self, response):<br/>        &quot;&quot;&quot;<br/>        Checks that a JSON response from the WebDriver does not have an error.<br/>    <br/>        :Args:<br/>         - response - The JSON response from the WebDriver server as a dictionary<br/>           object.<br/>    <br/>        :Raises: If the response contains an error message.<br/>        &quot;&quot;&quot;<br/>        status = response.get(&#x27;status&#x27;, None)<br/>        if status is None or status == ErrorCode.SUCCESS:<br/>            return<br/>        value = None<br/>        message = response.get(&quot;message&quot;, &quot;&quot;)<br/>        screen = response.get(&quot;screen&quot;, &quot;&quot;)<br/>        stacktrace = None<br/>        if isinstance(status, int):<br/>            value_json = response.get(&#x27;value&#x27;, None)<br/>            if value_json and isinstance(value_json, basestring):<br/>                import json<br/>                try:<br/>                    value = json.loads(value_json)<br/>                    if len(value.keys()) == 1:<br/>                        value = value[&#x27;value&#x27;]<br/>                    status = value.get(&#x27;error&#x27;, None)<br/>                    if status is None:<br/>                        status = value[&quot;status&quot;]<br/>                        message = value[&quot;value&quot;]<br/>                        if not isinstance(message, basestring):<br/>                            value = message<br/>                            message = message.get(&#x27;message&#x27;)<br/>                    else:<br/>                        message = value.get(&#x27;message&#x27;, None)<br/>                except ValueError:<br/>                    pass<br/>    <br/>        exception_class = ErrorInResponseException<br/>        if status in ErrorCode.NO_SUCH_ELEMENT:<br/>            exception_class = NoSuchElementException<br/>        elif status in ErrorCode.NO_SUCH_FRAME:<br/>            exception_class = NoSuchFrameException<br/>        elif status in ErrorCode.NO_SUCH_WINDOW:<br/>            exception_class = NoSuchWindowException<br/>        elif status in ErrorCode.STALE_ELEMENT_REFERENCE:<br/>            exception_class = StaleElementReferenceException<br/>        elif status in ErrorCode.ELEMENT_NOT_VISIBLE:<br/>            exception_class = ElementNotVisibleException<br/>        elif status in ErrorCode.INVALID_ELEMENT_STATE:<br/>            exception_class = InvalidElementStateException<br/>        elif status in ErrorCode.INVALID_SELECTOR \<br/>                or status in ErrorCode.INVALID_XPATH_SELECTOR \<br/>                or status in ErrorCode.INVALID_XPATH_SELECTOR_RETURN_TYPER:<br/>            exception_class = InvalidSelectorException<br/>        elif status in ErrorCode.ELEMENT_IS_NOT_SELECTABLE:<br/>            exception_class = ElementNotSelectableException<br/>        elif status in ErrorCode.ELEMENT_NOT_INTERACTABLE:<br/>            exception_class = ElementNotInteractableException<br/>        elif status in ErrorCode.INVALID_COOKIE_DOMAIN:<br/>            exception_class = InvalidCookieDomainException<br/>        elif status in ErrorCode.UNABLE_TO_SET_COOKIE:<br/>            exception_class = UnableToSetCookieException<br/>        elif status in ErrorCode.TIMEOUT:<br/>            exception_class = TimeoutException<br/>        elif status in ErrorCode.SCRIPT_TIMEOUT:<br/>            exception_class = TimeoutException<br/>        elif status in ErrorCode.UNKNOWN_ERROR:<br/>            exception_class = WebDriverException<br/>        elif status in ErrorCode.UNEXPECTED_ALERT_OPEN:<br/>            exception_class = UnexpectedAlertPresentException<br/>        elif status in ErrorCode.NO_ALERT_OPEN:<br/>            exception_class = NoAlertPresentException<br/>        elif status in ErrorCode.IME_NOT_AVAILABLE:<br/>            exception_class = ImeNotAvailableException<br/>        elif status in ErrorCode.IME_ENGINE_ACTIVATION_FAILED:<br/>            exception_class = ImeActivationFailedException<br/>        elif status in ErrorCode.MOVE_TARGET_OUT_OF_BOUNDS:<br/>            exception_class = MoveTargetOutOfBoundsException<br/>        elif status in ErrorCode.JAVASCRIPT_ERROR:<br/>            exception_class = JavascriptException<br/>        elif status in ErrorCode.SESSION_NOT_CREATED:<br/>            exception_class = SessionNotCreatedException<br/>        elif status in ErrorCode.INVALID_ARGUMENT:<br/>            exception_class = InvalidArgumentException<br/>        elif status in ErrorCode.NO_SUCH_COOKIE:<br/>            exception_class = NoSuchCookieException<br/>        elif status in ErrorCode.UNABLE_TO_CAPTURE_SCREEN:<br/>            exception_class = ScreenshotException<br/>        elif status in ErrorCode.ELEMENT_CLICK_INTERCEPTED:<br/>            exception_class = ElementClickInterceptedException<br/>        elif status in ErrorCode.INSECURE_CERTIFICATE:<br/>            exception_class = InsecureCertificateException<br/>        elif status in ErrorCode.INVALID_COORDINATES:<br/>            exception_class = InvalidCoordinatesException<br/>        elif status in ErrorCode.INVALID_SESSION_ID:<br/>            exception_class = InvalidSessionIdException<br/>        elif status in ErrorCode.UNKNOWN_METHOD:<br/>            exception_class = UnknownMethodException<br/>        else:<br/>            exception_class = WebDriverException<br/>        if value == &#x27;&#x27; or value is None:<br/>            value = response[&#x27;value&#x27;]<br/>        if isinstance(value, basestring):<br/>            if exception_class == ErrorInResponseException:<br/>                raise exception_class(response, value)<br/>            raise exception_class(value)<br/>        if message == &quot;&quot; and &#x27;message&#x27; in value:<br/>            message = value[&#x27;message&#x27;]<br/>    <br/>        screen = None<br/>        if &#x27;screen&#x27; in value:<br/>            screen = value[&#x27;screen&#x27;]<br/>    <br/>        stacktrace = None<br/>        if &#x27;stackTrace&#x27; in value and value[&#x27;stackTrace&#x27;]:<br/>            stacktrace = []<br/>            try:<br/>                for frame in value[&#x27;stackTrace&#x27;]:<br/>                    line = self._value_or_default(frame, &#x27;lineNumber&#x27;, &#x27;&#x27;)<br/>                    file = self._value_or_default(frame, &#x27;fileName&#x27;, &#x27;&lt;anonymous&gt;&#x27;)<br/>                    if line:<br/>                        file = &quot;%s:%s&quot; % (file, line)<br/>                    meth = self._value_or_default(frame, &#x27;methodName&#x27;, &#x27;&lt;anonymous&gt;&#x27;)<br/>                    if &#x27;className&#x27; in frame:<br/>                        meth = &quot;%s.%s&quot; % (frame[&#x27;className&#x27;], meth)<br/>                    msg = &quot;    at %s (%s)&quot;<br/>                    msg = msg % (meth, file)<br/>                    stacktrace.append(msg)<br/>            except TypeError:<br/>                pass<br/>        if exception_class == ErrorInResponseException:<br/>            raise exception_class(response, message)<br/>        elif exception_class == UnexpectedAlertPresentException:<br/>            alert_text = None<br/>            if &#x27;data&#x27; in value:<br/>                alert_text = value[&#x27;data&#x27;].get(&#x27;text&#x27;)<br/>            elif &#x27;alert&#x27; in value:<br/>                alert_text = value[&#x27;alert&#x27;].get(&#x27;text&#x27;)<br/>            raise exception_class(message, screen, stacktrace, alert_text)<br/>&gt;       raise exception_class(message, screen, stacktrace)<br/><span class="error">E       selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element &lt;div class=&quot;m-b-5 &quot; data-v-223d73de=&quot;&quot;&gt;...&lt;/div&gt; is not clickable at point (340, 30). Other element would receive the click: &lt;div class=&quot;el-overlay&quot; style=&quot;z-index: 2005;&quot;&gt;...&lt;/div&gt;</span><br/><span class="error">E         (Session info: chrome=96.0.4664.110)</span><br/><br/>venv/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py:242: ElementClickInterceptedException<br/></div></td></tr></tbody>
       <tbody class="failed results-table-row">
         <tr>
           <td class="col-result">Failed</td>
           <td class="col-name">test/test_mybid.py::TestMybidInfo::test_pay</td>
-          <td class="col-duration">1.12</td>
+          <td class="col-duration">1.15</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log">self = &lt;test.test_mybid.TestMybidInfo object at 0x10da7a370&gt;<br/><br/>    def test_pay(self):<br/>        &#x27;&#x27;&#x27;验证在中标页面选择拍品后，去支付&#x27;&#x27;&#x27;<br/>&gt;       self.mb.swith_to_list(&quot;中标记录&quot;)<br/><br/>test/test_mybid.py:96: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/>page/mybid.py:35: in swith_to_list<br/>    self.is_click(mb[ln])<br/>base/webpage.py:75: in is_click<br/>    self.find_element(locator).click()<br/>venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py:80: in click<br/>    self._execute(Command.CLICK_ELEMENT)<br/>venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py:633: in _execute<br/>    return self._parent.execute(command, params)<br/>venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:321: in execute<br/>    self.error_handler.check_response(response)<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x10d9149d0&gt;<br/>response = {&#x27;status&#x27;: 400, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;element click intercepted&quot;,&quot;message&quot;:&quot;element click intercepted: Element ...00019bf0506c _pthread_start + 320\\n20  libsystem_pthread.dylib             0x000000019beffda0 thread_start + 8\\n&quot;}}&#x27;}<br/><br/>    def check_response(self, response):<br/>        &quot;&quot;&quot;<br/>        Checks that a JSON response from the WebDriver does not have an error.<br/>    <br/>        :Args:<br/>         - response - The JSON response from the WebDriver server as a dictionary<br/>           object.<br/>    <br/>        :Raises: If the response contains an error message.<br/>        &quot;&quot;&quot;<br/>        status = response.get(&#x27;status&#x27;, None)<br/>        if status is None or status == ErrorCode.SUCCESS:<br/>            return<br/>        value = None<br/>        message = response.get(&quot;message&quot;, &quot;&quot;)<br/>        screen = response.get(&quot;screen&quot;, &quot;&quot;)<br/>        stacktrace = None<br/>        if isinstance(status, int):<br/>            value_json = response.get(&#x27;value&#x27;, None)<br/>            if value_json and isinstance(value_json, basestring):<br/>                import json<br/>                try:<br/>                    value = json.loads(value_json)<br/>                    if len(value.keys()) == 1:<br/>                        value = value[&#x27;value&#x27;]<br/>                    status = value.get(&#x27;error&#x27;, None)<br/>                    if status is None:<br/>                        status = value[&quot;status&quot;]<br/>                        message = value[&quot;value&quot;]<br/>                        if not isinstance(message, basestring):<br/>                            value = message<br/>                            message = message.get(&#x27;message&#x27;)<br/>                    else:<br/>                        message = value.get(&#x27;message&#x27;, None)<br/>                except ValueError:<br/>                    pass<br/>    <br/>        exception_class = ErrorInResponseException<br/>        if status in ErrorCode.NO_SUCH_ELEMENT:<br/>            exception_class = NoSuchElementException<br/>        elif status in ErrorCode.NO_SUCH_FRAME:<br/>            exception_class = NoSuchFrameException<br/>        elif status in ErrorCode.NO_SUCH_WINDOW:<br/>            exception_class = NoSuchWindowException<br/>        elif status in ErrorCode.STALE_ELEMENT_REFERENCE:<br/>            exception_class = StaleElementReferenceException<br/>        elif status in ErrorCode.ELEMENT_NOT_VISIBLE:<br/>            exception_class = ElementNotVisibleException<br/>        elif status in ErrorCode.INVALID_ELEMENT_STATE:<br/>            exception_class = InvalidElementStateException<br/>        elif status in ErrorCode.INVALID_SELECTOR \<br/>                or status in ErrorCode.INVALID_XPATH_SELECTOR \<br/>                or status in ErrorCode.INVALID_XPATH_SELECTOR_RETURN_TYPER:<br/>            exception_class = InvalidSelectorException<br/>        elif status in ErrorCode.ELEMENT_IS_NOT_SELECTABLE:<br/>            exception_class = ElementNotSelectableException<br/>        elif status in ErrorCode.ELEMENT_NOT_INTERACTABLE:<br/>            exception_class = ElementNotInteractableException<br/>        elif status in ErrorCode.INVALID_COOKIE_DOMAIN:<br/>            exception_class = InvalidCookieDomainException<br/>        elif status in ErrorCode.UNABLE_TO_SET_COOKIE:<br/>            exception_class = UnableToSetCookieException<br/>        elif status in ErrorCode.TIMEOUT:<br/>            exception_class = TimeoutException<br/>        elif status in ErrorCode.SCRIPT_TIMEOUT:<br/>            exception_class = TimeoutException<br/>        elif status in ErrorCode.UNKNOWN_ERROR:<br/>            exception_class = WebDriverException<br/>        elif status in ErrorCode.UNEXPECTED_ALERT_OPEN:<br/>            exception_class = UnexpectedAlertPresentException<br/>        elif status in ErrorCode.NO_ALERT_OPEN:<br/>            exception_class = NoAlertPresentException<br/>        elif status in ErrorCode.IME_NOT_AVAILABLE:<br/>            exception_class = ImeNotAvailableException<br/>        elif status in ErrorCode.IME_ENGINE_ACTIVATION_FAILED:<br/>            exception_class = ImeActivationFailedException<br/>        elif status in ErrorCode.MOVE_TARGET_OUT_OF_BOUNDS:<br/>            exception_class = MoveTargetOutOfBoundsException<br/>        elif status in ErrorCode.JAVASCRIPT_ERROR:<br/>            exception_class = JavascriptException<br/>        elif status in ErrorCode.SESSION_NOT_CREATED:<br/>            exception_class = SessionNotCreatedException<br/>        elif status in ErrorCode.INVALID_ARGUMENT:<br/>            exception_class = InvalidArgumentException<br/>        elif status in ErrorCode.NO_SUCH_COOKIE:<br/>            exception_class = NoSuchCookieException<br/>        elif status in ErrorCode.UNABLE_TO_CAPTURE_SCREEN:<br/>            exception_class = ScreenshotException<br/>        elif status in ErrorCode.ELEMENT_CLICK_INTERCEPTED:<br/>            exception_class = ElementClickInterceptedException<br/>        elif status in ErrorCode.INSECURE_CERTIFICATE:<br/>            exception_class = InsecureCertificateException<br/>        elif status in ErrorCode.INVALID_COORDINATES:<br/>            exception_class = InvalidCoordinatesException<br/>        elif status in ErrorCode.INVALID_SESSION_ID:<br/>            exception_class = InvalidSessionIdException<br/>        elif status in ErrorCode.UNKNOWN_METHOD:<br/>            exception_class = UnknownMethodException<br/>        else:<br/>            exception_class = WebDriverException<br/>        if value == &#x27;&#x27; or value is None:<br/>            value = response[&#x27;value&#x27;]<br/>        if isinstance(value, basestring):<br/>            if exception_class == ErrorInResponseException:<br/>                raise exception_class(response, value)<br/>            raise exception_class(value)<br/>        if message == &quot;&quot; and &#x27;message&#x27; in value:<br/>            message = value[&#x27;message&#x27;]<br/>    <br/>        screen = None<br/>        if &#x27;screen&#x27; in value:<br/>            screen = value[&#x27;screen&#x27;]<br/>    <br/>        stacktrace = None<br/>        if &#x27;stackTrace&#x27; in value and value[&#x27;stackTrace&#x27;]:<br/>            stacktrace = []<br/>            try:<br/>                for frame in value[&#x27;stackTrace&#x27;]:<br/>                    line = self._value_or_default(frame, &#x27;lineNumber&#x27;, &#x27;&#x27;)<br/>                    file = self._value_or_default(frame, &#x27;fileName&#x27;, &#x27;&lt;anonymous&gt;&#x27;)<br/>                    if line:<br/>                        file = &quot;%s:%s&quot; % (file, line)<br/>                    meth = self._value_or_default(frame, &#x27;methodName&#x27;, &#x27;&lt;anonymous&gt;&#x27;)<br/>                    if &#x27;className&#x27; in frame:<br/>                        meth = &quot;%s.%s&quot; % (frame[&#x27;className&#x27;], meth)<br/>                    msg = &quot;    at %s (%s)&quot;<br/>                    msg = msg % (meth, file)<br/>                    stacktrace.append(msg)<br/>            except TypeError:<br/>                pass<br/>        if exception_class == ErrorInResponseException:<br/>            raise exception_class(response, message)<br/>        elif exception_class == UnexpectedAlertPresentException:<br/>            alert_text = None<br/>            if &#x27;data&#x27; in value:<br/>                alert_text = value[&#x27;data&#x27;].get(&#x27;text&#x27;)<br/>            elif &#x27;alert&#x27; in value:<br/>                alert_text = value[&#x27;alert&#x27;].get(&#x27;text&#x27;)<br/>            raise exception_class(message, screen, stacktrace, alert_text)<br/>&gt;       raise exception_class(message, screen, stacktrace)<br/><span class="error">E       selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element &lt;div class=&quot;m-b-5 &quot; data-v-223d73de=&quot;&quot;&gt;...&lt;/div&gt; is not clickable at point (164, 30). Other element would receive the click: &lt;div class=&quot;el-overlay&quot; style=&quot;z-index: 2005;&quot;&gt;...&lt;/div&gt;</span><br/><span class="error">E         (Session info: chrome=96.0.4664.110)</span><br/><br/>venv/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py:242: ElementClickInterceptedException<br/></div></td></tr></tbody>
+            <div class="log">self = &lt;test.test_mybid.TestMybidInfo object at 0x10b2efac0&gt;<br/><br/>    def test_pay(self):<br/>        &#x27;&#x27;&#x27;验证在中标页面选择拍品后，去支付&#x27;&#x27;&#x27;<br/>&gt;       self.mb.swith_to_list(&quot;中标记录&quot;)<br/><br/>test/test_mybid.py:96: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/>page/mybid.py:35: in swith_to_list<br/>    self.is_click(mb[ln])<br/>base/webpage.py:75: in is_click<br/>    self.find_element(locator).click()<br/>venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py:80: in click<br/>    self._execute(Command.CLICK_ELEMENT)<br/>venv/lib/python3.9/site-packages/selenium/webdriver/remote/webelement.py:633: in _execute<br/>    return self._parent.execute(command, params)<br/>venv/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py:321: in execute<br/>    self.error_handler.check_response(response)<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x10b2686a0&gt;<br/>response = {&#x27;status&#x27;: 400, &#x27;value&#x27;: &#x27;{&quot;value&quot;:{&quot;error&quot;:&quot;element click intercepted&quot;,&quot;message&quot;:&quot;element click intercepted: Element ...00019bf0506c _pthread_start + 320\\n20  libsystem_pthread.dylib             0x000000019beffda0 thread_start + 8\\n&quot;}}&#x27;}<br/><br/>    def check_response(self, response):<br/>        &quot;&quot;&quot;<br/>        Checks that a JSON response from the WebDriver does not have an error.<br/>    <br/>        :Args:<br/>         - response - The JSON response from the WebDriver server as a dictionary<br/>           object.<br/>    <br/>        :Raises: If the response contains an error message.<br/>        &quot;&quot;&quot;<br/>        status = response.get(&#x27;status&#x27;, None)<br/>        if status is None or status == ErrorCode.SUCCESS:<br/>            return<br/>        value = None<br/>        message = response.get(&quot;message&quot;, &quot;&quot;)<br/>        screen = response.get(&quot;screen&quot;, &quot;&quot;)<br/>        stacktrace = None<br/>        if isinstance(status, int):<br/>            value_json = response.get(&#x27;value&#x27;, None)<br/>            if value_json and isinstance(value_json, basestring):<br/>                import json<br/>                try:<br/>                    value = json.loads(value_json)<br/>                    if len(value.keys()) == 1:<br/>                        value = value[&#x27;value&#x27;]<br/>                    status = value.get(&#x27;error&#x27;, None)<br/>                    if status is None:<br/>                        status = value[&quot;status&quot;]<br/>                        message = value[&quot;value&quot;]<br/>                        if not isinstance(message, basestring):<br/>                            value = message<br/>                            message = message.get(&#x27;message&#x27;)<br/>                    else:<br/>                        message = value.get(&#x27;message&#x27;, None)<br/>                except ValueError:<br/>                    pass<br/>    <br/>        exception_class = ErrorInResponseException<br/>        if status in ErrorCode.NO_SUCH_ELEMENT:<br/>            exception_class = NoSuchElementException<br/>        elif status in ErrorCode.NO_SUCH_FRAME:<br/>            exception_class = NoSuchFrameException<br/>        elif status in ErrorCode.NO_SUCH_WINDOW:<br/>            exception_class = NoSuchWindowException<br/>        elif status in ErrorCode.STALE_ELEMENT_REFERENCE:<br/>            exception_class = StaleElementReferenceException<br/>        elif status in ErrorCode.ELEMENT_NOT_VISIBLE:<br/>            exception_class = ElementNotVisibleException<br/>        elif status in ErrorCode.INVALID_ELEMENT_STATE:<br/>            exception_class = InvalidElementStateException<br/>        elif status in ErrorCode.INVALID_SELECTOR \<br/>                or status in ErrorCode.INVALID_XPATH_SELECTOR \<br/>                or status in ErrorCode.INVALID_XPATH_SELECTOR_RETURN_TYPER:<br/>            exception_class = InvalidSelectorException<br/>        elif status in ErrorCode.ELEMENT_IS_NOT_SELECTABLE:<br/>            exception_class = ElementNotSelectableException<br/>        elif status in ErrorCode.ELEMENT_NOT_INTERACTABLE:<br/>            exception_class = ElementNotInteractableException<br/>        elif status in ErrorCode.INVALID_COOKIE_DOMAIN:<br/>            exception_class = InvalidCookieDomainException<br/>        elif status in ErrorCode.UNABLE_TO_SET_COOKIE:<br/>            exception_class = UnableToSetCookieException<br/>        elif status in ErrorCode.TIMEOUT:<br/>            exception_class = TimeoutException<br/>        elif status in ErrorCode.SCRIPT_TIMEOUT:<br/>            exception_class = TimeoutException<br/>        elif status in ErrorCode.UNKNOWN_ERROR:<br/>            exception_class = WebDriverException<br/>        elif status in ErrorCode.UNEXPECTED_ALERT_OPEN:<br/>            exception_class = UnexpectedAlertPresentException<br/>        elif status in ErrorCode.NO_ALERT_OPEN:<br/>            exception_class = NoAlertPresentException<br/>        elif status in ErrorCode.IME_NOT_AVAILABLE:<br/>            exception_class = ImeNotAvailableException<br/>        elif status in ErrorCode.IME_ENGINE_ACTIVATION_FAILED:<br/>            exception_class = ImeActivationFailedException<br/>        elif status in ErrorCode.MOVE_TARGET_OUT_OF_BOUNDS:<br/>            exception_class = MoveTargetOutOfBoundsException<br/>        elif status in ErrorCode.JAVASCRIPT_ERROR:<br/>            exception_class = JavascriptException<br/>        elif status in ErrorCode.SESSION_NOT_CREATED:<br/>            exception_class = SessionNotCreatedException<br/>        elif status in ErrorCode.INVALID_ARGUMENT:<br/>            exception_class = InvalidArgumentException<br/>        elif status in ErrorCode.NO_SUCH_COOKIE:<br/>            exception_class = NoSuchCookieException<br/>        elif status in ErrorCode.UNABLE_TO_CAPTURE_SCREEN:<br/>            exception_class = ScreenshotException<br/>        elif status in ErrorCode.ELEMENT_CLICK_INTERCEPTED:<br/>            exception_class = ElementClickInterceptedException<br/>        elif status in ErrorCode.INSECURE_CERTIFICATE:<br/>            exception_class = InsecureCertificateException<br/>        elif status in ErrorCode.INVALID_COORDINATES:<br/>            exception_class = InvalidCoordinatesException<br/>        elif status in ErrorCode.INVALID_SESSION_ID:<br/>            exception_class = InvalidSessionIdException<br/>        elif status in ErrorCode.UNKNOWN_METHOD:<br/>            exception_class = UnknownMethodException<br/>        else:<br/>            exception_class = WebDriverException<br/>        if value == &#x27;&#x27; or value is None:<br/>            value = response[&#x27;value&#x27;]<br/>        if isinstance(value, basestring):<br/>            if exception_class == ErrorInResponseException:<br/>                raise exception_class(response, value)<br/>            raise exception_class(value)<br/>        if message == &quot;&quot; and &#x27;message&#x27; in value:<br/>            message = value[&#x27;message&#x27;]<br/>    <br/>        screen = None<br/>        if &#x27;screen&#x27; in value:<br/>            screen = value[&#x27;screen&#x27;]<br/>    <br/>        stacktrace = None<br/>        if &#x27;stackTrace&#x27; in value and value[&#x27;stackTrace&#x27;]:<br/>            stacktrace = []<br/>            try:<br/>                for frame in value[&#x27;stackTrace&#x27;]:<br/>                    line = self._value_or_default(frame, &#x27;lineNumber&#x27;, &#x27;&#x27;)<br/>                    file = self._value_or_default(frame, &#x27;fileName&#x27;, &#x27;&lt;anonymous&gt;&#x27;)<br/>                    if line:<br/>                        file = &quot;%s:%s&quot; % (file, line)<br/>                    meth = self._value_or_default(frame, &#x27;methodName&#x27;, &#x27;&lt;anonymous&gt;&#x27;)<br/>                    if &#x27;className&#x27; in frame:<br/>                        meth = &quot;%s.%s&quot; % (frame[&#x27;className&#x27;], meth)<br/>                    msg = &quot;    at %s (%s)&quot;<br/>                    msg = msg % (meth, file)<br/>                    stacktrace.append(msg)<br/>            except TypeError:<br/>                pass<br/>        if exception_class == ErrorInResponseException:<br/>            raise exception_class(response, message)<br/>        elif exception_class == UnexpectedAlertPresentException:<br/>            alert_text = None<br/>            if &#x27;data&#x27; in value:<br/>                alert_text = value[&#x27;data&#x27;].get(&#x27;text&#x27;)<br/>            elif &#x27;alert&#x27; in value:<br/>                alert_text = value[&#x27;alert&#x27;].get(&#x27;text&#x27;)<br/>            raise exception_class(message, screen, stacktrace, alert_text)<br/>&gt;       raise exception_class(message, screen, stacktrace)<br/><span class="error">E       selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element &lt;div class=&quot;m-b-5 &quot; data-v-223d73de=&quot;&quot;&gt;...&lt;/div&gt; is not clickable at point (164, 30). Other element would receive the click: &lt;div class=&quot;el-overlay&quot; style=&quot;z-index: 2005;&quot;&gt;...&lt;/div&gt;</span><br/><span class="error">E         (Session info: chrome=96.0.4664.110)</span><br/><br/>venv/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py:242: ElementClickInterceptedException<br/></div></td></tr></tbody>
       <tbody class="failed results-table-row">
         <tr>
           <td class="col-result">Failed</td>
           <td class="col-name">test/test_order_detail.py::TestOrderDetail::test_delivery_type</td>
-          <td class="col-duration">5.37</td>
+          <td class="col-duration">5.29</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log">self = &lt;test.test_order_detail.TestOrderDetail object at 0x10d825fd0&gt;<br/><br/>    def test_delivery_type(self):<br/>        &#x27;&#x27;&#x27;验证选择不同的提货方式，页面显示准确&#x27;&#x27;&#x27;<br/>        self.od.deliver_type(&#x27;上门自提&#x27;)<br/>        time.sleep(1)<br/>        is_display = self.od.is_display_of_map()<br/>    <br/>        tip = self.od.tip_of_delivery()<br/>        address = self.od.address_of_zs()<br/>        assert is_display == 1  # 显示地图<br/>        assert address == &quot;中晟在线（广州）信息技术有限公司&quot;<br/>&gt;       assert tip == (&#x27;1、本人办理，请携带身份证&#x27;,&#x27;2、委托他人办理，请携带双方证件和授权书&#x27;,&#x27;3、预约时间要在支付期限内&#x27;)<br/><span class="error">E       AssertionError: assert [&#x27;1、本人办理，请携带身...、预约时间要在支付期限内&#x27;] == (&#x27;1、本人办理，请携带身...、预约时间要在支付期限内&#x27;)</span><br/><span class="error">E         Use -v to get the full diff</span><br/><br/>test/test_order_detail.py:78: AssertionError<br/></div></td></tr></tbody>
+            <div class="log">self = &lt;test.test_order_detail.TestOrderDetail object at 0x10b2f2fd0&gt;<br/><br/>    def test_delivery_type(self):<br/>        &#x27;&#x27;&#x27;验证选择不同的提货方式，页面显示准确&#x27;&#x27;&#x27;<br/>        self.od.deliver_type(&#x27;上门自提&#x27;)<br/>        time.sleep(1)<br/>        is_display = self.od.is_display_of_map()<br/>    <br/>        tip = self.od.tip_of_delivery()<br/>        address = self.od.address_of_zs()<br/>        assert is_display == 1  # 显示地图<br/>        assert address == &quot;中晟在线（广州）信息技术有限公司&quot;<br/>&gt;       assert tip == (&#x27;1、本人办理，请携带身份证&#x27;,&#x27;2、委托他人办理，请携带双方证件和授权书&#x27;,&#x27;3、预约时间要在支付期限内&#x27;)<br/><span class="error">E       AssertionError: assert [&#x27;1、本人办理，请携带身...、预约时间要在支付期限内&#x27;] == (&#x27;1、本人办理，请携带身...、预约时间要在支付期限内&#x27;)</span><br/><span class="error">E         Use -v to get the full diff</span><br/><br/>test/test_order_detail.py:78: AssertionError<br/></div></td></tr></tbody>
       <tbody class="skipped results-table-row">
         <tr>
           <td class="col-result">Skipped</td>
@@ -437,7 +632,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <tr>
           <td class="col-result">Skipped</td>
           <td class="col-name">test/test_firstp.py::TestFirstp002::test_search_goods</td>
-          <td class="col-duration">0.07</td>
+          <td class="col-duration">0.06</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -527,50 +722,90 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_firstp.py::TestFirstp001::test_title</td>
-          <td class="col-duration">20.24</td>
+          <td class="col-duration">30.72</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log"> -----------------------------Captured stdout setup------------------------------ <br/>[]
+            <div class="log"> -----------------------------Captured stdout setup------------------------------ <br/>[3569, 3568, 3567, 3566, 3565, 3564, 3563, 3562]
+{&#x27;id&#x27;: 3569, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3568, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3567, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3566, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3565, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3564, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3563, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3562, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=15, tm_min=17, tm_sec=28, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=18, tm_hour=15, tm_min=17, tm_sec=28, tm_wday=5, tm_yday=352, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=16, tm_min=26, tm_sec=37, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=18, tm_hour=16, tm_min=26, tm_sec=37, tm_wday=5, tm_yday=352, tm_isdst=0)
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=16, tm_min=17, tm_sec=28, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=19, tm_hour=16, tm_min=17, tm_sec=28, tm_wday=6, tm_yday=353, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=17, tm_min=26, tm_sec=37, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=19, tm_hour=17, tm_min=26, tm_sec=37, tm_wday=6, tm_yday=353, tm_isdst=0)
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=17, tm_min=17, tm_sec=28, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=20, tm_hour=17, tm_min=17, tm_sec=28, tm_wday=0, tm_yday=354, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=18, tm_min=26, tm_sec=37, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=20, tm_hour=18, tm_min=26, tm_sec=37, tm_wday=0, tm_yday=354, tm_isdst=0)
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=18, tm_min=17, tm_sec=28, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=21, tm_hour=18, tm_min=17, tm_sec=28, tm_wday=1, tm_yday=355, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=19, tm_min=26, tm_sec=37, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=21, tm_hour=19, tm_min=26, tm_sec=37, tm_wday=1, tm_yday=355, tm_isdst=0)
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=19, tm_min=17, tm_sec=28, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=17, tm_sec=28, tm_wday=2, tm_yday=356, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=20, tm_min=26, tm_sec=37, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=20, tm_min=26, tm_sec=37, tm_wday=2, tm_yday=356, tm_isdst=0)
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=20, tm_min=17, tm_sec=28, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=23, tm_hour=20, tm_min=17, tm_sec=28, tm_wday=3, tm_yday=357, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=21, tm_min=26, tm_sec=37, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=23, tm_hour=21, tm_min=26, tm_sec=37, tm_wday=3, tm_yday=357, tm_isdst=0)
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=21, tm_min=17, tm_sec=28, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=24, tm_hour=21, tm_min=17, tm_sec=28, tm_wday=4, tm_yday=358, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=22, tm_min=26, tm_sec=37, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=24, tm_hour=22, tm_min=26, tm_sec=37, tm_wday=4, tm_yday=358, tm_isdst=0)
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=22, tm_min=17, tm_sec=28, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=25, tm_hour=22, tm_min=17, tm_sec=28, tm_wday=5, tm_yday=359, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=23, tm_min=26, tm_sec=37, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=25, tm_hour=23, tm_min=26, tm_sec=37, tm_wday=5, tm_yday=359, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=16, tm_min=26, tm_sec=37, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=18, tm_hour=16, tm_min=26, tm_sec=37, tm_wday=5, tm_yday=352, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=17, tm_min=26, tm_sec=37, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=19, tm_hour=17, tm_min=26, tm_sec=37, tm_wday=6, tm_yday=353, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=18, tm_min=26, tm_sec=37, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=20, tm_hour=18, tm_min=26, tm_sec=37, tm_wday=0, tm_yday=354, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=19, tm_min=26, tm_sec=37, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=21, tm_hour=19, tm_min=26, tm_sec=37, tm_wday=1, tm_yday=355, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=20, tm_min=26, tm_sec=37, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=20, tm_min=26, tm_sec=37, tm_wday=2, tm_yday=356, tm_isdst=0)
+[{&#x27;goods_id&#x27;: &#x27;3570&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3571&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3572&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3573&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3574&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3575&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3576&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3577&#x27;, &#x27;is_recommended&#x27;: 1}]
+({&#x27;goods_id&#x27;: &#x27;3570&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3571&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3572&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3573&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3574&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3575&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3576&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3577&#x27;, &#x27;is_recommended&#x27;: 1})
+8
+{&quot;goods_id&quot;: &quot;3570&quot;, &quot;is_recommended&quot;: 1}
+8
+{&quot;goods_id&quot;: &quot;3571&quot;, &quot;is_recommended&quot;: 1}
+8
+{&quot;goods_id&quot;: &quot;3572&quot;, &quot;is_recommended&quot;: 1}
+8
+{&quot;goods_id&quot;: &quot;3573&quot;, &quot;is_recommended&quot;: 1}
+8
+{&quot;goods_id&quot;: &quot;3574&quot;, &quot;is_recommended&quot;: 1}
+8
+{&quot;goods_id&quot;: &quot;3575&quot;, &quot;is_recommended&quot;: 1}
+8
+{&quot;goods_id&quot;: &quot;3576&quot;, &quot;is_recommended&quot;: 1}
+8
+{&quot;goods_id&quot;: &quot;3577&quot;, &quot;is_recommended&quot;: 1}
+[{&quot;goods_id&quot;: &quot;3570&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3571&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3572&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3573&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3574&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3575&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3576&quot;, &quot;is_recommended&quot;: 1},
+{&#x27;topic_id&#x27;: &#x27;254&#x27;, &#x27;goods&#x27;: &#x27;[{&quot;goods_id&quot;: &quot;3570&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3571&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3572&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3573&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3574&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3575&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3576&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3577&quot;, &quot;is_recommended&quot;: 1}]&#x27;}
+{&#x27;topic_id&#x27;: &#x27;254&#x27;, &#x27;goods&#x27;: &#x27;[{&quot;goods_id&quot;: &quot;3570&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3571&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3572&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3573&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3574&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3575&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3576&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3577&quot;, &quot;is_recommended&quot;: 1}]&#x27;}
+{&#x27;status&#x27;: 200, &#x27;msg&#x27;: &#x27;操作成功&#x27;, &#x27;data&#x27;: 8, &#x27;shop_switch&#x27;: &#x27;0&#x27;}
 http://home.online.zspaimai.cn/
 <br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_firstp.py::TestFirstp001::test_searchBoxInfo</td>
-          <td class="col-duration">0.09</td>
+          <td class="col-duration">0.86</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -579,7 +814,7 @@ http://home.online.zspaimai.cn/
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_firstp.py::TestFirstp001::test_qrcode_app</td>
-          <td class="col-duration">0.06</td>
+          <td class="col-duration">0.31</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -588,7 +823,7 @@ http://home.online.zspaimai.cn/
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_firstp.py::TestFirstp001::test_qrcode_zsonline</td>
-          <td class="col-duration">0.03</td>
+          <td class="col-duration">0.04</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -597,7 +832,7 @@ http://home.online.zspaimai.cn/
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_firstp.py::TestFirstp001::test_qrcode_phone</td>
-          <td class="col-duration">0.05</td>
+          <td class="col-duration">0.03</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -606,7 +841,7 @@ http://home.online.zspaimai.cn/
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_firstp.py::TestFirstp001::test_qrcode_phone_show</td>
-          <td class="col-duration">1.27</td>
+          <td class="col-duration">1.35</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -615,7 +850,7 @@ http://home.online.zspaimai.cn/
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_firstp.py::TestFirstp001::test_click_help</td>
-          <td class="col-duration">2.33</td>
+          <td class="col-duration">2.39</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -625,7 +860,7 @@ http://home.online.zspaimai.cn/
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_firstp.py::TestFirstp001::test_click_contact</td>
-          <td class="col-duration">3.17</td>
+          <td class="col-duration">1.22</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -635,7 +870,7 @@ http://home.online.zspaimai.cn/
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_firstp.py::TestFirstp001::test_click_login</td>
-          <td class="col-duration">4.62</td>
+          <td class="col-duration">3.43</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -643,8 +878,8 @@ http://home.online.zspaimai.cn/
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">test/test_firstp.py::TestFirstp001::test_click_more_collection_button</td>
-          <td class="col-duration">11.95</td>
+          <td class="col-name">test/test_firstp.py::TestFirstp001::test_click_bid</td>
+          <td class="col-duration">8.02</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -653,7 +888,7 @@ http://home.online.zspaimai.cn/
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_firstp.py::TestFirstp001::test_click_specialP</td>
-          <td class="col-duration">4.34</td>
+          <td class="col-duration">2.37</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -662,7 +897,7 @@ http://home.online.zspaimai.cn/
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_firstp.py::TestFirstp001::test_click_apply</td>
-          <td class="col-duration">2.66</td>
+          <td class="col-duration">2.60</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -671,7 +906,7 @@ http://home.online.zspaimai.cn/
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_firstp.py::TestFirstp001::test_click_my_bid</td>
-          <td class="col-duration">2.44</td>
+          <td class="col-duration">2.23</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -680,7 +915,7 @@ http://home.online.zspaimai.cn/
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_firstp.py::TestFirstp001::test_click_msg</td>
-          <td class="col-duration">2.16</td>
+          <td class="col-duration">2.23</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -689,7 +924,7 @@ http://home.online.zspaimai.cn/
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_firstp.py::TestFirstp001::test_login_title</td>
-          <td class="col-duration">2.32</td>
+          <td class="col-duration">2.29</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -698,57 +933,98 @@ http://home.online.zspaimai.cn/
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_firstp.py::TestFirstp002::test_topic1_name</td>
-          <td class="col-duration">29.97</td>
+          <td class="col-duration">40.36</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log"> -----------------------------Captured stdout setup------------------------------ <br/>[3513, 3512, 3511, 3510, 3509, 3508, 3507, 3506]
-{&#x27;id&#x27;: 3513, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
-{&#x27;id&#x27;: 3512, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
-{&#x27;id&#x27;: 3511, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
-{&#x27;id&#x27;: 3510, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
-{&#x27;id&#x27;: 3509, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
-{&#x27;id&#x27;: 3508, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
-{&#x27;id&#x27;: 3507, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
-{&#x27;id&#x27;: 3506, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+            <div class="log"> -----------------------------Captured stdout setup------------------------------ <br/>[3577, 3576, 3575, 3574, 3573, 3572, 3571, 3570]
+{&#x27;id&#x27;: 3577, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3576, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3575, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3574, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3573, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3572, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3571, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3570, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=15, tm_min=18, tm_sec=57, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=18, tm_hour=15, tm_min=18, tm_sec=57, tm_wday=5, tm_yday=352, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=16, tm_min=28, tm_sec=18, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=18, tm_hour=16, tm_min=28, tm_sec=18, tm_wday=5, tm_yday=352, tm_isdst=0)
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=16, tm_min=18, tm_sec=57, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=19, tm_hour=16, tm_min=18, tm_sec=57, tm_wday=6, tm_yday=353, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=17, tm_min=28, tm_sec=18, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=19, tm_hour=17, tm_min=28, tm_sec=18, tm_wday=6, tm_yday=353, tm_isdst=0)
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=17, tm_min=18, tm_sec=57, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=20, tm_hour=17, tm_min=18, tm_sec=57, tm_wday=0, tm_yday=354, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=18, tm_min=28, tm_sec=18, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=20, tm_hour=18, tm_min=28, tm_sec=18, tm_wday=0, tm_yday=354, tm_isdst=0)
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=18, tm_min=18, tm_sec=57, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=21, tm_hour=18, tm_min=18, tm_sec=57, tm_wday=1, tm_yday=355, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=19, tm_min=28, tm_sec=18, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=21, tm_hour=19, tm_min=28, tm_sec=18, tm_wday=1, tm_yday=355, tm_isdst=0)
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=19, tm_min=18, tm_sec=57, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=18, tm_sec=57, tm_wday=2, tm_yday=356, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=20, tm_min=28, tm_sec=18, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=20, tm_min=28, tm_sec=18, tm_wday=2, tm_yday=356, tm_isdst=0)
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=20, tm_min=18, tm_sec=57, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=23, tm_hour=20, tm_min=18, tm_sec=57, tm_wday=3, tm_yday=357, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=21, tm_min=28, tm_sec=18, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=23, tm_hour=21, tm_min=28, tm_sec=18, tm_wday=3, tm_yday=357, tm_isdst=0)
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=21, tm_min=18, tm_sec=57, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=24, tm_hour=21, tm_min=18, tm_sec=57, tm_wday=4, tm_yday=358, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=22, tm_min=28, tm_sec=18, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=24, tm_hour=22, tm_min=28, tm_sec=18, tm_wday=4, tm_yday=358, tm_isdst=0)
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=22, tm_min=18, tm_sec=57, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=25, tm_hour=22, tm_min=18, tm_sec=57, tm_wday=5, tm_yday=359, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=23, tm_min=28, tm_sec=18, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=25, tm_hour=23, tm_min=28, tm_sec=18, tm_wday=5, tm_yday=359, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=16, tm_min=28, tm_sec=18, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=18, tm_hour=16, tm_min=28, tm_sec=18, tm_wday=5, tm_yday=352, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=17, tm_min=28, tm_sec=18, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=19, tm_hour=17, tm_min=28, tm_sec=18, tm_wday=6, tm_yday=353, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=18, tm_min=28, tm_sec=18, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=20, tm_hour=18, tm_min=28, tm_sec=18, tm_wday=0, tm_yday=354, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=19, tm_min=28, tm_sec=18, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=21, tm_hour=19, tm_min=28, tm_sec=18, tm_wday=1, tm_yday=355, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=20, tm_min=28, tm_sec=18, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=20, tm_min=28, tm_sec=18, tm_wday=2, tm_yday=356, tm_isdst=0)
+[{&#x27;goods_id&#x27;: &#x27;3578&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3579&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3580&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3581&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3582&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3583&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3584&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3585&#x27;, &#x27;is_recommended&#x27;: 1}]
+({&#x27;goods_id&#x27;: &#x27;3578&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3579&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3580&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3581&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3582&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3583&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3584&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3585&#x27;, &#x27;is_recommended&#x27;: 1})
+8
+{&quot;goods_id&quot;: &quot;3578&quot;, &quot;is_recommended&quot;: 1}
+8
+{&quot;goods_id&quot;: &quot;3579&quot;, &quot;is_recommended&quot;: 1}
+8
+{&quot;goods_id&quot;: &quot;3580&quot;, &quot;is_recommended&quot;: 1}
+8
+{&quot;goods_id&quot;: &quot;3581&quot;, &quot;is_recommended&quot;: 1}
+8
+{&quot;goods_id&quot;: &quot;3582&quot;, &quot;is_recommended&quot;: 1}
+8
+{&quot;goods_id&quot;: &quot;3583&quot;, &quot;is_recommended&quot;: 1}
+8
+{&quot;goods_id&quot;: &quot;3584&quot;, &quot;is_recommended&quot;: 1}
+8
+{&quot;goods_id&quot;: &quot;3585&quot;, &quot;is_recommended&quot;: 1}
+[{&quot;goods_id&quot;: &quot;3578&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3579&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3580&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3581&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3582&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3583&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3584&quot;, &quot;is_recommended&quot;: 1},
+{&#x27;topic_id&#x27;: &#x27;259&#x27;, &#x27;goods&#x27;: &#x27;[{&quot;goods_id&quot;: &quot;3578&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3579&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3580&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3581&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3582&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3583&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3584&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3585&quot;, &quot;is_recommended&quot;: 1}]&#x27;}
+{&#x27;topic_id&#x27;: &#x27;259&#x27;, &#x27;goods&#x27;: &#x27;[{&quot;goods_id&quot;: &quot;3578&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3579&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3580&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3581&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3582&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3583&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3584&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3585&quot;, &quot;is_recommended&quot;: 1}]&#x27;}
+{&#x27;status&#x27;: 200, &#x27;msg&#x27;: &#x27;操作成功&#x27;, &#x27;data&#x27;: 8, &#x27;shop_switch&#x27;: &#x27;0&#x27;}
 http://home.online.zspaimai.cn/
 <br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_firstp.py::TestFirstp002::test_topic1_status</td>
+          <td class="col-duration">0.15</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_firstp.py::TestFirstp002::test_topic1_num</td>
           <td class="col-duration">0.03</td>
           <td class="col-links"></td></tr>
         <tr>
@@ -757,8 +1033,17 @@ http://home.online.zspaimai.cn/
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
+          <td class="col-name">test/test_firstp.py::TestFirstp002::test_topic1_bid_num</td>
+          <td class="col-duration">0.06</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
           <td class="col-name">test/test_firstp.py::TestFirstp002::test_good1_name</td>
-          <td class="col-duration">0.05</td>
+          <td class="col-duration">0.03</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -776,7 +1061,7 @@ http://home.online.zspaimai.cn/
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_firstp.py::TestFirstp002::test_good1_price</td>
-          <td class="col-duration">0.04</td>
+          <td class="col-duration">0.03</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -785,58 +1070,90 @@ http://home.online.zspaimai.cn/
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_firstp.py::TestFirstp003::test_log_num</td>
-          <td class="col-duration">30.50</td>
+          <td class="col-duration">35.38</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log"> -----------------------------Captured stdout setup------------------------------ <br/>[3521, 3520, 3519, 3518, 3517, 3516, 3515, 3514]
-{&#x27;id&#x27;: 3521, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
-{&#x27;id&#x27;: 3520, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
-{&#x27;id&#x27;: 3519, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
-{&#x27;id&#x27;: 3518, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
-{&#x27;id&#x27;: 3517, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
-{&#x27;id&#x27;: 3516, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
-{&#x27;id&#x27;: 3515, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
-{&#x27;id&#x27;: 3514, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+            <div class="log"> -----------------------------Captured stdout setup------------------------------ <br/>[3585, 3584, 3583, 3582, 3581, 3580, 3579, 3578]
+{&#x27;id&#x27;: 3585, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3584, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3583, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3582, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3581, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3580, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3579, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3578, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=15, tm_min=19, tm_sec=28, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=18, tm_hour=15, tm_min=19, tm_sec=28, tm_wday=5, tm_yday=352, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=16, tm_min=28, tm_sec=58, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=18, tm_hour=16, tm_min=28, tm_sec=58, tm_wday=5, tm_yday=352, tm_isdst=0)
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=16, tm_min=19, tm_sec=28, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=19, tm_hour=16, tm_min=19, tm_sec=28, tm_wday=6, tm_yday=353, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=17, tm_min=28, tm_sec=58, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=19, tm_hour=17, tm_min=28, tm_sec=58, tm_wday=6, tm_yday=353, tm_isdst=0)
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=17, tm_min=19, tm_sec=28, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=20, tm_hour=17, tm_min=19, tm_sec=28, tm_wday=0, tm_yday=354, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=18, tm_min=28, tm_sec=58, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=20, tm_hour=18, tm_min=28, tm_sec=58, tm_wday=0, tm_yday=354, tm_isdst=0)
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=18, tm_min=19, tm_sec=28, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=21, tm_hour=18, tm_min=19, tm_sec=28, tm_wday=1, tm_yday=355, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=19, tm_min=28, tm_sec=58, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=21, tm_hour=19, tm_min=28, tm_sec=58, tm_wday=1, tm_yday=355, tm_isdst=0)
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=19, tm_min=19, tm_sec=28, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=19, tm_sec=28, tm_wday=2, tm_yday=356, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=20, tm_min=28, tm_sec=58, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=20, tm_min=28, tm_sec=58, tm_wday=2, tm_yday=356, tm_isdst=0)
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=20, tm_min=19, tm_sec=28, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=23, tm_hour=20, tm_min=19, tm_sec=28, tm_wday=3, tm_yday=357, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=21, tm_min=28, tm_sec=58, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=23, tm_hour=21, tm_min=28, tm_sec=58, tm_wday=3, tm_yday=357, tm_isdst=0)
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=21, tm_min=19, tm_sec=28, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=24, tm_hour=21, tm_min=19, tm_sec=28, tm_wday=4, tm_yday=358, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=22, tm_min=28, tm_sec=58, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=24, tm_hour=22, tm_min=28, tm_sec=58, tm_wday=4, tm_yday=358, tm_isdst=0)
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=22, tm_min=19, tm_sec=28, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=25, tm_hour=22, tm_min=19, tm_sec=28, tm_wday=5, tm_yday=359, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=23, tm_min=28, tm_sec=58, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=25, tm_hour=23, tm_min=28, tm_sec=58, tm_wday=5, tm_yday=359, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=16, tm_min=28, tm_sec=58, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=18, tm_hour=16, tm_min=28, tm_sec=58, tm_wday=5, tm_yday=352, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=17, tm_min=28, tm_sec=58, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=19, tm_hour=17, tm_min=28, tm_sec=58, tm_wday=6, tm_yday=353, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=18, tm_min=28, tm_sec=58, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=20, tm_hour=18, tm_min=28, tm_sec=58, tm_wday=0, tm_yday=354, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=19, tm_min=28, tm_sec=58, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=21, tm_hour=19, tm_min=28, tm_sec=58, tm_wday=1, tm_yday=355, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=20, tm_min=28, tm_sec=58, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=20, tm_min=28, tm_sec=58, tm_wday=2, tm_yday=356, tm_isdst=0)
+[{&#x27;goods_id&#x27;: &#x27;3586&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3587&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3588&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3589&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3590&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3591&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3592&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3593&#x27;, &#x27;is_recommended&#x27;: 1}]
+({&#x27;goods_id&#x27;: &#x27;3586&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3587&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3588&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3589&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3590&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3591&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3592&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3593&#x27;, &#x27;is_recommended&#x27;: 1})
+8
+{&quot;goods_id&quot;: &quot;3586&quot;, &quot;is_recommended&quot;: 1}
+8
+{&quot;goods_id&quot;: &quot;3587&quot;, &quot;is_recommended&quot;: 1}
+8
+{&quot;goods_id&quot;: &quot;3588&quot;, &quot;is_recommended&quot;: 1}
+8
+{&quot;goods_id&quot;: &quot;3589&quot;, &quot;is_recommended&quot;: 1}
+8
+{&quot;goods_id&quot;: &quot;3590&quot;, &quot;is_recommended&quot;: 1}
+8
+{&quot;goods_id&quot;: &quot;3591&quot;, &quot;is_recommended&quot;: 1}
+8
+{&quot;goods_id&quot;: &quot;3592&quot;, &quot;is_recommended&quot;: 1}
+8
+{&quot;goods_id&quot;: &quot;3593&quot;, &quot;is_recommended&quot;: 1}
+[{&quot;goods_id&quot;: &quot;3586&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3587&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3588&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3589&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3590&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3591&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3592&quot;, &quot;is_recommended&quot;: 1},
+{&#x27;topic_id&#x27;: &#x27;264&#x27;, &#x27;goods&#x27;: &#x27;[{&quot;goods_id&quot;: &quot;3586&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3587&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3588&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3589&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3590&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3591&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3592&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3593&quot;, &quot;is_recommended&quot;: 1}]&#x27;}
+{&#x27;topic_id&#x27;: &#x27;264&#x27;, &#x27;goods&#x27;: &#x27;[{&quot;goods_id&quot;: &quot;3586&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3587&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3588&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3589&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3590&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3591&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3592&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3593&quot;, &quot;is_recommended&quot;: 1}]&#x27;}
+{&#x27;status&#x27;: 200, &#x27;msg&#x27;: &#x27;操作成功&#x27;, &#x27;data&#x27;: 8, &#x27;shop_switch&#x27;: &#x27;0&#x27;}
 http://home.online.zspaimai.cn/
 <br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_firstp.py::TestFirstp003::test_log_phone</td>
-          <td class="col-duration">9.30</td>
+          <td class="col-duration">9.05</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -845,89 +1162,89 @@ http://home.online.zspaimai.cn/
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_detail.py::TestGoodDetail001::test_button_text</td>
-          <td class="col-duration">32.21</td>
+          <td class="col-duration">85.52</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log"> -----------------------------Captured stdout setup------------------------------ <br/>[3529, 3528, 3527, 3526, 3525, 3524, 3523, 3522]
-{&#x27;id&#x27;: 3529, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
-{&#x27;id&#x27;: 3528, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
-{&#x27;id&#x27;: 3527, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
-{&#x27;id&#x27;: 3526, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
-{&#x27;id&#x27;: 3525, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
-{&#x27;id&#x27;: 3524, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
-{&#x27;id&#x27;: 3523, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
-{&#x27;id&#x27;: 3522, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+            <div class="log"> -----------------------------Captured stdout setup------------------------------ <br/>[3593, 3592, 3591, 3590, 3589, 3588, 3587, 3586]
+{&#x27;id&#x27;: 3593, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3592, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3591, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3590, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3589, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3588, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3587, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
+{&#x27;id&#x27;: 3586, &#x27;act&#x27;: &#x27;is_recommended&#x27;, &#x27;value&#x27;: 0}
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=15, tm_min=20, tm_sec=7, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=18, tm_hour=15, tm_min=20, tm_sec=7, tm_wday=5, tm_yday=352, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=16, tm_min=29, tm_sec=43, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=18, tm_hour=16, tm_min=29, tm_sec=43, tm_wday=5, tm_yday=352, tm_isdst=0)
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=16, tm_min=20, tm_sec=7, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=19, tm_hour=16, tm_min=20, tm_sec=7, tm_wday=6, tm_yday=353, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=17, tm_min=29, tm_sec=43, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=19, tm_hour=17, tm_min=29, tm_sec=43, tm_wday=6, tm_yday=353, tm_isdst=0)
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=17, tm_min=20, tm_sec=7, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=20, tm_hour=17, tm_min=20, tm_sec=7, tm_wday=0, tm_yday=354, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=18, tm_min=29, tm_sec=43, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=20, tm_hour=18, tm_min=29, tm_sec=43, tm_wday=0, tm_yday=354, tm_isdst=0)
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=18, tm_min=20, tm_sec=7, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=21, tm_hour=18, tm_min=20, tm_sec=7, tm_wday=1, tm_yday=355, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=19, tm_min=29, tm_sec=43, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=21, tm_hour=19, tm_min=29, tm_sec=43, tm_wday=1, tm_yday=355, tm_isdst=0)
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=19, tm_min=20, tm_sec=7, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=20, tm_sec=7, tm_wday=2, tm_yday=356, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=20, tm_min=29, tm_sec=43, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=20, tm_min=29, tm_sec=43, tm_wday=2, tm_yday=356, tm_isdst=0)
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=20, tm_min=20, tm_sec=7, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=23, tm_hour=20, tm_min=20, tm_sec=7, tm_wday=3, tm_yday=357, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=21, tm_min=29, tm_sec=43, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=23, tm_hour=21, tm_min=29, tm_sec=43, tm_wday=3, tm_yday=357, tm_isdst=0)
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=21, tm_min=20, tm_sec=7, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=24, tm_hour=21, tm_min=20, tm_sec=7, tm_wday=4, tm_yday=358, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=22, tm_min=29, tm_sec=43, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=24, tm_hour=22, tm_min=29, tm_sec=43, tm_wday=4, tm_yday=358, tm_isdst=0)
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui/utils
 /Users/yuanyuanhe/PycharmProjects/zspaimai_ui
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=22, tm_min=20, tm_sec=7, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=25, tm_hour=22, tm_min=20, tm_sec=7, tm_wday=5, tm_yday=359, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=15, tm_min=20, tm_sec=7, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=18, tm_hour=15, tm_min=20, tm_sec=7, tm_wday=5, tm_yday=352, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=16, tm_min=20, tm_sec=7, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=19, tm_hour=16, tm_min=20, tm_sec=7, tm_wday=6, tm_yday=353, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=17, tm_min=20, tm_sec=7, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=20, tm_hour=17, tm_min=20, tm_sec=7, tm_wday=0, tm_yday=354, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=18, tm_min=20, tm_sec=7, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=21, tm_hour=18, tm_min=20, tm_sec=7, tm_wday=1, tm_yday=355, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=19, tm_min=20, tm_sec=7, tm_wday=4, tm_yday=351, tm_isdst=0)
-time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=20, tm_sec=7, tm_wday=2, tm_yday=356, tm_isdst=0)
-[{&#x27;goods_id&#x27;: &#x27;3530&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3531&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3532&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3533&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3534&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3535&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3536&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3537&#x27;, &#x27;is_recommended&#x27;: 1}]
-({&#x27;goods_id&#x27;: &#x27;3530&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3531&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3532&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3533&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3534&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3535&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3536&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3537&#x27;, &#x27;is_recommended&#x27;: 1})
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=23, tm_min=29, tm_sec=43, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=25, tm_hour=23, tm_min=29, tm_sec=43, tm_wday=5, tm_yday=359, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=16, tm_min=29, tm_sec=43, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=18, tm_hour=16, tm_min=29, tm_sec=43, tm_wday=5, tm_yday=352, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=17, tm_min=29, tm_sec=43, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=19, tm_hour=17, tm_min=29, tm_sec=43, tm_wday=6, tm_yday=353, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=18, tm_min=29, tm_sec=43, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=20, tm_hour=18, tm_min=29, tm_sec=43, tm_wday=0, tm_yday=354, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=19, tm_min=29, tm_sec=43, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=21, tm_hour=19, tm_min=29, tm_sec=43, tm_wday=1, tm_yday=355, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=17, tm_hour=20, tm_min=29, tm_sec=43, tm_wday=4, tm_yday=351, tm_isdst=0)
+time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=20, tm_min=29, tm_sec=43, tm_wday=2, tm_yday=356, tm_isdst=0)
+[{&#x27;goods_id&#x27;: &#x27;3594&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3595&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3596&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3597&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3598&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3599&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3600&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3601&#x27;, &#x27;is_recommended&#x27;: 1}]
+({&#x27;goods_id&#x27;: &#x27;3594&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3595&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3596&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3597&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3598&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3599&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3600&#x27;, &#x27;is_recommended&#x27;: 1}, {&#x27;goods_id&#x27;: &#x27;3601&#x27;, &#x27;is_recommended&#x27;: 1})
 8
-{&quot;goods_id&quot;: &quot;3530&quot;, &quot;is_recommended&quot;: 1}
+{&quot;goods_id&quot;: &quot;3594&quot;, &quot;is_recommended&quot;: 1}
 8
-{&quot;goods_id&quot;: &quot;3531&quot;, &quot;is_recommended&quot;: 1}
+{&quot;goods_id&quot;: &quot;3595&quot;, &quot;is_recommended&quot;: 1}
 8
-{&quot;goods_id&quot;: &quot;3532&quot;, &quot;is_recommended&quot;: 1}
+{&quot;goods_id&quot;: &quot;3596&quot;, &quot;is_recommended&quot;: 1}
 8
-{&quot;goods_id&quot;: &quot;3533&quot;, &quot;is_recommended&quot;: 1}
+{&quot;goods_id&quot;: &quot;3597&quot;, &quot;is_recommended&quot;: 1}
 8
-{&quot;goods_id&quot;: &quot;3534&quot;, &quot;is_recommended&quot;: 1}
+{&quot;goods_id&quot;: &quot;3598&quot;, &quot;is_recommended&quot;: 1}
 8
-{&quot;goods_id&quot;: &quot;3535&quot;, &quot;is_recommended&quot;: 1}
+{&quot;goods_id&quot;: &quot;3599&quot;, &quot;is_recommended&quot;: 1}
 8
-{&quot;goods_id&quot;: &quot;3536&quot;, &quot;is_recommended&quot;: 1}
+{&quot;goods_id&quot;: &quot;3600&quot;, &quot;is_recommended&quot;: 1}
 8
-{&quot;goods_id&quot;: &quot;3537&quot;, &quot;is_recommended&quot;: 1}
-[{&quot;goods_id&quot;: &quot;3530&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3531&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3532&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3533&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3534&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3535&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3536&quot;, &quot;is_recommended&quot;: 1},
-{&#x27;topic_id&#x27;: &#x27;229&#x27;, &#x27;goods&#x27;: &#x27;[{&quot;goods_id&quot;: &quot;3530&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3531&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3532&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3533&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3534&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3535&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3536&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3537&quot;, &quot;is_recommended&quot;: 1}]&#x27;}
-{&#x27;topic_id&#x27;: &#x27;229&#x27;, &#x27;goods&#x27;: &#x27;[{&quot;goods_id&quot;: &quot;3530&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3531&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3532&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3533&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3534&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3535&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3536&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3537&quot;, &quot;is_recommended&quot;: 1}]&#x27;}
+{&quot;goods_id&quot;: &quot;3601&quot;, &quot;is_recommended&quot;: 1}
+[{&quot;goods_id&quot;: &quot;3594&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3595&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3596&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3597&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3598&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3599&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3600&quot;, &quot;is_recommended&quot;: 1},
+{&#x27;topic_id&#x27;: &#x27;269&#x27;, &#x27;goods&#x27;: &#x27;[{&quot;goods_id&quot;: &quot;3594&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3595&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3596&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3597&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3598&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3599&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3600&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3601&quot;, &quot;is_recommended&quot;: 1}]&#x27;}
+{&#x27;topic_id&#x27;: &#x27;269&#x27;, &#x27;goods&#x27;: &#x27;[{&quot;goods_id&quot;: &quot;3594&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3595&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3596&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3597&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3598&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3599&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3600&quot;, &quot;is_recommended&quot;: 1},{&quot;goods_id&quot;: &quot;3601&quot;, &quot;is_recommended&quot;: 1}]&#x27;}
 {&#x27;status&#x27;: 200, &#x27;msg&#x27;: &#x27;操作成功&#x27;, &#x27;data&#x27;: 8, &#x27;shop_switch&#x27;: &#x27;0&#x27;}
 <br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_detail.py::TestGoodDetail001::test_status</td>
-          <td class="col-duration">0.37</td>
+          <td class="col-duration">0.16</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -936,7 +1253,7 @@ time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=20, tm_
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_detail.py::TestGoodDetail002::test_name</td>
-          <td class="col-duration">17.63</td>
+          <td class="col-duration">37.47</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -945,7 +1262,7 @@ time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=20, tm_
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_detail.py::TestGoodDetail002::test_status</td>
-          <td class="col-duration">0.05</td>
+          <td class="col-duration">0.03</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -999,7 +1316,7 @@ time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=20, tm_
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_detail.py::TestGoodDetail002::test_pay</td>
-          <td class="col-duration">0.04</td>
+          <td class="col-duration">0.03</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -1008,7 +1325,7 @@ time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=20, tm_
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_detail.py::TestGoodDetail002::test_delivery</td>
-          <td class="col-duration">0.04</td>
+          <td class="col-duration">0.03</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -1017,7 +1334,7 @@ time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=20, tm_
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_detail.py::TestGoodDetail002::test_set_price</td>
-          <td class="col-duration">5.43</td>
+          <td class="col-duration">5.38</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -1044,7 +1361,7 @@ time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=20, tm_
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_detail.py::TestGoodDetail002::test_click_favorite_unlogin</td>
-          <td class="col-duration">2.22</td>
+          <td class="col-duration">2.19</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -1053,7 +1370,7 @@ time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=20, tm_
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_detail.py::TestGoodDetail002::test_click_remind_unlogin</td>
-          <td class="col-duration">2.22</td>
+          <td class="col-duration">2.21</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -1062,7 +1379,7 @@ time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=20, tm_
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_detail.py::TestGoodDetail002::test_click_bid_unlogin</td>
-          <td class="col-duration">2.24</td>
+          <td class="col-duration">2.23</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -1080,7 +1397,7 @@ time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=20, tm_
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_detail.py::TestGoodDetail002::test_click_change_nickname_1</td>
-          <td class="col-duration">2.26</td>
+          <td class="col-duration">2.23</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -1089,7 +1406,7 @@ time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=20, tm_
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_detail.py::TestGoodDetail002::test_nickname</td>
-          <td class="col-duration">0.04</td>
+          <td class="col-duration">0.07</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -1107,7 +1424,7 @@ time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=20, tm_
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_detail.py::TestGoodDetail002::test_minus</td>
-          <td class="col-duration">27.64</td>
+          <td class="col-duration">27.87</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -1116,7 +1433,7 @@ time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=20, tm_
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_detail.py::TestGoodDetail002::test_add</td>
-          <td class="col-duration">24.12</td>
+          <td class="col-duration">23.97</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -1134,109 +1451,6 @@ time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=20, tm_
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_detail.py::TestGoodDetail002::test_alway_ask1</td>
-          <td class="col-duration">1.10</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">test/test_detail.py::TestGoodDetail002::test_read_alway_ask</td>
-          <td class="col-duration">2.52</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_001</td>
-          <td class="col-duration">45.42</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log"> -----------------------------Captured stdout setup------------------------------ <br/>[2] [&quot;picture/wxTj7wm3XN2JkhFZXQCSpiRKRhZx5C.jpeg&quot;] [&quot;thumbnail/fjZac4eFCsxk2Py2z4BiQ4N4fbbC6x.png&quot;]
-{&#x27;topic_id&#x27;: &#x27;[2]&#x27;, &#x27;type&#x27;: 1, &#x27;id&#x27;: 3530, &#x27;category_id&#x27;: 3, &#x27;platform&#x27;: 1, &#x27;begin_time&#x27;: 1639725607, &#x27;end_time&#x27;: 1639812007, &#x27;top_price&#x27;: &#x27;0.00&#x27;, &#x27;name&#x27;: &#x27;拍品1&#x27;, &#x27;delay_time&#x27;: 0, &#x27;shape&#x27;: &#x27;98&#x27;, &#x27;price&#x27;: &#x27;10.00&#x27;, &#x27;retain_price&#x27;: &#x27;10&#x27;, &#x27;seller_name&#x27;: &#x27;大罗&#x27;, &#x27;agreement_no&#x27;: &#x27;a0000152&#x27;, &#x27;create_user&#x27;: &#x27;&#x27;, &#x27;create_date&#x27;: &#x27;&#x27;, &#x27;freight_id&#x27;: 51, &#x27;is_freight&#x27;: 0, &#x27;goods_weight&#x27;: &#x27;0.000&#x27;, &#x27;buyer_service_rate&#x27;: &#x27;10&#x27;, &#x27;content&#x27;: &#x27;&lt;p&gt;1960年第三版人民币壹圆拖拉机狮子号一枚&lt;/p&gt;&#x27;, &#x27;meta&#x27;: &#x27;{&quot;min_price&quot;:&quot;&quot;,&quot;max_price&quot;:&quot;&quot;,&quot;seller_insure_deal&quot;:&quot;1&quot;,&quot;seller_insure_no_deal&quot;:&quot;1&quot;,&quot;service_fee_deal&quot;:&quot;2&quot;,&quot;service_fee_no_deal&quot;:&quot;1&quot;,&quot;production_fee_deal&quot;:&quot;15&quot;,&quot;production_fee_no_deal&quot;:&quot;15&quot;,&quot;safekeeping_fee_deal&quot;:&quot;0&quot;,&quot;safekeeping_fee_no_deal&quot;:&quot;0&quot;,&quot;seller_taxes&quot;:&quot;&quot;,&quot;identify_fee&quot;:&quot;&quot;,&quot;packing_fee&quot;:&quot;&quot;,&quot;texture&quot;:&quot;&quot;,&quot;spec&quot;:&quot;&quot;,&quot;opinion&quot;:&quot;&quot;}&#x27;, &#x27;original_image&#x27;: &#x27;[&quot;picture/wxTj7wm3XN2JkhFZXQCSpiRKRhZx5C.jpeg&quot;]&#x27;, &#x27;images&#x27;: &#x27;[&quot;thumbnail/fjZac4eFCsxk2Py2z4BiQ4N4fbbC6x.png&quot;]&#x27;}
-{&#x27;status&#x27;: 200, &#x27;msg&#x27;: &#x27;操作成功&#x27;, &#x27;data&#x27;: 1, &#x27;shop_switch&#x27;: &#x27;0&#x27;}
-<br/></div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_click_favorite</td>
-          <td class="col-duration">4.11</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_click_remind</td>
-          <td class="col-duration">4.11</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_002</td>
-          <td class="col-duration">1.18</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_003</td>
-          <td class="col-duration">2.36</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>None
-<br/></div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_004</td>
-          <td class="col-duration">2.22</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_005</td>
-          <td class="col-duration">2.25</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_006</td>
-          <td class="col-duration">3.24</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_008</td>
-          <td class="col-duration">1.09</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_009</td>
           <td class="col-duration">1.11</td>
           <td class="col-links"></td></tr>
         <tr>
@@ -1245,7 +1459,46 @@ time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=20, tm_
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_010</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail002::test_read_alway_ask</td>
+          <td class="col-duration">2.64</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_001</td>
+          <td class="col-duration">177.71</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> -----------------------------Captured stdout setup------------------------------ <br/>[2] [&quot;picture/wxTj7wm3XN2JkhFZXQCSpiRKRhZx5C.jpeg&quot;] [&quot;thumbnail/fjZac4eFCsxk2Py2z4BiQ4N4fbbC6x.png&quot;]
+{&#x27;topic_id&#x27;: &#x27;[2]&#x27;, &#x27;type&#x27;: 1, &#x27;id&#x27;: 3594, &#x27;category_id&#x27;: 3, &#x27;platform&#x27;: 1, &#x27;begin_time&#x27;: 1639729783, &#x27;end_time&#x27;: 1639816183, &#x27;top_price&#x27;: &#x27;0.00&#x27;, &#x27;name&#x27;: &#x27;拍品1&#x27;, &#x27;delay_time&#x27;: 0, &#x27;shape&#x27;: &#x27;98&#x27;, &#x27;price&#x27;: &#x27;10.00&#x27;, &#x27;retain_price&#x27;: &#x27;10&#x27;, &#x27;seller_name&#x27;: &#x27;大罗&#x27;, &#x27;agreement_no&#x27;: &#x27;a0000152&#x27;, &#x27;create_user&#x27;: &#x27;&#x27;, &#x27;create_date&#x27;: &#x27;&#x27;, &#x27;freight_id&#x27;: 51, &#x27;is_freight&#x27;: 0, &#x27;goods_weight&#x27;: &#x27;0.000&#x27;, &#x27;buyer_service_rate&#x27;: &#x27;10&#x27;, &#x27;content&#x27;: &#x27;&lt;p&gt;1960年第三版人民币壹圆拖拉机狮子号一枚&lt;/p&gt;&#x27;, &#x27;meta&#x27;: &#x27;{&quot;min_price&quot;:&quot;&quot;,&quot;max_price&quot;:&quot;&quot;,&quot;seller_insure_deal&quot;:&quot;1&quot;,&quot;seller_insure_no_deal&quot;:&quot;1&quot;,&quot;service_fee_deal&quot;:&quot;2&quot;,&quot;service_fee_no_deal&quot;:&quot;1&quot;,&quot;production_fee_deal&quot;:&quot;15&quot;,&quot;production_fee_no_deal&quot;:&quot;15&quot;,&quot;safekeeping_fee_deal&quot;:&quot;0&quot;,&quot;safekeeping_fee_no_deal&quot;:&quot;0&quot;,&quot;seller_taxes&quot;:&quot;&quot;,&quot;identify_fee&quot;:&quot;&quot;,&quot;packing_fee&quot;:&quot;&quot;,&quot;texture&quot;:&quot;&quot;,&quot;spec&quot;:&quot;&quot;,&quot;opinion&quot;:&quot;&quot;}&#x27;, &#x27;original_image&#x27;: &#x27;[&quot;picture/wxTj7wm3XN2JkhFZXQCSpiRKRhZx5C.jpeg&quot;]&#x27;, &#x27;images&#x27;: &#x27;[&quot;thumbnail/fjZac4eFCsxk2Py2z4BiQ4N4fbbC6x.png&quot;]&#x27;}
+{&#x27;status&#x27;: 200, &#x27;msg&#x27;: &#x27;操作成功&#x27;, &#x27;data&#x27;: 1, &#x27;shop_switch&#x27;: &#x27;0&#x27;}
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_click_favorite</td>
+          <td class="col-duration">4.13</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_click_remind</td>
+          <td class="col-duration">4.16</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_002</td>
           <td class="col-duration">1.16</td>
           <td class="col-links"></td></tr>
         <tr>
@@ -1254,8 +1507,45 @@ time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=20, tm_
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_003</td>
+          <td class="col-duration">2.42</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>None
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_008</td>
+          <td class="col-duration">1.14</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_009</td>
+          <td class="col-duration">1.14</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_010</td>
+          <td class="col-duration">1.35</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
           <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_011</td>
-          <td class="col-duration">1.18</td>
+          <td class="col-duration">1.40</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -1264,7 +1554,7 @@ time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=20, tm_
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_012</td>
-          <td class="col-duration">2.35</td>
+          <td class="col-duration">2.33</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -1273,7 +1563,7 @@ time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=20, tm_
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_013</td>
-          <td class="col-duration">0.30</td>
+          <td class="col-duration">0.45</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -1290,7 +1580,7 @@ time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=20, tm_
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_014</td>
-          <td class="col-duration">1.18</td>
+          <td class="col-duration">1.21</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -1299,7 +1589,7 @@ time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=20, tm_
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_015</td>
-          <td class="col-duration">1.25</td>
+          <td class="col-duration">1.46</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -1317,7 +1607,7 @@ time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=20, tm_
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_detail.py::TestGoodDetail003::test_bid_017</td>
-          <td class="col-duration">1.58</td>
+          <td class="col-duration">1.75</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -1334,19 +1624,19 @@ time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=20, tm_
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_detail.py::TestGoodDetail004::test_001</td>
-          <td class="col-duration">97.45</td>
+          <td class="col-duration">162.67</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
             <div class="log"> -----------------------------Captured stdout setup------------------------------ <br/>[2] [&quot;picture/wxTj7wm3XN2JkhFZXQCSpiRKRhZx5C.jpeg&quot;] [&quot;thumbnail/fjZac4eFCsxk2Py2z4BiQ4N4fbbC6x.png&quot;]
-{&#x27;topic_id&#x27;: &#x27;[2]&#x27;, &#x27;type&#x27;: 1, &#x27;id&#x27;: 3531, &#x27;category_id&#x27;: 3, &#x27;platform&#x27;: 1, &#x27;begin_time&#x27;: 1639725833, &#x27;end_time&#x27;: 1639725953, &#x27;top_price&#x27;: &#x27;0.00&#x27;, &#x27;name&#x27;: &#x27;拍品2&#x27;, &#x27;delay_time&#x27;: 0, &#x27;shape&#x27;: &#x27;98&#x27;, &#x27;price&#x27;: &#x27;10.00&#x27;, &#x27;retain_price&#x27;: &#x27;10000&#x27;, &#x27;seller_name&#x27;: &#x27;大罗&#x27;, &#x27;agreement_no&#x27;: &#x27;a0000152&#x27;, &#x27;create_user&#x27;: &#x27;&#x27;, &#x27;create_date&#x27;: &#x27;&#x27;, &#x27;freight_id&#x27;: 51, &#x27;is_freight&#x27;: 0, &#x27;goods_weight&#x27;: &#x27;0.000&#x27;, &#x27;buyer_service_rate&#x27;: &#x27;10&#x27;, &#x27;content&#x27;: &#x27;&lt;p&gt;1960年第三版人民币壹圆拖拉机狮子号一枚&lt;/p&gt;&#x27;, &#x27;meta&#x27;: &#x27;{&quot;min_price&quot;:&quot;&quot;,&quot;max_price&quot;:&quot;&quot;,&quot;seller_insure_deal&quot;:&quot;1&quot;,&quot;seller_insure_no_deal&quot;:&quot;1&quot;,&quot;service_fee_deal&quot;:&quot;2&quot;,&quot;service_fee_no_deal&quot;:&quot;1&quot;,&quot;production_fee_deal&quot;:&quot;15&quot;,&quot;production_fee_no_deal&quot;:&quot;15&quot;,&quot;safekeeping_fee_deal&quot;:&quot;0&quot;,&quot;safekeeping_fee_no_deal&quot;:&quot;0&quot;,&quot;seller_taxes&quot;:&quot;&quot;,&quot;identify_fee&quot;:&quot;&quot;,&quot;packing_fee&quot;:&quot;&quot;,&quot;texture&quot;:&quot;&quot;,&quot;spec&quot;:&quot;&quot;,&quot;opinion&quot;:&quot;&quot;}&#x27;, &#x27;original_image&#x27;: &#x27;[&quot;picture/wxTj7wm3XN2JkhFZXQCSpiRKRhZx5C.jpeg&quot;]&#x27;, &#x27;images&#x27;: &#x27;[&quot;thumbnail/fjZac4eFCsxk2Py2z4BiQ4N4fbbC6x.png&quot;]&#x27;}
+{&#x27;topic_id&#x27;: &#x27;[2]&#x27;, &#x27;type&#x27;: 1, &#x27;id&#x27;: 3595, &#x27;category_id&#x27;: 3, &#x27;platform&#x27;: 1, &#x27;begin_time&#x27;: 1639730276, &#x27;end_time&#x27;: 1639730396, &#x27;top_price&#x27;: &#x27;0.00&#x27;, &#x27;name&#x27;: &#x27;拍品2&#x27;, &#x27;delay_time&#x27;: 0, &#x27;shape&#x27;: &#x27;98&#x27;, &#x27;price&#x27;: &#x27;10.00&#x27;, &#x27;retain_price&#x27;: &#x27;10000&#x27;, &#x27;seller_name&#x27;: &#x27;大罗&#x27;, &#x27;agreement_no&#x27;: &#x27;a0000152&#x27;, &#x27;create_user&#x27;: &#x27;&#x27;, &#x27;create_date&#x27;: &#x27;&#x27;, &#x27;freight_id&#x27;: 51, &#x27;is_freight&#x27;: 0, &#x27;goods_weight&#x27;: &#x27;0.000&#x27;, &#x27;buyer_service_rate&#x27;: &#x27;10&#x27;, &#x27;content&#x27;: &#x27;&lt;p&gt;1960年第三版人民币壹圆拖拉机狮子号一枚&lt;/p&gt;&#x27;, &#x27;meta&#x27;: &#x27;{&quot;min_price&quot;:&quot;&quot;,&quot;max_price&quot;:&quot;&quot;,&quot;seller_insure_deal&quot;:&quot;1&quot;,&quot;seller_insure_no_deal&quot;:&quot;1&quot;,&quot;service_fee_deal&quot;:&quot;2&quot;,&quot;service_fee_no_deal&quot;:&quot;1&quot;,&quot;production_fee_deal&quot;:&quot;15&quot;,&quot;production_fee_no_deal&quot;:&quot;15&quot;,&quot;safekeeping_fee_deal&quot;:&quot;0&quot;,&quot;safekeeping_fee_no_deal&quot;:&quot;0&quot;,&quot;seller_taxes&quot;:&quot;&quot;,&quot;identify_fee&quot;:&quot;&quot;,&quot;packing_fee&quot;:&quot;&quot;,&quot;texture&quot;:&quot;&quot;,&quot;spec&quot;:&quot;&quot;,&quot;opinion&quot;:&quot;&quot;}&#x27;, &#x27;original_image&#x27;: &#x27;[&quot;picture/wxTj7wm3XN2JkhFZXQCSpiRKRhZx5C.jpeg&quot;]&#x27;, &#x27;images&#x27;: &#x27;[&quot;thumbnail/fjZac4eFCsxk2Py2z4BiQ4N4fbbC6x.png&quot;]&#x27;}
 {&#x27;status&#x27;: 200, &#x27;msg&#x27;: &#x27;操作成功&#x27;, &#x27;data&#x27;: 1, &#x27;shop_switch&#x27;: &#x27;0&#x27;}
 <br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_detail.py::TestGoodDetail004::test_002</td>
-          <td class="col-duration">11.35</td>
+          <td class="col-duration">11.36</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -1355,7 +1645,7 @@ time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=20, tm_
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_detail.py::TestGoodDetail004::test_003</td>
-          <td class="col-duration">50.12</td>
+          <td class="col-duration">50.13</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -1364,19 +1654,19 @@ time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=20, tm_
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_detail.py::TestGoodDetail005::test_001</td>
-          <td class="col-duration">96.36</td>
+          <td class="col-duration">97.33</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
             <div class="log"> -----------------------------Captured stdout setup------------------------------ <br/>[2] [&quot;picture/wxTj7wm3XN2JkhFZXQCSpiRKRhZx5C.jpeg&quot;] [&quot;thumbnail/fjZac4eFCsxk2Py2z4BiQ4N4fbbC6x.png&quot;]
-{&#x27;topic_id&#x27;: &#x27;[2]&#x27;, &#x27;type&#x27;: 1, &#x27;id&#x27;: 3532, &#x27;category_id&#x27;: 3, &#x27;platform&#x27;: 1, &#x27;begin_time&#x27;: 1639725994, &#x27;end_time&#x27;: 1639726114, &#x27;top_price&#x27;: &#x27;0.00&#x27;, &#x27;name&#x27;: &#x27;拍品3&#x27;, &#x27;delay_time&#x27;: 0, &#x27;shape&#x27;: &#x27;98&#x27;, &#x27;price&#x27;: &#x27;10.00&#x27;, &#x27;retain_price&#x27;: &#x27;1000&#x27;, &#x27;seller_name&#x27;: &#x27;大罗&#x27;, &#x27;agreement_no&#x27;: &#x27;a0000152&#x27;, &#x27;create_user&#x27;: &#x27;&#x27;, &#x27;create_date&#x27;: &#x27;&#x27;, &#x27;freight_id&#x27;: 51, &#x27;is_freight&#x27;: 0, &#x27;goods_weight&#x27;: &#x27;0.000&#x27;, &#x27;buyer_service_rate&#x27;: &#x27;10&#x27;, &#x27;content&#x27;: &#x27;&lt;p&gt;1960年第三版人民币壹圆拖拉机狮子号一枚&lt;/p&gt;&#x27;, &#x27;meta&#x27;: &#x27;{&quot;min_price&quot;:&quot;&quot;,&quot;max_price&quot;:&quot;&quot;,&quot;seller_insure_deal&quot;:&quot;1&quot;,&quot;seller_insure_no_deal&quot;:&quot;1&quot;,&quot;service_fee_deal&quot;:&quot;2&quot;,&quot;service_fee_no_deal&quot;:&quot;1&quot;,&quot;production_fee_deal&quot;:&quot;15&quot;,&quot;production_fee_no_deal&quot;:&quot;15&quot;,&quot;safekeeping_fee_deal&quot;:&quot;0&quot;,&quot;safekeeping_fee_no_deal&quot;:&quot;0&quot;,&quot;seller_taxes&quot;:&quot;&quot;,&quot;identify_fee&quot;:&quot;&quot;,&quot;packing_fee&quot;:&quot;&quot;,&quot;texture&quot;:&quot;&quot;,&quot;spec&quot;:&quot;&quot;,&quot;opinion&quot;:&quot;&quot;}&#x27;, &#x27;original_image&#x27;: &#x27;[&quot;picture/wxTj7wm3XN2JkhFZXQCSpiRKRhZx5C.jpeg&quot;]&#x27;, &#x27;images&#x27;: &#x27;[&quot;thumbnail/fjZac4eFCsxk2Py2z4BiQ4N4fbbC6x.png&quot;]&#x27;}
+{&#x27;topic_id&#x27;: &#x27;[2]&#x27;, &#x27;type&#x27;: 1, &#x27;id&#x27;: 3596, &#x27;category_id&#x27;: 3, &#x27;platform&#x27;: 1, &#x27;begin_time&#x27;: 1639730470, &#x27;end_time&#x27;: 1639730590, &#x27;top_price&#x27;: &#x27;0.00&#x27;, &#x27;name&#x27;: &#x27;拍品3&#x27;, &#x27;delay_time&#x27;: 0, &#x27;shape&#x27;: &#x27;98&#x27;, &#x27;price&#x27;: &#x27;10.00&#x27;, &#x27;retain_price&#x27;: &#x27;1000&#x27;, &#x27;seller_name&#x27;: &#x27;大罗&#x27;, &#x27;agreement_no&#x27;: &#x27;a0000152&#x27;, &#x27;create_user&#x27;: &#x27;&#x27;, &#x27;create_date&#x27;: &#x27;&#x27;, &#x27;freight_id&#x27;: 51, &#x27;is_freight&#x27;: 0, &#x27;goods_weight&#x27;: &#x27;0.000&#x27;, &#x27;buyer_service_rate&#x27;: &#x27;10&#x27;, &#x27;content&#x27;: &#x27;&lt;p&gt;1960年第三版人民币壹圆拖拉机狮子号一枚&lt;/p&gt;&#x27;, &#x27;meta&#x27;: &#x27;{&quot;min_price&quot;:&quot;&quot;,&quot;max_price&quot;:&quot;&quot;,&quot;seller_insure_deal&quot;:&quot;1&quot;,&quot;seller_insure_no_deal&quot;:&quot;1&quot;,&quot;service_fee_deal&quot;:&quot;2&quot;,&quot;service_fee_no_deal&quot;:&quot;1&quot;,&quot;production_fee_deal&quot;:&quot;15&quot;,&quot;production_fee_no_deal&quot;:&quot;15&quot;,&quot;safekeeping_fee_deal&quot;:&quot;0&quot;,&quot;safekeeping_fee_no_deal&quot;:&quot;0&quot;,&quot;seller_taxes&quot;:&quot;&quot;,&quot;identify_fee&quot;:&quot;&quot;,&quot;packing_fee&quot;:&quot;&quot;,&quot;texture&quot;:&quot;&quot;,&quot;spec&quot;:&quot;&quot;,&quot;opinion&quot;:&quot;&quot;}&#x27;, &#x27;original_image&#x27;: &#x27;[&quot;picture/wxTj7wm3XN2JkhFZXQCSpiRKRhZx5C.jpeg&quot;]&#x27;, &#x27;images&#x27;: &#x27;[&quot;thumbnail/fjZac4eFCsxk2Py2z4BiQ4N4fbbC6x.png&quot;]&#x27;}
 {&#x27;status&#x27;: 200, &#x27;msg&#x27;: &#x27;操作成功&#x27;, &#x27;data&#x27;: 1, &#x27;shop_switch&#x27;: &#x27;0&#x27;}
 <br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_detail.py::TestGoodDetail005::test_002</td>
-          <td class="col-duration">11.40</td>
+          <td class="col-duration">11.35</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -1385,7 +1675,7 @@ time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=20, tm_
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_detail.py::TestGoodDetail005::test_003</td>
-          <td class="col-duration">50.35</td>
+          <td class="col-duration">50.36</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -1402,7 +1692,7 @@ time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=20, tm_
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_mybid.py::TestMybidInfo::test_the_first_goods_info</td>
-          <td class="col-duration">48.54</td>
+          <td class="col-duration">47.49</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -1411,7 +1701,7 @@ time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=20, tm_
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_mybid.py::TestMybidInfo::test_click_list</td>
-          <td class="col-duration">4.46</td>
+          <td class="col-duration">4.41</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -1420,7 +1710,7 @@ time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=20, tm_
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_mybid.py::TestMybidInfo::test_info_of_all_bid</td>
-          <td class="col-duration">1.38</td>
+          <td class="col-duration">1.31</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -1438,7 +1728,7 @@ time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=20, tm_
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_mybid.py::TestMybidInfo::test_info_of_my_favourite</td>
-          <td class="col-duration">1.13</td>
+          <td class="col-duration">1.15</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -1447,7 +1737,7 @@ time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=20, tm_
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_order_detail.py::TestOrderDetail::test_good_info</td>
-          <td class="col-duration">130.05</td>
+          <td class="col-duration">105.75</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -1456,7 +1746,7 @@ time.struct_time(tm_year=2021, tm_mon=12, tm_mday=22, tm_hour=19, tm_min=20, tm_
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test/test_order_detail.py::TestOrderDetail::test_all_to_pay</td>
-          <td class="col-duration">2.43</td>
+          <td class="col-duration">2.40</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">

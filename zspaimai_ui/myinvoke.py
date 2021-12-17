@@ -28,6 +28,7 @@ if __name__ == "__main__":
                  "test/test_detail.py",
                  "test/test_mybid.py",
                  "test/test_order_detail.py",
-                 "--html=reports/中晟在线web端自动化测试报告.html"])
+                 "--html=reports/中晟在线web端自动化测试报告.html",
+                 "--self-contained-html"])
 
 #pytest.main(["test/test_detail.py"], plugins=[MyPlugin()])

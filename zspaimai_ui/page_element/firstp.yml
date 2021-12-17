@@ -58,8 +58,8 @@ ICP: xpath==//div[text()="粤ICP备2021041206号"]
 隐私协议: xpath==//div[@class="login-footer"]//span[text()="《隐私协议》"]
 
 
-更多拍品: xpath==//img[@class="morePrd m-r-7"]
-更多拍品按钮: xpath==//img[@class="morePrd m-r-7"]/../div
+更多拍品: xpath==//*[@id="app"]/div[2]/div[2]/div[3]/div[2]/img #//img[@class="morePrd m-r-7"]
+更多拍品按钮: xpath==//*[@id="app"]/div[2]/div[2]/div[3]/div[2]/div/img #//img[@class="morePrd m-r-7"]/../div
 拍品一: xpath==//img[@alt="热门拍品"]/../div/div[1]/div
 拍品一名称: xpath==//img[@alt="热门拍品"]/../div/div[1]/div[2]
 拍品一价格: xpath==//img[@alt="热门拍品"]/../div/div[1]/div[3]

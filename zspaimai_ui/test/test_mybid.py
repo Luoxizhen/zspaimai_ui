@@ -44,12 +44,13 @@ class TestMybidInfo:
     def test_good_in_my_proxy(self):
         '''验证我的代理页面的第一个拍品信息'''
         info = self.mb.good_in_list("我的代理")
-        assert info == {"good_name":"拍品1","good_status":"进行中","good_price":"￥205.00","good_bid_n":"58次出价","my_status_of_good":"领先"}
+        assert info == {"good_name":"拍品1","good_status":"进行中","good_price":"￥205.00","good_bid_n":"13次出价","my_status_of_good":"领先"}
 
     def test_good_in_my_favourite(self):
         '''验证我的关注页面的第一个拍品信息'''
         info = self.mb.good_in_list("关注")
-        assert info == {"good_name":"拍品1","good_status":"进行中","good_price":"￥205.00","good_bid_n":"58次出价","my_status_of_good":"领先"}
+        assert info == {"good_name":"拍品1","good_status":"进行中","good_price":"￥205.00","good_bid_n":"13次出价","my_status_of_good":"领先"}
+
     def test_good_in_all_bid(self):
         '''验证我的全部竞买页面的第一个拍品信息'''
         info = self.mb.good_in_list("全部竞买")

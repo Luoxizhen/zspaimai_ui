@@ -8,7 +8,7 @@ from page.personal import Personal
 from common.readpagedata import Pagedata
 from interface_test.goods_test import user_bid, good_edit
 from utils import times
-good_info = Pagedata('firstp')['goods']['good1']
+
 user_info = Pagedata('detail')['user1']
 n = user_info['phone']
 p = user_info['password']
@@ -51,14 +51,18 @@ class TestGoodDetail002:
     def test_status(self):
         assert self.dp.collection_status() == "未开始"
     def test_name(self):
+        good_info = Pagedata('firstp')['goods']['good1']
         assert self.dp.collection_name() == good_info['name']
     def test_start_time(self):
+        good_info = Pagedata('firstp')['goods']['good1']
         assert self.dp.start_time() == good_info['begin_time']
     def test_end_time(self):
+        good_info = Pagedata('firstp')['goods']['good1']
         assert self.dp.end_time() == good_info['end_time']
     def test_status(self):
         assert self.dp.collection_status() == "正在拍卖"
     def test_price(self):
+        good_info = Pagedata('firstp')['goods']['good1']
         assert self.dp.collection_price() == "￥"+str(good_info['price'])+".00"
     def test_bid_price(self):
         assert self.dp.bid_price() == '10'
@@ -314,7 +318,7 @@ class TestGoodDetail003:
         time.sleep(3)
         self.dp.refresh()
 
-
+        good_info = Pagedata('firstp')['goods']['good1']
         #self.dp.refresh()
         # print(self.quota)
         quota = int(self.dp.bid_quota())
@@ -368,14 +372,14 @@ class TestGoodDetail003:
         assert "当前代理价￥11.00 (更新)" in self.dp.proxy()
         assert self.dp.my_status() == "代理·领先"
 
-    #@pytest.mark.skip()
+    @pytest.mark.skip("拍品1的详情页页面的关闭代理按钮定位异常")
     def test_bid_004(self):
         '''验证"是否关闭代理"弹窗，否按钮功能'''
         self.dp.close_proxy()
         self.dp.refuse_alert()
         assert "当前代理价￥11.00 (更新)" in self.dp.proxy()
 
-    #@pytest.mark.skip()
+    @pytest.mark.skip("拍品1的详情页页面的关闭代理按钮定位异常")
     def test_bid_005(self):
         '''验证"是否关闭代理"弹窗，是按钮功能'''
         self.dp.close_proxy()
@@ -384,7 +388,7 @@ class TestGoodDetail003:
         quota = Pagedata('detail')['user1']['quota']
         assert self.dp.bid_quota() == str(quota-10)
 
-    #@pytest.mark.skip()
+    @pytest.mark.skip("拍品1的详情页页面的关闭代理按钮定位异常")
     def test_bid_006(self):
         '''验证关闭代理后，重新出价'''
         #self.dp.refresh()

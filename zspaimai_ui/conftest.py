@@ -104,7 +104,8 @@ def add_goods():
     info['time'] = now
     pd.setitem('goods',new_goods_info)
     pd.setitem('info',info)
-#def add_topic():
+@pytest.fixture(scope='session',autouse=True)
+def add_topic():
     '''将首页推荐的专场取消推荐，并创建2个专场，并首页推荐'''
     topic_test.list_unrecommend()
     pd = Pagedata('firstp')
@@ -126,7 +127,8 @@ def add_goods():
     info['topic_ids'] = topic_ids
     pd.setitem('topics', new_topics_info)
     pd.setitem('info', info)
-#def topic_add_goods():
+@pytest.fixture(scope='session',autouse=True)
+def topic_add_goods():
     '''在首页推荐的第一个专场中添加首页推荐的8个拍品'''
     info = Pagedata('firstp')['info']
     good_ids = info['good_ids']
