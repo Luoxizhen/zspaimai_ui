@@ -1,0 +1,825 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=7, IE=9, chrome=1">
+	<meta http-equiv="x-dns-prefetch-control" content="on">
+	<meta name="keywords" content="邮票,集邮,钱币,纸钞,金银币,拍卖">
+	<meta name="description" content="邮票、钱币、纸杂文献专业拍卖平台，实时行情，玩转收藏！">
+	<meta name="author" content="IKKI">
+	<meta name="copyright" content="华宇HuaBid">
+	<title>一口价_邮票、纸币、文献、ASG专区、USG专区_第3页 - 华宇拍卖</title>
+	<link href="http://www.huabid.com/" rel="dns-prefetch">
+
+	<link href="/static/img/favicon.ico" rel="shortcut icon">
+	<link href="/static/css/jquery/jquery-ui-1.8.19.custom.css" type="text/css" rel="stylesheet" />
+<link href="/static/css/style-1639497327323319414.css" type="text/css" rel="stylesheet" />
+
+	<script type="text/javascript" src="/static/js/base-v2-1639497327323319414.js"></script>
+
+	<!--[if lt IE 9]>
+	<script src="/static/js/js/html5.js"></script>
+	<![endif]-->
+</head>
+<!--=== *** 重要：未换行和换行的部分都请保持原状，否则会引起IE浏览器的布局差异！ *** ===-->
+<body>
+<div class="list">
+<header>
+<!-- div style="background-color: yellow; font-size: 14px; padding: 5px 0; font-weight: bold;">尊敬的用户：由于系统升级，400-821-7550电话暂时无法接听。如需帮助请致电021-54670188。给大家造成的不便，敬请谅解。</div -->
+ <div id="topNav">
+	<div class="all fix">
+
+		<ul class="nav fix">
+			<li><a href="http://www.huabid.com/">首页</a></li>
+
+
+			<li><a href="/help/online">帮助中心</a></li>
+			<li style="background-image: url(/static/img/help-jq.gif); background-repeat: no-repeat; width: 80px; background-position: -5px 2px;">&nbsp;</li>
+
+		</ul>
+		<p><strong>400-821-7550</strong>周一至周五 9:30~18:00</p>
+		<div class="bid">
+
+						<a href="/offline/series/forward">现场拍卖<strong>&gt;</strong></a>
+
+		</div>
+		<ul class="icon fix">
+
+
+
+
+
+
+		</ul>
+	</div>
+</div>
+<div class="tips">
+	<div class="all">这里是一些内容</div>
+</div>
+
+<div class="header">
+	<div class="all fix">
+		<h1 id="logo"><a href="http://www.huabid.com">华宇HuaBid</a></h1>
+		<div id="lag" style="width: 60px;">&nbsp;</div>
+		<div id="search">
+			<form method="get" id="searchAuctionsForm" action="/auctionList/search/all/all/all">
+				<input id="autocompleteInput" name="keyword" autocomplete="off" value="" type="search" placeholder="输入拍品编号或名称"><button type="submit">搜索</button>
+				<a style="margin-left: 10px; color: #513C5E;" href="http://www.huabid.com/help/online">帮助中心</a>
+
+			</form>
+		</div>
+		<div class="noLogin hide"><a href="http://www.huabid.com/login" name="login">华宇账号登录</a>丨<a href="http://www.huabid.com/openlogin/alipay/login" name="openlogin" signType="alipay">支付宝快捷登录</a>丨<a href="http://www.huabid.com/regist/newRegister">注册</a></div>
+		<div class="yesLogin">
+
+
+				<label style="margin-right: 10px; font-size: 14px; font-weight: bold;"><a href="http://www.huabid.com/login" name="login">华宇账号登录</a>丨<a href="http://www.huabid.com/openlogin/alipay/login" name="openlogin" signType="alipay">支付宝快捷登录</a>丨<a href="http://www.huabid.com/regist/newRegister">注册</a></label>
+
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+$(function(){
+	var user = '';
+
+
+
+
+
+
+
+	$("div#topNav ul.nav a").hover(
+			function(){
+				$(this).parent("li").addClass("act");
+			},
+			function(){
+				$(this).parent("li").removeClass("act");
+			});
+	$("#autocompleteInput").autocomplete({
+		source: function( request, response ) {
+			$.ajax({
+				url: '/search',
+				dataType: "json",
+				data: {
+					keyword: request.term
+				},
+				cache: false,
+				success: function( data ) {
+					response( $.map( data, function(item, index) {
+						return item.name.substring(0, 14);
+					}));
+				},
+				complete: function(){
+					//$("#autocompleteInput").css("background", "");
+				}
+			});
+		},
+		minLength: 2,
+		search: function(event, ui) {
+			//$("#autocompleteInput").css("background", "white url('/static/img/ui-anim_basic_16x16.gif') right center no-repeat");
+		}
+	});
+	var headStatistic = function(){
+		var param = "favor,hotBid";
+		if(!user||user=='')
+			return;
+		$.Huabid.Admin.statistic(param, function(data){
+			var favorNum = parseInt(data.favor);
+			var hotbidNum = parseInt(data.hotBid);
+			if(favorNum!=0){
+				if(favorNum>99)
+					favorNum = '99+';
+				$("#headMarkedNum").show();
+			}
+			if(hotbidNum!=0){
+				if(hotbidNum>99)
+					hotbidNum = '99+';
+				$("#headHotsNum").show();
+			}
+			$("#headMarkedNum").text(favorNum);
+			$("#headHotsNum").text(hotbidNum);
+		});
+	};
+	headStatistic();
+	$("#searchAuctionsForm").submit(function(){
+		searchKey = $("#autocompleteInput");
+		if($.trim(searchKey.val())==''){
+//			$(this).append("<em style='float: left;'>请输入查询关键字</em>");
+			searchKey.focus();
+			return false;
+		}
+		return true;
+	});
+	var siteAccessManage = function(){
+		if($.Huabid.base.mainlandSite()){
+			// $("#topNav").find("div.bid").prepend('<a class="hkNewa" href="http://www.huabid.com.hk">香港站<strong>&gt;</strong></a>');
+		}else{
+			$("#topNav").find("div.bid").prepend('<a class="hkNewa" href="http://www.huabid.com">上海站<strong>&gt;</strong></a>');
+		}
+		$(".hkNewa").hover(function(){
+				$(this).css("backgroundColor", "#e46421");
+			}, function(){
+				$(this).css("backgroundColor", "");
+			});
+	};
+	siteAccessManage();
+});
+</script>
+	<nav id="onlineNav">
+		<div class="all fix">
+			<div class="detector">
+				<span class="stamp"></span><span class="banknote"></span><span class="ancientbooks"></span><span class="stone"></span>
+
+
+
+
+			</div>
+			<ul class="fix">
+
+				<li class=""><a href="http://www.huabid.com/auctionList/all/bid/selling">竞拍</a></li>
+				<li class="act"><a href="http://www.huabid.com/auctionList/all/fixedPrice/selling">一口价</a></li>
+				<li class="" ><a href="http://www.huabid.com/auctionList/all/all/preview">预展</a></li>
+				<li class="" ><a href="http://www.huabid.com/auctionList/all/all/history">成交记录</a></li>
+			</ul>
+		</div>
+	</nav>
+</header>
+<script type="text/javascript">
+$(function(){
+	$("select[name='catSelect']").change(function(){
+		window.location = $(this).val();
+	});
+});
+</script>
+<div class="all">
+	<section class="fix">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<aside>
+
+
+
+
+
+
+<style>
+<!--
+.tree li li a.on {
+	background: none repeat scroll 0 0 #7B4D7B;
+	color: #FFFFFF;
+}
+-->
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				<div class="tree">
+					<ul>
+						<li><a style="background: none repeat scroll 0 0 white;" class="fin sub" href="javascript:void(0);"><strong>请选择版块：</strong></a>
+							<ul>
+								<li><a class="act fin" href="/auctionList/all/fixedPrice/selling?keyword=#p1">全部</a></li>
+								<li><a class="stamp" href="/auctionList/stamps/fixedPrice/selling?keyword=#p1">邮品</a></li>
+								<li><a class="banknote" href="/auctionList/currency/fixedPrice/selling?keyword=#p1">纸币</a></li>
+								<li><a class="ancientbooks" href="/auctionList/books/fixedPrice/selling?keyword=#p1">文献</a></li>
+								<li><a class="" href="/auctionList/asg/fixedPrice/selling?keyword=#p1">ASG专区</a></li>
+								<li><a class="treasure" href="/auctionList/treasure/fixedPrice/selling?keyword=#p1">USG专区</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+
+
+
+
+
+
+
+		<p style="border: 1px solid #C9C9CA; margin-top: 6px;"><a href="http://www.huabid.com/intro/newFeatures/bargainPrice" target="_blank"><img src="/static/img/ykj-teach.jpg" /></a></p>
+
+
+
+
+
+<script type="text/javascript">
+$(function(){
+	$(".tree a.act").click(function(){
+		$(this).attr('href', 'javascript:void(0);');
+		$(this).next().slideToggle();
+		$(this).toggleClass("act_close");
+	});
+	// 探头图片
+	$("a.stamp").hover(
+		function(){
+			$("span.stamp").animate({top:0},500);
+			$("span.stamp").css("z-index", "5");
+		},
+		function(){
+			$("span.stamp").animate({top:20},500);
+			$("span.stamp").css("z-index", "4");
+		}
+	);
+	$("a.banknote").hover(
+		function(){
+			$("span.banknote").animate({top:0},500);
+			$("span.banknote").css("z-index", "5");
+		},
+		function(){
+			$("span.banknote").animate({top:20},500);
+			$("span.banknote").css("z-index", "3");
+		}
+	);
+	$("a.ancientbooks").hover(
+		function(){
+			$("span.ancientbooks").animate({top:0},500);
+			$("span.ancientbooks").css("z-index", "5");
+		},
+		function(){
+			$("span.ancientbooks").animate({top:20},500);
+			$("span.ancientbooks").css("z-index", "2");
+		}
+	);
+	$("a.stone").hover(
+		function(){
+			$("span.stone").animate({top:0},500);
+			$("span.stone").css("z-index", "5");
+		},
+		function(){
+			$("span.stone").animate({top:20},500);
+			$("span.stone").css("z-index", "1");
+		}
+	);
+});
+</script>
+
+
+		</aside>
+        <article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<div class="tools fix">
+		<form name="auctionListOption"><p class="filter" style="margin-left: 0px;"><em style="margin-left: 0px; margin-right: 0px;">场次</em><select id="topicIdSelect" style="margin-left: 1px; margin-right: 0px;"><option value="">不限</option><option  value="10000" sid="10000">天天拍</option></select><em style="margin-right: 0px; margin-left: 19px;">品相</em><select id="quantityIdSelect" style="margin-left: 2px; margin-right: 0px;"><option value="">不限</option></select></p></form>
+		<p class="order" style="margin-left: 19px;">排序<span style="margin-left: 1px;"><a class="price desc " href="/auctionList/all/fixedPrice/selling?showType=&orderBy=1&topicId=&quantityId=&p1=0000000&p2=&p3=&p4=&p5=&p6=&keyword=">价格</a><a class="attn desc " href="/auctionList/all/fixedPrice/selling?showType=&orderBy=3&topicId=&quantityId=&p1=0000000&p2=&p3=&p4=&p5=&p6=&keyword=">关注</a><a class="time desc " href="/auctionList/all/fixedPrice/selling?showType=&orderBy=5&topicId=&quantityId=&p1=0000000&p2=&p3=&p4=&p5=&p6=&keyword=">时间</a></span></p>
+		<p class="style" style="margin-left: 19px; float: left;">风格<span style="margin-left: 1px;"><a name="p1" class="icon_pt " href="/auctionList/all/fixedPrice/selling?showType=1&orderBy=&topicId=&quantityId=&p1=0000000&p2=&p3=&p4=&p5=&p6=&keyword=">&nbsp;</a><a class="icon_t " href="/auctionList/all/fixedPrice/selling?showType=2&orderBy=&topicId=&quantityId=&p1=0000000&p2=&p3=&p4=&p5=&p6=&keyword=">&nbsp;</a><a class="icon_p act" href="/auctionList/all/fixedPrice/selling?showType=3&orderBy=&topicId=&quantityId=&p1=0000000&p2=&p3=&p4=&p5=&p6=&keyword=">&nbsp;</a></span></p>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="tile fix" style="display: block">
+
+
+	<li class="">
+		<div><table><tr><td><a href="http://www.huabid.com/auctions/723051" target="_blank"><img src="http://huaimg.com/items/10001/47802/47802-15-001.jpg@!medium" alt="拍品图片"></a></td></tr></table></div>
+		<p><a title="第四版人民币1990年版100元一枚，冠号 SH95944200，公博评级66 EPQ" href="http://www.huabid.com/auctions/723051" target="_blank">第四版人民币1990年...</a></p>
+		<p>品相：评级币<br>当前价：¥200.00<a href="javascript:void(0);" class="fav " vlaue="723051"></a></p>
+
+	</li>
+
+
+	<li class="">
+		<div><table><tr><td><a href="http://www.huabid.com/auctions/723047" target="_blank"><img src="http://huaimg.com/items/10001/47802/47802-11-001.jpg@!medium" alt="拍品图片"></a></td></tr></table></div>
+		<p><a title="第四版人民币1990年版100元一枚，冠号 XJ70964859，公博评级64" href="http://www.huabid.com/auctions/723047" target="_blank">第四版人民币1990年...</a></p>
+		<p>品相：评级币<br>当前价：¥150.00<a href="javascript:void(0);" class="fav " vlaue="723047"></a></p>
+
+	</li>
+
+
+	<li class="">
+		<div><table><tr><td><a href="http://www.huabid.com/auctions/723046" target="_blank"><img src="http://huaimg.com/items/10001/47802/47802-10-001.jpg@!medium" alt="拍品图片"></a></td></tr></table></div>
+		<p><a title="第四版人民币1990年版100元一枚，冠号 YO95034081，公博评级64" href="http://www.huabid.com/auctions/723046" target="_blank">第四版人民币1990年...</a></p>
+		<p>品相：评级币<br>当前价：¥150.00<a href="javascript:void(0);" class="fav " vlaue="723046"></a></p>
+
+	</li>
+
+
+	<li class="last">
+		<div><table><tr><td><a href="http://www.huabid.com/auctions/723045" target="_blank"><img src="http://huaimg.com/items/10001/47802/47802-09-001.jpg@!medium" alt="拍品图片"></a></td></tr></table></div>
+		<p><a title="第四版人民币1990年版100元一枚，冠号 YO95034082，公博评级64" href="http://www.huabid.com/auctions/723045" target="_blank">第四版人民币1990年...</a></p>
+		<p>品相：评级币<br>当前价：¥150.00<a href="javascript:void(0);" class="fav " vlaue="723045"></a></p>
+
+	</li>
+
+
+	<li class="">
+		<div><table><tr><td><a href="http://www.huabid.com/auctions/723044" target="_blank"><img src="http://huaimg.com/items/10001/47802/47802-08-001.jpg@!medium" alt="拍品图片"></a></td></tr></table></div>
+		<p><a title="第四版人民币1990年版100元一枚，冠号 XJ70964858，公博评级64" href="http://www.huabid.com/auctions/723044" target="_blank">第四版人民币1990年...</a></p>
+		<p>品相：评级币<br>当前价：¥150.00<a href="javascript:void(0);" class="fav " vlaue="723044"></a></p>
+
+	</li>
+
+
+	<li class="">
+		<div><table><tr><td><a href="http://www.huabid.com/auctions/723043" target="_blank"><img src="http://huaimg.com/items/10001/47802/47802-07-001.jpg@!medium" alt="拍品图片"></a></td></tr></table></div>
+		<p><a title="第四版人民币1990年版100元一枚，冠号 SH78659321，公博评级64" href="http://www.huabid.com/auctions/723043" target="_blank">第四版人民币1990年...</a></p>
+		<p>品相：评级币<br>当前价：¥150.00<a href="javascript:void(0);" class="fav " vlaue="723043"></a></p>
+
+	</li>
+
+
+	<li class="">
+		<div><table><tr><td><a href="http://www.huabid.com/auctions/723042" target="_blank"><img src="http://huaimg.com/items/10001/47802/47802-06-001.jpg@!medium" alt="拍品图片"></a></td></tr></table></div>
+		<p><a title="第四版人民币1990年版100元一枚，冠号 YO95034089，公博评级65 EPQ" href="http://www.huabid.com/auctions/723042" target="_blank">第四版人民币1990年...</a></p>
+		<p>品相：评级币<br>当前价：¥180.00<a href="javascript:void(0);" class="fav " vlaue="723042"></a></p>
+
+	</li>
+
+
+	<li class="last">
+		<div><table><tr><td><a href="http://www.huabid.com/auctions/723041" target="_blank"><img src="http://huaimg.com/items/10001/47802/47802-05-001.jpg@!medium" alt="拍品图片"></a></td></tr></table></div>
+		<p><a title="第四版人民币1990年版100元一枚，冠号 YO95034088，公博评级65 EPQ" href="http://www.huabid.com/auctions/723041" target="_blank">第四版人民币1990年...</a></p>
+		<p>品相：评级币<br>当前价：¥180.00<a href="javascript:void(0);" class="fav " vlaue="723041"></a></p>
+
+	</li>
+
+
+	<li class="">
+		<div><table><tr><td><a href="http://www.huabid.com/auctions/723040" target="_blank"><img src="http://huaimg.com/items/10001/47802/47802-04-001.jpg@!medium" alt="拍品图片"></a></td></tr></table></div>
+		<p><a title="第四版人民币1990年版100元一枚，冠号 YO95034087，公博评级65 EPQ" href="http://www.huabid.com/auctions/723040" target="_blank">第四版人民币1990年...</a></p>
+		<p>品相：评级币<br>当前价：¥180.00<a href="javascript:void(0);" class="fav " vlaue="723040"></a></p>
+
+	</li>
+
+
+	<li class="">
+		<div><table><tr><td><a href="http://www.huabid.com/auctions/723038" target="_blank"><img src="http://huaimg.com/items/10001/47802/47802-02-001.jpg@!medium" alt="拍品图片"></a></td></tr></table></div>
+		<p><a title="第四版人民币1990年版100元一枚，冠号 YO9534084，公博评级65 EPQ" href="http://www.huabid.com/auctions/723038" target="_blank">第四版人民币1990年...</a></p>
+		<p>品相：评级币<br>当前价：¥180.00<a href="javascript:void(0);" class="fav " vlaue="723038"></a></p>
+
+	</li>
+
+
+	<li class="">
+		<div><table><tr><td><a href="http://www.huabid.com/auctions/723037" target="_blank"><img src="http://huaimg.com/items/10001/47802/47802-01-001.jpg@!medium" alt="拍品图片"></a></td></tr></table></div>
+		<p><a title="第四版人民币1990年版100元一枚，冠号 YO95034086，公博评级65 EPQ" href="http://www.huabid.com/auctions/723037" target="_blank">第四版人民币1990年...</a></p>
+		<p>品相：评级币<br>当前价：¥180.00<a href="javascript:void(0);" class="fav " vlaue="723037"></a></p>
+
+	</li>
+
+
+	<li class="last">
+		<div><table><tr><td><a href="http://www.huabid.com/auctions/722215" target="_blank"><img src="http://huaimg.com/items/10001/47674/47674-06-009.jpg@!medium" alt="拍品图片"></a></td></tr></table></div>
+		<p><a title="2018年中国人民银行人民币发行70周年纪念钞伍拾圆1枚（评级限量封装、首日发行、带包装、PCGS 68OPQ）" href="http://www.huabid.com/auctions/722215" target="_blank">2018年中国人民银行...</a></p>
+		<p>品相：评级币<br>当前价：¥300.00<a href="javascript:void(0);" class="fav " vlaue="722215"></a></p>
+
+	</li>
+
+
+	<li class="">
+		<div><table><tr><td><a href="http://www.huabid.com/auctions/722214" target="_blank"><img src="http://huaimg.com/items/10001/47674/47674-05-006.jpg@!medium" alt="拍品图片"></a></td></tr></table></div>
+		<p><a title="2018年中国人民银行人民币发行70周年纪念钞伍拾圆1枚（评级限量封装、首日发行、带包装、PCGS 68OPQ）" href="http://www.huabid.com/auctions/722214" target="_blank">2018年中国人民银行...</a></p>
+		<p>品相：评级币<br>当前价：¥300.00<a href="javascript:void(0);" class="fav " vlaue="722214"></a></p>
+
+	</li>
+
+
+	<li class="">
+		<div><table><tr><td><a href="http://www.huabid.com/auctions/722213" target="_blank"><img src="http://huaimg.com/items/10001/47674/47674-04-002.jpg@!medium" alt="拍品图片"></a></td></tr></table></div>
+		<p><a title="2018年中国人民银行人民币发行70周年纪念钞伍拾圆1枚（评级限量封装、首日发行、带包装、PCGS 68OPQ）" href="http://www.huabid.com/auctions/722213" target="_blank">2018年中国人民银行...</a></p>
+		<p>品相：评级币<br>当前价：¥300.00<a href="javascript:void(0);" class="fav " vlaue="722213"></a></p>
+
+	</li>
+
+
+	<li class="">
+		<div><table><tr><td><a href="http://www.huabid.com/auctions/722212" target="_blank"><img src="http://huaimg.com/items/10001/47674/47674-03-001.jpg@!medium" alt="拍品图片"></a></td></tr></table></div>
+		<p><a title="2018年中国人民银行人民币发行70周年纪念钞伍拾圆1枚（评级限量封装、首日发行、PCGS 67OPQ）" href="http://www.huabid.com/auctions/722212" target="_blank">2018年中国人民银行...</a></p>
+		<p>品相：评级币<br>当前价：¥250.00<a href="javascript:void(0);" class="fav " vlaue="722212"></a></p>
+
+	</li>
+
+
+	<li class="last">
+		<div><table><tr><td><a href="http://www.huabid.com/auctions/722209" target="_blank"><img src="http://huaimg.com/items/10001/47674/47674-02-001.jpg@!medium" alt="拍品图片"></a></td></tr></table></div>
+		<p><a title="1950年重慶寄東川南溫泉掛號封：聚興誠商業銀行重慶分行中式封貼長青加蓋改作300元/西南區進軍圖100元4方連，銷重慶1950.1.5戳，經重慶銷卅九.一月五日戳掛號寄南溫泉，有東川南溫泉卅九.一月六日落地戳。重慶、東川卅九年戳少見" href="http://www.huabid.com/auctions/722209" target="_blank">1950年重慶寄東川南...</a></p>
+		<p>品相：不定等级<br>当前价：¥3800.00<a href="javascript:void(0);" class="fav " vlaue="722209"></a></p>
+
+	</li>
+
+
+	<li class="">
+		<div><table><tr><td><a href="http://www.huabid.com/auctions/722207" target="_blank"><img src="http://huaimg.com/items/10001/47674/47674-01-001.jpg@!medium" alt="拍品图片"></a></td></tr></table></div>
+		<p><a title="1919年沙面寄法國雙掛號封：西式封貼北京一版帆船2分、3分、5分、6分、7分、8分各1枚，銷沙面1919.APR.16英漢戳，經美國銷舊金山1919.5.17戳及紐約1919.5.22戳雙掛號寄法國" href="http://www.huabid.com/auctions/722207" target="_blank">1919年沙面寄法國雙...</a></p>
+		<p>品相：不定等级<br>当前价：¥1000.00<a href="javascript:void(0);" class="fav " vlaue="722207"></a></p>
+
+	</li>
+
+
+	<li class="">
+		<div><table><tr><td><a href="http://www.huabid.com/auctions/721957" target="_blank"><img src="http://huaimg.com/items/10001/47711/47711-13-023.jpg@!medium" alt="拍品图片"></a></td></tr></table></div>
+		<p><a title="1909年加州舊金山中國城之中文國際電話交換局，美國印製版。舊金山中國城太平洋電話電報公司大樓創立於1909年，以中國傳統建築樣式建造。舊金山中國城太平洋電話電報公司為當時唯一一家在海外經營中文國際電話交換功能的公司。USG 真品" href="http://www.huabid.com/auctions/721957" target="_blank">1909年加州舊金山中...</a></p>
+		<p>品相：评级票<br>当前价：¥200.00<a href="javascript:void(0);" class="fav " vlaue="721957"></a></p>
+
+	</li>
+
+
+	<li class="">
+		<div><table><tr><td><a href="http://www.huabid.com/auctions/721956" target="_blank"><img src="http://huaimg.com/items/10001/47711/47711-12-021.jpg@!medium" alt="拍品图片"></a></td></tr></table></div>
+		<p><a title="清代黑白風景明信片北京露天茶店，國外印製版。中國人發現並利用茶，據說始於神農時代。作為開門七件事（柴米油鹽醬醋茶）之一，飲茶在中國是非常普遍的。茶的精神滲透了宮廷和社會，深入中國的詩詞、繪畫、書法、宗教、醫學。USG 真品" href="http://www.huabid.com/auctions/721956" target="_blank">清代黑白風景明信片...</a></p>
+		<p>品相：评级票<br>当前价：¥300.00<a href="javascript:void(0);" class="fav " vlaue="721956"></a></p>
+
+	</li>
+
+
+	<li class="last">
+		<div><table><tr><td><a href="http://www.huabid.com/auctions/721955" target="_blank"><img src="http://huaimg.com/items/10001/47711/47711-11-025.jpg@!medium" alt="拍品图片"></a></td></tr></table></div>
+		<p><a title="清代黑白風景明信片北京古玩店，國外印製版。古玩，是人類文明和歷史的縮影，融合了歷史學、方志學、金石學、博物學、鑒定學及科技史學等知識內涵。經歷無數朝代起伏變遷，藏玩之風依然不衰，甚而更熱。USG 真品" href="http://www.huabid.com/auctions/721955" target="_blank">清代黑白風景明信片...</a></p>
+		<p>品相：评级票<br>当前价：¥300.00<a href="javascript:void(0);" class="fav " vlaue="721955"></a></p>
+
+	</li>
+
+</ul>
+
+
+<script type="text/javascript">
+$(function(){
+	$(".first a").hover(
+		function(event){
+			var tooltip = $("<div id='tooltip' class='preview' style='display: block'><img src='" + $(this).find('img').attr('src').replace('thumb', 'large') + "' alt='拍品图片加载中...'/><\/div>");
+			$(this).prepend(tooltip);
+			var imgH = $(this).find('img:last').height();
+			var imgW = $(this).find('img:last').width();
+			var H, W;
+			if (imgH / imgW >= 1) {
+				H = 400;
+				W = H * imgW / imgH;
+			} else {
+				W = 400;
+				H = W * imgH / imgW;
+			}
+			var positiony = event.clientY,
+				//clientHeight = window.screen.height,
+				clientHeight = document.documentElement.clientHeight;
+				//clientHeight = window.innerHeight,
+				//preDiv = $(this).find(".preview"),
+				preImgHeight = parseInt(H),
+				interval = (clientHeight-positiony)-preImgHeight;
+
+			if(interval<0)
+				$("#tooltip").css("marginTop",interval+"px");
+			else
+				$("#tooltip").css("marginTop","0px");
+			//$("#tooltip").show();
+		},
+		function(){
+			//$(this).find(".preview").hide();
+			$("#tooltip").remove();
+		}
+	);
+	var showType2 = false;
+	if(showType2) $("td").css("height","auto");
+});
+</script>
+<script type="text/javascript">
+	$(function(){
+		var favSign = function(){
+			if($("a.icon_t").hasClass("act")){
+				if($.browser.msie && $.browser.version < 9){
+					$("a.fav").css({margin:"-25px 2px 0 0"});
+					$("a.fav").parent("td").css({width:"150"});
+				}else{
+					$("a.fav").css({margin:"-5px 2px 0 0"});
+				}
+				$(".list table td").css({padding:"10px 5px"});
+			}
+			if($("a.icon_pt").hasClass("act")){
+				if($.browser.msie && $.browser.version < 9){
+					$("a.fav").css({margin:"-52px 2px 0 0"});
+				}else{
+					$("a.fav").css({margin:"-32px 2px 0 0"});
+				}
+			}
+			if($("a.icon_p").hasClass("act")){
+				if($.browser.msie && $.browser.version < 9){
+					$("a.fav").css({margin:"-35px 2px 0 0"});
+				}else{
+					$("a.fav").css({margin:"-15px 2px 0 0"});
+				}
+			}
+		};
+		$("a.fav").parent("td").parent("tr").hover(
+				function(){
+					favHoverOn($(this).find("td").last().find("a[vlaue]"));
+				},
+				function(){
+					favHoverOut($(this).find("td").last().find("a[vlaue]"));
+				}
+			);
+		$("a.fav").parent("p").parent("li").hover(
+				function(){
+					favHoverOn($(this).find("p").find("a[vlaue]"));
+				},
+				function(){
+					favHoverOut($(this).find("p").find("a[vlaue]"));
+				}
+			);
+		var favHoverOn = function(favHref){
+			if(favHref.hasClass("faved")||favHref.hasClass("favedBig")){
+				favHref.removeClass().addClass("favBig favedBig");
+				favHref.attr("title","取消关注");
+			}else{
+				favHref.removeClass().addClass("favBig");
+				favHref.attr("title","添加关注");
+			}
+		};
+		var favHoverOut = function(favHref){
+			if(favHref.hasClass("faved")||favHref.hasClass("favedBig")){
+				favHref.removeClass().addClass("fav faved");
+				favHref.attr("title","取消关注");
+			}else{
+				favHref.removeClass().addClass("fav");
+				favHref.attr("title","添加关注");
+			}
+		};
+		$("a.fav").click(function(){
+			var signHref = $(this), operate = (signHref.attr("class").indexOf("faved")==-1);
+			$.Huabid.AuctionMark(signHref.attr("vlaue"),operate?"mark":"cancel",function(){
+				if(operate){
+					if(signHref.attr("class").indexOf("Big")!=-1)
+						signHref.addClass("favedBig");
+					else
+						signHref.addClass("faved");
+				}else{
+					if(signHref.attr("class").indexOf("Big")!=-1)
+						signHref.removeClass("favedBig");
+					else
+						signHref.removeClass("faved");
+				}
+			});
+		});
+		favSign();
+	});
+</script>
+		</article>
+		<div class="page">
+		<a pageNo="1" href="/auctionList/all/fixedPrice/selling?pageNo=1">1</a>
+		<a pageNo="2" href="/auctionList/all/fixedPrice/selling?pageNo=2">2</a>
+
+		<em>3</em>
+		<a pageNo="4" href="/auctionList/all/fixedPrice/selling?pageNo=4">4</a>
+		<em>…</em>
+
+		<a pageNo="10" href="/auctionList/all/fixedPrice/selling?pageNo=10">10</a>
+		<a pageNo="11" href="/auctionList/all/fixedPrice/selling?pageNo=11">11</a>
+第&nbsp;<input class="text" id="pagenationInput" type="text" onkeypress="return (/[\d]/.test(String.fromCharCode(event.keyCode|| event.charCode)) || (event.keyCode|| event.charCode)==8) || (event.keyCode==37) || (event.keyCode==39)" autocomplete="off">&nbsp;页&nbsp;<button id="pageRedirectBtn" type="submit">跳转</button>
+	<a pageNo="2" href="/auctionList/all/fixedPrice/selling?pageNo=2" >&lt; 上一页</a>
+	<a pageNo="4" href="/auctionList/all/fixedPrice/selling?pageNo=4" >下一页 &gt;</a>
+</div>
+<script type="text/javascript">
+var totalPage = 11;
+var url = "/auctionList/all/fixedPrice/selling?pageNo=";
+$("#pageRedirectBtn").click(function(){
+	if(totalPage <= 1){
+		return false;
+	}
+	var value = $(this).prev().val();
+	if($.isNaN(value) || value > totalPage){
+		value = 3;
+	}
+	window.location = url + value;
+});
+$("#pagenationInput").keypress(function(event){
+	var code = (event.keyCode ? event.keyCode : event.which);
+	if(code == 13){
+		$(this).next().trigger('click');
+		return false;
+	}
+});
+</script>
+
+	</section>
+</div>
+<script type="text/javascript" src="/static/js/main-v3-1639497327323319414.js"></script>
+
+
+
+<style>
+footer div.zhengxin {
+	position: absolute; margin-left: 890px; margin-top: -59px;
+}
+footer div.zhengxin a {
+	display: block;
+    width: 89px;
+    height: 36px;
+    background-image: url('/static/img/zhengxin-1.png');
+}
+footer div.zhengxin a:hover {
+	background-image: url('/static/img/zhengxin-0.png');
+}
+</style>
+<footer>
+	<div class="all">
+		<div class="footer"><a href="/intro/about" target="_blank">关于我们</a><a href="/intro/salesMan" target="_blank">管理及业务团队</a><a href="/help/online" target="_blank">帮助中心</a><a href="/regist/conditions" target="_blank">服务条款</a><a href="/intro/contact" target="_blank">联系我们</a><a href="/intro/address" target="_blank">交通指南</a><!--a href="/intro/hr" target="_blank">诚聘英才</a --><a href="/intro/link" target="_blank">友情链接</a></div>
+		<address style="border-bottom: 0 none;">客户服务热线：400-821-7550&emsp;Copyright &copy; HuaBid 2012-2015 • All rights reserved • <a target="_blank" href="http://beian.miit.gov.cn">沪ICP备11050421</a></address>
+		<div style="position: absolute;margin-left: 830px;margin-top: -59px;">
+			<a href="http://wap.scjgj.sh.gov.cn/businessCheck/verifKey.do?showType=extShow&serial=9031000020171122142258000002195710-SAIC_SHOW_310000-20190703165346721620&signData=MEUCIQCFtgX1mN36ejPY6RjkGs5ml/Ro/tKzxOPWqRTGrD58ewIgfAv5uGtzpJtJC+wiEG23ZGwEr763kNPyxsowitKVaW0=" target="_blank"><img src="http://huaimg.com/liangzhao.jpg" style="height: 40px;"></a>
+		</div>
+		<div class="zhengxin"><a target="_blank" href="http://www.zx110.org/"></a></div>
+		</div>
+</footer>
+<script type="text/javascript">
+	$(function(){
+		var article = $("article");
+		article.css("min-height", $("div.tree").height()-50);
+	});
+</script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?e0dd1ef7183706c0e3da698a64d63779";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+</div>
+</body>
+</html>
+<script type="text/javascript" src="/static/js/v3/salesPromotion.js"></script>
+<script>
+$(function(){
+	$("form[name='auctionListOption'] select").change(function(){
+		var topicId = $("#topicIdSelect").val();
+		var quantityId = $("#quantityIdSelect").val();
+		var linkCat = "all", linkType = "fixedPrice", linkStatus = "selling";
+		// var site = $.Huabid.base.existsDomain($($("#topicIdSelect").find("option")[$("#topicIdSelect")[0].selectedIndex]).attr("sid"));
+        var site = "http://www.huabid.com";
+		// if(acrossing(location.hostname, site)&&!confirm("本专场在香港站经营，是否进入香港站？")) return false;
+		window.location = site+"/auctionList/"+linkCat+"/"+linkType+"/"+linkStatus+"?showType=&orderBy=&topicId=" + topicId + "&quantityId=" + quantityId + "&p1=0000000&p2=&p3=&p4=&p5=&p6=&keyword=";
+		return false;
+	});
+	//$("div.page a[href]").each(function(){
+	//	$(this).attr("href", $(this).attr("href") + "#p1");
+	//});
+	$("a[name=gotoHk]").click(function(){
+        var site = "http://www.huabid.com";
+		var quantityId = $("#quantityIdSelect").val();
+		var topicId = $(this).attr("value");
+		// if(acrossing(location.hostname, site)&&!confirm("本专场在香港站经营，是否进入香港站？")) return false;
+		window.location = site+"/auctionList/all/fixedPrice/selling?showType=&orderBy=&topicId=" + topicId + "&quantityId=" + quantityId + "&p1=0000000&p2=&p3=&p4=&p5=&p6=&keyword=";
+	});
+	var acrossing = function(mainlandSite, targetSite){
+		if(!mainlandSite||!targetSite) return false;
+		return mainlandSite.indexOf(".com")!=-1 && mainlandSite.indexOf(".com.hk")==-1 && targetSite.indexOf(".com.hk")!=-1;
+	};
+});
+</script>
+<script type="text/javascript">
+$(function(){
+	var goTopEle = $('<a class="goTop" href="javascript:void(0);" title="回到顶部"></a>').appendTo($("article"));
+	function goTopFun(){
+		var st = $(document).scrollTop();
+		(st > 100)? goTopEle.fadeIn(1000): goTopEle.fadeOut(1000);
+	}
+	var gridResizeTimer;
+	$(window).resize(function() {
+		clearTimeout(gridResizeTimer);
+		gridResizeTimer = setTimeout(goTopFun, 10);
+	});
+	goTopFun();
+	goTopEle.click(function() {
+		$("html, body").animate({ scrollTop: 0 }, 500);
+	}),
+	$(window).bind("scroll", goTopFun);
+});
+</script>
+<script type="text/javascript">
+$(function(){
+	var aids = "";
+	$("a.fav").each(function(){
+		aids += $(this).attr("vlaue")+",";
+	});
+	$.Huabid.SalesPromotion.drawStyle(aids, function(retAids){
+		if(retAids&&retAids!=""){
+			retAids = retAids.split(",");
+			aids = aids.split(",");
+			for(var taid in retAids){
+				for(var said in aids){
+					if(retAids[taid] == aids[said]){
+						drawStyle(aids[said]);
+					}
+				}
+			}
+			iconBinds();
+		}
+	});
+	var drawStyle = function(aid){
+		$("a.fav[vlaue="+aid+"]").parents("tr").find("td:first-child").prepend("<div style=\"position: absolute;margin: -9px 0 0 -19px;\"><img name=\"salesPromotion\" src=\"/static/img/cuxiao_little2.png\"/></div>");
+		$("a.fav[vlaue="+aid+"]").parents("li").prepend("<div style=\"position: absolute;margin: -7px 0 0 -7px;\"><img name=\"salesPromotion\" src=\"/static/img/cuxiao_little.png\"/></div>");
+	};
+	var iconBinds = function(){
+		$("img[name=salesPromotion]").each(function(){
+			$(this).css("cursor", "pointer");
+			$(this).attr("title", "佣金优惠活动，详情点击");
+			$(this).click(function(){
+				window.open("/info/news/10861");
+			});
+		});
+	};
+})
+</script>

@@ -28,7 +28,11 @@ if __name__ == "__main__":
                  "test/test_detail.py",
                  "test/test_mybid.py",
                  "test/test_order_detail.py",
-                 "--html=reports/中晟在线web端自动化测试报告.html",
+                 "--html=reports/中晟在线web端自动化测试报告_20211220.html",
                  "--self-contained-html"])
 
+# if __name__ == "__main__":
+#     pytest.main(["test/test_firstp.py::TestFirstp001::test_click_more_collection",
+#                  "--html=reports/测试报告样式定制.html",
+#                  "--self-contained-html"])
 #pytest.main(["test/test_detail.py"], plugins=[MyPlugin()])
