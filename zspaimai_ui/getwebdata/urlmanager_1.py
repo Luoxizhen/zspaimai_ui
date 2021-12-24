@@ -35,60 +35,43 @@ class HtmlParser(object):
         """开始解析数据"""
         soup = BeautifulSoup(html_cont, 'html.parser', from_encoding='urf-8')
 
-        # print(soup.find_all("ul",class_="tile fix"))
-        a = soup.find_all("ul", class_="tile fix")
-        print(type(a[0]))
 
-        b = BeautifulSoup(markup=str(a[0]))
-        goods = b.ul.contents
-        print(len(goods))
-        print(goods[1])
+        c = soup.table.find_all('tr')
+        goods=[]
 
-        for i in range(int(len(goods) / 2)):
+        for i in range(1, int(len(c))):
             print(i)
             print(40 * '*')
+            # print(c[i])
             # print(goods[2*i+1])
-            good_info = BeautifulSoup(str(goods[2 * i + 1]),'html.parser', from_encoding='urf-8')
+            good_info = BeautifulSoup(markup=str(c[i]))
+            print(good_info)
             # print(b.ul.contents[1])
             # good_info = BeautifulSoup(markup=str(b.ul.contents[1]))
 
-            good_picture = good_info.div.table.tr.td.img['src']
-            good_name = good_info.p.a['title']
+            d = good_info.find_all('td')
+            # with open("华宇商城.csc",mode='a',encoding='utf-8') as f:
+            #     f.write(good_picture,good_name,good_pp[1],good_pp[0])
+            good_picture = d[0].a['href']
 
-            good_o = BeautifulSoup(str(good_info.find_all('p')[1]), 'html.parser', from_encoding='urf-8').get_text()
+            good_name = d[1].a['title']
+            good_px = d[2].string
+            good_price = str(d[3].string).strip()
+            good_t = str(d[4].time.string).strip()
+            good_i = "usg"
+            good = [good_picture, good_name, good_px,good_price,good_t,good_i]
+            goods.append(good)
+            return goods
 
-            good_pp = good_o.replace('当前价：', " ").replace("品相：", "").rsplit()
-            # with open("华宇商城.csv", mode='a', encoding='utf-8') as f:
-            #     f.write(good_picture, good_name, good_pp[1], good_pp[0])
-            #     f.close()
 
-            f = open("华宇商城.csv", mode='a', encoding='utf-8')
-            writer = csv.writer(f)
 
-            writer.writerow([good_picture, good_name, good_pp[1], good_pp[0]])
-            print("拍品照片：{}".format(good_picture))
-            print("拍品名称：{}".format(good_name))
-            print("拍品价格：{}".format(good_pp[1]))
-            print("拍品品相：{}".format(good_pp[0]))
+            # f = open("华宇商城.csv", mode='a', encoding='utf-8')
+            # writer = csv.writer(f)
+            #
+            # writer.writerow([good_picture, good_name, good_px,good_price,good_t])
 
-    #
-    # def _get_new_urls(self, page_url, soup):
-    #     '''
-    #     从页面中抽取指向其他词条的链接
-    #     parm page_url: 当前页面url
-    #     parm soup: beautifulsoup对象
-    #     return: 新url的set
-    #     '''
-    #     new_urls = set()
-    #     #根据正则表达式规则对页面内的链接进行筛选，留下想要的链接
-    #     links = soup.find_all('a', href=re.compile(r'/item/.+'))
-    #     for link in links:
-    #         #每个link都是Tag对象，Tag对象的操作方法与字典相同
-    #         new_url = link['href']
-    #         #借助urljoin，可以很方便地拼接url
-    #         new_full_url = urlparse.urljoin(page_url, new_url)
-    #         new_urls.add(new_full_url)
-    #     return new_urls
+
+
 
     def _get_new_data(self, page_url, soup):
         '''
@@ -117,7 +100,8 @@ class DataOutput(object):
         if data is None:
             print ("data is None")
             return
-        self.datas.append(data)
+        # self.datas.append(data)
+        self.datas.extend(data)
     #全部页面爬取结束后调用此函数，写入文件
     def output_html(self):
         fout=codecs.open('baike.html', 'w', encoding='utf-8')
@@ -132,6 +116,12 @@ class DataOutput(object):
         fout.write("</table></body></html>")
         fout.close()
         self.datas = []
+    def output_csv(self):
+        f = open("华宇拍品.csv", mode='a', encoding='utf-8')
+        writer = csv.writer(f)
+        writer.writerows(self.datas)
+
+
 class UrlManager(object):
     '''网址管理'''
     def __init__(self):
@@ -205,9 +195,6 @@ class HtmlDownloader(object):
 
 
 
-# new_urls = set()
-# new_urls=("http://www.huabid.com/auctionList/all/fixedPrice/selling?pageNo=3")
-# data = {}
 
 class SpiderMan(object):
     def __init__(self):
@@ -225,8 +212,8 @@ class SpiderMan(object):
 
     def spider(self):
         #添加初始url self, origin_url
-        base_url = "http://www.huabid.com/auctionList/all/fixedPrice/selling?pageNo="
-        for i in  range(12):
+        base_url = "http://www.huabid.com/auctionList/treasure/all/history?keyword=&pageNo="
+        for i in range(100,171):
             url = base_url + str(i)
             self.manager.add_new_url(url)
         #下面进入主循环，暂定爬取页面总数小于100
@@ -250,53 +237,55 @@ class SpiderMan(object):
                 #将已经爬取过的这个url添加至老url仓库中
                 self.manager.add_old_url(new_url)
                 #将返回的数据存储至文件
-            #     try:
-            #         self.output.store_data(data)
-            #         print ("store data succefully")
-            #     except Exception as e:
-            #         print (e)
-            #     print ("第{}个链接已经抓取完成".format(self.manager.old_url_size()))
-            #
+                try:
+                    self.output.store_data(data)
+                    print ("store data succefully")
+                except Exception as e:
+                    print (e)
+                print ("第{}个链接已经抓取完成".format(self.manager.old_url_size()))
+                try:
+                    self.output.output_csv()
+                except Exception as e:
+                    print(e)
             except Exception as e:
                 print (e)
-        #爬取循环结束的时候将存储的数据输出至文件
-        # self.output.output_html()
+        # 爬取循环结束的时候将存储的数据输出至文件
+        # self.output.output_csv()
 # if __name__== "__main__":
-#     soup = BeautifulSoup(open('华宇.html'))
+#     soup = BeautifulSoup(open('华宇拍品.html'))
 #
 #     # print(soup.find_all("ul",class_="tile fix"))
-#     a = soup.find_all("ul",class_="tile fix")
-#     print(type(a[0]))
-#
-#     b = BeautifulSoup(markup=str(a[0]))
-#     goods = b.ul.contents
-#     print(len(goods))
-#     print(goods[1])
-#
-#     for i in range(int(len(goods)/2)):
+#     # a = soup.find("table")
+#     # b = BeautifulSoup(str(a))
+#     c = soup.table.find_all('tr')
+#     print(len(c))
+#     for i in range(1,int(len(c))):
 #         print (i)
 #         print(40 *'*')
+#         # print(c[i])
 #         # print(goods[2*i+1])
-#         good_info = BeautifulSoup(markup=str(goods[2*i+1]))
+#         good_info = BeautifulSoup(markup=str(c[i]))
+#         print(good_info)
 #         # print(b.ul.contents[1])
 #         # good_info = BeautifulSoup(markup=str(b.ul.contents[1]))
 #
-#         good_picture = good_info.div.table.tr.td.img['src']
-#         good_name = good_info.p.a['title']
+#         d = good_info.find_all('td')
+#         # with open("华宇商城.csc",mode='a',encoding='utf-8') as f:
+#         #     f.write(good_picture,good_name,good_pp[1],good_pp[0])
+#         good_picture = d[0].img['src']
 #
-#         good_o = BeautifulSoup(markup=str(good_info.find_all('p')[1])).get_text()
-#
-#         good_pp = good_o.replace('当前价：', " ").replace("品相：", "").rsplit()
-#         with open("华宇商城.csc",mode='a',encoding='utf-8') as f:
-#             f.write(good_picture,good_name,good_pp[1],good_pp[0])
-#
-#
+#         good_name = d[1].a['title']
+#         good_px = d[2].string
+#         good_price = str(d[3].string).strip()
+#         good_t = str(d[4].time.string).strip()
+#         print(type(good_t))
 #
 #
 #         print("拍品照片：{}".format(good_picture))
 #         print("拍品名称：{}".format(good_name))
-#         print("拍品价格：{}" .format(good_pp[1]))
-#         print("拍品品相：{}" .format(good_pp[0]))
+#         print("拍品价格：{}" .format(good_px))
+#         print("拍品品相：{}" .format(good_price))
+#         print("拍品成交时间：{}".format(good_t))
 
 if __name__== "__main__":
     SpiderMan().spider()
