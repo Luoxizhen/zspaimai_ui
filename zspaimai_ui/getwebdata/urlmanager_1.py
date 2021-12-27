@@ -27,7 +27,7 @@ class HtmlParser(object):
         new_data = self._get_new_data(page_url, soup)
         print ("new_data get")
         return new_urls, new_data
-    def parser1(self,html_cont):
+    def parser1(self,html_cont,good_index):
         '''解析页面数据，并保存到csv 文件中'''
         # soup = BeautifulSoup(html_cont, 'html.parser', from_encoding='urf-8')
         # print(soup.ul)
@@ -40,12 +40,12 @@ class HtmlParser(object):
         goods=[]
 
         for i in range(1, int(len(c))):
-            print(i)
-            print(40 * '*')
+            # print(i)
+            # print(40 * '*')
             # print(c[i])
             # print(goods[2*i+1])
             good_info = BeautifulSoup(markup=str(c[i]))
-            print(good_info)
+            # print(good_info)
             # print(b.ul.contents[1])
             # good_info = BeautifulSoup(markup=str(b.ul.contents[1]))
 
@@ -58,10 +58,10 @@ class HtmlParser(object):
             good_px = d[2].string
             good_price = str(d[3].string).strip()
             good_t = str(d[4].time.string).strip()
-            good_i = "usg"
-            good = [good_picture, good_name, good_px,good_price,good_t,good_i]
+
+            good = [good_picture, good_name, good_px,good_price,good_t,good_index]
             goods.append(good)
-            return goods
+        return goods
 
 
 
@@ -95,12 +95,18 @@ DataOutput
 class DataOutput(object):
     def __init__(self):
         self.datas = []  #可以将数据暂存在这个列表里
+
+
     #每个循环调用一次此函数，暂存数据
     def store_data(self, data):
         if data is None:
             print ("data is None")
             return
         # self.datas.append(data)
+        # for data in self.datas:
+        #     data.append(good_index)
+        print(type(data))
+        print(len(data))
         self.datas.extend(data)
     #全部页面爬取结束后调用此函数，写入文件
     def output_html(self):
@@ -116,10 +122,12 @@ class DataOutput(object):
         fout.write("</table></body></html>")
         fout.close()
         self.datas = []
-    def output_csv(self):
-        f = open("华宇拍品.csv", mode='a', encoding='utf-8')
+
+    def output_csv(self,file_name):
+        f = open(file_name, mode='a', encoding='utf-8')
         writer = csv.writer(f)
         writer.writerows(self.datas)
+        self.datas=[]
 
 
 class UrlManager(object):
@@ -185,7 +193,7 @@ class HtmlDownloader(object):
         #判断响应状态
         if r.status_code == 200:
             r.encoding = 'utf-8'
-            print ("该页面下载成功！{}".format(url))
+            # print ("该页面下载成功！{}".format(url))
 
             return r.text
         else:
@@ -208,10 +216,13 @@ class SpiderMan(object):
         new_url = self.manager.get_new_url()
         print(new_url)
         data = self.parser.parser1(new_url)
-        self.output.store_data(data)
+
+        self.output.store_data(data,'拍品类别')
 
     def spider(self):
         #添加初始url self, origin_url
+        file = "/Users/yuanyuanhe/Desktop/竞拍分析/华宇拍卖1.csv"
+
         base_url = "http://www.huabid.com/auctionList/treasure/all/history?keyword=&pageNo="
         for i in range(100,171):
             url = base_url + str(i)
@@ -238,17 +249,58 @@ class SpiderMan(object):
                 self.manager.add_old_url(new_url)
                 #将返回的数据存储至文件
                 try:
-                    self.output.store_data(data)
+                    self.output.store_data(data,'拍品类别')
                     print ("store data succefully")
                 except Exception as e:
                     print (e)
                 print ("第{}个链接已经抓取完成".format(self.manager.old_url_size()))
                 try:
-                    self.output.output_csv()
+                    filename=''
+                    self.output.output_csv(filename)
                 except Exception as e:
                     print(e)
             except Exception as e:
                 print (e)
+    def spider2(self):
+        # with open ("/Users/yuanyuanhe/Desktop/竞拍分析/华宇拍卖.csv",'r') as f:
+        #     lines = csv.reader(f)
+        #     print(type(lines))
+        #     for line in lines:
+        #         print("类别:{}".format(line[0]))
+        #         print("网址:{}".format(line[1]))
+        #         print("页数:{}".format(int(line[2])+1))
+        with open("/Users/yuanyuanhe/Desktop/竞拍分析/华宇拍卖1.csv",'r') as f:
+            lines = csv.reader(f)
+            for line in lines:
+                base_url = line[1]
+                page_num = int(line[2]) + 1
+                collection_index = line[0]
+                for p in range(1,page_num):
+                    url = base_url + str(p)
+                    self.manager.add_new_url(url)
+                while (self.manager.has_new_url()):
+                    try:
+                        new_url = self.manager.get_new_url()
+                        html = self.downloader.download(new_url)
+                        try:
+                            data = self.parser.parser1(html,collection_index)
+                            self.output.store_data(data)
+                            fn = "/Users/yuanyuanhe/Desktop/竞拍分析/华宇拍卖_拍品列表.csv"
+                            self.output.output_csv(fn)
+
+
+                        except Exception as e:
+                            print(e)
+                    except Exception as e:
+                        print(e)
+
+
+
+
+
+
+
+
         # 爬取循环结束的时候将存储的数据输出至文件
         # self.output.output_csv()
 # if __name__== "__main__":
@@ -288,7 +340,14 @@ class SpiderMan(object):
 #         print("拍品成交时间：{}".format(good_t))
 
 if __name__== "__main__":
-    SpiderMan().spider()
+    SpiderMan().spider2()
+    # with open ("/Users/yuanyuanhe/Desktop/竞拍分析/华宇拍卖.csv",'r') as f:
+    #     lines = csv.reader(f)
+    #     print(type(lines))
+    #     for line in lines:
+    #         print("类别:{}".format(line[0]))
+    #         print("网址:{}".format(line[1]))
+    #         print("页数:{}".format(int(line[2])+1))
 
 
 
