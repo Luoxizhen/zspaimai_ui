@@ -3,7 +3,7 @@
 import configparser
 from config.conf import cm
 
-HOST = 'HOST'
+# HOST = 'HOST_ONLINE'
 
 
 class ReadConfig(object):
@@ -24,11 +24,22 @@ class ReadConfig(object):
             self.config.write(f)
 
     @property
-    def url(self):
-        return self._get('sys_variables', 'url')
+    def host(self):
+        """接口url """
+        sys_inv = self.env
+        if sys_inv == 'offline':
+            HOST = 'HOST_OFFLINE'
+        else:
+            HOST = 'HOST_ONLINE'
+
+        return self._get(HOST, 'HOST')
+    @property
+    def env(self):
+        """读环境配置"""
+        return self._get('SYS_INVIRONMENT','SYS_INVIRONMENT')
 
 
 ini = ReadConfig()
 
 if __name__ == '__main__':
-    print(ini.url)
+    print(ini.host)

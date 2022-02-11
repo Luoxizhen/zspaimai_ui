@@ -15,6 +15,7 @@ json dumps把数据类型转换成字符串 dump把数据类型转换成字符�
 '''json写入文本'''
 import json
 import os
+from config.conf import cm
 class RwJson():
     def __init__(self):
         curpath = os.path.dirname(os.path.realpath(__file__))
@@ -23,6 +24,7 @@ class RwJson():
         print(parpath)
         self.curpath = curpath
         self.parpath = parpath
+
 
 
 
@@ -37,5 +39,12 @@ class RwJson():
         jsonpath = os.path.join(self.parpath, parname, filename)
         with open(jsonpath, 'w') as dump_f:
             json.dump(dict, dump_f, indent=True, ensure_ascii=False)
+    def _get(self,f):
+        with open(f,'r') as load_f:
+            load_dict = json.load(load_f)
+            return load_dict
 
-
+    @property
+    def get_header(self):
+        f = os.path.join(cm.INTERFACE_DATA_PATH)
+        self._get()

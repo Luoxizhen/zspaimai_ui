@@ -1,16 +1,12 @@
 import requests
-from utils import rwjson, rwcfg
+from utils import rwcfg
 from utils import util
+from common.readconfig import ini
+from common.rwjson import rwjson
+from headers import admin_headers,mini_headers,base_url,get_user_headers,get_user_headers_unlogin,update_token
 
 
-admin_headers = rwjson.RwJson().readjson('interface_data', 'admin_headers.json')
-mini_headers = rwjson.RwJson().readjson('interface_data', 'user_headers_app.json')
-base_url = "http://api.online.zspaimai.cn"
 
-def get_user_headers():
-    return rwjson.RwJson().readjson('interface_data', 'user_headers.json')
-def get_user_headers_unlogin():
-    return rwjson.RwJson().readjson('interface_data', 'user_headers_unlogin.json')
 def login(**userinfo):
     '''获取用户的token '''
     url = base_url+"/user/user/login?from=pc"
@@ -26,10 +22,7 @@ def login(**userinfo):
     #     return r.json()['data']['token']
     return r
 
-def update_token(token):
-    dict = rwjson.RwJson().readjson('interface_data', 'user_headers.json')
-    dict["token"] = token
-    rwjson.RwJson().writejson('interface_data', 'user_headers.json', dict)
+
 def user_login(**userinfo):
     r = login(**userinfo)
     token = update_token(r.json()['data']['token'])
@@ -163,3 +156,39 @@ def info(user_id):
     user_info = {"user_id":user_id}
     r = requests.request('post', url=url, json=user_info, headers=headers)
     return r
+def nickname_add(**info):
+    '''新增昵称'''
+    url = base_url + "/user/nickname/add"
+    headers = get_user_headers()
+    # info = {"nickname":"宝黛","id":""}
+    r = requests.request('post',url=url, json=info, headers=headers)
+    return r
+def nickname_set(**info):
+    '''设置默认昵称'''
+    url = base_url +"/user/nickname/set"
+    headers = get_user_headers()
+    #{"id":1442}
+    r = requests.request('post',url=url,json=info,headers=headers)
+    return r
+def nickname_edit(**info):
+    '''修改昵称'''
+    url = base_url + "/user/nickname/edit"
+    headers = get_user_headers()
+    # {"nickname":"大雁","id":882}
+    r = requests.request('pose', url=url, json=info, headers=headers)
+    return r
+def nickname_list():
+    '''获取昵称列表'''
+    url = base_url + "/user/nickname/list"
+    headers = get_user_headers()
+    # {"nickname":"大雁","id":882}
+    r = requests.request('get', url=url, headers=headers)
+    return r
+def bid(**info):
+    '''用户竞价'''
+    url = base_url + "/user/user/bid"
+    #{"goods_id":"1901","price":52}
+    headers = get_user_headers()
+    r = requests.request('post', url=url, json=info, headers=headers)
+    return r
+

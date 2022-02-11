@@ -1,0 +1,10 @@
+{
+ "Content-Type": "application/x-www-form-urlencoded/json; charset=UTF-8",
+ "Connection": "keep-alive",
+ "host": "api.online.zspaimai.cn",
+ "Origin": "http://home.online.zspaimai.cn",
+ "Referer": "https://servicewechat.com/wx09e84570eaae4bc0/0/page-frame.html",
+ "token": "dddc82a0e36f4bce33b15eb997b49a2c",
+ "AppFrom": "mini"
+
+}

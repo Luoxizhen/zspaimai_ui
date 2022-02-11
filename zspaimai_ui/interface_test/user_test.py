@@ -84,5 +84,89 @@ def test_info():
 
                 writer.writerow(user_info.values())
     f.close()
+def test_login():
+    # 13111111255
+    user_info ={"phone": "13111111297",
+            "pwd": "123456"}
+    r = user.login(**user_info)
+    token = r.json()['data']['token']
+    user.update_token(token)
+    print(r.json())
+    assert r.json()['status'] == 200
+def test_login_2():
+    r = user.quick_login("13111111297")
+    print(r.json())
+    token = r.json()['token']
+    user.update_token(token)
+    print(r.json())
+    assert r.json()['status'] == 200
+def test_add_nickname():
+    f = open("/Users/yuanyuanhe/Desktop/货/昵称.csv",mode="r",encoding="gbk")
+    csv_reader = csv.reader(f)
+    for i in csv_reader:
+        info = {"nickname": i[0], "id": ""}
+        r = user.nickname_add(**info)
 
+
+
+    assert 200 == 200
+def test_list_nickname():
+    r = user.nickname_list()
+    print(r.json())
+
+    assert r.json()['status'] == 100
+
+
+def test_set_nickname():
+    info = {"id":1022}
+    r = user.nickname_set(**info)
+    print(r.json())
+    assert r.json()['status'] ==100
+
+
+def test_bid():
+    info = {"goods_id":"3840","price":2000}
+    r = user.bid(**info)
+    print(r.json())
+    assert r.json()['status'] == 100
+def test_add_nickname_list():
+    nick_name = ['桃之夭夭','灼灼其华','叶蓁蓁','从善','去恶','明星有烂','赵敏','蛛儿','周芷若']
+    for i in nick_name:
+        info = {"nickname": i, "id": ""}
+        user.nickname_add(**info)
+def test_get_nicknames():
+    nicknames = user.nickname_list().json()['data']
+    nickname_ids = []
+    for i in nicknames:
+        nickname_ids.append(i['id'])
+    print (nickname_ids)
+
+    assert 1==2
+def test_change_nickname_bid():
+    nicknames = user.nickname_list().json()['data']
+    nickname_ids = []
+    f = open("/Users/yuanyuanhe/Desktop/货/出价.csv",mode="r",encoding="gbk")
+    reader = csv.reader(f)
+    good_ids = []
+    prices = []
+    for i in reader:
+        good_ids.append(i[0])
+        prices.append(int(i[2])+100)
+
+    # good_ids = [4078,4079,4080,4081,4082,4083,4084,4085,4086,4087,4088,4089,4090,4091,4092,4093,4094,4095,4096]
+    # prices = [500,600,10000,6000,300,100,1000,2000,60,50,100,150,100,10000,2500,300,100,200,200]
+
+    for i in nicknames:
+        nickname_ids.append(i['id'])
+    for i in range(19):
+        info = {"id": nickname_ids[i+1]}
+        user.nickname_set(**info)
+
+
+        bid_info = {"goods_id":str(good_ids[i]),"price":prices[i]}
+        r= user.bid(**bid_info)
+
+
+
+    assert 1==2
 

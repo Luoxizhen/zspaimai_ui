@@ -88,6 +88,6 @@ def order_coupon():
     '''获取订单可用、不可用的优惠劵'''
     url = base_url + '/user/coupon/order_coupon'
     headers = mini_headers
-    info = {"goods_total": 200, "order_model": 20, "goods": "[{"goods_id":1634,"num":2}]"}
+    info = {"goods_total": 200, "order_model": 20, "goods": "[{'goods_id':1634,'num':2}]"}
 
     r = requests.request('post', url=url, data=info, headers=headers)

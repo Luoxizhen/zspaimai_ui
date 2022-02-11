@@ -1,11 +1,14 @@
+import json
+
 from interface_base import goods
 from interface_base.user import user_login
 import pytest
 import time
+from utils import times
 from utils import util
 from utils.rwjson import RwJson
 import random
-
+import csv
 
 def goods_add():
     begin_time = round(time.time())+120
@@ -21,11 +24,13 @@ def goods_add():
 
 def test_goods_add_001():
     begin_time = round(time.time())
-    end_time = begin_time + 60
-    good_infos = {"begin_time": begin_time, "end_time": end_time, "name": "中标测试", "price": 10}
+    end_time = begin_time + 80000
+    good_infos = {"begin_time": begin_time, "end_time": end_time, "name": "优惠劵测试专用", "price": 20000}
     #good_infos={"type":2,"inventory":"1000","inventory_unit":"套","category_id":9,"platform":"1","begin_time":0,"end_time":0,"top_price":"","name":"第三套人民币7 枚1-2","delay_time":0,"shape":"100","price":"100","retain_price":"","seller_name":"","agreement_no":"","create_user":"","create_date":"","content":"<p>第三套人民币小全套7枚一枚(同分 PMG68E)</p>","original_image":"[\"picture/hPRswrxWWys8wDG7DzRK47GN4b33RK.jpeg\"]","images":"[\"thumbnail/aRFBN6MXYbrsrmF2KHKNZx8ZdATwRC.jpeg\"]","freight_id":51,"is_freight":0,"goods_weight":"","buyer_service_rate":"10","meta":"{\"min_price\":\"\",\"max_price\":\"\",\"seller_insure_deal\":\"1\",\"seller_insure_no_deal\":\"1\",\"service_fee_deal\":\"2\",\"service_fee_no_deal\":\"1\",\"production_fee_deal\":\"15\",\"production_fee_no_deal\":\"15\",\"safekeeping_fee_deal\":\"0\",\"safekeeping_fee_no_deal\":\"0\",\"seller_taxes\":\"\",\"identify_fee\":\"\",\"packing_fee\":\"\",\"texture\":\"\",\"spec\":\"\",\"opinion\":\"\"}"}
     r = goods.goods_add(**good_infos)
-    assert r.json()['status']==200
+    print(r.json())
+
+    assert r.json()['status']==20
 
 def test_goods_list():
     r = goods.goods_list()
@@ -34,6 +39,244 @@ def test_goods_list_001():
     goods_info = {"status": 31}
     r = goods.goods_list(**goods_info)
     assert r.json()['data']['status'] == 200
+def serach_goods(**file_p):
+    good_infos = [] # 拍品信息 :id + 拍品编号
+    good_ids = [] #拍品id
+    goods_infos =[] #拍品总信息
+    with open(file_p["file_1"], mode="r", encoding='utf-8') as f:
+        reader = csv.reader(f)
+
+        for i in reader:
+            print(i[0])
+            info = {"name":i[0]}# 新修改
+            print(info)
+            r = goods.goods_list(**info)
+            print(r.json())
+            if r.json()['status']==200 and r.json()["data"]["total"] > 0:# 如果搜索到拍品，保存第一个拍品到id
+                good_id=r.json()['data']['data'][0]['id']#提取拍品id
+            else:
+                good_id = 0 # 如果搜索到拍品，保存id =0
+            good_ids.append(good_id)  # 拍品列表保存 good_id
+            good_infos.append((i[0], good_id))
+
+    with open(file_p["file_1"], mode="w", encoding='utf-8') as f:
+        writer = csv.writer(f)
+        writer.writerows(good_infos) # 写入拍品信息
+def serach_goods1(**file_p):
+    good_infos = [] # 拍品信息 :id + 拍品编号
+    good_ids = [] #拍品id
+    goods_infos =[] #拍品总信息
+    with open(file_p["file_1"], mode="r", encoding='utf-8') as f:
+        reader = csv.reader(f)
+
+        for i in reader:
+            info = {"name":i[0]}# 新修改
+            r = goods.goods_list(**info)
+            if r.json()['status']==200 and r.json()["data"]["total"] > 0:# 如果搜索到拍品，保存第一个拍品到id
+                good_id=r.json()['data']['data'][0]['id']#提取拍品id
+            else:
+                good_id = 0 # 如果搜索到拍品，保存id =0
+            good_ids.append(good_id)  # 拍品列表保存 good_id
+            good_infos.append((i[0], good_id))
+
+    with open(file_p["file_1"], mode="w", encoding='utf-8') as f:
+        writer = csv.writer(f)
+        writer.writerows(good_infos) # 写入拍品信息
+
+
+
+    for i in good_ids:
+        if i != 0:
+            info_id = {"id":i}
+            goods_info = goods.goods_info(**info_id).json()["data"] # 获取拍品信息
+
+            good_name = goods_info["name"] #拍品名称
+            if good_name.find("lot") == 0:
+                index_of_s = good_name.find("-") + 1
+                good_name = good_name[index_of_s:]
+            simple_desc=goods_info["simple_desc"] #拍品描述
+            seller_name=goods_info["seller_name"] #销售人
+            agreement_no =goods_info["agreement_no"] #拍品合同编号
+            shape = goods_info["shape"] #拍品品相
+            type =goods_info["type"]
+            inventory =goods_info["inventory"]
+            inventory_unit =goods_info["inventory_unit"]
+            images =goods_info["images"] #缩略图
+            original_image = goods_info["original_image"] #原图
+            retain_price =goods_info["retain_price"] #保留价
+            buyer_service_rate =goods_info["buyer_service_rate"] #买家服务费率
+            content =goods_info["content"] #拍品信息描述
+            if content.find("lot") != -1:
+                content_num_1 = content.find("strong")
+                content_num_2 = content.find("-", content_num_1)
+                content = content[:content_num_1 + 7:] + content[content_num_2 + 1:]
+            freight_id =goods_info["freight_id"]
+            goods_weight =goods_info["goods_weight"]
+            category_id = goods_info["category_id"] #拍品类别
+            # 拍品信息列表
+            good_info = (i,good_name,category_id,images,original_image,content,shape,retain_price,seller_name,buyer_service_rate)
+            goods_infos.append(good_info)
+        else:
+            good_info = (0,"","","","","","","","","") # 增加未有上传的拍品，以和
+            goods_infos.append(good_info)
+
+
+        with open(file_p["file_2"], mode="w", encoding='gbk') as f:
+            csv_write = csv.writer(f)
+            csv_write.writerow(("id","good_name","category_id","images","original_image","content","shape","retain_price","seller_name","buyer_service_rate")) # 保存列名
+        with open(file_p["file_2"], mode="a", encoding='gbk') as f:
+            csv_write = csv.writer(f)
+            csv_write.writerows(goods_infos) # 保存拍品信息
+
+def test_search_good():
+    file_1 = "/Users/yuanyuanhe/Desktop/货/2月1.csv"
+    file_2 = "/Users/yuanyuanhe/Desktop/货/待上传的拍品表_有历史数据_20220210.csv"
+    file_path = {"file_1":file_1,"file_2":file_2}
+    serach_goods(**file_path)
+    assert 1==2
+def test_goods_list_0004():
+    good_name ="lot889-第二套人民币红5元票样一枚(123-08033 PMG55)"
+    good_num = good_name.find("_") + 1
+    print(good_num)
+    good_name = good_name[good_num::]
+    assert good_name == "第二套人民币红5元票样一枚(123-08033 PMG55)"
+
+def test_goods_add_history():
+    '''从csv 文件中导入拍品，csv 文件中的拍品数据为系统上已经拍卖过的数据'''
+    begin_time = times.str_to_time("2022-01-28 11:00:00") #开拍时间 ： 与专场开拍时间相同
+    end_time = times.str_to_time("2022-02-10 20:00:00") #结拍时间： 与专场结拍时间相同
+    f = open("/Users/yuanyuanhe/Desktop/货/待上传的拍品表_有历史数据.csv", mode="r", encoding='gbk')
+
+    reader = csv.reader(f)
+    k = 0
+    list_of_retain = [1,2,3,20,32,35,44,45,53,54] # 需要设置保留价的拍品在csv 文件中的排序
+    for i in reader:
+
+        good_info ={}
+        good_info["name"]=i[0]
+        good_info["content"]=i[1]
+        good_info["simple_desc"] =i[2]
+        good_info["images"] = util.list_to_str(util.str_to_list(i[3]))
+
+        good_info["original_image"] = util.list_to_str(util.str_to_list(i[4]))
+        good_info["price"] =1
+        if k in list_of_retain:
+            good_info["retain_price"]=i[6]
+        good_info["shape"]=i[5]
+        good_info["seller_name"]=i[7]
+        good_info["delay_time"] = 60 #延拍时间
+        good_info["goods_weight"] = 0
+        good_info["begin_time"] = begin_time
+        good_info["end_time"] = end_time + 30 * k # 30 ，单位为s ，按照该专场多长时间节拍一个进行计算
+        good_info["agreement_no"] = "t20220128" # 合同编号，格式按照 a+年+月+该专场在本月的排序，如果2022年1月份第一个专场 则设置为 a20220101
+        good_info["topic_id"] = "[39]" #拍品所属id
+        if good_info["name"].find("第一") != -1:
+            good_info["buyer_service_rate"] = "10"
+            good_info["category_id"] = 7
+        elif good_info["name"].find("第二") != -1:
+            good_info["buyer_service_rate"] = "8"
+            good_info["category_id"] = 8
+        elif good_info["name"].find("第三") != -1:
+            good_info["buyer_service_rate"] = "8"
+            good_info["category_id"] = 9
+        elif good_info["name"].find("第四") != -1:
+            good_info["buyer_service_rate"] = "5"
+            good_info["category_id"] = 10
+        else:
+            good_info["buyer_service_rate"] = i[8]
+            good_info["category_id"] = i[9]
+
+        r = goods.goods_add(**good_info)
+        k = k + 1
+
+
+def goods_add_history(file_path,*retain,**topic_info):
+    '''从csv 文件中导入拍品，csv 文件中的拍品数据为系统上已经拍卖过的数据'''
+
+    f = open(file_path, mode="r", encoding='gbk')
+
+    reader = csv.DictReader(f)
+
+
+    k = 1
+    list_of_retain = retain # 需要设置保留价的拍品在csv 文件中的排序
+    for row in reader:
+
+
+# '''
+        good_info ={}
+        good_info["name"]=row["good_name"]
+        good_info["content"]=row["content"]
+
+        # good_info["images"] = util.list_to_str(util.str_to_list(row["images"]))
+        good_info["images"] = row["images"].replace("'",'\"')
+        # good_info["original_image"] = util.list_to_str(util.str_to_list(row["original_image"]))
+        good_info["original_image"]=row["original_image"].replace("'",'\"')
+        good_info["price"] = 1
+        if k in list_of_retain:
+            good_info["retain_price"]=row["retain_price"]
+        good_info["shape"]=row["shape"]
+        good_info["seller_name"]=row["seller_name"]
+        good_info["delay_time"] = 0 #延拍时间
+        good_info["goods_weight"] = 0
+        good_info["begin_time"] = topic_info["begin_time"]
+        good_info["end_time"] = topic_info["end_time"]  + 30 * (k-1) # 30 ，单位为s ，按照该专场多长时间节拍一个进行计算
+        good_info["agreement_no"] = topic_info["agreement_no"] # 合同编号，格式按照 a+年+月+该专场在本月的排序，如果2022年1月份第一个专场 则设置为 a20220101
+        good_info["topic_id"] = topic_info["topic_id"]  #拍品所属id
+        if good_info["name"].find("第一") != -1:
+            good_info["buyer_service_rate"] = "10"
+            good_info["category_id"] = 7
+        elif good_info["name"].find("第二") != -1:
+            good_info["buyer_service_rate"] = "8"
+            good_info["category_id"] = 8
+        elif good_info["name"].find("第三") != -1:
+            good_info["buyer_service_rate"] = "8"
+            good_info["category_id"] = 9
+        elif good_info["name"].find("第四") != -1:
+            good_info["buyer_service_rate"] = "5"
+            good_info["category_id"] = 10
+        else:
+            good_info["buyer_service_rate"] = row["buyer_service_rate"]
+            good_info["category_id"] = row["category_id"]
+
+        r = goods.goods_add(**good_info)
+        k = k + 1
+# '''
+def test_goods_add_history_1():
+    file_path = "/Users/yuanyuanhe/Desktop/货/待上传的拍品表_有历史数据_20220210.csv"
+    topic_info = {}
+    begin_time = times.str_to_time("2022-02-11 10:00:00")  # 开拍时间 ： 与专场开拍时间相同
+    end_time = times.str_to_time("2022-02-16 20:00:00")  # 结拍时间： 与专场结拍时间相同
+    topic_info["begin_time"] = begin_time
+    topic_info["end_time"] = end_time
+    topic_info["agreement_no"] = "a20220201"
+    topic_info["topic_id"] = "[203]"
+    list_of_retain=[1,2,3,4,5,20,21,39,40,41,46,47]
+    goods_add_history(file_path,*list_of_retain,**topic_info)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def test_0002():
+    print("开始")
+    with open("/Users/yuanyuanhe/Desktop/货/预选品.csv", mode="r", encoding='gbk') as f:
+        reader = csv.reader(f)
+        print(type(reader))
+        for i in reader:
+            print(i[0])
+            print(type(i))
+    assert 1==2
 def test_batch_shelves():
     goods_ids = []
     goods_info = {"status": 31, "is_shelves": 1}
