@@ -39,6 +39,30 @@ def test_goods_list_001():
     goods_info = {"status": 31}
     r = goods.goods_list(**goods_info)
     assert r.json()['data']['status'] == 200
+def serach_goods_1(**file_p):
+    good_infos = [] # 拍品信息 :id + 拍品编号
+    good_ids = [] #拍品id
+    goods_infos =[] #拍品总信息
+    with open(file_p["file_1"], mode="r", encoding='utf-8') as f:
+        reader = csv.reader(f)
+
+        for i in reader:
+            print(i[0])
+            info = {"name":i[0]}# 新修改
+            print(info)
+            r = goods.goods_list(**info)
+            print(r.json())
+            if r.json()['status']==200 and r.json()["data"]["total"] > 0:# 如果搜索到拍品，保存第一个拍品到id
+                good_id=r.json()['data']['data'][0]['id']#提取拍品id
+            else:
+                good_id = 0 # 如果搜索到拍品，保存id =0
+            good_ids.append(good_id)  # 拍品列表保存 good_id
+            good_infos.append((i[0], good_id))
+
+    with open(file_p["file_1"], mode="w", encoding='utf-8') as f:
+        writer = csv.writer(f)
+        writer.writerows(good_infos) # 写入拍品信息
+
 def serach_goods(**file_p):
     good_infos = [] # 拍品信息 :id + 拍品编号
     good_ids = [] #拍品id
@@ -62,6 +86,8 @@ def serach_goods(**file_p):
     with open(file_p["file_1"], mode="w", encoding='utf-8') as f:
         writer = csv.writer(f)
         writer.writerows(good_infos) # 写入拍品信息
+
+
 def serach_goods1(**file_p):
     good_infos = [] # 拍品信息 :id + 拍品编号
     good_ids = [] #拍品id
@@ -69,7 +95,7 @@ def serach_goods1(**file_p):
     with open(file_p["file_1"], mode="r", encoding='utf-8') as f:
         reader = csv.reader(f)
 
-        for i in reader:
+        for i in reader:se
             info = {"name":i[0]}# 新修改
             r = goods.goods_list(**info)
             if r.json()['status']==200 and r.json()["data"]["total"] > 0:# 如果搜索到拍品，保存第一个拍品到id
@@ -128,12 +154,6 @@ def serach_goods1(**file_p):
             csv_write = csv.writer(f)
             csv_write.writerows(goods_infos) # 保存拍品信息
 
-def test_search_good():
-    file_1 = "/Users/yuanyuanhe/Desktop/货/2月1.csv"
-    file_2 = "/Users/yuanyuanhe/Desktop/货/待上传的拍品表_有历史数据_20220210.csv"
-    file_path = {"file_1":file_1,"file_2":file_2}
-    serach_goods(**file_path)
-    assert 1==2
 def test_goods_list_0004():
     good_name ="lot889-第二套人民币红5元票样一枚(123-08033 PMG55)"
     good_num = good_name.find("_") + 1
@@ -203,7 +223,6 @@ def goods_add_history(file_path,*retain,**topic_info):
     for row in reader:
 
 
-# '''
         good_info ={}
         good_info["name"]=row["good_name"]
         good_info["content"]=row["content"]
@@ -256,6 +275,12 @@ def test_goods_add_history_1():
 
 
 
+def test_search_good():
+    file_1 = "/Users/yuanyuanhe/Desktop/货/拍品.csv"
+    file_2 = "/Users/yuanyuanhe/Desktop/货/待上传的拍品表_有历史数据.csv"
+    file_path = {"file_1":file_1,"file_2":file_2}
+    serach_goods(**file_path)
+    assert 1==2
 
 
 

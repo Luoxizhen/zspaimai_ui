@@ -2,7 +2,7 @@ from common.readconfig import ini
 from common.rwjson import rwjson
 
 admin_headers = rwjson.get_header('admin_headers.json')
-mini_headers = rwjson.get_header('user_headers_app.json')
+#mini_headers = rwjson.get_header('user_headers_app.json')
 base_url = ini.host
 
 

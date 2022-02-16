@@ -3,7 +3,7 @@ from utils import rwcfg
 from utils import util
 from common.readconfig import ini
 from common.rwjson import rwjson
-from headers import admin_headers,mini_headers,base_url,get_user_headers,get_user_headers_unlogin,update_token
+from headers import admin_headers,base_url,get_user_headers,get_user_headers_unlogin,update_token
 
 
 

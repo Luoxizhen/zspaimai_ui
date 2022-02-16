@@ -14,7 +14,7 @@ class Log:
 
             # 创建一个handle输出到控制台
             ch = logging.StreamHandler()
-            ch.setLevel(logging.INFO)
+            ch.setLevel(logging.WARNING)
 
             # 定义输出的格式
             formatter = logging.Formatter(self.fmt)

@@ -2,7 +2,8 @@ import requests
 import time
 from utils import  rwcfg, util
 from common.rwjson import rwjson
-from headers import admin_headers,mini_headers,base_url,get_user_headers,update_token
+from interface_base.headers import admin_headers,base_url,get_user_headers,update_token
+
 
 def goods_list(page=1,**goods_info):
     '''后台拍品列表
@@ -115,10 +116,15 @@ def goods_edit_shelves(**act_infos):
     return r
 def goods_info(**info):
     '''获取拍品的信息'''
+    print(base_url)
     url = base_url + '/admin/goods/goods_info'
+
     headers = admin_headers
+    print(admin_headers)
     #info = {"id":2624}
     r = requests.request('post', url=url, json=info, headers=headers)
+    print(r.url)
+    print(r.headers)
     return r
     """
     data: {id: 2799, category_id: 3, name: "拍品666", simple_desc: "", seller_name: "大罗", agreement_no: "a0000152",…}
