@@ -7,7 +7,7 @@ def serach_goods(**file_p):
     good_infos = [] # 拍品信息 :id + 拍品编号
     good_ids = [] #拍品id
     goods_infos =[] #拍品总信息
-    with open(file_p["file_1"], mode="r", encoding='utf-8') as f:
+    with open(file_p["file_1"], mode="r", encoding='gbk') as f:
         reader = csv.reader(f)
 
         for i in reader:
@@ -76,22 +76,14 @@ def serach_goods_info(**file_p):
     goods_infos =[] #拍品总信息
     with open(file_p["file_1"], mode="r", encoding='gbk') as f:
         reader = csv.reader(f)
-
         for i in reader:
-
             good_ids.append(i[1])
-            print(i[1])
-
-
-
-
     for i in good_ids:
         if i != 0:
             info_id = {"id":i}
             print(info_id)
             goods_info = goods.goods_info(**info_id).json()["data"] # 获取拍品信息
             print(goods_info)
-
             good_name = goods_info["name"] #拍品名称
             if good_name.find("lot") == 0:
                 index_of_s = good_name.find("-") + 1
@@ -121,7 +113,7 @@ def serach_goods_info(**file_p):
         else:
             good_info = (0,"","","","","","","","","") # 增加未有上传的拍品，以和
             goods_infos.append(good_info)
-            print(good_info)
+
 
 
         with open(file_p["file_2"], mode="w", encoding='utf-8') as f:
@@ -187,17 +179,17 @@ def test_search_good():
     file_1 = "/Users/yuanyuanhe/Desktop/货/拍品.csv"
     file_2 = "/Users/yuanyuanhe/Desktop/货/待上传的拍品表_有历史数据.csv"
     file_path = {"file_1":file_1,"file_2":file_2}
-    serach_goods_info(**file_path)
+    serach_goods(**file_path)
     assert 1==2
 
 def test_goods_add_history():
     file_path = "/Users/yuanyuanhe/Desktop/货/待上传的拍品表_有历史数据.csv"
     topic_info = {}
-    begin_time = times.str_to_time("2022-02-11 10:00:00")  # 开拍时间 ： 与专场开拍时间相同
-    end_time = times.str_to_time("2022-02-16 20:00:00")  # 结拍时间： 与专场结拍时间相同
+    begin_time = times.str_to_time("2022-02-25 10:00:00")  # 开拍时间 ： 与专场开拍时间相同
+    end_time = times.str_to_time("2022-02-28 20:00:00")  # 结拍时间： 与专场结拍时间相同
     topic_info["begin_time"] = begin_time
     topic_info["end_time"] = end_time
-    topic_info["agreement_no"] = "a20220201"
-    topic_info["topic_id"] = "[203]"
-    list_of_retain=[1,2,3,4,5,20,21,39,40,41,46,47]
+    topic_info["agreement_no"] = "a20220203"
+    topic_info["topic_id"] = "[42]"
+    list_of_retain=[9,10,12,15,16]
     goods_add_history(file_path,*list_of_retain,**topic_info)

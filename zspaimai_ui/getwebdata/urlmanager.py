@@ -71,24 +71,24 @@ class HtmlParser(object):
             print("拍品价格：{}".format(good_pp[1]))
             print("拍品品相：{}".format(good_pp[0]))
 
-    #
-    # def _get_new_urls(self, page_url, soup):
-    #     '''
-    #     从页面中抽取指向其他词条的链接
-    #     parm page_url: 当前页面url
-    #     parm soup: beautifulsoup对象
-    #     return: 新url的set
-    #     '''
-    #     new_urls = set()
-    #     #根据正则表达式规则对页面内的链接进行筛选，留下想要的链接
-    #     links = soup.find_all('a', href=re.compile(r'/item/.+'))
-    #     for link in links:
-    #         #每个link都是Tag对象，Tag对象的操作方法与字典相同
-    #         new_url = link['href']
-    #         #借助urljoin，可以很方便地拼接url
-    #         new_full_url = urlparse.urljoin(page_url, new_url)
-    #         new_urls.add(new_full_url)
-    #     return new_urls
+
+    def _get_new_urls(self, page_url, soup):
+        '''
+        从页面中抽取指向其他词条的链接
+        parm page_url: 当前页面url
+        parm soup: beautifulsoup对象
+        return: 新url的set
+        '''
+        new_urls = set()
+        #根据正则表达式规则对页面内的链接进行筛选，留下想要的链接
+        links = soup.find_all('a', href=re.compile(r'/item/.+'))
+        for link in links:
+            #每个link都是Tag对象，Tag对象的操作方法与字典相同
+            new_url = link['href']
+            #借助urljoin，可以很方便地拼接url
+            new_full_url = urlparse.urljoin(page_url, new_url)
+            new_urls.add(new_full_url)
+        return new_urls
 
     def _get_new_data(self, page_url, soup):
         '''

@@ -12,6 +12,8 @@ class ConfigManager(object):
     WEB_DATA_PATH = os.path.join(BASE_DIR, 'data')
     # 接口数据路径
     INTERFACE_DATA_PATH = os.path.join(BASE_DIR, 'interface_data')
+    # web 数据路径
+    DATA_PATH = os.path.join(BASE_DIR,'data')
     # 接口包头文件路径
     INTERFACE_HEADER_PATH_OFFLINE = os.path.join(BASE_DIR,'interface_headers_offline')
     INTERFACE_HEADER_PATH_ONLINE = os.path.join(BASE_DIR, 'interface_headers_online')
@@ -19,6 +21,7 @@ class ConfigManager(object):
     report_name = "report_" + dt_strftime(fmt="%Y%m%d_%H%M%S") + '.html'
     REPORT_FILE = os.path.join(BASE_DIR, 'report', report_name)
     # 元素定位的类型
+
     LOCATE_MODE = {
         'css': By.CSS_SELECTOR,
         'xpath': By.XPATH,

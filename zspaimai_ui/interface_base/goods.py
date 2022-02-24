@@ -58,7 +58,7 @@ def goods_add(**good_infos):
     '''后台添加拍品'''
     url = base_url + '/admin/goods/goods_add'
     headers = admin_headers
-    goods_info_real = rwjson.RwJson().readjson('interface_data', 'goods.json')
+    goods_info_real = rwjson.get_json('goods.json')
     if good_infos != {}:
         for key in good_infos:
             if key in goods_info_real.keys():
@@ -116,15 +116,14 @@ def goods_edit_shelves(**act_infos):
     return r
 def goods_info(**info):
     '''获取拍品的信息'''
-    print(base_url)
+
     url = base_url + '/admin/goods/goods_info'
 
     headers = admin_headers
-    print(admin_headers)
+
     #info = {"id":2624}
     r = requests.request('post', url=url, json=info, headers=headers)
-    print(r.url)
-    print(r.headers)
+
     return r
     """
     data: {id: 2799, category_id: 3, name: "拍品666", simple_desc: "", seller_name: "大罗", agreement_no: "a0000152",…}
