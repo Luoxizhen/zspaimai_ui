@@ -21,6 +21,8 @@ def take_delivery(order_id,**userinfo):
             "phone": "15622145010",
             "extract_time": extract_time,
             "remarks": ""}
+
+
     if userinfo != {}:
         for key in userinfo:
             if key in json.keys():
@@ -291,7 +293,7 @@ def logistics_list(page=1,**orderinfo):
     r = requests.request('post', url=url, json=order_info, headers=headers)
     return r
 def list(page=1, **orderinfo):
-    '''用户查看订单列表'''
+    '''订单管理列表'''
     url = base_url + '/admin/order/list'
     headers = admin_headers
     order_info = {"page":1,
@@ -300,19 +302,22 @@ def list(page=1, **orderinfo):
     search_info = {"order_no": "", "goods_name": "", "userno": "", "status": "", "payment_id": "", "express_id": "","start_time":"","end_time":"","id":""}
 
     if orderinfo != {}:
-        for key in orderinfo:
-            print(key)
-            print(url)
-            if key in search_info.keys():
-                search_info[key] = orderinfo[key]
+        search_info.update(orderinfo)
         search_str = util.kwargs_to_str(**search_info)
         order_info["where"] = search_str
     if page != 1:
         order_info["page"] = page
-    r = requests.request('post', url=url, json=order_info, headers=headers)
 
+    r = requests.request('post', url=url, json=order_info, headers=headers)
     return r
 
 
+def order_info(order_id):
+    '''订单信息'''
+    url = base_url + '/admin/order/info'
+    headers = admin_headers
+    order_info = {"id":order_id}
+    r = requests.request('post', url=url, json=order_info, headers=headers)
+    return r
 
 

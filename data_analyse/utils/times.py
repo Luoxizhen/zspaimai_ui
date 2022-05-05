@@ -44,10 +44,14 @@ def str_to_time(str):
     t = time.mktime(p_tuple)
     return round(t)
 
+def dif_days(t1,t2):
+    t = str_to_time(t2) - str_to_time(t1)
+    return round(t/(24*3600))
 
 if __name__ == '__main__':
    p = "2021-11-18 18:02:46"
-   print(str_to_time(p))
+   p1 = "2021-11-30 18:02:46"
+   print(dif_days(p,p1))
 
 
 

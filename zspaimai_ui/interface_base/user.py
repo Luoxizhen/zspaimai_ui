@@ -3,7 +3,7 @@ from utils import rwcfg
 from utils import util
 from common.readconfig import ini
 from common.rwjson import rwjson
-from headers import admin_headers,base_url,get_user_headers,get_user_headers_unlogin,update_token
+from interface_base.headers import admin_headers,base_url,get_user_headers,get_user_headers_unlogin,update_token
 
 
 
@@ -173,7 +173,7 @@ def nickname_edit(**info):
     url = base_url + "/user/nickname/edit"
     headers = get_user_headers()
     # {"nickname":"大雁","id":882}
-    r = requests.request('pose', url=url, json=info, headers=headers)
+    r = requests.request('post', url=url, json=info, headers=headers)
     return r
 def nickname_list():
     '''获取昵称列表'''

@@ -59,14 +59,8 @@ def goods_add(**good_infos):
     url = base_url + '/admin/goods/goods_add'
     headers = admin_headers
     goods_info_real = rwjson.get_json('goods.json')
-    if good_infos != {}:
-        for key in good_infos:
-            if key in goods_info_real.keys():
-                goods_info_real[key] = good_infos[key]
-
+    goods_info_real.update(good_infos)
     r = requests.request('post', url=url, json=goods_info_real, headers=headers)
-
-
     return r
 
 def batch_shelves(**goods_infos):
@@ -221,10 +215,11 @@ def goods_edit(**goods_info):
             "images":"[\"thumbnail/fjZac4eFCsxk2Py2z4BiQ4N4fbbC6x.png\"]"}
 
     #{"topic_id":"[2,2,181,2,2,2,2,162,2,2,2,164]","type":1,"id":2799,"category_id":3,"platform":"1","begin_time":1637643600,"end_time":1638046800,"top_price":"0.00","name":"拍品666","delay_time":0,"shape":"100","price":"10.00","retain_price":"0.00","seller_name":"大罗","agreement_no":"a0000152","create_user":"","create_date":"","freight_id":51,"is_freight":0,"goods_weight":"0.000","buyer_service_rate":"10","content":"<p>1960年第三版人民币壹圆拖拉机狮子号一枚</p>","meta":"{\"min_price\":\"\",\"max_price\":\"\",\"seller_insure_deal\":\"1\",\"seller_insure_no_deal\":\"1\",\"service_fee_deal\":\"2\",\"service_fee_no_deal\":\"1\",\"production_fee_deal\":\"15\",\"production_fee_no_deal\":\"15\",\"safekeeping_fee_deal\":\"0\",\"safekeeping_fee_no_deal\":\"0\",\"seller_taxes\":\"\",\"identify_fee\":\"\",\"packing_fee\":\"\",\"texture\":\"\",\"spec\":\"\",\"opinion\":\"\"}","original_image":"[\"picture/wxTj7wm3XN2JkhFZXQCSpiRKRhZx5C.jpeg\"]","images":"[\"thumbnail/fjZac4eFCsxk2Py2z4BiQ4N4fbbC6x.png\"]"}
-    for key in goods_info:
-        if key in info.keys():
-            info[key] = goods_info[key]
-    print(info)
+    # for key in goods_info:
+    #     if key in info.keys():
+    #         info[key] = goods_info[key]
+    info.update(goods_info)
+
     r = requests.request('post', url=url, json=info, headers=headers)
     return r
     '''
@@ -255,36 +250,44 @@ def goods_edit(**goods_info):
     topic_id: "[2,2,181,2,2,2,2,162,2,2,2,164]"
     type: 1
     '''
-def list(**list_info):
-    '''前端获取商品列表'''
-    url = base_url + '/user/goods/list'
-    headers = mini_headers
-    # data = "category_id=0&page=2&sort=default&type=2"
-    data = {"category_id":0,
-            "page":1,
-            "sort":"default",
-            "type":2}
-    for key in list_info:
-        if key in data.keys():
-            data[key] = list_info[key]
-    r = requests.request('post', url=url, data=data, headers=headers)
-    return r
-def detail(id):
-    '''前端获取商品详情'''
-    url = base_url + '/user/goods/detail?id=1634'
-    headers = mini_headers
-    data = {"id":id}
-    r = requests.request('get', url=url, data=data, headers=headers)
-    return r
-def add(goods_id, number=1):
-    '''前端添加商品到购物车'''
-    url = base_url + '/user/cart/add'
-    headers = mini_headers
-    # data = "goods_id=1634&goods_number=1"
-    data = {"goods_id": goods_id,"goods_number":number}
-    r = requests.request('post', url=url, data=data, headers=headers)
-    return r
+# def list(**list_info):
+#     '''前端获取商品列表'''
+#     url = base_url + '/user/goods/list'
+#     headers = mini_headers
+#     # data = "category_id=0&page=2&sort=default&type=2"
+#     data = {"category_id":0,
+#             "page":1,
+#             "sort":"default",
+#             "type":2}
+#     for key in list_info:
+#         if key in data.keys():
+#             data[key] = list_info[key]
+#     r = requests.request('post', url=url, data=data, headers=headers)
+#     return r
+# def detail(id):
+#     '''前端获取商品详情'''
+#     url = base_url + '/user/goods/detail?id=1634'
+#     headers = mini_headers
+#     data = {"id":id}
+#     r = requests.request('get', url=url, data=data, headers=headers)
+#     return r
+# def add(goods_id, number=1):
+#     '''前端添加商品到购物车'''
+#     url = base_url + '/user/cart/add'
+#     headers = mini_headers
+#     # data = "goods_id=1634&goods_number=1"
+#     data = {"goods_id": goods_id,"goods_number":number}
+#     r = requests.request('post', url=url, data=data, headers=headers)
+#     return r
+def goods_bid(good_id):
+    '''获取拍品出价信息'''
+    url = base_url + '/admin/goods/goods_bid'
+    headers = admin_headers
 
+    data = {"id":good_id,"page":1}
+
+    r = requests.request('post', url=url, json=data, headers=headers)
+    return r
 if __name__ == "__main__":
     print(base_url)
     print(admin_headers)

@@ -18,8 +18,9 @@ class Rwjson():
     def get_header(self,f):
 
         header_full_path = os.path.join(self.header_path,f)
+
         return self._get(header_full_path)
-    def set_header(self,f):
+    def set_header(self,f,dict):
         full_path = os.path.join(self.header_path, f)
         with open(full_path, 'w') as dump_f:
             json.dump(dict, dump_f, indent=True, ensure_ascii=False)

@@ -146,7 +146,7 @@ class SpiderMan(object):
 
 
 if __name__== "__main__":
-    root_url = "https://www.baidu.com/"
+    root_url = "https://www.zhaoonline.com"
     spider1 =SpiderMan()
     spider1.craw(root_url)
 

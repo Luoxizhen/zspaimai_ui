@@ -20,35 +20,17 @@ class HtmlParser(object):
             return
         #建立bs对象，使用html.parser进行解析
         soup = BeautifulSoup(html_cont, 'html.parser', from_encoding='urf-8')
-        print ("soup established")
-        print(soup)
+        print("soup established")
+
         #接下来分别调用两个私有函数返回urls和data
         new_urls = self._get_new_urls(page_url, soup)
-        print ("new_urls get")
-        print(new_urls)
+        print("new_urls get")
+
         new_data = self._get_new_data(page_url, soup)
-        print ("new_data get")
+        print("new_data get")
         return new_urls, new_data
 
-    def parser1(self, html_cont):
-        '''解析页面数据，并保存到csv 文件中'''
-        """开始解析数据"""
-        soup = BeautifulSoup(html_cont, 'html.parser', from_encoding='urf-8')
-        c = soup.find_all('div',class_='list-item cf')
-        goods=[]
-        for i in range(int(len(c))):
-            good_info = BeautifulSoup(markup=str(c[i]), features='html.parser')
-            good_link = good_info.a['href'].removesuffix('.shtml').removeprefix('/') #拍品链接 https://www.zhaoonline.com/auction-detail.shtml?id=5574544
-            n = good_link.find('/')+1
-            good_id = good_link[n::]
-            good_picture = good_info.img['src']
-            good_name = good_info.find("a",class_="item-title")['title'] #拍品名称
-            good_px = good_info.span.text #品相
-            good_price = good_info.strong.text
-            good_t = good_info.find("span",class_="time").text #成交时间
-            good = [good_id,good_picture, good_name, good_px, good_price, good_t]
-            goods.append(good)
-        return goods
+
     def _get_new_data(self, page_url, soup):
         '''
         提取想要的数据
@@ -79,3 +61,22 @@ class HtmlParser(object):
             new_full_url = urlparse.urljoin(page_url, new_url)
             new_urls.add(new_full_url)
         return new_urls
+    def parser1(self, html_cont):
+        '''解析页面数据，并保存到csv 文件中'''
+        """开始解析数据"""
+        soup = BeautifulSoup(html_cont, 'html.parser', from_encoding='urf-8')
+        c = soup.find_all('div',class_='list-item cf')
+        goods=[]
+        for i in range(int(len(c))):
+            good_info = BeautifulSoup(markup=str(c[i]), features='html.parser')
+            good_link = good_info.a['href'].removesuffix('.shtml').removeprefix('/') #拍品链接 https://www.zhaoonline.com/auction-detail.shtml?id=5574544
+            n = good_link.find('/')+1
+            good_id = good_link[n::]
+            good_picture = good_info.img['src']
+            good_name = good_info.find("a",class_="item-title")['title'] #拍品名称
+            good_px = good_info.span.text #品相
+            good_price = good_info.strong.text
+            good_t = good_info.find("span",class_="time").text #成交时间
+            good = [good_id,good_picture, good_name, good_px, good_price, good_t]
+            goods.append(good)
+        return goods

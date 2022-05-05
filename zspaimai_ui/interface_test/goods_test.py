@@ -10,6 +10,7 @@ from utils.rwjson import RwJson
 import random
 import csv
 
+
 def goods_add():
     begin_time = round(time.time())+120
     end_time = begin_time + 600
@@ -582,6 +583,7 @@ def user_bid(**info):
         user_login(**user_info)
 
     goods.bidding(**bid_info)
+
 
 
 
