@@ -1,0 +1,12 @@
+2022-02-11 16:17:06,436 - ERROR - __init__.py[:21] - error message
+2022-02-11 16:17:06,436 - CRITICAL - __init__.py[:22] - critical message
+2022-02-11 16:18:41,224 - ERROR - __init__.py[:21] - error message
+2022-02-11 16:18:41,224 - CRITICAL - __init__.py[:22] - critical message
+2022-02-11 16:19:33,064 - ERROR - __init__.py[:21] - error message
+2022-02-11 16:19:33,064 - CRITICAL - __init__.py[:22] - critical message
+2022-02-11 16:19:57,084 - ERROR - __init__.py[:21] - error message
+2022-02-11 16:19:57,085 - CRITICAL - __init__.py[:22] - critical message
+2022-02-11 16:20:15,536 - ERROR - __init__.py[:21] - error message
+2022-02-11 16:20:15,536 - CRITICAL - __init__.py[:22] - critical message
+2022-02-11 16:23:37,934 - ERROR - __init__.py[:21] - error message
+2022-02-11 16:23:37,935 - CRITICAL - __init__.py[:22] - critical message
