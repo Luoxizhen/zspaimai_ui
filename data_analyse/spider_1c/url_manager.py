@@ -5,8 +5,8 @@ import codecs
 import requests
 import csv
 from utils.log import log
-import urlparse
-import re
+# import urlparse
+# import re
 class UrlManager(object):
     '''网址管理'''
     def __init__(self):

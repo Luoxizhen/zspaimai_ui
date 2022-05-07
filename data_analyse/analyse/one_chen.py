@@ -184,6 +184,80 @@ def sell_info():
     df_seller["seller"] = df_seller["seller"].str[3:]
 
     df_seller.to_csv("/Users/yuanyuanhe/Desktop/卖家.csv")
+def drop_duplicate_by_name(*f):
+    '''将爬取的title 进行分列，按照发表的作者进行去重复去空，让后与 url 进行内连接
+    *f 为文件夹位置，
+    f[1] :  从一尘爬取到的title 文件 所在位置
+    f[2] :  对f[1] 处理后的文件存放位置'''
+    print(f)
+    file_path = f[0]
+    df_raw = pd.read_csv(file_path,names=["title","url"])
+    df_split = df_raw["title"].str.split("\n",n=3,expand=True)
+
+
+    df_customer = df_split[1].drop_duplicates().dropna()
+    df_customer.name ="name"
+    df_info = pd.concat([df_customer,df_raw],axis=1,join="inner")
+    df_info.to_csv(f[1])
+def get_customer_info(*f):
+    file_path = f[0]
+    raw = pd.read_csv(file_path, names=["content","contact","url"]) # 读用户贴
+
+    raw.dropna(subset=["contact"],axis=0,inplace=True) #  删除没有联系方式的行
+    raw.reset_index(drop=True,inplace=True)
+
+
+
+    customers = raw["contact"].str.split("<br/>",expand=True) #将用户贴中 用户信息进行分列
+
+    del(customers[0])  #删除第一列
+    phones = []
+    names = []
+    name_list = ["姓名", "姓 名", "真名", "名", "联系人"]
+    phone_list = ["电话", "电 话", "电微", "联系方式", "固话", "宅电"]
+    for i in range(customers.shape[0]): # 总用户数量
+
+
+        customer = customers.iloc[i].dropna() # 一个用户的基本信息
+
+
+        for j in range(len(customer)): #一个用户的总信息量
+
+            if any(name in customer.iloc[j] for name in name_list):
+                names.append(customer.iloc[j])
+                break
+            elif j == len(customer)-1:
+                names.append("")
+    for i in range(customers.shape[0]): #2550
+        customer = customers.iloc[i].dropna()
+
+        for j in range(len(customer)):
+
+            if "手机" in customer.iloc[j] or "手 机" in customer.iloc[j]:
+                phones.append(customer.iloc[j])
+                break
+            elif j == len(customer)-1: # 重新查找一遍用户的信息
+                for j in range(len(customer)):
+
+                    if any(name in customer.iloc[j] for name in phone_list) :
+                        phones.append(customer.iloc[j])
+                        break
+                    elif j == len(customer)-1:
+                        phones.append("")
+    customers_info = pd.DataFrame()
+    names = [name.replace("(", "（").replace("姓名", "").replace("：", "").replace(":", "").replace("真名", "").replace("联系人", "") for name in names]
+    customers_info["name"] = names
+    customers_info["phone"] = phones
+    customers_info["name"] = customers_info["name"].str.split("（", expand=True)[0].str.replace("（", "")
+    customers_info["phone"] = customers_info["phone"].str.findall(r"[0-9]{11}")
+    customers_info_1 = split_col(customers_info,"phone")
+
+    customers_info_2 = pd.concat([customers_info_1[customers_info_1["phone0"].isnull()==True]["name"],customers],axis=1,join="inner") # 没有找到电话号码的数据
+    del(customers_info_1["phone"])
+    customers_info_1.to_csv(f[1])
+    customers_info_2.to_csv(f[2])
+
+
 
 
 def sell_info_detail():
@@ -229,6 +303,7 @@ def get_sell_info():
     seller = pd.DataFrame()
     seller["name"] = names
     seller["phone"] = phones
+
     seller.to_csv("/Users/yuanyuanhe/Desktop/卖家联系方式-2.csv")
 def sell_info_no_phone():
     phone_list = [104,330,448,549,672,738,819,1046,1442,1555,1750,1870,2084,2169,2444]
@@ -246,8 +321,8 @@ def sell_info_no_phone():
     # csv.writer(seller_phone,"/Users/yuanyuanhe/Desktop/卖家联系方式-无号码.csv")
 
 if __name__ == "__main__":
-    # sell_analyse("/Users/yuanyuanhe/Desktop/竞拍分析/一尘/一二三版纸币/买.csv")
-    # get_sell_info()
-
-    #get_phone_buyer()
-    sell_info_no_phone()
+    f1 = "/Users/yuanyuanhe/Desktop/评级币评级钞_卖贴.csv"
+    f2 = "/Users/yuanyuanhe/Desktop/评级币评级钞_卖家_分列.csv"
+    f3 = "/Users/yuanyuanhe/Desktop/评级币评级钞_卖家_无电话号码.csv"
+    f = [f1,f2,f3]
+    get_customer_info(*f)

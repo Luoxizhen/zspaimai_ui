@@ -7,8 +7,8 @@ import requests
 import csv
 from utils.log import log
 from urllib import request
-import urlparse
-import re
+# import urlparse
+# import re
 class HtmlDownloader(object):
     #获取页面的数据
     def download(self, url):

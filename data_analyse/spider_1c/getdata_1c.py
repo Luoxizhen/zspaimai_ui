@@ -6,10 +6,9 @@ import codecs
 import requests
 import csv
 from utils.log import log
-import urlparse
-import re
 
-import html_outputer_1c,html_downloader_1c,html_parser_1c,url_manager
+
+from . import html_outputer_1c,html_downloader_1c,html_parser_1c,url_manager
 class SpiderMan(object):
     def __init__(self):
         #调度器内包含其它四个元件，在初始化调度器的时候也要建立四个元件对象的实例
@@ -23,7 +22,7 @@ class SpiderMan(object):
         '''爬取一尘网的论坛标题
         b_url： 论坛的网址
         *f 数据保存文件位置：包括买方文件保存位置及买方文件保存位置'''
-        for i in range(1,110):
+        for i in range(1,200):
             url = b_url + str(i)
 
             html = self.downloader.download(url)
@@ -47,6 +46,15 @@ class SpiderMan(object):
                     self.output.clear_data()
                 except Exception as e:
                     print(e)
+    def spider_title(self):
+        url = "http://www.lc0011.net/index.asp?boardid=151"
+        base_url = "http://www.lc0011.net/index.asp"
+        href_url = SpiderMan().get_href(url)
+
+        f1 = "/Users/yuanyuanhe/Desktop/连体钞纪念钞_买.csv"
+        f2 = "/Users/yuanyuanhe/Desktop/连体钞纪念钞_卖.csv"
+        f = [f1, f2]
+        self.spider(base_url + href_url, *f)
     def get_href(self,b_url):
         '''获取下一个页面的网址
         b_url 基本网址'''
@@ -54,9 +62,18 @@ class SpiderMan(object):
         href_url = self.parser.parser_page_href(html)
         print(href_url)
         return href_url
-    def get_contact(self,num,*f):
-        '''爬取用户的基本信息'''
+    def get_contact(self,num=0,*f):
+        '''爬取用户的基本信息
+        num : 行数
+        *f 文件路径，包含
+        f1 : 含url 的文件 "/Users/yuanyuanhe/Desktop/评级币评级钞_卖_去重复去空.csv"
+        f2 : 用户数据保存的位置 "/Users/yuanyuanhe/Desktop/评级币评级钞_卖家.csv"
+        '''
+        print(f[0])
+        print(f)
+
         with open(f[0],encoding="utf-8",mode="r") as f_t:
+
             csv_reader = csv.DictReader(f_t)
             i = num
             k = 0
@@ -95,17 +112,14 @@ class SpiderMan(object):
 
 
 
+
 if __name__== "__main__":
-    # url = "http://www.lc0011.net/index.asp?boardid=11" #http://www.lc0011.net/index.asp?boardid=11?boar
-    # base_url = "http://www.lc0011.net/index.asp"
-    # href_url = SpiderMan().get_href(url)
-    # # file_path ="/Users/yuanyuanhe/Desktop/竞拍分析/一尘/一二三版纸币"
-    # # file_paths = [file_path+"/买.csv", file_path+"/卖.csv"]
-    # # SpiderMan().spider(base_url+href_url, *file_paths)
-    f1 = "/Users/yuanyuanhe/Desktop/卖家.csv"
-    f2 = "/Users/yuanyuanhe/Desktop/卖家帖子.csv"
+    f1 = "/Users/yuanyuanhe/Desktop/连体钞纪念钞_卖_去重去空.csv"
+    f2 = "/Users/yuanyuanhe/Desktop/连体钞纪念钞_卖贴.csv"
     f = [f1,f2]
-    SpiderMan().get_contact(2224,*f)
+    SpiderMan().get_contact(0,*f)
+
+
 
 
 

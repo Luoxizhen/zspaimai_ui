@@ -5,10 +5,10 @@ import codecs
 import requests
 import csv
 from utils.log import log
-import urlparse
-import re
-from config.cfg import cm
-import os
+# import urlparse
+# import re
+# from config.cfg import cm
+# import os
 '''
 DataOutput
 '''
