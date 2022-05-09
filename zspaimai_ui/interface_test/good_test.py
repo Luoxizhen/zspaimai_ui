@@ -251,9 +251,9 @@ def get_goods_bid(good_id_start,num,p):
 
 def test_get_goods_bid():
     '''测试 get_goods_bid(good_id_start,num,p) 函数'''
-    good_id = 2462
-    num = 19
-    file_path = "/Users/yuanyuanhe/Desktop/货/拍品出价详情/5-1-2.csv"
+    good_id = 2346 # 2346 2462
+    num = 65 #65 19
+    file_path = "/Users/yuanyuanhe/Desktop/货/拍品出价详情/5-1-1.csv"
     get_goods_bid(good_id,num,file_path)
     assert 1 ==2
 

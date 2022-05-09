@@ -13,7 +13,8 @@ from utils import times
 
 
 def get_child_file(father_path):
-    '''获取文件夹中的所有文件'''
+    '''获取文件夹中的所有文件
+    f1 = "/Users/yuanyuanhe/Desktop/竞拍分析/一尘/客户信息"'''
     file_list = os.listdir(father_path)
     for f in file_list:
         if (f[0] == '.'):
@@ -319,10 +320,21 @@ def sell_info_no_phone():
     #     csv_writer = csv.writer(csvfile)
     #     csv_writer.writerows(seller_phone)
     # csv.writer(seller_phone,"/Users/yuanyuanhe/Desktop/卖家联系方式-无号码.csv")
+def concat_phone():
+    f1 = "/Users/yuanyuanhe/Desktop/竞拍分析/一尘/客户信息/"
+    file_list = get_child_file(f1)
+    df = pd.DataFrame()
+
+    for f in file_list:
+        df_temp = pd.read_csv(f1+f)
+        df = pd.concat([df,df_temp])
+    df.dropna().drop_duplicates().to_csv(f1 + "/所有用户.csv")
+    
 
 if __name__ == "__main__":
-    f1 = "/Users/yuanyuanhe/Desktop/评级币评级钞_卖贴.csv"
-    f2 = "/Users/yuanyuanhe/Desktop/评级币评级钞_卖家_分列.csv"
-    f3 = "/Users/yuanyuanhe/Desktop/评级币评级钞_卖家_无电话号码.csv"
-    f = [f1,f2,f3]
-    get_customer_info(*f)
+    # f1 = "/Users/yuanyuanhe/Desktop/评级币评级钞_卖贴.csv"
+    # f2 = "/Users/yuanyuanhe/Desktop/评级币评级钞_卖家_分列.csv"
+    # f3 = "/Users/yuanyuanhe/Desktop/评级币评级钞_卖家_无电话号码.csv"
+    # f = [f1,f2,f3]
+    # get_customer_info(*f)
+    concat_phone()
