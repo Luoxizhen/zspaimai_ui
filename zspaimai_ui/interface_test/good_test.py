@@ -222,6 +222,19 @@ def goods_edit_begin_time():
 def test_goods_edit_begin_time():
     goods_edit_begin_time()
     assert 1==2
+def test_goods_edit_price():
+    '''对下架对拍品编辑起拍时间'''
+
+    good_info_json = {"id": 2521}
+    goods_json = goods.goods_info(**good_info_json).json()['data']
+    # begin_time = times.str_to_time("2022-03-11 10:00:00")
+    # goods_json['begin_time'] = begin_time
+    goods_json['original_image'] = json.dumps(goods_json['original_image'])
+    goods_json['images'] = json.dumps(goods_json['images'])
+    goods_json['topic_id'] = json.dumps(goods_json['topic_id'])
+    goods_json['price'] = 7000
+
+    r = goods.goods_edit(**goods_json)
 def get_goods_bid(good_id_start,num,p):
     '''获取拍品的出价信息
     good_id_start: 第一个拍品的id
@@ -412,14 +425,14 @@ def test_good_add_sp_new():
     assert 1==2
 
 def test_good_add_new():
-    file_path = "/Users/yuanyuanhe/Desktop/货/拍品导入/新5-2.csv"
+    file_path = "/Users/yuanyuanhe/Desktop/货/拍品导入/新5-2-1.csv"
     topic_info = {}
-    begin_time = times.str_to_time("2022-04-29 10:00:00")  # 开拍时间 ： 与专场开拍时间相同2022-04-22 10:00:00 2022-04-29 10:00:00
-    end_time = times.str_to_time("2022-05-09 20:32:30")  # 结拍时间： 与专场结拍时间相同2022-04-25 20:00:00
+    begin_time = times.str_to_time("2022-05-13 10:00:00")  # 开拍时间 ： 与专场开拍时间相同2022-04-22 10:00:00 2022-04-29 10:00:002022-05-13 10:00:00
+    end_time = times.str_to_time("2022-05-16 20:00:00")  # 结拍时间： 与专场结拍时间相同2022-04-25 20:00:00 2022-05-16 20:00:00
     topic_info["begin_time"] = begin_time
     topic_info["end_time"] = end_time
     topic_info["agreement_no"] = ""
-    topic_info["topic_id"] = "[51]"
+    topic_info["topic_id"] = "[52]"
     good_add_new(file_path, **topic_info)
 def goods_edit_picture(file_path,good_id):
     '''对下架的拍品编辑时间'''

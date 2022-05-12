@@ -156,11 +156,14 @@ def split_col(data,column):
         data[column+str(i)] = j
     return data
 
-def concat_phone():
-    filepath = "/Users/yuanyuanhe/Desktop/买家联系方式_5.csv"
-    data = pd.read_csv(filepath)
-    phone = data.dropna().drop_duplicates()
-    phone.to_csv("/Users/yuanyuanhe/Desktop/买家联系方式_6.csv")
+def split_phone():
+    filepath = "/Users/yuanyuanhe/Desktop/竞拍分析/一尘/客户信息/评级币评级钞_卖家.csv"
+    data = pd.read_csv(filepath).dropna(subset=["phone"])
+
+    data["phone"] = data["phone"].str.replace("[","").str.replace("]","").str.replace("'","")
+    data1 = pd.concat([data,data["phone"].str.split(",",n=3,expand=True)],axis=1)
+    del data1["phone"]
+    data1.to_csv("/Users/yuanyuanhe/Desktop/竞拍分析/一尘/客户信息/评级币评级钞_卖家1.csv")
 
 def sell():
     file_path = "/Users/yuanyuanhe/Desktop/卖.csv"
@@ -320,15 +323,19 @@ def sell_info_no_phone():
     #     csv_writer = csv.writer(csvfile)
     #     csv_writer.writerows(seller_phone)
     # csv.writer(seller_phone,"/Users/yuanyuanhe/Desktop/卖家联系方式-无号码.csv")
-def concat_phone():
+def concat_phone1():
     f1 = "/Users/yuanyuanhe/Desktop/竞拍分析/一尘/客户信息/"
-    file_list = get_child_file(f1)
+    # file_list = get_child_file(f1)
+    file_list = ["评级币评级钞_买家.csv","评级币评级钞_卖家.csv"]
     df = pd.DataFrame()
 
     for f in file_list:
         df_temp = pd.read_csv(f1+f)
         df = pd.concat([df,df_temp])
-    df.dropna().drop_duplicates().to_csv(f1 + "/所有用户.csv")
+    all = df.dropna(subset=["name","phone0"]).drop_duplicates(subset=["phone0"])
+
+    all  .to_csv(f1 + "/评级币所有用户.csv")
+
     
 
 if __name__ == "__main__":
@@ -337,4 +344,4 @@ if __name__ == "__main__":
     # f3 = "/Users/yuanyuanhe/Desktop/评级币评级钞_卖家_无电话号码.csv"
     # f = [f1,f2,f3]
     # get_customer_info(*f)
-    concat_phone()
+    concat_phone1()
