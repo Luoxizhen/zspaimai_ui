@@ -18,17 +18,18 @@ class HtmlParser(object):
         titles_in_page = soup.find("form").find_all('div', class_="listtitle")
         purcharses = [] #存取购买信息
         sales = [] #存取销售信息
+        purcharse_words = ['求购','收购','购',"收","求"]
         for i in range((len(titles_in_page))):
             buy_info = []
             sell_info = []
             title_s = titles_in_page[i].find('a').get('title') #论坛标题
             title_s1 = str(title_s)[:str(title_s).find("作者：")-1:]
             href = titles_in_page[i].find('a').get('href') #href="dispbbs.asp?boardID=11&ID=28379371&page=1" 论坛详情网址
-            if ('求购' in title_s1) or ('收购' in title_s1) or ('购' in title_s1) or ("收" in title_s1) or ("求" in title_s1):
+            if any(wd in title_s1 for wd in purcharse_words): #提取帖子中含有 求购 信息的帖子
                 buy_info.append(title_s)
                 buy_info.append(href)
                 purcharses.append(buy_info)
-            else:
+            else: #非求购的帖子归入另一个文件
                 sell_info.append(title_s)
                 sell_info.append(href)
                 sales.append(sell_info)
