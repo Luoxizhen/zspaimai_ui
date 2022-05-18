@@ -264,9 +264,9 @@ def get_goods_bid(good_id_start,num,p):
 
 def test_get_goods_bid():
     '''测试 get_goods_bid(good_id_start,num,p) 函数'''
-    good_id = 2346 # 2346 2462
-    num = 65 #65 19
-    file_path = "/Users/yuanyuanhe/Desktop/货/拍品出价详情/5-1-1.csv"
+    good_id = 2481 # 2346 2462
+    num = 49 #65 19
+    file_path = "/Users/yuanyuanhe/Desktop/货/拍品出价详情/5-2.csv"
     get_goods_bid(good_id,num,file_path)
     assert 1 ==2
 
@@ -297,7 +297,7 @@ def good_add_new(file_path,**topic_info):
             s_name = '('+ row['num']+ " "+row['score'] + ')' #非评级币的编号 = （编号+ 品相）
             good_info["shape"] = row['grade']
 
-        good_info["name"] = c_name + s_name
+        good_info["name"] = c_name + s_name #名称的字符长度不能超过60
         if "/" in row["date"]:
             img_1 = "picture/" + row['date'] + "-1.jpg"
         else:
@@ -345,6 +345,7 @@ def good_add_new(file_path,**topic_info):
         good_info["category_id"] = row["category_id"] #拍品类目
         good_info["buyer_service_rate"] = row["buyer_service_rate"]
         r = goods.goods_add(**good_info)
+        print(r.json())
         k = k + 1
 def good_add_new_sp(file_path):
     '''从csv 文件中导入新商品
@@ -418,6 +419,7 @@ def good_add_new_sp(file_path):
         good_info["inventory_unit"] = "枚"
 
         r = goods.goods_add(**good_info)
+
         k = k + 1
 def test_good_add_sp_new():
     file_path = "/Users/yuanyuanhe/Desktop/货/拍品导入/新5-1-1.csv"
@@ -425,67 +427,41 @@ def test_good_add_sp_new():
     assert 1==2
 
 def test_good_add_new():
-    file_path = "/Users/yuanyuanhe/Desktop/货/拍品导入/新5-2-1.csv"
+    file_path = "/Users/yuanyuanhe/Desktop/货/拍品导入/新5-3-2.csv"
     topic_info = {}
-    begin_time = times.str_to_time("2022-05-13 10:00:00")  # 开拍时间 ： 与专场开拍时间相同2022-04-22 10:00:00 2022-04-29 10:00:002022-05-13 10:00:00
-    end_time = times.str_to_time("2022-05-16 20:00:00")  # 结拍时间： 与专场结拍时间相同2022-04-25 20:00:00 2022-05-16 20:00:00
+    begin_time = times.str_to_time("2022-05-20 10:00:00")  # 开拍时间 ：
+    end_time = times.str_to_time("2022-05-23 20:19:00")  # 结拍时间：
     topic_info["begin_time"] = begin_time
     topic_info["end_time"] = end_time
     topic_info["agreement_no"] = ""
-    topic_info["topic_id"] = "[52]"
+    topic_info["topic_id"] = "[53]"
     good_add_new(file_path, **topic_info)
-def goods_edit_picture(file_path,good_id):
-    '''对下架的拍品编辑时间'''
-    f = open(file_path, mode="r", encoding='utf-8')
-    reader = csv.DictReader(f)
-    k = 0
-    for i in range(5):
-        good_info_json = {"id": good_id + k}
-        goods_json = goods.goods_info(**good_info_json).json()['data']
-        print(goods_json)
-        goods_json["images"] = json.dumps(goods_json["images"]).replace("Chen","chen")
-        goods_json["original_image"] = json.dumps(goods_json["original_image"]).replace("Chen", "chen")
-
-        goods_json["content"] = goods_json["content"].replace("Chen", "chen")
-        goods_json['topic_id'] = json.dumps(goods_json['topic_id'])
-    # for row in reader:
-    #     good_info_json = {"id": good_id+k}
-    #     goods_json = goods.goods_info(**good_info_json).json()['data']
-    #     img_1 = "picture/" + row['date'] + "/" + row['good_no'] + "-1.jpg"
-    #     img = [img_1]
-    #     for i in range(2, int(row['p_1']) + 1):
-    #         img.append(img_1.replace("-1.jpg", "-" + str(i) + ".jpg"))
-    #     o_img = [x.replace("picture/", "thumbnail/") for x in img]
-    #     goods_json["images"] = json.dumps(o_img[:int(row['p_2'])])
-    #     goods_json["original_image"] = json.dumps(img[:int(row['p_2'])])  # 原图
-    #     print(goods_json["images"] )
-    #     name_s = """<p class="ql-align-center"><strong>"""
-    #     name_e = """</strong></p><p class="ql-align-center"><br></p>"""
-    #     p_s = """<p class="ql-align-center">"""
-    #     p_e = """</p>"""
-    #     img_s = r'<img src=\"'
-    #     img_e = r'\">'
-    #     picture_url_base = "https://online-1303141635.cos.ap-guangzhou.myqcloud.com/"  # 图片的基本地址
-    #     picture_url = [picture_url_base + x for x in img]
-    #     # [picture_url_base + img_1, picture_url_base + img_2]
-    #     picture_str = ''
-    #     for i in range(int(row['p_1'])):
-    #         picture_str = picture_str + img_s + picture_url[i]+ img_e
-    #     # good_info["content"] = name_s + good_info["name"] + name_e + p_s + img_s + picture_url[0] + img_e + img_s + picture_url[1] + img_e + p_e
-    #     goods_json["content"] = name_s + goods_json["name"] + name_e + p_s + picture_str + p_e
-    #     print(goods_json['content'])
-    #     # print(good_info['content'])
-        k = k + 1
-        r = goods.goods_edit(**goods_json)
-        print(goods_json)
-        print(r.json())
+    assert 1==2
+def goods_edit_picture(good_id):
+    '''
+    单个拍品编辑
+    对下架的拍品编辑图片，用于上传拍品过程中，照片顺序错误时进行修改，
+    good_id：后台拍品的编号，执行本函数前，必须在后台将该编号拍品下架
+    '''
+    good_info_json = {"id": good_id}
+    goods_json = goods.goods_info(**good_info_json).json()['data']
+    goods_json["images"] = json.dumps(goods_json["images"]).replace("4016","4015")
+    goods_json["original_image"] = json.dumps(goods_json["original_image"]).replace("4016","4015")
+    goods_json["content"] = goods_json["content"].replace("4016","4015")
+    goods_json['topic_id'] = json.dumps(goods_json['topic_id'])
+    r = goods.goods_edit(**goods_json)
+    print(goods_json)
+    print(r.json())
 def test_good_edit_picture():
-    file_path = "/Users/yuanyuanhe/Desktop/货/拍品导入/新4-3-1.csv"
-    good_id = 2307
-    goods_edit_picture(file_path, good_id)
+    good_id = 2566
+    goods_edit_picture( good_id)
     assert 1==2
 
 def goods_edit(file_path):
+    '''编辑拍品
+    file_path : 所编辑拍品的信息存储路径，目的也是对拍品照片的路径进行编辑
+    文档必须存放拍品的id
+    '''
     f = open(file_path, mode="r", encoding='utf-8')
     reader = csv.DictReader(f)
     for row in reader:
@@ -519,9 +495,8 @@ def goods_edit(file_path):
         goods_json["content"] = name_s + goods_json["name"] + name_e + p_s + picture_str + p_e
         goods_json['topic_id'] = json.dumps(goods_json['topic_id'])
         r= goods.goods_edit(**goods_json)
-
         print(r.json())
 def test_goods_edit():
-    file_path = "/Users/yuanyuanhe/Desktop/货/拍品导入/新5-1-3.csv"
+    file_path = "/Users/yuanyuanhe/Desktop/货/拍品导入/新5-3-2.csv"
     goods_edit(file_path)
     assert 1==2
