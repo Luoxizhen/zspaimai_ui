@@ -36,6 +36,7 @@ class HtmlParser(object):
         return [purcharses,sales]
 
     def parser_contact(self,board_info):
+        '''解析 1尘 网博主发布的信息'''
         soup = BeautifulSoup(board_info, 'html.parser', from_encoding='gb2312')
         first_floor = soup.find("div", class_="post")  # 楼主发布的内容
         contact_1 = first_floor.find("div")
@@ -44,29 +45,15 @@ class HtmlParser(object):
         print(contact)
         content = str(first_floor).replace(str(contact),"").replace(str(contact_1),"") #楼主发布的信息
         print("start")
-        while content.find("<") != -1:
+        while content.find("<") != -1: # 去掉格式
             start_s = content.find("<")
             end_s = content.find(">")+1
             temp_s = content[start_s:end_s]
             content = content.replace(temp_s,"")
         print(content)
-        # print("contact")
-        # contact =str(contact)
-        # while contact.find("<") != -1:
-        #     start_s = contact.find("<")
-        #     end_s = contact.find(">") + 1
-        #     temp_s = contact[start_s:end_s]
-        #     contact = contact.replace(temp_s, "")
-        # if self.contact_pre == contact:
-        #     contact = ""
-        # else:
-        #     self.contact_pre = contact
 
-        # print(first_floor)
-        # print(contact)
-        # print(content)
         return {"content":content,"contact":contact}
-        # ,"contact":contact
+
     def parser_page_href(self,html_cout):
         '''搜索页面的下一页的网址'''
         soup = BeautifulSoup(html_cout, 'html.parser', from_encoding='gb2312')
