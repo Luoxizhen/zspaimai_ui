@@ -280,12 +280,7 @@ def good_add_new(file_path,**topic_info):
     for row in reader:
         print(row)
         good_info = {}
-        # if row['category_id'] in [7,8,9,10] and '裸' not in row['grade']:
-        #     # 属于第一套、第二套、第三套、第四套人民币的评级币的名称
-        #     good_info["name"] = row["category"] + row['name'] + row['count'] + '('+ row['num']+ " "+row['grade']+row['score'] +')' #拍品名称
-        # else:
-        #     good_info["name"] = row['name'] + row['count'] + '(' + row['num'] + " " + row['grade'] + \
-        #                         row['score'] + ')'  # 拍品名称
+
         if int(row['category_id']) in [7,8,9,10]:
             c_name = row["category"] + row['name'] + row['count'] # 第一、二、三、四版币的名称 = 版别+名字+数量
         else:
@@ -305,11 +300,6 @@ def good_add_new(file_path,**topic_info):
         img = [img_1]
         for i in range(2,int(row['p_1'])+1):
             img.append(img_1.replace("-1.jpg","-"+str(i)+".jpg"))
-
-        # img_1 = "picture/" + row['date'] + "/" + row['no.'] + "-1.jpg"
-        # img_2 = img_1.replace("-1.jpg","-2.jpg")
-        # img = [img_1, img_2]
-        # o_img = [img_1.replace("picture/", "thumbnail/"), img_2.replace("picture/", "thumbnail/")]
         o_img = [x.replace("picture/", "thumbnail/") for x in img]
         good_info["images"] = json.dumps(o_img[:int(row['p_2'])])#缩列图
         good_info["original_image"] = json.dumps(img[:int(row['p_2'])])  #原图
@@ -320,27 +310,24 @@ def good_add_new(file_path,**topic_info):
         img_s = '<img src="'
         img_e = '">'
         picture_url_base = "https://online-1303141635.cos.ap-guangzhou.myqcloud.com/"  #图片的基本地址
-        picture_url = [picture_url_base +x for x in img]
-        # [picture_url_base + img_1, picture_url_base + img_2]
+        picture_url = [picture_url_base + x for x in img]
         picture_str = ''
         for i in range(int(row['p_1'])):
             picture_str = picture_str + img_s + picture_url[i] + img_e
-        # good_info["content"] = name_s + good_info["name"] + name_e + p_s + img_s + picture_url[0] + img_e + img_s + picture_url[1] + img_e + p_e
-        good_info["content"] = name_s + good_info["name"] + name_e + p_s + picture_str + p_e
+        if good_info["sub_comment"] == "": #拍品没有备注信息时，拍品的描述为拍品的名字 + 图片
+            good_info["content"] = name_s + good_info["name"] + name_e + p_s + picture_str + p_e
+        else: # 拍品信息有备注信息时，拍品的描述包括拍品的备注信息
+            good_info["content"] = name_s + good_info["name"] + name_e + name_s + good_info["sub_content"] + name_e + p_s + picture_str + p_e
         print(good_info['content'])
         good_info["price"] = row['price']
         good_info["retain_price"] = row["retain_price"] # 保留价
-        # if row['grade'] != "裸币" or "":
-        #     good_info["shape"] = "评级币"
-        # else:
-        #     good_info["shape"] = "裸币"
+
         good_info["seller_name"] = row["seller_name"]
         good_info["delay_time"] = 60  # 延拍时间
         good_info["goods_weight"] = 0
         good_info["begin_time"] = topic_info["begin_time"]
         good_info["end_time"] = topic_info["end_time"] + 30 * (k - 1)  # 30 ，单位为s ，按照该专场多长时间节拍一个进行计算
         good_info["agreement_no"] = row["agreement_no"]
-        # 合同编号，格式按照 a+年+月+该专场在本月的排序，如果2022年1月份第一个专场 则设置为 a20220101
         good_info["topic_id"] = topic_info['topic_id'] # 拍品所属专场
         good_info["category_id"] = row["category_id"] #拍品类目
         good_info["buyer_service_rate"] = row["buyer_service_rate"]
