@@ -349,7 +349,7 @@ def good_add_new_sp(file_path):
             c_name = row["category"] + row['name'] #+ row['count'] # 第一、二、三、四版币的名称 = 版别+名字+数量
         else:
             c_name = row['name'] #+ row['count'] #其余 = 名字+ 数量
-        if '裸' not in row['grade']:
+        if '裸' not in row['grade'] or '原' not in row['grade']:
             s_name = '('+ row['num']+ " "+row['grade']+row['score'] +')' #评级币的编号 = （编号+评级+分数）
             good_info["shape"] = "评级币"
         else:
