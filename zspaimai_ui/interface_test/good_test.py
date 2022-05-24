@@ -314,10 +314,10 @@ def good_add_new(file_path,**topic_info):
         picture_str = ''
         for i in range(int(row['p_1'])):
             picture_str = picture_str + img_s + picture_url[i] + img_e
-        if good_info["sub_comment"] == "": #拍品没有备注信息时，拍品的描述为拍品的名字 + 图片
+        if row["sub_comment"] == " ": #拍品没有备注信息时，拍品的描述为拍品的名字 + 图片
             good_info["content"] = name_s + good_info["name"] + name_e + p_s + picture_str + p_e
         else: # 拍品信息有备注信息时，拍品的描述包括拍品的备注信息
-            good_info["content"] = name_s + good_info["name"] + name_e + name_s + good_info["sub_content"] + name_e + p_s + picture_str + p_e
+            good_info["content"] = name_s + good_info["name"] + name_e + name_s + row["sub_comment"] + name_e + p_s + picture_str + p_e
         print(good_info['content'])
         good_info["price"] = row['price']
         good_info["retain_price"] = row["retain_price"] # 保留价
@@ -414,14 +414,14 @@ def test_good_add_sp_new():
     assert 1==2
 
 def test_good_add_new():
-    file_path = "/Users/yuanyuanhe/Desktop/货/拍品导入/新5-3-2.csv"
+    file_path = "/Users/yuanyuanhe/Desktop/货/拍品导入/新5-4.csv"
     topic_info = {}
-    begin_time = times.str_to_time("2022-05-20 10:00:00")  # 开拍时间 ：
-    end_time = times.str_to_time("2022-05-23 20:19:00")  # 结拍时间：
+    begin_time = times.str_to_time("2022-05-27 10:00:00")  # 开拍时间 ：2022-05-27 10:00:00
+    end_time = times.str_to_time("2022-05-30 20:00:00")  # 结拍时间：
     topic_info["begin_time"] = begin_time
     topic_info["end_time"] = end_time
     topic_info["agreement_no"] = ""
-    topic_info["topic_id"] = "[53]"
+    topic_info["topic_id"] = "[54]"
     good_add_new(file_path, **topic_info)
     assert 1==2
 def goods_edit_picture(good_id):
