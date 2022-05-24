@@ -285,12 +285,12 @@ def good_add_new(file_path,**topic_info):
             c_name = row["category"] + row['name'] + row['count'] # 第一、二、三、四版币的名称 = 版别+名字+数量
         else:
             c_name = row['name'] + row['count'] #其余 = 名字+ 数量
-        if '裸' not in row['grade'] or '原票' not in row['grade']:
+        if ('裸' not in row['grade']) or ('原票' not in row['grade']):
             s_name = '('+ row['num']+ " "+row['grade']+row['score'] +')' #评级币的编号 = （编号+评级+分数）
             good_info["shape"] = "评级币"
         else:
             s_name = '('+ row['num']+ " "+row['score'] + ')' #非评级币的编号 = （编号+ 品相）
-            good_info["shape"] = row['grade']
+            good_info["shape"] = row['shape']
 
         good_info["name"] = c_name + s_name #名称的字符长度不能超过60
         if "/" in row["date"]:
