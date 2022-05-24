@@ -277,6 +277,7 @@ def good_add_new(file_path,**topic_info):
     f = open(file_path, mode="r", encoding='utf-8')
     reader = csv.DictReader(f)
     k = 1
+    w_shape = ["裸", "原票"]
     for row in reader:
         print(row)
         good_info = {}
@@ -285,12 +286,15 @@ def good_add_new(file_path,**topic_info):
             c_name = row["category"] + row['name'] + row['count'] # 第一、二、三、四版币的名称 = 版别+名字+数量
         else:
             c_name = row['name'] + row['count'] #其余 = 名字+ 数量
-        if ('裸' not in row['grade']) or ('原票' not in row['grade']):
+        if any( w not in row['grade'] for w in w_shape):
             s_name = '('+ row['num']+ " "+row['grade']+row['score'] +')' #评级币的编号 = （编号+评级+分数）
-            good_info["shape"] = "评级币"
+            good_info["shape"] = "评级币" #评级币的品相 = 评级币
         else:
             s_name = '('+ row['num']+ " "+row['score'] + ')' #非评级币的编号 = （编号+ 品相）
-            good_info["shape"] = row['shape']
+            if row["shape"] == "原票":
+                good_info["shape"] = "原票"
+            else:
+                good_info["shape"] = row['grade'] #非评级币的品相 = 所估算的品质
 
         good_info["name"] = c_name + s_name #名称的字符长度不能超过60
         if "/" in row["date"]:
@@ -424,24 +428,26 @@ def test_good_add_new():
     topic_info["topic_id"] = "[54]"
     good_add_new(file_path, **topic_info)
     assert 1==2
-def goods_edit_picture(good_id):
+def goods_edit_picture(good_id,p1,p2):
     '''
     单个拍品编辑
     对下架的拍品编辑图片，用于上传拍品过程中，照片顺序错误时进行修改，
     good_id：后台拍品的编号，执行本函数前，必须在后台将该编号拍品下架
+    p1: 原来的图片
+    p2: 新图片
     '''
     good_info_json = {"id": good_id}
     goods_json = goods.goods_info(**good_info_json).json()['data']
-    goods_json["images"] = json.dumps(goods_json["images"]).replace("4016","4015")
-    goods_json["original_image"] = json.dumps(goods_json["original_image"]).replace("4016","4015")
-    goods_json["content"] = goods_json["content"].replace("4016","4015")
+    goods_json["images"] = json.dumps(goods_json["images"]).replace(p1,p2)
+    goods_json["original_image"] = json.dumps(goods_json["original_image"]).replace(p1,p2)
+    goods_json["content"] = goods_json["content"].replace(p1,p2)
     goods_json['topic_id'] = json.dumps(goods_json['topic_id'])
     r = goods.goods_edit(**goods_json)
     print(goods_json)
     print(r.json())
 def test_good_edit_picture():
-    good_id = 2566
-    goods_edit_picture( good_id)
+    good_id = 2572
+    goods_edit_picture( good_id,p1,p2)
     assert 1==2
 
 def goods_edit(file_path):
