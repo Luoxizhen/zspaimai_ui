@@ -1,7 +1,7 @@
 from interface_base.user import base_url,admin_headers,update_token,get_user_headers
 import requests
-import time
-from utils import rwyaml, rwjson
+
+from utils import rwyaml, rwjson,times
 
 
 def union_topic():
@@ -16,32 +16,30 @@ def union_add(**union_info):
     '''新增推广素材'''
     url = base_url + '/admin/union/union_add'
     headers = admin_headers
-    begin_time = time.time() # 推广计划开始时间
-    end_time = begin_time + 36000 #推广计划结束时间，10小时
+    begin_time = times.str_to_time("2022-05-27 10:00:00") # 推广计划开始时间
+    end_time = times.str_to_time("2022-05-30 20:00:00") #推广计划结束时间，10小时
     topic_info = []
-    topic_id = union_topic().json()['data'][0]['id']
-    topic_info.append(topic_id) #"topic": "[105]"
+    #topic_id = union_topic().json()['data'][0]['id']
+    #topic_info.append(topic_id) #"topic": "[105]"
     #topic = '[' + str(topic_id) +']' #格式 topic = [topic_id]
     '''rebates_rate: 推广值返点， rebates_quota：返回额度 '''
     # union_name = rwyaml.get_yaml_data('interface_data', 'union.yml')['union_name']
     json = {
-        "name": "推广素材",
-        "h5_url": "http://home.online.zspaimai.cn/",
-        "copywriter": "中晟在线--慧眼识宝，悦享收藏！",
+        "name": "五月四期推广计划",
+        "h5_url": "https://www.zsonline.cn/",
+        "copywriter": "罕见苏维埃银行货币首次登场亮相中晟在线，原滋原味红色天安门，等待有缘人，加入推广计划与平台共享佣金！",
         "appid": "wx50c05e976769b587",
         "mini_url": "pages/switchPages/index",
         "enable": 1,
-        "rebates_rate": "10",
+        "rebates_rate": "3",
         "rebates_quota": "2000",
         "start_time": begin_time,
         "end_time": end_time,
         "images": "[\"picture/aAsYfx2sAKYjE4TADzxdKfzG68JX5T.JPG\"]",
         "poster": "[\"thumbnail/yBA5rkeEpijN7MaRQ8ZK4iWxcabYfC.JPG\"]",
-        "topic": str(topic_info)
+        "topic": "['54']"
     }
-    for key in union_info:
-        if key in json.keys():
-            json[key] = union_info[key]
+    json.update(union_info)
     r = requests.request('post', url=url, json=json, headers=admin_headers)
     # union_id = r.json()['data']
     # union_info = {"union_info": {"new_union_id": union_id}}

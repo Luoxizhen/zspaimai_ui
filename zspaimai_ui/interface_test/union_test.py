@@ -6,6 +6,24 @@ from interface_test.user_test import add_pwd
 import pytest
 from common.readpagedata import Pagedata
 union_data = Pagedata('union','interface_data')
+def test_add_union():
+    union_info = {
+        "name": "五月四期推广计划",
+        "h5_url": "https://www.zsonline.cn/",
+        "copywriter": "罕见苏维埃银行货币首次登场亮相中晟在线，原滋原味红色天安门，等待有缘人，加入推广计划与平台共享佣金！",
+        "appid": "wx50c05e976769b587",
+        "mini_url": "pages/switchPages/index",
+        "enable": 1,
+        "rebates_rate": "3",
+        "rebates_quota": "2000",
+
+        "poster": "[\"union/1001.jpeg\"]",
+        "images": "[\"thumbnail/tao/5007-1.jpg\",\"thumbnail/tao/5004-1.jpg\",\"thumbnail/wangli/3024-1.jpg\"]",
+        "topic": "[54]"
+    }
+    r = union.union_add(**union_info)
+    print(r.json())
+    assert r.json()["status"] == 200
 def updata_user_token(userinfo):
     '''所有用户登陆，获取token'''
     phone = get_userinfo(userinfo, 'phone')
@@ -79,7 +97,7 @@ def add_union():
     set_userinfo('union', 'newname', union_newname) # 保存推广计划新名称
 
 
-def test_add_union():
+def test_add_union1():
     '''验证后台添加推广计划成功'''
     # for i in range (1,10):
     #     name = "推广素材-" + str(i)

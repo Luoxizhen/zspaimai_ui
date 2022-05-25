@@ -84,7 +84,15 @@ def recharge(**rechargeinfo):
     '''返回充值状态'''
 
     return r
-
+def recharge_list(user_id):
+    '''后台给用户充值'''
+    url = base_url + '/admin/wallet/recharge_list'
+    headers = admin_headers
+    userinfo_real = {"user_id":1,"business_type":"1","page":1}
+    userinfo_real["user_id"] = user_id
+    r = requests.request('post', url=url, json=userinfo_real, headers=headers)
+    '''返回充值状态'''
+    return r
 def change_quota(**charge_info):
     '''后台给用户充额度'''
     url = base_url + '/admin/wallet/change_quota'
