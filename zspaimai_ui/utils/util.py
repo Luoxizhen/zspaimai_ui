@@ -66,19 +66,10 @@ def str_to_list(str_image):
      输出:
      ['thumbnail/2021-09-27/537-1.jpg', 'thumbnail/2021-09-27/537-2.jpg']
      ['picture/2021-09-27/537-1.jpg', 'picture/2021-09-27/537-2.jpg']
-
-
      '''
-    l = []
-    n = str_image.count(",") +1
-    for i in range(n):
 
-        end = str_image.find(",")-1
-        image = str_image[2:end]
-        l.append(image)
-        str_image = "[" + str_image[end+3:]
 
-    return l
+    return json.load(str_image)
 
 
 
@@ -91,12 +82,8 @@ def list_to_str(list_image):
     "[\"picture/2021-12-23/1075-1.jpg\", \"picture/2021-12-23/1075-2.jpg\"]"
 
          '''
-    s = "["
-    for i in range(len(list_image)):
-        s = s + '"'+list_image[i]+'"'+','
-    s = s.removesuffix(",") + "]"
-    print(s)
-    return s
+
+    return json.dumps(list_image)
 
 
 
