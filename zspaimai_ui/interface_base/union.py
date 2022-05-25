@@ -13,17 +13,18 @@ def union_topic():
     # topic_list = r.json()['data'][0]['id']
     return r
 def union_add(**union_info):
-    '''新增推广素材'''
+    '''新增推广素材
+    rebates_rate: 推广值返点， rebates_quota：返回额度
+    接口返回信息：
+    # union_id = r.json()['data']
+    # union_info = {"union_info": {"new_union_id": union_id}}
+    # rwyaml.generate_yaml_doc('interface_data', 'union_log.yml', union_info)
+    '''
     url = base_url + '/admin/union/union_add'
     headers = admin_headers
     begin_time = times.str_to_time("2022-05-27 10:00:00") # 推广计划开始时间
     end_time = times.str_to_time("2022-05-30 20:00:00") #推广计划结束时间，10小时
-    topic_info = []
-    #topic_id = union_topic().json()['data'][0]['id']
-    #topic_info.append(topic_id) #"topic": "[105]"
-    #topic = '[' + str(topic_id) +']' #格式 topic = [topic_id]
-    '''rebates_rate: 推广值返点， rebates_quota：返回额度 '''
-    # union_name = rwyaml.get_yaml_data('interface_data', 'union.yml')['union_name']
+
     json = {
         "name": "五月四期推广计划",
         "h5_url": "https://www.zsonline.cn/",
@@ -37,24 +38,57 @@ def union_add(**union_info):
         "end_time": end_time,
         "images": "[\"picture/aAsYfx2sAKYjE4TADzxdKfzG68JX5T.JPG\"]",
         "poster": "[\"thumbnail/yBA5rkeEpijN7MaRQ8ZK4iWxcabYfC.JPG\"]",
-        "topic": "['54']"
+        "topic": "[54]"
     }
     json.update(union_info)
     r = requests.request('post', url=url, json=json, headers=admin_headers)
-    # union_id = r.json()['data']
-    # union_info = {"union_info": {"new_union_id": union_id}}
-    # rwyaml.generate_yaml_doc('interface_data', 'union_log.yml', union_info)
     return r
 def union_list():
-    '''推广活动列表'''
+    '''推广活动列表
+    推广活动列表信息包含每个推广活动的详细信息
+    返回数据如下：
+    {"status":200,"msg":"操作成功",
+    "data":{"total":5,"per_page":10,"current_page":1,"last_page":1,
+    "data":[{
+    "id":6,"name":"五月四期推广计划",
+    "h5_url":"https:\/\/www.zsonline.cn\/",
+    "appid":"wx50c05e976769b587",
+    "mini_url":"pages\/switchPages\/index",
+    "enable":1,"rebates_rate":3,"rebates_quota":2000,
+    "start_time":1653616800,"end_time":1654516800,
+    "copywriter":"珍稀苏维埃银行货币首次亮相中晟在线，原滋原味红色天安门1元，等待有缘人，加入推广计划赚取佣金！",
+    "images":"[\"thumbnail\/tao\/5007-1.jpg\",\"thumbnail\/tao\/5004-1.jpg\",\"thumbnail\/wangli\/3024-1.jpg\"]",
+    "poster":"[\"union\/1001.jpeg\"]",
+    "create_time":"2022-05-24 18:32:26",
+    "update_time":"2022-05-25 11:11:50","delete_time":0,"topic":[54]},
+    {"id":5,"name":"五月四期推广计划","h5_url":"https:\/\/www.zsonline.cn\/","appid":"wx50c05e976769b587","mini_url":"pages\/switchPages\/index","enable":2,"rebates_rate":3,"rebates_quota":2000,"start_time":1653616800,"end_time":1653912000,"copywriter":"罕见苏维埃银行货币首次登场亮相中晟在线，原滋原味红色天安门，等待有缘人，加入推广计划与平台共享佣金！","images":"[\"union\/1001.jpeg\"]","poster":"[\"thumbnail\/tao\/5007-1.jpg\",\"thumbnail\/tao\/5004-1.jpg\",\"thumbnail\/wangli\/3024-1.jpg\"]","create_time":"2022-05-24 18:27:48","update_time":"2022-05-25 08:53:30","delete_time":0,"topic":[54]}
+    ]},
+    "shop_switch":"0"}
+    '''
     url = base_url + '/admin/union/union_list'
     headers = admin_headers
     data = "page=1"
     r = requests.request('get', url=url, params=data, headers=headers)
-    # union_list_info = {'最新推广计划': time.time(),
-    #                    'total': r.json()['data']['total'],
-    #                    'data': r.json()['data']['data'][0]}# 需要增加为推广计划列表为0 的情况
-    # rwyaml.generate_yaml_doc('interface_data', 'union_log.yml', union_list_info)
+    return r
+
+def union_edit(**union_info):
+    '''编辑推广活动
+    {"name":"五月四期推广计划",
+    "h5_url":"https://www.zsonline.cn/",
+    "copywriter":"罕见苏维埃银行货币首次登场亮相中晟在线，原滋原味红色天安门，等待有缘人，加入推广计划与平台共享佣金！",
+    "appid":"wx50c05e976769b587",
+    "mini_url":"pages/switchPages/index",
+    "enable":2,"rebates_rate":3,
+    "rebates_quota":2000,
+    "start_time":1653616800,"end_time":1653912000,
+    "images":"[\"union/1001.jpeg\"]",
+    "poster":"[\"thumbnail/tao/5007-1.jpg\",\"thumbnail/tao/5004-1.jpg\",\"thumbnail/wangli/3024-1.jpg\"]",
+    "topic":"[54]","id":5}
+    '''
+    url = base_url + '/admin/union/union_edit'
+    headers = admin_headers
+    json = union_info
+    r = requests.request('post', url=url, json=json, headers=headers)
     return r
 def union_del(id):
     '''删除推广素材'''
@@ -84,10 +118,15 @@ def act_edit(union_id, act_value):
     return r
 
 def union_index(userno):
-    '''从后台推广用户列表搜索用户'''
-    # {"status": 200, "msg": "操作成功", "data": {"total": 1, "per_page": 10, "current_page": 1, "last_page": 1, "data": [
+    '''从后台推广用户列表搜索用户
+    # {"status": 200, "msg": "操作成功",
+    "data": {"total": 1, "per_page": 10, "current_page": 1, "last_page": 1,
+    "data": [
     #     {"user_id": 497, "role": 20, "order_money": "0.00", "commission": 0, "quota": "2000.00", "role_rate": 4,
-    #      "out_commi": "0.00", "userno": 193297}], "order_num": "193", "newbie": "138"}, "shop_switch": "0"}
+    #      "out_commi": "0.00", "userno": 193297}],
+    "order_num": "193",
+    "newbie": "138"},
+    "shop_switch": "0"}'''
     url = base_url + '/admin/union/index'
     headers = admin_headers
 
@@ -179,7 +218,7 @@ def union_join(token=None,fr='pc'):
     url = base_url + '/user/union/union_join'
     if token:
         update_token(token)
-    time.sleep(2)
+    times.sleep(2)
     headers = get_user_headers()
     data = {}
     r = requests.request('post', url=url, params=data, headers=headers)
@@ -225,7 +264,6 @@ def union_list_user(pageno, token=None):
     print(data)
     r = requests.request('get', url=url, params=data, headers=headers)
     return r
-
 
 # def union_user_info_3():
 #     '''查看用户关联信息'''

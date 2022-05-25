@@ -1,12 +1,13 @@
-import time
+
 import json
 from interface_base import union, user, finance, goods, order
-from utils import rwyaml,util
+from utils import rwyaml,util,times
 from interface_test.user_test import add_pwd
 import pytest
 from common.readpagedata import Pagedata
 union_data = Pagedata('union','interface_data')
 def test_add_union():
+
     union_info = {
         "name": "五月四期推广计划",
         "h5_url": "https://www.zsonline.cn/",
@@ -16,7 +17,6 @@ def test_add_union():
         "enable": 1,
         "rebates_rate": "3",
         "rebates_quota": "2000",
-
         "poster": "[\"union/1001.jpeg\"]",
         "images": "[\"thumbnail/tao/5007-1.jpg\",\"thumbnail/tao/5004-1.jpg\",\"thumbnail/wangli/3024-1.jpg\"]",
         "topic": "[54]"
@@ -24,6 +24,55 @@ def test_add_union():
     r = union.union_add(**union_info)
     print(r.json())
     assert r.json()["status"] == 200
+def union_edit(union_index=0,**img):
+    '''编辑推广活动信息
+    img : 包含推广素材和海报
+    "images":"[\"union/1001.jpeg\"]",
+    "poster":"[\"thumbnail/tao/5007-1.jpg\",\"thumbnail/tao/5004-1.jpg\",\"thumbnail/wangli/3024-1.jpg\"]",
+    获取的推广活动信息如下：
+    {
+    "id":6,"name":"五月四期推广计划",
+    "h5_url":"https:\/\/www.zsonline.cn\/",
+    "appid":"wx50c05e976769b587",
+    "mini_url":"pages\/switchPages\/index",
+    "enable":1,"rebates_rate":3,"rebates_quota":2000,
+    "start_time":1653616800,"end_time":1654516800,
+    "copywriter":"珍稀苏维埃银行货币首次亮相中晟在线，原滋原味红色天安门1元，等待有缘人，加入推广计划赚取佣金！",
+    "images":"[\"thumbnail\/tao\/5007-1.jpg\",\"thumbnail\/tao\/5004-1.jpg\",\"thumbnail\/wangli\/3024-1.jpg\"]",
+    "poster":"[\"union\/1001.jpeg\"]",
+    "create_time":"2022-05-24 18:32:26",
+    "update_time":"2022-05-25 11:11:50","delete_time":0,"topic":[54]}
+
+    实际需要传入的推广活动信息如下：
+    {"name":"五月四期推广计划",
+    "h5_url":"https://www.zsonline.cn/",
+    "copywriter":"罕见苏维埃银行货币首次登场亮相中晟在线，原滋原味红色天安门，等待有缘人，加入推广计划与平台共享佣金！",
+    "appid":"wx50c05e976769b587",
+    "mini_url":"pages/switchPages/index",
+    "enable":2,"rebates_rate":3,
+    "rebates_quota":2000,
+    "start_time":1653616800,"end_time":1653912000,
+    "images":"[\"union/1001.jpeg\"]",
+    "poster":"[\"thumbnail/tao/5007-1.jpg\",\"thumbnail/tao/5004-1.jpg\",\"thumbnail/wangli/3024-1.jpg\"]",
+    "topic":"[54]","id":5}'''
+    union_info = union.union_list().json()["data"]["data"][union_index]
+
+    topic = json.dumps(union_info["topic"])
+    images  = img["images"]
+    poster = img["poster"]
+
+    union_info_new = {"topic": topic, "images": images, "poster": poster}
+    union_info.update(union_info_new)
+    union.union_edit()
+def test_union_edit():
+    images_list = ["union/1001.jpeg","union/1002.jpeg"]
+    poster_list = ["thumbnail/tao/5007-1.jpg", "thumbnail/tao/5007-1.jpg","thumbnail/tao/5007-1.jpg"]
+    img = json.dumps(images_list)
+    pst = json.dumps(poster_list)
+    union_info = {"images":img,"poster_list":pst}
+    union_edit(**union_info)
+    assert 1==2
+
 def updata_user_token(userinfo):
     '''所有用户登陆，获取token'''
     phone = get_userinfo(userinfo, 'phone')
