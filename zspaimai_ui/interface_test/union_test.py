@@ -56,6 +56,7 @@ def union_edit(union_index=0,**img):
     "poster":"[\"thumbnail/tao/5007-1.jpg\",\"thumbnail/tao/5004-1.jpg\",\"thumbnail/wangli/3024-1.jpg\"]",
     "topic":"[54]","id":5}'''
     union_info = union.union_list().json()["data"]["data"][union_index]
+    print(union_info)
 
     topic = json.dumps(union_info["topic"])
     images  = img["images"]
@@ -63,13 +64,15 @@ def union_edit(union_index=0,**img):
 
     union_info_new = {"topic": topic, "images": images, "poster": poster}
     union_info.update(union_info_new)
-    union.union_edit()
+
+    r = union.union_edit(**union_info)
+    print(r.json())
 def test_union_edit():
     images_list = ["union/1001.jpeg","union/1002.jpeg"]
-    poster_list = ["thumbnail/tao/5007-1.jpg", "thumbnail/tao/5007-1.jpg","thumbnail/tao/5007-1.jpg"]
+    poster_list = ["union/1.jpg","thumbnail/tao/5007-1.jpg", "thumbnail/tao/5007-1.jpg","thumbnail/tao/5007-1.jpg"]
     img = json.dumps(images_list)
     pst = json.dumps(poster_list)
-    union_info = {"images":img,"poster_list":pst}
+    union_info = {"images":img,"poster":pst}
     union_edit(**union_info)
     assert 1==2
 
