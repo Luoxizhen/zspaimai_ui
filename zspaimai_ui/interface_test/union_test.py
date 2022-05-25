@@ -472,7 +472,7 @@ class TestUnionOrder(object):
         order_id = r.json()['data']['reId']
         order.deliver(order_id)
         token = get_userinfo('user6', 'token')
-        time.sleep(2)
+        times.sleep(2)
         r = order.confirm_send(int(order_id))
         print(r.json())
         user_info = union_data['user6']
@@ -698,7 +698,7 @@ def test_union_join_001():
 #     return r
 
 def test_dd():
-    date = time.strftime('%Y-%m-%d', time.localtime())
+    date = times.strftime('%Y-%m-%d', times.timestamp())
     print(date)
     assert 1==2
 def add_union_order(**order_info):
@@ -712,19 +712,19 @@ def add_union_order(**order_info):
             order_info_real[key] = order_info[key]
     token = get_userinfo(order_info_real['user'], 'token')
     for goodname in order_info_real['good_names']:
-        begin_time = round(time.time())
+        begin_time = round(times.timestamp())
         end_time = begin_time + 10
         good_info = {"begin_time": begin_time, "end_time": end_time, "name": goodname, "price": 1000}
         good_id = goods.goods_add(**good_info).json()['data'] #添加拍品，获取新添加拍品的id
         good_ids.append(good_id)
         goods_infos.append({"goods_id": int(good_id), "buy_number": 1})
-        time.sleep(2)
+        times.sleep(2)
         user_id = get_user_id(order_info_real['user'])
         recharge_info = {'money': '10000', 'user_id': user_id}
         finance.recharge(**recharge_info)  # 后台给用户充值
         bid_info = {"goods_id": good_id, "price": 1000}
         r = goods.bidding(token,**bid_info) #用户竞买拍品
-        time.sleep(10)
+        times.sleep(10)
 
     # "["+str(good_ids[0])+','+str(good_ids[1])+"]"
     # id = "["
@@ -753,7 +753,7 @@ def add_union_order(**order_info):
     express_fee = round(float(r['data']['freight']))
 
     if order_info_real['express'] == 0: #上门自提
-        date = time.strftime('%Y-%m-%d', time.localtime())  # "appointment": "2021-10-26"
+        date = times.time_to_str(times.timestamp())  # "appointment": "2021-10-26"
         order_info = {"goods_ids": id, "total": total, "appointment": date}  # 用户支付订单
     else: #货到付款
         order_info = {"goods_ids": id, "total": total, "addr_id": addr_id, 'express_fee': express_fee}#用户支付订单
