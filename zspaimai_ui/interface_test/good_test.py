@@ -1,8 +1,9 @@
 import json
 
 from interface_base import goods
-
+from common import rwjson
 from utils import times,util
+from config.conf import cm
 
 import csv
 def serach_goods(**file_p):
@@ -337,6 +338,13 @@ def good_add_new(file_path,**topic_info):
         good_info["topic_id"] = topic_info['topic_id'] # 拍品所属专场
         good_info["category_id"] = row["category_id"] #拍品类目
         good_info["buyer_service_rate"] = row["buyer_service_rate"]
+        if row["service_fee_deal"] == "0": # 默认拍品的成交后按照落槌价 3% 收取客户的佣金，如果该项目为0 时，则修改成交佣金比例。
+            meta = json.load(rwjson.Rwjson().get_json(cm.INTERFACE_DATA_PATH)["meta"])
+            meta["service_fee_deal"] = 0
+            good_info["meta"] = json.dumps(meta)
+
+
+
         r = goods.goods_add(**good_info)
         print(r.json())
         k = k + 1
@@ -484,6 +492,7 @@ def goods_edit(file_path):
         picture_url = [picture_url_base + x for x in img]
         # [picture_url_base + img_1, picture_url_base + img_2]
         picture_str = ''
+
         for i in range(int(row['p_1'])):
             picture_str = picture_str + img_s + picture_url[i] + img_e
         # good_info["content"] = name_s + good_info["name"] + name_e + p_s + img_s + picture_url[0] + img_e + img_s + picture_url[1] + img_e + p_e
