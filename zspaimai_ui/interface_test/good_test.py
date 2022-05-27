@@ -313,6 +313,8 @@ def good_add_new(file_path,**topic_info):
         p_e = """</p>"""
         img_s = '<img src="'
         img_e = '">'
+        comm_s = """<p class="ql-align-left">"""
+        comm_e = """</p>"""
         picture_url_base = "https://online-1303141635.cos.ap-guangzhou.myqcloud.com/"  #图片的基本地址
         picture_url = [picture_url_base + x for x in img]
         picture_str = ''
@@ -321,7 +323,7 @@ def good_add_new(file_path,**topic_info):
         if row["sub_comment"] == " ": #拍品没有备注信息时，拍品的描述为拍品的名字 + 图片
             good_info["content"] = name_s + good_info["name"] + name_e + p_s + picture_str + p_e
         else: # 拍品信息有备注信息时，拍品的描述包括拍品的备注信息
-            good_info["content"] = name_s + good_info["name"] + name_e + name_s + row["sub_comment"] + name_e + p_s + picture_str + p_e
+            good_info["content"] = name_s + good_info["name"] + name_e + comm_s + row["sub_comment"].replace("\n","</p><p>") + comm_e + p_s + picture_str + p_e
         print(good_info['content'])
         good_info["price"] = row['price']
         good_info["retain_price"] = row["retain_price"] # 保留价
