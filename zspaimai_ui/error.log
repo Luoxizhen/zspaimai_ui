@@ -1528,3 +1528,9 @@
 2022-05-25 15:18:14,205 - CRITICAL - __init__.py[:22] - critical message
 2022-05-25 15:20:05,816 - ERROR - __init__.py[:21] - error message
 2022-05-25 15:20:05,816 - CRITICAL - __init__.py[:22] - critical message
+2022-05-25 15:23:07,177 - ERROR - __init__.py[:21] - error message
+2022-05-25 15:23:07,177 - CRITICAL - __init__.py[:22] - critical message
+2022-05-27 11:20:57,828 - ERROR - __init__.py[:21] - error message
+2022-05-27 11:20:57,829 - CRITICAL - __init__.py[:22] - critical message
+2022-05-27 11:21:33,605 - ERROR - __init__.py[:21] - error message
+2022-05-27 11:21:33,605 - CRITICAL - __init__.py[:22] - critical message

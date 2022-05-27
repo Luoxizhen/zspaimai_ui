@@ -277,7 +277,7 @@ def good_add_new(file_path,**topic_info):
     f = open(file_path, mode="r", encoding='utf-8')
     reader = csv.DictReader(f)
     k = 1
-    w_shape = ["裸", "原票"]
+    w_shape = ["裸币", "裸票", "原票"]
     for row in reader:
         print(row)
         good_info = {}
@@ -286,7 +286,7 @@ def good_add_new(file_path,**topic_info):
             c_name = row["category"] + row['name'] + row['count'] # 第一、二、三、四版币的名称 = 版别+名字+数量
         else:
             c_name = row['name'] + row['count'] #其余 = 名字+ 数量
-        if any( w not in row['grade'] for w in w_shape):
+        if not row['grade'] in w_shape:
             s_name = '('+ row['num']+ " "+row['grade']+row['score'] +')' #评级币的编号 = （编号+评级+分数）
             good_info["shape"] = "评级币" #评级币的品相 = 评级币
         else:
@@ -418,14 +418,14 @@ def test_good_add_sp_new():
     assert 1==2
 
 def test_good_add_new():
-    file_path = "/Users/yuanyuanhe/Desktop/货/拍品导入/新5-4.csv"
+    file_path = "/Users/yuanyuanhe/Desktop/货/拍品导入/6-1.csv"
     topic_info = {}
-    begin_time = times.str_to_time("2022-05-27 10:00:00")  # 开拍时间 ：2022-05-27 10:00:00
-    end_time = times.str_to_time("2022-05-30 20:00:00")  # 结拍时间：
+    begin_time = times.str_to_time("2022-06-03 10:00:00")  # 开拍时间 ：2022-05-27 10:00:00
+    end_time = times.str_to_time("2022-06-06 20:00:00")  # 结拍时间：
     topic_info["begin_time"] = begin_time
     topic_info["end_time"] = end_time
     topic_info["agreement_no"] = ""
-    topic_info["topic_id"] = "[54]"
+    topic_info["topic_id"] = "[55]"
     good_add_new(file_path, **topic_info)
     assert 1==2
 def goods_edit_picture(good_id,p1,p2):

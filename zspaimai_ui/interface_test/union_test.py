@@ -68,8 +68,8 @@ def union_edit(union_index=0,**img):
     r = union.union_edit(**union_info)
     print(r.json())
 def test_union_edit():
-    images_list = ["union/1001.jpeg","union/1002.jpeg"]
-    poster_list = ["union/1.jpg","thumbnail/tao/5007-1.jpg", "thumbnail/tao/5007-1.jpg","thumbnail/tao/5007-1.jpg"]
+    poster_list = ["union/1001.jpeg","union/1002.jpeg"]
+    images_list = ["union/1.jpg","thumbnail/tao/5007-1.jpg", "thumbnail/tao/5007-1.jpg","thumbnail/tao/5007-1.jpg"]
     img = json.dumps(images_list)
     pst = json.dumps(poster_list)
     union_info = {"images":img,"poster":pst}
