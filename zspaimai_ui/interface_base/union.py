@@ -22,8 +22,9 @@ def union_add(**union_info):
     '''
     url = base_url + '/admin/union/union_add'
     headers = admin_headers
-    begin_time = times.str_to_time("2022-05-27 10:00:00") # 推广计划开始时间
-    end_time = times.str_to_time("2022-05-30 20:00:00") #推广计划结束时间，10小时
+    begin_time = times.str_to_time("2022-05-30 14:33:00") # 推广计划开始时间
+    """2022-06-03 10:00:00~2022-06-06 20:00:00"""
+    end_time = times.str_to_time("2022-06-06 20:00:00") #推广计划结束时间，10小时
 
     json = {
         "name": "五月四期推广计划",
@@ -31,7 +32,7 @@ def union_add(**union_info):
         "copywriter": "罕见苏维埃银行货币首次登场亮相中晟在线，原滋原味红色天安门，等待有缘人，加入推广计划与平台共享佣金！",
         "appid": "wx50c05e976769b587",
         "mini_url": "pages/switchPages/index",
-        "enable": 1,
+        "enable": 0,
         "rebates_rate": "3",
         "rebates_quota": "2000",
         "start_time": begin_time,
@@ -41,6 +42,7 @@ def union_add(**union_info):
         "topic": "[54]"
     }
     json.update(union_info)
+    print(json)
     r = requests.request('post', url=url, json=json, headers=admin_headers)
     return r
 def union_list():

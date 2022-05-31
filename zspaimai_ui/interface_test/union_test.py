@@ -1,4 +1,4 @@
-
+import csv
 import json
 from interface_base import union, user, finance, goods, order
 from utils import rwyaml,util,times
@@ -6,24 +6,68 @@ from interface_test.user_test import add_pwd
 import pytest
 from common.readpagedata import Pagedata
 union_data = Pagedata('union','interface_data')
-def test_add_union():
-
+def add_union_off(f_path,**topic_info):
+    '''从csv 中添加推广计划,运营专用
+    f_path : 推广计划文档所保存的路径
+    topic_info : 推广计划绑定的专场的信息，包含topic_id,begin_time,end_time
+    '''
+    f = open(f_path,mode="r", encoding='utf-8')
+    csv_reader = csv.DictReader(f)
+    for row in csv_reader:
+        union_info = {}
+        union_info["name"] = row["name"]
+        union_info["copywriter"] = row["describer"]
+        union_info["topic"] = json.dumps([topic_info["topic_id"]])
+        union_info["start_time"] = times.str_to_time(topic_info["begin_time"])
+        union_info["end_time"] = times.str_to_time(topic_info["end_time"])
+        poster = json.loads(row["poster"])
+        imager = json.loads(row["images"])
+        union_info["rebates_rate"] = row["rate"]
+        union_info["rebates_quota"] = row["quota"]
+        poster_list = []
+        topic = []
+        for key in poster.keys():
+            for picture in poster[key]:
+                if key == "union":
+                    poster_list.append(key+"/"+picture +".jpg")
+                else:
+                    poster_list.append("picture/"+key+"/"+str(picture) +"-1.jpg")
+        images_list = []
+        for key in imager.keys():
+            for picture in imager[key]:
+                if key == "union":
+                    images_list.append(key + "/" + picture+ ".jpg")
+                else:
+                    images_list.append("thumbnail/" + key + "/" + str(picture) + "-1.jpg")
+        union_info["poster"] = json.dumps(poster_list)
+        union_info["images"] = json.dumps(images_list)
+        topic.append(topic_info["topic_id"])
+        union_info["topic"] = json.dumps(topic)
+        print(union_info)
+    '''        
     union_info = {
-        "name": "五月四期推广计划",
+        "name":"1000元运煤与耕田一枚",
         "h5_url": "https://www.zsonline.cn/",
-        "copywriter": "罕见苏维埃银行货币首次登场亮相中晟在线，原滋原味红色天安门，等待有缘人，加入推广计划与平台共享佣金！",
+        "copywriter": "1000元运煤与耕田一枚，裸票，7品，晚上 20：14：30 结拍，快来竞买吧！",
         "appid": "wx50c05e976769b587",
         "mini_url": "pages/switchPages/index",
-        "enable": 1,
+        "enable": 0,
         "rebates_rate": "3",
         "rebates_quota": "2000",
-        "poster": "[\"union/1001.jpeg\"]",
-        "images": "[\"thumbnail/tao/5007-1.jpg\",\"thumbnail/tao/5004-1.jpg\",\"thumbnail/wangli/3024-1.jpg\"]",
+
+        "poster": "[\"thumbnail/wangli/3023-1.jpg\"]",
+        "images": "[\"thumbnail/wangli/3023-1.jpg\"]",
         "topic": "[54]"
     }
+    '''
     r = union.union_add(**union_info)
     print(r.json())
-    assert r.json()["status"] == 200
+def test_add_union():
+    f_path = "/Users/yuanyuanhe/Desktop/货/推广活动导入/6-1.csv"
+    topic_info = {"begin_time": "2022-06-03 10:00:00", "end_time": "2022-06-06 20:00:00", "topic_id": 55}
+    add_union_off(f_path,**topic_info)
+    assert 1==2
+
 def union_edit(union_index=0,**img):
     '''编辑推广活动信息
     img : 包含推广素材和海报
@@ -68,11 +112,11 @@ def union_edit(union_index=0,**img):
     r = union.union_edit(**union_info)
     print(r.json())
 def test_union_edit():
-    poster_list = ["union/1001.jpeg","union/1002.jpeg"]
-    images_list = ["union/1.jpg","thumbnail/tao/5007-1.jpg", "thumbnail/tao/5007-1.jpg","thumbnail/tao/5007-1.jpg"]
-    img = json.dumps(images_list)
-    pst = json.dumps(poster_list)
-    union_info = {"images":img,"poster":pst}
+    poster_list = "[\"thumbnail/wangli/3023-1.jpg\"]"
+    images_list = "[\"thumbnail/wangli/3023-1.jpg\"]"
+    # img = json.dumps(images_list)
+    # pst = json.dumps(poster_list)
+    union_info = {"images":poster_list,"poster":images_list}
     union_edit(**union_info)
     assert 1==2
 
