@@ -339,11 +339,10 @@ def good_add_new(file_path,**topic_info):
         good_info["category_id"] = row["category_id"] #拍品类目
         good_info["buyer_service_rate"] = row["buyer_service_rate"]
         if row["service_fee_deal"] == "0": # 默认拍品的成交后按照落槌价 3% 收取客户的佣金，如果该项目为0 时，则修改成交佣金比例。
-            meta = json.load(rwjson.Rwjson().get_json(cm.INTERFACE_DATA_PATH)["meta"])
+            good_info_a = rwjson.Rwjson().get_json("goods.json")
+            meta = json.loads(good_info_a["meta"])
             meta["service_fee_deal"] = 0
             good_info["meta"] = json.dumps(meta)
-
-
 
         r = goods.goods_add(**good_info)
         print(r.json())
@@ -428,14 +427,14 @@ def test_good_add_sp_new():
     assert 1==2
 
 def test_good_add_new():
-    file_path = "/Users/yuanyuanhe/Desktop/货/拍品导入/6-1.csv"
+    file_path = "/Users/yuanyuanhe/Desktop/货/拍品导入/新6-2.csv"
     topic_info = {}
-    begin_time = times.str_to_time("2022-06-03 10:00:00")  # 开拍时间 ：2022-05-27 10:00:00
-    end_time = times.str_to_time("2022-06-06 20:00:00")  # 结拍时间：
+    begin_time = times.str_to_time("2022-06-07 10:00:00")  # 开拍时间 ：2022-05-27 10:00:00
+    end_time = times.str_to_time("2022-06-09 20:00:00")  # 结拍时间：
     topic_info["begin_time"] = begin_time
     topic_info["end_time"] = end_time
     topic_info["agreement_no"] = ""
-    topic_info["topic_id"] = "[55]"
+    topic_info["topic_id"] = "[56]"
     good_add_new(file_path, **topic_info)
     assert 1==2
 def goods_edit_picture(good_id,p1,p2):

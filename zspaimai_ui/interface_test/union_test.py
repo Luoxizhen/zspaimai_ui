@@ -38,12 +38,14 @@ def add_union_off(f_path,**topic_info):
                 if key == "union":
                     images_list.append(key + "/" + picture+ ".jpg")
                 else:
-                    images_list.append("thumbnail/" + key + "/" + str(picture) + "-1.jpg")
+                    images_list.append("picture/" + key + "/" + str(picture) + "-1.jpg")
         union_info["poster"] = json.dumps(poster_list)
         union_info["images"] = json.dumps(images_list)
         topic.append(topic_info["topic_id"])
         union_info["topic"] = json.dumps(topic)
         print(union_info)
+        r = union.union_add(**union_info)
+        print(r.json())
     '''        
     union_info = {
         "name":"1000元运煤与耕田一枚",
@@ -60,11 +62,10 @@ def add_union_off(f_path,**topic_info):
         "topic": "[54]"
     }
     '''
-    r = union.union_add(**union_info)
-    print(r.json())
+
 def test_add_union():
-    f_path = "/Users/yuanyuanhe/Desktop/货/推广活动导入/6-1.csv"
-    topic_info = {"begin_time": "2022-06-03 10:00:00", "end_time": "2022-06-06 20:00:00", "topic_id": 55}
+    f_path = "/Users/yuanyuanhe/Desktop/货/推广活动导入/6-2.csv"
+    topic_info = {"begin_time": "2022-06-07 11:00:00", "end_time": "2022-06-09 20:00:00", "topic_id": 56}
     add_union_off(f_path,**topic_info)
     assert 1==2
 
