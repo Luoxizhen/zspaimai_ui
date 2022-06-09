@@ -4,7 +4,10 @@ from interface_base import union, user, finance, goods, order
 from utils import rwyaml,util,times
 from interface_test.user_test import add_pwd
 import pytest
+from common.rwjson import rwjson
 from common.readpagedata import Pagedata
+
+
 union_data = Pagedata('union','interface_data')
 def add_union_off(f_path,**topic_info):
     '''从csv 中添加推广计划,运营专用
@@ -223,15 +226,19 @@ def test_user_join():
     union.union_join(user_token)
 
 '''后台基本功能验证'''
-@pytest.mark.skip(reason="no way of currently testing this")
+#@pytest.mark.skip(reason="no way of currently testing this")
 class TestUnionEdit():
     def test_add_union_001(self):
         '''验证后台添加推广计划后，推广计划列表增加一条数据'''
         union_total_pre = union.union_list().json()['data']['total']
-        r = union.union_add('推广素材')
+        union_info = rwjson.get_json("union.json")
+        union_info["start_time"] = times.timestamp()
+        union_info["end_time"] = union_info["start_time"] + 36000
+        union_info["topic"] = "[438]"
+        r = union.union_add(**union_info)
         union_id = r.json()['data']
         union_total = union.union_list().json()['data']['total']
-        union.union_del(union_id)
+        # union.union_del(union_id)
         assert union_total == union_total_pre + 1
 
     def test_add_union_002(self):
@@ -372,7 +379,7 @@ class TestUnionEdit():
         assert status == 200
 
 
-@pytest.mark.usefixtures('add_user')
+# @pytest.mark.usefixtures('add_user')
 class TestUnionUser(object):
     '''验证正常情况下，业务员所关联的下级用户的所有下级用户都是该业务员的下级用户'''
     #@pytest.mark.skip(reason='')
@@ -425,18 +432,25 @@ class TestUnionUser(object):
         assert total == total_pre + 1
 
     def test_union_join_user6(self):
-        '''验证用户6 通过用户4的推广链接加入推广计划， 用户6 会成为用户1 的推广成员'''
+        '''验证用户6 通过用户3的推广链接加入推广计划， 用户6 会成为用户1 的推广成员'''
         user1_no = get_userinfo('user1', 'userno')
         total_pre = union.union_user(user1_no).json()['data']['total']
-        union_join('user3', 'user6')
+        union_join('user5', 'user6')
         total = union.union_user(user1_no).json()['data']['total']
         assert total == total_pre + 1
+
     def test_union_join_user7(self):
         '''验证用户1 的推广用户数量为5'''
         user1_no = get_userinfo('user1', 'userno')
         total = union.union_user(user1_no).json()['data']['total']
         assert total == 5
-
+    def test_union_join_user8(self):
+        '''验证在推广有效时间内，用户之间无法相互绑定'''
+        user1_no = get_userinfo('user6', 'userno')
+        total_pre = union.union_user(user1_no).json()['data']['total']
+        union_join('user6', 'user5')
+        total = union.union_user(user1_no).json()['data']['total']
+        assert total == total_pre
 class TestUnionIndex(object):
     '''在用户关联成功以后，检查各个上级用户的额度
         新用户加入用户的推广计划后，该用户可获得额度奖励 2000'''
@@ -465,19 +479,13 @@ class TestUnionOrder(object):
     def test_set_pwd_addr(self):
         '''用户完成订单支付前先设置支付密码'''
         for i in range(2,7):
-        #for i in (5,):
             user_info ='user'+ str(i)
             phone = get_userinfo(user_info, 'phone')
             token = get_userinfo(user_info, 'token')
             r1 = add_pwd(token, phone) #设置支付密码
             r2 = user.add_addr()
 
-    # def test_union_order_000(self):
-    #     '''验证用户4 增加收货地址'''
-    #     for i in (2, 6):
-    #         user_info = 'user' + st r(i)
-    #         token = get_userinfo(user_info, 'token')
-    #         user.add_addr(token)
+
 
     def test_union_order_001(self):
         '''验证用户2完成一笔订单支付,后台提货'''
@@ -634,116 +642,6 @@ def test_union_join_001():
     assert status == msg
 
 
-# def add_union_order_1(**order_info):
-#     '''验证用户完成订单支付'''
-#     order_info_list = ['good_name', 'user']
-#     order_info_real = {'good_name': "关联订单", "user": "user2"}
-#     for key in order_info:
-#         if key in order_info_list:
-#             order_info_real[key] = order_info[key]
-#     begin_time = round(time.time())
-#     end_time = begin_time + 20
-#     good_info = {"begin_time": begin_time, "end_time": end_time, "name": order_info_real['good_name'], "price": 1000}
-#     print(good_info)
-#     good_id = goods.goods_add(**good_info).json()['data'] #添加拍品，获取新添加拍品的id
-#     print(good_id)
-#     time.sleep(2)
-#     token = get_userinfo(order_info_real['user'], 'token')
-#     user_id = get_user_id(order_info_real['user'])
-#     recharge_info = {'money': '10000', 'user_id': user_id}
-#     finance.recharge(**recharge_info)  #后台给用户充值
-#     goods.bidding(good_id, 1000, token) #用户竞买拍品
-#     time.sleep(20)
-#     #user_phone = get_userinfo(order_info_real['user'], 'phone')
-#     #add_pwd(user_phone) #设置支付密码
-#     order_info = {"goods_ids": "["+str(good_id)+"]", "total":1100, "appointment":"2021-10-26"}#用户支付订单
-#     r = order.add_order(token,**order_info)
-#     print (r.json())
-#     return r
-# def add_union_order_2(**order_info):
-#     '''验证用户完成订单支付'''
-#     order_info_list = ['good_name', 'user']
-#     order_info_real = {'good_name': ['关联拍品1', '关联拍品2'], "user": "user2"}
-#     good_ids = [1,2]
-#     for key in order_info:
-#         if key in order_info_list:
-#             order_info_real[key] = order_info[key]
-#     for i in (0,1):
-#         begin_time = round(time.time())
-#         end_time = begin_time + 10
-#         good_info = {"begin_time": begin_time, "end_time": end_time, "name": order_info_real['good_name'][i], "price": 1000}
-#         good_ids[i] = goods.goods_add(**good_info).json()['data'] #添加拍品，获取新添加拍品的id
-#         time.sleep(2)
-#         token = get_userinfo(order_info_real['user'], 'token')
-#
-#         user_id = get_user_id(order_info_real['user'])
-#         recharge_info = {'money': '10000', 'userid': user_id}
-#         finance.recharge(**recharge_info)  # 后台给用户充值
-#         goods.bidding(good_ids[i], 1000, token) #用户竞买拍品
-#         time.sleep(10)
-#         user_phone = get_userinfo(order_info_real['user'], 'phone')
-#     #add_pwd(user_phone) #设置支付密码
-#     token = get_userinfo(order_info_real['user'], 'token')
-#     order_info = {"goods_ids": "["+str(good_ids[0])+','+str(good_ids[1])+"]", "total": 2200, "appointment":"2021-10-26"}#用户支付订单
-#     r = order.add_order(token,**order_info)
-#     return r
-# def add_union_order(**order_info):
-#     '''验证用户完成订单支付'''
-#     order_info_list = ['good_names', 'user','express']
-#     order_info_real = {'good_names': ['关联拍品1', '关联拍品2'], "user": "user2", 'express':0}
-#     good_ids = []
-#     goods_infos = []
-#     for key in order_info:
-#         if key in order_info_list:
-#             order_info_real[key] = order_info[key]
-#     token = get_userinfo(order_info_real['user'], 'token')
-#     for goodname in order_info_real['good_names']:
-#         begin_time = round(time.time())
-#         end_time = begin_time + 10
-#         good_info = {"begin_time": begin_time, "end_time": end_time, "name": goodname, "price": 1000}
-#         good_id = goods.goods_add(**good_info).json()['data'] #添加拍品，获取新添加拍品的id
-#         good_ids.append(good_id)
-#         goods_infos.append({"goods_id": int(good_id), "buy_number": 1})
-#         time.sleep(2)
-#         user_id = get_user_id(order_info_real['user'])
-#         recharge_info = {'money': '10000', 'user_id': user_id}
-#         finance.recharge(**recharge_info)  # 后台给用户充值
-#         bid_info = {"goods_id": good_id, "price": 1000 }
-#         r = goods.bidding(token,**bid_info) #用户竞买拍品
-#         time.sleep(10)
-#     # "["+str(good_ids[0])+','+str(good_ids[1])+"]"
-#
-#     id = "["
-#     goods_info = "["
-#     for i in range(len(good_ids)):
-#         if i < len(good_ids)-1:
-#             id = id + good_ids[i] + ","
-#             goods_info = goods_info + json.dumps(goods_infos[i]) + ","
-#         else:
-#             id = id + good_ids[i] + "]"
-#             goods_info = goods_info + json.dumps(goods_infos[i]) + "]"
-#     total = 1100 * len(good_ids)
-#     addr_id = user.addr_list(token).json()['data'][0]['id']
-#     print(goods)
-#
-#
-#     delivery_info = {
-#         "user_addr_id": addr_id,
-#         "goods": goods_info
-#     }
-#     r = order.calculate_freight(**delivery_info).json()
-#     express_fee = round(float(r['data']['freight']))
-#
-#     if order_info_real['express'] == 0: #上门自提
-#         date = time.strftime('%Y-%m-%d', time.localtime())  # "appointment": "2021-10-26"
-#         order_info = {"goods_ids": id, "total": total, "appointment": date}  # 用户支付订单
-#     else: #货到付款
-#         order_info = {"goods_ids": id, "total": total, "addr_id": addr_id, 'express_fee': express_fee}#用户支付订单
-#
-#     r = order.add_order(**order_info)
-#     order_id = r.json()['data']['reId']
-#     order.confirm_order(order_id)
-#     return r
 
 def test_dd():
     date = times.strftime('%Y-%m-%d', times.timestamp())
@@ -755,9 +653,7 @@ def add_union_order(**order_info):
     order_info_real = {'good_names': ['关联拍品1', '关联拍品2'], "user": "user2", 'express':0}
     good_ids = []
     goods_infos = []
-    for key in order_info:
-        if key in order_info_list:
-            order_info_real[key] = order_info[key]
+    order_info_real.update(order_info)
     token = get_userinfo(order_info_real['user'], 'token')
     for goodname in order_info_real['good_names']:
         begin_time = round(times.timestamp())
@@ -772,24 +668,14 @@ def add_union_order(**order_info):
         finance.recharge(**recharge_info)  # 后台给用户充值
         bid_info = {"goods_id": good_id, "price": 1000}
         r = goods.bidding(token,**bid_info) #用户竞买拍品
+        print(r.json())
         times.sleep(10)
-
-    # "["+str(good_ids[0])+','+str(good_ids[1])+"]"
-    # id = "["
-    # goods_info = "["
-    # for i in range(len(good_ids)):
-    #     if i < len(good_ids)-1:
-    #         id = id + good_ids[i] + ","
-    #         goods_info = goods_info + json.dumps(goods_infos[i]) + ","
-    #     else:
-    #         id = id + good_ids[i] + "]"
-    #         goods_info = goods_info + json.dumps(goods_infos[i]) + "]"
     total = 1100 * len(good_ids)
     addr_id = user.addr_list(token).json()['data'][0]['id']
     # print(goods)
 
-    id = util.object_to_str(*good_ids)
-    goods_info = util.object_to_str(*goods_infos)
+    id = json.dumps(good_ids)
+    goods_info = json.dumps(good_info)
 
 
 
@@ -807,6 +693,7 @@ def add_union_order(**order_info):
         order_info = {"goods_ids": id, "total": total, "addr_id": addr_id, 'express_fee': express_fee}#用户支付订单
 
     r = order.add_order(**order_info)
+    print(r.json())
 
     order_id = r.json()['data']['reId']
     order.confirm_order(order_id)

@@ -39,7 +39,7 @@ def time_to_str(t):
     print(lt)
     r = time.strftime("%Y-%m-%d %H:%M:%S", lt)
     return r
-def str_to_time(str):
+def str_to_time(str) -> object:
     p_tuple = time.strptime(str, "%Y-%m-%d %H:%M:%S")
     t = time.mktime(p_tuple)
     return round(t)

@@ -1,52 +1,52 @@
 union:
   id: null
-  name: zstgsc-1027
-  newname: zstgsc-1028
+  name: zstgsc-1031
+  newname: zstgsc-1032
   rebates_quota: null
   rebates_rate: null
 user:
   inv: null
-  phone: '13111111344'
+  phone: '13111111386'
   token: null
   userno: null
 user1:
-  inv: STI5YnBmM0kzRE1PTnRRMlE3OTVyVlp3Q3IrSWJPZnhSb2t6TVY2OFFCaz0=
-  phone: '13111111338'
-  token: 6ac4529883e2c4d4c82b5957f2a4ea47
+  inv: KzVIaUwzUU11TWEvSEhWaEd6OUJnaFFxTGNFUGUxSnZjMkJTU3BkSmlnZz0=
+  phone: '13111111380'
+  token: 0bf29a42a5708bafb476a6302a5f59af
   userid: null
-  userno: '193332'
+  userno: '193356'
 user2:
-  inv: OUdxbDV2bllLbFRFaktWSU1ETEpMTW1nLyswZVFna09SVE9iWDN0SjYrOD0=
+  inv: YkwzSmhyYTBuZTEzY2l4NWdQRVRROXMzU3JYWVZoUXJ3cUVUQmpkc3BUbz0=
   order1: '1625'
   order2: '1626'
   order3: '1627'
-  phone: '13111111339'
-  token: 72f6394274885d92628b134c9714ad16
+  phone: '13111111381'
+  token: 60ec6f15bc4450e263d2db0b3508bf3d
   userid: null
-  userno: '193333'
+  userno: '193357'
 user3:
-  inv: akVYWldUcExmVFpJT2pjMStPbUFrSTJrUnN5dG81TnMrYkFQdWZyY3lPND0=
-  phone: '13111111340'
-  token: f8c9477d9a3ff84eaca022ef75aa2b8c
+  inv: TE4yZ3BwQWxwSHhoaEJuNEU0bEV3ZHBwNnpuazZpQ0xjUWVrbHdIZENmaz0=
+  phone: '13111111382'
+  token: 299cec6704e1cd504447b821dd52878c
   userid: null
-  userno: '193334'
+  userno: '193358'
 user4:
   inv: ''
-  phone: '13111111341'
-  token: 6d74fd4f4e1726b254851c40f04859a3
-  userno: '193335'
+  phone: '13111111383'
+  token: 7a4dc72196352115661a8af1e3a51dd7
+  userno: '193359'
 user5:
-  inv: ''
-  phone: '13111111342'
-  token: f27cc091865c8d0dbaac44c812d45e5f
+  inv: UGdrdTRZL1RDNUQrcU5STnV0MXB4T3p1eW43L3dHaVNqanRYYmtsdW4xST0=
+  phone: '13111111384'
+  token: 640cee3399442312b10f2ebb31d80a1d
   userid: null
-  userno: '193336'
+  userno: '193360'
 user6:
-  inv: ''
+  inv: eXpJY3kxR2h6VDdkdjdBdzBxUktvZUVBUGFsZ0M1NS9UZ0x4QWNrdWZUST0=
   order1: '1628'
   order2: '1629'
   order3: '1630'
-  phone: '13111111343'
-  token: 06ddcb4fde35a361a85f0a832e83651f
+  phone: '13111111385'
+  token: e69d0d777e14ee791a699ca12505edf2
   userid: null
-  userno: '193337'
+  userno: '193361'

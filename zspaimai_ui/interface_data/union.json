@@ -7,9 +7,9 @@
         "enable": 1,
         "rebates_rate": "10",
         "rebates_quota": "2000",
-        "start_time": begin_time,
-        "end_time": end_time,
-        "images": "[\"picture/2HKbk2JxdSAZnTQ2fmPKD8zAKjWxSi.JPG\"]",
+        "start_time": 123333,
+        "end_time": 2222,
+        "images": "[\"thumbnail/yBA5rkeEpijN7MaRQ8ZK4iWxcabYfC.JPG\"]",
         "poster": "[\"thumbnail/yBA5rkeEpijN7MaRQ8ZK4iWxcabYfC.JPG\"]",
-        "topic": topic
+        "topic": "[12]"
  }

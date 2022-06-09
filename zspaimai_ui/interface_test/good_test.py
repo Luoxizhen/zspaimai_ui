@@ -338,12 +338,15 @@ def good_add_new(file_path,**topic_info):
         good_info["topic_id"] = topic_info['topic_id'] # 拍品所属专场
         good_info["category_id"] = row["category_id"] #拍品类目
         good_info["buyer_service_rate"] = row["buyer_service_rate"]
-        if row["service_fee_deal"] == "0": # 默认拍品的成交后按照落槌价 3% 收取客户的佣金，如果该项目为0 时，则修改成交佣金比例。
-            good_info_a = rwjson.Rwjson().get_json("goods.json")
-            meta = json.loads(good_info_a["meta"])
-            meta["service_fee_deal"] = 0
-            good_info["meta"] = json.dumps(meta)
-
+        # if row["service_fee_deal"] == "0": # 默认拍品的成交后按照落槌价 3% 收取客户的佣金，如果该项目为0 时，则修改成交佣金比例。
+        #     good_info_a = rwjson.Rwjson().get_json("goods.json")
+        #     meta = json.loads(good_info_a["meta"])
+        #     meta["service_fee_deal"] = 0
+        #     good_info["meta"] = json.dumps(meta)
+        meta_str = "{\"min_price\":\"\",\"max_price\":\"\",\"seller_insure_deal\":\"0\",\"seller_insure_no_deal\":\"0\",\"service_fee_deal\":\"3\",\"service_fee_no_deal\":\"0\",\"production_fee_deal\":\"0\",\"production_fee_no_deal\":\"0\",\"safekeeping_fee_deal\":\"0\",\"safekeeping_fee_no_deal\":\"0\",\"seller_taxes\":\"\",\"identify_fee\":\"\",\"packing_fee\":\"\",\"texture\":\"\",\"spec\":\"\",\"opinion\":\"\"}"
+        meta_json = json.loads(meta_str)
+        meta_json["service_fee_deal"]=row["service_fee_deal"]
+        good_info["meta"] = json.dumps(meta_json)
         r = goods.goods_add(**good_info)
         print(r.json())
         k = k + 1
