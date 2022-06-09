@@ -32,14 +32,14 @@ def add_union_off(f_path,**topic_info):
         for key in poster.keys():
             for picture in poster[key]:
                 if key == "union":
-                    poster_list.append(key+"/"+picture +".jpg")
+                    poster_list.append(key+"/"+str(picture) +".jpg")
                 else:
                     poster_list.append("picture/"+key+"/"+str(picture) +"-1.jpg")
         images_list = []
         for key in imager.keys():
             for picture in imager[key]:
                 if key == "union":
-                    images_list.append(key + "/" + picture+ ".jpg")
+                    images_list.append(key + "/" + str(picture)+ ".jpg")
                 else:
                     images_list.append("picture/" + key + "/" + str(picture) + "-1.jpg")
         union_info["poster"] = json.dumps(poster_list)
@@ -67,12 +67,12 @@ def add_union_off(f_path,**topic_info):
     '''
 
 def test_add_union():
-    f_path = "/Users/yuanyuanhe/Desktop/货/推广活动导入/6-2.csv"
-    topic_info = {"begin_time": "2022-06-07 11:00:00", "end_time": "2022-06-09 20:00:00", "topic_id": 56}
+    f_path = "/Users/yuanyuanhe/Desktop/货/推广活动导入/6-3.csv"
+    topic_info = {"begin_time": "2022-06-10 10:00:00", "end_time": "2022-06-20 20:00:00", "topic_id": 57}
     add_union_off(f_path,**topic_info)
     assert 1==2
 
-def union_edit(union_index=0,**img):
+def union_edit(union_index=0,exchange=0,**img):
     '''编辑推广活动信息
     img : 包含推广素材和海报
     "images":"[\"union/1001.jpeg\"]",
@@ -107,8 +107,13 @@ def union_edit(union_index=0,**img):
     print(union_info)
 
     topic = json.dumps(union_info["topic"])
-    images  = img["images"]
-    poster = img["poster"]
+    if exchange==0:
+
+        images  = img["images"]
+        poster = img["poster"]
+    else:
+        images = union_info["poster"]
+        poster = union_info["images"]
 
     union_info_new = {"topic": topic, "images": images, "poster": poster}
     union_info.update(union_info_new)
@@ -116,14 +121,18 @@ def union_edit(union_index=0,**img):
     r = union.union_edit(**union_info)
     print(r.json())
 def test_union_edit():
-    poster_list = "[\"thumbnail/wangli/3023-1.jpg\"]"
-    images_list = "[\"thumbnail/wangli/3023-1.jpg\"]"
+    poster_list = "[\"picture/2022-03-14/382-1.jpg\"]"
+    images_list = "[\"picture/2022-03-14/382-1.jpg\"]"
     # img = json.dumps(images_list)
     # pst = json.dumps(poster_list)
     union_info = {"images":poster_list,"poster":images_list}
-    union_edit(**union_info)
+    union_edit(2,**union_info)
     assert 1==2
+def test_union_edit_exchange():
 
+
+    union_edit(1,1)
+    assert 1==2
 def updata_user_token(userinfo):
     '''所有用户登陆，获取token'''
     phone = get_userinfo(userinfo, 'phone')

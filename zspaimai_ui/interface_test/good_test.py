@@ -345,7 +345,7 @@ def good_add_new(file_path,**topic_info):
         #     good_info["meta"] = json.dumps(meta)
         meta_str = "{\"min_price\":\"\",\"max_price\":\"\",\"seller_insure_deal\":\"0\",\"seller_insure_no_deal\":\"0\",\"service_fee_deal\":\"3\",\"service_fee_no_deal\":\"0\",\"production_fee_deal\":\"0\",\"production_fee_no_deal\":\"0\",\"safekeeping_fee_deal\":\"0\",\"safekeeping_fee_no_deal\":\"0\",\"seller_taxes\":\"\",\"identify_fee\":\"\",\"packing_fee\":\"\",\"texture\":\"\",\"spec\":\"\",\"opinion\":\"\"}"
         meta_json = json.loads(meta_str)
-        meta_json["service_fee_deal"]=row["service_fee_deal"]
+        meta_json["service_fee_deal"] = row["service_fee_deal"]
         good_info["meta"] = json.dumps(meta_json)
         r = goods.goods_add(**good_info)
         print(r.json())
@@ -430,14 +430,14 @@ def test_good_add_sp_new():
     assert 1==2
 
 def test_good_add_new():
-    file_path = "/Users/yuanyuanhe/Desktop/货/拍品导入/新6-2.csv"
+    file_path = "/Users/yuanyuanhe/Desktop/货/拍品导入/新6-3.csv"
     topic_info = {}
-    begin_time = times.str_to_time("2022-06-07 10:00:00")  # 开拍时间 ：2022-05-27 10:00:00
-    end_time = times.str_to_time("2022-06-09 20:00:00")  # 结拍时间：
+    begin_time = times.str_to_time("2022-06-10 10:00:00")  # 开拍时间 ：2022-05-27 10:00:00 2022-06-10 10:00:00
+    end_time = times.str_to_time("2022-06-13 20:00:00")  # 结拍时间：
     topic_info["begin_time"] = begin_time
     topic_info["end_time"] = end_time
     topic_info["agreement_no"] = ""
-    topic_info["topic_id"] = "[56]"
+    topic_info["topic_id"] = "[57]"
     good_add_new(file_path, **topic_info)
     assert 1==2
 def goods_edit_picture(good_id,p1,p2):
