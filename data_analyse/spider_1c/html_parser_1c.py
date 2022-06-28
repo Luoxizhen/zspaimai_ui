@@ -6,9 +6,7 @@ import codecs
 import requests
 import csv
 from utils.log import log
-# import urlparse
-# import re
-# from html_downloader_1c import HtmlDownloader
+
 class HtmlParser(object):
     def __init__(self):
         self.contact_pre = ""
