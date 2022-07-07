@@ -20,7 +20,13 @@ def add_union_off(f_path,**topic_info):
         union_info = {}
         union_info["name"] = row["name"]
         union_info["copywriter"] = row["describer"]
-        union_info["topic"] = json.dumps([topic_info["topic_id"]])
+        if type(topic_info["topic_id"])!=str:
+            print(type(topic_info["topic_id"] ))
+            print(",not str")
+            union_info["topic"] = json.dumps(topic_info["topic_id"])
+        else:
+            print(topic_info["topic_id"])
+            union_info["topic"] = topic_info["topic_id"]
         union_info["start_time"] = times.str_to_time(topic_info["begin_time"])
         union_info["end_time"] = times.str_to_time(topic_info["end_time"])
         poster = json.loads(row["poster"])
@@ -45,8 +51,8 @@ def add_union_off(f_path,**topic_info):
                     images_list.append("picture/" + key + "/" + str(picture) + "-2.jpg")
         union_info["poster"] = json.dumps(poster_list)
         union_info["images"] = json.dumps(images_list)
-        topic.append(topic_info["topic_id"])
-        union_info["topic"] = json.dumps(topic)
+        # topic.append(topic_info["topic_id"])
+        # union_info["topic"] = json.dumps(topic)
         print(union_info)
         r = union.union_add(**union_info)
         print(r.json())
@@ -68,8 +74,8 @@ def add_union_off(f_path,**topic_info):
     '''
 
 def test_add_union():
-    f_path = "/Users/yuanyuanhe/Desktop/货/推广活动导入/6-6.csv"
-    topic_info = {"begin_time": "2022-06-24 09:00:00", "end_time": "2022-07-2 20:00:00", "topic_id": 61}
+    f_path = "/Users/yuanyuanhe/Desktop/货/推广活动导入/7-2.csv"
+    topic_info = {"begin_time": "2022-07-08 10:00:00", "end_time": "2022-07-30 20:00:00", "topic_id": [64,65]}
     add_union_off(f_path,**topic_info)
     assert 1==2
 

@@ -272,22 +272,23 @@ def get_goods_bid(good_id_start,num,p,all=0):
 
 def test_get_goods_bid():
     '''测试 get_goods_bid(good_id_start,num,p) 函数'''
-    good_id = 2741 # 2346 2462
-    num = 33 #65 19
-    file_path = "/Users/yuanyuanhe/Desktop/货/拍品出价详情/6-6.csv"
+    good_id = 2804 # 2346 2462
+    num = 30 #65 19
+    file_path = "/Users/yuanyuanhe/Desktop/货/拍品出价详情/7-1.csv"
     get_goods_bid(good_id,num,file_path)
     assert 1 ==2
 
-def good_add_new(file_path,is_edit=0,**topic_info):
+def good_add_new(file_path,is_edit=0,good_type=1,**topic_info):
     '''从csv 文件中导入新拍品
     file_path: 拍品信息.csv 存储位置
+    good_type: 商品类型,type=2 为商品，type =1 为拍品
     topic_info : 拍品的基本信息，包括拍卖开始时间，结束时间，所属专场，合同号'''
     f = open(file_path, mode="r", encoding='utf-8')
     reader = csv.DictReader(f)
     k = 1
     w_shape = ["裸币", "裸票", "原票"]
     for row in reader:
-        print(row)
+
         good_info = {}
 
         if int(row['category_id']) in [7,8,9,10]:
@@ -332,7 +333,7 @@ def good_add_new(file_path,is_edit=0,**topic_info):
             good_info["content"] = name_s + good_info["name"] + name_e + p_s + picture_str + p_e
         else: # 拍品信息有备注信息时，拍品的描述包括拍品的备注信息
             good_info["content"] = name_s + good_info["name"] + name_e + comm_s + row["sub_comment"].replace("\n","</p><p>") + comm_e + p_s + picture_str + p_e
-        print(good_info['content'])
+
         good_info["price"] = row['price']
         good_info["retain_price"] = row["retain_price"] # 保留价
 
@@ -345,17 +346,20 @@ def good_add_new(file_path,is_edit=0,**topic_info):
         good_info["topic_id"] = topic_info['topic_id'] # 拍品所属专场
         good_info["category_id"] = row["category_id"] #拍品类目
         good_info["buyer_service_rate"] = row["buyer_service_rate"]
-        # if row["service_fee_deal"] == "0": # 默认拍品的成交后按照落槌价 3% 收取客户的佣金，如果该项目为0 时，则修改成交佣金比例。
-        #     good_info_a = rwjson.Rwjson().get_json("goods.json")
-        #     meta = json.loads(good_info_a["meta"])
-        #     meta["service_fee_deal"] = 0
-        #     good_info["meta"] = json.dumps(meta)
         meta_str = "{\"min_price\":\"\",\"max_price\":\"\",\"seller_insure_deal\":\"0\",\"seller_insure_no_deal\":\"0\",\"service_fee_deal\":\"3\",\"service_fee_no_deal\":\"0\",\"production_fee_deal\":\"0\",\"production_fee_no_deal\":\"0\",\"safekeeping_fee_deal\":\"0\",\"safekeeping_fee_no_deal\":\"0\",\"seller_taxes\":\"\",\"identify_fee\":\"\",\"packing_fee\":\"\",\"texture\":\"\",\"spec\":\"\",\"opinion\":\"\"}"
         meta_json = json.loads(meta_str)
         meta_json["service_fee_deal"] = row["service_fee_deal"]
         good_info["meta"] = json.dumps(meta_json)
         if is_edit==0:
-            r = goods.goods_add(**good_info)
+            if good_type == 1:
+                r = goods.goods_add(**good_info)
+            else:
+                good_info["type"] = 2
+                good_info["delay_time"] = 0
+                good_info["inventory"] = "1"
+                good_info["inventory_unit"] = "枚"
+                r = goods.goods_add(**good_info)
+
         else:
             good_info["id"] = row["good_id"]
 
@@ -366,94 +370,25 @@ def good_add_new(file_path,is_edit=0,**topic_info):
             r = goods.goods_edit(**good_info)
             print(r.json())
         k = k + 1
-def good_add_new_sp(file_path):
-    '''从csv 文件中导入新商品
-    file_path: 拍品信息.csv 存储位置
-    topic_info : 拍品的基本信息，包括拍卖开始时间，结束时间，所属专场，合同号'''
-    f = open(file_path, mode="r", encoding='utf-8')
-    reader = csv.DictReader(f)
-    k = 1
-    for row in reader:
-        # print(row)
-        good_info = {}
 
-        if int(row['category_id']) in [7,8,9,10]:
-            c_name = row["category"] + row['name'] #+ row['count'] # 第一、二、三、四版币的名称 = 版别+名字+数量
-        else:
-            c_name = row['name'] #+ row['count'] #其余 = 名字+ 数量
-        if '裸' not in row['grade'] or '原' not in row['grade']:
-            s_name = '('+ row['num']+ " "+row['grade']+row['score'] +')' #评级币的编号 = （编号+评级+分数）
-            good_info["shape"] = "评级币"
-        else:
-            s_name = '('+ row['num']+ " "+row['score'] + ')' #非评级币的编号 = （编号+ 品相）
-            good_info["shape"] = row['grade']
-
-        good_info["name"] = c_name + s_name
-
-        img_1 = "picture/" + row['date'] + "/" + row['good_no'] + "-1.jpg"
-        img = [img_1]
-        for i in range(2,int(row['p_1'])+1):
-            img.append(img_1.replace("-1.jpg","-"+str(i)+".jpg"))
-
-        # img_1 = "picture/" + row['date'] + "/" + row['no.'] + "-1.jpg"
-        # img_2 = img_1.replace("-1.jpg","-2.jpg")
-        # img = [img_1, img_2]
-        # o_img = [img_1.replace("picture/", "thumbnail/"), img_2.replace("picture/", "thumbnail/")]
-        o_img = [x.replace("picture/", "thumbnail/") for x in img]
-        good_info["images"] = json.dumps(o_img[:int(row['p_2'])])#缩列图
-        good_info["original_image"] = json.dumps(img[:int(row['p_2'])])  #原图
-        name_s = """<p class="ql-align-center"><strong>"""
-        name_e = """</strong></p><p class="ql-align-center"><br></p>"""
-        p_s = """<p class="ql-align-center">"""
-        p_e = """</p>"""
-        img_s = '<img src="'
-        img_e = '">'
-        picture_url_base = "https://online-1303141635.cos.ap-guangzhou.myqcloud.com/"  #图片的基本地址
-        picture_url = [picture_url_base +x for x in img]
-        # [picture_url_base + img_1, picture_url_base + img_2]
-        picture_str = ''
-        for i in range(int(row['p_1'])):
-            picture_str = picture_str + img_s + picture_url[i] + img_e
-        # good_info["content"] = name_s + good_info["name"] + name_e + p_s + img_s + picture_url[0] + img_e + img_s + picture_url[1] + img_e + p_e
-        good_info["content"] = name_s + good_info["name"] + name_e + p_s + picture_str + p_e
-        # print(good_info['content'])
-        good_info["price"] = row["price"]#row["retain_price"]
-        # good_info["retain_price"] = row["retain_price"] # 保留价
-        # if row['grade'] != "裸币" or "":
-        #     good_info["shape"] = "评级币"
-        # else:
-        #     good_info["shape"] = "裸币"
-        good_info["seller_name"] = row["seller_name"]
-        # good_info["delay_time"] = 0  # 延拍时间
-        # good_info["goods_weight"] = 0
-        # good_info["begin_time"] = topic_info["begin_time"]
-        # good_info["end_time"] = topic_info["end_time"] + 30 * (k - 1)  # 30 ，单位为s ，按照该专场多长时间节拍一个进行计算
-        good_info["agreement_no"] = row["agreement_no"]
-        # 合同编号，格式按照 a+年+月+该专场在本月的排序，如果2022年1月份第一个专场 则设置为 a20220101
-        # good_info["topic_id"] = topic_info['topic_id'] # 拍品所属专场
-        good_info["category_id"] = row["category_id"] #拍品类目
-        # good_info["buyer_service_rate"] = row["buyer_service_rate"]
-        good_info["type"] = 2
-        good_info["inventory"]= "1"
-        good_info["inventory_unit"] = "枚"
-
-        r = goods.goods_add(**good_info)
-
-        k = k + 1
 def test_good_add_sp_new():
-    file_path = "/Users/yuanyuanhe/Desktop/货/拍品导入/新5-1-1.csv"
-    good_add_new_sp(file_path)
+    file_path = "/Users/yuanyuanhe/Desktop/货/拍品导入/7-2-1.csv"
+    topic_info = {}
+    topic_info["begin_time"] = 0
+    topic_info["end_time"] = 0
+    topic_info["topic_id"] = "[]"
+    good_add_new(file_path=file_path,good_type=2,**topic_info)
     assert 1==2
 
 def test_good_add_new():
-    file_path = "/Users/yuanyuanhe/Desktop/货/拍品导入/新6-7.csv"
+    file_path = "/Users/yuanyuanhe/Desktop/货/拍品导入/新7-3.csv"
     topic_info = {}
-    begin_time = times.str_to_time("2022-07-01 10:00:00")  # 开拍时间 ：2022-05-27 10:00:00 2022-06-10 10:00
-    end_time = times.str_to_time("2022-07-04 20:00:00")  # 结拍时间：2022-07-01 10:00:00
+    begin_time = times.str_to_time("2022-07-12 10:00:00")  # 开拍时间 ：2022-05-27 10:00:00 2022-06-10 10:00
+    end_time = times.str_to_time("2022-07-14 20:00:00")  # 结拍时间：2022-07-01 10:00:00
     topic_info["begin_time"] = begin_time
     topic_info["end_time"] = end_time
     topic_info["agreement_no"] = ""
-    topic_info["topic_id"] = "[63]"
+    topic_info["topic_id"] = "[65]"
     good_add_new(file_path, **topic_info)
     assert 1==2
 
@@ -493,63 +428,7 @@ def test_good_edit_picture():
 def test_good_add_picture():
     goods_add_picture(2738)
     assert 1==2
-def goods_edit(file_path):
-    '''编辑拍品
-    file_path : 所编辑拍品的信息存储路径，目的也是对拍品照片的路径进行编辑
-    文档必须存放拍品的id
-    '''
-    f = open(file_path, mode="r", encoding='utf-8')
-    reader = csv.DictReader(f)
-    w_shape = ["裸币", "裸票", "原票"]
-    for row in reader:
-        good_id = row['good_id']
-        good_info_json = {"id": good_id}
-        goods_json = goods.goods_info(**good_info_json).json()['data']
-        if int(row['category_id']) in [7,8,9,10]:
-            c_name = row["category"] + row['name'] + row['count'] # 第一、二、三、四版币的名称 = 版别+名字+数量
-        else:
-            c_name = row['name'] + row['count'] #其余 = 名字+ 数量
-        if not row['grade'] in w_shape:
-            s_name = '('+ row['num']+ " "+row['grade']+row['score'] +')' #评级币的编号 = （编号+评级+分数）
-            goods_json["shape"] = "评级币" #评级币的品相 = 评级币
-        else:
-            s_name = '('+ row['num']+ " "+row['score'] + ')' #非评级币的编号 = （编号+ 品相）
-            if row["grade"] == "原票":
-                goods_json["grade"] = "原票"
-            else:
-                goods_json["shape"] = row['grade'] #非评级币的品相 = 所估算的品质
 
-        goods_json["name"] = c_name + s_name #名称的字符长度不能超过60
-
-
-        if "/" in row["date"]:
-            img_1 = "picture/" + row['date'] + "-1.jpg"
-        else:
-            img_1 = "picture/" + row['date'] + "/" + row['good_no'] + "-1.jpg"
-        img = [img_1]
-        for i in range(2,int(row['p_1'])+1):
-            img.append(img_1.replace("-1.jpg","-"+str(i)+".jpg"))
-        o_img = [x.replace("picture/", "thumbnail/") for x in img]
-        goods_json["images"] = json.dumps(o_img[:int(row['p_2'])])  # 缩列图
-        goods_json["original_image"] = json.dumps(img[:int(row['p_2'])])  # 原图
-        name_s = """<p class="ql-align-center"><strong>"""
-        name_e = """</strong></p><p class="ql-align-center"><br></p>"""
-        p_s = """<p class="ql-align-center">"""
-        p_e = """</p>"""
-        img_s = '<img src="'
-        img_e = '">'
-        picture_url_base = "https://online-1303141635.cos.ap-guangzhou.myqcloud.com/"  # 图片的基本地址
-        picture_url = [picture_url_base + x for x in img]
-        # [picture_url_base + img_1, picture_url_base + img_2]
-        picture_str = ''
-
-        for i in range(int(row['p_1'])):
-            picture_str = picture_str + img_s + picture_url[i] + img_e
-        # good_info["content"] = name_s + good_info["name"] + name_e + p_s + img_s + picture_url[0] + img_e + img_s + picture_url[1] + img_e + p_e
-        goods_json["content"] = name_s + goods_json["name"] + name_e + p_s + picture_str + p_e
-        goods_json['topic_id'] = json.dumps(goods_json['topic_id'])
-        r= goods.goods_edit(**goods_json)
-        print(r.json())
 def test_goods_edit():
     file_path = "/Users/yuanyuanhe/Desktop/货/拍品导入/新6-7-2.csv"
     topic_info = {}
