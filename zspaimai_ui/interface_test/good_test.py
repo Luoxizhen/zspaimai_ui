@@ -296,7 +296,7 @@ def good_add_new(file_path,is_edit=0,good_type=1,**topic_info):
         else:
             c_name = row['name'] + row['count'] #其余 = 名字+ 数量
         if not row['grade'] in w_shape:
-            s_name = '('+ row['num'].replace("'",'')+ " "+row['grade']+row['score'] +')' #评级币的编号 = （编号+评级+分数）
+            s_name = '('+ row['num'].replace("‘",'').replace("'","")+ " "+row['grade']+row['score'] +')' #评级币的编号 = （编号+评级+分数）
             good_info["shape"] = "评级币" #评级币的品相 = 评级币
         else:
             s_name = '('+ row['num']+ " "+row['score'] + ')' #非评级币的编号 = （编号+ 品相）
@@ -381,14 +381,14 @@ def test_good_add_sp_new():
     assert 1==2
 
 def test_good_add_new():
-    file_path = "/Users/yuanyuanhe/Desktop/货/拍品导入/新7-3.csv"
+    file_path = "/Users/yuanyuanhe/Desktop/货/拍品导入/7-5.csv"
     topic_info = {}
-    begin_time = times.str_to_time("2022-07-12 10:00:00")  # 开拍时间 ：2022-05-27 10:00:00 2022-06-10 10:00
-    end_time = times.str_to_time("2022-07-14 20:00:00")  # 结拍时间：2022-07-01 10:00:00
+    begin_time = times.str_to_time("2022-07-19 10:00:00")  # 开拍时间 ：2022-05-27 10:00:00 2022-06-10 10:00
+    end_time = times.str_to_time("2022-07-21 20:00:00")  # 结拍时间：2022-07-01 10:00:00
     topic_info["begin_time"] = begin_time
     topic_info["end_time"] = end_time
     topic_info["agreement_no"] = ""
-    topic_info["topic_id"] = "[65]"
+    topic_info["topic_id"] = "[67]"
     good_add_new(file_path, **topic_info)
     assert 1==2
 
