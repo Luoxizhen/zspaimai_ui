@@ -272,9 +272,9 @@ def get_goods_bid(good_id_start,num,p,all=0):
 
 def test_get_goods_bid():
     '''测试 get_goods_bid(good_id_start,num,p) 函数'''
-    good_id = 2804 # 2346 2462
-    num = 30 #65 19
-    file_path = "/Users/yuanyuanhe/Desktop/货/拍品出价详情/7-1.csv"
+    good_id = 2834 # 2346 2462
+    num = 23 #65 19
+    file_path = "/Users/yuanyuanhe/Desktop/货/拍品出价详情/7-2.csv"
     get_goods_bid(good_id,num,file_path)
     assert 1 ==2
 
@@ -296,7 +296,7 @@ def good_add_new(file_path,is_edit=0,good_type=1,**topic_info):
         else:
             c_name = row['name'] + row['count'] #其余 = 名字+ 数量
         if not row['grade'] in w_shape:
-            s_name = '('+ row['num']+ " "+row['grade']+row['score'] +')' #评级币的编号 = （编号+评级+分数）
+            s_name = '('+ row['num'].replace("'",'')+ " "+row['grade']+row['score'] +')' #评级币的编号 = （编号+评级+分数）
             good_info["shape"] = "评级币" #评级币的品相 = 评级币
         else:
             s_name = '('+ row['num']+ " "+row['score'] + ')' #非评级币的编号 = （编号+ 品相）
