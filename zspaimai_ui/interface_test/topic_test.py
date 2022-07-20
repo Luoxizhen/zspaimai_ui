@@ -175,3 +175,15 @@ def edit_topic():
 def test_edit_topic():
     edit_topic()
     assert 1==2
+def get_list_of_topic():
+    '''统计pc端所有专场的出价次数获取pc 端的专场'''
+    r = topic.user_list().json()["data"]["topic"]
+    last_p = r["last_page"] #获取专场页面的总页面数
+    n = 0
+    for i in range(last_p+1):
+        r = topic.user_list(page=i).json()["data"]["topic"]["data"]
+        for j in range(len(r)):
+            n = n+r[j]["bid_count"]
+    print(n)
+if __name__ == "__main__":
+    pass

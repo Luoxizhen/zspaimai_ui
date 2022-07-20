@@ -85,3 +85,15 @@ def info(id):
     info = {"id": id}
     r = requests.request('post', url=url, json=info, headers=headers)
     return r
+def user_list(page=1,status=30):
+    '''pc 端获取专场列表，参数
+    status: 0 全部状态， 30 已结束
+    page: 2'''
+    url = base_url + "/user/topic/list"
+    headers = get_user_headers()
+    info = {"page":page,"status":status}
+
+
+
+    r = requests.request('get', url=url, params=info, headers=headers)
+    return r

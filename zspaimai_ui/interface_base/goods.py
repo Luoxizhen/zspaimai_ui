@@ -240,12 +240,12 @@ def goods_edit(**goods_info):
 #     data = {"goods_id": goods_id,"goods_number":number}
 #     r = requests.request('post', url=url, data=data, headers=headers)
 #     return r
-def goods_bid(good_id):
+def goods_bid(good_id,page=1):
     '''获取拍品出价信息'''
     url = base_url + '/admin/goods/goods_bid'
     headers = admin_headers
 
-    data = {"id":good_id,"page":1}
+    data = {"id":good_id,"page":page}
 
     r = requests.request('post', url=url, json=data, headers=headers)
     return r

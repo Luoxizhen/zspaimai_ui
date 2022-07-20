@@ -246,24 +246,36 @@ def get_goods_bid(good_id_start,num,p,all=0):
     for i in range(num):
         good_id = good_id_start + i
         r = goods.goods_bid(good_id).json()
+        good_id_json = {"id": good_id}
+        good_name = goods.goods_info(**good_id_json).json()["data"]["name"]
+
         if(r['data']['total'] > 0):
             if all == 0:  # 只记录最新一笔
                 good_bid_info = r['data']['data'][0]
                 good_bid_info['id'] = good_id
+                good_bid_info["name"] =good_name
                 goods_bid_info.append(good_bid_info)
             else:
                 for j in range(r['data']['total']):
-                    good_bid_info = r['data']['data'][j]
-                    good_bid_info['id'] = good_id
-                    if j > 0 :
-                        if good_bid_info["user_id"] not in range(572,586):
 
+                    if j < 10:
+                        good_bid_info = r['data']['data'][j]
+                        good_bid_info['id'] = good_id
+                        good_bid_info["name"] = good_name
+                        if good_bid_info["user_id"] in range(572,587) and j == 0:
+                            good_bid_info["user_id"] ="顶价:" + str(good_bid_info["user_id"])
+                        if j > 0:
+                            if good_bid_info["user_id"] not in range(572,586):
+                                goods_bid_info.append(good_bid_info)
+                        else :
                             goods_bid_info.append(good_bid_info)
-                    else:
-                        goods_bid_info.append(good_bid_info)
+
+
+
+
 
     with open(p,'w') as f:
-        fileheader = ["id","now_price", "agent_price", "user_id", "status"]
+        fileheader = ["id","name","user_id","now_price", "agent_price",  "status"]
         csv_dict_writer = csv.DictWriter(f,fileheader)
         csv_dict_writer.writeheader()
         csv_dict_writer.writerows(goods_bid_info)
@@ -272,10 +284,10 @@ def get_goods_bid(good_id_start,num,p,all=0):
 
 def test_get_goods_bid():
     '''测试 get_goods_bid(good_id_start,num,p) 函数'''
-    good_id = 2834 # 2346 2462
-    num = 23 #65 19
-    file_path = "/Users/yuanyuanhe/Desktop/货/拍品出价详情/7-2.csv"
-    get_goods_bid(good_id,num,file_path)
+    good_id = 2954 # 2346 2462
+    num = 22 #65 19
+    file_path = "/Users/yuanyuanhe/Desktop/货/拍品出价详情/7-4-1-1.csv"
+    get_goods_bid(good_id,num,file_path,all=0)
     assert 1 ==2
 
 def good_add_new(file_path,is_edit=0,good_type=1,**topic_info):
@@ -381,14 +393,14 @@ def test_good_add_sp_new():
     assert 1==2
 
 def test_good_add_new():
-    file_path = "/Users/yuanyuanhe/Desktop/货/拍品导入/7-5.csv"
+    file_path = "/Users/yuanyuanhe/Desktop/货/拍品导入/新7-6.csv"
     topic_info = {}
-    begin_time = times.str_to_time("2022-07-19 10:00:00")  # 开拍时间 ：2022-05-27 10:00:00 2022-06-10 10:00
-    end_time = times.str_to_time("2022-07-21 20:00:00")  # 结拍时间：2022-07-01 10:00:00
+    begin_time = times.str_to_time("2022-07-22 10:00:00")  # 开拍时间 ：2022-05-27 10:00:00 2022-06-10 10:00
+    end_time = times.str_to_time("2022-07-25 20:00:00")  # 结拍时间：2022-07-01 10:00:00
     topic_info["begin_time"] = begin_time
     topic_info["end_time"] = end_time
     topic_info["agreement_no"] = ""
-    topic_info["topic_id"] = "[67]"
+    topic_info["topic_id"] = "[68]"
     good_add_new(file_path, **topic_info)
     assert 1==2
 

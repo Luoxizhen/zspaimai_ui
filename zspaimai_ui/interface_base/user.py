@@ -44,9 +44,12 @@ def quick_login(phone):
     '''快捷登陆，该接口调用前先调用get_msg 接口发送验证码'''
     url = base_url + '/user/user/quick_login'
     headers = get_user_headers_unlogin()
+    print(headers)
     data = {"phone": phone, "vcode": "123456", "inv":""}
+    print(data)
 
     r = requests.request('post', url=url, json=data, headers=headers)
+    print(r.json())
     return r
 
 def quick_login_union(inv, phone):
@@ -190,3 +193,6 @@ def bid(**info):
     r = requests.request('post', url=url, json=info, headers=headers)
     return r
 
+if __name__ == "__main__":
+    get_msg("15622145010")
+    quick_login("15622145010")

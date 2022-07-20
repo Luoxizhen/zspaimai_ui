@@ -74,8 +74,8 @@ def add_union_off(f_path,**topic_info):
     '''
 
 def test_add_union():
-    f_path = "/Users/yuanyuanhe/Desktop/货/推广活动导入/7-2.csv"
-    topic_info = {"begin_time": "2022-07-08 10:00:00", "end_time": "2022-07-30 20:00:00", "topic_id": [64,65]}
+    f_path = "/Users/yuanyuanhe/Desktop/货/推广活动导入/7-5.csv"
+    topic_info = {"begin_time": "2022-07-19 11:40:00", "end_time": "2022-07-30 20:00:00", "topic_id": [67,68]}
     add_union_off(f_path,**topic_info)
     assert 1==2
 
@@ -205,7 +205,22 @@ def add_union():
     '''根据 union.yml 中的 newname 创建一个推广计划，在newname +1 后保存推广计划名称 '''
     union_name = get_userinfo('union', 'newname')
     set_userinfo('union', 'name', union_name)
-    union_info = {'name': union_name}
+    union_info = {
+        "name": "1000元运煤与耕田一枚",
+        "h5_url": "https://www.zsonline.cn/",
+        "copywriter": "1000元运煤与耕田一枚，裸票，7品，晚上 20：14：30 结拍，快来竞买吧！",
+        "appid": "wx50c05e976769b587",
+        "mini_url": "pages/switchPages/index",
+        "enable": 0,
+        "rebates_rate": "3",
+        "rebates_quota": "2000",
+
+        "poster": "[\"thumbnail/wangli/3023-1.jpg\"]",
+        "images": "[\"thumbnail/wangli/3023-1.jpg\"]",
+        "topic": "[54]"
+    }
+    union_info = {'name': union_name,"copywriter": "推广计划测试专场","h5_url":"http://home.online.zspaimai.cn/",
+                  "appid": "wx50c05e976769b587","enable": 1,"topic": "[439]"}
     union.union_add(**union_info).json()
     union_name_1 = union_name[0:7]
     union_name_2 = union_name[7:11]
@@ -226,8 +241,9 @@ def test_add_union1():
 
 def user_login(usernum):
     phone = rwyaml.get_yaml_data('interface_data', 'union.yml')[usernum]['phone']
-    user.get_msg(phone)
+    user.get_msg(phone=phone)
     r = user.quick_login(phone)
+    print(r.json())
     token = r.json()['data']['token']
     userno = r.json()['data']['user']['userno']
     rwyaml.set_keyvalue('interface_data', 'union.yml', usernum, 'token', token)
@@ -240,9 +256,17 @@ def test_user_login():
 def test_user_join():
     user_token = get_userinfo('user1', 'token')
     union.union_join(user_token)
-
+def union_add():
+    union_info = rwjson.get_json("union.json")
+    union_info["start_time"] = times.timestamp()
+    union_info["end_time"] = union_info["start_time"] + 36000
+    union_info["topic"] = "[438]"
+    r = union.union_add(**union_info)
+    print(r.json())
+    return r
 '''后台基本功能验证'''
 #@pytest.mark.skip(reason="no way of currently testing this")
+#@pytest.mark.usefixtures('add_user')
 class TestUnionEdit():
     def test_add_union_001(self):
         '''验证后台添加推广计划后，推广计划列表增加一条数据'''
@@ -260,10 +284,15 @@ class TestUnionEdit():
     def test_add_union_002(self):
         '''验证后台添加推广计划后，pc 端可以看见该推广计划'''
         token = user_login('user1')
-        union_total_pre = union.union_list_1(token).json()['data']['total']
-        r = union.union_add('推广素材')
+        union_total_pre = union.union_list_user(token=token).json()['data']['total']
+        union_info = rwjson.get_json("union.json")
+        union_info["start_time"] = times.timestamp()
+        union_info["end_time"] = union_info["start_time"] + 36000
+        union_info["topic"] = "[438]"
+        r = union.union_add(**union_info)
+
         union_id = r.json()['data']
-        union_total = union.union_list_1(token).json()['data']['total']
+        union_total = union.union_list_user(token=token).json()['data']['total']
         union.union_del(union_id)
         assert union_total == union_total_pre + 1
 
@@ -275,14 +304,18 @@ class TestUnionEdit():
 
     def test_union_del(self):
         '''验证后台删除推广活动功能'''
-        union_id = union.union_add('推广素材').json()['data']
-        r = union.union_del(union_id)
+
+        union_info = rwjson.get_json("union.json")
+        union_info["start_time"] = times.timestamp()
+        union_info["end_time"] = union_info["start_time"] + 36000
+        union_info["topic"] = "[438]"
+        r = union.union_add(**union_info)
         status = r.json()['status']
         assert status == 200
 
     def test_union_del_001(self):
         '''验证后台删除推广活动后，后台列表-1条记录'''
-        union_id = union.union_add('推广素材').json()['data']
+        union_id = union_add().json()['data']
         r = union.union_list()
         union_total_pre = r.json()['data']['total']
         union.union_del(union_id)
@@ -292,31 +325,34 @@ class TestUnionEdit():
 
     def test_union_del_002(self):
         '''验证后台删除推广活动后，pc-1条记录'''
-        union_id = union.union_add('推广素材').json()['data']
+        union_id = union_add().json()['data']
         token = user_login('user1')
-        r = union.union_list_1(token)
+        r = union.union_list_user(token)
         union_total_pre = r.json()['data']['total']
         union.union_del(union_id)
-        union_total = union.union_list_1(token).json()['data']['total']
+        union_total = union.union_list_user(token).json()['data']['total']
         union.union_del(union_id)
         assert union_total == union_total_pre - 1
 
     def test_act_edit(self):
         '''验证后台上架、下架推广计划'''
-        union_id = union.union_add('推广素材').json()['data']
+        union_id = union_add().json()['data']
         act_value = 2
-        status = union.union_act_edit(union_id, act_value).json()['status']
+        status = union.act_edit(union_id, act_value).json()['status']
         union.union_del(union_id)
         assert status == 200
 
     def test_act_edit_002(self):
         '''验证后台下架推广计划后pc 端无法查看到该活动'''
-        union_id = union.union_add('推广素材').json()['data']
+        union_id = union_add().json()['data']
         token = user_login('user1')
-        union_total_pre = union.union_list_1(token).json()['data']['total']
+        # union.union_join(token)
+        r=union.union_list_user(token).json()
+
+        union_total_pre = r['data']['total']
         act_value = 2
-        union.union_act_edit(union_id, act_value)
-        union_total = union.union_list_1(token).json()['data']['total']
+        union.act_edit(union_id, act_value)
+        union_total = union.union_list_user(token).json()['data']['total']
         union.union_del(union_id)
         assert union_total_pre == union_total + 1
 
@@ -325,6 +361,7 @@ class TestUnionEdit():
         '''验证后下架推广计划后，小程序 端无法查看到该活动'''
         union_id = union.union_add('推广素材').json()['data']
         token = user_login('user1')
+
         union_total_pre = union.union_list_1(token).json()['data']['total']
         act_value = 2
         union.union_act_edit(union_id, act_value)
@@ -341,11 +378,11 @@ class TestUnionEdit():
         '''验证后台获取推广用户'''
         file_data = rwyaml.get_yaml_data('interface_data', 'union.yml')
         userno = file_data['user1']['userno']
-        r = union.union_user_info(userno)
+        r = union.union_user(userno)
         status = r.json()['status']
         assert status == 200
 
-    @pytest.mark.skip(reason='')
+    # @pytest.mark.skip(reason='')
     def test_set_user_role(self):
         '''验证后台设置推广用户的角色功能，先检查用户的角色，再设置为另一个角色'''
 
@@ -356,15 +393,15 @@ class TestUnionEdit():
         user_role_pre = union.union_index(userno).json()['data']['data'][0]['role']
 
         if (user_role_pre == 10):
-            union.union_set_role(20)
+            union.set_union_role(userno,20)
             user_role = 20
 
         elif (user_role_pre == 20):
-            union.union_set_role(10)
+            union.set_union_role(userno,10)
             user_role = 10
 
         user_role_real = union.union_index(userno).json()['data']['data'][0]['role']
-        assert user_role_real == user_role_pre
+        assert user_role_real != user_role_pre
 
     def test_search_user(self):
         '''验证后台搜索推广用户列表功能：根据用户编号搜索'''
@@ -731,3 +768,6 @@ def test_add_order():
     # updata_user_token('user2')
     order_info = {'good_names': ['订单支付-2'], "user": "user2"}
     add_union_order(**order_info)
+
+if __name__ == "__main__":
+    user_login("user1")

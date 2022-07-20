@@ -229,7 +229,7 @@ def union_user_list(token=None):
     '''查看用户的关联用户列表'''
     if token:
         update_token(token)
-    url = base_url + '/user/union/union_user_list'
+    url = base_url + 'user/union/user_union_list'
     headers = get_user_headers()
     data = {"page": 1}
     r = requests.request('get', url=url, json=data, headers=headers)
@@ -256,7 +256,7 @@ def union_commi_list(token=None):
     return r
 
 
-def union_list_user(pageno, token=None):
+def union_list_user(pageno=1, token=None):
     '''获取推广素材'''
     url = base_url + '/user/union/union_list'
     if token:
