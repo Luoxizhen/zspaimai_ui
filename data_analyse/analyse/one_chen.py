@@ -25,7 +25,7 @@ def get_child_file(father_path):
 def split_col(data,column):
     '''拆分 Series：
     data 原始数据
-    column 拆分的列明'''
+    column 拆分的列名'''
     data = deepcopy(data)
     max_len = max(list(map(len,data[column].values))) # 最大长度
     new_col = data[column].apply(lambda x:x + [None]*(max_len - len(x)))
@@ -35,6 +35,10 @@ def split_col(data,column):
         data[column+str(i)] = j
     return data
 
+def drop_duplicate(*f):
+    df_raw = pd.read_csv(f[0])
+    df_new = pd.concat([df_raw["name"].drop_duplicates().dropna(),df_raw],axis=1,keys="name",join="inner")
+    df_new.to_csv(f[1])
 
 def drop_duplicate_by_name(*f):
     '''将爬取的title 进行分列，按照发表的作者进行去重复去空，让后与 url 进行内连接
@@ -93,7 +97,7 @@ def get_customer_info(*f):
     customers_info["name"] = names
     customers_info["phone"] = phones
     customers_info["name"] = customers_info["name"].str.split("（", expand=True)[0].str.replace("（", "") #提取名字
-    customers_info["phone"] = customers_info["phone"].str.findall(r"[0-9]{11}") #提取电话号码
+    customers_info["phone"] = customers_info["phone"].str.findall(r"[0-9]{11}") #提取电话号码/^1[3|4|5|7|8][0-9]\d{8}$/  [0-9]{11}
     customers_info_1 = split_col(customers_info,"phone") #电话号码分列
     customers_info_2 = pd.concat([customers_info_1[customers_info_1["phone0"].isnull()==True]["name"],customers],axis=1,join="inner") # 没有找到电话号码的数据
     del(customers_info_1["phone"])
@@ -106,9 +110,12 @@ def get_customer_info(*f):
 
 
 if __name__ == "__main__":
-    # f1 = "/Users/yuanyuanhe/Desktop/评级币评级钞_卖贴.csv"
-    # f2 = "/Users/yuanyuanhe/Desktop/评级币评级钞_卖家_分列.csv"
-    # f3 = "/Users/yuanyuanhe/Desktop/评级币评级钞_卖家_无电话号码.csv"
+    # f1 = "/Users/yuanyuanhe/Desktop/古币_帖子详情.csv"
+    # f2 = "/Users/yuanyuanhe/Desktop/古币_帖子详情_分列.csv"
+    # f3 = "/Users/yuanyuanhe/Desktop/古币_帖子详情_无电话号码.csv"
     # f = [f1,f2,f3]
     # get_customer_info(*f)
-    concat_phone1()
+    f1 = "/Users/yuanyuanhe/Desktop/古币_帖子详情_分列.csv"
+    f2 = "/Users/yuanyuanhe/Desktop/古币_帖子详情_分列_去重.csv"
+    f = [f1,f2]
+    drop_duplicate(*f)

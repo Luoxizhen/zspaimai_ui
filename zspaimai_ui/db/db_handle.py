@@ -149,8 +149,10 @@ def put_data1():
         print("连接失败")
 
 if __name__ == '__main__':
-    sql = "select max(deal_time) from t_note_detail "
-    select_data(sql)
+    # sql = "select max(deal_time) from t_note_detail "
+    # select_data(sql)
+    desc_t("p_note_currency")
+    # show_db()
 
 
 

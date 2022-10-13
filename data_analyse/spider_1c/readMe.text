@@ -1,0 +1,3 @@
+html_downloader_1c.py 负责下载一尘网上用户的帖子
+html_parser_1c.py 负责将 html_downloader_1c.py 下载下来的内容进行解析
+html_outputer_1c.py 负责保存数据

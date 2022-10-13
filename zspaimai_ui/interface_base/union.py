@@ -27,7 +27,7 @@ def union_add(**union_info):
     end_time = times.str_to_time("2022-06-06 20:00:00") #推广计划结束时间，10小时
 
     json = {
-        "name": "五月四期推广计划",
+        "name": "五月四期推广计划 pagesA/pages/auction/detail?id=3301",
         "h5_url": "https://www.zsonline.cn/",
         "copywriter": "罕见苏维埃银行货币首次登场亮相中晟在线，原滋原味红色天安门，等待有缘人，加入推广计划与平台共享佣金！",
         "appid": "wx50c05e976769b587",
@@ -46,7 +46,7 @@ def union_add(**union_info):
     r = requests.request('post', url=url, json=json, headers=admin_headers)
     return r
 def union_list():
-    '''推广活动列表
+    '''后台获取推广活动列表
     推广活动列表信息包含每个推广活动的详细信息
     返回数据如下：
     {"status":200,"msg":"操作成功",
@@ -74,7 +74,7 @@ def union_list():
     return r
 
 def union_edit(**union_info):
-    '''编辑推广活动
+    '''后台编辑推广活动
     {"name":"五月四期推广计划",
     "h5_url":"https://www.zsonline.cn/",
     "copywriter":"罕见苏维埃银行货币首次登场亮相中晟在线，原滋原味红色天安门，等待有缘人，加入推广计划与平台共享佣金！",
@@ -140,7 +140,7 @@ def union_index(userno):
 
 def user_list(userno):
 
-    '''获取推广用户信息
+    '''后台获取推广用户信息
     :rtype: object
     '''
     # union_user_info(userno):
@@ -187,7 +187,7 @@ def set_union_role(userno, role):
             "role_rate": "0"
         }
     r = requests.request('post', url=url, json=data, headers=headers)
-    return r.json()['status']
+    return r
 
 def union_user(userno):
     '''后台查看某一个推广用户的 关联用户详情'''
@@ -267,27 +267,3 @@ def union_list_user(pageno=1, token=None):
     r = requests.request('get', url=url, params=data, headers=headers)
     return r
 
-# def union_user_info_3():
-#     '''查看用户关联信息'''
-#     url = base_url + '/user/union/union_user_info'
-#     headers = user_headers_app
-#     data = {"from": "mini"}
-#     r = requests.request('get', url=url, params=data, headers=headers)
-# def union_user_list_3():
-#     '''获取关联用户'''
-#     url = base_url + '/user/union/union_user_list'
-#     headers = user_headers_app
-#     data = {"from": "mini", "page": 1}
-#     r = requests.request('get', url=url, params=data, headers=headers)
-# def union_order_list_3():
-#     '''查看推广订单'''
-#     url = base_url + '/user/union/union_order_list'
-#     headers = user_headers_app
-#     data = {"from": "mini", "page": 1}
-#     r = requests.request('get', url=url, params=data, headers=headers)
-# def union_commi_list_3():
-#     '''查看推广值'''
-#     url = base_url + '/user/union/union_commi_list'
-#     headers = user_headers_app
-#     data = {"from": "mini", "page": 1}
-#     r = requests.request('get', url=url, params=data, headers=headers)

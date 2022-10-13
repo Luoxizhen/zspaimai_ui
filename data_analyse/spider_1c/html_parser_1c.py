@@ -11,7 +11,8 @@ class HtmlParser(object):
     def __init__(self):
         self.contact_pre = ""
     def parser_1c(self, html_cont):
-        """开始解析数据，从页面中获取带有'求购'、'收购'、'购'帖子的标题，将论坛分为求购的和销售的"""
+        """开始解析数据，从页面中获取带有'求购'、'收购'、'购'帖子的标题，将论坛分为求购的和销售的
+        解析的内容是专题数据"""
         soup = BeautifulSoup(html_cont, 'html.parser', from_encoding='gb2312')
         titles_in_page = soup.find("form").find_all('div', class_="listtitle")
         purcharses = [] #存取购买信息
@@ -32,7 +33,23 @@ class HtmlParser(object):
                 sell_info.append(href)
                 sales.append(sell_info)
         return [purcharses,sales]
+    def parser_1c_title(self, html_cont):
+        """开始解析数据，从页面中获取带有'求购'、'收购'、'购'帖子的标题，将论坛分为求购的和销售的
+        解析的内容是专题数据"""
+        soup = BeautifulSoup(html_cont, 'html.parser', from_encoding='gb2312')
+        titles_in_page = soup.find("form").find_all('div', class_="listtitle")
+        purcharses = [] #存取购买信息
 
+        for i in range((len(titles_in_page))):
+            buy_info = []
+            sell_info = []
+            title_s = titles_in_page[i].find('a').get('title') #论坛标题
+            title_s1 = str(title_s)[:str(title_s).find("作者：")-1:]
+            href = titles_in_page[i].find('a').get('href') #href="dispbbs.asp?boardID=11&ID=28379371&page=1" 论坛详情网址
+            buy_info.append(title_s)
+            buy_info.append(href)
+            purcharses.append(buy_info)
+        return purcharses
     def parser_contact(self,board_info):
         '''解析 1尘 网博主发布的信息'''
         soup = BeautifulSoup(board_info, 'html.parser', from_encoding='gb2312')

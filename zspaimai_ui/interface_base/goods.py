@@ -45,9 +45,9 @@ def bidding(token=None,header=None, **bidinfo):
         headers = header
     else:
         headers = get_user_headers()
-
     r = requests.request('post', url=url, json=json, headers=headers)
-    return r.json()
+    return r
+
 def user_bid(token=None):
     '''获取用户的中标记录'''
     url = base_url + '/user/goods/user_bid'

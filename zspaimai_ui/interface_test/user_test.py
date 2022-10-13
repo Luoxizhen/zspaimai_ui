@@ -35,11 +35,11 @@ def test_list():
     info = user.list().json()
     last_page = info['data']['last_page']
     total = info['data']['total']
-    for i in range(last_page):
+    for i in range(114,last_page+1):
         list.extend(user.list(page=i).json()['data']['data'])
 
-    file_dir = os.path.join(cm.BASE_DIR, 'interface_data', 'user_list.csv')
-    f = codecs.open(file_dir,'w','gbk')
+    file_dir = os.path.join(cm.BASE_DIR, 'interface_data', 'user_list_20220927.csv')
+    f = codecs.open(file_dir,'w','utf-8')
     writer = csv.writer(f)
     writer.writerow(list[0].keys())
 

@@ -240,9 +240,7 @@ def calculate_freight(token=None,**info):
         "user_addr_id": 193,
         "goods": "[{\"goods_id\":2419,\"buy_number\":1}]"
     }
-    for key in info:
-        if key in delivery_info.keys():
-            delivery_info[key] = info[key]
+    delivery_info.update(info)
     r = requests.request('post', url=url, json=delivery_info, headers=headers)
     return r
 def confirm_send(order_id, token=None):

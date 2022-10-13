@@ -23,16 +23,24 @@ def add_union_off(f_path,**topic_info):
         if type(topic_info["topic_id"])!=str:
             print(type(topic_info["topic_id"] ))
             print(",not str")
+
             union_info["topic"] = json.dumps(topic_info["topic_id"])
+            print(union_info["topic"])
+            print("hel")
         else:
             print(topic_info["topic_id"])
             union_info["topic"] = topic_info["topic_id"]
+            print(union_info["topic"])
         union_info["start_time"] = times.str_to_time(topic_info["begin_time"])
         union_info["end_time"] = times.str_to_time(topic_info["end_time"])
+        print(union_info["end_time"])
         poster = json.loads(row["poster"])
         imager = json.loads(row["images"])
+        print(poster)
+        print(imager)
         union_info["rebates_rate"] = row["rate"]
         union_info["rebates_quota"] = row["quota"]
+        print(union_info)
         poster_list = []
         topic = []
         for key in poster.keys():
@@ -47,10 +55,18 @@ def add_union_off(f_path,**topic_info):
                 if key == "union":
                     images_list.append(key + "/" + str(picture)+ ".jpg")
                 else:
+
                     images_list.append("picture/" + key + "/" + str(picture) + "-1.jpg")
                     images_list.append("picture/" + key + "/" + str(picture) + "-2.jpg")
+                    # images_list.append("picture/" + key + "/" + str(picture) + "-3.jpg")
+                    # images_list.append("picture/" + key + "/" + str(picture) + "-4.jpg")
+                    # images_list.append("picture/" + key + "/" + str(picture) + "-5.jpg")
+                    # images_list.append("picture/" + key + "/" + str(picture) + "-6.jpg")
+
+
         union_info["poster"] = json.dumps(poster_list)
         union_info["images"] = json.dumps(images_list)
+        union_info["mini_url"] = "pagesA/pages/auction/detail?id=" + row["good_id"]
         # topic.append(topic_info["topic_id"])
         # union_info["topic"] = json.dumps(topic)
         print(union_info)
@@ -74,8 +90,8 @@ def add_union_off(f_path,**topic_info):
     '''
 
 def test_add_union():
-    f_path = "/Users/yuanyuanhe/Desktop/货/推广活动导入/7-5.csv"
-    topic_info = {"begin_time": "2022-07-19 11:40:00", "end_time": "2022-07-30 20:00:00", "topic_id": [67,68]}
+    f_path = "/Users/yuanyuanhe/Desktop/货/推广活动导入/10-1.csv"
+    topic_info = {"begin_time": "2022-10-1 10:00:00", "end_time": "2022-10-30 20:00:00", "topic_id": [78]}
     add_union_off(f_path,**topic_info)
     assert 1==2
 
@@ -124,60 +140,90 @@ def union_edit(union_index=0,exchange=0,**img):
 
     union_info_new = {"topic": topic, "images": images, "poster": poster}
     union_info.update(union_info_new)
-
+    print(union_info)
     r = union.union_edit(**union_info)
     print(r.json())
 def test_union_edit():
-    poster_list = "[\"union/3.jpg\"]"
-    images_list = "[\"picture/customer/1034-1.jpg\",\"picture/customer/1034-2.jpg\"]"
+    poster_list = "[\"picture/2022-03-14/384-1.jpg\"]"
+    images_list = "[\"picture/2022-03-14/384-1.jpg\",\"picture/2022-03-14/384-2.jpg\"]"
     # img = json.dumps(images_list)
     # pst = json.dumps(poster_list)
     union_info = {"images":images_list,"poster":poster_list}
-    union_edit(0,**union_info)
+    union_edit(union_index=1,**union_info)
     assert 1==2
+
+
 def test_union_edit_exchange():
-
-
-    union_edit(1,1)
+    union_edit(0,1)
     assert 1==2
 def updata_user_token(userinfo):
-    '''所有用户登陆，获取token'''
+    '''用户登陆，获取token
+    userinfo : 填入union.yml 中的user1 ，user2 ,需要登陆哪个就填写哪个'''
     phone = get_userinfo(userinfo, 'phone')
     token = user.get_token(phone)
     set_userinfo(userinfo, 'token', token)
 def get_userinfo(user,key):
+    '''获取用户的信息
+    user: 填入union.yml 中的user1 ，user2 ,需要登陆哪个就填写哪个
+    key: 用户的信息'''
     userinfo = rwyaml.get_yaml_data('interface_data', 'union.yml')[user][key]
     return userinfo
 def set_userinfo(user, key, keyvalue):
+    '''设置用户信息
+    user: 填入union.yml 中的user1 ，user2 ,需要登陆哪个就填写哪个
+    key: 用户的信息
+    keyvalue: 内容'''
     rwyaml.set_keyvalue('interface_data', 'union.yml', user, key, keyvalue)
 def get_user_id(user):
+    '''用户的编号与id 转换'''
     user_no = get_userinfo(user, 'userno')
     user_id = int(user_no) - 192800
     return user_id
 def union_join(user1, user2):
-    '''该函数提供用户关联的基本操作'''
-    token = get_userinfo(user1, 'token')
-    union.union_join(token)#用户1 加入推广计划，增加用户是否已加入推广计划，未加入时，执行加入操作
-    r = union.union_list_user(1)# 获取用户1的推广链接
-    '''获取最新的推广素材链接'''
+    '''该函数提供用户关联的基本操作
+    用户关联前user1 必须先登陆'''
+
+    try:
+        print("1")
+        token = get_userinfo(user1, 'token')
+    except Exception as e:
+        print(e)
+        print("用户1未登陆，请先登陆")
+        updata_user_token(user1)
+        token = get_userinfo(user1,'token')
+
+    try:
+
+        r = union.union_list_user(1,token=token)# 获取最新的推广素材链接
+        print(r.json())
+    except Exception as e:
+        print(e)
+        print("用户1未加入推广计划，请先加入")
+        union.union_join(token)  # 用户1 加入推广计划，增加用户是否已加入推广计划，未加入时，执行加入操作
+        r = union.union_list_user(1,token=token)  # 获取最新的推广素材链接
+        print(r.json())
+
     i = r.json()['data']['total']
     print("推广素材总数： {}".format(i))
     h5_url = ''
     if i < 11:
         j = i-1
         h5_url = r.json()['data']['data'][j]['h5_url']
+        print(h5_url)
 
     else:
         k = int(i/10) + 1
         r = union.union_list_user(k)
         j = int(i - 10 * (k-1)-1)
         h5_url = r.json()['data']['data'][j]['h5_url']
+        print(h5_url)
     '''从h5_url 中提取 inv 信息:http://home.online.zspaimai.cn/?inv=VEVVL1FyODVDVlZYWGVTazg2S0JCZHVpMk9KZmhkeCtycHN1Z0FjWmdiZz0='''
     inv = h5_url.replace('http://home.online.zspaimai.cn/?inv=', '')
     set_userinfo(user1, 'inv', inv)
     phone2 = get_userinfo(user2, 'phone')# 获取用户2 的手机号码
     user.get_msg(phone=phone2) # 获取验证码
     userinfo = user.quick_login_union(inv, phone2) #用户2快捷登陆，成为用户1的成员
+    print("用户2的信息：\n{}".format(userinfo.json()))
     user2_token = userinfo.json()['data']['token']
     user2_userno = userinfo.json()['data']['user']['userno']
     '''保存用户2 的基本信息'''
@@ -287,7 +333,7 @@ class TestUnionEdit():
         union_total_pre = union.union_list_user(token=token).json()['data']['total']
         union_info = rwjson.get_json("union.json")
         union_info["start_time"] = times.timestamp()
-        union_info["end_time"] = union_info["start_time"] + 36000
+        union_info["end_time"] = union_info["start_time"] + 72000
         union_info["topic"] = "[438]"
         r = union.union_add(**union_info)
 
@@ -437,16 +483,23 @@ class TestUnionUser(object):
     '''验证正常情况下，业务员所关联的下级用户的所有下级用户都是该业务员的下级用户'''
     #@pytest.mark.skip(reason='')
     def test_union_join_user1(self):
+        '''验证用户1登陆- 加入推广计划- 设置用户1为业务员'''
         phone = get_userinfo('user1', 'phone')
         user.get_msg(phone=phone)
         r = user.quick_login(phone)
+
         token = r.json()['data']['token']
         userno = r.json()['data']['user']['userno']
         set_userinfo('user1', 'token', token)
         set_userinfo('user1', 'userno', userno)#用户登陆并保存信息
         user.update_token(token)
-        r = union.union_join()#用户加入推广计划
-        union.set_union_role(userno, 20)# 设置用户为业务员
+        try:
+         # r = union.union_join()#用户加入推广计划
+            r = union.set_union_role(userno, 20)# 设置用户为业务员
+        except Exception as e:
+            print(e)
+            union.union_join(token) # 后台设置用户为业务员失败时，尝试先让用户加入推广计划
+            r = union.set_union_role(userno, 20)
         assert r.json()['status'] == 200
 
     def test_union_join_user2(self):
@@ -498,12 +551,22 @@ class TestUnionUser(object):
         total = union.union_user(user1_no).json()['data']['total']
         assert total == 5
     def test_union_join_user8(self):
-        '''验证在推广有效时间内，用户之间无法相互绑定'''
+        '''验证在推广有效时间内，下级用户之间无法相互绑定'''
         user1_no = get_userinfo('user6', 'userno')
         total_pre = union.union_user(user1_no).json()['data']['total']
         union_join('user6', 'user5')
         total = union.union_user(user1_no).json()['data']['total']
         assert total == total_pre
+
+    def test_union_join_user9(self):
+        '''验证旧的用户通过用户的推广链接登陆系统后，该旧的用户成为其推广员'''
+        user1_no = get_userinfo('user5', 'userno')
+        total_pre = union.union_user(user1_no).json()['data']['total']
+        union_join("user5","user3")
+        total = union.union_user(user1_no).json()['data']['total']
+        assert total == total_pre + 1
+
+
 class TestUnionIndex(object):
     '''在用户关联成功以后，检查各个上级用户的额度
         新用户加入用户的推广计划后，该用户可获得额度奖励 2000'''
@@ -676,7 +739,12 @@ class TestUnionOrder(object):
         token = user.get_token_quick(user_phone)
         set_userinfo('user4', 'token', token)
         user.update_token(token)
-
+    def test_union_order_014(self):
+        '''验证用户12 完成订单'''
+        order_info = {'good_names': ['推广期过后完成订单支付'], "user": "user12", "express":2}
+        r = add_union_order(**order_info)
+        print (r.json())
+        assert r.json()['status'] == 200
 
 class TestUnionCommi(object):
     '''验证在TestUnionUser 推广用户关联成功后，推广订单的关联'''
@@ -711,7 +779,7 @@ def add_union_order(**order_info):
     for goodname in order_info_real['good_names']:
         begin_time = round(times.timestamp())
         end_time = begin_time + 10
-        good_info = {"begin_time": begin_time, "end_time": end_time, "name": goodname, "price": 1000}
+        good_info = {"begin_time": begin_time, "end_time": end_time, "name": goodname, "price": 1000,"delay_time":0}
         good_id = goods.goods_add(**good_info).json()['data'] #添加拍品，获取新添加拍品的id
         good_ids.append(good_id)
         goods_infos.append({"goods_id": int(good_id), "buy_number": 1})
@@ -722,13 +790,15 @@ def add_union_order(**order_info):
         bid_info = {"goods_id": good_id, "price": 1000}
         r = goods.bidding(token,**bid_info) #用户竞买拍品
         print(r.json())
+
         times.sleep(10)
     total = 1100 * len(good_ids)
     addr_id = user.addr_list(token).json()['data'][0]['id']
     # print(goods)
 
     id = json.dumps(good_ids)
-    goods_info = json.dumps(good_info)
+
+    goods_info = json.dumps(goods_infos)
 
 
 
@@ -737,6 +807,8 @@ def add_union_order(**order_info):
         "goods": goods_info
     }
     r = order.calculate_freight(**delivery_info).json()
+    print(r)
+    print(delivery_info["goods"])
     express_fee = round(float(r['data']['freight']))
 
     if order_info_real['express'] == 0: #上门自提
@@ -770,4 +842,4 @@ def test_add_order():
     add_union_order(**order_info)
 
 if __name__ == "__main__":
-    user_login("user1")
+    union_join("user13","user14")
