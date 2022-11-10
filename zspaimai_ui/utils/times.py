@@ -36,7 +36,7 @@ def sleep1():
 
 def time_to_str(t):
     lt = time.localtime(t)
-    print(lt)
+    # print(lt)
     r = time.strftime("%Y-%m-%d %H:%M:%S", lt)
     return r
 def str_to_time(str) -> object:
@@ -46,8 +46,8 @@ def str_to_time(str) -> object:
 
 
 if __name__ == '__main__':
-   p = "2021-11-18 18:02:46"
-   print(str_to_time(p))
+   p = 1656213839
+   print(time_to_str(p))
 
 
 

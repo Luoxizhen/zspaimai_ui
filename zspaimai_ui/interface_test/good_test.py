@@ -271,9 +271,6 @@ def get_goods_bid(good_id_start,num,p,all=0):
                             goods_bid_info.append(good_bid_info)
 
 
-
-
-
     with open(p,'w') as f:
         fileheader = ["id","name","user_id","now_price", "agent_price",  "status"]
         csv_dict_writer = csv.DictWriter(f,fileheader)
@@ -284,9 +281,9 @@ def get_goods_bid(good_id_start,num,p,all=0):
 
 def test_get_goods_bid():
     '''测试 get_goods_bid(good_id_start,num,p) 函数'''
-    good_id = 3321 # 2346 2462
-    num = 25 #65 19
-    file_path = "/Users/yuanyuanhe/Desktop/货/拍品出价详情/10-1-"+times.time_to_str(times.timestamp())+".csv"
+    good_id = 3389 # 2346 2462
+    num = 20 #65 19
+    file_path = "/Users/yuanyuanhe/Desktop/货/拍品出价详情/10-4-"+str(times.timestamp())+".csv"
     get_goods_bid(good_id,num,file_path,all=1)
     assert 1==2
 
@@ -395,14 +392,14 @@ def test_good_add_sp_new():
     assert 1==2
 
 def test_good_add_new():
-    file_path = "/Users/yuanyuanhe/Desktop/货/拍品导入/10-2-1.csv"
+    file_path = "/Users/yuanyuanhe/Desktop/货/拍品导入/11-1.csv"
     topic_info = {}
-    begin_time = times.str_to_time("2022-10-14 10:00:00")  # 开拍时间 ：2022-05-27 10:00:00 2022-06-10 10:00
-    end_time = times.str_to_time("2022-10-17 20:00:00")  # 结拍时间：2022-07-01 10:00:00
+    begin_time = times.str_to_time("2022-11-11 10:00:00")  # 开拍时间 ：2022-05-27 10:00:00 2022-06-10 10:00
+    end_time = times.str_to_time("2022-11-14 20:00:00")  # 结拍时间：2022-07-01 10:00:00
     topic_info["begin_time"] = begin_time
     topic_info["end_time"] = end_time
     topic_info["agreement_no"] = ""
-    topic_info["topic_id"] = "[79]"
+    topic_info["topic_id"] = "[82]"
     good_add_new(file_path, **topic_info)
     assert 1 == 2
 

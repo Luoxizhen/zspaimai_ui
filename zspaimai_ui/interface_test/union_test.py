@@ -90,8 +90,8 @@ def add_union_off(f_path,**topic_info):
     '''
 
 def test_add_union():
-    f_path = "/Users/yuanyuanhe/Desktop/货/推广活动导入/10-1.csv"
-    topic_info = {"begin_time": "2022-10-1 10:00:00", "end_time": "2022-10-30 20:00:00", "topic_id": [78]}
+    f_path = "/Users/yuanyuanhe/Desktop/货/推广活动导入/11-1.csv"
+    topic_info = {"begin_time": "2022-11-9 16:30:00", "end_time": "2022-11-21 20:00:00", "topic_id": [82]}
     add_union_off(f_path,**topic_info)
     assert 1==2
 
@@ -144,12 +144,12 @@ def union_edit(union_index=0,exchange=0,**img):
     r = union.union_edit(**union_info)
     print(r.json())
 def test_union_edit():
-    poster_list = "[\"picture/2022-03-14/384-1.jpg\"]"
-    images_list = "[\"picture/2022-03-14/384-1.jpg\",\"picture/2022-03-14/384-2.jpg\"]"
+    poster_list = "[\"union/29.jpg\"]"
+    images_list = "[\"picture/chen/729-1.jpg\",\"picture/chen/729-2.jpg\"]"
     # img = json.dumps(images_list)
     # pst = json.dumps(poster_list)
     union_info = {"images":images_list,"poster":poster_list}
-    union_edit(union_index=1,**union_info)
+    union_edit(union_index=4,**union_info)
     assert 1==2
 
 

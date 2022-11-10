@@ -168,8 +168,28 @@ def zsonline_10():
     df1.to_csv(file_1)
 
 
+def zsonline_11():
+    file_1 = "/Users/yuanyuanhe/Desktop/竞拍分析/yangpiao/三版币元币.csv"
+    file_2 = "/Users/yuanyuanhe/Desktop/竞拍分析/yangpiao/三版币元币_去掉格式.csv"
+    name_str = []
+    df1 = pd.read_csv(file_1,names=['cert_display','cert_comments','','note_number','title','serial','special_pattern','special_no','is_specimen',
+                                    'buyer_premium','from_id','is_c','price','parities','curren','deal_s','deal_time'])
+    print(df1.shape)
+    serial_nums = []
+    serial_num_temps = df1["serial"]
+    for i in range(df1.shape[0]):
 
+        serial_num = serial_num_temps[i]
+        if type(serial_num) == str:
+            while serial_num.find("<") != -1:  # 去掉格式
+                start_s = serial_num.find("<")
+                end_s = serial_num.find(">") + 1
+                temp_s = serial_num[start_s:end_s]
+                serial_num = serial_num.replace(temp_s, "")
+        serial_nums.append(serial_num)
+    df1["serial"] = serial_nums
+    df1.to_csv(file_2)
 
 
 if __name__ == "__main__":
-    zsonline_10()
+    zsonline_11()
