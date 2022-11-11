@@ -57,7 +57,7 @@ def show_t():
     mycur = conn.cursor()
     mycur.execute("show tables")
     print(mycur.rowcount)
-    print(mycur.description)
+    # print(mycur.description)
     for x in mycur:
         print( x)
 def desc_t(table_name):
@@ -67,7 +67,7 @@ def desc_t(table_name):
     sql = "show columns from " + table_name
     mycur.execute(sql)
     data = mycur.fetchall()
-    print(data)
+    # print(data)
     for x in data:
         print(x)
 
@@ -165,7 +165,7 @@ def put_data():
             # "cert_display", "cert_comments", "noteNumber", "serial", "special", "special_no", "buyer_premium", "did",
             # "is_clinch", "price", "parities", "currency", "dealTime", "volamount"
             sql = sql_format.format(nt.noteNumber, nt.serial,nt.special_no,nt.cert_display,nt.cert_comments.replace("'"," "),nt.special,
-                                    nt.price,nt.buyer_premium,1 if nt.currency=='RMB' else 2 if nt.currency=='HKD' else 3,nt.dealTime,nt.did,nt.is_clinch,nt.volamount)
+                                    nt.price,nt.buyer_premium,1 if nt.currency=='RMB' else 2 if nt.currency=='HKD' else 3,nt.dealTime if type(nt.dealTime) == int else times.str_to_time(nt.dealTime),nt.did,nt.is_clinch,nt.volamount)
 
             # sql = sql_format.format(nt.did,nt.name)
             log.log.info(sql)
@@ -233,10 +233,11 @@ if __name__ == '__main__':
     # sql = "select * from p_note_detail where from_id = 101 "
     # sql = "delete from p_note_detail where from_id =101 and id >26705"
     # sql = "select max(id) from p_note_from where name = '中晟在线'"
-    sql = "update p_note_detail set from_id =50 where from_id = 101 and id>26653"
+    # sql = "update p_note_detail set from_id =50 where from_id = 101 and id>26653"
     # sql = "delete from p_note_detail where from_id =101"
-    # sql = "select * from p_note_detail where from_id =101"
+    sql = "select * from p_region"
     select_data(sql)
+    # desc_t('p_union_topic')
 
 
 

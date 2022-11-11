@@ -4,6 +4,7 @@ import codecs
 from config.conf import cm
 import os
 from utils import util
+import random
 
 def test_logging():
     user.update_token()
@@ -86,8 +87,8 @@ def test_info():
     f.close()
 def test_login():
     # 13111111255
-    user_info ={"phone": "13111111297",
-            "pwd": "123456"}
+    user_info ={"phone": "20000000011",
+            "pwd": "zs011015"}
     r = user.login(**user_info)
     token = r.json()['data']['token']
     user.update_token(token)
@@ -167,6 +168,29 @@ def test_change_nickname_bid():
         r= user.bid(**bid_info)
 
 
+
+    assert 1==2
+
+def test_edit_customer_nicknames():
+    user_info = {
+        "phone": "20000000011",
+        "psw": "zs011015"
+    }
+    user.login(**user_info)
+    nicknames = user.nickname_list().json()["data"]
+    len_nn = len(nicknames)
+    for i in range(len_nn):
+        nick_name_id = nicknames[i]["id"]
+        r = random.randrange(2)
+        print(r)
+        if r == 0:
+            nickname = util.get_random(8,2)
+        else:
+            nickname = util.chinese_name()
+        nickname_new = {"nickname": nickname,
+                        "id": nick_name_id}
+        r = user.nickname_edit(**nickname_new)
+        print(r.json())
 
     assert 1==2
 

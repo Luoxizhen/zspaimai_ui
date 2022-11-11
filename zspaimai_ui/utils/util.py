@@ -1,5 +1,8 @@
+# coding:utf-8
 import json
 import random
+import sys
+import string
 def kwargs_to_str(**kwargs):
     ls = []
     for key in kwargs:
@@ -88,6 +91,62 @@ def list_to_str(list_image):
 
 
 
+def get_random(d=6,level=1):
+    '''生成随机码
+    2-12 位
+    3个等级'''
+    digit = d
+    if not (2 <= digit <= 12):
+        return '密码长度错误'
+    if level == 1:
+        parents = string.digits
+    elif level == 2:
+        parents = ''.join((string.ascii_letters, string.digits))
+    elif level == 3:
+        parents = ''.join((string.ascii_letters, string.digits, string.punctuation))
+    else:
+        return '密码复杂度 error'
+    pwd = ''
+    for i in range(digit):
+        pwd = ''.join((pwd,random.choice(parents)))
+    print('password:', pwd)
+    return pwd
+def is_Chinese(w):
+    if '\u4e00' <= w <= '\u9fff':
+        print(w)
+        print(1)
+        return True
+def chinese_name():
+    first_name = '''李王张刘陈杨黄赵周吴徐孙朱马胡郭林何高梁郑罗宋谢唐韩曹许邓萧冯曾程蔡彭潘袁於董余苏叶吕魏蒋田杜丁沈姜范江傅钟卢汪戴崔任陆廖姚方金邱夏谭韦贾邹石熊孟秦阎薛侯雷白龙段郝孔邵史毛常万顾赖武康贺严尹钱施牛洪龚'''
+    s_lastname = '''豪言玉意泽彦轩景正程诚宇澄安青泽轩旭恒思宇嘉宏皓成宇轩玮桦宇达韵磊泽博昌信彤逸柏新劲鸿文恩远翰圣哲家林景行律本乐康昊宇麦冬景武茂才军林茂飞昊明明天伦峰志辰亦'''
+    t_lastname = '''佳彤自怡颖宸雅微羽馨思纾欣元凡晴玥宁佳蕾桑妍萱宛欣灵烟文柏艺以如雪璐言婷青安昕淑雅颖云艺忻梓江丽梦雪沁思羽羽雅访烟萱忆慧娅茹嘉幻辰妍雨蕊欣芸亦'''
+    len_first = len(first_name)
+    len_s = len(t_lastname)
+    len_t = len(t_lastname)
+    name = first_name[random.randrange(len_first)] + s_lastname[random.randrange(len_s)]
+    print(name)
+    return name
+def is_zh_punctuation(w):
+    punctuation_str = string.punctuation
+    if w in punctuation_str:
+        print(w)
+        print(1)
+        return True
+def is_en(w):
+    if 'a' <= w <= 'z' or 'A' <= w <= 'Z':
+        print(1)
+        print(len(string.punctuation))
+        print(string.punctuation[31])
+        return True
+
+def is_en_punctuation(w):
+    punctuation_str = string.punctuation
+    if w in string.punctuation:
+        print(1)
+        return True
+
+
+
 
 
 
@@ -97,7 +156,6 @@ def list_to_str(list_image):
 
 
 if __name__ == "__main__":
-    img_s ="['picture/2022-01-13/1183-1.jpg', 'picture/2022-01-13/1183-2.jpg']"
-    list_to_str(str_to_list(img_s))
+    chinese_name()
 
 
