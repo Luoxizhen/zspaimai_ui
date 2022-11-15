@@ -1,0 +1,15 @@
+
+
+##ignore this file##
+/ocr/
+/zspaimai/
+/web-demotest/
+/pythonProject/
+/pythonProject1/
+/miniprogram-demo-test/
+*.log
+
+/big_data_analysis/
+/data_analyse/
+
+
