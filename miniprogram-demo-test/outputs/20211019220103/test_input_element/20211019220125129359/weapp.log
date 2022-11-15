@@ -1,0 +1,4 @@
+{"type": "warn", "args": ["DeprecationWarning: __wxConfig.env is deprecated, please use wx.env instead."], "dt": "2021-10-19 22:01:25"}
+{"type": "warn", "args": ["DeprecationWarning: __wxConfig.appLaunchInfo is deprecated, please use wx.getLaunchOptionsSync() instead."], "dt": "2021-10-19 22:01:25"}
+{"type": "info", "args": ["preloadSubpackages: packageAPI, packageCloud"], "dt": "2021-10-19 22:01:25"}
+{"type": "info", "args": ["preloadSubpackages: success"], "dt": "2021-10-19 22:01:25"}

@@ -1,0 +1,200 @@
+{
+    "case_name": "test_authorize_setting_page",
+    "run_time": "20211019 21:47:29",
+    "test_type": "NativeTest",
+    "case_doc": "\u5c0f\u7a0b\u5e8f\u6388\u6743\u8bbe\u7f6e\u9875\u9762\u64cd\u4f5c\n",
+    "success": false,
+    "failures": "",
+    "errors": "Traceback (most recent call last):\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/case.py\", line 59, in testPartExecutor\n    yield\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/case.py\", line 68, in run\n    self._callTestMethod(testMethod)\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/case.py\", line 550, in _callTestMethod\n    method()\n  File \"/Users/yuanyuanhe/PycharmProjects/miniprogram-demo-test/nativetest.py\", line 33, in test_authorize_setting_page\n    self.app.navigate_to(\"/page/API/pages/setting/setting\")\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py\", line 135, in wrapper\n    result = func(*args, **kwargs)\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/app.py\", line 306, in navigate_to\n    page = self._change_route(\"navigateTo\", url, is_wait_url_change)\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/app.py\", line 242, in _change_route\n    self._call_wx_method(open_type, [{\"url\": path}])\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_object.py\", line 234, in _call_wx_method\n    return self.connection.send(\"App.callWxMethod\", params)\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/connection.py\", line 137, in send\n    return self._receive_response(max_timeout)\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/connection.py\", line 162, in _receive_response\n    raise MiniAppError(err_msg)\nminium.framework.exception.MiniAppError: page \"page/API/pages/setting/setting\" is not found\n",
+    "start_timestamp": 1634651249.953723,
+    "is_failure": false,
+    "is_error": true,
+    "module": ".Users.yuanyuanhe.PycharmProjects.miniprogram-demo-test.nativetest",
+    "package": "nativetest",
+    "failed_line_num": 33,
+    "device": {
+        "system_info": {
+            "model": "iPhone 5",
+            "pixelRatio": 2,
+            "windowWidth": 320,
+            "windowHeight": 456,
+            "system": "iOS 10.0.1",
+            "language": "zh_CN",
+            "version": "8.0.5",
+            "screenWidth": 320,
+            "screenHeight": 568,
+            "SDKVersion": "2.11.2",
+            "brand": "devtools",
+            "fontSizeSetting": 16,
+            "benchmarkLevel": 1,
+            "batteryLevel": 100,
+            "statusBarHeight": 20,
+            "safeArea": {
+                "top": 20,
+                "left": 0,
+                "right": 320,
+                "bottom": 568,
+                "width": 320,
+                "height": 548
+            },
+            "deviceOrientation": "portrait",
+            "theme": "light",
+            "platform": "devtools",
+            "devicePixelRatio": 2
+        }
+    },
+    "log_filename": "test_authorize_setting_page.log",
+    "error_type": "MiniAppError",
+    "error_value": "page \"page/API/pages/setting/setting\" is not found",
+    "screen_info": [
+        {
+            "name": "setup",
+            "url": "/page/component/index",
+            "path": "images/setup.png",
+            "ts": 1634651253,
+            "datetime": "2021-10-19 21:47:33"
+        },
+        {
+            "name": "teardown",
+            "url": "/page/component/index",
+            "path": "images/teardown.png",
+            "ts": 1634651254,
+            "datetime": "2021-10-19 21:47:34"
+        }
+    ],
+    "check_list": [],
+    "assert_list": [],
+    "perf_data": "{\"startup\": 0, \"avg_cpu\": 0, \"max_cpu\": 0, \"cpu_data_list\": [], \"avg_mem\": 0, \"max_mem\": 0, \"mem_data_list\": [], \"avg_fps\": 0, \"min_fps_rt\": 0, \"fps_data_list\": [], \"fps_time_series_list\": [], \"cpu_time_series_list\": [], \"mem_time_series_list\": []}",
+    "android_image_list": [
+        "images/setup.png"
+    ],
+    "weapp_log_path": "weapp.log",
+    "request_log_path": "request.log",
+    "page_data": {
+        "list": [
+            {
+                "id": "view",
+                "name": "\u89c6\u56fe\u5bb9\u5668",
+                "open": false,
+                "pages": [
+                    "view",
+                    "scroll-view",
+                    "swiper",
+                    "movable-view",
+                    "cover-view"
+                ]
+            },
+            {
+                "id": "content",
+                "name": "\u57fa\u7840\u5185\u5bb9",
+                "open": false,
+                "pages": [
+                    "text",
+                    "icon",
+                    "progress",
+                    "rich-text"
+                ]
+            },
+            {
+                "id": "form",
+                "name": "\u8868\u5355\u7ec4\u4ef6",
+                "open": false,
+                "pages": [
+                    "button",
+                    "checkbox",
+                    "form",
+                    "input",
+                    "label",
+                    "picker",
+                    "picker-view",
+                    "radio",
+                    "slider",
+                    "switch",
+                    "textarea",
+                    "editor"
+                ]
+            },
+            {
+                "id": "nav",
+                "name": "\u5bfc\u822a",
+                "open": false,
+                "pages": [
+                    "navigator"
+                ]
+            },
+            {
+                "id": "media",
+                "name": "\u5a92\u4f53\u7ec4\u4ef6",
+                "open": false,
+                "pages": [
+                    "image",
+                    "video",
+                    "camera",
+                    "live-pusher",
+                    "live-player"
+                ]
+            },
+            {
+                "id": "map",
+                "name": "\u5730\u56fe",
+                "open": false,
+                "pages": [
+                    "map"
+                ]
+            },
+            {
+                "id": "canvas",
+                "name": "\u753b\u5e03",
+                "open": false,
+                "pages": [
+                    "canvas",
+                    "canvas-2d",
+                    "webgl"
+                ]
+            },
+            {
+                "id": "open",
+                "name": "\u5f00\u653e\u80fd\u529b",
+                "open": false,
+                "pages": [
+                    "ad",
+                    "open-data",
+                    "web-view"
+                ]
+            },
+            {
+                "id": "obstacle-free",
+                "name": "\u65e0\u969c\u788d\u8bbf\u95ee",
+                "open": false,
+                "pages": [
+                    "aria-component"
+                ]
+            }
+        ],
+        "theme": "light"
+    },
+    "stop_timestamp": 1634651254.01005,
+    "appId": "wx7daf5aa69f958691",
+    "appName": "wxid_2hvbbgambpeu22\u7684\u63a5\u53e3\u6d4b\u8bd5\u53f7",
+    "source": {
+        "code": [
+            "    def test_authorize_setting_page(self):\n",
+            "        \"\"\"\n",
+            "        \u5c0f\u7a0b\u5e8f\u6388\u6743\u8bbe\u7f6e\u9875\u9762\u64cd\u4f5c\n",
+            "        \"\"\"\n",
+            "        # todo: iOS\u5c1a\u672a\u652f\u6301\n",
+            "        self.app.navigate_to(\"/page/API/pages/setting/setting\")\n",
+            "        self.page.get_element(\"button\", inner_text=\"\u6253\u5f00\u5c0f\u7a0b\u5e8f\u8bbe\u7f6e\").click()\n",
+            "        self.capture(\"\u5c0f\u7a0b\u5e8f\u6388\u6743\u8bbe\u7f6e-\u4e4b\u524d\")\n",
+            "        self.native.authorize_page_checkbox_enable(\"\u6444\u50cf\u5934\", False)\n",
+            "        self.native.authorize_page_checkbox_enable(\"\u7528\u6237\u4fe1\u606f\", True)\n",
+            "        self.capture(\"\u5c0f\u7a0b\u5e8f\u6388\u6743\u8bbe\u7f6e-\u4e4b\u540e\")\n",
+            "        authorize_setting = self.native.get_authorize_settings()\n",
+            "        self.assertFalse(authorize_setting[\"\u6444\u50cf\u5934\"], \"\u6444\u50cf\u5934\u6743\u9650\")\n",
+            "        self.assertTrue(authorize_setting[\"\u7528\u6237\u4fe1\u606f\"], \"\u7528\u6237\u4fe1\u606f\u6743\u9650\")\n",
+            "        self.native.back_from_authorize_setting()\n"
+        ],
+        "start": 28
+    },
+    "filename": "test_authorize_setting_page.json"
+}

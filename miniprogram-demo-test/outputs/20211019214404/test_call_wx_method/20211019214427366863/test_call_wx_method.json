@@ -1,0 +1,206 @@
+{
+    "case_name": "test_call_wx_method",
+    "run_time": "20211019 21:44:27",
+    "test_type": "AppTest",
+    "case_doc": "\u6d4b\u8bd5call_wx_method\n",
+    "success": true,
+    "failures": "",
+    "errors": "",
+    "start_timestamp": 1634651067.367601,
+    "is_failure": false,
+    "is_error": false,
+    "module": ".Users.yuanyuanhe.PycharmProjects.miniprogram-demo-test.apptest",
+    "package": "apptest",
+    "failed_line_num": -1,
+    "device": {
+        "system_info": {
+            "model": "iPhone 5",
+            "pixelRatio": 2,
+            "windowWidth": 320,
+            "windowHeight": 456,
+            "system": "iOS 10.0.1",
+            "language": "zh_CN",
+            "version": "8.0.5",
+            "screenWidth": 320,
+            "screenHeight": 568,
+            "SDKVersion": "2.11.2",
+            "brand": "devtools",
+            "fontSizeSetting": 16,
+            "benchmarkLevel": 1,
+            "batteryLevel": 100,
+            "statusBarHeight": 20,
+            "safeArea": {
+                "top": 20,
+                "left": 0,
+                "right": 320,
+                "bottom": 568,
+                "width": 320,
+                "height": 548
+            },
+            "deviceOrientation": "portrait",
+            "theme": "light",
+            "platform": "devtools",
+            "devicePixelRatio": 2
+        }
+    },
+    "log_filename": "test_call_wx_method.log",
+    "error_type": "",
+    "error_value": "",
+    "screen_info": [
+        {
+            "name": "setup",
+            "url": "/page/component/index",
+            "path": "images/setup.png",
+            "ts": 1634651070,
+            "datetime": "2021-10-19 21:44:30"
+        },
+        {
+            "name": "None-success",
+            "url": "/page/component/index",
+            "path": "images/None-success.png",
+            "ts": 1634651070,
+            "datetime": "2021-10-19 21:44:30"
+        },
+        {
+            "name": "teardown",
+            "url": "/page/component/index",
+            "path": "images/teardown.png",
+            "ts": 1634651071,
+            "datetime": "2021-10-19 21:44:31"
+        }
+    ],
+    "check_list": [],
+    "assert_list": [
+        {
+            "name": null,
+            "ret": true,
+            "msg": null,
+            "img": null
+        }
+    ],
+    "perf_data": "{\"startup\": 0, \"avg_cpu\": 0, \"max_cpu\": 0, \"cpu_data_list\": [], \"avg_mem\": 0, \"max_mem\": 0, \"mem_data_list\": [], \"avg_fps\": 0, \"min_fps_rt\": 0, \"fps_data_list\": [], \"fps_time_series_list\": [], \"cpu_time_series_list\": [], \"mem_time_series_list\": []}",
+    "android_image_list": [
+        "images/setup.png",
+        "images/None-success.png"
+    ],
+    "weapp_log_path": "weapp.log",
+    "request_log_path": "request.log",
+    "page_data": {
+        "list": [
+            {
+                "id": "view",
+                "name": "\u89c6\u56fe\u5bb9\u5668",
+                "open": false,
+                "pages": [
+                    "view",
+                    "scroll-view",
+                    "swiper",
+                    "movable-view",
+                    "cover-view"
+                ]
+            },
+            {
+                "id": "content",
+                "name": "\u57fa\u7840\u5185\u5bb9",
+                "open": false,
+                "pages": [
+                    "text",
+                    "icon",
+                    "progress",
+                    "rich-text"
+                ]
+            },
+            {
+                "id": "form",
+                "name": "\u8868\u5355\u7ec4\u4ef6",
+                "open": false,
+                "pages": [
+                    "button",
+                    "checkbox",
+                    "form",
+                    "input",
+                    "label",
+                    "picker",
+                    "picker-view",
+                    "radio",
+                    "slider",
+                    "switch",
+                    "textarea",
+                    "editor"
+                ]
+            },
+            {
+                "id": "nav",
+                "name": "\u5bfc\u822a",
+                "open": false,
+                "pages": [
+                    "navigator"
+                ]
+            },
+            {
+                "id": "media",
+                "name": "\u5a92\u4f53\u7ec4\u4ef6",
+                "open": false,
+                "pages": [
+                    "image",
+                    "video",
+                    "camera",
+                    "live-pusher",
+                    "live-player"
+                ]
+            },
+            {
+                "id": "map",
+                "name": "\u5730\u56fe",
+                "open": false,
+                "pages": [
+                    "map"
+                ]
+            },
+            {
+                "id": "canvas",
+                "name": "\u753b\u5e03",
+                "open": false,
+                "pages": [
+                    "canvas",
+                    "canvas-2d",
+                    "webgl"
+                ]
+            },
+            {
+                "id": "open",
+                "name": "\u5f00\u653e\u80fd\u529b",
+                "open": false,
+                "pages": [
+                    "ad",
+                    "open-data",
+                    "web-view"
+                ]
+            },
+            {
+                "id": "obstacle-free",
+                "name": "\u65e0\u969c\u788d\u8bbf\u95ee",
+                "open": false,
+                "pages": [
+                    "aria-component"
+                ]
+            }
+        ],
+        "theme": "light"
+    },
+    "stop_timestamp": 1634651071.037015,
+    "appId": "wx7daf5aa69f958691",
+    "appName": "wxid_2hvbbgambpeu22\u7684\u63a5\u53e3\u6d4b\u8bd5\u53f7",
+    "source": {
+        "code": [
+            "    def test_call_wx_method(self):\n",
+            "        \"\"\"\n",
+            "        \u6d4b\u8bd5call_wx_method\n",
+            "        \"\"\"\n",
+            "        sys_info = self.app.call_wx_method(\"getSystemInfo\")\n",
+            "        self.assertIn(\"SDKVersion\", sys_info.result.result)\n"
+        ],
+        "start": 7
+    },
+    "filename": "test_call_wx_method.json"
+}

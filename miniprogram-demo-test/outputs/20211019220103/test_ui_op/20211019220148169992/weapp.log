@@ -1,0 +1,5 @@
+{"type": "log", "args": ["slider2发生change事件，携带值为", 10], "dt": "2021-10-19 22:01:48"}
+{"type": "log", "args": ["slider2发生change事件，携带值为", 30], "dt": "2021-10-19 22:01:48"}
+{"type": "log", "args": ["slider2发生change事件，携带值为", 80], "dt": "2021-10-19 22:01:48"}
+{"type": "info", "args": ["preloadSubpackages: packageAPI, packageCloud"], "dt": "2021-10-19 22:01:48"}
+{"type": "info", "args": ["preloadSubpackages: success"], "dt": "2021-10-19 22:01:48"}

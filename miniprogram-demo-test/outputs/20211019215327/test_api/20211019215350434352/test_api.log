@@ -1,0 +1,41 @@
+DEBUG 2021-10-19 21:53:50,435 minitest.py _miniSetUp      518 =========Current case：test_api=========
+INFO  2021-10-19 21:53:50,435 app.py     _relaunch       660 ReLaunch: /page/component/index
+DEBUG 2021-10-19 21:53:50,436 connection.py send            135 SEND > {"id":"6d46e300-c200-4a01-98f9-f5930bb885be","method":"App.callWxMethod","params":{"method":"reLaunch","args":[{"url":"/page/component/index"}]}}
+DEBUG 2021-10-19 21:53:50,490 connection.py _on_message     184 RECV < {"id":"6d46e300-c200-4a01-98f9-f5930bb885be","result":{"result":{"errMsg":"reLaunch:ok"}}}
+DEBUG 2021-10-19 21:53:50,691 connection.py _on_message     184 RECV < {"method":"App.bindingCalled","params":{"name":"onAppRouteDone","args":[{"webviewId":6,"path":"page/component/index","query":{},"openType":"reLaunch"}]}}
+INFO  2021-10-19 21:53:50,691 app.py     _on_route_changed 264 Route changed, {'name': 'onAppRouteDone', 'args': [{'webviewId': 6, 'path': 'page/component/index', 'query': {}, 'openType': 'reLaunch'}]}
+DEBUG 2021-10-19 21:53:53,701 connection.py send            135 SEND > {"id":"59920fe5-c5fb-46f1-abf9-ebf14d113a31","method":"App.captureScreenshot","params":{}}
+DEBUG 2021-10-19 21:53:53,852 connection.py _on_message     182 RECV < {"id":"59920fe5-c5fb-46f1-abf9-ebf14d113a31","result":{"data":"iVBORw0KGgoAAAANSUhEUgAAAoAAAAOQCAIAAAAmDldbAAABKmlDQ1BTa2lhAAAokX2RPU8CQRCGH4mNSqFRo4XFlTQqYOQjYiGoREvQBO2O40KMcF6OM9rT+iOs7SyNCTWNlYmVsbM3MbHFd6E4EoOzmZ1n3539mF2IrSKLzUPbC4NKuWjVzs4txsx2Oj6TbQp+3kwPr+v/5E2ymYbbcRS/5GGgw7VlQ7zUHPGt4fqI7wwHJ5WS+F6caI5xfYxvQj8U902+4weG38WFduvaie5N3PVOq4o1+RplrtSatHDZpMolF9iiJAfkybGluKe2LU+RlpIno1GSEkWy6rMcSslpLsX+kJURvWf3A3Z7g8HgOdKOe/CYgdmnSEvswEIc+i++HdhDadp8kluE72Vd+wEWP2GuK3XFTEdro7+YUKv1p1aLIzwcNkRpVZMi8w...
+INFO  2021-10-19 21:53:53,853 app.py     navigate_to     305 NavigateTo: /page/API/pages/get-system-info/get-system-info
+DEBUG 2021-10-19 21:53:53,853 connection.py send            135 SEND > {"id":"b1a23877-2ab1-4259-9275-1f05837ba828","method":"App.callWxMethod","params":{"method":"navigateTo","args":[{"url":"/page/API/pages/get-system-info/get-system-info"}]}}
+DEBUG 2021-10-19 21:53:53,856 connection.py _on_message     184 RECV < {"id":"b1a23877-2ab1-4259-9275-1f05837ba828","error":{"message":"page \"page/API/pages/get-system-info/get-system-info\" is not found"}}
+DEBUG 2021-10-19 21:53:54,463 minitest.py _miniTearDown   720 =========Current case Down：test_api=========
+DEBUG 2021-10-19 21:53:54,467 connection.py send            135 SEND > {"id":"968dcf81-cfd0-4335-9a8b-44644bb1d9f2","method":"App.captureScreenshot","params":{}}
+DEBUG 2021-10-19 21:53:54,607 connection.py _on_message     182 RECV < {"id":"968dcf81-cfd0-4335-9a8b-44644bb1d9f2","result":{"data":"iVBORw0KGgoAAAANSUhEUgAAAoAAAAOQCAIAAAAmDldbAAABKmlDQ1BTa2lhAAAokX2RPU8CQRCGH4mNSqFRo4XFlTQqYOQjYiGoREvQBO2O40KMcF6OM9rT+iOs7SyNCTWNlYmVsbM3MbHFd6E4EoOzmZ1n3539mF2IrSKLzUPbC4NKuWjVzs4txsx2Oj6TbQp+3kwPr+v/5E2ymYbbcRS/5GGgw7VlQ7zUHPGt4fqI7wwHJ5WS+F6caI5xfYxvQj8U902+4weG38WFduvaie5N3PVOq4o1+RplrtSatHDZpMolF9iiJAfkybGluKe2LU+RlpIno1GSEkWy6rMcSslpLsX+kJURvWf3A3Z7g8HgOdKOe/CYgdmnSEvswEIc+i++HdhDadp8kluE72Vd+wEWP2GuK3XFTEdro7+YUKv1p1aLIzwcNkRpVZMi8w...
+DEBUG 2021-10-19 21:53:54,608 connection.py send            135 SEND > {"id":"de5979e6-9813-41e1-9fb1-bb980c74c5c1","method":"App.getCurrentPage","params":{}}
+DEBUG 2021-10-19 21:53:54,610 connection.py _on_message     184 RECV < {"id":"de5979e6-9813-41e1-9fb1-bb980c74c5c1","result":{"pageId":6,"path":"page/component/index","query":{}}}
+DEBUG 2021-10-19 21:53:54,611 connection.py send            135 SEND > {"id":"87262f41-8cd4-4f0e-b4ff-d686aa8d6fd2","method":"Page.getData","params":{"pageId":6}}
+DEBUG 2021-10-19 21:53:54,612 connection.py _on_message     182 RECV < {"id":"87262f41-8cd4-4f0e-b4ff-d686aa8d6fd2","result":{"data":{"list":[{"id":"view","name":"视图容器","open":false,"pages":["view","scroll-view","swiper","movable-view","cover-view"]},{"id":"content","name":"基础内容","open":false,"pages":["text","icon","progress","rich-text"]},{"id":"form","name":"表单组件","open":false,"pages":["button","checkbox","form","input","label","picker","picker-view","radio","slider","switch","textarea","editor"]},{"id":"nav","name":"导航","open":false,"pages":["navigator"]},{"id":"media","...
+ERROR 2021-10-19 21:53:54,619 assertbase.py _teardown_collect 261 <bound method InterfaceTest.test_api of <interfacetest.InterfaceTest testMethod=test_api>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/case.py", line 59, in testPartExecutor
+    yield
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/case.py", line 68, in run
+    self._callTestMethod(testMethod)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/case.py", line 550, in _callTestMethod
+    method()
+  File "/Users/yuanyuanhe/PycharmProjects/miniprogram-demo-test/interfacetest.py", line 20, in test_api
+    self.app.navigate_to("/page/API/pages/get-system-info/get-system-info")
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py", line 135, in wrapper
+    result = func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/app.py", line 306, in navigate_to
+    page = self._change_route("navigateTo", url, is_wait_url_change)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/app.py", line 242, in _change_route
+    self._call_wx_method(open_type, [{"url": path}])
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_object.py", line 234, in _call_wx_method
+    return self.connection.send("App.callWxMethod", params)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/connection.py", line 137, in send
+    return self._receive_response(max_timeout)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/connection.py", line 162, in _receive_response
+    raise MiniAppError(err_msg)
+minium.framework.exception.MiniAppError: page "page/API/pages/get-system-info/get-system-info" is not found

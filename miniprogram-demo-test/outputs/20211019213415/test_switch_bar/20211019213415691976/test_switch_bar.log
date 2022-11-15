@@ -1,0 +1,11 @@
+ERROR 2021-10-19 21:34:15,692 assertbase.py _teardown_collect 261 <bound method AppTest.test_switch_bar of <apptest.AppTest testMethod=test_switch_bar>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py", line 32, in _handleClassSetUp
+    _miniClassSetUp()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 484, in _miniClassSetUp
+    cls.native = get_native(cls.CONFIG)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 69, in get_native
+    g_native = minium.native.get_native_driver(cfg.platform, cfg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/native/__init__.py", line 43, in get_native_driver
+    raise RuntimeError("the 'os_name' in your config file is not in predefine")
+RuntimeError: the 'os_name' in your config file is not in predefine

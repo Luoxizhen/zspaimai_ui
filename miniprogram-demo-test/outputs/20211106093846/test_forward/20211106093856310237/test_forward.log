@@ -1,0 +1,17 @@
+ERROR 2021-11-06 09:38:56,311 assertbase.py _teardown_collect 261 <bound method NativeTest.test_forward of <nativetest.NativeTest testMethod=test_forward>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py", line 32, in _handleClassSetUp
+    _miniClassSetUp()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 489, in _miniClassSetUp
+    cls.mini = get_minium(cls.CONFIG)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 89, in get_minium
+    g_minium = minium.miniprogram.get_minium_driver(conf=cfg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/__init__.py", line 30, in get_minium_driver
+    return APP[application](conf, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 93, in __init__
+    self.launch_dev_tool()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py", line 135, in wrapper
+    result = func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 193, in launch_dev_tool
+    raise MiniLaunchError(
+minium.framework.exception.MiniLaunchError: Open project in automation mode fail! Please ensure you have permission of project and have not environ error 

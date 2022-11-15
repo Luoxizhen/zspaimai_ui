@@ -1,0 +1,43 @@
+{
+    "case_name": "test_forward",
+    "run_time": "20211106 09:38:32",
+    "test_type": "NativeTest",
+    "case_doc": "\u8f6c\u53d1\u5c0f\u7a0b\u5e8f\u793a\u4f8b\n",
+    "success": false,
+    "failures": "",
+    "errors": "Traceback (most recent call last):\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py\", line 32, in _handleClassSetUp\n    _miniClassSetUp()\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py\", line 489, in _miniClassSetUp\n    cls.mini = get_minium(cls.CONFIG)\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py\", line 89, in get_minium\n    g_minium = minium.miniprogram.get_minium_driver(conf=cfg)\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/__init__.py\", line 30, in get_minium_driver\n    return APP[application](conf, *args, **kwargs)\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py\", line 93, in __init__\n    self.launch_dev_tool()\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py\", line 135, in wrapper\n    result = func(*args, **kwargs)\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py\", line 193, in launch_dev_tool\n    raise MiniLaunchError(\nminium.framework.exception.MiniLaunchError: Open project in automation mode fail! Please ensure you have permission of project and have not environ error \n",
+    "start_timestamp": 1636162712.263183,
+    "is_failure": false,
+    "is_error": true,
+    "module": ".Users.yuanyuanhe.PycharmProjects.miniprogram-demo-test.nativetest",
+    "package": "nativetest",
+    "failed_line_num": -1,
+    "device": {},
+    "log_filename": "test_forward.log",
+    "error_type": "MiniLaunchError",
+    "error_value": "Open project in automation mode fail! Please ensure you have permission of project and have not environ error ",
+    "screen_info": [],
+    "check_list": [],
+    "assert_list": [],
+    "stop_timestamp": 1636162712.263413,
+    "appId": "",
+    "appName": "",
+    "source": {
+        "code": [
+            "    def test_forward(self):\n",
+            "        \"\"\"\n",
+            "        \u8f6c\u53d1\u5c0f\u7a0b\u5e8f\u793a\u4f8b\n",
+            "        \"\"\"\n",
+            "        # \u4ece\u53f3\u4e0a\u89d2\u83dc\u5355\u4e2d\u8f6c\u53d1 \u6587\u4ef6\u4f20\u8f93\u5c0f\u52a9\u624b \u662f\u5fae\u4fe1\u4e0a\u7684\u8054\u7cfb\u4eba\u6635\u79f0\n",
+            "        self.app.navigate_to(\"/page/API/pages/share/share\")\n",
+            "        self.native.forward_miniprogram(\"\u53cd\u9988\u8ddf\u8fdb\", \"\u8f6c\u53d1\u53d1\u9001\u7684\u6587\u5b57\")\n",
+            "\n",
+            "        # \u5c0f\u7a0b\u5e8f\u5185\u90e8\u8c03\u7528\u8f6c\u53d1\u65b9\u6cd5 aauisendmsg\u662f\u5fae\u4fe1\u4e0a\u7684\u8054\u7cfb\u4eba\u6635\u79f0\n",
+            "        self.app.navigate_to(\"/page/API/pages/share-button/share-button\")\n",
+            "        self.page.get_element(\".button-share\").click()\n",
+            "        self.native.forward_miniprogram_inside(\"\u53cd\u9988\u8ddf\u8fdb\", \"\u8f6c\u53d1\u53d1\u9001\u7684\u6587\u5b57\")\n"
+        ],
+        "start": 56
+    },
+    "filename": "test_forward.json"
+}

@@ -1,0 +1,35 @@
+{
+    "case_name": "test_mock_show_modal",
+    "run_time": "20211106 09:36:24",
+    "test_type": "MockTest",
+    "case_doc": null,
+    "success": false,
+    "failures": "",
+    "errors": "Traceback (most recent call last):\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py\", line 32, in _handleClassSetUp\n    _miniClassSetUp()\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py\", line 489, in _miniClassSetUp\n    cls.mini = get_minium(cls.CONFIG)\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py\", line 89, in get_minium\n    g_minium = minium.miniprogram.get_minium_driver(conf=cfg)\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/__init__.py\", line 30, in get_minium_driver\n    return APP[application](conf, *args, **kwargs)\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py\", line 93, in __init__\n    self.launch_dev_tool()\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py\", line 135, in wrapper\n    result = func(*args, **kwargs)\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py\", line 117, in launch_dev_tool\n    raise MiniConfigError(\"project_path: %s not exists\" % self.project_path)\nminium.framework.exception.MiniConfigError: project_path: /Users/sherlock/github/miniprogram-demo not exists\n",
+    "start_timestamp": 1636162584.95259,
+    "is_failure": false,
+    "is_error": true,
+    "module": ".Users.yuanyuanhe.PycharmProjects.miniprogram-demo-test.mocktest",
+    "package": "mocktest",
+    "failed_line_num": -1,
+    "device": {},
+    "log_filename": "test_mock_show_modal.log",
+    "error_type": "MiniConfigError",
+    "error_value": "project_path: /Users/sherlock/github/miniprogram-demo not exists",
+    "screen_info": [],
+    "check_list": [],
+    "assert_list": [],
+    "stop_timestamp": 1636162584.952893,
+    "appId": "",
+    "appName": "",
+    "source": {
+        "code": [
+            "    def test_mock_show_modal(self):\n",
+            "        self.app.mock_wx_method(\"showModal\", result={\"confirm\": True, \"errMsg\": \"showModal:ok\"})\n",
+            "        self.app.navigate_to(\"/page/API/pages/modal/modal\")\n",
+            "        self.page.get_element(\"button\").click()\n"
+        ],
+        "start": 72
+    },
+    "filename": "test_mock_show_modal.json"
+}

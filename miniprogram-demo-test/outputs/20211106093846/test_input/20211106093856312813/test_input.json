@@ -1,0 +1,39 @@
+{
+    "case_name": "test_input",
+    "run_time": "20211106 09:38:56",
+    "test_type": "NativeTest",
+    "case_doc": "input \u6807\u7b7e\u8f93\u5165\n:return:\n",
+    "success": false,
+    "failures": "",
+    "errors": "Traceback (most recent call last):\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py\", line 32, in _handleClassSetUp\n    _miniClassSetUp()\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py\", line 489, in _miniClassSetUp\n    cls.mini = get_minium(cls.CONFIG)\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py\", line 89, in get_minium\n    g_minium = minium.miniprogram.get_minium_driver(conf=cfg)\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/__init__.py\", line 30, in get_minium_driver\n    return APP[application](conf, *args, **kwargs)\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py\", line 93, in __init__\n    self.launch_dev_tool()\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py\", line 135, in wrapper\n    result = func(*args, **kwargs)\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py\", line 193, in launch_dev_tool\n    raise MiniLaunchError(\nminium.framework.exception.MiniLaunchError: Open project in automation mode fail! Please ensure you have permission of project and have not environ error \n",
+    "start_timestamp": 1636162736.3131819,
+    "is_failure": false,
+    "is_error": true,
+    "module": ".Users.yuanyuanhe.PycharmProjects.miniprogram-demo-test.nativetest",
+    "package": "nativetest",
+    "failed_line_num": -1,
+    "device": {},
+    "log_filename": "test_input.log",
+    "error_type": "MiniLaunchError",
+    "error_value": "Open project in automation mode fail! Please ensure you have permission of project and have not environ error ",
+    "screen_info": [],
+    "check_list": [],
+    "assert_list": [],
+    "stop_timestamp": 1636162736.3134599,
+    "appId": "",
+    "appName": "",
+    "source": {
+        "code": [
+            "    def test_input(self):\n",
+            "        \"\"\"\n",
+            "        input \u6807\u7b7e\u8f93\u5165\n",
+            "        :return:\n",
+            "        \"\"\"\n",
+            "        self.app.navigate_to(\"/page/component/pages/input/input\")\n",
+            "        self.page.get_elements(\"input.weui-input\")[3].click()\n",
+            "        self.native.input_text(\"hi, sherlock\")\n"
+        ],
+        "start": 69
+    },
+    "filename": "test_input.json"
+}

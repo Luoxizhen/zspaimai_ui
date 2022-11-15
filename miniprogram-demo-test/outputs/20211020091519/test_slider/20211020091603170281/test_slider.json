@@ -1,0 +1,89 @@
+{
+    "case_name": "test_slider",
+    "run_time": "20211020 09:16:03",
+    "test_type": "ComponentTest",
+    "case_doc": null,
+    "success": true,
+    "failures": "",
+    "errors": "",
+    "start_timestamp": 1634692563.170516,
+    "is_failure": false,
+    "is_error": false,
+    "module": ".Users.yuanyuanhe.PycharmProjects.miniprogram-demo-test.componenttest",
+    "package": "componenttest",
+    "failed_line_num": -1,
+    "device": {
+        "system_info": {
+            "model": "iPhone 5",
+            "pixelRatio": 2,
+            "windowWidth": 320,
+            "windowHeight": 456,
+            "system": "iOS 10.0.1",
+            "language": "zh_CN",
+            "version": "8.0.5",
+            "screenWidth": 320,
+            "screenHeight": 568,
+            "SDKVersion": "2.11.2",
+            "brand": "devtools",
+            "fontSizeSetting": 16,
+            "benchmarkLevel": 1,
+            "batteryLevel": 100,
+            "statusBarHeight": 20,
+            "safeArea": {
+                "top": 20,
+                "left": 0,
+                "right": 320,
+                "bottom": 568,
+                "width": 320,
+                "height": 548
+            },
+            "deviceOrientation": "portrait",
+            "theme": "light",
+            "platform": "devtools",
+            "devicePixelRatio": 2
+        }
+    },
+    "log_filename": "test_slider.log",
+    "error_type": "",
+    "error_value": "",
+    "screen_info": [
+        {
+            "name": "setup",
+            "url": "/page/component/index",
+            "path": "images/setup.png",
+            "ts": 1634692566,
+            "datetime": "2021-10-20 09:16:06"
+        },
+        {
+            "name": "teardown",
+            "url": "/page/component/pages/slider/slider",
+            "path": "images/teardown.png",
+            "ts": 1634692570,
+            "datetime": "2021-10-20 09:16:10"
+        }
+    ],
+    "check_list": [],
+    "assert_list": [],
+    "perf_data": "{\"startup\": 0, \"avg_cpu\": 0, \"max_cpu\": 0, \"cpu_data_list\": [], \"avg_mem\": 0, \"max_mem\": 0, \"mem_data_list\": [], \"avg_fps\": 0, \"min_fps_rt\": 0, \"fps_data_list\": [], \"fps_time_series_list\": [], \"cpu_time_series_list\": [], \"mem_time_series_list\": []}",
+    "android_image_list": [
+        "images/setup.png"
+    ],
+    "weapp_log_path": "weapp.log",
+    "request_log_path": "request.log",
+    "page_data": {},
+    "stop_timestamp": 1634692570.131922,
+    "appId": "wx7daf5aa69f958691",
+    "appName": "wxid_2hvbbgambpeu22\u7684\u63a5\u53e3\u6d4b\u8bd5\u53f7",
+    "source": {
+        "code": [
+            "    def test_slider(self):\n",
+            "        self.app.navigate_to(\"pages/slider/slider\")\n",
+            "        e = self.page.get_element(\"slider\")\n",
+            "        e.trigger(\"change\", {\"value\": 10})\n",
+            "        e.trigger(\"change\", {\"value\": 30})\n",
+            "        e.trigger(\"change\", {\"value\": 80})\n"
+        ],
+        "start": 30
+    },
+    "filename": "test_slider.json"
+}

@@ -1,0 +1,111 @@
+{
+    "case_name": "test_set_data",
+    "run_time": "20211020 09:55:24",
+    "test_type": "ComponentTest",
+    "case_doc": null,
+    "success": true,
+    "failures": "",
+    "errors": "",
+    "start_timestamp": 1634694924.3228219,
+    "is_failure": false,
+    "is_error": false,
+    "module": ".Users.yuanyuanhe.PycharmProjects.miniprogram-demo-test.componenttest",
+    "package": "componenttest",
+    "failed_line_num": -1,
+    "device": {
+        "system_info": {
+            "model": "iPhone 5",
+            "pixelRatio": 2,
+            "windowWidth": 320,
+            "windowHeight": 456,
+            "system": "iOS 10.0.1",
+            "language": "zh_CN",
+            "version": "8.0.5",
+            "screenWidth": 320,
+            "screenHeight": 568,
+            "SDKVersion": "2.11.2",
+            "brand": "devtools",
+            "fontSizeSetting": 16,
+            "benchmarkLevel": 1,
+            "batteryLevel": 100,
+            "statusBarHeight": 20,
+            "safeArea": {
+                "top": 20,
+                "left": 0,
+                "right": 320,
+                "bottom": 568,
+                "width": 320,
+                "height": 548
+            },
+            "deviceOrientation": "portrait",
+            "theme": "light",
+            "platform": "devtools",
+            "devicePixelRatio": 2
+        }
+    },
+    "log_filename": "test_set_data.log",
+    "error_type": "",
+    "error_value": "",
+    "screen_info": [
+        {
+            "name": "setup",
+            "url": "/page/component/index",
+            "path": "images/setup.png",
+            "ts": 1634694927,
+            "datetime": "2021-10-20 09:55:27"
+        },
+        {
+            "name": "canAdd",
+            "url": "/page/component/pages/text/text",
+            "path": "images/canAdd.png",
+            "ts": 1634694932,
+            "datetime": "2021-10-20 09:55:32"
+        },
+        {
+            "name": "canRemove",
+            "url": "/page/component/pages/text/text",
+            "path": "images/canRemove.png",
+            "ts": 1634694933,
+            "datetime": "2021-10-20 09:55:33"
+        },
+        {
+            "name": "teardown",
+            "url": "/page/component/pages/text/text",
+            "path": "images/teardown.png",
+            "ts": 1634694933,
+            "datetime": "2021-10-20 09:55:33"
+        }
+    ],
+    "check_list": [],
+    "assert_list": [],
+    "perf_data": "{\"startup\": 0, \"avg_cpu\": 0, \"max_cpu\": 0, \"cpu_data_list\": [], \"avg_mem\": 0, \"max_mem\": 0, \"mem_data_list\": [], \"avg_fps\": 0, \"min_fps_rt\": 0, \"fps_data_list\": [], \"fps_time_series_list\": [], \"cpu_time_series_list\": [], \"mem_time_series_list\": []}",
+    "android_image_list": [
+        "images/setup.png",
+        "images/canAdd.png",
+        "images/canRemove.png"
+    ],
+    "weapp_log_path": "weapp.log",
+    "request_log_path": "request.log",
+    "page_data": {
+        "text": "\u53ea\u80fd\u5220\u9664\u6587\u5b57\uff0c\u4e0d\u80fd\u52a0\u6587\u5b57",
+        "canAdd": false,
+        "canRemove": true
+    },
+    "stop_timestamp": 1634694933.504384,
+    "appId": "wx7daf5aa69f958691",
+    "appName": "wxid_2hvbbgambpeu22\u7684\u63a5\u53e3\u6d4b\u8bd5\u53f7",
+    "source": {
+        "code": [
+            "    def test_set_data(self):\n",
+            "        self.app.navigate_to(\"/page/component/pages/text/text\")\n",
+            "        self.page.data = {\"text\": \"\u53ea\u80fd\u52a0\u6587\u5b57\uff0c\u4e0d\u80fd\u5220\u9664\u6587\u5b57\", \"canAdd\": True, \"canRemove\": False}\n",
+            "        time.sleep(1)\n",
+            "        self.capture(\"canAdd\")\n",
+            "        self.page.data = {\"text\": \"\u53ea\u80fd\u5220\u9664\u6587\u5b57\uff0c\u4e0d\u80fd\u52a0\u6587\u5b57\", \"canAdd\": False, \"canRemove\": True}\n",
+            "        time.sleep(1)\n",
+            "        self.capture(\"canRemove\")\n"
+        ],
+        "start": 8
+    },
+    "filename": "test_set_data.json"
+}

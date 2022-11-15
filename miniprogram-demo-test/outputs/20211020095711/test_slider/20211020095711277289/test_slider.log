@@ -1,0 +1,19 @@
+ERROR 2021-10-20 09:57:11,278 assertbase.py _teardown_collect 261 <bound method ComponentTest.test_slider of <componenttest.ComponentTest testMethod=test_slider>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py", line 32, in _handleClassSetUp
+    _miniClassSetUp()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 484, in _miniClassSetUp
+    cls.native = get_native(cls.CONFIG)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 69, in get_native
+    g_native = minium.native.get_native_driver(cfg.platform, cfg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/native/__init__.py", line 54, in get_native_driver
+    return APP[conf.app.lower() + "_" + os_name.lower()](conf.device_desire)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/native/wx_native/androidnative.py", line 53, in __init__
+    self.at = at.At(self.serial)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/native/lib/at/__init__.py", line 38, in __init__
+    self.adb = AdbWrap.apply_adb(serial)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/native/lib/at/core/adbwrap.py", line 213, in apply_adb
+    helper = AdbWrap(serial)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/native/lib/at/core/adbwrap.py", line 158, in __init__
+    raise AdbDisconnectedError(u"手机不在线:" + serial)
+at.core.exceptions.AdbDisconnectedError: 手机不在线:f8c3cc2d

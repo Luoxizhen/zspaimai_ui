@@ -1,0 +1,41 @@
+DEBUG 2021-10-19 21:47:46,066 minitest.py _miniSetUp      518 =========Current case：test_modal=========
+INFO  2021-10-19 21:47:46,066 app.py     _relaunch       660 ReLaunch: /page/component/index
+DEBUG 2021-10-19 21:47:46,066 connection.py send            135 SEND > {"id":"71ac43b9-0a91-4e7d-9c14-92a3c5ea57cb","method":"App.callWxMethod","params":{"method":"reLaunch","args":[{"url":"/page/component/index"}]}}
+DEBUG 2021-10-19 21:47:46,114 connection.py _on_message     184 RECV < {"id":"71ac43b9-0a91-4e7d-9c14-92a3c5ea57cb","result":{"result":{"errMsg":"reLaunch:ok"}}}
+DEBUG 2021-10-19 21:47:46,300 connection.py _on_message     184 RECV < {"method":"App.bindingCalled","params":{"name":"onAppRouteDone","args":[{"webviewId":12,"path":"page/component/index","query":{},"openType":"reLaunch"}]}}
+INFO  2021-10-19 21:47:46,301 app.py     _on_route_changed 264 Route changed, {'name': 'onAppRouteDone', 'args': [{'webviewId': 12, 'path': 'page/component/index', 'query': {}, 'openType': 'reLaunch'}]}
+DEBUG 2021-10-19 21:47:49,310 connection.py send            135 SEND > {"id":"6bb0a21a-b6fa-4a0d-96e2-6f800e1cc921","method":"App.captureScreenshot","params":{}}
+DEBUG 2021-10-19 21:47:49,441 connection.py _on_message     182 RECV < {"id":"6bb0a21a-b6fa-4a0d-96e2-6f800e1cc921","result":{"data":"iVBORw0KGgoAAAANSUhEUgAAAoAAAAOQCAIAAAAmDldbAAABKmlDQ1BTa2lhAAAokX2RPU8CQRCGH4mNSqFRo4XFlTQqYOQjYiGoREvQBO2O40KMcF6OM9rT+iOs7SyNCTWNlYmVsbM3MbHFd6E4EoOzmZ1n3539mF2IrSKLzUPbC4NKuWjVzs4txsx2Oj6TbQp+3kwPr+v/5E2ymYbbcRS/5GGgw7VlQ7zUHPGt4fqI7wwHJ5WS+F6caI5xfYxvQj8U902+4weG38WFduvaie5N3PVOq4o1+RplrtSatHDZpMolF9iiJAfkybGluKe2LU+RlpIno1GSEkWy6rMcSslpLsX+kJURvWf3A3Z7g8HgOdKOe/CYgdmnSEvswEIc+i++HdhDadp8kluE72Vd+wEWP2GuK3XFTEdro7+YUKv1p1aLIzwcNkRpVZMi8w...
+INFO  2021-10-19 21:47:49,442 app.py     navigate_to     305 NavigateTo: /page/API/pages/modal/modal
+DEBUG 2021-10-19 21:47:49,442 connection.py send            135 SEND > {"id":"d9cf6670-d6d1-4cb0-b4c6-1e494d89d528","method":"App.callWxMethod","params":{"method":"navigateTo","args":[{"url":"/page/API/pages/modal/modal"}]}}
+DEBUG 2021-10-19 21:47:49,445 connection.py _on_message     184 RECV < {"id":"d9cf6670-d6d1-4cb0-b4c6-1e494d89d528","error":{"message":"page \"page/API/pages/modal/modal\" is not found"}}
+DEBUG 2021-10-19 21:47:50,014 minitest.py _miniTearDown   720 =========Current case Down：test_modal=========
+DEBUG 2021-10-19 21:47:50,016 connection.py send            135 SEND > {"id":"a711bba0-3c2b-473f-b23a-490de9859183","method":"App.captureScreenshot","params":{}}
+DEBUG 2021-10-19 21:47:50,149 connection.py _on_message     182 RECV < {"id":"a711bba0-3c2b-473f-b23a-490de9859183","result":{"data":"iVBORw0KGgoAAAANSUhEUgAAAoAAAAOQCAIAAAAmDldbAAABKmlDQ1BTa2lhAAAokX2RPU8CQRCGH4mNSqFRo4XFlTQqYOQjYiGoREvQBO2O40KMcF6OM9rT+iOs7SyNCTWNlYmVsbM3MbHFd6E4EoOzmZ1n3539mF2IrSKLzUPbC4NKuWjVzs4txsx2Oj6TbQp+3kwPr+v/5E2ymYbbcRS/5GGgw7VlQ7zUHPGt4fqI7wwHJ5WS+F6caI5xfYxvQj8U902+4weG38WFduvaie5N3PVOq4o1+RplrtSatHDZpMolF9iiJAfkybGluKe2LU+RlpIno1GSEkWy6rMcSslpLsX+kJURvWf3A3Z7g8HgOdKOe/CYgdmnSEvswEIc+i++HdhDadp8kluE72Vd+wEWP2GuK3XFTEdro7+YUKv1p1aLIzwcNkRpVZMi8w...
+DEBUG 2021-10-19 21:47:50,151 connection.py send            135 SEND > {"id":"7d7d9ba7-28b1-4a17-ad00-f67970816cfc","method":"App.getCurrentPage","params":{}}
+DEBUG 2021-10-19 21:47:50,152 connection.py _on_message     184 RECV < {"id":"7d7d9ba7-28b1-4a17-ad00-f67970816cfc","result":{"pageId":12,"path":"page/component/index","query":{}}}
+DEBUG 2021-10-19 21:47:50,153 connection.py send            135 SEND > {"id":"cfd878ce-297e-45fd-a869-db26b18ae365","method":"Page.getData","params":{"pageId":12}}
+DEBUG 2021-10-19 21:47:50,154 connection.py _on_message     182 RECV < {"id":"cfd878ce-297e-45fd-a869-db26b18ae365","result":{"data":{"list":[{"id":"view","name":"视图容器","open":false,"pages":["view","scroll-view","swiper","movable-view","cover-view"]},{"id":"content","name":"基础内容","open":false,"pages":["text","icon","progress","rich-text"]},{"id":"form","name":"表单组件","open":false,"pages":["button","checkbox","form","input","label","picker","picker-view","radio","slider","switch","textarea","editor"]},{"id":"nav","name":"导航","open":false,"pages":["navigator"]},{"id":"media","...
+ERROR 2021-10-19 21:47:50,155 assertbase.py _teardown_collect 261 <bound method NativeTest.test_modal of <nativetest.NativeTest testMethod=test_modal>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/case.py", line 59, in testPartExecutor
+    yield
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/case.py", line 68, in run
+    self._callTestMethod(testMethod)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/case.py", line 550, in _callTestMethod
+    method()
+  File "/Users/yuanyuanhe/PycharmProjects/miniprogram-demo-test/nativetest.py", line 20, in test_modal
+    self.app.navigate_to("/page/API/pages/modal/modal")
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py", line 135, in wrapper
+    result = func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/app.py", line 306, in navigate_to
+    page = self._change_route("navigateTo", url, is_wait_url_change)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/app.py", line 242, in _change_route
+    self._call_wx_method(open_type, [{"url": path}])
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_object.py", line 234, in _call_wx_method
+    return self.connection.send("App.callWxMethod", params)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/connection.py", line 137, in send
+    return self._receive_response(max_timeout)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/connection.py", line 162, in _receive_response
+    raise MiniAppError(err_msg)
+minium.framework.exception.MiniAppError: page "page/API/pages/modal/modal" is not found

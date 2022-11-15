@@ -1,0 +1,36 @@
+{
+    "case_name": "test_input_element",
+    "run_time": "20211020 09:59:49",
+    "test_type": "ComponentTest",
+    "case_doc": null,
+    "success": false,
+    "failures": "",
+    "errors": "Traceback (most recent call last):\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py\", line 32, in _handleClassSetUp\n    _miniClassSetUp()\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py\", line 484, in _miniClassSetUp\n    cls.native = get_native(cls.CONFIG)\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py\", line 69, in get_native\n    g_native = minium.native.get_native_driver(cfg.platform, cfg)\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/native/__init__.py\", line 54, in get_native_driver\n    return APP[conf.app.lower() + \"_\" + os_name.lower()](conf.device_desire)\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/native/wx_native/androidnative.py\", line 53, in __init__\n    self.at = at.At(self.serial)\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/native/lib/at/__init__.py\", line 38, in __init__\n    self.adb = AdbWrap.apply_adb(serial)\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/native/lib/at/core/adbwrap.py\", line 213, in apply_adb\n    helper = AdbWrap(serial)\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/native/lib/at/core/adbwrap.py\", line 158, in __init__\n    raise AdbDisconnectedError(u\"\u624b\u673a\u4e0d\u5728\u7ebf:\" + serial)\nat.core.exceptions.AdbDisconnectedError: \u624b\u673a\u4e0d\u5728\u7ebf:f8c3cc2d\n",
+    "start_timestamp": 1634695189.917013,
+    "is_failure": false,
+    "is_error": true,
+    "module": ".Users.yuanyuanhe.PycharmProjects.miniprogram-demo-test.componenttest",
+    "package": "componenttest",
+    "failed_line_num": -1,
+    "device": {},
+    "log_filename": "test_input_element.log",
+    "error_type": "AdbDisconnectedError",
+    "error_value": "\u624b\u673a\u4e0d\u5728\u7ebf:f8c3cc2d",
+    "screen_info": [],
+    "check_list": [],
+    "assert_list": [],
+    "stop_timestamp": 1634695189.918339,
+    "appId": "",
+    "appName": "",
+    "source": {
+        "code": [
+            "    def test_input_element(self):\n",
+            "        self.app.navigate_to(\"pages/input/input\")\n",
+            "        es = self.page.get_elements(\".weui-input\")\n",
+            "        # \u76f4\u63a5\u89e6\u53d1\u4e8b\u4ef6\uff0c\u4f46\u662f\u4e0d\u4f1a\u5f71\u54cdUI\u53d8\u5316\n",
+            "        es[2].trigger(\"input\", {\"value\": \"\u6d4b\u8bd5\u4ee5\u60fa\u60fa\u76f8\u60dc\"})\n"
+        ],
+        "start": 24
+    },
+    "filename": "test_input_element.json"
+}

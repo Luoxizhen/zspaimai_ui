@@ -1,0 +1,44 @@
+DEBUG 2021-10-19 19:57:01,797 minitest.py _miniSetUp      518 =========Current case：test_get_current_page=========
+INFO  2021-10-19 19:57:01,798 app.py     _relaunch       660 ReLaunch: /page/component/index
+DEBUG 2021-10-19 19:57:01,798 connection.py send            135 SEND > {"id":"54bc9516-f854-49b6-b740-4eb05d4b849e","method":"App.callWxMethod","params":{"method":"reLaunch","args":[{"url":"/page/component/index"}]}}
+DEBUG 2021-10-19 19:57:01,839 connection.py _on_message     184 RECV < {"id":"54bc9516-f854-49b6-b740-4eb05d4b849e","result":{"result":{"errMsg":"reLaunch:ok"}}}
+DEBUG 2021-10-19 19:57:02,032 connection.py _on_message     184 RECV < {"method":"App.bindingCalled","params":{"name":"onAppRouteDone","args":[{"webviewId":7,"path":"page/component/index","query":{},"openType":"reLaunch"}]}}
+INFO  2021-10-19 19:57:02,032 app.py     _on_route_changed 264 Route changed, {'name': 'onAppRouteDone', 'args': [{'webviewId': 7, 'path': 'page/component/index', 'query': {}, 'openType': 'reLaunch'}]}
+DEBUG 2021-10-19 19:57:05,039 connection.py send            135 SEND > {"id":"d8d61bfc-8cbb-40d4-b7a0-6001d330f9a9","method":"App.captureScreenshot","params":{}}
+DEBUG 2021-10-19 19:57:05,160 connection.py _on_message     182 RECV < {"id":"d8d61bfc-8cbb-40d4-b7a0-6001d330f9a9","result":{"data":"iVBORw0KGgoAAAANSUhEUgAAAoAAAAOQCAIAAAAmDldbAAABKmlDQ1BTa2lhAAAokX2RPU8CQRCGH4mNSqFRo4XFlTQqYOQjYiGoREvQBO2O40KMcF6OM9rT+iOs7SyNCTWNlYmVsbM3MbHFd6E4EoOzmZ1n3539mF2IrSKLzUPbC4NKuWjVzs4txsx2Oj6TbQp+3kwPr+v/5E2ymYbbcRS/5GGgw7VlQ7zUHPGt4fqI7wwHJ5WS+F6caI5xfYxvQj8U902+4weG38WFduvaie5N3PVOq4o1+RplrtSatHDZpMolF9iiJAfkybGluKe2LU+RlpIno1GSEkWy6rMcSslpLsX+kJURvWf3A3Z7g8HgOdKOe/CYgdmnSEvswEIc+i++HdhDadp8kluE72Vd+wEWP2GuK3XFTEdro7+YUKv1p1aLIzwcNkRpVZMi8w...
+DEBUG 2021-10-19 19:57:05,161 connection.py send            135 SEND > {"id":"27f65943-ba49-4ada-b248-6301fef716f7","method":"App.getCurrentPage","params":{}}
+DEBUG 2021-10-19 19:57:05,163 connection.py _on_message     184 RECV < {"id":"27f65943-ba49-4ada-b248-6301fef716f7","result":{"pageId":7,"path":"page/component/index","query":{}}}
+DEBUG 2021-10-19 19:57:05,167 connection.py send            135 SEND > {"id":"8c982d40-ffd2-4533-9dfb-f82ebd066a30","method":"App.captureScreenshot","params":{}}
+DEBUG 2021-10-19 19:57:05,272 connection.py _on_message     182 RECV < {"id":"8c982d40-ffd2-4533-9dfb-f82ebd066a30","result":{"data":"iVBORw0KGgoAAAANSUhEUgAAAoAAAAOQCAIAAAAmDldbAAABKmlDQ1BTa2lhAAAokX2RPU8CQRCGH4mNSqFRo4XFlTQqYOQjYiGoREvQBO2O40KMcF6OM9rT+iOs7SyNCTWNlYmVsbM3MbHFd6E4EoOzmZ1n3539mF2IrSKLzUPbC4NKuWjVzs4txsx2Oj6TbQp+3kwPr+v/5E2ymYbbcRS/5GGgw7VlQ7zUHPGt4fqI7wwHJ5WS+F6caI5xfYxvQj8U902+4weG38WFduvaie5N3PVOq4o1+RplrtSatHDZpMolF9iiJAfkybGluKe2LU+RlpIno1GSEkWy6rMcSslpLsX+kJURvWf3A3Z7g8HgOdKOe/CYgdmnSEvswEIc+i++HdhDadp8kluE72Vd+wEWP2GuK3XFTEdro7+YUKv1p1aLIzwcNkRpVZMi8w...
+DEBUG 2021-10-19 19:57:05,273 minitest.py _miniTearDown   720 =========Current case Down：test_get_current_page=========
+DEBUG 2021-10-19 19:57:05,274 connection.py send            135 SEND > {"id":"d6719119-0b74-482c-8f45-48efb62af920","method":"App.captureScreenshot","params":{}}
+DEBUG 2021-10-19 19:57:05,375 connection.py _on_message     182 RECV < {"id":"d6719119-0b74-482c-8f45-48efb62af920","result":{"data":"iVBORw0KGgoAAAANSUhEUgAAAoAAAAOQCAIAAAAmDldbAAABKmlDQ1BTa2lhAAAokX2RPU8CQRCGH4mNSqFRo4XFlTQqYOQjYiGoREvQBO2O40KMcF6OM9rT+iOs7SyNCTWNlYmVsbM3MbHFd6E4EoOzmZ1n3539mF2IrSKLzUPbC4NKuWjVzs4txsx2Oj6TbQp+3kwPr+v/5E2ymYbbcRS/5GGgw7VlQ7zUHPGt4fqI7wwHJ5WS+F6caI5xfYxvQj8U902+4weG38WFduvaie5N3PVOq4o1+RplrtSatHDZpMolF9iiJAfkybGluKe2LU+RlpIno1GSEkWy6rMcSslpLsX+kJURvWf3A3Z7g8HgOdKOe/CYgdmnSEvswEIc+i++HdhDadp8kluE72Vd+wEWP2GuK3XFTEdro7+YUKv1p1aLIzwcNkRpVZMi8w...
+DEBUG 2021-10-19 19:57:05,376 connection.py send            135 SEND > {"id":"dbdd19d3-0b77-4d24-81fc-d270e4ed3d4a","method":"App.getCurrentPage","params":{}}
+DEBUG 2021-10-19 19:57:05,377 connection.py _on_message     184 RECV < {"id":"dbdd19d3-0b77-4d24-81fc-d270e4ed3d4a","result":{"pageId":7,"path":"page/component/index","query":{}}}
+DEBUG 2021-10-19 19:57:05,378 connection.py send            135 SEND > {"id":"3632f798-c243-49fd-be9f-f6892508c56b","method":"Page.getData","params":{"pageId":7}}
+DEBUG 2021-10-19 19:57:05,380 connection.py _on_message     182 RECV < {"id":"3632f798-c243-49fd-be9f-f6892508c56b","result":{"data":{"list":[{"id":"view","name":"视图容器","open":false,"pages":["view","scroll-view","swiper","movable-view","cover-view"]},{"id":"content","name":"基础内容","open":false,"pages":["text","icon","progress","rich-text"]},{"id":"form","name":"表单组件","open":false,"pages":["button","checkbox","form","input","label","picker","picker-view","radio","slider","switch","textarea","editor"]},{"id":"nav","name":"导航","open":false,"pages":["navigator"]},{"id":"media","...
+ERROR 2021-10-19 19:57:05,381 assertbase.py _teardown_collect 261 <bound method AppTest.test_get_current_page of <apptest.AppTest testMethod=test_get_current_page>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/case.py", line 59, in testPartExecutor
+    yield
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/case.py", line 68, in run
+    self._callTestMethod(testMethod)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/case.py", line 550, in _callTestMethod
+    method()
+  File "/Users/yuanyuanhe/PycharmProjects/miniprogram-demo-test/apptest.py", line 15, in test_get_current_page
+    self.assertEqual(self.page.path, "page/component/index")  # 有错误，报告会把这行代码标红
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/assertbase.py", line 333, in _hook_assert
+    return attr(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/case.py", line 831, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/assertbase.py", line 333, in _hook_assert
+    return attr(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/case.py", line 1211, in assertMultiLineEqual
+    self.fail(self._formatMessage(msg, standardMsg))
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/case.py", line 670, in fail
+    raise self.failureException(msg)
+AssertionError: '/page/component/index' != 'page/component/index'
+- /page/component/index
+? -
++ page/component/index
+

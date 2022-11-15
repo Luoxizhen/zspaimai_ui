@@ -1,0 +1,39 @@
+{
+    "case_name": "test_set_data",
+    "run_time": "20211020 09:57:11",
+    "test_type": "ComponentTest",
+    "case_doc": null,
+    "success": false,
+    "failures": "",
+    "errors": "Traceback (most recent call last):\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py\", line 32, in _handleClassSetUp\n    _miniClassSetUp()\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py\", line 484, in _miniClassSetUp\n    cls.native = get_native(cls.CONFIG)\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py\", line 69, in get_native\n    g_native = minium.native.get_native_driver(cfg.platform, cfg)\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/native/__init__.py\", line 54, in get_native_driver\n    return APP[conf.app.lower() + \"_\" + os_name.lower()](conf.device_desire)\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/native/wx_native/androidnative.py\", line 53, in __init__\n    self.at = at.At(self.serial)\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/native/lib/at/__init__.py\", line 38, in __init__\n    self.adb = AdbWrap.apply_adb(serial)\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/native/lib/at/core/adbwrap.py\", line 213, in apply_adb\n    helper = AdbWrap(serial)\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/native/lib/at/core/adbwrap.py\", line 158, in __init__\n    raise AdbDisconnectedError(u\"\u624b\u673a\u4e0d\u5728\u7ebf:\" + serial)\nat.core.exceptions.AdbDisconnectedError: \u624b\u673a\u4e0d\u5728\u7ebf:f8c3cc2d\n",
+    "start_timestamp": 1634695031.272301,
+    "is_failure": false,
+    "is_error": true,
+    "module": ".Users.yuanyuanhe.PycharmProjects.miniprogram-demo-test.componenttest",
+    "package": "componenttest",
+    "failed_line_num": -1,
+    "device": {},
+    "log_filename": "test_set_data.log",
+    "error_type": "AdbDisconnectedError",
+    "error_value": "\u624b\u673a\u4e0d\u5728\u7ebf:f8c3cc2d",
+    "screen_info": [],
+    "check_list": [],
+    "assert_list": [],
+    "stop_timestamp": 1634695031.27248,
+    "appId": "",
+    "appName": "",
+    "source": {
+        "code": [
+            "    def test_set_data(self):\n",
+            "        self.app.navigate_to(\"/page/component/pages/text/text\")\n",
+            "        self.page.data = {\"text\": \"\u53ea\u80fd\u52a0\u6587\u5b57\uff0c\u4e0d\u80fd\u5220\u9664\u6587\u5b57\", \"canAdd\": True, \"canRemove\": False}\n",
+            "        time.sleep(1)\n",
+            "        self.capture(\"canAdd\")\n",
+            "        self.page.data = {\"text\": \"\u53ea\u80fd\u5220\u9664\u6587\u5b57\uff0c\u4e0d\u80fd\u52a0\u6587\u5b57\", \"canAdd\": False, \"canRemove\": True}\n",
+            "        time.sleep(1)\n",
+            "        self.capture(\"canRemove\")\n"
+        ],
+        "start": 8
+    },
+    "filename": "test_set_data.json"
+}

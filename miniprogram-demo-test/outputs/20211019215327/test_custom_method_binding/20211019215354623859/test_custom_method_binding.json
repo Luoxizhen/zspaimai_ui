@@ -1,0 +1,219 @@
+{
+    "case_name": "test_custom_method_binding",
+    "run_time": "20211019 21:53:54",
+    "test_type": "InterfaceTest",
+    "case_doc": "\u5c06\u56de\u8c03\u7ed1\u5b9a\u5230\u81ea\u5b9a\u4e49\u7684\u65b9\u6cd5\u91cc\u9762\n:return:\n",
+    "success": false,
+    "failures": "",
+    "errors": "Traceback (most recent call last):\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/case.py\", line 59, in testPartExecutor\n    yield\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/case.py\", line 68, in run\n    self._callTestMethod(testMethod)\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/case.py\", line 550, in _callTestMethod\n    method()\n  File \"/Users/yuanyuanhe/PycharmProjects/miniprogram-demo-test/interfacetest.py\", line 76, in test_custom_method_binding\n    self.app.navigate_to(\"/page/API/pages/request/request\")\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py\", line 135, in wrapper\n    result = func(*args, **kwargs)\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/app.py\", line 306, in navigate_to\n    page = self._change_route(\"navigateTo\", url, is_wait_url_change)\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/app.py\", line 242, in _change_route\n    self._call_wx_method(open_type, [{\"url\": path}])\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_object.py\", line 234, in _call_wx_method\n    return self.connection.send(\"App.callWxMethod\", params)\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/connection.py\", line 137, in send\n    return self._receive_response(max_timeout)\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/connection.py\", line 162, in _receive_response\n    raise MiniAppError(err_msg)\nminium.framework.exception.MiniAppError: page \"page/API/pages/request/request\" is not found\n",
+    "start_timestamp": 1634651634.624049,
+    "is_failure": false,
+    "is_error": true,
+    "module": ".Users.yuanyuanhe.PycharmProjects.miniprogram-demo-test.interfacetest",
+    "package": "interfacetest",
+    "failed_line_num": 76,
+    "device": {
+        "system_info": {
+            "model": "iPhone 5",
+            "pixelRatio": 2,
+            "windowWidth": 320,
+            "windowHeight": 456,
+            "system": "iOS 10.0.1",
+            "language": "zh_CN",
+            "version": "8.0.5",
+            "screenWidth": 320,
+            "screenHeight": 568,
+            "SDKVersion": "2.11.2",
+            "brand": "devtools",
+            "fontSizeSetting": 16,
+            "benchmarkLevel": 1,
+            "batteryLevel": 100,
+            "statusBarHeight": 20,
+            "safeArea": {
+                "top": 20,
+                "left": 0,
+                "right": 320,
+                "bottom": 568,
+                "width": 320,
+                "height": 548
+            },
+            "deviceOrientation": "portrait",
+            "theme": "light",
+            "platform": "devtools",
+            "devicePixelRatio": 2
+        }
+    },
+    "log_filename": "test_custom_method_binding.log",
+    "error_type": "MiniAppError",
+    "error_value": "page \"page/API/pages/request/request\" is not found",
+    "screen_info": [
+        {
+            "name": "setup",
+            "url": "/page/component/index",
+            "path": "images/setup.png",
+            "ts": 1634651638,
+            "datetime": "2021-10-19 21:53:58"
+        },
+        {
+            "name": "teardown",
+            "url": "/page/component/index",
+            "path": "images/teardown.png",
+            "ts": 1634651639,
+            "datetime": "2021-10-19 21:53:59"
+        }
+    ],
+    "check_list": [],
+    "assert_list": [],
+    "perf_data": "{\"startup\": 0, \"avg_cpu\": 0, \"max_cpu\": 0, \"cpu_data_list\": [], \"avg_mem\": 0, \"max_mem\": 0, \"mem_data_list\": [], \"avg_fps\": 0, \"min_fps_rt\": 0, \"fps_data_list\": [], \"fps_time_series_list\": [], \"cpu_time_series_list\": [], \"mem_time_series_list\": []}",
+    "android_image_list": [
+        "images/setup.png"
+    ],
+    "weapp_log_path": "weapp.log",
+    "request_log_path": "request.log",
+    "page_data": {
+        "list": [
+            {
+                "id": "view",
+                "name": "\u89c6\u56fe\u5bb9\u5668",
+                "open": false,
+                "pages": [
+                    "view",
+                    "scroll-view",
+                    "swiper",
+                    "movable-view",
+                    "cover-view"
+                ]
+            },
+            {
+                "id": "content",
+                "name": "\u57fa\u7840\u5185\u5bb9",
+                "open": false,
+                "pages": [
+                    "text",
+                    "icon",
+                    "progress",
+                    "rich-text"
+                ]
+            },
+            {
+                "id": "form",
+                "name": "\u8868\u5355\u7ec4\u4ef6",
+                "open": false,
+                "pages": [
+                    "button",
+                    "checkbox",
+                    "form",
+                    "input",
+                    "label",
+                    "picker",
+                    "picker-view",
+                    "radio",
+                    "slider",
+                    "switch",
+                    "textarea",
+                    "editor"
+                ]
+            },
+            {
+                "id": "nav",
+                "name": "\u5bfc\u822a",
+                "open": false,
+                "pages": [
+                    "navigator"
+                ]
+            },
+            {
+                "id": "media",
+                "name": "\u5a92\u4f53\u7ec4\u4ef6",
+                "open": false,
+                "pages": [
+                    "image",
+                    "video",
+                    "camera",
+                    "live-pusher",
+                    "live-player"
+                ]
+            },
+            {
+                "id": "map",
+                "name": "\u5730\u56fe",
+                "open": false,
+                "pages": [
+                    "map"
+                ]
+            },
+            {
+                "id": "canvas",
+                "name": "\u753b\u5e03",
+                "open": false,
+                "pages": [
+                    "canvas",
+                    "canvas-2d",
+                    "webgl"
+                ]
+            },
+            {
+                "id": "open",
+                "name": "\u5f00\u653e\u80fd\u529b",
+                "open": false,
+                "pages": [
+                    "ad",
+                    "open-data",
+                    "web-view"
+                ]
+            },
+            {
+                "id": "obstacle-free",
+                "name": "\u65e0\u969c\u788d\u8bbf\u95ee",
+                "open": false,
+                "pages": [
+                    "aria-component"
+                ]
+            }
+        ],
+        "theme": "light"
+    },
+    "stop_timestamp": 1634651639.7909272,
+    "appId": "wx7daf5aa69f958691",
+    "appName": "wxid_2hvbbgambpeu22\u7684\u63a5\u53e3\u6d4b\u8bd5\u53f7",
+    "source": {
+        "code": [
+            "    def test_custom_method_binding(self):\n",
+            "        \"\"\"\n",
+            "        \u5c06\u56de\u8c03\u7ed1\u5b9a\u5230\u81ea\u5b9a\u4e49\u7684\u65b9\u6cd5\u91cc\u9762\n",
+            "        :return:\n",
+            "        \"\"\"\n",
+            "        # 1. \u8bbe\u7f6e\u4e00\u4e2a\u56de\u8c03\u51fd\u6570\n",
+            "        def feedback(res):\n",
+            "            print(\"Get feedback:\", res)\n",
+            "\n",
+            "        # 2. \u5c06\u56de\u8c03\u51fd\u6570\u66b4\u9732\u7ed9\u5c0f\u7a0b\u5e8f\n",
+            "        self.app.expose_function(\"feedback\", feedback)\n",
+            "\n",
+            "        # 3. \u8df3\u8f6c\u5230\u67d0\u4e2a\u9875\u9762\n",
+            "        self.app.navigate_to(\"/page/API/pages/request/request\")\n",
+            "\n",
+            "        # 4. \u83b7\u53d6\u5f53\u524d\u9875\u9762, \u547d\u540d\u4e3a self\n",
+            "        # 5. \u4ece\u9875\u9762\u4e2d\u8bb0\u5f55\u4e0b\u9700\u8981\u7ed1\u5b9a\u56de\u8c03\u7684\u51fd\u6570 makeRequest \uff0c\u547d\u540d\u4e3a oldMakeRequest\n",
+            "        # 6. \u91cd\u5199 makeRequest \uff0c\u5c06\u56de\u8c03\u7684\u8c03\u7528\u6dfb\u52a0\u8fdb\u53bb\uff0c\u5b9e\u73b0\u7ed1\u5b9a\n",
+            "        self.app.evaluate(\"\"\"function (){\n",
+            "        self = this.getCurrentPages().slice(-1)[0]\n",
+            "        oldMakeRequest = self.makeRequest\n",
+            "        self.makeRequest = function(event){\n",
+            "            oldMakeRequest(event)\n",
+            "            feedback(event)\n",
+            "        }\n",
+            "        }\"\"\")\n",
+            "\n",
+            "        # 7. \u70b9\u51fb\u63a7\u4ef6\uff0c\u89e6\u53d1\u63a7\u4ef6\u7ed1\u5b9a\u51fd\u6570 makeRequest\n",
+            "        self.page.get_element(\"button\").click()\n",
+            "\n",
+            "        self.app.navigate_to(\"/page/API/pages/request/request\")\n",
+            "\n",
+            "        # 8. feedback() \u63a5\u6536\u5230\u56de\u8c03\n",
+            "        # Get feedback: {'name': 'feedback', 'args': [{'type': 'tap', 'timeStamp': 104245, 'target': {'id': '', 'offsetLeft': 16, 'offsetTop': 423, 'dataset': {}}, 'currentTarget': {'id': '', 'offsetLeft': 16, 'offsetTop': 423, 'dataset': {}}, 'mark': {}, 'detail': {'x': 207, 'y': 446}, 'touches': [{'pageX': 207, 'pageY': 446, 'force': 0}], 'changedTouches': []}]}\n"
+        ],
+        "start": 63
+    },
+    "filename": "test_custom_method_binding.json"
+}

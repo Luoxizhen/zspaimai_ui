@@ -1,0 +1,38 @@
+{
+    "case_name": "test_switch_bar",
+    "run_time": "20211019 21:34:15",
+    "test_type": "AppTest",
+    "case_doc": "\u6d4b\u8bd5switch_tab\n",
+    "success": false,
+    "failures": "",
+    "errors": "Traceback (most recent call last):\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py\", line 32, in _handleClassSetUp\n    _miniClassSetUp()\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py\", line 484, in _miniClassSetUp\n    cls.native = get_native(cls.CONFIG)\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py\", line 69, in get_native\n    g_native = minium.native.get_native_driver(cfg.platform, cfg)\n  File \"/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/native/__init__.py\", line 43, in get_native_driver\n    raise RuntimeError(\"the 'os_name' in your config file is not in predefine\")\nRuntimeError: the 'os_name' in your config file is not in predefine\n",
+    "start_timestamp": 1634650455.692213,
+    "is_failure": false,
+    "is_error": true,
+    "module": ".Users.yuanyuanhe.PycharmProjects.miniprogram-demo-test.apptest",
+    "package": "apptest",
+    "failed_line_num": -1,
+    "device": {},
+    "log_filename": "test_switch_bar.log",
+    "error_type": "RuntimeError",
+    "error_value": "the 'os_name' in your config file is not in predefine",
+    "screen_info": [],
+    "check_list": [],
+    "assert_list": [],
+    "stop_timestamp": 1634650455.692369,
+    "appId": "",
+    "appName": "",
+    "source": {
+        "code": [
+            "    def test_switch_bar(self):\n",
+            "        \"\"\"\n",
+            "        \u6d4b\u8bd5switch_tab\n",
+            "        \"\"\"\n",
+            "        self.app.switch_tab(\"/page/API/index\")\n",
+            "        self.app.switch_tab(\"/page/cloud/index\")\n",
+            "        self.app.switch_tab(\"/page/component/index\")\n"
+        ],
+        "start": 18
+    },
+    "filename": "test_switch_bar.json"
+}

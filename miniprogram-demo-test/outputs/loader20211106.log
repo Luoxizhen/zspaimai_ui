@@ -1,0 +1,689 @@
+DEBUG 2021-11-06 09:36:23,904 loader.py  load_from_module 94  Loading module: mocktest
+DEBUG 2021-11-06 09:36:23,907 loader.py  load_from_module 98  put module[mocktest] into queue
+INFO  2021-11-06 09:36:23,907 miniconfig.py from_file       68  load config from m_config.json
+INFO  2021-11-06 09:36:23,978 loader.py  main            407 start session with fork mode 
+{'platform': 'ide', 'app': 'wx', 'debug_mode': 'debug', 'close_ide': False, 'assert_capture': True, 'auto_relaunch': True, 'device_desire': {'wda_project_path': '/Users/sherlock/.npm-global/lib/node_modules/appium/node_modules/appium-webdriveragent', 'os_type': 'ios', 'device_info': {'udid': 'aee531018e668ff1aadee0889f5ebe21a22924e8', 'model': 'iPhone XR', 'version': '12.2.5', 'name': "sherlock's iPhone"}}, 'account_info': {'wx_nick_name': 'locker', 'open_id': 'o6zAJs_pwryCxcZkDdGGaROZDjiw'}, 'report_usage': True, 'remote_connect_timeout': 10, 'request_timeout': 60, 'use_push': True, 'full_reset': False, 'outputs': None, 'enable_app_log': True, 'enable_network_panel': False, 'project_path': '/Users/sherlock/github/miniprogram-demo', 'dev_tool_path': '/Applications/wechatwebdevtools.app/Contents/MacOS/cli', 'test_port': 9421, 'mock_native_modal': {}, 'mock_request': [], 'is_default_config': False}
+
+INFO  2021-11-06 09:36:23,984 loader.py  main            407 start session with fork mode 
+{'platform': 'ide', 'app': 'wx', 'debug_mode': 'debug', 'close_ide': False, 'assert_capture': True, 'auto_relaunch': True, 'device_desire': {'wda_project_path': '/Users/sherlock/.npm-global/lib/node_modules/appium/node_modules/appium-webdriveragent', 'os_type': 'ios', 'device_info': {'udid': 'aee531018e668ff1aadee0889f5ebe21a22924e8', 'model': 'iPhone XR', 'version': '12.2.5', 'name': "sherlock's iPhone"}}, 'account_info': {'wx_nick_name': '恒瑜_Sherlock', 'open_id': 'o6zAJsx7zt4rmzzHnnWiTz7Kx10A'}, 'report_usage': True, 'remote_connect_timeout': 10, 'request_timeout': 60, 'use_push': True, 'full_reset': False, 'outputs': None, 'enable_app_log': True, 'enable_network_panel': False, 'project_path': '/Users/sherlock/github/miniprogram-demo', 'dev_tool_path': '/Applications/wechatwebdevtools.app/Contents/MacOS/cli', 'test_port': 9422, 'mock_native_modal': {}, 'mock_request': [], 'is_default_config': False}
+
+INFO  2021-11-06 09:36:23,990 loader.py  main            407 start session with fork mode 
+{'platform': 'ide', 'app': 'wx', 'debug_mode': 'debug', 'close_ide': False, 'assert_capture': True, 'auto_relaunch': True, 'device_desire': {'wda_project_path': '/Users/sherlock/.npm-global/lib/node_modules/appium/node_modules/appium-webdriveragent', 'os_type': 'ios', 'device_info': {'udid': 'aee531018e668ff1aadee0889f5ebe21a22924e8', 'model': 'iPhone XR', 'version': '12.2.5', 'name': "sherlock's iPhone"}}, 'account_info': {'wx_nick_name': 'lockertest2', 'open_id': 'o6zAJs1BQXrvfplP2nfO75Au3rnw'}, 'report_usage': True, 'remote_connect_timeout': 10, 'request_timeout': 60, 'use_push': True, 'full_reset': False, 'outputs': None, 'enable_app_log': True, 'enable_network_panel': False, 'project_path': '/Users/sherlock/github/miniprogram-demo', 'dev_tool_path': '/Applications/wechatwebdevtools.app/Contents/MacOS/cli', 'test_port': 9423, 'mock_native_modal': {}, 'mock_request': [], 'is_default_config': False}
+
+INFO  2021-11-06 09:36:23,996 loader.py  main            407 start session with fork mode 
+{'platform': 'ide', 'app': 'wx', 'debug_mode': 'debug', 'close_ide': False, 'assert_capture': True, 'auto_relaunch': True, 'device_desire': {'wda_project_path': '/Users/sherlock/.npm-global/lib/node_modules/appium/node_modules/appium-webdriveragent', 'os_type': 'ios', 'device_info': {'udid': 'aee531018e668ff1aadee0889f5ebe21a22924e8', 'model': 'iPhone XR', 'version': '12.2.5', 'name': "sherlock's iPhone"}}, 'account_info': {'wx_nick_name': 'lockertest3', 'open_id': 'o6zAJs8oBt_3qePSy4u5x-vNJPQE'}, 'report_usage': True, 'remote_connect_timeout': 10, 'request_timeout': 60, 'use_push': True, 'full_reset': False, 'outputs': None, 'enable_app_log': True, 'enable_network_panel': False, 'project_path': '/Users/sherlock/github/miniprogram-demo', 'dev_tool_path': '/Applications/wechatwebdevtools.app/Contents/MacOS/cli', 'test_port': 9424, 'mock_native_modal': {}, 'mock_request': [], 'is_default_config': False}
+
+DEBUG 2021-11-06 09:36:24,208 minitest.py _miniClassSetUp 477 =====================
+DEBUG 2021-11-06 09:36:24,208 minitest.py _miniClassSetUp 478 Testing class：MockTest
+DEBUG 2021-11-06 09:36:24,208 minitest.py _miniClassSetUp 479 =====================
+INFO  2021-11-06 09:36:24,208 wx_minium.py __init__        69  {}
+DEBUG 2021-11-06 09:36:24,217 minitest.py _miniClassSetUp 477 =====================
+DEBUG 2021-11-06 09:36:24,217 minitest.py _miniClassSetUp 478 Testing class：MockTest
+DEBUG 2021-11-06 09:36:24,217 minitest.py _miniClassSetUp 479 =====================
+INFO  2021-11-06 09:36:24,217 wx_minium.py __init__        69  {}
+DEBUG 2021-11-06 09:36:24,228 minitest.py _miniClassSetUp 477 =====================
+DEBUG 2021-11-06 09:36:24,229 minitest.py _miniClassSetUp 478 Testing class：MockTest
+DEBUG 2021-11-06 09:36:24,229 minitest.py _miniClassSetUp 479 =====================
+INFO  2021-11-06 09:36:24,229 wx_minium.py __init__        69  {}
+INFO  2021-11-06 09:36:24,258 wx_minium.py launch_dev_tool 113 Starting dev tool and launch MiniProgram project ...
+INFO  2021-11-06 09:36:24,258 wx_minium.py launch_dev_tool 113 Starting dev tool and launch MiniProgram project ...
+INFO  2021-11-06 09:36:24,266 wx_minium.py launch_dev_tool 113 Starting dev tool and launch MiniProgram project ...
+DEBUG 2021-11-06 09:36:24,283 minitest.py _miniClassSetUp 477 =====================
+DEBUG 2021-11-06 09:36:24,284 minitest.py _miniClassSetUp 478 Testing class：MockTest
+DEBUG 2021-11-06 09:36:24,284 minitest.py _miniClassSetUp 479 =====================
+INFO  2021-11-06 09:36:24,284 wx_minium.py __init__        69  {}
+INFO  2021-11-06 09:36:24,309 wx_minium.py launch_dev_tool 113 Starting dev tool and launch MiniProgram project ...
+ERROR 2021-11-06 09:36:24,920 assertbase.py _teardown_collect 261 <bound method MockTest.test_mock_location of <mocktest.MockTest testMethod=test_mock_location>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py", line 32, in _handleClassSetUp
+    _miniClassSetUp()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 489, in _miniClassSetUp
+    cls.mini = get_minium(cls.CONFIG)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 89, in get_minium
+    g_minium = minium.miniprogram.get_minium_driver(conf=cfg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/__init__.py", line 30, in get_minium_driver
+    return APP[application](conf, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 93, in __init__
+    self.launch_dev_tool()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py", line 135, in wrapper
+    result = func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 117, in launch_dev_tool
+    raise MiniConfigError("project_path: %s not exists" % self.project_path)
+minium.framework.exception.MiniConfigError: project_path: /Users/sherlock/github/miniprogram-demo not exists
+ERROR 2021-11-06 09:36:24,927 assertbase.py _teardown_collect 261 <bound method MockTest.test_mock_location of <mocktest.MockTest testMethod=test_mock_location>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py", line 32, in _handleClassSetUp
+    _miniClassSetUp()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 489, in _miniClassSetUp
+    cls.mini = get_minium(cls.CONFIG)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 89, in get_minium
+    g_minium = minium.miniprogram.get_minium_driver(conf=cfg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/__init__.py", line 30, in get_minium_driver
+    return APP[application](conf, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 93, in __init__
+    self.launch_dev_tool()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py", line 135, in wrapper
+    result = func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 117, in launch_dev_tool
+    raise MiniConfigError("project_path: %s not exists" % self.project_path)
+minium.framework.exception.MiniConfigError: project_path: /Users/sherlock/github/miniprogram-demo not exists
+ERROR 2021-11-06 09:36:24,924 assertbase.py _teardown_collect 261 <bound method MockTest.test_mock_request of <mocktest.MockTest testMethod=test_mock_request>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py", line 32, in _handleClassSetUp
+    _miniClassSetUp()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 489, in _miniClassSetUp
+    cls.mini = get_minium(cls.CONFIG)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 89, in get_minium
+    g_minium = minium.miniprogram.get_minium_driver(conf=cfg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/__init__.py", line 30, in get_minium_driver
+    return APP[application](conf, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 93, in __init__
+    self.launch_dev_tool()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py", line 135, in wrapper
+    result = func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 117, in launch_dev_tool
+    raise MiniConfigError("project_path: %s not exists" % self.project_path)
+minium.framework.exception.MiniConfigError: project_path: /Users/sherlock/github/miniprogram-demo not exists
+ERROR 2021-11-06 09:36:24,948 assertbase.py _teardown_collect 261 <bound method MockTest.test_mock_request of <mocktest.MockTest testMethod=test_mock_request>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py", line 32, in _handleClassSetUp
+    _miniClassSetUp()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 489, in _miniClassSetUp
+    cls.mini = get_minium(cls.CONFIG)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 89, in get_minium
+    g_minium = minium.miniprogram.get_minium_driver(conf=cfg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/__init__.py", line 30, in get_minium_driver
+    return APP[application](conf, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 93, in __init__
+    self.launch_dev_tool()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py", line 135, in wrapper
+    result = func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 117, in launch_dev_tool
+    raise MiniConfigError("project_path: %s not exists" % self.project_path)
+minium.framework.exception.MiniConfigError: project_path: /Users/sherlock/github/miniprogram-demo not exists
+ERROR 2021-11-06 09:36:24,953 assertbase.py _teardown_collect 261 <bound method MockTest.test_mock_show_modal of <mocktest.MockTest testMethod=test_mock_show_modal>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py", line 32, in _handleClassSetUp
+    _miniClassSetUp()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 489, in _miniClassSetUp
+    cls.mini = get_minium(cls.CONFIG)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 89, in get_minium
+    g_minium = minium.miniprogram.get_minium_driver(conf=cfg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/__init__.py", line 30, in get_minium_driver
+    return APP[application](conf, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 93, in __init__
+    self.launch_dev_tool()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py", line 135, in wrapper
+    result = func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 117, in launch_dev_tool
+    raise MiniConfigError("project_path: %s not exists" % self.project_path)
+minium.framework.exception.MiniConfigError: project_path: /Users/sherlock/github/miniprogram-demo not exists
+ERROR 2021-11-06 09:36:24,960 assertbase.py _teardown_collect 261 <bound method MockTest.test_mock_show_modal of <mocktest.MockTest testMethod=test_mock_show_modal>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py", line 32, in _handleClassSetUp
+    _miniClassSetUp()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 489, in _miniClassSetUp
+    cls.mini = get_minium(cls.CONFIG)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 89, in get_minium
+    g_minium = minium.miniprogram.get_minium_driver(conf=cfg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/__init__.py", line 30, in get_minium_driver
+    return APP[application](conf, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 93, in __init__
+    self.launch_dev_tool()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py", line 135, in wrapper
+    result = func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 117, in launch_dev_tool
+    raise MiniConfigError("project_path: %s not exists" % self.project_path)
+minium.framework.exception.MiniConfigError: project_path: /Users/sherlock/github/miniprogram-demo not exists
+ERROR 2021-11-06 09:36:24,966 assertbase.py _teardown_collect 261 <bound method MockTest.test_mock_location of <mocktest.MockTest testMethod=test_mock_location>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py", line 32, in _handleClassSetUp
+    _miniClassSetUp()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 489, in _miniClassSetUp
+    cls.mini = get_minium(cls.CONFIG)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 89, in get_minium
+    g_minium = minium.miniprogram.get_minium_driver(conf=cfg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/__init__.py", line 30, in get_minium_driver
+    return APP[application](conf, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 93, in __init__
+    self.launch_dev_tool()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py", line 135, in wrapper
+    result = func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 117, in launch_dev_tool
+    raise MiniConfigError("project_path: %s not exists" % self.project_path)
+minium.framework.exception.MiniConfigError: project_path: /Users/sherlock/github/miniprogram-demo not exists
+ERROR 2021-11-06 09:36:24,976 assertbase.py _teardown_collect 261 <bound method MockTest.test_mock_request of <mocktest.MockTest testMethod=test_mock_request>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py", line 32, in _handleClassSetUp
+    _miniClassSetUp()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 489, in _miniClassSetUp
+    cls.mini = get_minium(cls.CONFIG)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 89, in get_minium
+    g_minium = minium.miniprogram.get_minium_driver(conf=cfg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/__init__.py", line 30, in get_minium_driver
+    return APP[application](conf, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 93, in __init__
+    self.launch_dev_tool()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py", line 135, in wrapper
+    result = func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 117, in launch_dev_tool
+    raise MiniConfigError("project_path: %s not exists" % self.project_path)
+minium.framework.exception.MiniConfigError: project_path: /Users/sherlock/github/miniprogram-demo not exists
+ERROR 2021-11-06 09:36:24,982 assertbase.py _teardown_collect 261 <bound method MockTest.test_mock_show_modal of <mocktest.MockTest testMethod=test_mock_show_modal>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py", line 32, in _handleClassSetUp
+    _miniClassSetUp()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 489, in _miniClassSetUp
+    cls.mini = get_minium(cls.CONFIG)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 89, in get_minium
+    g_minium = minium.miniprogram.get_minium_driver(conf=cfg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/__init__.py", line 30, in get_minium_driver
+    return APP[application](conf, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 93, in __init__
+    self.launch_dev_tool()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py", line 135, in wrapper
+    result = func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 117, in launch_dev_tool
+    raise MiniConfigError("project_path: %s not exists" % self.project_path)
+minium.framework.exception.MiniConfigError: project_path: /Users/sherlock/github/miniprogram-demo not exists
+ERROR 2021-11-06 09:36:24,981 assertbase.py _teardown_collect 261 <bound method MockTest.test_mock_location of <mocktest.MockTest testMethod=test_mock_location>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py", line 32, in _handleClassSetUp
+    _miniClassSetUp()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 489, in _miniClassSetUp
+    cls.mini = get_minium(cls.CONFIG)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 89, in get_minium
+    g_minium = minium.miniprogram.get_minium_driver(conf=cfg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/__init__.py", line 30, in get_minium_driver
+    return APP[application](conf, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 93, in __init__
+    self.launch_dev_tool()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py", line 135, in wrapper
+    result = func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 117, in launch_dev_tool
+    raise MiniConfigError("project_path: %s not exists" % self.project_path)
+minium.framework.exception.MiniConfigError: project_path: /Users/sherlock/github/miniprogram-demo not exists
+ERROR 2021-11-06 09:36:25,003 assertbase.py _teardown_collect 261 <bound method MockTest.test_mock_request of <mocktest.MockTest testMethod=test_mock_request>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py", line 32, in _handleClassSetUp
+    _miniClassSetUp()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 489, in _miniClassSetUp
+    cls.mini = get_minium(cls.CONFIG)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 89, in get_minium
+    g_minium = minium.miniprogram.get_minium_driver(conf=cfg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/__init__.py", line 30, in get_minium_driver
+    return APP[application](conf, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 93, in __init__
+    self.launch_dev_tool()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py", line 135, in wrapper
+    result = func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 117, in launch_dev_tool
+    raise MiniConfigError("project_path: %s not exists" % self.project_path)
+minium.framework.exception.MiniConfigError: project_path: /Users/sherlock/github/miniprogram-demo not exists
+ERROR 2021-11-06 09:36:25,004 assertbase.py _teardown_collect 261 <bound method MockTest.test_mock_show_modal of <mocktest.MockTest testMethod=test_mock_show_modal>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py", line 32, in _handleClassSetUp
+    _miniClassSetUp()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 489, in _miniClassSetUp
+    cls.mini = get_minium(cls.CONFIG)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 89, in get_minium
+    g_minium = minium.miniprogram.get_minium_driver(conf=cfg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/__init__.py", line 30, in get_minium_driver
+    return APP[application](conf, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 93, in __init__
+    self.launch_dev_tool()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py", line 135, in wrapper
+    result = func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 117, in launch_dev_tool
+    raise MiniConfigError("project_path: %s not exists" % self.project_path)
+minium.framework.exception.MiniConfigError: project_path: /Users/sherlock/github/miniprogram-demo not exists
+INFO  2021-11-06 09:36:34,997 session.py run             70  case queue is empty, test complete, release aee531018e668ff1aadee0889f5ebe21a22924e8
+INFO  2021-11-06 09:36:35,008 session.py run             70  case queue is empty, test complete, release aee531018e668ff1aadee0889f5ebe21a22924e8
+INFO  2021-11-06 09:36:35,052 session.py run             70  case queue is empty, test complete, release aee531018e668ff1aadee0889f5ebe21a22924e8
+INFO  2021-11-06 09:36:35,055 session.py run             70  case queue is empty, test complete, release aee531018e668ff1aadee0889f5ebe21a22924e8
+DEBUG 2021-11-06 09:37:30,224 loader.py  load_from_module 94  Loading module: mocktest
+DEBUG 2021-11-06 09:37:30,224 loader.py  load_from_module 98  put module[mocktest] into queue
+INFO  2021-11-06 09:37:30,224 miniconfig.py from_file       68  load config from config.json
+INFO  2021-11-06 09:37:30,236 loader.py  main            407 start session with fork mode 
+{'platform': 'ide', 'app': 'wx', 'debug_mode': 'debug', 'close_ide': False, 'assert_capture': True, 'auto_relaunch': True, 'device_desire': {'wda_project_path': '/Users/sherlock/.npm-global/lib/node_modules/appium/node_modules/appium-webdriveragent', 'os_type': 'ios', 'device_info': {'udid': '678695bfebbc2cd66f5faea3d0691c01e71194fe', 'model': 'iPhone 6s Plus', 'version': '12.0.1', 'name': 'Jan’s iPhone'}}, 'account_info': {}, 'report_usage': True, 'remote_connect_timeout': 10, 'request_timeout': 60, 'use_push': True, 'full_reset': False, 'outputs': None, 'enable_app_log': True, 'enable_network_panel': False, 'project_path': '/Users/yuanyuanhe/WeChatProjects/miniprogram-demo-master', 'dev_tool_path': '/Applications/wechatwebdevtools.app/Contents/MacOS/cli', 'test_port': 9420, 'mock_native_modal': {}, 'mock_request': [], 'is_default_config': False}
+
+DEBUG 2021-11-06 09:37:30,433 minitest.py _miniClassSetUp 477 =====================
+DEBUG 2021-11-06 09:37:30,434 minitest.py _miniClassSetUp 478 Testing class：MockTest
+DEBUG 2021-11-06 09:37:30,434 minitest.py _miniClassSetUp 479 =====================
+INFO  2021-11-06 09:37:30,434 wx_minium.py __init__        69  {}
+INFO  2021-11-06 09:37:30,457 wx_minium.py launch_dev_tool 113 Starting dev tool and launch MiniProgram project ...
+INFO  2021-11-06 09:37:30,457 minium_object.py _do_shell       59  de shell: /Applications/wechatwebdevtools.app/Contents/MacOS/cli auto --project /Users/yuanyuanhe/WeChatProjects/miniprogram-demo-master --auto-port 9420
+DEBUG 2021-11-06 09:37:30,770 minium_object.py _do_shell       69  - initialize
+DEBUG 2021-11-06 09:37:30,770 minium_object.py _do_shell       69  
+DEBUG 2021-11-06 09:37:30,782 minium_object.py _do_shell       69  ✖ IDE may already started at port 41998, trying to connect
+DEBUG 2021-11-06 09:37:30,782 minium_object.py _do_shell       69  
+DEBUG 2021-11-06 09:37:36,102 minium_object.py _do_shell       69  ✔ IDE server started successfully, listening on http://127.0.0.1:51501
+DEBUG 2021-11-06 09:37:36,102 minium_object.py _do_shell       69  - preparing
+DEBUG 2021-11-06 09:37:36,115 minium_object.py _do_shell       69  - Fetching AppID (wx7daf5aa69f958691) permissions
+DEBUG 2021-11-06 09:37:36,210 minium_object.py _do_shell       69  ✖ Fetching AppID (wx7daf5aa69f958691) permissions
+DEBUG 2021-11-06 09:37:36,213 minium_object.py _do_shell       69  [error] {
+DEBUG 2021-11-06 09:37:36,213 minium_object.py _do_shell       69    code: 10,
+DEBUG 2021-11-06 09:37:36,213 minium_object.py _do_shell       69    message: 'Error: 错误 Error: 需要重新登录,access_token expired [20211106 09:37:36][] (code 10)Error: 错误 Error: 需要重新登录,access_token expired [20211106 09:37:36][] (code 10)\n' +
+DEBUG 2021-11-06 09:37:36,213 minium_object.py _do_shell       69      '    at Object.GENERIC_ERROR (/Applications/wechatwebdevtools.app/Contents/Resources/package.nw/core.wxvpkg/7201d239ccdbdc262e2ecf5fe0c8aca3.js:2:93)\n' +
+DEBUG 2021-11-06 09:37:36,213 minium_object.py _do_shell       69      '    at Proxy.exports.getAppInfo (/Applications/wechatwebdevtools.app/Contents/Resources/package.nw/core.wxvpkg/b3effda444fe34caae1384305e9562c6.js:2:1063)\n' +
+DEBUG 2021-11-06 09:37:36,213 minium_object.py _do_shell       69      '    at processTicksAndRejections (node:internal/process/task_queues:93:5)\n' +
+DEBUG 2021-11-06 09:37:36,226 minium_object.py _do_shell       69      '    at async Proxy.exports.getProjectInfo (/Applications/wechatwebdevtools.app/Contents/Resources/package.nw/core.wxvpkg/9d9d19a87db58211a644d4d305c488d5.js:2:2334)\n' +
+DEBUG 2021-11-06 09:37:36,226 minium_object.py _do_shell       69      '    at async /Applications/wechatwebdevtools.app/Contents/Resources/package.nw/core.wxvpkg/7a975443f52e91830ae1d65cdf8c86db.js:2:3477\n' +
+DEBUG 2021-11-06 09:37:36,226 minium_object.py _do_shell       69      '    at async f.<anonymous> (/Applications/wechatwebdevtools.app/Contents/Resources/package.nw/core.wxvpkg/7a975443f52e91830ae1d65cdf8c86db.js:2:2983)'
+DEBUG 2021-11-06 09:37:36,226 minium_object.py _do_shell       69  }
+ERROR 2021-11-06 09:37:41,766 assertbase.py _teardown_collect 261 <bound method MockTest.test_mock_location of <mocktest.MockTest testMethod=test_mock_location>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py", line 32, in _handleClassSetUp
+    _miniClassSetUp()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 489, in _miniClassSetUp
+    cls.mini = get_minium(cls.CONFIG)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 89, in get_minium
+    g_minium = minium.miniprogram.get_minium_driver(conf=cfg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/__init__.py", line 30, in get_minium_driver
+    return APP[application](conf, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 93, in __init__
+    self.launch_dev_tool()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py", line 135, in wrapper
+    result = func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 193, in launch_dev_tool
+    raise MiniLaunchError(
+minium.framework.exception.MiniLaunchError: Open project in automation mode fail! Please ensure you have permission of project and have not environ error 
+ERROR 2021-11-06 09:37:41,770 assertbase.py _teardown_collect 261 <bound method MockTest.test_mock_request of <mocktest.MockTest testMethod=test_mock_request>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py", line 32, in _handleClassSetUp
+    _miniClassSetUp()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 489, in _miniClassSetUp
+    cls.mini = get_minium(cls.CONFIG)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 89, in get_minium
+    g_minium = minium.miniprogram.get_minium_driver(conf=cfg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/__init__.py", line 30, in get_minium_driver
+    return APP[application](conf, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 93, in __init__
+    self.launch_dev_tool()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py", line 135, in wrapper
+    result = func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 193, in launch_dev_tool
+    raise MiniLaunchError(
+minium.framework.exception.MiniLaunchError: Open project in automation mode fail! Please ensure you have permission of project and have not environ error 
+ERROR 2021-11-06 09:37:41,784 assertbase.py _teardown_collect 261 <bound method MockTest.test_mock_show_modal of <mocktest.MockTest testMethod=test_mock_show_modal>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py", line 32, in _handleClassSetUp
+    _miniClassSetUp()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 489, in _miniClassSetUp
+    cls.mini = get_minium(cls.CONFIG)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 89, in get_minium
+    g_minium = minium.miniprogram.get_minium_driver(conf=cfg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/__init__.py", line 30, in get_minium_driver
+    return APP[application](conf, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 93, in __init__
+    self.launch_dev_tool()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py", line 135, in wrapper
+    result = func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 193, in launch_dev_tool
+    raise MiniLaunchError(
+minium.framework.exception.MiniLaunchError: Open project in automation mode fail! Please ensure you have permission of project and have not environ error 
+INFO  2021-11-06 09:37:51,813 session.py run             70  case queue is empty, test complete, release 678695bfebbc2cd66f5faea3d0691c01e71194fe
+DEBUG 2021-11-06 09:38:25,908 loader.py  load_from_module 94  Loading module: nativetest
+DEBUG 2021-11-06 09:38:25,909 loader.py  load_from_module 98  put module[nativetest] into queue
+INFO  2021-11-06 09:38:25,909 miniconfig.py from_file       68  load config from config.json
+INFO  2021-11-06 09:38:25,923 loader.py  main            407 start session with fork mode 
+{'platform': 'ide', 'app': 'wx', 'debug_mode': 'debug', 'close_ide': False, 'assert_capture': True, 'auto_relaunch': True, 'device_desire': {'wda_project_path': '/Users/sherlock/.npm-global/lib/node_modules/appium/node_modules/appium-webdriveragent', 'os_type': 'ios', 'device_info': {'udid': '678695bfebbc2cd66f5faea3d0691c01e71194fe', 'model': 'iPhone 6s Plus', 'version': '12.0.1', 'name': 'Jan’s iPhone'}}, 'account_info': {}, 'report_usage': True, 'remote_connect_timeout': 10, 'request_timeout': 60, 'use_push': True, 'full_reset': False, 'outputs': None, 'enable_app_log': True, 'enable_network_panel': False, 'project_path': '/Users/yuanyuanhe/WeChatProjects/miniprogram-demo-master', 'dev_tool_path': '/Applications/wechatwebdevtools.app/Contents/MacOS/cli', 'test_port': 9420, 'mock_native_modal': {}, 'mock_request': [], 'is_default_config': False}
+
+DEBUG 2021-11-06 09:38:26,115 minitest.py _miniClassSetUp 477 =====================
+DEBUG 2021-11-06 09:38:26,115 minitest.py _miniClassSetUp 478 Testing class：NativeTest
+DEBUG 2021-11-06 09:38:26,115 minitest.py _miniClassSetUp 479 =====================
+INFO  2021-11-06 09:38:26,115 wx_minium.py __init__        69  {}
+INFO  2021-11-06 09:38:26,159 wx_minium.py launch_dev_tool 113 Starting dev tool and launch MiniProgram project ...
+INFO  2021-11-06 09:38:26,159 minium_object.py _do_shell       59  de shell: /Applications/wechatwebdevtools.app/Contents/MacOS/cli auto --project /Users/yuanyuanhe/WeChatProjects/miniprogram-demo-master --auto-port 9420
+DEBUG 2021-11-06 09:38:26,496 minium_object.py _do_shell       69  - initialize
+DEBUG 2021-11-06 09:38:26,496 minium_object.py _do_shell       69  
+DEBUG 2021-11-06 09:38:26,519 minium_object.py _do_shell       69  ✔ IDE server has started, listening on http://127.0.0.1:51501
+DEBUG 2021-11-06 09:38:26,520 minium_object.py _do_shell       69  - preparing
+DEBUG 2021-11-06 09:38:26,524 minium_object.py _do_shell       69  - Fetching AppID (wx7daf5aa69f958691) permissions
+DEBUG 2021-11-06 09:38:26,615 minium_object.py _do_shell       69  ✖ Fetching AppID (wx7daf5aa69f958691) permissions
+DEBUG 2021-11-06 09:38:26,618 minium_object.py _do_shell       69  [error] {
+DEBUG 2021-11-06 09:38:26,618 minium_object.py _do_shell       69    code: 10,
+DEBUG 2021-11-06 09:38:26,618 minium_object.py _do_shell       69    message: 'Error: 错误 Error: 需要重新登录,access_token expired [20211106 09:38:26][] (code 10)Error: 错误 Error: 需要重新登录,access_token expired [20211106 09:38:26][] (code 10)\n' +
+DEBUG 2021-11-06 09:38:26,618 minium_object.py _do_shell       69      '    at Object.GENERIC_ERROR (/Applications/wechatwebdevtools.app/Contents/Resources/package.nw/core.wxvpkg/7201d239ccdbdc262e2ecf5fe0c8aca3.js:2:93)\n' +
+DEBUG 2021-11-06 09:38:26,618 minium_object.py _do_shell       69      '    at Proxy.exports.getAppInfo (/Applications/wechatwebdevtools.app/Contents/Resources/package.nw/core.wxvpkg/b3effda444fe34caae1384305e9562c6.js:2:1063)\n' +
+DEBUG 2021-11-06 09:38:26,618 minium_object.py _do_shell       69      '    at processTicksAndRejections (node:internal/process/task_queues:93:5)\n' +
+DEBUG 2021-11-06 09:38:26,618 minium_object.py _do_shell       69      '    at async Proxy.exports.getProjectInfo (/Applications/wechatwebdevtools.app/Contents/Resources/package.nw/core.wxvpkg/9d9d19a87db58211a644d4d305c488d5.js:2:2334)\n' +
+DEBUG 2021-11-06 09:38:26,618 minium_object.py _do_shell       69      '    at async /Applications/wechatwebdevtools.app/Contents/Resources/package.nw/core.wxvpkg/7a975443f52e91830ae1d65cdf8c86db.js:2:3477\n' +
+DEBUG 2021-11-06 09:38:26,618 minium_object.py _do_shell       69      '    at async f.<anonymous> (/Applications/wechatwebdevtools.app/Contents/Resources/package.nw/core.wxvpkg/7a975443f52e91830ae1d65cdf8c86db.js:2:2983)'
+DEBUG 2021-11-06 09:38:26,619 minium_object.py _do_shell       69  }
+ERROR 2021-11-06 09:38:32,252 assertbase.py _teardown_collect 261 <bound method NativeTest.test_action_sheet of <nativetest.NativeTest testMethod=test_action_sheet>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py", line 32, in _handleClassSetUp
+    _miniClassSetUp()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 489, in _miniClassSetUp
+    cls.mini = get_minium(cls.CONFIG)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 89, in get_minium
+    g_minium = minium.miniprogram.get_minium_driver(conf=cfg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/__init__.py", line 30, in get_minium_driver
+    return APP[application](conf, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 93, in __init__
+    self.launch_dev_tool()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py", line 135, in wrapper
+    result = func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 193, in launch_dev_tool
+    raise MiniLaunchError(
+minium.framework.exception.MiniLaunchError: Open project in automation mode fail! Please ensure you have permission of project and have not environ error 
+ERROR 2021-11-06 09:38:32,255 assertbase.py _teardown_collect 261 <bound method NativeTest.test_authorize of <nativetest.NativeTest testMethod=test_authorize>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py", line 32, in _handleClassSetUp
+    _miniClassSetUp()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 489, in _miniClassSetUp
+    cls.mini = get_minium(cls.CONFIG)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 89, in get_minium
+    g_minium = minium.miniprogram.get_minium_driver(conf=cfg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/__init__.py", line 30, in get_minium_driver
+    return APP[application](conf, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 93, in __init__
+    self.launch_dev_tool()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py", line 135, in wrapper
+    result = func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 193, in launch_dev_tool
+    raise MiniLaunchError(
+minium.framework.exception.MiniLaunchError: Open project in automation mode fail! Please ensure you have permission of project and have not environ error 
+ERROR 2021-11-06 09:38:32,262 assertbase.py _teardown_collect 261 <bound method NativeTest.test_authorize_setting_page of <nativetest.NativeTest testMethod=test_authorize_setting_page>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py", line 32, in _handleClassSetUp
+    _miniClassSetUp()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 489, in _miniClassSetUp
+    cls.mini = get_minium(cls.CONFIG)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 89, in get_minium
+    g_minium = minium.miniprogram.get_minium_driver(conf=cfg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/__init__.py", line 30, in get_minium_driver
+    return APP[application](conf, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 93, in __init__
+    self.launch_dev_tool()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py", line 135, in wrapper
+    result = func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 193, in launch_dev_tool
+    raise MiniLaunchError(
+minium.framework.exception.MiniLaunchError: Open project in automation mode fail! Please ensure you have permission of project and have not environ error 
+ERROR 2021-11-06 09:38:32,264 assertbase.py _teardown_collect 261 <bound method NativeTest.test_forward of <nativetest.NativeTest testMethod=test_forward>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py", line 32, in _handleClassSetUp
+    _miniClassSetUp()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 489, in _miniClassSetUp
+    cls.mini = get_minium(cls.CONFIG)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 89, in get_minium
+    g_minium = minium.miniprogram.get_minium_driver(conf=cfg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/__init__.py", line 30, in get_minium_driver
+    return APP[application](conf, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 93, in __init__
+    self.launch_dev_tool()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py", line 135, in wrapper
+    result = func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 193, in launch_dev_tool
+    raise MiniLaunchError(
+minium.framework.exception.MiniLaunchError: Open project in automation mode fail! Please ensure you have permission of project and have not environ error 
+ERROR 2021-11-06 09:38:32,266 assertbase.py _teardown_collect 261 <bound method NativeTest.test_input of <nativetest.NativeTest testMethod=test_input>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py", line 32, in _handleClassSetUp
+    _miniClassSetUp()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 489, in _miniClassSetUp
+    cls.mini = get_minium(cls.CONFIG)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 89, in get_minium
+    g_minium = minium.miniprogram.get_minium_driver(conf=cfg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/__init__.py", line 30, in get_minium_driver
+    return APP[application](conf, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 93, in __init__
+    self.launch_dev_tool()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py", line 135, in wrapper
+    result = func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 193, in launch_dev_tool
+    raise MiniLaunchError(
+minium.framework.exception.MiniLaunchError: Open project in automation mode fail! Please ensure you have permission of project and have not environ error 
+ERROR 2021-11-06 09:38:32,267 assertbase.py _teardown_collect 261 <bound method NativeTest.test_modal of <nativetest.NativeTest testMethod=test_modal>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py", line 32, in _handleClassSetUp
+    _miniClassSetUp()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 489, in _miniClassSetUp
+    cls.mini = get_minium(cls.CONFIG)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 89, in get_minium
+    g_minium = minium.miniprogram.get_minium_driver(conf=cfg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/__init__.py", line 30, in get_minium_driver
+    return APP[application](conf, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 93, in __init__
+    self.launch_dev_tool()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py", line 135, in wrapper
+    result = func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 193, in launch_dev_tool
+    raise MiniLaunchError(
+minium.framework.exception.MiniLaunchError: Open project in automation mode fail! Please ensure you have permission of project and have not environ error 
+INFO  2021-11-06 09:38:42,281 session.py run             70  case queue is empty, test complete, release 678695bfebbc2cd66f5faea3d0691c01e71194fe
+DEBUG 2021-11-06 09:38:46,012 loader.py  load_from_module 94  Loading module: nativetest
+DEBUG 2021-11-06 09:38:46,012 loader.py  load_from_module 98  put module[nativetest] into queue
+INFO  2021-11-06 09:38:46,013 miniconfig.py from_file       68  load config from config.json
+INFO  2021-11-06 09:38:46,026 loader.py  main            407 start session with fork mode 
+{'platform': 'ide', 'app': 'wx', 'debug_mode': 'debug', 'close_ide': False, 'assert_capture': True, 'auto_relaunch': True, 'device_desire': {'wda_project_path': '/Users/sherlock/.npm-global/lib/node_modules/appium/node_modules/appium-webdriveragent', 'os_type': 'ios', 'device_info': {'udid': '678695bfebbc2cd66f5faea3d0691c01e71194fe', 'model': 'iPhone 6s Plus', 'version': '12.0.1', 'name': 'Jan’s iPhone'}}, 'account_info': {}, 'report_usage': True, 'remote_connect_timeout': 10, 'request_timeout': 60, 'use_push': True, 'full_reset': False, 'outputs': None, 'enable_app_log': True, 'enable_network_panel': False, 'project_path': '/Users/yuanyuanhe/WeChatProjects/miniprogram-demo-master', 'dev_tool_path': '/Applications/wechatwebdevtools.app/Contents/MacOS/cli', 'test_port': 9420, 'mock_native_modal': {}, 'mock_request': [], 'is_default_config': False}
+
+DEBUG 2021-11-06 09:38:46,243 minitest.py _miniClassSetUp 477 =====================
+DEBUG 2021-11-06 09:38:46,243 minitest.py _miniClassSetUp 478 Testing class：NativeTest
+DEBUG 2021-11-06 09:38:46,243 minitest.py _miniClassSetUp 479 =====================
+INFO  2021-11-06 09:38:46,243 wx_minium.py __init__        69  {}
+INFO  2021-11-06 09:38:46,270 wx_minium.py launch_dev_tool 113 Starting dev tool and launch MiniProgram project ...
+INFO  2021-11-06 09:38:46,271 minium_object.py _do_shell       59  de shell: /Applications/wechatwebdevtools.app/Contents/MacOS/cli auto --project /Users/yuanyuanhe/WeChatProjects/miniprogram-demo-master --auto-port 9420
+DEBUG 2021-11-06 09:38:46,608 minium_object.py _do_shell       69  - initialize
+DEBUG 2021-11-06 09:38:46,609 minium_object.py _do_shell       69  
+DEBUG 2021-11-06 09:38:46,622 minium_object.py _do_shell       69  ✖ IDE may already started at port 51501, trying to connect
+DEBUG 2021-11-06 09:38:46,622 minium_object.py _do_shell       69  
+DEBUG 2021-11-06 09:38:50,578 minium_object.py _do_shell       69  ✔ IDE server started successfully, listening on http://127.0.0.1:29711
+DEBUG 2021-11-06 09:38:50,579 minium_object.py _do_shell       69  - preparing
+DEBUG 2021-11-06 09:38:50,608 minium_object.py _do_shell       69  - Fetching AppID (wx7daf5aa69f958691) permissions
+DEBUG 2021-11-06 09:38:50,696 minium_object.py _do_shell       69  ✖ Fetching AppID (wx7daf5aa69f958691) permissions
+DEBUG 2021-11-06 09:38:50,698 minium_object.py _do_shell       69  [error] {
+DEBUG 2021-11-06 09:38:50,698 minium_object.py _do_shell       69    code: 10,
+DEBUG 2021-11-06 09:38:50,698 minium_object.py _do_shell       69    message: 'Error: 错误 Error: 需要重新登录,access_token expired [20211106 09:38:50][] (code 10)Error: 错误 Error: 需要重新登录,access_token expired [20211106 09:38:50][] (code 10)\n' +
+DEBUG 2021-11-06 09:38:50,699 minium_object.py _do_shell       69      '    at Object.GENERIC_ERROR (/Applications/wechatwebdevtools.app/Contents/Resources/package.nw/core.wxvpkg/7201d239ccdbdc262e2ecf5fe0c8aca3.js:2:93)\n' +
+DEBUG 2021-11-06 09:38:50,699 minium_object.py _do_shell       69      '    at Proxy.exports.getAppInfo (/Applications/wechatwebdevtools.app/Contents/Resources/package.nw/core.wxvpkg/b3effda444fe34caae1384305e9562c6.js:2:1063)\n' +
+DEBUG 2021-11-06 09:38:50,699 minium_object.py _do_shell       69      '    at processTicksAndRejections (node:internal/process/task_queues:93:5)\n' +
+DEBUG 2021-11-06 09:38:50,699 minium_object.py _do_shell       69      '    at async Proxy.exports.getProjectInfo (/Applications/wechatwebdevtools.app/Contents/Resources/package.nw/core.wxvpkg/9d9d19a87db58211a644d4d305c488d5.js:2:2334)\n' +
+DEBUG 2021-11-06 09:38:50,699 minium_object.py _do_shell       69      '    at async /Applications/wechatwebdevtools.app/Contents/Resources/package.nw/core.wxvpkg/7a975443f52e91830ae1d65cdf8c86db.js:2:3477\n' +
+DEBUG 2021-11-06 09:38:50,701 minium_object.py _do_shell       69      '    at async f.<anonymous> (/Applications/wechatwebdevtools.app/Contents/Resources/package.nw/core.wxvpkg/7a975443f52e91830ae1d65cdf8c86db.js:2:2983)'
+DEBUG 2021-11-06 09:38:50,701 minium_object.py _do_shell       69  }
+ERROR 2021-11-06 09:38:56,293 assertbase.py _teardown_collect 261 <bound method NativeTest.test_action_sheet of <nativetest.NativeTest testMethod=test_action_sheet>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py", line 32, in _handleClassSetUp
+    _miniClassSetUp()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 489, in _miniClassSetUp
+    cls.mini = get_minium(cls.CONFIG)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 89, in get_minium
+    g_minium = minium.miniprogram.get_minium_driver(conf=cfg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/__init__.py", line 30, in get_minium_driver
+    return APP[application](conf, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 93, in __init__
+    self.launch_dev_tool()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py", line 135, in wrapper
+    result = func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 193, in launch_dev_tool
+    raise MiniLaunchError(
+minium.framework.exception.MiniLaunchError: Open project in automation mode fail! Please ensure you have permission of project and have not environ error 
+ERROR 2021-11-06 09:38:56,297 assertbase.py _teardown_collect 261 <bound method NativeTest.test_authorize of <nativetest.NativeTest testMethod=test_authorize>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py", line 32, in _handleClassSetUp
+    _miniClassSetUp()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 489, in _miniClassSetUp
+    cls.mini = get_minium(cls.CONFIG)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 89, in get_minium
+    g_minium = minium.miniprogram.get_minium_driver(conf=cfg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/__init__.py", line 30, in get_minium_driver
+    return APP[application](conf, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 93, in __init__
+    self.launch_dev_tool()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py", line 135, in wrapper
+    result = func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 193, in launch_dev_tool
+    raise MiniLaunchError(
+minium.framework.exception.MiniLaunchError: Open project in automation mode fail! Please ensure you have permission of project and have not environ error 
+ERROR 2021-11-06 09:38:56,309 assertbase.py _teardown_collect 261 <bound method NativeTest.test_authorize_setting_page of <nativetest.NativeTest testMethod=test_authorize_setting_page>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py", line 32, in _handleClassSetUp
+    _miniClassSetUp()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 489, in _miniClassSetUp
+    cls.mini = get_minium(cls.CONFIG)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 89, in get_minium
+    g_minium = minium.miniprogram.get_minium_driver(conf=cfg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/__init__.py", line 30, in get_minium_driver
+    return APP[application](conf, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 93, in __init__
+    self.launch_dev_tool()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py", line 135, in wrapper
+    result = func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 193, in launch_dev_tool
+    raise MiniLaunchError(
+minium.framework.exception.MiniLaunchError: Open project in automation mode fail! Please ensure you have permission of project and have not environ error 
+ERROR 2021-11-06 09:38:56,311 assertbase.py _teardown_collect 261 <bound method NativeTest.test_forward of <nativetest.NativeTest testMethod=test_forward>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py", line 32, in _handleClassSetUp
+    _miniClassSetUp()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 489, in _miniClassSetUp
+    cls.mini = get_minium(cls.CONFIG)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 89, in get_minium
+    g_minium = minium.miniprogram.get_minium_driver(conf=cfg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/__init__.py", line 30, in get_minium_driver
+    return APP[application](conf, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 93, in __init__
+    self.launch_dev_tool()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py", line 135, in wrapper
+    result = func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 193, in launch_dev_tool
+    raise MiniLaunchError(
+minium.framework.exception.MiniLaunchError: Open project in automation mode fail! Please ensure you have permission of project and have not environ error 
+ERROR 2021-11-06 09:38:56,314 assertbase.py _teardown_collect 261 <bound method NativeTest.test_input of <nativetest.NativeTest testMethod=test_input>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py", line 32, in _handleClassSetUp
+    _miniClassSetUp()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 489, in _miniClassSetUp
+    cls.mini = get_minium(cls.CONFIG)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 89, in get_minium
+    g_minium = minium.miniprogram.get_minium_driver(conf=cfg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/__init__.py", line 30, in get_minium_driver
+    return APP[application](conf, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 93, in __init__
+    self.launch_dev_tool()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py", line 135, in wrapper
+    result = func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 193, in launch_dev_tool
+    raise MiniLaunchError(
+minium.framework.exception.MiniLaunchError: Open project in automation mode fail! Please ensure you have permission of project and have not environ error 
+ERROR 2021-11-06 09:38:56,316 assertbase.py _teardown_collect 261 <bound method NativeTest.test_modal of <nativetest.NativeTest testMethod=test_modal>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py", line 32, in _handleClassSetUp
+    _miniClassSetUp()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 489, in _miniClassSetUp
+    cls.mini = get_minium(cls.CONFIG)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 89, in get_minium
+    g_minium = minium.miniprogram.get_minium_driver(conf=cfg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/__init__.py", line 30, in get_minium_driver
+    return APP[application](conf, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 93, in __init__
+    self.launch_dev_tool()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py", line 135, in wrapper
+    result = func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 193, in launch_dev_tool
+    raise MiniLaunchError(
+minium.framework.exception.MiniLaunchError: Open project in automation mode fail! Please ensure you have permission of project and have not environ error 
+INFO  2021-11-06 09:39:06,333 session.py run             70  case queue is empty, test complete, release 678695bfebbc2cd66f5faea3d0691c01e71194fe
+DEBUG 2021-11-06 10:00:29,455 loader.py  load_from_module 94  Loading module: componenttest.py
+DEBUG 2021-11-06 10:00:41,274 loader.py  load_from_module 94  Loading module: componenttest
+DEBUG 2021-11-06 10:00:41,275 loader.py  load_from_module 98  put module[componenttest] into queue
+INFO  2021-11-06 10:00:41,275 miniconfig.py from_file       68  load config from config.json
+INFO  2021-11-06 10:00:41,289 loader.py  main            407 start session with fork mode 
+{'platform': 'ide', 'app': 'wx', 'debug_mode': 'debug', 'close_ide': False, 'assert_capture': True, 'auto_relaunch': True, 'device_desire': {'wda_project_path': '/Users/sherlock/.npm-global/lib/node_modules/appium/node_modules/appium-webdriveragent', 'os_type': 'ios', 'device_info': {'udid': '678695bfebbc2cd66f5faea3d0691c01e71194fe', 'model': 'iPhone 6s Plus', 'version': '12.0.1', 'name': 'Jan’s iPhone'}}, 'account_info': {}, 'report_usage': True, 'remote_connect_timeout': 10, 'request_timeout': 60, 'use_push': True, 'full_reset': False, 'outputs': None, 'enable_app_log': True, 'enable_network_panel': False, 'project_path': '/Users/yuanyuanhe/WeChatProjects/miniprogram-demo-master', 'dev_tool_path': '/Applications/wechatwebdevtools.app/Contents/MacOS/cli', 'test_port': 9420, 'mock_native_modal': {}, 'mock_request': [], 'is_default_config': False}
+
+DEBUG 2021-11-06 10:00:41,477 minitest.py _miniClassSetUp 477 =====================
+DEBUG 2021-11-06 10:00:41,478 minitest.py _miniClassSetUp 478 Testing class：ComponentTest
+DEBUG 2021-11-06 10:00:41,478 minitest.py _miniClassSetUp 479 =====================
+INFO  2021-11-06 10:00:41,478 wx_minium.py __init__        69  {}
+INFO  2021-11-06 10:00:41,505 wx_minium.py launch_dev_tool 113 Starting dev tool and launch MiniProgram project ...
+INFO  2021-11-06 10:00:41,506 minium_object.py _do_shell       59  de shell: /Applications/wechatwebdevtools.app/Contents/MacOS/cli auto --project /Users/yuanyuanhe/WeChatProjects/miniprogram-demo-master --auto-port 9420
+DEBUG 2021-11-06 10:00:41,722 minium_object.py _do_shell       69  - initialize
+DEBUG 2021-11-06 10:00:41,723 minium_object.py _do_shell       69  
+DEBUG 2021-11-06 10:00:41,733 minium_object.py _do_shell       69  ✖ IDE may already started at port 29711, trying to connect
+DEBUG 2021-11-06 10:00:41,733 minium_object.py _do_shell       69  
+DEBUG 2021-11-06 10:00:45,484 minium_object.py _do_shell       69  ✔ IDE server started successfully, listening on http://127.0.0.1:63263
+DEBUG 2021-11-06 10:00:45,484 minium_object.py _do_shell       69  - preparing
+DEBUG 2021-11-06 10:00:45,495 minium_object.py _do_shell       69  - Fetching AppID (wx7daf5aa69f958691) permissions
+DEBUG 2021-11-06 10:00:45,581 minium_object.py _do_shell       69  ✖ Fetching AppID (wx7daf5aa69f958691) permissions
+DEBUG 2021-11-06 10:00:45,583 minium_object.py _do_shell       69  [error] {
+DEBUG 2021-11-06 10:00:45,584 minium_object.py _do_shell       69    code: 10,
+DEBUG 2021-11-06 10:00:45,584 minium_object.py _do_shell       69    message: 'Error: 错误 Error: 需要重新登录,access_token expired [20211106 10:00:45][] (code 10)Error: 错误 Error: 需要重新登录,access_token expired [20211106 10:00:45][] (code 10)\n' +
+DEBUG 2021-11-06 10:00:45,584 minium_object.py _do_shell       69      '    at Object.GENERIC_ERROR (/Applications/wechatwebdevtools.app/Contents/Resources/package.nw/core.wxvpkg/7201d239ccdbdc262e2ecf5fe0c8aca3.js:2:93)\n' +
+DEBUG 2021-11-06 10:00:45,584 minium_object.py _do_shell       69      '    at Proxy.exports.getAppInfo (/Applications/wechatwebdevtools.app/Contents/Resources/package.nw/core.wxvpkg/b3effda444fe34caae1384305e9562c6.js:2:1063)\n' +
+DEBUG 2021-11-06 10:00:45,584 minium_object.py _do_shell       69      '    at processTicksAndRejections (node:internal/process/task_queues:93:5)\n' +
+DEBUG 2021-11-06 10:00:45,606 minium_object.py _do_shell       69      '    at async Proxy.exports.getProjectInfo (/Applications/wechatwebdevtools.app/Contents/Resources/package.nw/core.wxvpkg/9d9d19a87db58211a644d4d305c488d5.js:2:2334)\n' +
+DEBUG 2021-11-06 10:00:45,606 minium_object.py _do_shell       69      '    at async /Applications/wechatwebdevtools.app/Contents/Resources/package.nw/core.wxvpkg/7a975443f52e91830ae1d65cdf8c86db.js:2:3477\n' +
+DEBUG 2021-11-06 10:00:45,606 minium_object.py _do_shell       69      '    at async f.<anonymous> (/Applications/wechatwebdevtools.app/Contents/Resources/package.nw/core.wxvpkg/7a975443f52e91830ae1d65cdf8c86db.js:2:2983)'
+DEBUG 2021-11-06 10:00:45,606 minium_object.py _do_shell       69  }
+ERROR 2021-11-06 10:00:51,436 assertbase.py _teardown_collect 261 <bound method ComponentTest.test_input_element of <componenttest.ComponentTest testMethod=test_input_element>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py", line 32, in _handleClassSetUp
+    _miniClassSetUp()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 489, in _miniClassSetUp
+    cls.mini = get_minium(cls.CONFIG)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 89, in get_minium
+    g_minium = minium.miniprogram.get_minium_driver(conf=cfg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/__init__.py", line 30, in get_minium_driver
+    return APP[application](conf, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 93, in __init__
+    self.launch_dev_tool()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py", line 135, in wrapper
+    result = func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 193, in launch_dev_tool
+    raise MiniLaunchError(
+minium.framework.exception.MiniLaunchError: Open project in automation mode fail! Please ensure you have permission of project and have not environ error 
+ERROR 2021-11-06 10:00:51,440 assertbase.py _teardown_collect 261 <bound method ComponentTest.test_set_data of <componenttest.ComponentTest testMethod=test_set_data>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py", line 32, in _handleClassSetUp
+    _miniClassSetUp()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 489, in _miniClassSetUp
+    cls.mini = get_minium(cls.CONFIG)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 89, in get_minium
+    g_minium = minium.miniprogram.get_minium_driver(conf=cfg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/__init__.py", line 30, in get_minium_driver
+    return APP[application](conf, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 93, in __init__
+    self.launch_dev_tool()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py", line 135, in wrapper
+    result = func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 193, in launch_dev_tool
+    raise MiniLaunchError(
+minium.framework.exception.MiniLaunchError: Open project in automation mode fail! Please ensure you have permission of project and have not environ error 
+ERROR 2021-11-06 10:00:51,490 assertbase.py _teardown_collect 261 <bound method ComponentTest.test_slider of <componenttest.ComponentTest testMethod=test_slider>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py", line 32, in _handleClassSetUp
+    _miniClassSetUp()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 489, in _miniClassSetUp
+    cls.mini = get_minium(cls.CONFIG)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 89, in get_minium
+    g_minium = minium.miniprogram.get_minium_driver(conf=cfg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/__init__.py", line 30, in get_minium_driver
+    return APP[application](conf, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 93, in __init__
+    self.launch_dev_tool()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py", line 135, in wrapper
+    result = func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 193, in launch_dev_tool
+    raise MiniLaunchError(
+minium.framework.exception.MiniLaunchError: Open project in automation mode fail! Please ensure you have permission of project and have not environ error 
+ERROR 2021-11-06 10:00:51,492 assertbase.py _teardown_collect 261 <bound method ComponentTest.test_ui_op of <componenttest.ComponentTest testMethod=test_ui_op>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/suite.py", line 32, in _handleClassSetUp
+    _miniClassSetUp()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 489, in _miniClassSetUp
+    cls.mini = get_minium(cls.CONFIG)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/minitest.py", line 89, in get_minium
+    g_minium = minium.miniprogram.get_minium_driver(conf=cfg)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/__init__.py", line 30, in get_minium_driver
+    return APP[application](conf, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 93, in __init__
+    self.launch_dev_tool()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py", line 135, in wrapper
+    result = func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/wx_minium.py", line 193, in launch_dev_tool
+    raise MiniLaunchError(
+minium.framework.exception.MiniLaunchError: Open project in automation mode fail! Please ensure you have permission of project and have not environ error 
+INFO  2021-11-06 10:01:01,502 session.py run             70  case queue is empty, test complete, release 678695bfebbc2cd66f5faea3d0691c01e71194fe

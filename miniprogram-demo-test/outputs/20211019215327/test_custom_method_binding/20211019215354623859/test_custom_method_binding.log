@@ -1,0 +1,43 @@
+DEBUG 2021-10-19 21:53:54,624 minitest.py _miniSetUp      518 =========Current case：test_custom_method_binding=========
+INFO  2021-10-19 21:53:54,624 app.py     _relaunch       660 ReLaunch: /page/component/index
+DEBUG 2021-10-19 21:53:54,624 connection.py send            135 SEND > {"id":"27320c03-ac70-4f84-8c11-b01384079c1f","method":"App.callWxMethod","params":{"method":"reLaunch","args":[{"url":"/page/component/index"}]}}
+DEBUG 2021-10-19 21:53:54,676 connection.py _on_message     184 RECV < {"id":"27320c03-ac70-4f84-8c11-b01384079c1f","result":{"result":{"errMsg":"reLaunch:ok"}}}
+DEBUG 2021-10-19 21:53:54,865 connection.py _on_message     184 RECV < {"method":"App.bindingCalled","params":{"name":"onAppRouteDone","args":[{"webviewId":7,"path":"page/component/index","query":{},"openType":"reLaunch"}]}}
+INFO  2021-10-19 21:53:54,865 app.py     _on_route_changed 264 Route changed, {'name': 'onAppRouteDone', 'args': [{'webviewId': 7, 'path': 'page/component/index', 'query': {}, 'openType': 'reLaunch'}]}
+DEBUG 2021-10-19 21:53:57,874 connection.py send            135 SEND > {"id":"e825a879-39e2-4607-9ad2-ceaf6397a24c","method":"App.captureScreenshot","params":{}}
+DEBUG 2021-10-19 21:53:58,008 connection.py _on_message     182 RECV < {"id":"e825a879-39e2-4607-9ad2-ceaf6397a24c","result":{"data":"iVBORw0KGgoAAAANSUhEUgAAAoAAAAOQCAIAAAAmDldbAAABKmlDQ1BTa2lhAAAokX2RPU8CQRCGH4mNSqFRo4XFlTQqYOQjYiGoREvQBO2O40KMcF6OM9rT+iOs7SyNCTWNlYmVsbM3MbHFd6E4EoOzmZ1n3539mF2IrSKLzUPbC4NKuWjVzs4txsx2Oj6TbQp+3kwPr+v/5E2ymYbbcRS/5GGgw7VlQ7zUHPGt4fqI7wwHJ5WS+F6caI5xfYxvQj8U902+4weG38WFduvaie5N3PVOq4o1+RplrtSatHDZpMolF9iiJAfkybGluKe2LU+RlpIno1GSEkWy6rMcSslpLsX+kJURvWf3A3Z7g8HgOdKOe/CYgdmnSEvswEIc+i++HdhDadp8kluE72Vd+wEWP2GuK3XFTEdro7+YUKv1p1aLIzwcNkRpVZMi8w...
+DEBUG 2021-10-19 21:53:58,009 connection.py send            135 SEND > {"id":"cb628bc8-a7e5-4cb4-8f3b-126d0920765c","method":"App.addBinding","params":{"name":"feedback"}}
+DEBUG 2021-10-19 21:53:58,010 connection.py _on_message     184 RECV < {"id":"cb628bc8-a7e5-4cb4-8f3b-126d0920765c","result":{}}
+INFO  2021-10-19 21:53:58,010 app.py     navigate_to     305 NavigateTo: /page/API/pages/request/request
+DEBUG 2021-10-19 21:53:58,011 connection.py send            135 SEND > {"id":"c70c0512-3116-4b88-bc12-21eadd5c94c9","method":"App.callWxMethod","params":{"method":"navigateTo","args":[{"url":"/page/API/pages/request/request"}]}}
+DEBUG 2021-10-19 21:53:58,013 connection.py _on_message     184 RECV < {"id":"c70c0512-3116-4b88-bc12-21eadd5c94c9","error":{"message":"page \"page/API/pages/request/request\" is not found"}}
+DEBUG 2021-10-19 21:53:59,646 minitest.py _miniTearDown   720 =========Current case Down：test_custom_method_binding=========
+DEBUG 2021-10-19 21:53:59,647 connection.py send            135 SEND > {"id":"c3aa7d35-7a98-4add-add2-5b6977693111","method":"App.captureScreenshot","params":{}}
+DEBUG 2021-10-19 21:53:59,784 connection.py _on_message     182 RECV < {"id":"c3aa7d35-7a98-4add-add2-5b6977693111","result":{"data":"iVBORw0KGgoAAAANSUhEUgAAAoAAAAOQCAIAAAAmDldbAAABKmlDQ1BTa2lhAAAokX2RPU8CQRCGH4mNSqFRo4XFlTQqYOQjYiGoREvQBO2O40KMcF6OM9rT+iOs7SyNCTWNlYmVsbM3MbHFd6E4EoOzmZ1n3539mF2IrSKLzUPbC4NKuWjVzs4txsx2Oj6TbQp+3kwPr+v/5E2ymYbbcRS/5GGgw7VlQ7zUHPGt4fqI7wwHJ5WS+F6caI5xfYxvQj8U902+4weG38WFduvaie5N3PVOq4o1+RplrtSatHDZpMolF9iiJAfkybGluKe2LU+RlpIno1GSEkWy6rMcSslpLsX+kJURvWf3A3Z7g8HgOdKOe/CYgdmnSEvswEIc+i++HdhDadp8kluE72Vd+wEWP2GuK3XFTEdro7+YUKv1p1aLIzwcNkRpVZMi8w...
+DEBUG 2021-10-19 21:53:59,786 connection.py send            135 SEND > {"id":"7b3c8c98-cae5-4483-8e74-e23d6baade49","method":"App.getCurrentPage","params":{}}
+DEBUG 2021-10-19 21:53:59,788 connection.py _on_message     184 RECV < {"id":"7b3c8c98-cae5-4483-8e74-e23d6baade49","result":{"pageId":7,"path":"page/component/index","query":{}}}
+DEBUG 2021-10-19 21:53:59,788 connection.py send            135 SEND > {"id":"a7a3fdd7-c9bf-4ac0-bb13-1736af53a989","method":"Page.getData","params":{"pageId":7}}
+DEBUG 2021-10-19 21:53:59,790 connection.py _on_message     182 RECV < {"id":"a7a3fdd7-c9bf-4ac0-bb13-1736af53a989","result":{"data":{"list":[{"id":"view","name":"视图容器","open":false,"pages":["view","scroll-view","swiper","movable-view","cover-view"]},{"id":"content","name":"基础内容","open":false,"pages":["text","icon","progress","rich-text"]},{"id":"form","name":"表单组件","open":false,"pages":["button","checkbox","form","input","label","picker","picker-view","radio","slider","switch","textarea","editor"]},{"id":"nav","name":"导航","open":false,"pages":["navigator"]},{"id":"media","...
+ERROR 2021-10-19 21:53:59,791 assertbase.py _teardown_collect 261 <bound method InterfaceTest.test_custom_method_binding of <interfacetest.InterfaceTest testMethod=test_custom_method_binding>>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/case.py", line 59, in testPartExecutor
+    yield
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/framework/libs/unittest/case.py", line 68, in run
+    self._callTestMethod(testMethod)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/case.py", line 550, in _callTestMethod
+    method()
+  File "/Users/yuanyuanhe/PycharmProjects/miniprogram-demo-test/interfacetest.py", line 76, in test_custom_method_binding
+    self.app.navigate_to("/page/API/pages/request/request")
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_log.py", line 135, in wrapper
+    result = func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/app.py", line 306, in navigate_to
+    page = self._change_route("navigateTo", url, is_wait_url_change)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/app.py", line 242, in _change_route
+    self._call_wx_method(open_type, [{"url": path}])
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/minium_object.py", line 234, in _call_wx_method
+    return self.connection.send("App.callWxMethod", params)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/connection.py", line 137, in send
+    return self._receive_response(max_timeout)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/minium-1.0.8-py3.9.egg/minium/miniprogram/base_driver/connection.py", line 162, in _receive_response
+    raise MiniAppError(err_msg)
+minium.framework.exception.MiniAppError: page "page/API/pages/request/request" is not found
