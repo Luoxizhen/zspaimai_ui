@@ -39,15 +39,19 @@ def time_to_str(t):
     # print(lt)
     r = time.strftime("%Y-%m-%d %H:%M:%S", lt)
     return r
-def str_to_time(str) -> object:
-    p_tuple = time.strptime(str, "%Y-%m-%d %H:%M:%S")
+def str_to_time(str):
+    try:
+        p_tuple = time.strptime(str, "%Y-%m-%d %H:%M:%S")
+    except Exception as e:
+        p_tuple = time.strptime(str, "%Y/%m/%d %H:%M:%S")
+        print(e)
     t = time.mktime(p_tuple)
-    return round(t)
+    print(int(t))
+    return int(t)
 
 
 if __name__ == '__main__':
-   p = 1656213839
-   print(time_to_str(p))
+   str_to_time("2022/10/10 22:10:21")
 
 
 

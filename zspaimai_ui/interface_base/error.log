@@ -26,3 +26,5 @@
 2022-07-20 17:15:16,881 - CRITICAL - __init__.py[:22] - critical message
 2022-07-20 17:17:11,450 - ERROR - __init__.py[:21] - error message
 2022-07-20 17:17:11,450 - CRITICAL - __init__.py[:22] - critical message
+2022-11-15 10:09:44,360 - ERROR - __init__.py[:21] - error message
+2022-11-15 10:09:44,360 - CRITICAL - __init__.py[:22] - critical message

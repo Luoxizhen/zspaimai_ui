@@ -1,0 +1,6 @@
+new_unions:
+  file_path: "/Users/yuanyuanhe/Desktop/货/推广活动导入/11-1.csv"
+  unions_info:
+    "begin_time": "2022-11-9 16:30:00"
+    "end_time": "2022-11-21 20:00:00"
+    "topic_id": [82]

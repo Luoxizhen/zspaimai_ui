@@ -2,7 +2,7 @@ import json
 
 from interface_base import goods
 from common import rwjson
-from utils import times,util
+from utils import times,util,rwyaml
 from config.conf import cm
 from requests import request
 import csv
@@ -281,9 +281,10 @@ def get_goods_bid(good_id_start,num,p,all=0):
 
 def test_get_goods_bid():
     '''测试 get_goods_bid(good_id_start,num,p) 函数'''
-    good_id = 3389 # 2346 2462
-    num = 20 #65 19
-    file_path = "/Users/yuanyuanhe/Desktop/货/拍品出价详情/10-4-"+str(times.timestamp())+".csv"
+    goods_info = rwyaml.get_yaml_data('interface_data','good_config.yml')['goods_bid']
+    good_id = goods_info['good_id'] # 2346 2462
+    num = goods_info['num'] #65 19
+    file_path = goods_info['file_path']
     get_goods_bid(good_id,num,file_path,all=1)
     assert 1==2
 
@@ -392,14 +393,18 @@ def test_good_add_sp_new():
     assert 1==2
 
 def test_good_add_new():
-    file_path = "/Users/yuanyuanhe/Desktop/货/拍品导入/11-1.csv"
+    goods_info = rwyaml.get_yaml_data('interface_data', 'good_config.yml')['good_add_new']
+    file_path = goods_info['file_path']
+    begin_time_s = goods_info['begin_time']
+    end_time_s = goods_info['end_time']
+    tipic_id = goods_info['topic_id']
     topic_info = {}
-    begin_time = times.str_to_time("2022-11-11 10:00:00")  # 开拍时间 ：2022-05-27 10:00:00 2022-06-10 10:00
-    end_time = times.str_to_time("2022-11-14 20:00:00")  # 结拍时间：2022-07-01 10:00:00
+    begin_time = times.str_to_time(begin_time_s)  # 开拍时间 ：2022-05-27 10:00:00 2022-06-10 10:00
+    end_time = times.str_to_time(end_time_s)  # 结拍时间：2022-07-01 10:00:00
     topic_info["begin_time"] = begin_time
     topic_info["end_time"] = end_time
     topic_info["agreement_no"] = ""
-    topic_info["topic_id"] = "[82]"
+    topic_info["topic_id"] = tipic_id
     good_add_new(file_path, **topic_info)
     assert 1 == 2
 

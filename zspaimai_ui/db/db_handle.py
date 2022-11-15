@@ -3,10 +3,12 @@ import csv
 from collections import namedtuple
 import pymysql as mysql
 from utils import times,log
+from common.readconfig import ini
 ''''charset':'utf8mb4','''
-'''host': '115.159.111.166    'host': '81.71.30.169',''',
+'''host': '115.159.111.166    'host': '81.71.30.169','''
+host_url = ini.host_url
 config={
-    'host': '81.71.30.169',
+    'host': host_url,
     'port': 3306,
     'user': 'luckgirl',
     'database': 'pm2.0',
@@ -147,7 +149,7 @@ def create_table(table_name,sql):
 
 def put_data():
     '''在表中插入数据'''
-    csv_filename = "/Users/yuanyuanhe/Desktop/竞拍分析/yangpiao/在线数据11-8.csv"
+    csv_filename = "/Users/yuanyuanhe/Desktop/竞拍分析/yangpiao/123版币11-14.csv"
     log.log.info(csv_filename)
     try:
         conn = mysql.connect(**config)
@@ -164,8 +166,14 @@ def put_data():
             log.log.info("插入{}".format(i))
             # "cert_display", "cert_comments", "noteNumber", "serial", "special", "special_no", "buyer_premium", "did",
             # "is_clinch", "price", "parities", "currency", "dealTime", "volamount"
-            sql = sql_format.format(nt.noteNumber, nt.serial,nt.special_no,nt.cert_display,nt.cert_comments.replace("'"," "),nt.special,
-                                    nt.price,nt.buyer_premium,1 if nt.currency=='RMB' else 2 if nt.currency=='HKD' else 3,nt.dealTime if type(nt.dealTime) == int else times.str_to_time(nt.dealTime),nt.did,nt.is_clinch,nt.volamount)
+            # sql = sql_format.format(nt.noteNumber, nt.serial,nt.special_no,nt.cert_display.strip(),nt.cert_comments.replace("'"," "),nt.special,
+            #                         nt.price,nt.buyer_premium,1 if nt.currency=='RMB' else 2 if nt.currency=='HKD' else 3, nt.dealTime if type(nt.dealTime) == int else times.str_to_time(nt.dealTime.lstrip()), int(nt.did), nt.is_clinch, nt.volamount)
+            #
+            sql = sql_format.format(nt.noteNumber, nt.serial, nt.special_no, nt.cert_display.strip(),
+                                    nt.cert_comments.replace("'", " "), nt.special,
+                                    nt.price, nt.buyer_premium,
+                                    1 if nt.currency == 'RMB' else 2 if nt.currency == 'HKD' else 3,
+                                    nt.dealTime , int(nt.did), nt.is_clinch, nt.volamount)
 
             # sql = sql_format.format(nt.did,nt.name)
             log.log.info(sql)
@@ -229,15 +237,17 @@ if __name__ == '__main__':
     # sql =" update p_note_detail  set serial = '0003719' where special_pattern = '‘0003719'"
     # sql = "select * from p_note_detail   where serial = '0003719' "
     # select_data(sql)
-    # sql = "insert into p_note_from (did,name) values (101,'中晟在线')"
+    # sql = "insert into p_note_from (did,name) values (53,'中晟钱币收藏')"
     # sql = "select * from p_note_detail where from_id = 101 "
     # sql = "delete from p_note_detail where from_id =101 and id >26705"
     # sql = "select max(id) from p_note_from where name = '中晟在线'"
     # sql = "update p_note_detail set from_id =50 where from_id = 101 and id>26653"
     # sql = "delete from p_note_detail where from_id =101"
-    sql = "select * from p_region"
-    select_data(sql)
+    # sql = "select * from p_note_from"
+    # select_data(sql)
     # desc_t('p_union_topic')
+    put_data()
+
 
 
 

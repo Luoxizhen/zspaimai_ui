@@ -37,6 +37,24 @@ class ReadConfig(object):
     def env(self):
         """读环境配置"""
         return self._get('SYS_INVIRONMENT','SYS_INVIRONMENT')
+    @property
+    def host_url(self):
+        '''数据库URL'''
+        sys_inv = self.env
+        if sys_inv == 'offline':
+            HOST = 'HOST_OFFLINE'
+        else:
+            HOST = 'HOST_ONLINE'
+        return self._get(HOST,'HOST_URL')
+    def h5_url(self):
+        '''设置添加推广计划的json 数据的h5'''
+        sys_inv = self.env
+        if sys_inv == 'offline':
+            HOST = 'HOST_OFFLINE'
+        else:
+            HOST = 'HOST_ONLINE'
+        return self._get(HOST, 'URL')
+
 
 
 ini = ReadConfig()

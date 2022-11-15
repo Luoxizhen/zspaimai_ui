@@ -40,3 +40,7 @@ def set_keyvalue(parname, filename,user,key,keyvalue):
     with open(fp, 'w') as f:
         yaml.dump(doc, f)
 
+if __name__ == "__main__":
+    topic_info = get_yaml_data('interface_data', 'topic_config.yml')['new_topic']
+    print(type(topic_info))
+    print(topic_info)

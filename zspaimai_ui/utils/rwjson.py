@@ -48,3 +48,8 @@ class RwJson():
     def get_header(self):
         f = os.path.join(cm.INTERFACE_DATA_PATH)
         self._get()
+getjson = RwJson()
+if __name__ == "__main__":
+    a = RwJson().readjson('interface_data', 'union.json')
+    print(type(a))
+    print(a)

@@ -16,7 +16,6 @@ class ReadCfg():
         self.conf.read(cfgpath, encoding="utf-8")
         self.yaml_file = yaml_file
     def readCfg(self):
-
         return self.conf.get('sys_variables', 'url')
     def get_base_url(self):
         return self.conf.get('sys_variables', 'base_url')
@@ -73,8 +72,9 @@ class ReadCfg():
 
 
 if __name__ == '__main__':
-    conf = ReadCfg()
+    # conf = ReadCfg()
     #conf.get_yaml_data()
     #conf.get_yaml_data_1(conf.yaml_file)
-    conf.get_yaml_load_all(conf.yaml_file)
-    conf.generate_yaml_doc(conf.yaml_file)
+    # conf.get_yaml_load_all(conf.yaml_file)
+    # conf.generate_yaml_doc(conf.yaml_file)
+    print(os.pardir)

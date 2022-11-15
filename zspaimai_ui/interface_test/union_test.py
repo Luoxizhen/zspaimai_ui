@@ -90,9 +90,12 @@ def add_union_off(f_path,**topic_info):
     '''
 
 def test_add_union():
-    f_path = "/Users/yuanyuanhe/Desktop/货/推广活动导入/11-1.csv"
-    topic_info = {"begin_time": "2022-11-9 16:30:00", "end_time": "2022-11-21 20:00:00", "topic_id": [82]}
-    add_union_off(f_path,**topic_info)
+    new_unions = rwyaml.get_yaml_data('interface_data','union_config.yml')['new_unions']
+    f_path = new_unions['file_path']
+    unions_info = new_unions['unions_info']
+    # unions_info['begin_time'] = times.str_to_time(unions_info['begin_time'])
+    # unions_info['end_time'] = times.str_to_time(unions_info['end_time'])
+    add_union_off(f_path,**unions_info)
     assert 1==2
 
 def union_edit(union_index=0,exchange=0,**img):

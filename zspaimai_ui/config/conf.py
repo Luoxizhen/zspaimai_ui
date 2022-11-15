@@ -20,8 +20,9 @@ class ConfigManager(object):
     # 报告文件
     report_name = "report_" + dt_strftime(fmt="%Y%m%d_%H%M%S") + '.html'
     REPORT_FILE = os.path.join(BASE_DIR, 'report', report_name)
+    # 数据库操作文件路径
+    DB_DATA_PATH = os.path.join(BASE_DIR, 'db_data')
     # 元素定位的类型
-
     LOCATE_MODE = {
         'css': By.CSS_SELECTOR,
         'xpath': By.XPATH,

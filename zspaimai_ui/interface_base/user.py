@@ -8,19 +8,18 @@ from interface_base.headers import admin_headers,base_url,get_user_headers,get_u
 
 
 def login(**userinfo):
-    '''获取用户的token '''
+    '''用户从pc 端进行登陆 '''
     url = base_url+"/user/user/login?from=pc"
     headers = get_user_headers_unlogin()
     json = {"phone": "15622145010",
             "pwd": "123456"}
-    for key in userinfo:
-        if key in json.keys():
-            json[key] = userinfo[key]
+    json.update(userinfo)
     r = requests.request('post', url=url, json=json, headers=headers)
     return r
 def user_login(**userinfo):
-    '''获取用户登陆后的token'''
+    '''用户登陆后，更新token'''
     r = login(**userinfo)
+    print(r.json())
     token = update_token(r.json()['data']['token'])
     return token
 def get_token(phone):

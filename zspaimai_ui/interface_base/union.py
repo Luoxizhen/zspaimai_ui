@@ -1,9 +1,9 @@
 from interface_base.user import base_url,admin_headers,update_token,get_user_headers
 import requests
 
-from utils import rwyaml, rwjson,times
-
-
+from utils import rwyaml,times
+from common.readconfig import ini
+from utils.rwjson import getjson
 def union_topic():
     '''获取进行中的专场，用于设定推广素材所关联的专场'''
     url = base_url + '/admin/union/union_topic'
@@ -20,30 +20,13 @@ def union_add(**union_info):
     # union_info = {"union_info": {"new_union_id": union_id}}
     # rwyaml.generate_yaml_doc('interface_data', 'union_log.yml', union_info)
     '''
+    new_union = getjson.readjson('interface_data', 'union.json')
     url = base_url + '/admin/union/union_add'
     headers = admin_headers
-    begin_time = times.str_to_time("2022-05-30 14:33:00") # 推广计划开始时间
-    """2022-06-03 10:00:00~2022-06-06 20:00:00"""
-    end_time = times.str_to_time("2022-06-06 20:00:00") #推广计划结束时间，10小时
-
-    json = {
-        "name": "五月四期推广计划 pagesA/pages/auction/detail?id=3301",
-        "h5_url": "https://www.zsonline.cn/",
-        "copywriter": "罕见苏维埃银行货币首次登场亮相中晟在线，原滋原味红色天安门，等待有缘人，加入推广计划与平台共享佣金！",
-        "appid": "wx50c05e976769b587",
-        "mini_url": "pages/switchPages/index",
-        "enable": 0,
-        "rebates_rate": "3",
-        "rebates_quota": "2000",
-        "start_time": begin_time,
-        "end_time": end_time,
-        "images": "[\"picture/aAsYfx2sAKYjE4TADzxdKfzG68JX5T.JPG\"]",
-        "poster": "[\"thumbnail/yBA5rkeEpijN7MaRQ8ZK4iWxcabYfC.JPG\"]",
-        "topic": "[54]"
-    }
-    json.update(union_info)
-    print(json)
-    r = requests.request('post', url=url, json=json, headers=admin_headers)
+    h5_url = ini.h5_url()
+    new_union['h5_url'] = h5_url
+    new_union.update(union_info)
+    r = requests.request('post', url=url, json=new_union, headers=admin_headers)
     return r
 def union_list():
     '''后台获取推广活动列表
@@ -267,3 +250,6 @@ def union_list_user(pageno=1, token=None):
     r = requests.request('get', url=url, params=data, headers=headers)
     return r
 
+if __name__ == "__main__":
+    new_union = getjson.readjson('interface_data', 'union.json')
+    print(new_union)

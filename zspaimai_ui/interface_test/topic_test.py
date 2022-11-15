@@ -5,20 +5,10 @@ from utils import rwyaml,util,times
 from interface_test.user_test import add_pwd
 import pytest
 def test_add():
-    begin_time = times.str_to_time("2022-11-11 10:00:00")
-    end_time = times.str_to_time("2022-11-14 20:00:00")
-    topic_info = {"title": "十一月一期一眼万年专场", "begin_time": begin_time, "end_time": end_time}
-    topic_info = {"title":"十一月一期一眼万年专场",
-            "begin_time":begin_time,
-            "end_time":end_time,
-            "sort":"315",
-            "images":"topic/11-1.jpg",
-            "small_images":"topic/11-2.jpg",
-            "content":"本专场主要征集一些靓号拍品，有8个6的四版2角，有一对三版蓝三罗大开门，有多张四版5元通天号副品，也有若干三版豹子号，同时有绿三一版币若干张",
-            "mini_small_images":"topic/11-3.jpg",
-            "mini_images":"topic/11-3.jpg"}
+    topic_info = rwyaml.get_yaml_data('interface_data','topic_config.yml')['new_topic']
+    topic_info['begin_time'] = times.str_to_time(topic_info['begin_time'])
+    topic_info['end_time'] = times.str_to_time(topic_info['end_time'])
     r = topic.add(**topic_info)
-
     assert r.json()['status'] == 200
 
 

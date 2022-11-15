@@ -173,11 +173,12 @@ def test_change_nickname_bid():
 
 def test_edit_customer_nicknames():
     user_info = {
-        "phone": "20000000011",
-        "psw": "zs011015"
+        "phone": "20000000012",
+        "pwd": "zs011015"
     }
-    user.login(**user_info)
+    user.user_login(**user_info)
     nicknames = user.nickname_list().json()["data"]
+    print(nicknames)
     len_nn = len(nicknames)
     for i in range(len_nn):
         nick_name_id = nicknames[i]["id"]
