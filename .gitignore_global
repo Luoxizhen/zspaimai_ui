@@ -10,7 +10,7 @@
 #log file
 *.log
 /logs
-
+*all.log.*
 /big_data_analysis/
 /data_analysis/
 
