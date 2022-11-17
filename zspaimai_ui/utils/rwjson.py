@@ -50,6 +50,6 @@ class RwJson():
         self._get()
 getjson = RwJson()
 if __name__ == "__main__":
-    a = RwJson().readjson('interface_data', 'union.json')
+    a = RwJson().readjson('interface_data', 'topic.json')
     print(type(a))
     print(a)

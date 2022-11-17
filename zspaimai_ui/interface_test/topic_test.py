@@ -9,7 +9,7 @@ def test_add():
     topic_info['begin_time'] = times.str_to_time(topic_info['begin_time'])
     topic_info['end_time'] = times.str_to_time(topic_info['end_time'])
     r = topic.add(**topic_info)
-    assert r.json()['status'] == 200
+    assert r.json()['status'] == 400
 
 
 def act():

@@ -5,7 +5,7 @@
         "appid": "wx50c05e976769b587",
         "mini_url": "pages/switchPages/index",
         "enable": 0,
-        "rebates_rate": "10",
+        "rebates_rate": "3",
         "rebates_quota": "2000",
         "start_time": 123333,
         "end_time": 2222,

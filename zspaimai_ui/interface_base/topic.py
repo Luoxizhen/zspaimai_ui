@@ -1,19 +1,12 @@
 import time, json
 from utils import rwjson, util
+from utils.rwjson import getjson
 import requests
 from interface_base.user import update_token, get_user_headers,base_url,admin_headers
 def add(**topic_info):
     url = base_url + "/admin/topic/add"
     headers = admin_headers
-    info = {"title":"十一月一期一眼万年专场",
-            "begin_time":1635502200,
-            "end_time":1635502800,
-            "sort":"315",
-            "images":"picture/QCFNhmCJJ6fNijxWYQJFkixSYx6Mkm.png",
-            "small_images":"picture/RjNDKXXknaJF7W5hKCnYY4WEJjBe7P.png",
-            "content":"本专场主要征集一些靓号拍品，有8个6的四版2角，有一对三版蓝三罗大开门，有多张四版5元通天号副品，也有若干三版豹子号，同时有绿三一版币若干张",
-            "mini_small_images":"picture/Kp5ykpFpT5CRXpspQfzpfj5MQ87DFy.png",
-            "mini_images":"picture/hhMMwMBFHwfcGZjeJZYKEE4fCAk8Z8.png"}
+    info = getjson.readjson('interface_data','topic.json')
     info.update(topic_info)
     r = requests.request('post', url=url, json=info, headers=headers)
     return r

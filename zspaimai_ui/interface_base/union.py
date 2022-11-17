@@ -23,8 +23,7 @@ def union_add(**union_info):
     new_union = getjson.readjson('interface_data', 'union.json')
     url = base_url + '/admin/union/union_add'
     headers = admin_headers
-    h5_url = ini.h5_url()
-    new_union['h5_url'] = h5_url
+    new_union['h5_url'] = ini.h5_url()
     new_union.update(union_info)
     r = requests.request('post', url=url, json=new_union, headers=admin_headers)
     return r

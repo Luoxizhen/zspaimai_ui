@@ -66,76 +66,33 @@ def add_union_off(f_path,**topic_info):
 
         union_info["poster"] = json.dumps(poster_list)
         union_info["images"] = json.dumps(images_list)
-        union_info["mini_url"] = "pagesA/pages/auction/detail?id=" + row["good_id"]
+        if row["good_id"]:
+            union_info["mini_url"] = "pagesA/pages/auction/detail?id=" + row["good_id"]
+        else:
+            union_info["mini_url"] = "pagesB/pages/transaction/history?note_number=869a"
+
         # topic.append(topic_info["topic_id"])
         # union_info["topic"] = json.dumps(topic)
         print(union_info)
         r = union.union_add(**union_info)
         print(r.json())
-    '''        
-    union_info = {
-        "name":"1000元运煤与耕田一枚",
-        "h5_url": "https://www.zsonline.cn/",
-        "copywriter": "1000元运煤与耕田一枚，裸票，7品，晚上 20：14：30 结拍，快来竞买吧！",
-        "appid": "wx50c05e976769b587",
-        "mini_url": "pages/switchPages/index",
-        "enable": 0,
-        "rebates_rate": "3",
-        "rebates_quota": "2000",
-
-        "poster": "[\"thumbnail/wangli/3023-1.jpg\"]",
-        "images": "[\"thumbnail/wangli/3023-1.jpg\"]",
-        "topic": "[54]"
-    }
-    '''
 
 def test_add_union():
     new_unions = rwyaml.get_yaml_data('interface_data','union_config.yml')['new_unions']
     f_path = new_unions['file_path']
     unions_info = new_unions['unions_info']
-    # unions_info['begin_time'] = times.str_to_time(unions_info['begin_time'])
-    # unions_info['end_time'] = times.str_to_time(unions_info['end_time'])
     add_union_off(f_path,**unions_info)
     assert 1==2
 
 def union_edit(union_index=0,exchange=0,**img):
-    '''编辑推广活动信息
-    img : 包含推广素材和海报
-    "images":"[\"union/1001.jpeg\"]",
-    "poster":"[\"thumbnail/tao/5007-1.jpg\",\"thumbnail/tao/5004-1.jpg\",\"thumbnail/wangli/3024-1.jpg\"]",
-    获取的推广活动信息如下：
-    {
-    "id":6,"name":"五月四期推广计划",
-    "h5_url":"https:\/\/www.zsonline.cn\/",
-    "appid":"wx50c05e976769b587",
-    "mini_url":"pages\/switchPages\/index",
-    "enable":1,"rebates_rate":3,"rebates_quota":2000,
-    "start_time":1653616800,"end_time":1654516800,
-    "copywriter":"珍稀苏维埃银行货币首次亮相中晟在线，原滋原味红色天安门1元，等待有缘人，加入推广计划赚取佣金！",
-    "images":"[\"thumbnail\/tao\/5007-1.jpg\",\"thumbnail\/tao\/5004-1.jpg\",\"thumbnail\/wangli\/3024-1.jpg\"]",
-    "poster":"[\"union\/1001.jpeg\"]",
-    "create_time":"2022-05-24 18:32:26",
-    "update_time":"2022-05-25 11:11:50","delete_time":0,"topic":[54]}
-
-    实际需要传入的推广活动信息如下：
-    {"name":"五月四期推广计划",
-    "h5_url":"https://www.zsonline.cn/",
-    "copywriter":"罕见苏维埃银行货币首次登场亮相中晟在线，原滋原味红色天安门，等待有缘人，加入推广计划与平台共享佣金！",
-    "appid":"wx50c05e976769b587",
-    "mini_url":"pages/switchPages/index",
-    "enable":2,"rebates_rate":3,
-    "rebates_quota":2000,
-    "start_time":1653616800,"end_time":1653912000,
-    "images":"[\"union/1001.jpeg\"]",
-    "poster":"[\"thumbnail/tao/5007-1.jpg\",\"thumbnail/tao/5004-1.jpg\",\"thumbnail/wangli/3024-1.jpg\"]",
-    "topic":"[54]","id":5}'''
+    '''编辑推广活动信息'''
     union_info = union.union_list().json()["data"]["data"][union_index]
     print(union_info)
 
     topic = json.dumps(union_info["topic"])
-    if exchange==0:
+    if exchange == 0:
 
-        images  = img["images"]
+        images = img["images"]
         poster = img["poster"]
     else:
         images = union_info["poster"]
@@ -147,12 +104,12 @@ def union_edit(union_index=0,exchange=0,**img):
     r = union.union_edit(**union_info)
     print(r.json())
 def test_union_edit():
-    poster_list = "[\"union/29.jpg\"]"
-    images_list = "[\"picture/chen/729-1.jpg\",\"picture/chen/729-2.jpg\"]"
+    poster_list = "[\"union/33.jpg\"]"
+    images_list = "[\"union/33.jpg\",\"union/32.jpg\",\"union/31.jpg\"]"
     # img = json.dumps(images_list)
     # pst = json.dumps(poster_list)
     union_info = {"images":images_list,"poster":poster_list}
-    union_edit(union_index=4,**union_info)
+    union_edit(union_index=0,**union_info)
     assert 1==2
 
 
