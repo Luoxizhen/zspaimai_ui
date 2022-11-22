@@ -149,7 +149,7 @@ def create_table(table_name,sql):
 
 def put_data():
     '''在表中插入数据'''
-    csv_filename = "/Users/yuanyuanhe/Desktop/竞拍分析/yangpiao/123版币11-14.csv"
+    csv_filename = "/Users/yuanyuanhe/Desktop/竞拍分析/yangpiao/抖音11-22-1.csv"
     log.log.info(csv_filename)
     try:
         conn = mysql.connect(**config)
@@ -166,14 +166,14 @@ def put_data():
             log.log.info("插入{}".format(i))
             # "cert_display", "cert_comments", "noteNumber", "serial", "special", "special_no", "buyer_premium", "did",
             # "is_clinch", "price", "parities", "currency", "dealTime", "volamount"
-            # sql = sql_format.format(nt.noteNumber, nt.serial,nt.special_no,nt.cert_display.strip(),nt.cert_comments.replace("'"," "),nt.special,
-            #                         nt.price,nt.buyer_premium,1 if nt.currency=='RMB' else 2 if nt.currency=='HKD' else 3, nt.dealTime if type(nt.dealTime) == int else times.str_to_time(nt.dealTime.lstrip()), int(nt.did), nt.is_clinch, nt.volamount)
-            #
-            sql = sql_format.format(nt.noteNumber, nt.serial, nt.special_no, nt.cert_display.strip(),
-                                    nt.cert_comments.replace("'", " "), nt.special,
-                                    nt.price, nt.buyer_premium,
-                                    1 if nt.currency == 'RMB' else 2 if nt.currency == 'HKD' else 3,
-                                    nt.dealTime , int(nt.did), nt.is_clinch, nt.volamount)
+            sql = sql_format.format(nt.noteNumber, nt.serial,nt.special_no,nt.cert_display.strip(),nt.cert_comments.replace("'"," "),nt.special,
+                                    nt.price,nt.buyer_premium,1 if nt.currency=='RMB' else 2 if nt.currency=='HKD' else 3, nt.dealTime if type(nt.dealTime) == int else times.str_to_time(nt.dealTime.lstrip()), int(nt.did), nt.is_clinch, nt.volamount)
+
+            # sql = sql_format.format(nt.noteNumber, nt.serial, nt.special_no, nt.cert_display.strip(),
+            #                         nt.cert_comments.replace("'", " "), nt.special,
+            #                         nt.price, nt.buyer_premium,
+            #                         1 if nt.currency == 'RMB' else 2 if nt.currency == 'HKD' else 3,
+            #                         nt.dealTime , int(nt.did), nt.is_clinch, nt.volamount)
 
             # sql = sql_format.format(nt.did,nt.name)
             log.log.info(sql)
@@ -224,29 +224,11 @@ def put_data3(sql):
         print(e)
         print("连接失败")
 if __name__ == '__main__':
-    # sql = "Select o.id,od.goods_id,od.name,od.price,od.buyer_service_rate,od.buyer_service_price,od.actually_service_price ,o.goods_price,o.pay_price,o.service_fee,o.total_price,o.user_id,o.create_time from p_order as o, p_order_detail as od where  o.id = od.order_id and o.status = 5"
-    # select_data(sql)
-    # put_data()
-    # sql="select * from p_note_type where note_number like '814%'"
-    # sql = "alter table p_note_detail add (is_clinch tinyint null default 1 comment '是否成交'," \
-    #       "is_history tinyint null default 0 comment '成交次数' ) "
-    # put_data3(sql)
-    # desc_t('p_note_detail')
-    # sql ="Select note_number from p_note_detail where note_number like '808%'"
-    # select_data(sql)
-    # sql =" update p_note_detail  set serial = '0003719' where special_pattern = '‘0003719'"
-    # sql = "select * from p_note_detail   where serial = '0003719' "
-    # select_data(sql)
-    # sql = "insert into p_note_from (did,name) values (53,'中晟钱币收藏')"
-    # sql = "select * from p_note_detail where from_id = 101 "
-    # sql = "delete from p_note_detail where from_id =101 and id >26705"
-    # sql = "select max(id) from p_note_from where name = '中晟在线'"
-    # sql = "update p_note_detail set from_id =50 where from_id = 101 and id>26653"
-    # sql = "delete from p_note_detail where from_id =101"
-    # sql = "select * from p_note_from"
-    # select_data(sql)
-    # desc_t('p_union_topic')
-    put_data()
+    sql = "update p_note_detail set note_number='878a' where serial= '8753559'"
+    sql = "select "
+    select_data(sql)
+
+
 
 
 

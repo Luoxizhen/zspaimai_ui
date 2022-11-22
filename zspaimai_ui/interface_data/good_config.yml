@@ -1,13 +1,13 @@
 good_add_new:
-  file_path: "/Users/yuanyuanhe/Desktop/货/拍品导入/11-2.csv"
-  begin_time: "2022-11-18 10:00:00"
-  end_time: "2022-11-21 20:00:00"
-  topic_id: "[83]"
+  file_path: "/Users/yuanyuanhe/Desktop/货/拍品导入/11-3.csv"
+  begin_time: "2022-11-25 10:00:00"
+  end_time: "2022-11-28 20:00:00"
+  topic_id: "[84]"
 
 goods_bid:
-  file_path:  "/Users/yuanyuanhe/Desktop/货/拍品出价详情/11-1-202211417.csv"
-  good_id: 3409
-  num: 24
+  file_path:  "/Users/yuanyuanhe/Desktop/货/拍品出价详情/11-2-20221121.csv"
+  good_id: 3433
+  num: 17
 
 
 

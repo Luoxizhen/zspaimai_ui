@@ -301,7 +301,7 @@ def good_add_new(file_path,is_edit=0,good_type=1,**topic_info):
 
         good_info = {}
 
-        if int(row['category_id']) in [7,8,9,10]:
+        if int(row['category_id']) in [7,8,9,10,36,40,41,42,43]:
             c_name = row["category"] + row['name'] + row['count'] # 第一、二、三、四版币的名称 = 版别+名字+数量
         else:
             c_name = row['name'] + row['count'] #其余 = 名字+ 数量

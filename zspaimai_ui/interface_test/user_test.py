@@ -173,7 +173,7 @@ def test_change_nickname_bid():
 
 def test_edit_customer_nicknames():
     user_info = {
-        "phone": "20000000012",
+        "phone": "20000000016",
         "pwd": "zs011015"
     }
     user.user_login(**user_info)
@@ -194,4 +194,5 @@ def test_edit_customer_nicknames():
         print(r.json())
 
     assert 1==2
-
+if __name__ == "__main__":
+    test_edit_customer_nicknames()

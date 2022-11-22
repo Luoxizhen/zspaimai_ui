@@ -11,7 +11,7 @@ def t_yangpiao():
     第三版：rid=3，nid= 74-81'''
     p = 1
     n = 74
-    rid =3
+    rid =1
     num = 0
     dealTime_start = times.str_to_time("2000-01-01 00:00:00")
     dealTime_end = times.str_to_time("2022-10-17 00:00:00")
@@ -78,8 +78,8 @@ def t_yangpiao1():
     n2 = 81
     num = 0
     # dealTime_start = times.str_to_time("2022-10-17 00:00:00")
-    dealTime_start = times.str_to_time("2022-11-7 00:00:00")
-    dealTime_end = times.str_to_time("2022-11-14 00:00:00")
+    dealTime_start = times.str_to_time("2022-11-14 00:00:00")
+    dealTime_end = times.str_to_time("2022-11-21 00:00:00")
     '''每周更新数据'''
     while 1:
         r = yangpiao.get_bid_history_data(p=p,nid=n,rid=rid)
@@ -104,7 +104,7 @@ def t_yangpiao1():
                     a_bid_info["serial"] = serial_num
                     # 拍品的名称，编号，品相，落槌价，佣金比例，出价次数，，优惠折扣，成交时间
                     bids.append(a_bid_info.values())
-            file_path = "/Users/yuanyuanhe/Desktop/竞拍分析/yangpiao/123版币11-14.csv"  #写入一个页面的内容
+            file_path = "/Users/yuanyuanhe/Desktop/竞拍分析/yangpiao/123版币11-21.csv"  #写入一个页面的内容
             with open(file_path, "a", encoding="utf-8") as f:
                 csv_writer = csv.writer(f)
                 if bids:

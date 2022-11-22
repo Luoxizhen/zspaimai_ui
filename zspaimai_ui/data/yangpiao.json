@@ -1,0 +1,22 @@
+{
+  :method	GET
+:scheme	https
+:path	/Users/getBidHistoryData?page=3&_t=1669012232782&certPick=&certCo=&dealTimeStr=&specimen=&rId=1
+:authority	yangpiao.com
+accept	application/json, text/plain, */*
+cookie	_ypuuid=42795deaa7998a6786ffbf7e2ae25859
+cookie	Hm_lpvt_6ce79aaf03f417b904b3b0bf01ba5e87=1669012163
+cookie	Hm_lvt_6ce79aaf03f417b904b3b0bf01ba5e87=1668570780,1668849689,1668914668,1669012163
+cookie	__51cke__=
+cookie	__51laig__=1
+cookie	__51uvsct__JHpoW8doII8bLRu4=42
+cookie	__51vcke__JHpoW8doII8bLRu4=d79e9d01-12af-50ce-a622-4105f0296241
+cookie	__51vuft__JHpoW8doII8bLRu4=1664935601706
+cookie	__tins__21009109=%7B%22sid%22%3A%201669012163068%2C%20%22vd%22%3A%201%2C%20%22expires%22%3A%201669013963068%7D
+cookie	__vtins__JHpoW8doII8bLRu4=%7B%22sid%22%3A%20%2208bcd012-6cfc-5d7b-903d-f46b7e77bf5e%22%2C%20%22vd%22%3A%201%2C%20%22stt%22%3A%200%2C%20%22dr%22%3A%200%2C%20%22expires%22%3A%201669013963075%2C%20%22ct%22%3A%201669012163075%7D
+accept-encoding	gzip, deflate, br
+access-token	a04799ecb96d588dded043192a73b99c22bd7e8c
+user-agent	Mozilla/5.0 (iPhone; CPU iPhone OS 15_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.16(0x18001023) NetType/WIFI Language/zh_CN
+accept-language	zh-CN,zh-Hans;q=0.9
+referer	https://yangpiao.com/users/bidHistory
+}
