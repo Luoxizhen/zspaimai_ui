@@ -1,0 +1,13 @@
+1c:
+  url:
+
+zhao:
+  url:
+
+
+pmg:
+  url_detail: "https://www.pmg.cn/api/pmg/show_info/" + c_id
+  url_class: "https://www.pmg.cn/Class/" + class_id
+
+
+

@@ -224,8 +224,8 @@ def put_data3(sql):
         print(e)
         print("连接失败")
 if __name__ == '__main__':
-    sql = "update p_note_detail set note_number='878a' where serial= '8753559'"
-    sql = "select "
+
+    sql = "select  distinct user_id  from p_goods_browse where id > ((select max(id) from p_goods_browse ) -74 )"
     select_data(sql)
 
 

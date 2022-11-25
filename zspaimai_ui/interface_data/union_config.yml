@@ -1,9 +1,9 @@
 new_unions:
-  file_path: "/Users/yuanyuanhe/Desktop/货/推广活动导入/11-2-1.csv"
+  file_path: "/Users/yuanyuanhe/Desktop/货/推广活动导入/11-3.csv"
   unions_info:
-    "begin_time": "2022-11-17 11:00:00"
+    "begin_time": "2022-11-23 11:00:00"
     "end_time": "2022-11-30 20:00:00"
-    "topic_id": [83]
+    "topic_id": [84]
 
 mini_url:
   mini_url1: pagesB/pages/transation/index

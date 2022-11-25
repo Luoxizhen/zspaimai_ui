@@ -8,7 +8,7 @@ from utils.log import log
 import urlparse
 import re
 
-import html_outputer,html_downloader,html_parser,url_manager
+import html_outputer,html_downloader_zhao,html_parser_zhao,url_manager
 
 
 
@@ -21,8 +21,8 @@ class SpiderMan(object):
     def __init__(self):
         #调度器内包含其它四个元件，在初始化调度器的时候也要建立四个元件对象的实例
         self.urls = url_manager.UrlManager()
-        self.downloader = html_downloader.HtmlDownloader()
-        self.parser = html_parser.HtmlParser()
+        self.downloader = html_downloader_zhao.HtmlDownloader()
+        self.parser = html_parser_zhao.HtmlParser()
         self.output = html_outputer.DataOutput()
         print("ppp")
     # def spider(self):

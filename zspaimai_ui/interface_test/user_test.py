@@ -173,7 +173,7 @@ def test_change_nickname_bid():
 
 def test_edit_customer_nicknames():
     user_info = {
-        "phone": "20000000016",
+        "phone": "20000000017",
         "pwd": "zs011015"
     }
     user.user_login(**user_info)
@@ -190,8 +190,15 @@ def test_edit_customer_nicknames():
             nickname = util.chinese_name()
         nickname_new = {"nickname": nickname,
                         "id": nick_name_id}
+
         r = user.nickname_edit(**nickname_new)
-        print(r.json())
+        if r.json()["status"] == 400 :
+            nickname = util.get_random(8, 2)
+            nickname_new = {"nickname": nickname,
+                            "id": nick_name_id}
+
+            r = user.nickname_edit(**nickname_new)
+        # print(r.json())
 
     assert 1==2
 if __name__ == "__main__":
