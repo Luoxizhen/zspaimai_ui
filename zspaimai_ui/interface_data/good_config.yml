@@ -1,13 +1,22 @@
 good_add_new:
-  file_path: "/Users/yuanyuanhe/Desktop/货/拍品导入/11-3.csv"
-  begin_time: "2022-11-25 10:00:00"
-  end_time: "2022-11-28 20:00:00"
-  topic_id: "[84]"
+  file_path: "/Users/yuanyuanhe/Desktop/货/拍品导入/6-3.csv"
+  begin_time: "2023-06-16 10:00:00"
+  end_time: "2023-06-19 20:00:00"
+  topic_id: "[110]"
+  good_type: 1
+  is_edit: 0
+#  good_type 为1指拍品，2指商品。is_eidt 为0 指新增，1指编辑
 
 goods_bid:
-  file_path:  "/Users/yuanyuanhe/Desktop/货/拍品出价详情/11-2-20221121.csv"
-  good_id: 3433
-  num: 17
+  file_path:  "/Users/yuanyuanhe/Desktop/货/拍品出价详情/4月1期.csv"
+  good_id: 4000
+  num: 45
 
+
+get_picture:
+  base_url: "https://online-1303141635.cos.ap-guangzhou.myqcloud.com/"
+  file_r: "/Users/yuanyuanhe/Desktop/货/拍品导入/6-2.csv"
+  file_d: ""
+  # base_url 为图片的基本地址， file_r: 拍品导入文档位置， file_d: 图片输出位置
 
 

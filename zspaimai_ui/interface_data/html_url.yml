@@ -1,13 +1,15 @@
 1c:
-  url:
+  url: ""
 
 zhao:
-  url:
+  url: ""
 
 
 pmg:
-  url_detail: "https://www.pmg.cn/api/pmg/show_info/" + c_id
-  url_class: "https://www.pmg.cn/Class/" + class_id
+  url_detail: "https://www.pmg.cn/api/pmg/show_info/"
+  url_class: "https://www.pmg.cn/Class/"
 
 
 
+vcanghui:
+  url: "https://www.vcanghui.com/new2wap.php/Datashow/guide_price/userid/44345"

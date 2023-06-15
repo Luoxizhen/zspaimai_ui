@@ -1,5 +1,5 @@
 import numpy as np
-
+import time
 import matplotlib.pyplot as plt
 import csv
 from collections import Counter
@@ -159,6 +159,23 @@ def zhao_online_paimai_time():
     grouped.count().to_csv("/Users/yuanyuanhe/Desktop/竞拍分析/赵涌在线_拍品列表_分析结果_t.csv",mode="a")
     grouped.sum().to_csv("/Users/yuanyuanhe/Desktop/竞拍分析/赵涌在线_拍品列表_分析结果_t.csv",mode="a")
 
+def zsonline_paimai_time():
+    file_d = "/Users/yuanyuanhe/Desktop/订单.csv"
+    # df = pd.read_csv(file_d, names=['拍品序号', '拍品id', '拍品图片', '拍品名称', '拍品等级', '价格', '日期'])
+    df = pd.read_csv(file_d)
+    time_strs = df['o.create_time']
+    s_time = []
+
+    df['o.create_time'] = pd.to_datetime(df['o.create_time'],unit='s')
+
+
+
+
+
+
+
+    df.to_csv("/Users/yuanyuanhe/Desktop/订单_new.csv",mode="a")
+
 
 
 
@@ -166,7 +183,7 @@ def zhao_online_paimai_time():
 if __name__ == "__main__":
     # zhao_onling_drop_duplicates()
     # zhao_online_paimai()
-    zhao_online_paimai_time()
+    zsonline_paimai_time()
 
 
 

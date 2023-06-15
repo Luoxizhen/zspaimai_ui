@@ -173,7 +173,7 @@ def test_change_nickname_bid():
 
 def test_edit_customer_nicknames():
     user_info = {
-        "phone": "20000000017",
+        "phone": "20000000026",
         "pwd": "zs011015"
     }
     user.user_login(**user_info)

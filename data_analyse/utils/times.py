@@ -36,22 +36,22 @@ def sleep1():
 
 def time_to_str(t):
     lt = time.localtime(t)
-    print(lt)
+    # print(lt)
     r = time.strftime("%Y-%m-%d %H:%M:%S", lt)
     return r
 def str_to_time(str):
-    p_tuple = time.strptime(str, "%Y-%m-%d %H:%M:%S")
+    try:
+        p_tuple = time.strptime(str, "%Y-%m-%d %H:%M:%S")
+    except Exception as e:
+        p_tuple = time.strptime(str, "%Y/%m/%d %H:%M:%S")
+        print(e)
     t = time.mktime(p_tuple)
-    return round(t)
+    print(int(t))
+    return int(t)
 
-def dif_days(t1,t2):
-    t = str_to_time(t2) - str_to_time(t1)
-    return round(t/(24*3600))
 
 if __name__ == '__main__':
-   p = "2021-11-18 18:02:46"
-   p1 = "2021-11-30 18:02:46"
-   print(dif_days(p,p1))
+   str_to_time("2022/10/10 22:10:21")
 
 
 

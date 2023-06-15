@@ -300,8 +300,9 @@ def good_add_new(file_path,is_edit=0,good_type=1,**topic_info):
     for row in reader:
 
         good_info = {}
+        print(row['category_id'])
 
-        if int(row['category_id']) in [7,8,9,10,36,40,41,42,43]:
+        if int(row['category_id']) in [7,8,9,10,13,36,40,41,42,43]:
             c_name = row["category"] + row['name'] + row['count'] # 第一、二、三、四版币的名称 = 版别+名字+数量
         else:
             c_name = row['name'] + row['count'] #其余 = 名字+ 数量
@@ -315,11 +316,12 @@ def good_add_new(file_path,is_edit=0,good_type=1,**topic_info):
             else:
                 good_info["shape"] = row['grade'] #非评级币的品相 = 所估算的品质
 
-        good_info["name"] = c_name + s_name #名称的字符长度不能超过60
+        good_info["name"] ="lot"+ str(k) + "-" + c_name + s_name #名称的字符长度不能超过60
         if "/" in row["date"]:
             img_1 = "picture/" + row['date'] + "-1.jpg"
         else:
             img_1 = "picture/" + row['date'] + "/" + row['good_no'] + "-1.jpg"
+            # img_1 = "picture/" + row['date'] + "/" + row['good_no'].replace('a', '') + "-1.jpg"
         img = [img_1]
         for i in range(2,int(row['p_1'])+1):
             img.append(img_1.replace("-1.jpg","-"+str(i)+".jpg"))
@@ -346,7 +348,6 @@ def good_add_new(file_path,is_edit=0,good_type=1,**topic_info):
 
         good_info["price"] = row['price']
         good_info["retain_price"] = row["retain_price"] # 保留价
-
         good_info["seller_name"] = row["seller_name"]
         good_info["delay_time"] = 60  # 延拍时间
         good_info["goods_weight"] = 0
@@ -360,21 +361,22 @@ def good_add_new(file_path,is_edit=0,good_type=1,**topic_info):
         meta_json = json.loads(meta_str)
         meta_json["service_fee_deal"] = row["service_fee_deal"]
         good_info["meta"] = json.dumps(meta_json)
-        if is_edit==0:
-            if good_type == 1:
+        if is_edit == 0:  #新增
+            if good_type == 1: #新增拍品
                 r = goods.goods_add(**good_info)
                 print(r.json())
-            else:
+            else:# 新增商品
                 good_info["type"] = 2
                 good_info["delay_time"] = 0
                 good_info["inventory"] = "1"
                 good_info["inventory_unit"] = "枚"
+                del(good_info["topic_id"])
                 r = goods.goods_add(**good_info)
                 print(r.json())
 
-        else:
+        else: #拍品或商品编辑
             good_info["id"] = row["good_id"]
-
+            good_info["type"] = good_type
             good_info_json = {"id": row["good_id"]}
             good_info_old = goods.goods_info(**good_info_json).json()['data']
             good_info["begin_time"] = good_info_old["begin_time"]
@@ -383,14 +385,7 @@ def good_add_new(file_path,is_edit=0,good_type=1,**topic_info):
             print(r.json())
         k = k + 1
 
-def test_good_add_sp_new():
-    file_path = "/Users/yuanyuanhe/Desktop/货/拍品导入/7-2-1.csv"
-    topic_info = {}
-    topic_info["begin_time"] = 0
-    topic_info["end_time"] = 0
-    topic_info["topic_id"] = "[]"
-    good_add_new(file_path=file_path,good_type=2,**topic_info)
-    assert 1==2
+
 
 def test_good_add_new():
     goods_info = rwyaml.get_yaml_data('interface_data', 'good_config.yml')['good_add_new']
@@ -398,6 +393,8 @@ def test_good_add_new():
     begin_time_s = goods_info['begin_time']
     end_time_s = goods_info['end_time']
     tipic_id = goods_info['topic_id']
+    good_type = goods_info["good_type"]
+    is_edit = goods_info["is_edit"]
     topic_info = {}
     begin_time = times.str_to_time(begin_time_s)  # 开拍时间 ：2022-05-27 10:00:00 2022-06-10 10:00
     end_time = times.str_to_time(end_time_s)  # 结拍时间：2022-07-01 10:00:00
@@ -405,100 +402,41 @@ def test_good_add_new():
     topic_info["end_time"] = end_time
     topic_info["agreement_no"] = ""
     topic_info["topic_id"] = tipic_id
-    good_add_new(file_path, **topic_info)
+    good_add_new(file_path, is_edit=is_edit,good_type=good_type,**topic_info)
     assert 1 == 2
 
-def goods_add_picture(good_id):
-    """用于拍品详情描述中增加图片"""
-    good_info_json = {"id": good_id}
-    goods_json = goods.goods_info(**good_info_json).json()['data']
-    goods_json["images"] = json.dumps(goods_json["images"])
-    goods_json["original_image"] = json.dumps(goods_json["original_image"])
-    img ='<img src="https://online-1303141635.cos.ap-guangzhou.myqcloud.com/picture/chen/494-2.jpg">'
-    goods_json["content"] = goods_json["content"]+img.replace("chen/494-2","2022-03-08/5-3")+img.replace("chen/494-2","2022-03-08/5-4")
-    goods_json['topic_id'] = json.dumps(goods_json['topic_id'])
-    r = goods.goods_edit(**goods_json)
-    print(goods_json)
-    print(r.json())
-def goods_edit_picture(good_id,p1,p2):
-    '''
-    单个拍品编辑
-    对下架的拍品编辑图片，用于上传拍品过程中，照片顺序错误时进行修改，
-    good_id：后台拍品的编号，执行本函数前，必须在后台将该编号拍品下架
-    p1: 原来的图片
-    p2: 新图片
-    '''
-    good_info_json = {"id": good_id}
-    goods_json = goods.goods_info(**good_info_json).json()['data']
-    goods_json["images"] = json.dumps(goods_json["images"]).replace(p1,p2)
-    goods_json["original_image"] = json.dumps(goods_json["original_image"]).replace(p1,p2)
-    goods_json["content"] = goods_json["content"].replace(p1,p2)
-    goods_json['topic_id'] = json.dumps(goods_json['topic_id'])
-    r = goods.goods_edit(**goods_json)
-    print(goods_json)
-    print(r.json())
-def test_good_edit_picture():
-    good_id = 3231
-    goods_edit_picture( good_id,"2022-03-08","2022-03-14")
-    assert 1==2
-def test_good_add_picture():
-    goods_add_picture(2738)
-    assert 1==2
 
-def test_goods_edit():
-    file_path = "/Users/yuanyuanhe/Desktop/货/拍品导入/新6-7-2.csv"
-    topic_info = {}
-    begin_time = times.str_to_time("2022-07-01 10:00:00")  # 开拍时间 ：2022-05-27 10:00:00 2022-06-10 10:00:00
-    end_time = times.str_to_time("2022-07-04 20:00:00")  # 结拍时间：2022-07-01 10:00:00
-    topic_info["begin_time"] = begin_time
-    topic_info["end_time"] = end_time
-    topic_info["topic_id"] = "[63]"
-    good_add_new(file_path,is_edit=1,**topic_info)
-    assert 1==2
+
 
 
 def get_picture(file1,file2):
-    w_shape = ["裸币", "裸票", "原票"]
+    '''将拍品的图片下载到文件夹中
+    file1： 拍品导入文档
+    file2: 图片保存位置'''
     with open(file1, mode="r", encoding='utf-8') as f:
         reader = csv.DictReader(f)
+        s_date = []
         for row in reader:
-
-            good_info = {}
-
-            if int(row['category_id']) in [7, 8, 9, 10]:
-                c_name = row["category"] + row['name'] + row['count']  # 第一、二、三、四版币的名称 = 版别+名字+数量
-            else:
-                c_name = row['name'] + row['count']  # 其余 = 名字+ 数量
-            if not row['grade'] in w_shape:
-                s_name = '(' + row['num'].replace("‘", '').replace("'", "") + " " + row['grade'] + row[
-                    'score'] + ')'  # 评级币的编号 = （编号+评级+分数）
-                good_info["shape"] = "评级币"  # 评级币的品相 = 评级币
-            else:
-                s_name = '(' + row['num'] + " " + row['score'] + ')'  # 非评级币的编号 = （编号+ 品相）
-                if row["grade"] == "原票":
-                    good_info["grade"] = "原票"
-                else:
-                    good_info["shape"] = row['grade']  # 非评级币的品相 = 所估算的品质
-
-            good_info["name"] = c_name + s_name  # 名称的字符长度不能超过60
-
-
             if "/" in row["date"]:
                 img_1 = "picture/" + row['date'] + "-1.jpg"
             else:
                 img_1 = "picture/" + row['date'] + "/" + row['good_no'] + "-1.jpg"
+                if row["date"] not in s_date:
+                    s_date.append(row["date"])
             img = [img_1]
             for i in range(2, int(row['p_1']) + 1):
                 img.append(img_1.replace("-1.jpg", "-" + str(i) + ".jpg"))
-            picture_url_base = "https://online-1303141635.cos.ap-guangzhou.myqcloud.com/"  # 图片的基本地址
+            picture_url_base = rwyaml.get_yaml_data('interface_data', 'good_config.yml')['get_picture']['base_url'] # 图片的基本地址
             picture_url = [picture_url_base + x for x in img] # 图片地址
             for i in range(len(picture_url)):
                 r = request("get",picture_url[i])
-                with open(file2+good_info["name"].replace("/"," ")+'-'+ str(i) + ".jpg",'wb') as p_f:
+                with open(file2+img_1[i].replace("picture/"," ").replace("/",""),'wb') as p_f:
                     p_f.write(r.content)
 
 
+
+
 def test_get_picture():
-    file_path_raw = "/Users/yuanyuanhe/Desktop/专场图片/新8-1.csv"
-    file_path_picture = "/Users/yuanyuanhe/Desktop/专场图片/"
-    get_picture(file_path_raw,file_path_picture)
+    file_r = rwyaml.get_yaml_data('interface_data', 'good_config.yml')['get_picture']['file_r']
+    file_d = rwyaml.get_yaml_data('interface_data', 'good_config.yml')['get_picture']['file_d']
+    get_picture(file_d,file_r)

@@ -21,7 +21,7 @@ def add_union_off(f_path,**topic_info):
         union_info["name"] = row["name"]
         union_info["copywriter"] = row["describer"]
         if type(topic_info["topic_id"])!=str:
-            print(type(topic_info["topic_id"] ))
+            print(type(topic_info["topic_id"]))
             print(",not str")
 
             union_info["topic"] = json.dumps(topic_info["topic_id"])
@@ -46,14 +46,14 @@ def add_union_off(f_path,**topic_info):
         for key in poster.keys():
             for picture in poster[key]:
                 if key == "union":
-                    poster_list.append(key+"/"+str(picture) +".jpg")
+                    poster_list.append(key+"/2023/"+str(picture) +".jpg")
                 else:
                     poster_list.append("picture/"+key+"/"+str(picture) +"-1.jpg")
         images_list = []
         for key in imager.keys():
             for picture in imager[key]:
                 if key == "union":
-                    images_list.append(key + "/" + str(picture)+ ".jpg")
+                    images_list.append(key + "/2023/" + str(picture)+ ".jpg")
                 else:
 
                     images_list.append("picture/" + key + "/" + str(picture) + "-1.jpg")
@@ -104,12 +104,12 @@ def union_edit(union_index=0,exchange=0,**img):
     r = union.union_edit(**union_info)
     print(r.json())
 def test_union_edit():
-    poster_list = "[\"union/33.jpg\"]"
-    images_list = "[\"union/33.jpg\",\"union/32.jpg\",\"union/31.jpg\"]"
+    poster_list = "[\"picture/2022-01-13/1179-1.jpg\"]"
+    images_list = "[\"picture/2022-01-13/1179-1.jpg\"]"
     # img = json.dumps(images_list)
     # pst = json.dumps(poster_list)
     union_info = {"images":images_list,"poster":poster_list}
-    union_edit(union_index=0,**union_info)
+    union_edit(union_index=2,**union_info)
     assert 1==2
 
 

@@ -1,0 +1,57 @@
+note_type_f:
+  "/Users/yuanyuanhe/Desktop/竞拍分析/yangpiao/钞票编号_数据库_补充20230307.csv"
+
+deal_time:
+  "2023年3月6日--2023年6月9日"
+item_name:
+  - cert_display
+  - cert_comments
+  - note_number
+  - pre_serial
+  - serial
+  - special_pattern
+  - special_no
+  - buyer_premium
+  - from_id
+  - is_clinch
+  - price
+  - parities
+  - currency
+  - did_time
+  - s1
+  - s2
+  - s3
+  - s4
+  - s5
+  - f_name
+  - is_history
+  - s6
+# 分别是 评级分数，背标，钞票唯一编码，冠号，序列号，特殊标签，特殊号码，佣金比例，数据来源，是否成交，价格，汇率，货币类型，交易时间，特点1，特点2，特点3，特点4，特点5，
+file_names:
+  - 123版币20230508.csv
+  - 123版币20230522.csv
+  - 123版币20230609.csv
+file_path: /Users/yuanyuanhe/Desktop/竞拍分析/yangpiao/
+
+file_name_of_target: /Users/yuanyuanhe/Desktop/123版币第二季度.csv
+
+analyse_data:
+
+  file_path: /Users/yuanyuanhe/Desktop/
+  file:
+    - 123版币第二季度.csv
+    - 123版币第二季度+钞票名称.csv
+    - 123版币第二季度成交数据分析.html
+    - 123版币第二季度-未交易数据.csv
+    - 123版币第二季度-增加佣金.csv
+  include_item: 1
+  #文档是否包含表头,1 表示包含，0 表示不包含
+  analyse_item:
+    - count
+    - mean
+    - std
+    - min
+    - 25%
+    - 50%
+    - 75%
+    - max
