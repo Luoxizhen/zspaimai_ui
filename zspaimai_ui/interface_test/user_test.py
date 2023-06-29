@@ -3,9 +3,9 @@ import csv
 import codecs
 from config.conf import cm
 import os
-from utils import util
-import random
 
+import random
+from utils import times,util,rwyaml
 def test_logging():
     user.update_token()
 
@@ -172,10 +172,7 @@ def test_change_nickname_bid():
     assert 1==2
 
 def test_edit_customer_nicknames():
-    user_info = {
-        "phone": "20000000026",
-        "pwd": "zs011015"
-    }
+    user_info = rwyaml.get_yaml_data("interface_data","user.yml")["edit_customer_nicknames"]
     user.user_login(**user_info)
     nicknames = user.nickname_list().json()["data"]
     print(nicknames)
