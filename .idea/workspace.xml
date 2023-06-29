@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6d9568bc-5923-4625-9577-d5431991ab9c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/web-demotest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/miniprogram-demo-test/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/miniprogram-demo-test/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zspaimai_ui/base/webpage.py" beforeDir="false" afterPath="$PROJECT_DIR$/zspaimai_ui/base/webpage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zspaimai_ui/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/zspaimai_ui/conftest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zspaimai_ui/page/firstp.py" beforeDir="false" afterPath="$PROJECT_DIR$/zspaimai_ui/page/firstp.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zspaimai_ui/page_element/firstp.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/zspaimai_ui/page_element/firstp.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zspaimai_ui/test/test_firstp.py" beforeDir="false" afterPath="$PROJECT_DIR$/zspaimai_ui/test/test_firstp.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zspaimai_ui/test/test_search.py" beforeDir="false" afterPath="$PROJECT_DIR$/zspaimai_ui/test/test_search.py" afterDir="false" />
-    </list>
+    <list default="true" id="6d9568bc-5923-4625-9577-d5431991ab9c" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,6 +21,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="6d9568bc-5923-4625-9577-d5431991ab9c" name="Default Changelist" comment="" />
