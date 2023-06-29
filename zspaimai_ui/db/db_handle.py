@@ -4,8 +4,8 @@ from collections import namedtuple
 import pymysql as mysql
 from utils import times,log,rwyaml
 from common.readconfig import ini
-''''charset':'utf8mb4','''
-'''host': '115.159.111.166    'host': '81.71.30.169','''
+# ''''charset':'utf8mb4','''
+# '''host': '115.159.111.166    'host': '81.71.30.169','''
 host_url = ini.host_url
 config={
     'host': host_url,
@@ -16,29 +16,15 @@ config={
     'charset': 'utf8'
 }
 
-csv_filename = "/Users/yuanyuanhe/Desktop/竞拍分析/yangpiao/三版币_数据库.csv"
-table_name = "t_note_type"
 
-def  get_data_not_headings(file_name):
-    '''从文件中获取数据
-    with open('Population.csv','a+',encoding='utf8') as csvfile:
-      fieldnames=['openname','sqlname']#表头·
-      writer=csv.DictWriter(csvfile,fieldnames=fieldnames)
-      writer.writerow({'openname':filtes,'sqlname':data})#数据'''
-    with open(file_name, mode='r', encoding='utf-8') as f:
-        fieldnames=["cert_display","cert_comments","noteNumber","prefix","serial","special","special_no","buyer_premium","did",
-                    "is_clinch","price","parities","currency","dealTime","tags","crown","wmk","place_name","old_stock","dealer","volamount","history"]
-        print("读数据1")
-        f_csv = csv.reader(f)
-        headings = fieldnames
-        Row = namedtuple('Row', headings)
-        print("读数据")
-        for r in f_csv:
-            yield Row(*r)
-def  get_data(file_name):
+def get_data(file_name):
+    yd = rwyaml.get_yaml_data('interface_data','yangpiao.yml')
     with open(file_name, mode='r', encoding='utf-8') as f:
         f_csv = csv.reader(f)
-        headings = next(f_csv)
+        if yd['is_include_item_name'] == 1:
+            headings = next(f_csv)
+        else:
+            headings = yd['item_name']
         print(headings)
         Row = namedtuple('Row', headings)
         print("读数据")
@@ -118,7 +104,7 @@ def select_data(sql):
     except Exception as e:
         print(e)
 def update_data():
-    sql = "update  p_goods set price = 110000 where id = 4316"
+    sql = "update  p_goods set price = 95000 where id = 4339"
     select_data(sql)
 def alter_talbe():
     try:
@@ -169,8 +155,8 @@ def put_data():
         # sql_format ="insert into p_note_from (did,name) values({0},'{1}')"
         # print(sql_format)
         i = 1
-        for nt in get_data_not_headings(csv_filename):
-            # print(nt)
+        for nt in get_data(csv_filename):
+            # print(nt) 需要根据文件是否有列名，在 interface_data/ yangpiao.yml 中进行配置 is_include_item_names
             print(i)
             log.log.info("插入{}".format(i))
             # "cert_display", "cert_comments", "noteNumber", "serial", "special", "special_no", "buyer_premium", "did",

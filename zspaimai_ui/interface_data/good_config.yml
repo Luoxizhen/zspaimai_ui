@@ -1,8 +1,8 @@
 good_add_new:
-  file_path: "/Users/yuanyuanhe/Desktop/货/拍品导入/6-3.csv"
-  begin_time: "2023-06-16 10:00:00"
-  end_time: "2023-06-19 20:00:00"
-  topic_id: "[110]"
+  file_path: "/Users/yuanyuanhe/Desktop/货/拍品导入/7-1.csv"
+  begin_time: "2023-06-30 10:00:00"
+  end_time: "2023-07-03 20:00:00"
+  topic_id: "[112]"
   good_type: 1
   is_edit: 0
 #  good_type 为1指拍品，2指商品。is_eidt 为0 指新增，1指编辑
@@ -11,7 +11,7 @@ goods_bid:
   file_path:  "/Users/yuanyuanhe/Desktop/货/拍品出价详情/4月1期.csv"
   good_id: 4000
   num: 45
-
+# good_id: 专场的第一个拍品的id ，num 为专场的总数量，file_path 为拍品出价情况输入文档
 
 get_picture:
   base_url: "https://online-1303141635.cos.ap-guangzhou.myqcloud.com/"
