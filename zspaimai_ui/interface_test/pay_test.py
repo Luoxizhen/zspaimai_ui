@@ -60,46 +60,7 @@ def test_recharge_001():
     assert quato_bill['total'] == quato_bill_pre['total'] + 1
     assert quato_bill['first_record']['quota'] == str(money * 50)+'.00'
 
-# @pytest.mark.skip('验证内容已添加到001')
-# def test_recharge_002():
-#     '''验证后台给用户充值后，用户的余额增加充值的金额'''
-#     financeinfo_pre = finance.get_finance_info()
-#     '后台充值'
-#     finance.recharge()
-#     financeinfo = finance.get_finance_info()
-#     assert float(financeinfo['normal_money']) == float(financeinfo_pre['normal_money'])+100.00
-#     assert float(financeinfo['normal_quota']) == float(financeinfo_pre['normal_quota']) + 100.00 * 50
-# @pytest.mark.skip('验证内容已添加到001')
-# def test_recharge_003():
-#     '''验证后台充值成功后，用户的额度增加  充值金额* 50'''
-#     financeinfo_pre = finance.get_finance_info()
-#     '后台充值'
-#     finance.recharge()
-#     financeinfo = finance.get_finance_info()
-#     assert float(financeinfo['normal_quota']) == float(financeinfo_pre['normal_quota']) + 100.00*50
-# @pytest.mark.skip('验证内容已添加到001')
-# def test_recharge_004():
-#     '''验证后台充值成功后，用户的钱包明细增加一条记录'''
-#     '保存用户的钱包明细'
-#     wallet_bill_pre = finance.get_wallet_bill()
-#     '后台充值'
-#     finance.recharge()
-#     wallet_bill = finance.get_wallet_bill()
-#     '验证明细增加一条记录'
-#     assert wallet_bill['total'] == wallet_bill_pre['total']+1
-#     '验证明细第一条记录内容'
-#     assert wallet_bill['first_record']['money']=="100.00"
-#
-# @pytest.mark.skip('验证内容已添加到001')
-# def test_recharge_005():
-#     '''验证后台充值成功后，用户的额度明细增加一条记录'''
-#     quato_bill_pre = finance.get_quota_bill()
-#     '后台充值'
-#     finance.recharge()
-#     quato_bill = finance.get_quota_bill()
-#     '验证明细增加一条记录'
-#     assert quato_bill['total'] == quato_bill_pre['total']+1
-#     assert quato_bill['first_record']['quota']=="5000.00"
+
 
 def test_change_quota_001():
     '''验证后台给用户充额度成功'''
@@ -118,40 +79,7 @@ def test_change_quota_001():
     assert r.json()['status'] == 200
     assert float(quota) == float(quota_pre) + quota_in
     assert nomarl_money == nomarl_money_pre
-# @pytest.mark.skip('验证内容已添加到001')
-# def test_change_quota_002():
-#     '''验证后台给用户充额度，用户的额度明细增加所充额度'''
-#     '充额度前用户的额度'
-#     quota_pre = finance.get_finance_info()['normal_quota']
-#     nomarl_money_pre = finance.get_finance_info()['normal_money']
-#     '充额度'
-#     finance.change_quota()
-#     quota = finance.get_finance_info()['normal_quota']
-#
-#     assert float(quota) == float(quota_pre) + 100
-# @pytest.mark.skip('验证内容已添加到001')
-# def test_change_quota_003():
-#     '''验证后台充额度，用户的可用余额不变'''
-#     nomarl_money_pre = finance.get_finance_info()['normal_money']
-#     '充额度'
-#     finance.change_quota()
-#     nomarl_money = finance.get_finance_info()['normal_money']
-#     assert nomarl_money == nomarl_money_pre
-#
-# @pytest.mark.skip('验证内容已添加到001')
-# def test_change_quota_004():
-#     '''验证后台充额度，用户的额度明细增加一条记录'''
-#     quota_bill_pre = finance.get_quota_bill()
-#     finance.change_quota()
-#     quota_bill = finance.get_quota_bill()
-#     assert quota_bill['total'] == quota_bill_pre['total']+1
-#     assert quota_bill['first_record']['quota'] == '100.00'
 
-int
-bool
-str
-dict
-list
 
 
 def test_cashout_001():
@@ -178,39 +106,7 @@ def test_cashout_001():
     assert wallet_bill_info['first_record']['money'] == str(money)+'.00'
     assert float(normal_money) == float(normal_money_pre) - 100
     assert status == 200
-# def test_cashout_002():
-#     '''验证后台提现后，用户的可用余额-提现金额'''
-#     normal_money_pre = finance.get_finance_info()['normal_money']
-#     '后台提现'
-#     finance.cashout()
-#     normal_money = finance.get_finance_info()['normal_money']
-#     assert float(normal_money) == float(normal_money_pre) - 100
-#
-# def test_cashout_003():
-#     '''验证后台提现后，用户的钱包明细增加一条记录'''
-#     wallet_total_pre = finance.get_wallet_bill()['total']
-#     '后台提现'
-#     finance.cashout()
-#     wallet_bill_info = finance.get_wallet_bill()
-#     wallet_total = wallet_bill_info['total']
-#     assert wallet_total == wallet_total_pre + 1
-#     assert wallet_bill_info['first_record']['money'] == '100.00'
-# def test_cashout_004():
-#     '''验证后台提现后，用户的可用额度 - 提现金额*50'''
-#     quota_pre = finance.get_finance_info()['normal_quota']
-#     '后台提现'
-#     finance.cashout()
-#     quota = finance.get_finance_info()['normal_quota']
-#     assert float(quota) == float(quota_pre) - 50 *100.00
-# def test_cashout_005():
-#     '''验证后台提现后，用户的额度明细增加一条记录'''
-#     quota_total_pre = finance.get_quota_bill()['total']
-#     '后台提现'
-#     finance.cashout()
-#     quota_bill_info = finance.get_quota_bill()
-#     quota_total = quota_bill_info['total']
-#     assert quota_total == quota_total_pre + 1
-#     assert quota_bill_info['first_record']['quota'] == "5000.00"
+
 def test_cashout_user_001():
     '''验证用户提现成功'''
     cashout_result = finance.cashout_user2()
